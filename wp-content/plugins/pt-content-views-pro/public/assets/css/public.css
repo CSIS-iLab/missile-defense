@@ -1,0 +1,89 @@
+/**
+ * Main styles for Front-end
+ *
+ * @package   PT_Content_Views_Pro
+ * @author    PT Guy <http://www.contentviewspro.com/>
+ * @license   GPL-2.0+
+ * @link      http://www.contentviewspro.com/
+ * @copyright 2014 PT Guy
+ */
+
+.pt-cv-center img {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+.pt-cv-edit-post,
+.pt-cv-edit-view {
+	color: #f00;
+	border: 1px solid !important;
+	padding: 2px;
+	z-index: 10;
+}
+
+/* Content */
+.pt-cv-content p {
+	color: inherit !important;
+}
+
+.pt-cv-content-text + br {
+	display: none !important;
+}
+
+.pt-cv-same-height .pt-cv-content {
+	position: relative !important;
+}
+
+/* EDD */
+.pt-cv-view input.edd-add-to-cart {
+	display: none;
+}
+
+/* Media Thumbnails */
+.pt-cv-href-thumbnail {
+	max-width: 100%;
+}
+
+.pt-cv-href-thumbnail iframe {
+	margin-bottom: 10px;
+	max-width: 100% !important;
+}
+
+/* Button without border radius */
+.pt-cv-sharp-buttons .btn {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius:    0 !important;
+	border-radius:         0 !important;
+}
+
+/* 2 columns */
+.pt-cv-thumb-left iframe {
+	float: left !important;
+	margin-right: 20px !important;
+}
+.pt-cv-thumb-right iframe {
+	float: right !important;
+	margin-left: 20px !important;
+}
+
+/* it is required to solve layout issue */
+.pt-cv-2-col .pt-cv-ctf-list {
+	display: table;
+}
+.pt-cv-ctf-list:after {
+	content: " ";
+    display: block;
+    clear: both;
+}
+.pt-cv-ctf-list:empty {height: 0 !important;}
+
+/* Thumbnail style - Shadow */
+.pt-cv-thumbnail.img-shadow {
+	transition: 0.5s ease opacity;
+
+	-webkit-box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.pt-cv-thumbnail.img-shadow:hover {
+	opacity: 0.8;
+}

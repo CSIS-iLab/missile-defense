@@ -1,0 +1,46 @@
+/**
+ * Right-to-Left Language Support
+ *
+ * @package   PT_Content_Views_Pro
+ * @author    PT Guy <http://www.contentviewspro.com/>
+ * @license   GPL-2.0+
+ * @link      http://www.contentviewspro.com/
+ * @copyright 2014 PT Guy
+ */
+
+.pt-cv-view {
+	direction:    rtl;
+	unicode-bidi: embed;
+}
+
+.pt-cv-view .pt-cv-carousel-caption {
+	left:       15px;
+}
+
+.text-left.pt-cv-pagination-wrapper {
+	text-align: right;
+}
+
+.pt-cv-more {
+	float: right !important;
+}
+
+.pt-cv-view .product .amount {
+	float: right;
+}
+
+.pt-cv-view .add_to_cart_button {
+	float: left;
+}
+
+.pt-cv-pinterest .pt-cv-content-item {
+	float: right;
+}
+
+.pt-cv-view + .pagination {
+	float: right;
+}
+
+.pt-cv-readmore.btn-link {
+	padding-right: 0;
+}
