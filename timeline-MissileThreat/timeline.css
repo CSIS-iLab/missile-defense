@@ -47,7 +47,9 @@
 #two-missiles-intercepted-2-marker .tl-icon-image:after,
 #scud-intercepted-over-saudi-arabia-marker .tl-icon-image:after,
 #missile-intercepted-3-marker .tl-icon-image:after,
-#defense-forces-intercept-missile-marker .tl-icon-image:after
+#defense-forces-intercept-missile-marker .tl-icon-image:after,
+#saudi-coalition-confirms-longest-range-yemeni-ballistic-missile-attack-to-date-marker .tl-icon-image:after,
+#uss-mason-fired-3-missiles-to-defend-from-yemen-cruise-missiles-attack-marker .tl-icon-image:after
  {
     content: url(intercept.png);
 }
