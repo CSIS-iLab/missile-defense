@@ -6,10 +6,10 @@
 
 get_header(); // This fxn gets the header.php file and renders it ?>
 	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		<hr>
+		<h1>Defense Systems</h1>
 	</header>
 
+	<div class="main-fluid"><!-- start the page containter -->
 	<div id="primary" class="row-fluid">
 		<div id="content" role="main" class="span12">
 
@@ -26,12 +26,13 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 					  	$counter = 0;
 					  	echo "<div class='row-fluid'>";
 	        			foreach ( $terms as $term) {
-	        				if(++$counter % 5 === 0) {
+	        				if($counter % 3 === 0) {
 	        					echo "</div><div class='row-fluid'>";
 						    }
+						    $counter++;
 		        		?>
 
-	        			<div class="span3" style="border:1px solid red;">
+	        			<div class="span4" style="border:1px solid red;height:200px;">
 	        				<a href="<?php echo $term->slug; ?>">
 		        				<div>
 		        					<div class="title"><?php echo $term->name; ?></div>
