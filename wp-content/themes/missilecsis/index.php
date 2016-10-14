@@ -6,6 +6,7 @@
  */
 
 get_header(); // This fxn gets the header.php file and renders it ?>
+<div class="main-fluid"><!-- start the page containter -->
 	<div id="primary" class="row-fluid">
 		<div id="content" role="main" class="span8 offset2" style="margin-top:30px;">
 
