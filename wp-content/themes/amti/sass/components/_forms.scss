@@ -1,0 +1,70 @@
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.edit-link a {
+	color: $color__text-button;
+	border-radius: 0px;
+	background: $color__background-button;
+	font-weight: 100;
+	@include transition(all .3s);
+	padding: 8px 18px;
+	display: inline-block;
+    margin: 10px 0px;
+    font-size: 1em;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+	&:hover, &:active, &:focus {
+		-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+    	box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+	}
+}
+
+input[type='text'], input[type='email'], textarea {
+	background-color:transparent;
+	color: $color__text-input;
+    border: 1px solid $color__border-input;
+    width: auto;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding:3px;
+}
+
+select {
+	border: 1px solid $color__border-input;
+}
+
+textarea {
+	width: 100%;
+}
+
+/*===================================
+=            Search Bars            =
+===================================*/
+.form-control {
+	background-color: rgba(0,0,0,0.1);
+    color: $color__text-input-focus;
+    border: none;
+    border-radius: 0;
+    padding: 6px 8px;
+    height: 40px;
+    font-weight: bold;
+    letter-spacing: .7px;
+
+	&:focus {
+		color: $color__text-input-focus;
+	}
+}
+
+

@@ -1,0 +1,18 @@
+.ataglance {
+	padding-bottom: 10px !important;
+    margin-bottom: 25px;
+    clear: right;
+    padding-top: 10px;
+    padding-right: 25px;
+    border-top: 2px solid $light-green;
+    margin: 35px 0 35px 0;
+    border-bottom: 2px solid $light-green;
+}
+
+.newsletter {
+	text-align:left !important;
+
+	.newsletter-submit {
+		border:0px;
+	}
+}

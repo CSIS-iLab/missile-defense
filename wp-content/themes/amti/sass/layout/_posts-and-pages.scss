@@ -1,0 +1,135 @@
+/*===================================
+=            Post Header            =
+===================================*/
+header.entry-header.full-width {
+	text-align:center;
+	width:100%;
+	height:365px;
+	overflow:hidden;
+	margin:0px !important;
+	padding:0px;
+	position:relative;
+	top:0px;
+	left:0px;
+	background-repeat:no-repeat;
+	background-position:50% 0%;
+	background-size:cover;
+	background-image:url($image__page-feature-ballback);
+	display:flex;
+	justify-content:center;
+
+	@include breakpoint("small") {
+		min-height: 260px;
+	}
+
+	.container {
+		align-self:center;
+	}
+
+	h1 {
+		color: $white;
+	    font-size: 62px;
+	    font-weight: 700;
+	    letter-spacing: 1.5px;
+	    background: transparent;
+	    padding: 15px;
+	    margin-top: 0;
+	    text-transform: capitalize;
+	    position: relative;
+	    z-index:10;
+	    margin-bottom:10px;
+	}
+}
+
+.page header.entry-header {
+	margin-top:2em;
+	margin-bottom:2em;
+}
+/*=====  End of Post Header  ======*/
+
+/*====================================
+=            Post Content            =
+====================================*/
+
+article.post {
+	border-bottom: 1px solid $light-gray;
+}
+
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 3em;
+}
+
+.byline,
+.updated:not(.published){
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+.meta-container {
+	line-height: 14.8px;
+    font-size:0.8em;
+    text-transform: uppercase;
+    letter-spacing: .9px;
+    margin-bottom:10px;
+
+    a {
+    	margin-right:10px;
+    }
+}
+
+.entry-meta {
+	font-size: 18px !important;
+    font-family: $font__SourceSans;
+    margin-bottom: 20px;
+    font-weight: bold;
+
+	&, a:link, a:active, a:visited {
+		color: $light-green;
+	}
+	a:hover {
+		color: $gray;
+	}
+}
+
+/*=====  End of Post Content  ======*/
+
+/*=====================================================
+=            Previous/Next Post Navigation            =
+=====================================================*/
+.nav-links {
+	div {
+		margin: 0;
+	    padding: 12px 12px;
+	    background-color: #f5f5f5;
+	    border: 1px solid #e3e3e3;
+	    border-radius: 2px;
+
+	    h4 {
+	    	margin: 0;
+    		font-weight: 700;
+	    }
+	}
+}
+/*=====  End of Previous/Next Post Navigation  ======*/
+
+/*================================
+=            404 Page            =
+================================*/
+.error-404-header {text-align:center;background-color:$dark-blue;}
+
+
+/*=====  End of 404 Page  ======*/
+
