@@ -53,13 +53,13 @@ function transparency_entry_categories() {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ' ', 'transparency' ) );
 		if ( $categories_list && transparency_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( '%1$s', 'transparency' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<div class="cat-links">' . esc_html__( '%1$s', 'transparency' ) . '</div>', $categories_list ); 
 		}
 
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'transparency' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links"><i class="fa fa-folder" aria-hidden="true"></i> ' . esc_html__( '%1$s', 'transparency' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<div class="tags-links">Associated Tags: ' . esc_html__( '%1$s', 'transparency' ) . '</div>', $tags_list ); 
 		}
 	}
 }

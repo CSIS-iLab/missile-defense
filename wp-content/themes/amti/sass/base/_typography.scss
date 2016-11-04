@@ -73,6 +73,10 @@ p {
 	}
 }
 
+.entry-content p {
+	text-align:justify;
+}
+
 dfn, cite, em, i {
 	font-style: italic;
 }
@@ -116,6 +120,7 @@ hr {
 a {
 	color: $color__link;
 	word-wrap: break-word;
+	font-weight:600;
 	@include transition(all .3s ease-in-out);
 
 	&:visited {
@@ -136,26 +141,12 @@ a {
 	}
 }
 
+.entry-content a {
+	text-decoration:underline;
+}
+
 /*----------  Helpers  ----------*/
-.greentext {
+.grey {
 	color: $gray;
-}
-
-.bluetext {
-	color: $dark-blue;
-}
-
-.intro-sentence {
-	color: $gray;
-    font-weight: bold;
-    line-height: 1.8;
-}
-
-.photo-captions {
-	color: $gray;
-    font-size: 22px;
-    text-align: left;
-    line-height: 1.2;
-    font-weight: 700;
-    margin-bottom: 20px;
+	font-weight:bold;
 }

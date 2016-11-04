@@ -15,7 +15,7 @@ get_header(); ?>
 			
 			<?php
 			while ( have_posts() ) : the_post();
-				get_template_part( 'template-parts/content-island-tracker-single', 'none' );
+				get_template_part( 'template-parts/content-missile-single', 'none' );
 			endwhile; // End of the loop.
 			?>
 

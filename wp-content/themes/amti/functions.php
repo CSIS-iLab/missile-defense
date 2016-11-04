@@ -42,10 +42,11 @@ function transparency_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	unregister_nav_menu( 'home-page-slider' );
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'transparency' ),
-		'home-page-slider' => esc_html__( 'Home Page Slider', 'transparency' ),
+		'primary' => esc_html__( 'Primary', 'transparency' )
 	) );
 
 	/*
@@ -163,6 +164,11 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
+ * Load Custom Post Types & Taxonomies
+ */
+require get_template_directory() . '/inc/custom-posttypes.php';
+
+/**
 * Custom Post Type Formats
 **/
 
@@ -194,131 +200,6 @@ function live_rename_formats() {
 <?php }
 }
 add_action('admin_head', 'live_rename_formats');
-
-/*-----------------------------------------------------------------------------------*/
-/* Register Features taxonomy
-/*-----------------------------------------------------------------------------------*/
-add_action( 'init', 'create_feature_type' );
-function create_feature_type() {
-  register_post_type( 'features',
-    array(
-      'labels' => array(
-        'name' => __( 'Features' ),
-        'singular_name' => __( 'Feature' )
-      ),
-			'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'publicize', 'thumbnail', 'post-formats' ),
-      'public' => true,
-      'has_archive' => true,
-			'menu_icon'   => 'dashicons-layout',
-    )
-  );
-}
-add_action( 'init', 'create_features_taxonomy', 0 );
-function create_features_taxonomy() {
-	$labels = array(
-		'name'              => _x( 'Categories', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Category', 'taxonomy singular name' ),
-		'search_items'      => __( 'Search Categories' ),
-		'all_items'         => __( 'All Categories' ),
-		'parent_item'       => __( 'Parent Category' ),
-		'parent_item_colon' => __( 'Parent Category:' ),
-		'edit_item'         => __( 'Edit Category' ),
-		'update_item'       => __( 'Update Category' ),
-		'add_new_item'      => __( 'Add New Category' ),
-		'new_item_name'     => __( 'New Category Name' ),
-		'menu_name'         => __( 'Categories' ),
-	);
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'features' ),
-	);
-	register_taxonomy( 'categories', array( 'features' ), $args );
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* Register Island Tracker Taxonomy
-/*-----------------------------------------------------------------------------------*/
-add_action( 'init', 'create_island_tracker_type' );
-function create_island_tracker_type() {
-  register_post_type( 'island-tracker',
-    array(
-      'labels' => array(
-        'name' => __( 'Island Tracker' ),
-        'singular_name' => __( 'Island' )
-      ),
-			'supports' => array( 'title', 'editor', 'excerpt', 'custom-fields', 'publicize', 'thumbnail' ),
-      'public' => true,
-      'has_archive' => true,
-			'menu_icon'   => 'dashicons-layout',
-    )
-  );
-}
-add_action( 'init', 'create_countries_taxonomy', 0 );
-function create_countries_taxonomy() {
-	$labels = array(
-		'name'              => _x( 'Countries', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Country', 'taxonomy singular name' ),
-		'search_items'      => __( 'Search Countries' ),
-		'all_items'         => __( 'All Countries' ),
-		'parent_item'       => __( 'Parent Country' ),
-		'parent_item_colon' => __( 'Parent Country:' ),
-		'edit_item'         => __( 'Edit Country' ),
-		'update_item'       => __( 'Update Country' ),
-		'add_new_item'      => __( 'Add New Country' ),
-		'new_item_name'     => __( 'New Country Name' ),
-		'menu_name'         => __( 'Countries' ),
-	);
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'island-tracker' ),
-		'with_front'        => false,
-	);
-	register_taxonomy( 'countries', array( 'island-tracker' ), $args );
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* Remove 'features' and 'island-tracker' from post slug
-/*-----------------------------------------------------------------------------------*/
-
-function remove_feature_slug( $post_link, $post, $leavename ) {
-	$post_types = array("features","island-tracker");
-
-    if ( !in_array($post->post_type,$post_types) || 'publish' != $post->post_status ) {
-        return $post_link;
-    }
-
-    $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
-
-    return $post_link;
-}
-add_filter( 'post_type_link', 'remove_feature_slug', 10, 3 );
-
-
-function parse_request_custom( $query ) {
-
-    // Only noop the main query
-    if ( ! $query->is_main_query() )
-        return;
-
-    // Only noop our very specific rewrite rule match
-    if ( 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) {
-        return;
-    }
-
-    // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
-    if ( ! empty( $query->query['name'] ) ) {
-        $query->set( 'post_type', array( 'post', 'page', 'features', 'island-tracker' ) );
-    }
-}
-add_action( 'pre_get_posts', 'parse_request_custom' );
 
 /*-----------------------------------------------------------------------------------*/
 /* Change Posts to Analysis in admin
@@ -377,7 +258,7 @@ array(
 	'edit_published_posts' => true,
 	'manage_categories' => true,
 	'manage_links' => false,
-  'manage_options' => true,
+  	'manage_options' => true,
 	'publish_pages' => true,
 	'publish_posts' => true,
 	'read' => true,
@@ -402,129 +283,6 @@ array(
 /*-----------------------------------------------------------------------------------*/
 require_once('wp_bootstrap_navwalker.php');
 
-/*-----------------------------------------------------------------------------------*/
-/* Add featured image to post and page items in home slider menu
-/*-----------------------------------------------------------------------------------*/
-require_once('homepage_slider_navwalker.php');
-
-function transparency_slider() {
-	$menu_name = 'home-page-slider';
-	$menu_items = wp_get_nav_menu_items($menu_name);
-	$walker = new Menu_With_Description;
-
-	// Get the feature image, title, description, and url of the first menu item that has an image
-	$feat_image = "";
-	$feat_title = "";
-	$feat_description = "";
-	$feat_link = "";
-	$feat_id = "";
-
-	// Check if js-homepage-slider is installed, if so, pull the featured image from there
-	if ( class_exists( 'hps_custom_menu' ) ) {
-	    foreach($menu_items as $key => $itemObj) {
-
-			if($itemObj->featured_image) {
-				$feat_image = $itemObj->featured_image;
-				$feat_title = $itemObj->title;
-				$feat_description = $itemObj->description ?: $itemObj->type_label;
-				$feat_link = $itemObj->url;
-				$feat_id = $itemObj->object_id;
-				break;
-			}
-			else {
-				if(get_post_thumbnail_id($itemObj->object_id)) {
-					$feat_image = wp_get_attachment_url( get_post_thumbnail_id($itemObj->object_id) );
-					$feat_title = $itemObj->title;
-					$feat_description = $itemObj->description ?: $itemObj->type_label;
-					$feat_link = $itemObj->url;
-					$feat_id = $itemObj->object_id;
-					break;
-				}
-			}
-
-		}
-	}
-	else {
-		foreach($menu_items as $key => $itemObj) {
-			if(get_post_thumbnail_id($itemObj->object_id)) {
-				$feat_image = wp_get_attachment_url( get_post_thumbnail_id($itemObj->object_id) );
-				$feat_title = $itemObj->title;
-				$feat_description = $itemObj->description ?: $itemObj->type_label;
-				$feat_link = $itemObj->url;
-				$feat_id = $itemObj->object_id;
-				break;
-			}
-		}
-	}
-
-	echo "<div class='feature-background' style='background-image:url(".$feat_image.");'><div class='overlay'>";
-	echo "<div class='featuredItem'><span class='description'>".$feat_description."</span><br />".$feat_title."<br /><a href='".$feat_link."' class='seeMore'>See More</a></div>";
-	wp_nav_menu( array('theme_location' => 'home-page-slider','menu' => 'home-page-slider','walker' => $walker,'activeID' => $feat_id) );
-	echo "</div></div>";
-}
-
-// Add menu item for slider
-function add_slider_admin_menu_item() {
-	$theme_locations = get_nav_menu_locations();
-	$menu_obj = get_term( $theme_locations['home-page-slider'], 'nav_menu' );
-	$menuID = $menu_obj->term_id;
-
-  // $page_title, $menu_title, $capability, $menu_slug, $callback_function
-  add_menu_page(__('Home Page Slider'), __('Home Page Slider'), 'edit_theme_options', 'nav-menus.php?action=edit&menu='.$menuID, '', 'dashicons-images-alt2', 58);
-}
-add_action('admin_menu', 'add_slider_admin_menu_item');
-
-/*-----------------------------------------------------------------------------------*/
-/* Add Setting to "Reading" options for # of posts on analysis page
-/*-----------------------------------------------------------------------------------*/
-// Register and define the settings
-add_action('admin_init', 'transparency_postListing_admin_init');
-function transparency_postListing_admin_init(){
-	register_setting(
-		'reading',                 						// settings page
-		'transparency_postListing_options',          	// option name
-		'transparency_postListing_validate_options'  	// validation callback
-	);
-
-	add_settings_field(
-		'transparency_postListing_limit',      			// # of Posts to Display
-		'Analysis Page Post Limit',              		// setting title
-		'transparency_postListing_setting_input',    	// display callback
-		'reading',                 						// settings page
-		'default'                  						// settings section
-	);
-
-}
-
-// Display and fill the form field
-function transparency_postListing_setting_input() {
-	// get option 'post_limit' value from the database
-	$options = get_option( 'transparency_postListing_options' );
-	$value = $options['post_limit'];
-
-	?>
-<input id='post_limit' name='transparency_postListing_options[post_limit]'
- type='number' step='1' min='1' class='small-text' value='<?php echo esc_attr( $value ); ?>' /> posts
-	<?php
-}
-
-// Validate user input
-function transparency_postListing_validate_options( $input ) {
-	$valid = array();
-	$valid['post_limit'] = intval(sanitize_text_field( $input['post_limit'] ));
-
-	// Something dirty entered? Warn user.
-	if( $valid['post_limit'] != $input['post_limit'] ) {
-		add_settings_error(
-			'transparency_postListing_post_limit',           // setting title
-			'transparency_postListing_texterror',            // error ID
-			'Invalid number',   // error message
-			'error'                        // type of message
-		);
-	}
-
-	return $valid;
-}
 
 // Remove comments from media attachments, specifically the comments on the JetPack Carousel Slides
 function filter_media_comment_status( $open, $post_id ) {

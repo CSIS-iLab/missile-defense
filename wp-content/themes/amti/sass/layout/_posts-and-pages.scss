@@ -12,7 +12,7 @@ header.entry-header.full-width {
 	top:0px;
 	left:0px;
 	background-repeat:no-repeat;
-	background-position:50% 0%;
+	background-position:50% 50%;
 	background-size:cover;
 	background-image:url($image__page-feature-ballback);
 	display:flex;
@@ -38,6 +38,8 @@ header.entry-header.full-width {
 	    position: relative;
 	    z-index:10;
 	    margin-bottom:10px;
+	    border-bottom:0px;
+	    line-height: 1.2em;
 	}
 }
 
@@ -78,15 +80,27 @@ article.post {
 	margin: 0 0 1.5em;
 }
 
+.pt-cv-title a {
+	text-transform: uppercase !important;
+    font-weight: 300 !important;
+    font-size: 1.3em;
+    padding-left: 0 !important;
+    text-decoration:underline !important;
+}
+
 .meta-container {
 	line-height: 14.8px;
-    font-size:0.8em;
+    font-size:0.7em;
     text-transform: uppercase;
     letter-spacing: .9px;
-    margin-bottom:10px;
+    margin-bottom:5px;
+    margin-top:10px;
 
-    a {
-    	margin-right:10px;
+    .cat-links {
+    	margin-bottom:10px;
+    	a {
+    		margin-right:10px;
+    	}
     }
 }
 
@@ -94,7 +108,7 @@ article.post {
 	font-size: 18px !important;
     font-family: $font__SourceSans;
     margin-bottom: 20px;
-    font-weight: bold;
+    font-weight: 600;
 
 	&, a:link, a:active, a:visited {
 		color: $light-green;
@@ -102,6 +116,54 @@ article.post {
 	a:hover {
 		color: $gray;
 	}
+}
+
+.endnotes {
+	h3 {
+		line-height: 71px;
+	    font-size: 42px;
+	    font-size: 2.8rem;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    letter-spacing: 1.2px;
+	    font-weight: 600;
+	    color: $light-green;
+	}
+
+	ol li {
+		padding-bottom: 18px;
+    	font-size: .6em;
+	}
+}
+
+.post-meta {
+	font-size: 18px !important;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: $light-green;
+    text-align:right;
+    border-top:1px solid $gray;
+
+    span {
+    	color: $black;
+    }
+}
+
+.ataglance {
+	padding-bottom: 10px !important;
+    margin-bottom: 25px;
+    clear: right;
+    padding-top: 10px;
+    padding-right: 25px;
+    border-top: 2px solid $light-green;
+    margin: 35px 0 35px 0;
+    border-bottom: 2px solid $light-green;
+
+    p {
+    	columns: 2;
+    	margin-left:20px;
+    	margin-bottom:12px;
+    }
 }
 
 /*=====  End of Post Content  ======*/

@@ -2,8 +2,6 @@
 =            Header            =
 ==============================*/
 .navbar-fixed-top {
-    background-image: url($image__main-navigation);
-    background-repeat: no-repeat;
     background-color: $dark-blue;
     padding: 11px 0;
     border-color: transparent;
@@ -13,6 +11,14 @@
     	color: $white;
     }
 
+}
+
+.navbar-header {
+    width:100%;
+}
+
+#main-menu-top-wrapper {
+    float:right;
 }
 
 /*----------  Main Menu  ----------*/
@@ -34,7 +40,7 @@ body.logged-in .navbar-fixed-top {
 	& > li > a {
 		margin-left: 0px;
 	    display: block;
-	    font-size: 0.8em;
+	    font-size: 0.7em;
 		font-family: $font__OpenSans;
 	    text-transform: uppercase;
         font-weight:600;
@@ -48,19 +54,13 @@ body.logged-in .navbar-fixed-top {
 
 .navbar-brand {
 	float: left;
-    font-size: 18px;
     height: 50px;
-    line-height: 20px;
-    padding: 12px 0 0;
+    padding:0px;
+    margin:0px !important;
 
-    h2 {
-    	color: $white;
-	    font-family: $font__OpenSans;
-	    font-size: 1.3em;
-	    font-weight: lighter;
-	    letter-spacing: 1.5px;
-	    text-transform: uppercase;
-	    margin: 0;
+    .logo {
+        height:100%;
+        width:auto;
     }
 }
 
@@ -122,10 +122,13 @@ body.logged-in .navbar-fixed-top {
     .navbar-brand h2 {
         padding:5px;
     }
+    #main-menu-top-wrapper {
+        clear:left;
+        float:left;
+    }
 }
 
 @media (max-width: 768px) {
-
     .navbar-brand {
         max-width:80%;
     }

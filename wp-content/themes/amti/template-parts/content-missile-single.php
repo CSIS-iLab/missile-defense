@@ -15,24 +15,26 @@
 		// Echo title
 		if ( is_single() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
-			echo "<hr>";
 			else :
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</h2>' );
 		endif;
 		?>
+		<ul class="breadcrumbs">
+			<li><a href="/">Home</a></li>
+			<li><a href="/missile">World Missiles</a></li>
+			<?php
+				$terms = get_the_terms($post->id, 'countries');
+				echo "<li><a href='/missile/".$terms[0]->slug."'>".$terms[0]->name."</a></li>";
+			?>
+			<li><?php the_title(); ?></li>
+		</ul>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
 		<?php
 			the_content();
 		?>
 	</div><!-- .entry-content -->
-	<footer>
-		<nav class="navigation posts-navigation" role="navigation">
-			<?php
-				$terms = get_the_terms( $post->ID , 'countries' );
-		  ?>
-			<h2 class="screen-reader-text">Posts navigation</h2>
-			<div class="nav-links"><div class="nav-previous"><a href="/island-tracker/<?php echo $terms[0]->slug; ?>"><i class="fa fa-angle-left" aria-hidden="true"></i> Return to <?php echo $terms[0]->name; ?>'s Island Tracker</a></div></div>
-		</nav>
-	</footer>
+	<div class="post-meta">
+		<p>Last Updated: <span><?php the_time('m.d.Y'); ?></span></p>
+	</div>
 </article><!-- #post-## -->

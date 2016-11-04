@@ -28,16 +28,15 @@
       	<div class="container">
         	<div class="row">
 	          	<div class="navbar-header">
+		            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+		            	<img src="/wp-content/uploads/2016/07/MissileDefense_logo-02.png" class="logo" />
+		            </a>
 		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu-top-wrapper">
 		              <span class="sr-only">Toggle navigation</span>
 		              <span class="icon-bar"></span>
 		              <span class="icon-bar"></span>
 		              <span class="icon-bar"></span>
 		            </button>
-		            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-		                              <h2><?php bloginfo( 'name' ); ?></h2>
-		                            </a>
-	          	</div>
 
 				<!-- Bootstrap Navigation -->
         		<?php
@@ -53,6 +52,7 @@
 		                'walker'            => new wp_bootstrap_navwalker())
 		            );
 		        ?>
+		        </div>
 			</div>
 		</div><!-- /.container-fluid -->
     </nav>

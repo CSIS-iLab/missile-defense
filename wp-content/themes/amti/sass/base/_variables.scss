@@ -11,7 +11,7 @@ $gold: #f2c261;
 $light-gray: #ddd;
 $dark-gray: #404040;
 
-$color__background-body: #F2F2F2;
+$color__background-body: $white;
 $color__background-screen: #F2F2F2;
 $color__background-button: $dark-blue;
 $color__background-pre: #eee;
@@ -39,7 +39,7 @@ $color__border-abbr: $gray;
 /*==================================
 =            Typography            =
 ==================================*/
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Source+Sans+Pro:400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700|Source+Sans+Pro:400,600,700');
 
 $font__SourceSans: 'Source Sans Pro', sans-serif;
 $font__OpenSans: 'Open Sans', sans-serif;
@@ -55,5 +55,4 @@ $font__line-height-pre: 1.6;
 =            Images            =
 ==============================*/
 
-$image__main-navigation: "/wp-content/uploads/2014/10/AMTI_site_header.jpg";
 $image__page-feature-ballback: "/wp-content/uploads/2016/07/MissileDefense_Comp_timeline-01.jpg";
