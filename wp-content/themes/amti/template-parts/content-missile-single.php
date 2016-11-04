@@ -28,6 +28,7 @@
 			?>
 			<li><?php the_title(); ?></li>
 		</ul>
+		<div style="clear:left;"></div>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
 		<?php
