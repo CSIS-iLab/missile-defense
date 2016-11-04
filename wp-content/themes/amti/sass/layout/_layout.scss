@@ -13,7 +13,13 @@ body {
 
 .site-content {
 	margin-top:69px;
+
+	@media (max-width: 992px) {
+		margin-top:0px !important;
+	}
 }
+
+
 
 .site-footer {
 	clear: both;
