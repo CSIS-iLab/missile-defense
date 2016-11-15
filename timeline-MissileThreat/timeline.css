@@ -52,7 +52,8 @@
 #uss-mason-fired-3-missiles-to-defend-from-yemen-cruise-missiles-attack-marker .tl-icon-image:after,
 #uss-mason-fired-on-again-off-coast-of-yemen-marker .tl-icon-image:after,
 #coalition-forces-intercept-ballistic-missile-in-marib-marker .tl-icon-image:after,
-#ballistic-missile-intercepted-65-km-from-makkak-marker .tl-icon-image:after
+#ballistic-missile-intercepted-65-km-from-makkak-marker .tl-icon-image:after,
+#saudis-intercept-missile-fired-from-yemen-marker .tl-icon-image:after
  {
     content: url(intercept.png);
 }
