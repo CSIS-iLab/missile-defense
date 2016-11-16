@@ -20,11 +20,6 @@
  					<article class="post" style="margin-top:50px;">
 
  						<h1 class="title" style="margin-bottom:0 !important;"><?php the_title(); // Display the title of the post ?></h1>
-
-
-<?php if ( function_exists('yoast_breadcrumb') ) 
-{yoast_breadcrumb('<p id="breadcrumbs">','</p>');} ?>
-
  						
 
  						<div class="the-content">
