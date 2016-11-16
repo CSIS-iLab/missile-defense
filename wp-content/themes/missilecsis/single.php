@@ -54,13 +54,11 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				?>
 
 
-			<?php else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) ?>
-				
-				<article class="post error">
-					<h1 class="404">Nothing has been posted like that yet</h1>
-				</article>
+			<?php else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
 
-			<?php endif; // OK, I think that takes care of both scenarios (having a post or not having a post to show) ?>
+			include("404.php");
+
+			endif; // OK, I think that takes care of both scenarios (having a page or not having a page to show) ?>
 
 
 
