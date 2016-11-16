@@ -21,9 +21,6 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 
 						<h1 class="title"><?php the_title(); // Display the title of the post ?></h1>
 
-<?php if ( function_exists('yoast_breadcrumb') ) 
-{yoast_breadcrumb('<p id="breadcrumbs" style="margin-bottom:0;">','</p>');} ?>
-
 <div class="post-meta">
 	
 <?php echo get_the_term_list( $post->ID, 'system', 'Systems: ', ', ', '' ); ?> 
