@@ -22,7 +22,9 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 
 <div class="post-meta">
 	
-<?php echo get_the_term_list( $post->ID, 'system', 'Systems: ', ', ', '' ); ?> 
+<?php 
+// echo get_the_term_list( $post->ID, 'system', 'Systems: ', ', ', '' );
+?> 
 
 						</div><!--/post-meta -->
 						
