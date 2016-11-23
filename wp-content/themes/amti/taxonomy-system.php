@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying Island Tracker country pages.
+ * The template for displaying Defense Systems type of system pages
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -15,7 +15,7 @@ if(get_archive_thumbnail_src()) {
 
 	<header class="entry-header full-width" <?php echo $feat_image; ?>>
 		<div class="container title">
-			<h1 class="page-title"><?php echo str_replace('Country: ','Missiles of ', get_the_archive_title()); ?></h1>
+			<h1 class="page-title"><?php echo str_replace('System Type: ','', get_the_archive_title()); ?></h1>
 		</div>
 		<div class="overlay"></div>
 	</header>
@@ -25,7 +25,7 @@ if(get_archive_thumbnail_src()) {
 	?>
 	<div id="primary" class="container">
 		<header class="entry-header">
-			<h1 class="page-title"><?php echo str_replace('Country: ','Missiles of ', get_the_archive_title()); ?></h1>
+			<h1 class="page-title"><?php echo str_replace('System Type: ','', get_the_archive_title()); ?></h1>
 		</header>
 	<?
 }
@@ -33,22 +33,16 @@ if(get_archive_thumbnail_src()) {
 		<div class="row">
 			<main id="main" class="col-xs-12" role="main">
 				<?php
-					the_archive_description( '<div class="archive-description">', '</div>' );
+					echo "<div class='archive-description'>";
+					the_archive_top_content();
+					echo "</div>";
 				
 				if ( have_posts() ) : ?>
 
-					<div class="missiletable">
-					<h2>Missile Types</h2>
-					<table id="missileTable">
-						<thead>
-							<th>Missile</th>
-							<th class="hidden-xs">Class</th>
-							<th class="hidden-xs">Range</th>
-							<th class="hidden-xs">Status</th>
-							<th>Menu Order</th>
-						</thead>
-						<tbody>
+				<div class="system-elements">
+					<h1>System Elements</h1>
 
+					<ul>
 
 						<?php
 						/* Start the Loop */
@@ -59,21 +53,24 @@ if(get_archive_thumbnail_src()) {
 							 * If you want to override this in a child theme, then include a file
 							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 							 */
-							get_template_part( 'template-parts/content-missile', get_post_format() );
+							get_template_part( 'template-parts/content-defsys', get_post_format() );
 
 						endwhile;
 
 						?>
-						</tbody>
-					</table>
-					</div>
+					</ul>
+				</div>
 
-					<?php
-						else :
+				<?php
+					else :
 
-						get_template_part( 'template-parts/content-missile', 'none' );
+					get_template_part( 'template-parts/content-defsys', 'none' );
 
-					endif; ?>
+				endif;
+
+					the_archive_bottom_content( '<div class="archive-description-bottom">', '</div>' );
+
+				?>
 			</main><!-- #main -->
 		</div>
 	</div><!-- #primary -->

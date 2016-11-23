@@ -166,6 +166,58 @@ article.post {
     }
 }
 
+.relatedposts {
+
+	h3 {
+		line-height: 71px;
+	    font-size: 2.8rem;
+	    text-transform: uppercase;
+	    letter-spacing: 1.2px;
+	    font-weight: 600;
+	    color: $light-green;
+	}
+
+	ul.lcp_catlist {
+	    margin: 0 20px 0 20px;
+	    display: inline-block;
+	    list-style: none !important;
+	    text-transform: capitalize !important;
+
+	    li {
+	    	margin: 5px 0;
+	    }
+
+	    a::after {
+			content: " - ";
+		    font-size: .7em;
+		    color: $black;
+		    font-weight: 400;
+		    padding: 5px;
+		}
+	}
+
+	ul.lcp_paginator {
+		margin-left: 20px;
+
+		li {
+		    border: none !important;
+		}
+	}
+
+	.relatedDates {
+		font-size: .7em;
+	}
+
+	.moreposts {
+	    margin: 13px 20px 0 20px;
+	    font-weight: 100;
+	    background-color: $dark-blue;
+	    color: $white !important;
+	    padding: 5px;
+	}
+
+}
+
 /*=====  End of Post Content  ======*/
 
 /*=====================================================
@@ -186,6 +238,21 @@ article.post {
 	}
 }
 /*=====  End of Previous/Next Post Navigation  ======*/
+
+/*=================================================
+=            Missile & Defense Systems            =
+=================================================*/
+.tax-system .archive-description, .tax-countries .archive-description {
+	margin-top:40px;
+}
+
+.single-missile header, .single-defsys header {
+	margin-bottom:30px;
+}
+
+
+/*=====  End of Missile & Defense Systems  ======*/
+
 
 /*================================
 =            404 Page            =

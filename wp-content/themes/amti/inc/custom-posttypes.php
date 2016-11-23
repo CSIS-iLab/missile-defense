@@ -5,6 +5,52 @@
  */
 
 /*-----------------------------------------------------------------------------------*/
+/* Register custom 'defense system' type/taxonomies
+/*-----------------------------------------------------------------------------------*/
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+  register_post_type( 'defsys',
+    array(
+      'labels' => array(
+        'name' => __( 'Defense Systems' ),
+        'singular_name' => __( 'Defense System' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+    )
+  );
+}
+
+add_action( 'init', 'create_defsys_taxonomies', 0 );
+
+function create_defsys_taxonomies() {
+	$labels = array(
+		'name'              => _x( 'System Types', 'taxonomy general name' ),
+		'singular_name'     => _x( 'System Type', 'taxonomy singular name' ),
+		'search_items'      => __( 'Search System Types' ),
+		'all_items'         => __( 'All System Types' ),
+		'parent_item'       => __( 'Parent System Type' ),
+		'parent_item_colon' => __( 'Parent System Type:' ),
+		'edit_item'         => __( 'Edit System Type' ),
+		'update_item'       => __( 'Update System Type' ),
+		'add_new_item'      => __( 'Add New System Type' ),
+		'new_item_name'     => __( 'New System Type Name' ),
+		'menu_name'         => __( 'System Types' ),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'rewrite'           => array( 'slug' => 'system' ),
+		'show_admin_column' => true,
+		'query_var'         => true,
+	);
+
+	register_taxonomy( 'system', array( 'defsys' ), $args );
+}
+
+/*-----------------------------------------------------------------------------------*/
 /* Register Missiles of the World
 /*-----------------------------------------------------------------------------------*/
 add_action( 'init', 'create_missile_type' );
@@ -51,13 +97,13 @@ function create_countries_taxonomy() {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/* Remove 'features' and 'island-tracker' from post slug
+/* Remove CPTs from post slug
 /*-----------------------------------------------------------------------------------*/
 
 function remove_feature_slug( $post_link, $post, $leavename ) {
-	$post_types = array("missile");
+	$post_types = array("missile", "defsys");
 
-    if ( !in_array($post->post_type,$post_types) || 'publish' != $post->post_status ) {
+    if ( !in_array($post->post_type,$post_types)) {
         return $post_link;
     }
 
@@ -81,7 +127,7 @@ function parse_request_custom( $query ) {
 
     // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
     if ( ! empty( $query->query['name'] ) ) {
-        $query->set( 'post_type', array( 'post', 'page', 'missile' ) );
+        $query->set( 'post_type', array( 'post', 'page', 'missile', 'defsys' ) );
     }
 }
 add_action( 'pre_get_posts', 'parse_request_custom' );

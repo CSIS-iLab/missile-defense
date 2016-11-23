@@ -1,0 +1,35 @@
+.tax-system {
+	.system-elements {
+		padding-bottom: 10px !important;
+	    margin: 30px 86px 25px 0;
+	    border-top: 2px solid $light-green;
+	    border-bottom: 2px solid $light-green;
+	    display: inline-table;
+	    width:100%;
+	    float: left;
+
+	    @include breakpoint("medium") {
+			width: 55%;
+		}
+
+		h1 {
+			color: $light-green;
+		    font-size: 1.6em;
+		    padding: 10px;
+		    font-weight: 600;
+		    margin: 0;
+		}
+
+	    ul {
+		    margin: 0 20px 0 20px;
+		    display: inline-block;
+		    list-style: none;
+		    text-transform: capitalize;
+		    font-size: 20px;
+
+		    li {
+		    	margin-bottom: 0.2em;
+		    }
+		}
+	}
+}

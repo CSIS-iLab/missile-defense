@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying Missile archive page
+ * The template for displaying Defense Systems archive page
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -35,7 +35,7 @@ if(get_archive_thumbnail_src()) {
 				<div class="row">
 					<?php 
 						$args=array(
-						  'name' => 'countries'
+						  'name' => 'system'
 						);
 						$output = 'objects'; // or names
 						$taxonomies = get_taxonomies($args,$output); 
@@ -43,15 +43,15 @@ if(get_archive_thumbnail_src()) {
 						  foreach ($taxonomies  as $taxonomy ) {
 						  	$terms = get_terms(array(
 						  		'taxonomy' => $taxonomy->name,
-						  		'hide_empty' => true
+						  		'hide_empty' => false
 						  		));
 		        			foreach ( $terms as $term) {
 		        				$feature_image = get_archive_thumbnail_src("full", null, $term->term_id);
 		        			?>
 
-		        			<div class="col-xs-12 col-sm-4 wide-grid">
+		        			<div class="col-xs-12 col-sm-4 col-md-3 wide-grid">
 		        				<div class="grid_container">
-			        				<a href="<?php echo $term->slug; ?>">
+			        				<a href="/system/<?php echo $term->slug; ?>">
 				        				<div class="grid_card" style="background-image:url('<?php echo $feature_image; ?>');">
 				        					<div class="title"><?php echo $term->name; ?></div>
 				        					<div class="overlay"></div>
