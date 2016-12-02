@@ -12,14 +12,10 @@ get_header(); ?>
 
 	<div id="primary" class="container archives-index">
 		<div class="row">
-			<header class="page-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					echo "<hr>";
-					the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-			<main id="main" class="col-xs-12 col-md-9" role="main">
+			<main id="main" class="col-xs-12" role="main">
+				<header class="page-header">
+					<h1 class="page-title">Related Results:</h1>
+				</header><!-- .page-header -->
 
 			<?php
 			if ( have_posts() ) : ?>
@@ -33,11 +29,11 @@ get_header(); ?>
 					 * If you want to override this in a child theme, then include a file
 					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 					 */
-					get_template_part( 'template-parts/content', get_post_format() );
+					get_template_part( 'template-parts/content', 'archive' );
 
 				endwhile;
 
-				the_posts_navigation(array('prev_text' => '<i class="fa fa-angle-left" aria-hidden="true"></i> Older Posts', 'next_text' => 'Newer Posts <i class="fa fa-angle-right" aria-hidden="true"></i>'));
+				the_posts_navigation(array('prev_text' => 'Previous', 'next_text' => 'Next'));
 
 			else :
 
@@ -46,9 +42,6 @@ get_header(); ?>
 			endif; ?>
 
 			</main><!-- #main -->
-			<?php
-				get_sidebar();
-			?>
 		</div><!-- .row -->
 	</div><!-- #primary -->
 
