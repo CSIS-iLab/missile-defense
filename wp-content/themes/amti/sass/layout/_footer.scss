@@ -5,13 +5,18 @@
 	bottom: 0;
 	width: 100%;
 	z-index: -1;
-	padding: 40px 0;
+	padding: 40px 10px;
 	background-color: $color__background-footer;
 	color: $color__text-footer;
 	text-align:center;
 
 	#searchform {
-		width:25%;
+
+		@include breakpoint("small") {
+			width: 35%;
+		}
+
+		width:90%;
 		margin:20px auto;
 
 		.input-group {

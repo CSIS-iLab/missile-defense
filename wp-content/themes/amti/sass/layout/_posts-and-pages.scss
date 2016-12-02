@@ -47,6 +47,9 @@ header.entry-header.full-width {
 	margin-top:2em;
 	margin-bottom:2em;
 }
+.page-header {
+	border-bottom:none;
+}
 /*=====  End of Post Header  ======*/
 
 /*====================================
@@ -160,7 +163,11 @@ article.post {
     border-bottom: 2px solid $light-green;
 
     p {
-    	columns: 2;
+
+    	@include breakpoint("medium") {
+			columns: 2;
+		}
+
     	margin-left:20px;
     	margin-bottom:12px;
     }

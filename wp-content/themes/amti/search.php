@@ -10,11 +10,11 @@
 get_header(); ?>
 
 	<section id="primary" class="container search-results">
-		<header class="page-header">
-			<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'transparency' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-			<hr>
-		</header><!-- .page-header -->
-		<main id="main" class="col-xs-12 col-md-9" role="main">
+		<main id="main" class="col-xs-12" role="main">
+			<header class="page-header">
+				<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'transparency' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<hr>
+			</header><!-- .page-header -->
 
 		<?php
 		if ( have_posts() ) : ?>
@@ -41,9 +41,6 @@ get_header(); ?>
 		endif; ?>
 
 		</main><!-- #main -->
-		<?php
-			get_sidebar();
-		?>
 	</section><!-- #primary -->
 
 <?php
