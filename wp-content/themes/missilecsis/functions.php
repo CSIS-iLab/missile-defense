@@ -197,8 +197,3 @@ function naked_scripts()  {
 
 }
 add_action( 'wp_enqueue_scripts', 'naked_scripts' ); // Register this fxn and allow Wordpress to call it automatcally in the header
-
-/**
- * Add the code that allows us to work with the Term Meta API.
- */
-include_once( 'js-custom-taxonomy-meta.php' );
