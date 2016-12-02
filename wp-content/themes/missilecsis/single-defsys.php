@@ -20,12 +20,11 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 
 						<h1 class="title"><?php the_title(); // Display the title of the post ?></h1>
 
-<?php if ( function_exists('yoast_breadcrumb') ) 
-{yoast_breadcrumb('<p id="breadcrumbs" style="margin-bottom:0;">','</p>');} ?>
-
 <div class="post-meta">
 	
-<?php echo get_the_term_list( $post->ID, 'system', 'Systems: ', ', ', '' ); ?> 
+<?php 
+// echo get_the_term_list( $post->ID, 'system', 'Systems: ', ', ', '' );
+?> 
 
 						</div><!--/post-meta -->
 						
@@ -61,13 +60,11 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 				?>
 
 
-			<?php else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) ?>
+			<?php else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) 
 
-				<article class="post error">
-					<h1 class="404">Nothing has been posted like that yet</h1>
-				</article>
+			include("404.php");
 
-			<?php endif; // OK, I think that takes care of both scenarios (having a post or not having a post to show) ?>
+			endif; // OK, I think that takes care of both scenarios (having a page or not having a page to show) ?>
 
 		</div><!-- #content .site-content -->
 			

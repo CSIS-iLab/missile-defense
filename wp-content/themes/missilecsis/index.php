@@ -9,9 +9,9 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 	<div id="primary" class="row-fluid">
 		<div id="content" role="main" class="span8 offset2" style="margin-top:30px;">
 
-<h2>Related Results:</h2>
-
 			<?php if ( have_posts() ) : 
+
+				echo "<h2>Related Results:</h2>";
 			// Do we have any posts in the databse that match our query?
 			// In the case of the home page, this will call for the most recent posts 
 			?>
@@ -63,7 +63,10 @@ get_header(); // This fxn gets the header.php file and renders it ?>
 			<?php else : // Well, if there are no posts to display and loop through, let's apologize to the reader (also your 404 error) ?>
 				
 				<article class="post error">
-					<h1 class="404">Nothing has been posted like that yet</h1>
+					<h1 class="title">There are no posts that match your search</h1>
+					<p>Looking for information on missiles? <a href="/missiles-of-the-world/">Click here.</a></p>
+					<p>Looking for information on missile defense systems? <a href="/defense-systems/">Click here.</a></p>
+					<p>Or visit our <a href="/">homepage.</a></p> 
 				</article>
 
 			<?php endif; // OK, I think that takes care of both scenarios (having posts or not having any posts) ?>

@@ -197,4 +197,3 @@ function naked_scripts()  {
 
 }
 add_action( 'wp_enqueue_scripts', 'naked_scripts' ); // Register this fxn and allow Wordpress to call it automatcally in the header
-

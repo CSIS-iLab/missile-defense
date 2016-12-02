@@ -75,5 +75,4 @@
 </div><!--/container -->
 </header><!-- #masthead .site-header -->
 <?php putRevSlider('feature', 'homepage'); ?>
-
 <div class="main-fluid"><!-- start the page containter -->
