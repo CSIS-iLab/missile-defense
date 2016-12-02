@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying islands.
+ * Template part for displaying missiles.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *

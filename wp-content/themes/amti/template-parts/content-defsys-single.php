@@ -27,7 +27,8 @@
 				echo "<li><a href='/system/".$terms[0]->slug."'>".$terms[0]->name."</a></li>";
 			?>
 			<li><?php the_title(); ?></li>
-		</ul>
+		</ul><br />
+		<?php echo get_the_term_list( $post->ID, 'system', 'Systems: ', ', ', '' ); ?>
 		<div style="clear:left;"></div>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
