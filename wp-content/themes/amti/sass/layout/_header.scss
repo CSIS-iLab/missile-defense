@@ -31,6 +31,7 @@ body.logged-in .navbar-fixed-top {
 
 	@include breakpoint("large") {
 		float:right;
+        margin-top: 1.5%;
 	}
 
 	li {
@@ -54,7 +55,7 @@ body.logged-in .navbar-fixed-top {
 
 .navbar-brand {
 	float: left;
-    height: 50px;
+    height: 60px;
     padding:0px;
     margin:0px !important;
 
