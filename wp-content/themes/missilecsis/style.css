@@ -1184,8 +1184,7 @@ html[xmlns] .clearfix {
     article .the-content img {
         width: 100%
     }
-    #sidebar,
-    .footerLogo {
+    #sidebar {
         display: none
     }
     .side-title {
