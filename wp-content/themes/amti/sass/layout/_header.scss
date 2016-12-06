@@ -11,6 +11,49 @@
     	color: $white;
     }
 
+    li.search {
+        max-width:40%;
+        padding-left:10px;
+        padding-right:10px;
+
+        button {
+        border:0px;
+        color: $white;
+
+            &:hover {
+                background:none;
+                border:0px;
+            }
+        }
+
+        #searchform {
+            padding-top:8px;
+
+            label {
+                padding-top:3px;
+                margin-left:3px;
+
+                &:hover, &:focus {
+                    color: $gold;
+                    @include transition(all .3s ease-in-out);
+                }
+            }
+        }
+
+        .form-control {
+            display:none;
+            width:inherit;
+            margin-top:-5px;
+            border:none;
+            background-color: rgba(0,0,0,0.1);
+            color: $gold;
+
+            &:focus {
+                box-shadow: 0 0 5px rgba(0,0,0,0.4);
+            }
+        }
+    }
+
 }
 
 .navbar-header {
