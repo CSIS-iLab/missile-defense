@@ -51,7 +51,7 @@ if(get_archive_thumbnail_src()) {
 
 		        			<div class="col-xs-12 col-sm-4 wide-grid">
 		        				<div class="grid_container">
-			        				<a href="<?php echo $term->slug; ?>">
+			        				<a href="/country/<?php echo $term->slug; ?>">
 				        				<div class="grid_card" style="background-image:url('<?php echo $feature_image; ?>');">
 				        					<div class="title"><?php echo $term->name; ?></div>
 				        					<div class="overlay"></div>

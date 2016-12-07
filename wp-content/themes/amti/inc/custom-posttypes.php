@@ -9,16 +9,16 @@
 /*-----------------------------------------------------------------------------------*/
 add_action( 'init', 'create_post_type' );
 function create_post_type() {
-  register_post_type( 'defsys',
-    array(
-      'labels' => array(
-        'name' => __( 'Defense Systems' ),
-        'singular_name' => __( 'Defense System' )
-      ),
-      'public' => true,
-      'has_archive' => true,
-    )
-  );
+	register_post_type( 'defsys',
+	    array(
+			'labels' => array(
+				'name' => __( 'Defense Systems' ),
+				'singular_name' => __( 'Defense System' )
+			),
+			'public' => true,
+			'has_archive' => true,
+	    )
+  	);
 }
 
 add_action( 'init', 'create_defsys_taxonomies', 0 );
@@ -90,7 +90,7 @@ function create_countries_taxonomy() {
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'missile' ),
+		'rewrite'           => array( 'slug' => 'country' ),
 		'with_front'        => false,
 	);
 	register_taxonomy( 'countries', array( 'missile' ), $args );
@@ -100,34 +100,34 @@ function create_countries_taxonomy() {
 /* Remove CPTs from post slug
 /*-----------------------------------------------------------------------------------*/
 
-function remove_feature_slug( $post_link, $post, $leavename ) {
-	$post_types = array("missile", "defsys");
+// function remove_feature_slug( $post_link, $post, $leavename ) {
+// 	$post_types = array("missile", "defsys");
 
-    if ( !in_array($post->post_type,$post_types)) {
-        return $post_link;
-    }
+//     if ( !in_array($post->post_type,$post_types)) {
+//         return $post_link;
+//     }
 
-    $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
+//     $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
 
-    return $post_link;
-}
-add_filter( 'post_type_link', 'remove_feature_slug', 10, 3 );
+//     return $post_link;
+// }
+// add_filter( 'post_type_link', 'remove_feature_slug', 10, 3 );
 
 
-function parse_request_custom( $query ) {
+// function parse_request_custom( $query ) {
 
-    // Only noop the main query
-    if ( ! $query->is_main_query() )
-        return;
+//     // Only noop the main query
+//     if ( ! $query->is_main_query() )
+//         return;
 
-    // Only noop our very specific rewrite rule match
-    if ( 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) {
-        return;
-    }
+//     // Only noop our very specific rewrite rule match
+//     if ( 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) {
+//         return;
+//     }
 
-    // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
-    if ( ! empty( $query->query['name'] ) ) {
-        $query->set( 'post_type', array( 'post', 'page', 'missile', 'defsys' ) );
-    }
-}
-add_action( 'pre_get_posts', 'parse_request_custom' );
+//     // 'name' will be set if post permalinks are just post_name, otherwise the page rule will match
+//     if ( ! empty( $query->query['name'] ) ) {
+//         $query->set( 'post_type', array( 'post', 'page', 'missile', 'defsys' ) );
+//     }
+// }
+// add_action( 'pre_get_posts', 'parse_request_custom' );

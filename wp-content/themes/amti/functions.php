@@ -176,7 +176,7 @@ add_theme_support( 'post-formats', array( 'standard', 'image' ) );
 
 function rename_post_formats( $safe_text ) {
     if ( $safe_text == 'Image' )
-        return 'Full-Width';
+        return 'Feature';
 
     return $safe_text;
 }
@@ -192,7 +192,7 @@ function live_rename_formats() {
 
             jQuery("span.post-state-format").each(function() {
                 if ( jQuery(this).text() == "Image" )
-                    jQuery(this).text("Full-Width");
+                    jQuery(this).text("Feature");
             });
 
         });

@@ -24,7 +24,7 @@
 			<li><a href="/missile">World Missiles</a></li>
 			<?php
 				$terms = get_the_terms($post->id, 'countries');
-				echo "<li><a href='/missile/".$terms[0]->slug."'>".$terms[0]->name."</a></li>";
+				echo "<li><a href='/country/".$terms[0]->slug."'>".$terms[0]->name."</a></li>";
 			?>
 			<li><?php the_title(); ?></li>
 		</ul>
