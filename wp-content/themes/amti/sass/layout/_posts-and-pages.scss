@@ -15,8 +15,11 @@ header.entry-header.full-width {
 	background-position:50% 50%;
 	background-size:cover;
 	background-image:url($image__page-feature-ballback);
-	display:flex;
-	justify-content:center;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+    justify-content:center;
+    flex-direction:column;
 
 	@include breakpoint("small") {
 		min-height: 260px;
