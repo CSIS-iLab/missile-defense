@@ -176,58 +176,6 @@ article.post {
     }
 }
 
-.relatedposts {
-
-	h3 {
-		line-height: 71px;
-	    font-size: 2.8rem;
-	    text-transform: uppercase;
-	    letter-spacing: 1.2px;
-	    font-weight: 600;
-	    color: $light-green;
-	}
-
-	ul.lcp_catlist {
-	    margin: 0 20px 0 20px;
-	    display: inline-block;
-	    list-style: none !important;
-	    text-transform: capitalize !important;
-
-	    li {
-	    	margin: 5px 0;
-	    }
-
-	    a::after {
-			content: " - ";
-		    font-size: .7em;
-		    color: $black;
-		    font-weight: 400;
-		    padding: 5px;
-		}
-	}
-
-	ul.lcp_paginator {
-		margin-left: 20px;
-
-		li {
-		    border: none !important;
-		}
-	}
-
-	.relatedDates {
-		font-size: .7em;
-	}
-
-	.moreposts {
-	    margin: 13px 20px 0 20px;
-	    font-weight: 100;
-	    background-color: $dark-blue;
-	    color: $white !important;
-	    padding: 5px;
-	}
-
-}
-
 /*=====  End of Post Content  ======*/
 
 /*=====================================================
@@ -278,3 +226,86 @@ article.post {
 
 /*=====  End of 404 Page  ======*/
 
+/*==================================================
+=            List Category Posts Plugin            =
+==================================================*/
+#lcp_instance_0 {
+    margin: 0 20px 0 20px;
+    display: inline-block;
+    list-style: none !important;
+    text-transform: capitalize !important;
+}
+
+.lcp_catlist {
+    .list-item {
+        margin-bottom:20px;
+
+        .lcp_meta {
+            font-size:13px;
+            color: $gray;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            margin: 5px auto;
+
+            a {
+                text-decoration:none;
+            }
+        }
+    }
+}
+
+.relatedposts {
+
+	h3 {
+		line-height: 71px;
+	    font-size: 2.8rem;
+	    text-transform: uppercase;
+	    letter-spacing: 1.2px;
+	    font-weight: 600;
+	    color: $light-green;
+	}
+
+	ul.lcp_catlist {
+	    margin: 0 20px 0 20px;
+	    display: inline-block;
+	    list-style: none !important;
+	    text-transform: capitalize !important;
+
+	    li {
+	    	margin: 5px 0;
+	    }
+
+	    a::after {
+			content: " - ";
+		    font-size: .7em;
+		    color: $black;
+		    font-weight: 400;
+		    padding: 5px;
+		}
+	}
+
+	ul.lcp_paginator {
+		margin-left: 20px;
+
+		li {
+		    border: none !important;
+		}
+	}
+
+	.relatedDates {
+		font-size: .7em;
+	}
+
+}
+
+.moreposts {
+    margin: 13px 20px 0 20px;
+    font-weight: 100;
+    background-color: $dark-blue;
+    color: $white !important;
+    padding: 5px;
+    text-decoration:none !important;
+}
+/*=====  End of List Category Posts Plugin  ======*/
