@@ -38,12 +38,25 @@ class Yoast_Dashboard_Widget {
 	 * Adds dashboard widget to WordPress
 	 */
 	public function add_dashboard_widget() {
+		add_filter( 'postbox_classes_dashboard_wpseo-dashboard-overview', array( $this, 'wpseo_dashboard_overview_class' ) );
 		wp_add_dashboard_widget(
 			'wpseo-dashboard-overview',
 			/* translators: %s is the plugin name */
 			sprintf( __( '%s Posts Overview', 'wordpress-seo' ), 'Yoast SEO' ),
 			array( $this, 'display_dashboard_widget' )
 		);
+	}
+
+	/**
+	 * Adds CSS classes to the dashboard widget.
+	 *
+	 * @param array $classes An array of postbox CSS classes.
+	 *
+	 * @return array
+	 */
+	public function wpseo_dashboard_overview_class( $classes ) {
+		$classes[] = 'yoast wpseo-dashboard-overview';
+		return $classes;
 	}
 
 	/**
@@ -160,8 +173,8 @@ class Yoast_Dashboard_Widget {
 			WPSEO_Rank::BAD      => __( 'Posts with bad SEO score', 'wordpress-seo' ),
 			WPSEO_Rank::OK       => __( 'Posts with OK SEO score', 'wordpress-seo' ),
 			WPSEO_Rank::GOOD     => __( 'Posts with good SEO score', 'wordpress-seo' ),
-			/* translators: %s expands to <code>noindex</code> */
-			WPSEO_Rank::NO_INDEX => sprintf( __( 'Posts that are set to %s', 'wordpress-seo' ), '<code>noindex</code>' ),
+			/* translators: %s expands to <span lang="en">noindex</span> */
+			WPSEO_Rank::NO_INDEX => sprintf( __( 'Posts that are set to &#8220;%s&#8221;', 'wordpress-seo' ), '<span lang="en">noindex</span>' ),
 		);
 
 		return $labels[ $rank->get_rank() ];
