@@ -23,8 +23,30 @@
 			<li><a href="/">Home</a></li>
 			<li><a href="/defsys">Defense Systems</a></li>
 			<?php
-				$terms = get_the_terms($post->id, 'system');
-				echo "<li><a href='/system/".$terms[0]->slug."'>".$terms[0]->name."</a></li>";
+				// Get the correct category for the breadcrumbs
+				$primaryID = null;
+
+				// If Yoast SEO is installed and we have a primary category selected, display that one
+				if ( defined('WPSEO_VERSION') ) {
+					$primaryID = yoast_get_primary_term_id('system', $post);
+
+					if($primaryID) {
+						$term = get_term_by('id', $primaryID, 'system');
+						$slug = $term->slug;
+						$name = $term->name;
+					}
+				}
+
+				// Otherwise, get the first category
+				if(!$primaryID) {
+					$terms = get_the_terms($post->id, 'system');
+					$slug = $terms[0]->slug;
+					$name = $terms[0]->name;
+				}
+
+				if($slug && $name) {
+					echo "<li><a href='/system/".$slug."'>".$name."</a></li>";
+				}
 			?>
 			<li><?php the_title(); ?></li>
 		</ul><br />
