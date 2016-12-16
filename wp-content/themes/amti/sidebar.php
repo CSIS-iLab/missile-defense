@@ -1,6 +1,6 @@
 <?php
 /**
- * The sidebar containing the main widget area.
+ * The widget area at the bottom of the home page.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -12,7 +12,10 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 }
 ?>
 
-<aside id="secondary" class="widget-area col-xs-12 col-md-3" role="complementary">
-	<div style="height:15px;" class="visible-xs visible-sm"></div>
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
-</aside><!-- #secondary -->
+<div class="widget-area container">
+	<div class="row">
+		<div class="col-xs-12">
+			<?php dynamic_sidebar( 'sidebar-1' ); ?>
+		</div>
+	</div>
+</div>

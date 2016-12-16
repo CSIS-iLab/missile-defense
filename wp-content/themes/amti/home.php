@@ -10,51 +10,21 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Transparency
+ * Template Name: Home Page
  */
 
 get_header(); ?>
 
-	<div id="primary" class="container posts-index archives-index">
-		<header class="entry-header">
-			<h1 class="page-title"><?php single_post_title( ); ?></h1>
-			<hr>
-			<p class='title-description'>Browse all of our analysis.</p>
-		</header><!-- .entry-header -->
-		<div class="row">
-			<main id="main" class="col-xs-12 col-md-9" role="main">
-
-				<?php
-				if ( have_posts() ) :
-				?>
-
-					<?php
-
-					/* Start the Loop */
-					while ( have_posts() ) : the_post();
-
-						/*
-						 * Include the Post-Format-specific template for the content.
-						 * If you want to override this in a child theme, then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'template-parts/content', get_post_format() );
-
-					endwhile;
-
-					the_posts_navigation(array('prev_text' => 'Previous', 'next_text' => 'Next'));
-
-				else :
-
-					get_template_part( 'template-parts/content', 'none' );
-
-				endif; ?>
+<div id="primary" class="container homepage">
+	<div class="row">
+		<main id="main" class="col-xs-12" role="main">
+			<?php the_content(); ?> <!-- Returns the content of the Home page -->
 
 		</main><!-- #main -->
-		<?php
-			get_sidebar();
-		?>
 	</div><!-- .row -->
 </div><!-- #primary -->
+
+<?php get_sidebar(); ?>
 
 <?php
 get_footer();
