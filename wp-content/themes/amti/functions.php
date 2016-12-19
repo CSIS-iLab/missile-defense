@@ -274,7 +274,6 @@ array(
 	'add_users' => true,
 	'remove_users' => true,
 	'edit_theme_options' => true,
-
 )
 
 );
