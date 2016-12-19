@@ -11,11 +11,8 @@ if ( ! is_active_sidebar( 'sidebar-1' ) ) {
 	return;
 }
 ?>
-
-<div class="widget-area container">
-	<div class="row">
-		<div class="col-xs-12">
-			<?php dynamic_sidebar( 'sidebar-1' ); ?>
-		</div>
+<div class="col-xs-12 col-sm-4 widget-container">
+	<div class="widget-area">
+		<?php dynamic_sidebar( 'sidebar-1' ); ?>
 	</div>
 </div>

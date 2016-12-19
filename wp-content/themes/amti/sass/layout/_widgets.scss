@@ -5,6 +5,11 @@
 	.widget-title {
 		margin-top: 0;
 		margin-bottom:20px;
+		text-transform:uppercase;
+		color: $blue-gray;
+		font-size:18px;
+		font-weight:bold;
+		letter-spacing:1px;
 	}
 
 	ul {
