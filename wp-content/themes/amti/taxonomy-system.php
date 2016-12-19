@@ -64,8 +64,6 @@ if(get_archive_thumbnail_src()) {
 				<?php
 					else :
 
-					get_template_part( 'template-parts/content-defsys', 'none' );
-
 				endif;
 
 					the_archive_bottom_content( '<div class="archive-description-bottom">', '</div>' );

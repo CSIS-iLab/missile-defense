@@ -71,8 +71,6 @@ if(get_archive_thumbnail_src()) {
 					<?php
 						else :
 
-						get_template_part( 'template-parts/content-missile', 'none' );
-
 					endif; ?>
 			</main><!-- #main -->
 		</div>
