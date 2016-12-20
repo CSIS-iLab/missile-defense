@@ -22,11 +22,11 @@ get_header(); ?>
 
 			<!-- Featured -->
 			<?php 
-				$args = array( 
+				$argsFeatured = array( 
 					'posts_per_page' => 4,
 					'category' => 34,
 				);
-				$featured_posts = new WP_Query( $args );
+				$featured_posts = new WP_Query( $argsFeatured );
 
 				echo "<h1 class='home'>Featured</h1>";
 				echo "<div class='row' style='margin:0px;'>";
@@ -46,11 +46,11 @@ get_header(); ?>
 					<!-- News -->
 					<div class="news-block">
 						<?php 
-							$args = array( 
+							$argsNews = array( 
 								'posts_per_page' => 3,
 								'category' => 42,
 							);
-							$news_posts = new WP_Query( $args );
+							$news_posts = new WP_Query( $argsNews );
 
 							echo "<h1 class='home'>News</h1>";
 
@@ -65,11 +65,11 @@ get_header(); ?>
 					<div class="analysis-block">
 						<!-- Analysis -->
 						<?php 
-							$args = array( 
+							$argsAnalysis = array( 
 								'posts_per_page' => 3,
 								'cat' => '17,33',
 							);
-							$analysis_posts = new WP_Query( $args );
+							$analysis_posts = new WP_Query( $argsAnalysis );
 
 							echo "<h1 class='home'>Analysis</h1>";
 
