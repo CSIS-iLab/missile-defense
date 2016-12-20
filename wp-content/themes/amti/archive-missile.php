@@ -17,6 +17,7 @@ if(get_archive_thumbnail_src()) {
 		<div class="container">
 			<h1 class="page-title"><?php the_archive_title(); ?></h1>
 		</div>
+		<div class="overlay"></div>
 	</header>
 	<div id="primary" class="container">
 <?

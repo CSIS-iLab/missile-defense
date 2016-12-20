@@ -15,7 +15,8 @@ header.entry-header.full-width {
 	background-position:50% 50%;
 	background-size:cover;
 	background-image:url($image__page-feature-ballback);
-	display: -ms-flexbox;
+	position:relative;
+    display: -ms-flexbox;
 	display: -webkit-flex;
 	display: flex;
     justify-content:center;
@@ -27,6 +28,21 @@ header.entry-header.full-width {
 
 	.container {
 		align-self:center;
+	    width:100%;
+	    z-index:2;
+	    position:absolute;
+	    top:50%;
+	    left:50%;
+	    transform: translate(-50%, -50%);
+	}
+
+	.overlay {
+	    width:100%;
+	    height:100%;
+	    background-color: rgba(95,121,129,1.0);
+	    opacity: 0.5;
+	    z-index:1;
+	    align-self:center;
 	}
 
 	h1 {
@@ -52,6 +68,12 @@ header.entry-header.full-width {
 }
 .page-header {
 	border-bottom:none;
+}
+
+header {
+	img {
+		width:100%;
+	}
 }
 /*=====  End of Post Header  ======*/
 

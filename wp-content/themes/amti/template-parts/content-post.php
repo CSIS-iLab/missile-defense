@@ -6,7 +6,6 @@
  *
  * @package Transparency
  */
-
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header>
@@ -19,7 +18,7 @@
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
-		<?php the_post_thumbnail(); ?>
+		<?php the_post_thumbnail('full'); ?>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

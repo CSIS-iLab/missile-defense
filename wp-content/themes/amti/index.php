@@ -10,49 +10,82 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package Transparency
+ * Template Name: Home Page
  */
 
 get_header(); ?>
 
-	<div id="primary" class="container posts-index archives-index">
-		<header class="entry-header">
-			<h1 class="page-title"><?php single_post_title( ); ?></h1>
-			<hr>
-			<p class='title-description'>Browse all of our analysis.</p>
-		</header><!-- .entry-header -->
-		<div class="row">
-			<main id="main" class="col-xs-12 col-md-9" role="main">
+<div id="primary" class="container homepage">
+	<div class="row">
+		<main id="main" class="col-xs-12" role="main">
+			<?php the_content(); ?> <!-- Returns the content of the Home page -->
 
-				<?php
-				if ( have_posts() ) :
-				?>
+			<!-- Featured -->
+			<?php 
+				$args = array( 
+					'posts_per_page' => 4,
+					'category' => 34,
+				);
+				$featured_posts = new WP_Query( $args );
 
-					<?php
+				echo "<h1 class='home'>Featured</h1>";
+				echo "<div class='row' style='margin:0px;'>";
 
-					/* Start the Loop */
-					while ( have_posts() ) : the_post();
+				while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
+					echo "<div class='col-xs-12 col-sm-6 wide-grid'>";
+			    	get_template_part( 'template-parts/content');
+			    	echo "</div>";
+				endwhile; // end of the loop.
+				wp_reset_postdata();
+				echo "</div>";
+			?>
 
-						/*
-						 * Include the Post-Format-specific template for the content.
-						 * If you want to override this in a child theme, then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'template-parts/content', get_post_format() );
+			<div class="row">
+				<div class="col-xs-12 col-sm-8 content">
 
-					endwhile;
+					<!-- News -->
+					<div class="news-block">
+						<?php 
+							$args = array( 
+								'posts_per_page' => 3,
+								'category' => 42,
+							);
+							$news_posts = new WP_Query( $args );
 
-					the_posts_navigation(array('prev_text' => 'Previous', 'next_text' => 'Next'));
+							echo "<h1 class='home'>News</h1>";
 
-				else :
+							while ( $news_posts->have_posts() ) : $news_posts->the_post();
+						    	get_template_part( 'template-parts/content', 'hp-text');
+							endwhile; // end of the loop.
+							wp_reset_postdata();
+						?>
+						<a class="moreposts" href="/category/news/" style="padding:10px;margin:0;">Read All News Posts</a>
+					</div>
 
-					get_template_part( 'template-parts/content', 'none' );
+					<div class="analysis-block">
+						<!-- Analysis -->
+						<?php 
+							$args = array( 
+								'posts_per_page' => 3,
+								'cat' => '17,33',
+							);
+							$analysis_posts = new WP_Query( $args );
 
-				endif; ?>
+							echo "<h1 class='home'>Analysis</h1>";
+
+							while ( $analysis_posts->have_posts() ) : $analysis_posts->the_post();
+						    	get_template_part( 'template-parts/content', 'hp-text');
+							endwhile; // end of the loop.
+							wp_reset_postdata();
+						?>
+						<a class="moreposts" href="/analysis/"  style="padding:10px;margin:0;">Read All Analysis posts</a>
+					</div>
+				</div>
+				<?php get_sidebar(); ?>
+			</div>
+
 
 		</main><!-- #main -->
-		<?php
-			get_sidebar();
-		?>
 	</div><!-- .row -->
 </div><!-- #primary -->
 

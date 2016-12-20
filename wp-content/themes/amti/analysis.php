@@ -19,6 +19,7 @@ if(get_post_thumbnail_id($post->ID)) {
 		<div class="container">
 			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		</div>
+		<div class="overlay"></div>
 	</header>
 	<div id="primary" class="container">
 <?
