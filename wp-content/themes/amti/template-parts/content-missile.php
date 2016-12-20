@@ -16,6 +16,19 @@ else {
 	$url = esc_url( get_permalink());
 }
 
+// Get the first part of the range
+$range = null;
+if(isset($custom['missile_range'])) {
+	// Check if we have a hyphenated range
+    if (strpos($custom['missile_range'][0], '-') !== false) {
+	    $range = strtok($custom['missile_range'][0], '-');
+	}
+	else {
+		$range = strtok($custom['missile_range'][0], ' ');
+	}
+	$range = str_replace(",", "", $range);
+}
+
 ?>
 
 <tr id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -46,7 +59,7 @@ else {
 			}
 		?>
 	</td>
-	<td class="hidden-xs">
+	<td class="hidden-xs" data-order="<?php echo $range; ?>">
 		<?php
 			if(isset($custom['missile_range'])) {
 			    echo $custom['missile_range'][0];
