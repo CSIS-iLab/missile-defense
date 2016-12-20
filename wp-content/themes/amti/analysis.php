@@ -42,8 +42,7 @@ if(get_post_thumbnail_id($post->ID)) {
 				<div class="row">
 
 				<?php 
-					$analysisSettings = get_option("transparency_postListing_options");
-					$args = array( 'posts_per_page' => $analysisSettings['post_limit'], 'cat' => 17);
+					$args = array( 'posts_per_page' => -1, 'cat' => 17);
 					$recent_posts = new WP_Query( $args );
 
 					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
