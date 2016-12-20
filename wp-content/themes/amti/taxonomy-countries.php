@@ -71,7 +71,10 @@ if(get_archive_thumbnail_src()) {
 					<?php
 						else :
 
-					endif; ?>
+					endif;
+
+					the_archive_bottom_content();
+				?>
 			</main><!-- #main -->
 		</div>
 	</div><!-- #primary -->
