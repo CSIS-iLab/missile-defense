@@ -24,7 +24,7 @@ get_header(); ?>
 			<?php 
 				$argsFeatured = array( 
 					'posts_per_page' => 4,
-					'category' => 34,
+					'cat' => '34',
 				);
 				$featured_posts = new WP_Query( $argsFeatured );
 
@@ -48,7 +48,7 @@ get_header(); ?>
 						<?php 
 							$argsNews = array( 
 								'posts_per_page' => 3,
-								'category' => 42,
+								'cat' => '42',
 							);
 							$news_posts = new WP_Query( $argsNews );
 
