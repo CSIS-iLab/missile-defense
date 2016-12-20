@@ -66,6 +66,9 @@ function transparency_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+
+	/* Allow shortcodes in widget areas */
+	add_filter('widget_text', 'do_shortcode');
 }
 endif;
 add_action( 'after_setup_theme', 'transparency_setup' );
