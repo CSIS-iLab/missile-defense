@@ -37,10 +37,16 @@ if(get_archive_thumbnail_src()) {
 					the_archive_top_content();
 					echo "</div>";
 				
-				if ( have_posts() ) : ?>
+				if ( have_posts() ) : 
+
+					$archiveTitle = get_term_meta( get_queried_object_id(), 'archive_list_title', true );
+					if(!$archiveTitle) {
+						$archiveTitle = "System Elements";
+					}
+					?>
 
 				<div class="system-elements">
-					<h1>System Elements</h1>
+					<h1><?php echo $archiveTitle; ?></h1>
 
 					<ul>
 
