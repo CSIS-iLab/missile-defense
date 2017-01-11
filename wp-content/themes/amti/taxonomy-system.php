@@ -33,9 +33,7 @@ if(get_archive_thumbnail_src()) {
 		<div class="row">
 			<main id="main" class="col-xs-12" role="main">
 				<?php
-					echo "<div class='archive-description'>";
-					the_archive_top_content();
-					echo "</div>";
+					the_archive_description( '<div class="archive-description">', '</div>' );
 				
 				if ( have_posts() ) : 
 
