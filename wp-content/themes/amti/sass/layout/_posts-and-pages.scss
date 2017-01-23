@@ -1,0 +1,348 @@
+/*===================================
+=            Post Header            =
+===================================*/
+header.entry-header.full-width {
+	text-align:center;
+	width:100%;
+	height:468px;
+	overflow:hidden;
+	margin:0px !important;
+	padding:0px;
+	position:relative;
+	top:0px;
+	left:0px;
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+	background-size:cover;
+	background-image:url($image__page-feature-ballback);
+	position:relative;
+    display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+    justify-content:center;
+    flex-direction:column;
+
+	@include breakpoint("small") {
+		min-height: 260px;
+	}
+
+	.container {
+		align-self:center;
+	    width:100%;
+	    z-index:2;
+	    position:absolute;
+	    top:50%;
+	    left:50%;
+	    transform: translate(-50%, -50%);
+	}
+
+	.overlay {
+	    width:100%;
+	    height:100%;
+	    background-color: rgba(95,121,129,1.0);
+	    opacity: 0.5;
+	    z-index:1;
+	    align-self:center;
+	}
+
+	h1 {
+		color: $white;
+	    font-size: 2.5em;
+	    font-weight: 700;
+	    letter-spacing: 1.5px;
+	    background: transparent;
+	    padding: 15px;
+	    margin-top: 0;
+	    position: relative;
+	    z-index:10;
+	    margin-bottom:10px;
+	    border-bottom:0px;
+	    line-height: 1.2em;
+
+	    @include breakpoint("small") {
+			font-size: 3em;
+		}
+	}
+}
+
+.page header.entry-header {
+	margin-top:2em;
+	margin-bottom:2em;
+}
+.page-header {
+	border-bottom:none;
+}
+
+header {
+	img {
+		width:100%;
+	}
+}
+/*=====  End of Post Header  ======*/
+
+/*====================================
+=            Post Content            =
+====================================*/
+
+article.post {
+	border-bottom: 1px solid $light-gray;
+}
+
+article {
+	.fullWidthFeatureContent {
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+	}
+}
+
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+
+.byline,
+.updated:not(.published){
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+.pt-cv-title a {
+	text-transform: uppercase !important;
+    font-weight: 300 !important;
+    font-size: 1.3em;
+    padding-left: 0 !important;
+    text-decoration:underline !important;
+}
+
+.meta-container {
+	line-height: 14.8px;
+    font-size:0.7em;
+    text-transform: uppercase;
+    letter-spacing: .9px;
+    margin-bottom:5px;
+    margin-top:10px;
+
+    .cat-links {
+    	margin-bottom:10px;
+    	a {
+    		margin-right:10px;
+    	}
+    }
+}
+
+.entry-meta {
+	font-size: 18px !important;
+    font-family: $font__SourceSans;
+    margin-bottom: 20px;
+    font-weight: 600;
+
+	&, a:link, a:active, a:visited {
+		color: $light-green;
+	}
+	a:hover {
+		color: $gray;
+	}
+}
+
+.endnotes {
+	h3 {
+		line-height: 71px;
+	    font-size: 42px;
+	    font-size: 2.8rem;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    letter-spacing: 1.2px;
+	    font-weight: 600;
+	    color: $light-green;
+	}
+
+	ol li {
+		padding-bottom: 18px;
+    	font-size: .6em;
+    	word-wrap: break-word;
+	}
+}
+
+.post-meta {
+	font-size: 18px !important;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: $light-green;
+    text-align:right;
+    border-top:1px solid $gray;
+
+    span {
+    	color: $black;
+    }
+}
+
+.ataglance {
+	padding-bottom: 10px !important;
+    margin-bottom: 25px;
+    clear: right;
+    padding-top: 10px;
+    padding-right: 25px;
+    border-top: 2px solid $light-green;
+    margin: 35px 0 35px 0;
+    border-bottom: 2px solid $light-green;
+
+    p {
+
+    	@include breakpoint("medium") {
+			columns: 2;
+		}
+
+    	margin-left:20px;
+    	margin-bottom:12px;
+    }
+}
+
+/*=====  End of Post Content  ======*/
+
+/*=====================================================
+=            Previous/Next Post Navigation            =
+=====================================================*/
+.nav-links {
+	div {
+		margin: 0;
+		width:100%;
+		text-transform:uppercase;
+
+		&.nav-previous {
+			text-align:left;
+		}
+
+		&.nav-next {
+			text-align:right;
+		}
+
+	    h4 {
+	    	margin: 0;
+    		font-weight: 700;
+	    }
+	}
+}
+/*=====  End of Previous/Next Post Navigation  ======*/
+
+/*=================================================
+=            Missile & Defense Systems            =
+=================================================*/
+.tax-system .archive-description, .tax-countries .archive-description {
+	margin-top:40px;
+}
+
+.single-missile header, .single-defsys header {
+	margin-bottom:30px;
+}
+
+
+/*=====  End of Missile & Defense Systems  ======*/
+
+
+/*================================
+=            404 Page            =
+================================*/
+.error-404-header {text-align:center;background-color:$dark-blue;}
+
+
+/*=====  End of 404 Page  ======*/
+
+/*==================================================
+=            List Category Posts Plugin            =
+==================================================*/
+#lcp_instance_0 {
+    margin: 0 20px 0 20px;
+    display: inline-block;
+    list-style: none !important;
+    text-transform: capitalize !important;
+}
+
+.lcp_catlist {
+    .list-item {
+        margin-bottom:20px;
+
+        .lcp_meta {
+            font-size:13px;
+            color: $gray;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            margin: 5px auto;
+
+            a {
+                text-decoration:none;
+            }
+        }
+    }
+}
+
+.relatedposts {
+
+	h3 {
+		line-height: 71px;
+	    font-size: 2.8rem;
+	    text-transform: uppercase;
+	    letter-spacing: 1.2px;
+	    font-weight: 600;
+	    color: $light-green;
+	}
+
+	ul.lcp_catlist {
+	    margin: 0 20px 0 20px;
+	    display: inline-block;
+	    list-style: none !important;
+	    text-transform: capitalize !important;
+
+	    li {
+	    	margin: 5px 0;
+	    }
+
+	    a::after {
+			content: " - ";
+		    font-size: .7em;
+		    color: $black;
+		    font-weight: 400;
+		    padding: 5px;
+		}
+	}
+
+	ul.lcp_paginator {
+		margin-left: 20px;
+
+		li {
+		    border: none !important;
+		}
+	}
+
+	.relatedDates {
+		font-size: .7em;
+	}
+
+}
+
+.moreposts {
+    margin: 13px 20px 0 20px;
+    font-weight: 100;
+    background-color: $dark-blue;
+    color: $white !important;
+    padding: 5px;
+    text-decoration:none !important;
+}
+/*=====  End of List Category Posts Plugin  ======*/

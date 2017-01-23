@@ -1,0 +1,56 @@
+/*==============================
+=            Colors            =
+==============================*/
+$white: #fff;
+$black: #000;
+$dark-blue: #073447;
+$light-green: #0faa91;
+$gray: #5f7981;
+$orange: #c95b41;
+$gold: #f2c261;
+$light-gray: #ddd;
+$dark-gray: #404040;
+$blue-gray: rgba(95,121,129,0.5);
+
+$color__background-body: $white;
+$color__background-screen: #F2F2F2;
+$color__background-button: $dark-blue;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+$color__background-footer: $dark-blue;
+$color__background-footer-search: $white;
+
+$color__text-main: $black;
+$color__text-screen: $black;
+$color__text-input: #888888;
+$color__text-input-focus: $black;
+$color__link: $dark-blue;
+$color__link-visited: $dark-blue;
+$color__link-hover: $gray;
+$color__text-button: $white;
+$color__text-footer: #9f9f9f;
+$color__text-footer-widget: #f5f5f5;
+
+$color__border-button: $light-green;
+$color__border-button-hover: $light-green;
+$color__border-button-focus: $light-green;
+$color__border-input: #888;
+$color__border-abbr: $gray;
+
+/*==================================
+=            Typography            =
+==================================*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700|Source+Sans+Pro:400,600,700');
+
+$font__SourceSans: 'Source Sans Pro', sans-serif;
+$font__OpenSans: 'Open Sans', sans-serif;
+$font__main: $font__SourceSans;
+$font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", Courier, monospace;
+$font__line-height-body: 1.5;
+$font__line-height-pre: 1.6;
+
+/*==============================
+=            Images            =
+==============================*/
+$image__page-feature-ballback: "/wp-content/uploads/2016/07/MissileDefense_Comp_timeline-01.jpg";
