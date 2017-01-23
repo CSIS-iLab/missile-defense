@@ -9,3 +9,7 @@ Repo for Missile Defense Project
 - Upload `staging` to staging server
 - After evaluation and testing, submit PR from `staging` to `master`
 - Upload `master` to production server
+
+## Updating SASS
+1. Navigate to the theme directory `cd /wp-content/themes/amti`
+2. Run `compass watch` to watch for changes in .sass files and compile them to .css files
