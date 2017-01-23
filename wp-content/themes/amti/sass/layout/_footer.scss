@@ -1,0 +1,44 @@
+/*==============================
+=            Footer            =
+==============================*/
+.site-footer {
+	bottom: 0;
+	width: 100%;
+	z-index: -1;
+	padding: 40px 10px;
+	background-color: $color__background-footer;
+	color: $color__text-footer;
+	text-align:center;
+
+	#searchform {
+
+		@include breakpoint("small") {
+			width: 35%;
+		}
+
+		width:90%;
+		margin:20px auto;
+
+		.input-group {
+			width:100%;
+		}
+
+		.input-group-btn {
+			display:none;
+		}
+	}
+	.form-control {
+		background-color: $color__background-footer-search;
+	}
+}
+
+.topbutton {
+	padding: 8px 15px;
+	position:fixed;
+	right:0px;
+	bottom:0px;
+	z-index:1;
+	background-color: $color__background-footer;
+	display:none;
+	color: $color__text-footer !important;
+}

@@ -1,0 +1,183 @@
+/*==============================
+=            Header            =
+==============================*/
+.navbar-fixed-top {
+    background-color: $dark-blue;
+    padding: 11px 0;
+    border-color: transparent;
+    @include transition(all .3s ease-in-out);
+
+    a {
+    	color: $white;
+    }
+
+    li.search {
+        max-width:40%;
+        padding-left:10px;
+        padding-right:10px;
+
+        button {
+        border:0px;
+        color: $white;
+
+            &:hover {
+                background:none;
+                border:0px;
+            }
+        }
+
+        #searchform {
+            padding-top:8px;
+
+            label {
+                padding-top:3px;
+                margin-left:3px;
+
+                &:hover, &:focus {
+                    color: $gold;
+                    @include transition(all .3s ease-in-out);
+                }
+            }
+        }
+
+        .form-control {
+            display:none;
+            width:inherit;
+            margin-top:-5px;
+            border:none;
+            background-color: rgba(0,0,0,0.1);
+            color: $gold;
+
+            &:focus {
+                box-shadow: 0 0 5px rgba(0,0,0,0.4);
+            }
+        }
+    }
+
+}
+
+.navbar-header {
+    width:100%;
+}
+
+#main-menu-top-wrapper {
+    float:right;
+}
+
+/*----------  Main Menu  ----------*/
+body.logged-in .navbar-fixed-top {
+	top: 28px !important;
+}
+
+.navbar-nav {
+	color:$white;
+
+	@include breakpoint("large") {
+		float:right;
+        margin-top: 1%;
+	}
+
+	li {
+		@include transition(all .3s ease-in-out);
+	}
+
+	& > li > a {
+		margin-left: 0px;
+	    display: block;
+	    font-size: 0.7em;
+		font-family: $font__OpenSans;
+	    text-transform: uppercase;
+        font-weight:600;
+
+        &:hover, &:focus {
+            color: $gold !important;
+        }
+
+	}
+}
+
+.navbar-brand {
+	float: left;
+    height: 65px;
+    padding:0px;
+    margin:0px !important;
+
+    .logo {
+        height:100%;
+        width:auto;
+    }
+}
+
+.navbar-default .navbar-toggle, .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color:transparent;
+	border:0px !important;
+	box-shadow:none;
+}
+.nav > li:hover a, .nav > li:hover span, .nav > li:hover, .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:hover {
+	color: $white;
+	@include transition(all .3s ease-in-out);
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	background-color:transparent;
+	color: $white;
+}
+
+.navbar-default .navbar-toggle {
+	&:hover, &:active, &:visited, &:focus {
+		background-color:transparent;
+	}
+	.icon-bar {
+		background-color: $white;
+	}
+}
+
+// Change Mobile breakpoint
+@media (max-width: 992px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: inline-block;
+    }
+    .navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+		margin-top: 7.5px;
+	}
+	.navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+  		display:block !important;
+	}
+    .navbar-brand h2 {
+        padding:5px;
+    }
+    #main-menu-top-wrapper {
+        clear:left;
+        float:left;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        max-width:80%;
+    }
+    .navbar-brand h2 {
+        font-size:14px;
+        word-break:break-normal;
+    }
+}
