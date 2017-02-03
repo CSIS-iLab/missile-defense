@@ -21,5 +21,5 @@
 		<?php transparency_entry_categories(); ?>
 	</div>
 				
-		
+
 </article><!-- #post-## -->

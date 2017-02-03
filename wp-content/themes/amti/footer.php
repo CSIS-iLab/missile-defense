@@ -14,6 +14,9 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="container">
+	<div class="row">
+		<div class="col-sm-6">
 		<?php if ( is_active_sidebar( 'footer' ) ) : ?>
 			<div class="container">
 				<div id="footer-widgets" class="widget-area row" role="complementary">
@@ -21,6 +24,24 @@
 				</div><!-- #footer-widgets -->
 			</div>
 		<?php endif; ?>
+		</div>
+		<div class="col-sm-6 text-right icons">
+		<a href="#" alt="#"> <img class="smIcon" src="/wp-content/themes/amti/img/facebook-icon.svg" alt="Facebook Icon" height="30px" width="30px"> </a>
+		<a href="https://twitter.com/missile_defense?lang=en" alt="Missile Threat Twitter"><img class="smIcon" src="/wp-content/themes/amti/img/twitter-icon.svg" alt="Facebook Icon" height="30px" width="30px"></a>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<p>1616 Rhode Island Avenue, NW 
+			<br>Washington, DC 20036
+			</p>
+		</div>
+		<div class="col-sm-6 text-right">
+<p>©2017 by the Center for Strategic and International Studies. <br>All rights reserved.</p>
+		</div>
+	</div>
+	</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

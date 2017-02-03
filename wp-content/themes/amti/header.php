@@ -59,4 +59,4 @@
 
 	<div id="content" class="site-content">
 
-	<?php putHeroMenu(); ?>
+	<?php putHeroMenu('slider-single'); ?>
