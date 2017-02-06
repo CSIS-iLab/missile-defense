@@ -129,75 +129,77 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($) {
 
     //sticky map placement
+    if( $('.resources-menu').length ) {
 
-    var absolute = $('.resources-menu');
-    var fixed = $('.resources-menu.sticky');
+        var absolute = $('.resources-menu');
+        var fixed = $('.resources-menu.sticky');
 
-    calculate(absolute);
-
-
-    var msie6 = $.browser == 'msie' && $.browser.version < 7;
-    if (!msie6) {
-        var top2 = $('.resources-menu').offset().top;
-        var top = top2 - 100;
-        $(window).scroll(function(event) {
-            var y = $(this).scrollTop();
-            if (y >= top) {
-                $('.resources-menu').addClass('sticky');
- 
-            
-            } else {
-                $('.resources-menu').removeClass('sticky');
-            }
-        });
-
-    }
+        calculate(absolute);
 
 
-    $(window).resize(function() {
-    	var y = $(this).scrollTop();
-    	var h = window.innerHeight;
-        if (y >= h) {
-            calculate(fixed);
-        } else {
-            calculate(absolute);
-        }
-        
-    });
-
-    function calculate(object) {
-        var winW = $(window).width();
-        var container = $('.container').width();
-        var margin = (winW - container) / 2;
-        var size = container / 4;
-
-        if (winW < 992) {
-            var size = container / 2;
-        } else if (winW < 768) {
-        	var size = container;
-            $('.resources-menu').removeClass('sticky');
-
-        } else {
-            var size = container / 4;
-        }
-
-        object.css('width', size);
-        object.css('right', margin);
-    }
-
-    $(function() {
-        $('a[href*="#"]:not([href="#"])').click(function() {
-            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                    $('html, body').animate({
-                        scrollTop: target.offset().top
-                    }, 1000);
-                    return false;
+        var msie6 = $.browser == 'msie' && $.browser.version < 7;
+        if (!msie6) {
+            var top2 = $('.resources-menu').offset().top;
+            var top = top2 - 100;
+            $(window).scroll(function(event) {
+                var y = $(this).scrollTop();
+                if (y >= top) {
+                    $('.resources-menu').addClass('sticky');
+     
+                
+                } else {
+                    $('.resources-menu').removeClass('sticky');
                 }
+            });
+
+        }
+
+
+        $(window).resize(function() {
+        	var y = $(this).scrollTop();
+        	var h = window.innerHeight;
+            if (y >= h) {
+                calculate(fixed);
+            } else {
+                calculate(absolute);
             }
+            
         });
-    });
+
+        function calculate(object) {
+            var winW = $(window).width();
+            var container = $('.container').width();
+            var margin = (winW - container) / 2;
+            var size = container / 4;
+
+            if (winW < 992) {
+                var size = container / 2;
+            } else if (winW < 768) {
+            	var size = container;
+                $('.resources-menu').removeClass('sticky');
+
+            } else {
+                var size = container / 4;
+            }
+
+            object.css('width', size);
+            object.css('right', margin);
+        }
+
+        $(function() {
+            $('a[href*="#"]:not([href="#"])').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html, body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+    }
 
 });

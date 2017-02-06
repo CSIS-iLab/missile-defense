@@ -229,10 +229,20 @@ article {
 
 		&.nav-previous {
 			text-align:left;
+			margin-top: 15px;
+
+		}
+
+		&.nav-previous:before {
+			content: "< ";
 		}
 
 		&.nav-next {
 			text-align:right;
+				margin-top: 15px;
+		}
+		&.nav-next:after {
+			content: " >";
 		}
 
 	    h4 {
@@ -356,7 +366,7 @@ article {
 
 .moreposts {
     margin: 13px 20px 0 20px;
-    font-weight: 100;
+    font-weight: 600;
     background-color: $dark-blue;
     color: $blue-gray !important;
     padding: 5px;
@@ -372,6 +382,7 @@ p a.moreposts {
     margin-left: 0px;
     text-transform: uppercase;
     font-size: .8em;
+    font-weight: 600;
 }
 
 p a.moreposts:hover {
