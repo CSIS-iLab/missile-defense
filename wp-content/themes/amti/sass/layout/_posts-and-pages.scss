@@ -165,7 +165,7 @@ article {
 .endnotes {
 	h3 {
 		line-height: 71px;
-	    font-size: 1.5em;
+	    font-size: 1.3em;
 	    text-transform: uppercase;
 	    font-weight: bold;
 	    letter-spacing: 1.2px;
@@ -192,6 +192,8 @@ article {
     	color: $black;
     }
 }
+
+
 
 .ataglance {
 	padding-bottom: 10px !important;
@@ -295,6 +297,12 @@ article {
 }
 
 .relatedposts {
+	display: block;
+	border-left: 8px solid $light-blue;
+	padding-left: 20px;
+	padding-bottom:1px;
+	padding-top: 5px;
+
 
 	h3 {
 		line-height: 1.3em;
@@ -307,7 +315,7 @@ article {
 	}
 
 	ul.lcp_catlist {
-	    margin: 0px 20px 0px 0px !important;
+	    margin: 0px 20px 10px 0px !important;
 	    display: inline-block;
 	    list-style: none !important;
 	    text-transform: capitalize !important;
@@ -379,4 +387,18 @@ p a.moreposts:hover {
 
 .excerpt-container p {
 	margin-bottom: 0px;
+}
+
+.archive.entry-meta {
+	margin-top: 20px;
+}
+
+.archive-article {
+	padding-bottom: 15px;
+}
+
+
+
+.archive-control-area-inside {
+	border-bottom: none;
 }

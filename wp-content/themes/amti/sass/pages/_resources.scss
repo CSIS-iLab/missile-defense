@@ -58,6 +58,11 @@
     margin-bottom: 0px;
     text-align: left;
     border-bottom: 2px solid $light-blue;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: $font__OpenSans;
 }
 
 .resources-menu ul {

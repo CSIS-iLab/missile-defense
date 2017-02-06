@@ -9,8 +9,8 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="post" <?php post_class(); ?>>
-		<div class="entry-meta">
+<article id="post-<?php the_ID(); ?>" class="post archive-article" <?php post_class(); ?>>
+		<div class="entry-meta archive">
 			<?php the_date(); // Display the time published ?>
 		</div><!-- .entry-meta -->
 

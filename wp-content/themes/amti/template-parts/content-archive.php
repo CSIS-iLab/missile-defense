@@ -8,8 +8,8 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="entry-meta">
+<article id="post-<?php the_ID(); ?>" class="archive-article" <?php post_class(); ?>>
+	<div class="entry-meta archive">
 		<?php the_date(); // Display the time published ?>
 	</div><!-- .entry-meta -->
 	<h2 class="entry-title archive">

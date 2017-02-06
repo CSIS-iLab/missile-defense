@@ -54,10 +54,12 @@
 .smIcon {
 	background-color: $white;
 	height: 30px;
+	bottom: calc(100% - 30px);
 }
 
 .icons {
 		border: 1px solid $dark-blue;
+
 }
 .smIcon:hover {
 	background-color: $gold;

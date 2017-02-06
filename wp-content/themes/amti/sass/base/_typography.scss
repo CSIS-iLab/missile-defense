@@ -211,6 +211,10 @@ a {
 	padding-left: 25px;
 	line-height: 1.1em !important;
 }
+
+.relatedposts+hr {
+	display: none;
+}
 /*----------  Helpers  ----------*/
 .grey {
 	color: $gray;
