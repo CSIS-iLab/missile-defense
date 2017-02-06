@@ -5,7 +5,7 @@
 		background-position-x:<?php echo $feat_bgpos_x; ?>;
 		background-position-y:<?php echo $feat_bgpos_y; ?>;
 	'>
-		
+		<!--<div class="overlay">-->
 		<div class="container">
 		<div class='row'>
 			<div class='featuredItem-container'>
@@ -30,7 +30,7 @@
 								</div>
 						</div>
 					</div>
-				</div>
-			
+				<!--</div>-->
+			</div>
 		</div>
 	</div>

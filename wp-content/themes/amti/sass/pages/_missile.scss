@@ -1,11 +1,11 @@
 .post-type-archive-missile header.entry-header.full-width {
-	height: 568px;
+	height: $header-img-height;
 }
 
 .tax-countries {
 
 	header.entry-header.full-width {
-		height:568px;
+		height: $header-img-height;
 		background-position: 0, 0;
 
 		.overlay {
@@ -30,9 +30,9 @@
 	}
 
 	.missiletable {
-		border-top: 2px solid $light-green;
-    	margin: 35px 0 35px 0;
-    	border-bottom: 2px solid $light-green;
+		border-top: 2px solid $light-blue;
+    	margin: 35px 0 20px 0;
+    	border-bottom: 2px solid $light-blue;
 	}
 
 	#missileTable_wrapper {

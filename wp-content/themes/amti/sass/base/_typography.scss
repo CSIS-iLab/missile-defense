@@ -24,9 +24,8 @@ h1 {
     	font-weight:bold;
     	margin-top:30px;
     	color: $dark-gray;
+    
     }
-
-
 
     &.home {
 	    font-family: $font__OpenSans;
@@ -41,7 +40,9 @@ h1 {
 
 }
 
-
+.system-elements h1 {
+	text-transform: uppercase;
+}
 
 h2 {
 	line-height: 1.5em;
@@ -67,8 +68,12 @@ h2 {
 		font-weight: normal;
 	}
 
-	&.entry-title{
+	&.entry-title.archive {
 		margin-bottom: 0px;
+		margin-top: 0px;
+		margin-bottom: 10px;
+		
+
 	}
 }
 
@@ -170,8 +175,17 @@ a {
 	}
 }
 
+
+
 .entry-content a {
 	text-decoration:underline;
+
+}
+
+.entry-content p {
+	display: block;
+	max-width: 850px;
+	margin: 0 auto;
 }
 
 .endnote a {

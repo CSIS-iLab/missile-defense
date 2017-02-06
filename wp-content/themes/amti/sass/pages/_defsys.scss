@@ -1,13 +1,13 @@
 .post-type-archive-defsys header.entry-header.full-width, .tax-system header.entry-header.full-width {
-	height: 568px;
+	height: $header-img-height;
 }
 
 .tax-system {
 	.system-elements {
 		padding-bottom: 10px !important;
 	    margin: 30px 86px 25px 0;
-	    border-top: 2px solid $light-green;
-	    border-bottom: 2px solid $light-green;
+	    border-top: 2px solid $light-blue;
+	    border-bottom: 2px solid $light-blue;
 	    display: inline-table;
 	    width:100%;
 	    float: left;
@@ -17,7 +17,7 @@
 		}
 
 		h1 {
-			color: $light-green;
+			color: $blue-gray;
 		    font-size: 1.6em;
 		    padding: 10px;
 		    font-weight: 600;
@@ -25,7 +25,7 @@
 		}
 
 	    ul {
-		    margin: 0 20px 0 20px;
+		    margin: 0 20px 10px 10px;
 		    display: inline-block;
 		    list-style: none;
 		    font-size: 20px;
