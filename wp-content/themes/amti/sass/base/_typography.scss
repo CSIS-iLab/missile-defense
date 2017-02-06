@@ -53,6 +53,7 @@ h2 {
     margin-bottom: 20px;
     font-family: $font__SourceSans;
 
+
     
 
     &.landingPage {
@@ -163,6 +164,7 @@ a {
 	@include transition(all .3s ease-in-out);
 	text-decoration: none;
 
+
 	&:visited {
 		color: $color__link-visited;
 	}
@@ -171,6 +173,7 @@ a {
 	&:active {
 		color: $color__link-hover;
 		text-decoration:none;
+		cursor: pointer !important;
 	}
 	&:focus {
 		outline: thin dotted;
@@ -178,6 +181,7 @@ a {
 	&:hover,
 	&:active {
 		outline: 0;
+		cursor: pointer !important;
 	}
 }
 
