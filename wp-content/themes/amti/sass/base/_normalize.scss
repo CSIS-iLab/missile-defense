@@ -6,6 +6,7 @@ html {
 
 body {
 	margin: 0;
+
 }
 
 article,
@@ -22,6 +23,8 @@ section,
 summary {
 	display: block;
 }
+
+
 
 audio,
 canvas,
@@ -207,4 +210,8 @@ table {
 td,
 th {
 	padding: 0;
+}
+
+#content {
+	overflow-x: hidden;
 }

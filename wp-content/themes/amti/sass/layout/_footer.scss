@@ -3,12 +3,19 @@
 ==============================*/
 .site-footer {
 	bottom: 0;
-	width: 100%;
+	width: auto;
 	z-index: -1;
 	padding: 40px 10px;
 	background-color: $color__background-footer;
 	color: $color__text-footer;
-	text-align:center;
+	text-align:left;
+
+	p {
+		margin-top: 20px;
+		font-size: .8em;
+		line-height: 1.4em;
+	}
+
 
 	#searchform {
 
@@ -42,3 +49,27 @@
 	display:none;
 	color: $color__text-footer !important;
 }
+
+
+.smIcon {
+	background-color: $white;
+	height: 30px;
+	bottom: calc(100% - 30px);
+}
+
+.icons {
+		border: 1px solid $dark-blue;
+
+}
+.smIcon:hover {
+	background-color: $gold;
+}
+
+@media screen and (max-width: 767px) {
+    .site-footer .text-right {
+        text-align:left;
+    }
+    .text-right.icons {
+    	margin-top: 1em;
+    }
+    }
