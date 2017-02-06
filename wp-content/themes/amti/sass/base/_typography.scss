@@ -52,6 +52,7 @@ h2 {
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: $font__SourceSans;
+
     
 
     &.landingPage {
@@ -102,6 +103,11 @@ h5 {
         margin-bottom: 5px;
         padding-bottom: 5px;
         line-height: 1.2em;
+        text-transform: uppercase;
+
+        &.about-page {
+        	margin-bottom: 10px !important;
+        }
 }
 
 p {
@@ -194,6 +200,13 @@ a {
     text-decoration: none;
 }
 
+
+.endnotes h3 {
+	margin: 40px 0px 15px;
+	display: block;
+	padding-left: 25px;
+	line-height: 1.1em !important;
+}
 /*----------  Helpers  ----------*/
 .grey {
 	color: $gray;
