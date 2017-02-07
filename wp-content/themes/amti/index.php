@@ -82,7 +82,7 @@ get_header(); ?>
 					<div class="row missile-intro">
 						
 							<h1 class='home'>MISSILE<span>SYSTEMS</span></h1>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+							<p>Explore <em>Missile Threat’s</em> dynamic database of information on offensive and defensive missile systems from across the globe.</p>
 						</div>
 
 					
@@ -154,9 +154,16 @@ get_header(); ?>
 				</div>
 				<div class="col-sm-8">
 
-							<?php 
+							<?php
+							$options = get_option( 'transparency_hpNewsPosts_options' );
+							$newsLimit = $options['post_limit'];
+
+							if(!$newsLimit) {
+								$newsLimit = 3;
+							}
+
 							$argsNews = array( 
-								'posts_per_page' => 3,
+								'posts_per_page' => $newsLimit,
 								'cat' => '42',
 							);
 							$news_posts = new WP_Query( $argsNews );
