@@ -50,7 +50,7 @@ get_header(); ?>
 					<?php 
 							$argsAnalysis = array( 
 								'posts_per_page' => 3,
-								'cat' => '17,33',
+								'cat' => '34',
 							);
 							$analysis_posts = new WP_Query( $argsAnalysis );
 

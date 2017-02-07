@@ -17,7 +17,7 @@
 									<div class="heroText">
 									<?php echo $date; ?>
 										<!--<div class='description'><?php echo $feat_description; ?></div>-->
-										<div class='title'><a href='<?php echo $feat_link; ?>'><?php echo $feat_title; ?></a></div>
+										<div class='title'><a href='<?php echo $feat_link; ?>'><?php echo $feat_description." "; ?><?php echo $feat_title; ?></a></div>
 										<?php echo $excerpt; ?>
 										
 									</div>
