@@ -314,7 +314,7 @@ section {
         line-height: 1.3em;
     }
     .missileimg {
-        background-image: url("img/repeater-missile-launch.jpg");
+        background-image: url($image__homepage-missilesystems);
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
