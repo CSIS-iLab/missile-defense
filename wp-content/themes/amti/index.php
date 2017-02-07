@@ -14,80 +14,202 @@
  */
 
 get_header(); ?>
-
-<div id="primary" class="container homepage">
+<div id="primary" class="homepage">
+<main id="main" role="main">
+<div id="mission" class="container-fluid">
 	<div class="row">
-		<main id="main" class="col-xs-12" role="main">
-			<?php the_content(); ?> <!-- Returns the content of the Home page -->
+	<div class="container">
+		<div class="row-eq-height mission-container">
 
-			<!-- Featured -->
-			<?php 
-				$argsFeatured = array( 
-					'posts_per_page' => 4,
-					'cat' => '34',
-				);
-				$featured_posts = new WP_Query( $argsFeatured );
+			<div class="col-sm-4">
+				<div class="mission-header">
+					<div><h5>ABOUT</h5></div>
+				</div>
+			</div>
 
-				echo "<h1 class='home'>Featured</h1>";
-				echo "<div class='row' style='margin:0px;'>";
+			<div class="col-sm-8 mission-statement">
+				<div class=""><?php the_content(); ?> 
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
 
-				while ( $featured_posts->have_posts() ) : $featured_posts->the_post();
-					echo "<div class='col-xs-12 col-sm-6 wide-grid'>";
-			    	get_template_part( 'template-parts/content');
-			    	echo "</div>";
-				endwhile; // end of the loop.
-				wp_reset_postdata();
-				echo "</div>";
-			?>
+<section class="hpsection">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="analysis-block">
 
-			<div class="row">
-				<div class="col-xs-12 col-sm-8 content">
-
-					<!-- News -->
-					<div class="news-block">
-						<?php 
-							$argsNews = array( 
-								'posts_per_page' => 3,
-								'cat' => '42',
-							);
-							$news_posts = new WP_Query( $argsNews );
-
-							echo "<h1 class='home'>News</h1>";
-
-							while ( $news_posts->have_posts() ) : $news_posts->the_post();
-						    	get_template_part( 'template-parts/content', 'hp-text');
-							endwhile; // end of the loop.
-							wp_reset_postdata();
-						?>
-						<a class="moreposts" href="/category/news/" style="padding:10px;margin:0;">Read All News Posts</a>
-					</div>
-
-					<div class="analysis-block">
-						<!-- Analysis -->
-						<?php 
+						<div class='hpsection-header'>
+							<h1 class='home'>FEATURED<span>ARTICLES</span></h1>
+							<button class='ltblue moreposts'><a class='moreposts' href='/analysis/'>Read All</a></button>
+							</div>
+					<?php 
 							$argsAnalysis = array( 
 								'posts_per_page' => 3,
-								'cat' => '17,33',
+								'cat' => '34',
 							);
 							$analysis_posts = new WP_Query( $argsAnalysis );
 
-							echo "<h1 class='home'>Analysis</h1>";
 
 							while ( $analysis_posts->have_posts() ) : $analysis_posts->the_post();
 						    	get_template_part( 'template-parts/content', 'hp-text');
 							endwhile; // end of the loop.
 							wp_reset_postdata();
-						?>
-						<a class="moreposts" href="/analysis/"  style="padding:10px;margin:0;">Read All Analysis posts</a>
+
+							echo "<button class='ltblue moreposts-bottom'><a href='/analysis/'>Read All Articles</a></button>";
+					?>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
+<!-- Missile Systems -->
+
+<section class="hpsection missiles">
+	<div class="missileSys container-fluid">
+		<div class="missileimg">
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+				<div class="missiletext">
+					<div class="row missile-intro">
+						
+							<h1 class='home'>MISSILE<span>SYSTEMS</span></h1>
+							<p>Explore <em>Missile Threat’s</em> dynamic database of information on offensive and defensive missile systems from across the globe.</p>
+						</div>
+
+					
+
+					<div class="missile-subsection">
+						<div class="row">
+							<div class="col-sm-offset-3 col-xs-9">
+								<h5>MISSILES OF THE WORLD</h5>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-3 missile-icon">
+								<img class="img-responsive missile-icon" src="wp-content/themes/amti/img/missiles-of-the-world-icon.svg" alt="Missile Defense">
+							</div>								
+
+							<div class="col-sm-9">
+								<p>A growing collection of information on various countries’ missile systems, with illustrations and up-to-date information on their capabilities and history.</p>
+
+								<button class="blue gray">
+									<a href='/missile/'>LEARN MORE</a>
+								</button>
+							
+						</div>
+					</div>
+
+					<div class="missile-subsection">
+						<div class="row">
+							<div class="col-sm-offset-3 col-xs-9">
+								<h5>DEFENSE SYSTEMS</h5>
+							</div>
+						</div>
+					
+
+					
+						<div class="row">
+							<div class="col-sm-3 missile-icon">
+								<img class="img-responsive missile-icon" src="/wp-content/themes/amti/img/defense-systems-icon.svg" alt="Missile Defense">
+							</div>	
+
+
+							<div class="col-sm-9">
+								<p>Explore the components that go into making missile defense effective, including sensors, interceptors, command and  control.</p>
+
+								<button class="blue gray">
+									<a href='/defsys/'>LEARN MORE</a>
+								</button>
+						
+						</div>
+					</div>
 					</div>
 				</div>
-				<?php get_sidebar(); ?>
+
 			</div>
+		</div>
+	</div>
+</section>
 
 
-		</main><!-- #main -->
-	</div><!-- .row -->
-</div><!-- #primary -->
+<section class="hpsection">
+<div class="container">
+	<div class="row">
+	<div class="news-block">
+			<div class="col-sm-12">
+				<div class='hpsection-header'>
+				<h1 class='home'>LATEST<span>NEWS</span></h1>
+				<button class='ltblue moreposts'><a class='moreposts' href='/category/news/'>Read All</a></button>
+				</div>
+				</div>
+				<div class="col-sm-8">
+
+							<?php
+							$options = get_option( 'transparency_hpNewsPosts_options' );
+							$newsLimit = $options['post_limit'];
+
+							if(!$newsLimit) {
+								$newsLimit = 3;
+							}
+
+							$argsNews = array( 
+								'posts_per_page' => $newsLimit,
+								'cat' => '42',
+							);
+							$news_posts = new WP_Query( $argsNews );
+
+							while ( $news_posts->have_posts() ) : $news_posts->the_post();
+						    	get_template_part( 'template-parts/content', 'hp-news');
+							endwhile; // end of the loop.
+							wp_reset_postdata();
+							
+						?>
+				<button class='ltblue moreposts-bottom'><a href='/analysis/'>Read All Articles</a></button>
+					<div class="row">
+						<div class="col-sm-6 hp-widget">
+						<div class="events-widget">
+							<h5>EVENTS</h5>
+							<?php if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
+										
+							<?php dynamic_sidebar( 'sidebar-2' ); ?>
+											
+							<?php endif; ?>
+							</div>
+						</div>
+
+						<div class="col-sm-6 hp-widget">
+						<div class="newsletter-widget">
+							<h5> NEWSLETTER </h5>
+							<p>Sign up for the CSIS Missile Defense Project’s monthly newsletter for info on the project’s latest publications, upcoming events, and analysis on recent missile defense news.</p>
+							<button class="blue"><a href="/newsletter">Sign up</a></button>
+						</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 twitter-sidebar">
+					<div class="twitter-sidebar">
+					<?php get_sidebar(); ?>
+					</div>
+				</div>
+</div>
+		
+		</div>
+	</div>
+
+</section>
+
+
+
 
 <?php
 get_footer();

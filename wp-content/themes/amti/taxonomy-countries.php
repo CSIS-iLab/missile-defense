@@ -38,7 +38,7 @@ if(get_archive_thumbnail_src()) {
 				if ( have_posts() ) : ?>
 
 					<div class="missiletable">
-					<h2>Missile Types</h2>
+					<h2 class="text-center">Missile Types</h2>
 					<table id="missileTable">
 						<thead>
 							<th>Missile</th>

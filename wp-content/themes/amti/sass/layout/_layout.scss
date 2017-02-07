@@ -19,6 +19,13 @@ body {
 	// }
 }
 
+@media screen and (max-width: 767px){
+
+	main, .missileSys {
+		padding: 0px 15px;
+	}
+
+}
 
 
 .site-footer {

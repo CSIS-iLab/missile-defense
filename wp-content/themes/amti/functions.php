@@ -97,8 +97,8 @@ function transparency_widgets_init() {
 		'description'   => esc_html__( 'Add widgets here.', 'transparency' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_title'  => '<h5 class="widget-title twitter-widget">',
+		'after_title'   => '</h5>',
 	) );
 
 	register_sidebar(array(
@@ -109,6 +109,17 @@ function transparency_widgets_init() {
 		'after_title' => '</h3>',
 		'before_widget' => '',
 		'after_widget' => ''
+	  )
+	);
+
+	register_sidebar(array(
+		'name' => __( 'Events', 'transparency' ),
+		'id' => 'sidebar-2',
+		'description' => __( 'Widgets in this area will show in the Events Section' , 'transparency'),
+		'before_title' => '<div class="event-title">',
+		'after_title' => '</div>',
+		'before_widget' => '<div class="event">',
+		'after_widget' => '</div>'
 	  )
 	);
 }
@@ -175,11 +186,13 @@ require get_template_directory() . '/inc/custom-posttypes.php';
 * Custom Post Type Formats
 **/
 
-add_theme_support( 'post-formats', array( 'standard', 'image' ) );
+add_theme_support( 'post-formats', array( 'standard', 'image', 'status' ) );
 
 function rename_post_formats( $safe_text ) {
     if ( $safe_text == 'Image' )
         return 'Feature';
+	elseif ( $safe_text == 'Status' )
+        return 'News';
 
     return $safe_text;
 }
@@ -196,6 +209,8 @@ function live_rename_formats() {
             jQuery("span.post-state-format").each(function() {
                 if ( jQuery(this).text() == "Image" )
                     jQuery(this).text("Feature");
+                else if ( jQuery(this).text() == "Status" )
+                    jQuery(this).text("News");
             });
 
         });
@@ -320,3 +335,76 @@ function shortcode_fullWidth( $atts , $content = null ) {
 	return "<div class='fullWidthFeatureContent'>".$content."</div>";
 }
 add_shortcode( 'fullWidth', 'shortcode_fullWidth' );
+
+/**
+ * Homepage image size
+ */
+add_image_size ( 'homeImage', 600, 300, TRUE );
+
+/**
+ * Filter the excerpt "read more" string.
+ *
+ * @param string $more "Read more" excerpt string.
+ * @return string (Maybe) modified "read more" excerpt string.
+ */
+function wpdocs_excerpt_more( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+
+/**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 30;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+/*-----------------------------------------------------------------------------------*/
+/* Add Setting to "Reading" options for # of news posts available on home page
+/*-----------------------------------------------------------------------------------*/
+// Register and define the settings
+add_action('admin_init', 'transparency_hpNewsPosts_admin_init');
+function transparency_hpNewsPosts_admin_init(){
+	register_setting(
+		'reading',                 						// settings page
+		'transparency_hpNewsPosts_options',          	// option name
+		'transparency_hpNewsPosts_validate_options'  	// validation callback
+	);
+	add_settings_field(
+		'transparency_hpNewsPosts_limit',      			// # of Posts to Display
+		'Home Page News Articles Post Limit',           // setting title
+		'transparency_hpNewsPosts_setting_input',    	// display callback
+		'reading',                 						// settings page
+		'default'                  						// settings section
+	);
+}
+// Display and fill the form field
+function transparency_hpNewsPosts_setting_input() {
+	// get option 'post_limit' value from the database
+	$options = get_option( 'transparency_hpNewsPosts_options' );
+	$value = $options['post_limit'];
+	?>
+<input id='post_limit' name='transparency_hpNewsPosts_options[post_limit]'
+ type='number' step='1' min='1' class='small-text' value='<?php echo esc_attr( $value ); ?>' /> posts
+	<?php
+}
+// Validate user input
+function transparency_hpNewsPosts_validate_options( $input ) {
+	$valid = array();
+	$valid['post_limit'] = intval(sanitize_text_field( $input['post_limit'] ));
+	// Something dirty entered? Warn user.
+	if( $valid['post_limit'] != $input['post_limit'] ) {
+		add_settings_error(
+			'transparency_hpNewsPosts_post_limit',           // setting title
+			'transparency_hpNewsPosts_texterror',            // error ID
+			'Invalid number',   // error message
+			'error'                        // type of message
+		);
+	}
+	return $valid;
+}

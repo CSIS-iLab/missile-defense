@@ -1,7 +1,7 @@
 body {
 	color: $color__text-main;
 	font-family: $font__main;
-	font-size:18px;
+	font-size:17px;
 	font-weight:300;
 	-webkit-font-smoothing: antialiased;
 }
@@ -16,38 +16,66 @@ h1 {
     font-size: 1.7em;
     font-weight: bold;
     letter-spacing: 1.2px;
+    color: $blue-gray;
 
     &.entry-title {
-    	border-bottom: 1px solid $black;
+    	border-bottom: 2px solid $light-blue;
     	font-family:$font__SourceSans;
     	font-weight:bold;
     	margin-top:30px;
     	color: $dark-gray;
+    
     }
 
     &.home {
-	    font-family: $font__SourceSans;
+	    font-family: $font__OpenSans;
 	    text-transform: uppercase;
 	    color: $dark-blue;
     }
+
+    span {
+	font-weight: normal;
+	}
+
+
+}
+
+.system-elements h1 {
+	text-transform: uppercase;
 }
 
 h2 {
 	line-height: 1.5em;
     font-size: 34px;
     font-size: 1.3em;
-    color: $light-green;
+    color: $blue-gray;
     margin-top: 20px;
     margin-bottom: 20px;
+    font-family: $font__SourceSans;
+
+
+    
 
     &.landingPage {
 		font-weight: 100;
 	    font-style: italic;
 	    font-size: 1.3em;
 	    text-align: center;
-	    margin: 40px 0;
-	    border-top: 6px $dark-blue solid;
+	    margin: 40px 0 10px;
+	    border-bottom: 3px $light-blue solid;
 	    line-height: 2em;
+	}
+
+	a {
+		font-weight: normal;
+	}
+
+	&.entry-title.archive {
+		margin-bottom: 0px;
+		margin-top: 0px;
+		margin-bottom: 10px;
+		
+
 	}
 }
 
@@ -63,6 +91,24 @@ h4 {
 	line-height: 26px;
     font-size: 18px;
     font-size: 1.8rem;
+}
+
+h5 {
+	    font-family: $font__OpenSans;
+        font-size: 1em;
+        color: $blue_gray;
+        border-bottom: 2px solid $light_blue;
+        width: 100%;
+        letter-spacing: 2px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        line-height: 1.2em;
+        text-transform: uppercase;
+
+        &.about-page {
+        	margin-bottom: 10px !important;
+        }
 }
 
 p {
@@ -118,6 +164,7 @@ a {
 	@include transition(all .3s ease-in-out);
 	text-decoration: none;
 
+
 	&:visited {
 		color: $color__link-visited;
 	}
@@ -126,6 +173,7 @@ a {
 	&:active {
 		color: $color__link-hover;
 		text-decoration:none;
+		cursor: pointer !important;
 	}
 	&:focus {
 		outline: thin dotted;
@@ -133,12 +181,17 @@ a {
 	&:hover,
 	&:active {
 		outline: 0;
+		cursor: pointer !important;
 	}
 }
 
+
+
 .entry-content a {
 	text-decoration:underline;
+
 }
+
 
 .endnote a {
 	font-weight: 600 !important;
@@ -146,6 +199,17 @@ a {
     text-decoration: none;
 }
 
+
+.endnotes h3 {
+	margin: 40px 0px 15px;
+	display: block;
+	padding-left: 25px;
+	line-height: 1.1em !important;
+}
+
+.relatedposts+hr {
+	display: none;
+}
 /*----------  Helpers  ----------*/
 .grey {
 	color: $gray;
