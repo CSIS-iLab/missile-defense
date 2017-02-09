@@ -44,12 +44,19 @@ get_header(); ?>
 			<div class="analysis-block">
 
 						<div class='hpsection-header'>
-							<h1 class='home'>FEATURED<span>ARTICLES</span></h1>
+							<h1 class='home'>FEATURED<span>ITEMS</span></h1>
 							<button class='ltblue moreposts'><a class='moreposts' href='/analysis/'>Read All</a></button>
 							</div>
-					<?php 
+							<?php
+							$optionsFeatures = get_option( 'transparency_hpFeaturesPosts_options' );
+							$featuresLimit = $optionsFeatures['post_limit'];
+
+							if(!$featuresLimit) {
+								$featuresLimit = 3;
+							}
+
 							$argsAnalysis = array( 
-								'posts_per_page' => 3,
+								'posts_per_page' => $featuresLimit,
 								'cat' => '34',
 							);
 							$analysis_posts = new WP_Query( $argsAnalysis );
