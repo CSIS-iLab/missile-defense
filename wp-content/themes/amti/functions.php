@@ -365,11 +365,23 @@ function wpdocs_custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 /*-----------------------------------------------------------------------------------*/
-/* Add Setting to "Reading" options for # of news posts available on home page
+/* Add Setting to "Reading" options for # of featured items & news posts on home page
 /*-----------------------------------------------------------------------------------*/
 // Register and define the settings
 add_action('admin_init', 'transparency_hpNewsPosts_admin_init');
 function transparency_hpNewsPosts_admin_init(){
+	register_setting(
+		'reading',                 						// settings page
+		'transparency_hpFeaturesPosts_options',          	// option name
+		'transparency_hpFeaturesPosts_validate_options'  	// validation callback
+	);
+	add_settings_field(
+		'transparency_hpFeaturesPosts_limit',      			// # of Posts to Display
+		'Home Page Featured Items Post Limit',           // setting title
+		'transparency_hpFeaturesPosts_setting_input',    	// display callback
+		'reading',                 						// settings page
+		'default'                  						// settings section
+	);
 	register_setting(
 		'reading',                 						// settings page
 		'transparency_hpNewsPosts_options',          	// option name
@@ -402,6 +414,31 @@ function transparency_hpNewsPosts_validate_options( $input ) {
 		add_settings_error(
 			'transparency_hpNewsPosts_post_limit',           // setting title
 			'transparency_hpNewsPosts_texterror',            // error ID
+			'Invalid number',   // error message
+			'error'                        // type of message
+		);
+	}
+	return $valid;
+}
+// Display and fill the form field
+function transparency_hpFeaturesPosts_setting_input() {
+	// get option 'post_limit' value from the database
+	$options = get_option( 'transparency_hpFeaturesPosts_options' );
+	$value = $options['post_limit'];
+	?>
+<input id='post_limit' name='transparency_hpFeaturesPosts_options[post_limit]'
+ type='number' step='1' min='1' class='small-text' value='<?php echo esc_attr( $value ); ?>' /> posts
+	<?php
+}
+// Validate user input
+function transparency_hpFeaturesPosts_validate_options( $input ) {
+	$valid = array();
+	$valid['post_limit'] = intval(sanitize_text_field( $input['post_limit'] ));
+	// Something dirty entered? Warn user.
+	if( $valid['post_limit'] != $input['post_limit'] ) {
+		add_settings_error(
+			'transparency_hpFeaturesPosts_post_limit',           // setting title
+			'transparency_hpFeaturesPosts_texterror',            // error ID
 			'Invalid number',   // error message
 			'error'                        // type of message
 		);
