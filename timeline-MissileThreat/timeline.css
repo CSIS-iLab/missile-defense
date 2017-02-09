@@ -53,7 +53,10 @@
 #uss-mason-fired-on-again-off-coast-of-yemen-marker .tl-icon-image:after,
 #coalition-forces-intercept-ballistic-missile-in-marib-marker .tl-icon-image:after,
 #ballistic-missile-intercepted-65-km-from-makkak-marker .tl-icon-image:after,
-#saudis-intercept-missile-fired-from-yemen-marker .tl-icon-image:after
+#saudis-intercept-missile-fired-from-yemen-marker .tl-icon-image:after,
+#saudis-intercept-ballistic-missile-fired-from-yemen-marker .tl-icon-image:after,
+#saudis-intercept-two-houthi-ballistic-missiles-near-bab-al-mandab-marker .tl-icon-image:after,
+#saudis-intercept-houthi-missile-targeting-najran-marker .tl-icon-image:after
  {
     content: url(intercept.png);
 }
@@ -66,6 +69,9 @@
 #missile-strikes-saudi-power-facility-marker .tl-icon-image:after,
 #three-injured-from-missile-attack-marker .tl-icon-image:after,
 #residential-home-struck-by-opposition-missile-marker .tl-icon-image:after,
+#rebels-strike-uae-vessel-marker .tl-icon-image:after,
+#houthi-missile-lands-in-saudi-arabia-ahead-of-yemen-truce-marker .tl-icon-image:after,
+#houthi-missile-strikes-yemeni-city-of-taiz-marker .tl-icon-image:after,
 #rebels-strike-uae-vessel-marker .tl-icon-image:after  {
  content: url(STRIKE.png);
 }
