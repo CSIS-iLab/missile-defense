@@ -57,7 +57,7 @@
 #saudis-intercept-ballistic-missile-fired-from-yemen-marker .tl-icon-image:after,
 #saudis-intercept-two-houthi-ballistic-missiles-near-bab-al-mandab-marker .tl-icon-image:after,
 #saudis-intercept-houthi-missile-targeting-najran-marker .tl-icon-image:after
- {
+{
     content: url(intercept.png);
 }
 
@@ -72,7 +72,9 @@
 #rebels-strike-uae-vessel-marker .tl-icon-image:after,
 #houthi-missile-lands-in-saudi-arabia-ahead-of-yemen-truce-marker .tl-icon-image:after,
 #houthi-missile-strikes-yemeni-city-of-taiz-marker .tl-icon-image:after,
-#rebels-strike-uae-vessel-marker .tl-icon-image:after  {
+#rebels-strike-uae-vessel-marker .tl-icon-image:after,
+#houthis-fire-a-revenge-missile-at-riyadh-marker .tl-icon-image:after  
+{
  content: url(STRIKE.png);
 }
 
