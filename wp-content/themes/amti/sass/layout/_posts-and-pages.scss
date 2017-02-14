@@ -201,19 +201,19 @@ article {
     clear: right;
     padding-top: 10px;
     padding-right: 25px;
-    /*border-top: 2px solid $light-green;*/
+    border-top: 2px solid $light-green;
     margin: 35px 0 35px 0;
-    //border-bottom: 2px solid $light-green;
+    border-bottom: 2px solid $light-green;
 
-   // p {
+   p {
 
-    //	@include breakpoint("medium") {
-	//		columns: 2;
-	//	}
+    	@include breakpoint("medium") {
+			columns: 2;
+		}
 
-    //	margin-left:20px;
-    //	margin-bottom:12px;
-    //}
+    	margin-left:20px;
+    	margin-bottom:12px;
+    }
 }
 
 /*=====  End of Post Content  ======*/
