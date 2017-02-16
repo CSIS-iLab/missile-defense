@@ -56,7 +56,8 @@
 #saudis-intercept-missile-fired-from-yemen-marker .tl-icon-image:after,
 #saudis-intercept-ballistic-missile-fired-from-yemen-marker .tl-icon-image:after,
 #saudis-intercept-two-houthi-ballistic-missiles-near-bab-al-mandab-marker .tl-icon-image:after,
-#saudis-intercept-houthi-missile-targeting-najran-marker .tl-icon-image:after
+#saudis-intercept-houthi-missile-targeting-najran-marker .tl-icon-image:after,
+#saudis-intercept-houthi-missile-targeting-khamis-mushait-marker .tl-icon-image:after
 {
     content: url(intercept.png);
 }
