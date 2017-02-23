@@ -35,7 +35,7 @@ if(isset($custom['missile_range'])) {
 	<td>
 		<?php
 			if(isset($custom['missile_name'])) {
-				if(get_post_status() != 'publish') {
+				if(get_post_status() != 'publish' && !isset($custom['missile_url'])) {
 					echo $custom['missile_name'][0];
 				}
 				else {
@@ -43,7 +43,7 @@ if(isset($custom['missile_range'])) {
 				}
 			}
 			else {
-				if(get_post_status() != 'publish') {
+				if(get_post_status() != 'publish' && !isset($custom['missile_url'])) {
 					the_title();
 				}
 				else {
