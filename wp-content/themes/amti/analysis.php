@@ -39,20 +39,16 @@ if(get_post_thumbnail_id($post->ID)) {
 		<div class="row">
 			<main id="main" class="col-xs-12" role="main">
 				<?php the_content(); ?>
-				<div class="row">
 
 				<?php 
 					$args = array( 'posts_per_page' => -1, 'cat' => 17);
 					$recent_posts = new WP_Query( $args );
 
 					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
-						echo "<div class='col-xs-12 col-sm-4 col-md-3 wide-grid'>";
 				    	get_template_part( 'template-parts/content', get_post_format() );
-				    	echo "</div>";
 					endwhile; // end of the loop.
 					wp_reset_postdata();
 				?>
-			</div>
 
 		</main><!-- #main -->
 	</div><!-- .row -->
