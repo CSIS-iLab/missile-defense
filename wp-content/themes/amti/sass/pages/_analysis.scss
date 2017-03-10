@@ -1,6 +1,28 @@
 .page-template-analysis {
 
-	.hentry {
-		margin-bottom:0px;
-	}
+	article {
+        border-bottom: none;
+        .article-image {
+            overflow: hidden;
+            height: 150px;
+        }
+        .img-thumbs {
+            position: absolute;
+            padding-right: 15px;
+        }
+        span.meta {
+            display: block;
+            font-size: .9em;
+        }
+        h2 {
+            margin: 0px;
+            line-height: 1.1em;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+            margin-top: 10px;
+        }
+    }
 }

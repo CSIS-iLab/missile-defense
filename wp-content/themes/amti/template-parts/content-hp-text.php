@@ -12,7 +12,7 @@
 <div class="row">
 	<div class="col-sm-4 article-image">
 			<div class="img-thumbs" >
-				<img class="img-responsive" src="<?php the_post_thumbnail_url( 'homeImage' ); ?>"  alt="<?php the_title(); ?>" width="" height="">
+				<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><img class="img-responsive" src="<?php the_post_thumbnail_url( 'homeImage' ); ?>"  alt="<?php the_title(); ?>" width="" height=""></a>
 			</div>
 		</div>
 	<div class="col-sm-8">
