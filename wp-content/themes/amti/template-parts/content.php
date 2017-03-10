@@ -9,15 +9,21 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="grid_container">
-		<a href="<?php echo esc_url( get_permalink() ); ?>">
-			<div class="grid_card" style="background-image:url('<?php the_post_thumbnail_url( 'homeImage' ); ?>');">
-				<div class="title">
-					<?php echo get_the_title(); ?>
-				</div>
-				<div class="overlay"></div>
+<div class="row">
+	<div class="col-sm-4 article-image">
+			<div class="img-thumbs" >
+				<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><img class="img-responsive" src="<?php the_post_thumbnail_url( 'homeImage' ); ?>"  alt="<?php the_title(); ?>" width="" height=""></a>
 			</div>
+		</div>
+	<div class="col-sm-8">
+	<span class="meta"><?php the_time('F j, Y'); ?></span>
+	<h2>
+		<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+			<?php the_title(); ?>
 		</a>
+	</h2>
+	<?php the_excerpt(); ?>
 	</div>
-		
+	</div>
+	<div class="clearfix"></div>
 </article><!-- #post-## -->
