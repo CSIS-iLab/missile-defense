@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 if (!defined('NEWSLETTER_LOG_DIR')) {
     define('NEWSLETTER_LOG_DIR', WP_CONTENT_DIR . '/logs/newsletter/');
@@ -31,7 +32,7 @@ class NewsletterLogger {
             $this->level = self::NONE;
         }
 
-        $this->file = NEWSLETTER_LOG_DIR . '/' . $module . '-' . $secret . '.txt';
+        $this->file = NEWSLETTER_LOG_DIR . '/' . $module . '-' . date('Y-m') . '-' . $secret . '.txt';
     }
 
     function log($text, $level = self::ERROR) {

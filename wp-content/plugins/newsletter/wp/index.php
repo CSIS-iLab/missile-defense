@@ -1,4 +1,7 @@
 <?php
+if (!defined('ABSPATH'))
+    exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterWp::instance();
@@ -107,16 +110,13 @@ if (!$controls->is_action()) {
                 </tr>
             </table>
 
+            <h3><?php _e('Confirmation', 'newsletter') ?></h3>
+            <p>
+                Subscribers will be automatically confirmed on first log-in (because it demonstrates they received the WP email with
+                their password. Hence no confirmation email is sent. Anyway you can change that behavior here and ask anyway for confirmation.
+            </p>
             <table class="form-table"> 
-                <tr valign="top">
-                    <td colspan="2">
-                        <h3><?php _e('Confirmation', 'newsletter') ?></h3>
-                        <p>
-                            Subscribers will be automatically confirmed on first log-in (because it demonstrates they received the WP email with
-                            their passsword. Hence no confirmation email is sent. Anyway you can change that behavior here and ask anyway for confirmation.
-                        </p>
-                    </td>
-                </tr>  
+
                 <tr valign="top">
                     <th>Send the confirmation email</th>
                     <td>
@@ -138,10 +138,9 @@ if (!$controls->is_action()) {
                 </tr>
             </table>
 
+            
+            <h3><?php _e('Import already registered users', 'newsletter') ?>
             <table class="form-table">   
-                <tr>
-                    <td colspan="2"><h3><?php _e('Import already registered users', 'newsletter') ?></h3></td>
-                </tr>
                 <tr>
                     <th><?php _e('Import with status', 'newsletter') ?></th>
                     <td>

@@ -1,3 +1,6 @@
+<?php
+if (!defined('ABSPATH')) exit;
+?>
 <!-- Footer -->
 <div style="text-align: center; font-weight: bold; margin: 40px 0 10px;"><?php echo $theme_options['main_footer_title'] ?></div>
 <div style="text-align: center; margin: 10px 0 20px;"><?php echo $theme_options['main_footer_contact'] ?></div>

@@ -72,17 +72,6 @@ class PT_Content_Views {
 	}
 
 	/**
-	 * Return the plugin slug.
-	 *
-	 * @since    1.0.0
-	 *
-	 * @return    Plugin slug variable.
-	 */
-	public function get_plugin_slug() {
-		return $this->plugin_slug;
-	}
-
-	/**
 	 * Return an instance of this class.
 	 *
 	 * @since     1.0.0
@@ -262,12 +251,12 @@ class PT_Content_Views {
 			'name'				 => _x( 'Views', 'post type general name', 'content-views-query-and-display-post-page' ),
 			'singular_name'		 => _x( 'View', 'post type singular name', 'content-views-query-and-display-post-page' ),
 			'menu_name'			 => _x( 'Views', 'admin menu', 'content-views-query-and-display-post-page' ),
-			'name_admin_bar'	 => _x( 'View', 'add new on admin bar', 'content-views-query-and-display-post-page' ),
+			'name_admin_bar'	 => _x( 'Content View', 'add new on admin bar', 'content-views-query-and-display-post-page' ),
 			'add_new'			 => _x( 'Add New', 'post' ),
 			'add_new_item'		 => __( 'Add New View', 'content-views-query-and-display-post-page' ),
 			'new_item'			 => __( 'New View', 'content-views-query-and-display-post-page' ),
 			'edit_item'			 => __( 'Edit View', 'content-views-query-and-display-post-page' ),
-			'view_item'			 => __( 'View View', 'content-views-query-and-display-post-page' ),
+			'view_item'			 => __( 'See View', 'content-views-query-and-display-post-page' ),
 			'all_items'			 => __( 'All Views', 'content-views-query-and-display-post-page' ),
 			'search_items'		 => __( 'Search Views', 'content-views-query-and-display-post-page' ),
 			'parent_item_colon'	 => __( 'Parent Views:', 'content-views-query-and-display-post-page' ),
@@ -281,6 +270,7 @@ class PT_Content_Views {
 			// Hide in menu, but can see All Views page
 			'show_ui'			 => true, // set "true" to fix "Invalid post type" error
 			'show_in_menu'		 => false,
+			'show_in_admin_bar'	 => true,
 			'query_var'			 => true,
 			'rewrite'			 => array( 'slug' => PT_CV_POST_TYPE ),
 			'capability_type'	 => 'post',

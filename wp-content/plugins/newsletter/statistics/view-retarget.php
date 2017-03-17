@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 $email_id = (int) $_GET['id'];
 $module = NewsletterStatistics::instance();
 

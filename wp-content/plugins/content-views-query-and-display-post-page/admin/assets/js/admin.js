@@ -86,7 +86,7 @@
 
 			// Handle Pagination actions
 			$( 'body' ).bind( _prefix + 'admin-preview', function () {
-				new $.PT_CV_Public( { _prefix: _prefix } );
+				new $.PT_CV_Public();
 			} );
 		},
 		/**
@@ -495,16 +495,23 @@
 				url: ajaxurl,
 				data: data
 			} ).done( function ( response ) {
-				if ( response == -1 ) {
-					location.reload();
+				var reload = false;
+				if ( response == -1 || response == 0 ) {
+					reload = true;
+					response = "Your session has expired. This page will be reloaded.";
 				}
 
 				preview_box.css( 'opacity', '1' );
+
 				// Hide loading icon
 				preview_box.next().addClass( 'hidden' );
 
 				// Update content of Preview box
 				preview_box.html( response );
+
+				if ( reload ) {
+					location.reload();
+				}
 
 				$self._filter_response( preview_box );
 

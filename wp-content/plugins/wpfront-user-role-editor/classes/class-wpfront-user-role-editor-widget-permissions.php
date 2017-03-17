@@ -101,7 +101,10 @@ if (!class_exists('WPFront_User_Role_Editor_Widget_Permissions')) {
 
         public function widget_update_callback($instance, $new_instance, $old_instance, $widget) {
             if (!current_user_can('edit_widget_permissions')) {
-                $instance[self::$META_DATA_KEY] = $old_instance[self::$META_DATA_KEY];
+                if (empty($old_instance[self::$META_DATA_KEY]))
+                    $instance[self::$META_DATA_KEY] = (OBJECT) array('type' => self::$ALL_USERS);
+                else
+                    $instance[self::$META_DATA_KEY] = $old_instance[self::$META_DATA_KEY];
                 return $instance;
             }
 

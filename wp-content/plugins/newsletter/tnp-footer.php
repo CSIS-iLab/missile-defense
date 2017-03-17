@@ -1,3 +1,6 @@
+<?php
+if (!defined('ABSPATH')) exit;
+?>
 <div id="tnp-footer">
     <div>
         <ul>

@@ -1,3 +1,6 @@
+<?php
+if (!defined('ABSPATH')) exit;
+?>
 <div class="tnpc-edit" id="tnpc-edit-image">
     <div class="tnpc-edit-box">
         <div class="tnpc-edit-box-title"><?php _e("Edit Image", "newsletter") ?></div>
@@ -1391,7 +1394,7 @@
         <div class="tnpc-edit-box-title"><?php _e("Edit Block", "newsletter") ?></div>
 
         <div class="tnpc-edit-box-content">
-            <div class="tnpc-edit-box-content-text"><?php _e("_Background Color", "newsletter") ?></div>
+            <div class="tnpc-edit-box-content-text"><?php _e("Background Color", "newsletter") ?></div>
             <div class="tnpc-edit-box-content-field"><input type="text" class="tnpc-edit-box-content-field-input bgcolor"/></div>
             <div class="tnpc-edit-box-content-text"><?php _e("Font Family", "newsletter") ?></div>
             <div class="tnpc-edit-box-content-field">

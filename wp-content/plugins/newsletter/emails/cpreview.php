@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterEmails::instance();
@@ -27,6 +29,10 @@ if (!$controls->is_action()) {
     $email_options = unserialize($email['options']);
     if (is_array($email_options)) {
         $controls->data = array_merge($controls->data, $email_options);
+        
+        foreach ($email_options as $name=>$value) {
+            $controls->data['options_' . $name] = $value;
+        }        
     }
 }
 
@@ -54,6 +60,12 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
         $email['options']['sex'] = $controls->data['sex'];
     }
 
+    foreach($controls->data as $name=>$value) {
+        if (strpos($name, 'options_') === 0) {
+            $email['options'][substr($name, 8)] = $value;
+        }
+    }
+    
     $email['options']['status'] = $controls->data['status'];
     $email['options']['preferences_status_operator'] = $controls->data['preferences_status_operator'];
     $email['options']['wp_users'] = $controls->data['wp_users'];
@@ -436,21 +448,28 @@ echo $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));
                             </td>
                         </tr>
                     </table>
+                    
+                    <?php do_action('newsletter_emails_edit_other', $module->get_email($email_id), $controls) ?>
+                    
                 </div>
                 <div id="tabs-status">
                     <table class="form-table">
                         <tr valign="top">
                             <th>Email status</th>
-                            <td><?php echo $email['status']; ?></td>
+                            <td><?php echo $email['status'] ?></td>
                         </tr>
                         <tr valign="top">
                             <th>Messages sent</th>
-                            <td><?php echo $email['sent']; ?> of <?php echo $email['total']; ?></td>
+                            <td><?php echo $email['sent'] ?> of <?php echo $email['total'] ?></td>
                         </tr>
                         <tr valign="top">
                             <th>Query (tech)</th>
-                            <td><?php echo $email['query']; ?></td>
+                            <td><?php echo esc_html($email['query']) ?></td>
                         </tr>
+                        <tr valign="top">
+                        <th>Token (tech)</th>
+                        <td><?php echo esc_html($email['token']) ?></td>
+                    </tr>
                     </table>
                 </div>
 

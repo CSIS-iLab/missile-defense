@@ -203,6 +203,8 @@ if (!class_exists('WPFront_User_Role_Editor_Go_Pro')) {
         private function activate_license($license) {
             if ($this->license_key_k === NULL)
                 return;
+            
+            $license = trim($license);
 
             $this->license_key = $license;
 
@@ -222,6 +224,7 @@ if (!class_exists('WPFront_User_Role_Editor_Go_Pro')) {
                 $entity->update_option($this->license_key_k . '-status', $result->license === 'valid' ? 'valid' : 'expired');
                 $entity->update_option($this->license_key_k . '-expires', $result->expires);
                 $entity->update_option($this->license_key_k . '-last-checked', 0);
+                $entity->update_option($this->license_key_k . '-invalid-count', 0);
 
                 $this->send_mail('activate', $result, 'user');
                 $this->set_license();

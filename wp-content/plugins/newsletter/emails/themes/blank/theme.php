@@ -1,4 +1,6 @@
-<html>
+<?php
+if (!defined('ABSPATH')) exit;
+?><html>
     <head>
         <style>
             body {

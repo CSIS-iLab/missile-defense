@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterEmails::instance();
@@ -19,6 +21,7 @@ if (($controls->is_action('save') || $controls->is_action('preview')) && !$_GET[
     $email['status'] = 'new';
     $email['subject'] = __('Here the email subject', 'newsletter');
     $email['track'] = 1;
+    $email['token'] = $module->get_token();
 
     $email['message'] = $controls->data['body'];
     $email['subject'] = $controls->data['subject'];
@@ -34,6 +37,8 @@ To change your subscription follow: {profile_url}.';
 
     $email['type'] = 'message';
     $email['send_on'] = time();
+    $email['query'] = "select * from " . NEWSLETTER_USERS_TABLE . " where status='C'";
+    
     $email = Newsletter::instance()->save_email($email, ARRAY_A);
 } elseif (isset($_GET['id'])) {
 

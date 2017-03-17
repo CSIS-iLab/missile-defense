@@ -1,5 +1,7 @@
 <?php
 /* @var $wpdb wpdb */
+if (!defined('ABSPATH')) exit;
+
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $module = NewsletterStatistics::instance();
 $controls = new NewsletterControls();

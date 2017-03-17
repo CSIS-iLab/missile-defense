@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 
 $controls = new NewsletterControls();
@@ -284,7 +286,7 @@ if ($controls->is_action('bounces')) {
           <?php for ($i = 1; $i <= NEWSLETTER_LIST_MAX; $i++) { ?>
             <tr>
               <td><?php echo $i; ?></td>
-              <td><?php echo $options_profile['list_' . $i]; ?></td>
+              <td><?php echo esc_html($options_profile['list_' . $i]); ?></td>
               <td>
                 <?php echo $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE . " where list_" . $i . "=1 and status='C'"); ?>
               </td>

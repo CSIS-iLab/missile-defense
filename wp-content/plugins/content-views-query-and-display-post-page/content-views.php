@@ -11,7 +11,7 @@
  * Plugin Name:       Content Views
  * Plugin URI:        http://wordpress.org/plugins/content-views-query-and-display-post-page/
  * Description:       Query and display <strong>posts, pages</strong> in awesome layouts (<strong>grid, scrollable list, collapsible list</strong>) easier than ever, without coding!
- * Version:           1.9.0
+ * Version:           1.9.5
  * Author:            PT Guy
  * Author URI:        http://profiles.wordpress.org/pt-guy
  * Text Domain:       content-views-query-and-display-post-page
@@ -20,21 +20,22 @@
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/<owner>/<repo>
  */
-// If this file is called directly, abort.
-if ( !defined( 'WPINC' ) ) {
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
 	die;
 }
 
 // Define Constant
-define( 'PT_CV_VERSION', '1.9.0' );
+define( 'PT_CV_VERSION', '1.9.5' );
 define( 'PT_CV_FILE', __FILE__ );
 define( 'PT_CV_PATH', plugin_dir_path( __FILE__ ) );
 include_once( PT_CV_PATH . 'includes/defines.php' );
 
 // Include library files
-include_once( PT_CV_PATH . 'includes/3rd-plugins.php' );
 include_once( PT_CV_PATH . 'includes/_session.php' );
+include_once( PT_CV_PATH . 'includes/formatting.php' );
 include_once( PT_CV_PATH . 'includes/assets.php' );
+include_once( PT_CV_PATH . 'includes/compatibility.php' );
 include_once( PT_CV_PATH . 'includes/functions.php' );
 include_once( PT_CV_PATH . 'includes/hooks.php' );
 include_once( PT_CV_PATH . 'includes/html-viewtype.php' );

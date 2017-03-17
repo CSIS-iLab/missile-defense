@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterSubscription::instance();
@@ -52,7 +54,6 @@ $rules = array(0 => 'Optional', 1 => 'Required');
                     <li><a href="#tabs-2">Main profile fields</a></li>
                     <li><a href="#tabs-3">Extra profile fields</a></li>
                     <li><a href="#tabs-5">Form code</a></li>
-                    <li><a href="#tabs-6">Form style</a></li>
                 </ul>
 
                 <div id="tabs-2">
@@ -106,6 +107,7 @@ $rules = array(0 => 'Optional', 1 => 'Required');
                                             male: <?php $controls->text('sex_male'); ?>
                                             not specified: <?php $controls->text('sex_none'); ?>
                                         </td></tr>
+                                    <tr><th>Rules</th><td><?php $controls->select('sex_rules', $rules); ?></td></tr>
 
                                     <tr><th>Salutation titles</th><td>
 
@@ -206,24 +208,6 @@ $rules = array(0 => 'Optional', 1 => 'Required');
                     <h3>Widget form code</h3>
                     <textarea readonly style="width: 100%; height: 500px; font-family: monospace"><?php echo htmlspecialchars(NewsletterSubscription::instance()->get_subscription_form()); ?></textarea>
 
-                </div>
-
-                <div id="tabs-6">
-
-                    <table class="form-table">
-                        <tr>
-                            <th>Subscription form style</th>
-                            <td>
-                                <?php $controls->select('style', $module->get_styles()); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Widget style</th>
-                            <td>
-                                <?php $controls->select('widget_style', $module->get_styles()); ?>
-                            </td>
-                        </tr>
-                    </table>
                 </div>
 
             </div>

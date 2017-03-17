@@ -35,21 +35,8 @@ if (!defined('ABSPATH')) {
 }
 
 @$this->main->options_page_header($this->__('WPFront User Role Editor Settings'));
-?>
 
-<?php
-if ($this->disable_navigation_menu_permissions() === FALSE) {
-    $menu_walker = apply_filters('wp_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', 0);
-    if ($menu_walker !== WPFront_User_Role_Editor_Nav_Menu::override_edit_nav_menu_walker()) {
-        ?>
-        <div class="error below-h2">
-            <p>
-                <?php echo sprintf($this->__('Menu walker class is overriden by a theme/plugin. Current value = %s. Navigation menu permissions may still work. %s'), $menu_walker, '<a target="_blank" href="' . WPFront_User_Role_Editor_Nav_Menu::nav_menu_help_url() . '#navigation-menu-permission-warning">' . $this->__('More information') . '</a>'); ?>
-            </p>
-        </div>
-        <?php
-    }
-}
+$this->main->menu_walker_override_warning();
 ?>
 
 <table class="form-table">
@@ -97,6 +84,14 @@ if ($this->disable_navigation_menu_permissions() === FALSE) {
             <input type="checkbox" name="disable_navigation_menu_permissions" <?php echo $this->disable_navigation_menu_permissions() ? 'checked' : ''; ?> />
         </td>
     </tr>
+    <tr>
+        <th scope="row">
+            <?php echo $this->__('Override Navigation Menu Permissions'); ?>
+        </th>
+        <td>
+            <input type="checkbox" name="override_navigation_menu_permissions" <?php echo $this->override_navigation_menu_permissions() ? 'checked' : ''; ?> />
+        </td>
+    </tr>
     <?php if ($this->main->enable_pro_only_options() && !$this->multisite) { ?>
         <tr>
             <th scope="row">
@@ -118,6 +113,27 @@ if ($this->disable_navigation_menu_permissions() === FALSE) {
                         </div>
                         <?php
                     }
+                }
+                ?>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <?php echo $this->__('Disable Extended Permissions (post types)'); ?>
+            </th>
+            <td>
+                <?php
+                $post_types = $this->get_extendable_post_types();
+                
+                foreach ($post_types as $key => $value) {
+                    ?>
+                    <div class="options-list">
+                        <label>
+                            <input name="extendable-post-types" type="checkbox" value="<?php echo $key; ?>" <?php echo $value->enabled ? 'checked' : ''; ?> />
+                            <?php echo $this->__($value->label); ?>
+                        </label>
+                    </div>
+                    <?php
                 }
                 ?>
             </td>
@@ -158,7 +174,7 @@ if ($this->disable_navigation_menu_permissions() === FALSE) {
             fields.each(function (i, e) {
                 var ele = $(e);
                 if (ele.attr("type") == "checkbox") {
-                    if (ele.attr("name") == "custom-post-types") {
+                    if (ele.attr("name") == "custom-post-types" || ele.attr("name") == "extendable-post-types") {
                         data[ele.attr("name") + "[" + ele.val() + "]"] = ele.prop("checked");
                     }
                     else {

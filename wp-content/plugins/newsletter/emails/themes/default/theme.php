@@ -12,6 +12,8 @@
 
 global $newsletter, $post;
 
+if (!defined('ABSPATH')) exit;
+
 $color = $theme_options['theme_color'];
 if (empty($color)) $color = '#000000';
 
@@ -47,20 +49,20 @@ if (isset($theme_options['theme_posts'])) {
             }
         </style>
     </head>
-    <body style="background-color: #ddd; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; color: #666; margin: 0 auto; padding: 0;">
+    <body style="background-color: #ECF2F6; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; color: #666; margin: 0 auto; padding: 0;">
         <br>
         <table align="center">
             <tr>
-                <td valign="top" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; color: #666;">
+                <td valign="top" width="500" bgcolor="#ffffff" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 14px; color: #666;">
                     <div style="text-align: left; background-color: #fff; max-width: 500px;">
                         <div style="text-align: center">
                         <?php //HEADER
 //                        if (!empty($theme_options['theme_banner'])) { 
 //                            echo $theme_options['theme_banner'];
                         if (!empty($theme_options['theme_header_logo']['url'])) { ?>
-                            <img style="max-width: 500px" alt="<?php echo $theme_options['main_header_title'] ?>" src="<?php echo $theme_options['theme_header_logo']['url'] ?>" />
+                            <img style="max-width: 500px" alt="<?php echo esc_attr($theme_options['main_header_title']) ?>" src="<?php echo esc_attr($theme_options['theme_header_logo']['url']) ?>">
                         <?php } elseif (!empty($theme_options['main_header_logo']['url'])) { ?>
-                            <img style="max-width: 500px" alt="<?php echo $theme_options['main_header_title'] ?>" src="<?php echo $theme_options['main_header_logo']['url'] ?>" />
+                            <img style="max-width: 500px" alt="<?php echo esc_attr($theme_options['main_header_title']) ?>" src="<?php echo esc_attr($theme_options['main_header_logo']['url']) ?>">
                         <?php } elseif (!empty($theme_options['main_header_title'])) { ?>
                              <div style="padding: 30px 0; color: #000; font-size: 28px; background-color: #EFEFEF; border-bottom: 1px solid #ddd; text-align: center;">
                                 <?php echo $theme_options['main_header_title'] ?>

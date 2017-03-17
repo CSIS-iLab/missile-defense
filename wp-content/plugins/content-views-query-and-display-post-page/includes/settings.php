@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define settings for options
  *
@@ -16,6 +15,7 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 	 * @todo Define settings for options
 	 */
 	class PT_CV_Settings {
+
 		/**
 		 * Get collection : Taxonomies => Terms
 		 *
@@ -97,7 +97,7 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 					),
 				),
 				// Upgrade to Pro: More sort by options
-				!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( __( 'Sort by custom field, drag & drop, slug, random order, menu order', 'content-views-query-and-display-post-page' ) ) : '',
+				!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( __( 'Sort by drag & drop, custom field, slug, random order, menu order', 'content-views-query-and-display-post-page' ) ) : '',
 				// Order
 				apply_filters( PT_CV_PREFIX_ . 'orders', array(
 					'label'	 => array(
@@ -164,7 +164,7 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 							'name'			 => $prefix . 'items-per-page',
 							'std'			 => '5',
 							'placeholder'	 => 'for example: 5',
-							'desc'			 => sprintf( __( 'If value of %s setting is not empty, this value should be smaller than that', 'content-views-query-and-display-post-page' ), sprintf( '<code>%s</code>', __( 'Limit', 'content-views-query-and-display-post-page' ) ) ),
+							'desc'			 => sprintf( __( 'If value of the %s setting is not empty, this value should be smaller than that', 'content-views-query-and-display-post-page' ), sprintf( '<code>%s</code>', __( 'Limit', 'content-views-query-and-display-post-page' ) ) ),
 						),
 					),
 					'dependence'	 => array( 'enable-pagination', 'yes' ),
@@ -282,7 +282,7 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 					),
 				),
 				// Upgrade to Pro: Drag & Drop
-				!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( __( 'Change display order (for example: show Title above Thumbnail)', 'content-views-query-and-display-post-page' ), 12, 'margin-top: -15px; margin-bottom: 5px; width: 100%;' ) : '',
+				!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( __( 'Show Custom Fields, show Title above Thumbnail...', 'content-views-query-and-display-post-page' ), 12, 'margin-top: -15px; margin-bottom: 5px; width: 100%;' ) : '',
 				// Title settings
 				apply_filters( PT_CV_PREFIX_ . 'settings_title_display', array(), $prefix, $prefix2 ),
 				// Thumbnail settings
@@ -374,7 +374,7 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 													),
 												),
 												// Upgrade to Pro: Manual excerpt
-												!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( __( 'Use manual excerpt', 'content-views-query-and-display-post-page' ) ) : '',
+												!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( __( 'Use manual excerpt (in the Excerpt field under the post edit box)', 'content-views-query-and-display-post-page' ) ) : '',
 												// Allow HTML tags
 												array(
 													'label'	 => array(
@@ -392,14 +392,13 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 												// Read more text
 												!get_option( 'pt_cv_version_pro' ) ? array(
 													'label'	 => array(
-														'text' => __( 'Read More', 'content-views-query-and-display-post-page' ),
+														'text' => __( 'Read More text', 'content-views-query-and-display-post-page' ),
 													),
 													'params' => array(
 														array(
 															'type'	 => 'text',
 															'name'	 => $prefix . 'excerpt-readmore-text',
 															'std'	 => ucwords( rtrim( __( 'Read more...' ), '.' ) ),
-															'desc'	 => __( 'Text for Read more', 'content-views-query-and-display-post-page' ),
 														),
 													),
 													) : '',
@@ -630,14 +629,14 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 						array(
 							'type'		 => 'checkbox',
 							'name'		 => $prefix . 'thumbnail-nowprpi',
-							'options'	 => PT_CV_Values::yes_no( 'yes', __( 'Disable responsive image of WordPress 4.4', 'content-views-query-and-display-post-page' ) ),
+							'options'	 => PT_CV_Values::yes_no( 'yes', __( 'Disable responsive image of WordPress', 'content-views-query-and-display-post-page' ) ),
 							'std'		 => '',
 							'desc'		 => __( 'Check this option if thumbnail looks blurry', 'content-views-query-and-display-post-page' ),
 						),
 					),
 				),
 				// Upgrade to Pro: Show image/video in content as thumbnail
-				!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( sprintf( __( 'In this lite version, thumbnail is only shown if post has %s', 'content-views-query-and-display-post-page' ), sprintf( '<a target="_blank" href="https://codex.wordpress.org/Post_Thumbnails">%s</a>', __( 'Featured Image' ) ) ), 12, null, true ) : '',
+				!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( sprintf( __( 'In this lite version, thumbnail is only shown if the post has %s', 'content-views-query-and-display-post-page' ), sprintf( '<a target="_blank" href="https://codex.wordpress.org/Post_Thumbnails">%s</a>', __( 'Featured Image' ) ) ), 12, null, true ) : '',
 			);
 
 			$result = apply_filters( PT_CV_PREFIX_ . 'field_thumbnail_settings', $result, $prefix );
@@ -789,7 +788,7 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 						array(
 							'type'		 => 'checkbox',
 							'name'		 => $prefix . 'open-first-item',
-							'options'	 => PT_CV_Values::yes_no( 'yes', __( 'Open first item by default', 'content-views-query-and-display-post-page' ) ),
+							'options'	 => PT_CV_Values::yes_no( 'yes', __( 'Open the first item by default', 'content-views-query-and-display-post-page' ) ),
 							'std'		 => 'yes',
 						),
 					),
@@ -857,7 +856,7 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 		 * @return string
 		 */
 		static function get_cvpro( $text, $width = 10, $style = '', $notice = false ) {
-			$url = sprintf( ' &raquo; <a href="%s" target="_blank">%s</a>', esc_url( 'https://www.contentviewspro.com/pricing/?utm_source=client&utm_medium=view_fields&utm_campaign=gopro' ), __( 'Get PRO Version', 'content-views-query-and-display-post-page' ) );
+			$url = sprintf( ' &raquo; <a href="%s" target="_blank">%s</a>', esc_url( 'https://www.contentviewspro.com/pricing/?utm_source=client&utm_medium=view_fields&utm_campaign=gopro' ), __( 'get Pro version', 'content-views-query-and-display-post-page' ) );
 
 			return array(
 				'label'			 => array(
@@ -872,8 +871,8 @@ if ( !class_exists( 'PT_CV_Settings' ) ) {
 					array(
 						'type'		 => 'html',
 						'content'	 => $notice ?
-							sprintf( '<div class="alert alert-warning"><strong>%s:</strong> %s</div>', __( 'Notice', 'content-views-query-and-display-post-page' ), $text . '.' ) :
-							sprintf( '<p class="text-muted" style="%s">&rarr; %s</p>', $style, $text . $url ),
+							sprintf( '<div class="alert alert-warning cvgopro"><strong>%s:</strong> %s</div>', __( 'Notice', 'content-views-query-and-display-post-page' ), $text . '.' ) :
+							sprintf( '<p class="text-muted cvgopro" style="%s">&rarr; %s</p>', $style, $text . $url ),
 					),
 				),
 			);

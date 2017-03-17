@@ -1,3 +1,7 @@
+<?php
+if (!defined('ABSPATH'))
+    exit;
+?>
 <p>
     This theme requires posts with at least one image and a number of posts like
     3, 6, 9, ...

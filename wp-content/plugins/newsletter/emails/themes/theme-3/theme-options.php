@@ -14,6 +14,10 @@
  * For multilanguage purpose you can actually check the constants "WP_LANG", until
  * a decent system will be implemented.
  */
+
+if (!defined('ABSPATH'))
+    exit;
+
 $theme_defaults = array(
     'theme_max_posts'=>10,
 

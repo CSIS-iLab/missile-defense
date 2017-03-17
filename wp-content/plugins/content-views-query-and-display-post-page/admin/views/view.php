@@ -11,18 +11,17 @@
 // Check if using Wordpress version 3.7 or higher
 $version_gt_37 = PT_CV_Functions::wp_version_compare( '3.7' );
 
-$settings = array();
-
-// Id of current view
-$id = 0;
+$settings	 = array();
+$id			 = 0;
+$post_id	 = apply_filters( PT_CV_PREFIX_ . 'view_post_id', 0 );
 
 // Check if this is edit View page
 if ( !empty( $_GET[ 'id' ] ) ) {
-	$id = esc_sql( $_GET[ 'id' ] );
+	$id = cv_sanitize_vid( $_GET[ 'id' ] );
 
 	if ( $id ) {
 		global $pt_cv_admin_settings;
-		$pt_cv_admin_settings	 = $settings				 = PT_CV_Functions::view_get_settings( $id );
+		$pt_cv_admin_settings	 = $settings				 = PT_CV_Functions::view_get_settings( $id, $post_id );
 	}
 }
 
@@ -41,7 +40,7 @@ PT_CV_Functions::view_submit();
 		<div>
 			<div class="view-code">For page content, text widget... <input class="form-control" style="width: 190px;background-color: #ADFFAD;margin-right: 50px;" type="text" value="[pt_view id=&quot;<?php echo $id ?>&quot;]" onclick="this.select()" readonly=""></div>
 			<div class="view-code">For theme file <input class="form-control" style="width: 370px;" type="text" value='&lt;?php echo do_shortcode("[pt_view id=<?php echo $id ?>]"); ?&gt;' onclick="this.select()" readonly=""></div>
-			<?php echo apply_filters( PT_CV_PREFIX_ . 'view_actions', '<a class="btn btn-info pull-right" target="_blank" href="https://www.contentviewspro.com/pricing/?utm_source=client&utm_medium=view_header&utm_campaign=gopro">Get PRO Version</a>', $id ) ?>
+			<?php echo apply_filters( PT_CV_PREFIX_ . 'view_actions', '<a class="btn btn-info pull-right" target="_blank" href="https://www.contentviewspro.com/pricing/?utm_source=client&utm_medium=view_header&utm_campaign=gopro">get Pro version</a>', $id ) ?>
 		</div>
 		<div class="clear"></div>
 		<?php
@@ -82,14 +81,12 @@ PT_CV_Functions::view_submit();
 		// Add nonce field
 		wp_nonce_field( PT_CV_PREFIX_ . 'view_submit', PT_CV_PREFIX_ . 'form_nonce' );
 
-		// Get post ID of this View
-		$post_id	 = PT_CV_Functions::post_id_from_meta_id( $id );
 		$view_object = $post_id ? get_post( $post_id ) : null;
 		?>
 		<!-- add hidden field -->
 		<input type="hidden" name="<?php echo esc_attr( PT_CV_PREFIX . 'post-id' ); ?>" value="<?php echo esc_attr( $post_id ); ?>" />
 		<input type="hidden" name="<?php echo esc_attr( PT_CV_PREFIX . 'view-id' ); ?>" value="<?php echo esc_attr( $id ); ?>" />
-		<input type="hidden" name="<?php echo esc_attr( PT_CV_PREFIX . 'version' ); ?>" value="<?php echo apply_filters( PT_CV_PREFIX_ . 'view_version', 'free-' . PT_CV_VERSION ); ?>" />
+		<input type="hidden" name="<?php echo esc_attr( PT_CV_PREFIX . 'version' ); ?>" value="<?php echo esc_attr( apply_filters( PT_CV_PREFIX_ . 'view_version', 'free-' . PT_CV_VERSION ) ); ?>" />
 
 		<?php
 		// View title
@@ -157,7 +154,7 @@ PT_CV_Functions::view_submit();
 					// Common Filters
 					array(
 						'label'			 => array(
-							'text' => __( 'Common filters', 'content-views-query-and-display-post-page' ),
+							'text' => __( 'Common', 'content-views-query-and-display-post-page' ),
 						),
 						'extra_setting'	 => array(
 							'params' => array(
@@ -227,12 +224,11 @@ PT_CV_Functions::view_submit();
 												'name'	 => 'limit',
 												'std'	 => '10',
 												'min'	 => '1',
-												'desc'	 => __( 'The number of posts to show. Set empty to show all found posts', 'content-views-query-and-display-post-page' ),
+												'desc'	 => __( 'The number of posts to show. Leave empty to show all found posts', 'content-views-query-and-display-post-page' ),
 											),
 										),
 									),
-									// Upgrade to Pro: Offset
-									apply_filters( PT_CV_PREFIX_ . 'after_limit_option', PT_CV_Settings::get_cvpro( __( 'Skip some posts', 'content-views-query-and-display-post-page' ), 12 ) ),
+									apply_filters( PT_CV_PREFIX_ . 'after_limit_option', '' ),
 								),
 							),
 						),
@@ -240,7 +236,7 @@ PT_CV_Functions::view_submit();
 					// Advanced Filters
 					array(
 						'label'			 => array(
-							'text' => __( 'Advanced filters', 'content-views-query-and-display-post-page' ),
+							'text' => __( 'Advance', 'content-views-query-and-display-post-page' ),
 						),
 						'extra_setting'	 => array(
 							'params' => array(
@@ -348,10 +344,11 @@ PT_CV_Functions::view_submit();
 													'options'	 => PT_CV_Values::taxonomy_relation(),
 													'std'		 => PT_CV_Functions::array_get_first_key( PT_CV_Values::taxonomy_relation() ),
 													'class'		 => 'taxonomy-relation',
+													'desc'		 => __( 'The logical relationship between above taxonomies', 'content-views-query-and-display-post-page' ),
 												),
 											),
 										),
-										!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( sprintf( __( 'When you select any term above, it will not replace posts layout in term page (for example: %s) with layout of this View', 'content-views-query-and-display-post-page' ), '<code style="font-size: 11px;">http://yourdomain/category/selected_term/</code>' ), 12, null, true ) : '',
+										!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( sprintf( __( 'In this lite version, when you select any term above, it will not replace posts layout in term page (for example: %s) with layout of this View', 'content-views-query-and-display-post-page' ), '<code style="font-size: 11px;">http://yourdomain/category/selected_term/</code>' ), 12, null, true ) : '',
 										apply_filters( PT_CV_PREFIX_ . 'taxonomies_custom_settings', array() ),
 									), // End Taxonomies Settings
 									// Sort by Settings
@@ -454,7 +451,7 @@ PT_CV_Functions::view_submit();
 													'type'	 => 'text',
 													'name'	 => 's',
 													'std'	 => '',
-													'desc'	 => __( 'Enter keyword to searching for posts', 'content-views-query-and-display-post-page' ) . apply_filters( PT_CV_PREFIX_ . 'searchby_keyword_desc', '' ),
+													'desc'	 => __( 'Enter keyword to searching for posts', 'content-views-query-and-display-post-page' ) . apply_filters( PT_CV_PREFIX_ . 'searchby_keyword_desc', '' ) . '<br>' . __( 'It will search keyword in title, excerpt, content of posts', 'content-views-query-and-display-post-page' ),
 												),
 											),
 										),
@@ -477,7 +474,7 @@ PT_CV_Functions::view_submit();
 					// View Type
 					array(
 						'label'	 => array(
-							'text' => __( 'View type (Layout)', 'content-views-query-and-display-post-page' ),
+							'text' => __( 'Layout', 'content-views-query-and-display-post-page' ),
 						),
 						'params' => array(
 							apply_filters( PT_CV_PREFIX_ . 'viewtype_setting', array(
@@ -504,9 +501,10 @@ PT_CV_Functions::view_submit();
 							),
 						),
 					),
+					!get_option( 'pt_cv_version_pro' ) ? PT_CV_Settings::get_cvpro( __( 'More amazing layouts (Pinterest, Timeline...)', 'content-views-query-and-display-post-page' ), 10, 'margin-bottom:10px' ) : '',
 					apply_filters( PT_CV_PREFIX_ . 'more_responsive_settings', array(
 						'label'		 => array(
-							'text' => __( 'Responsive settings', 'content-views-query-and-display-post-page' ),
+							'text' => __( 'Responsive', 'content-views-query-and-display-post-page' ),
 						),
 						'params'	 => array(
 							array(
@@ -545,7 +543,7 @@ PT_CV_Functions::view_submit();
 					) ),
 					array(
 						'label'			 => array(
-							'text' => __( 'Layout format', 'content-views-query-and-display-post-page' ),
+							'text' => __( 'Format', 'content-views-query-and-display-post-page' ),
 						),
 						'extra_setting'	 => array(
 							'params' => array(
@@ -587,7 +585,7 @@ PT_CV_Functions::view_submit();
 											array(
 												'type'		 => 'checkbox',
 												'name'		 => 'lf-mobile-disable',
-												'options'	 => PT_CV_Values::yes_no( 'yes', __( 'Disable this format on mobile devices & extra small screens', 'content-views-query-and-display-post-page' ) ),
+												'options'	 => PT_CV_Values::yes_no( 'yes', __( 'Disable this format on small screens (less than 481 pixels)', 'content-views-query-and-display-post-page' ) ),
 												'std'		 => '',
 											),
 										),

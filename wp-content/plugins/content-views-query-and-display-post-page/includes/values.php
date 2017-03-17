@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Define values for input, select...
  *
@@ -16,6 +15,7 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 	 * @todo Define values for input, select...
 	 */
 	class PT_CV_Values {
+
 		/**
 		 * Get Post Types
 		 *
@@ -91,8 +91,8 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 		 */
 		static function taxonomy_relation() {
 			return array(
-				'AND'	 => __( 'AND', 'content-views-query-and-display-post-page' ) . ' &#8212; ' . __( 'show posts which match all settings', 'content-views-query-and-display-post-page' ),
-				'OR'	 => __( 'OR', 'content-views-query-and-display-post-page' ) . ' &#8212; ' . __( 'show posts which match one or more settings', 'content-views-query-and-display-post-page' ),
+				'AND'	 => __( 'AND', 'content-views-query-and-display-post-page' ),
+				'OR'	 => __( 'OR', 'content-views-query-and-display-post-page' ),
 			);
 		}
 
@@ -102,29 +102,10 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 		 */
 		static function taxonomy_operators() {
 			return array(
-				'IN'	 => __( 'IN', 'content-views-query-and-display-post-page' ) . ' &#8212; ' . __( 'show posts which associate with one or more of selected terms', 'content-views-query-and-display-post-page' ),
-				'NOT IN' => __( 'NOT IN', 'content-views-query-and-display-post-page' ) . ' &#8212; ' . __( 'show posts which do not associate with any of selected terms', 'content-views-query-and-display-post-page' ),
-				'AND'	 => __( 'AND', 'content-views-query-and-display-post-page' ) . ' &#8212; ' . __( 'show posts which associate with all of selected terms', 'content-views-query-and-display-post-page' ),
+				'IN'	 => __( 'IN - show posts which match ANY selected terms', 'content-views-query-and-display-post-page' ),
+				'NOT IN' => __( 'NOT IN - show posts which DO NOT match ANY selected terms', 'content-views-query-and-display-post-page' ),
+				'AND'	 => __( 'AND - show posts which match ALL selected terms', 'content-views-query-and-display-post-page' ),
 			);
-		}
-
-		/**
-		 * Get taxonomies of Post type
-		 *
-		 * @param string $object Name of the post type, or a post object
-		 * @param string $output The type of output to return, either taxonomy 'names' or 'objects'
-		 *
-		 * @return array
-		 */
-		static function taxonomy_by_post_type( $object, $output = 'names' ) {
-			$data	 = get_object_taxonomies( $object, $output );
-			$result	 = array();
-
-			foreach ( (array) $data as $taxonomy ) {
-				$result[ $taxonomy ] = self::taxonomy_info( $taxonomy, 'singular_name' );
-			}
-
-			return $result;
 		}
 
 		/**
@@ -156,13 +137,13 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 		 * @param string $terms_of_taxonomies Array of terms of taxonomies
 		 * @param array  $args                Array of query parameters
 		 */
-		static function term_of_taxonomy( $taxonomy, &$terms_of_taxonomies, $args = array() ) {
+		static function term_of_taxonomy( $taxonomy, &$terms_of_taxonomies, $args = array(), $data = 'name' ) {
 			$args	 = array_merge( array( 'hide_empty' => false ), $args );
 			$terms	 = get_terms( array( $taxonomy ), $args );
 
 			$term_slug_name = array();
 			foreach ( $terms as $term ) {
-				$term_slug_name[ PT_CV_Functions::term_slug_sanitize( $term->slug ) ] = $term->name;
+				$term_slug_name[ $term->slug ] = ($data === 'name') ? $term->name : $term;
 			}
 
 			// Sort values of param by saved order
@@ -186,18 +167,6 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 			}
 
 			return $result;
-		}
-
-		/**
-		 * Show Hide options
-		 *
-		 * @return array
-		 */
-		static function show_hide() {
-			return array(
-				'show'	 => __( 'Show', 'content-views-query-and-display-post-page' ),
-				'hide'	 => __( 'Hide', 'content-views-query-and-display-post-page' ),
-			);
 		}
 
 		/**
@@ -247,15 +216,13 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 		 * List post status
 		 */
 		static function post_statuses() {
-			return array(
-				'publish'	 => __( 'Published' ),
-				'pending'	 => __( 'Pending Review' ),
-				'draft'		 => __( 'Draft' ),
-				'future'	 => __( 'Scheduled' ),
-				'private'	 => __( 'Privately Published' ),
-				'trash'		 => __( 'Trash' ),
-				'inherit'	 => __( 'Inherit', 'content-views-query-and-display-post-page' ),
-			);
+			$result		 = array();
+			$statuses	 = get_post_stati( null, 'objects' );
+			foreach ( $statuses as $status => $object ) {
+				$result[ $status ] = ucfirst( $object->label );
+			}
+
+			return $result;
 		}
 
 		/**
@@ -273,18 +240,6 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 				'author'	 => __( 'Author' ),
 				)
 			);
-		}
-
-		/**
-		 * Show WP author dropdown list by WP wp_dropdown_users functions
-		 *
-		 * @return array
-		 */
-		static function post_author( $name = 'author', $data = array() ) {
-			$field_name	 = PT_CV_PREFIX . $name;
-			$selected	 = isset( $data[ $field_name ] ) ? $data[ $field_name ] : '';
-
-			return wp_dropdown_users( array( 'name' => $field_name, 'selected' => $selected, 'class' => 'form-control', 'show_option_none' => sprintf( '- %s -', __( 'Select' ) ), 'echo' => false ) );
 		}
 
 		/**
@@ -380,8 +335,8 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 		static function layout_format() {
 
 			$result = array(
-				'1-col'	 => __( '1 column (show fields vertically)', 'content-views-query-and-display-post-page' ),
-				'2-col'	 => __( '2 columns (show thumbnail on the left/right side of other fields)', 'content-views-query-and-display-post-page' ),
+				'1-col'	 => __( 'Show thumbnail & text vertically', 'content-views-query-and-display-post-page' ),
+				'2-col'	 => __( 'Show thumbnail on the left/right of text', 'content-views-query-and-display-post-page' ),
 			);
 
 			$result = apply_filters( PT_CV_PREFIX_ . 'layout_format', $result );
@@ -455,25 +410,6 @@ if ( !class_exists( 'PT_CV_Values' ) ) {
 			}
 
 			$result = apply_filters( PT_CV_PREFIX_ . 'field_thumbnail_sizes', $result );
-
-			return $result;
-		}
-
-		/**
-		 * Tab Position
-		 *
-		 * @return array
-		 */
-		static function tab_position() {
-
-			$tab_position = array(
-				'top'	 => __( 'Top', 'content-views-query-and-display-post-page' ),
-				'left'	 => __( 'Left' ),
-				'bottom' => __( 'Bottom', 'content-views-query-and-display-post-page' ),
-				'right'	 => __( 'Right' ),
-			);
-
-			$result = apply_filters( PT_CV_PREFIX_ . 'tab_position', $tab_position );
 
 			return $result;
 		}

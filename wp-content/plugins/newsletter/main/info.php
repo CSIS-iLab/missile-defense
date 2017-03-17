@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $module = Newsletter::instance();
 $controls = new NewsletterControls();
@@ -172,6 +174,15 @@ if (!$controls->is_action()) {
                             <?php $controls->text('vimeo_url', 40); ?>
                             <p class="description">
                                 Your Vimeo url (e.g. http://vimeo.com/...)
+                            </p>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th>Instagram</th>
+                        <td>
+                            <?php $controls->text('instagram_url', 40); ?>
+                            <p class="description">
+                                Your Vimeo url (e.g. http://instagram.com/...)
                             </p>
                         </td>
                     </tr>

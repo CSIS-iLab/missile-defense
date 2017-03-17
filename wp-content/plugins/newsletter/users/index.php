@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 
@@ -241,7 +242,7 @@ $controls->data['search_page']++;
 
     <?php $controls->button_confirm('resend', __('Resend confirmation', 'newsletter'), __('Proceed?', 'newsletter'), $s->id); ?>
     <?php $controls->button_confirm('resend_welcome', __('Resend welcome', 'newsletter'), __('Proceed?', 'newsletter'), $s->id); ?>
-    <a href="<?php echo plugins_url('newsletter/do/profile.php'); ?>?nk=<?php echo $s->id . '-' . $s->token; ?>" class="button" target="_blank"><?php _e('Profile page', 'newsletter') ?></a>
+    <a href="<?php echo home_url('/') ?>?na=p&nk=<?php echo $s->id . '-' . $s->token; ?>" class="button" target="_blank"><?php _e('Profile page', 'newsletter') ?></a>
 </td>
 
 

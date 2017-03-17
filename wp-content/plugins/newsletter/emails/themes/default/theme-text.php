@@ -1,4 +1,6 @@
-This email requires a modern e-mail reader but you can view the email online here:
+<?php
+if (!defined('ABSPATH')) exit;
+?>This email requires a modern e-mail reader but you can view the email online here:
 
 {email_url}.
 

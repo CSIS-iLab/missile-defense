@@ -1,3 +1,7 @@
+<?php
+if (!defined('ABSPATH'))
+    exit;
+?>
 <table class="form-table">
     <tr>
         <th>Max posts</th>

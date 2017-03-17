@@ -1,3 +1,7 @@
+<?php
+if (!defined('ABSPATH')) exit;
+?>
+
 <h4>Subscriptions by month (max 12 months)</h4>
 <?php
 $months = $wpdb->get_results("select count(*) as c, concat(year(created), '-', date_format(created, '%m')) as d from " . NEWSLETTER_USERS_TABLE . " where status='C' group by concat(year(created), '-', date_format(created, '%m')) order by d desc limit 12");

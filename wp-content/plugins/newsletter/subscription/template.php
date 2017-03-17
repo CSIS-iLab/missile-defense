@@ -1,4 +1,7 @@
 <?php
+if (!defined('ABSPATH'))
+    exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterSubscription::instance();
@@ -10,21 +13,21 @@ if (!$controls->is_action()) {
         $module->save_options($controls->data, 'template');
 
         if (strpos($controls->data['template'], '{message}') === false) {
-            $controls->errors = 'Warning: the tag {message} is missing in your template';
+            $controls->errors = __('The tag {message} is missing in your template', 'newsletter');
         }
 
-        $controls->messages = 'Saved.';
+        $controls->add_message_saved();
     }
     if ($controls->is_action('reset')) {
         $controls->data['template'] = file_get_contents(dirname(__FILE__) . '/email.html');
-        $controls->messages = 'Done.';
+        $controls->add_message_done();
     }
 
     if ($controls->is_action('test')) {
 
         $users = NewsletterUsers::instance()->get_test_users();
         if (count($users) == 0) {
-            $controls->errors = 'There are no test subscribers. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+            $controls->errors = __('No test subscribers found.', 'newsletter') . ' <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank"><i class="fa fa-info-circle"></i></a>';
         } else {
             $template = $controls->data['template'];
             if (strpos($template, '{message}') === false) {
@@ -43,12 +46,32 @@ if (!$controls->is_action()) {
                 Newsletter::instance()->mail($user->email, 'Newsletter Messages Template Test', $newsletter->replace($message, $user));
             }
             $controls->messages .= 'Test emails sent to ' . count($users) . ' test subscribers: ' .
-                    implode(', ', $addresses) . '. Read more about test subscribers <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank">here</a>.';
+                    implode(', ', $addresses) . '.' . ' <a href="http://www.thenewsletterplugin.com/plugins/newsletter/subscribers-module#test" target="_blank"><i class="fa fa-info-circle"></i></a>';
         }
     }
 }
 ?>
-
+<!--
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/codemirror.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/show-hint.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/xml/xml.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/css/css.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/javascript/javascript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/htmlmixed/htmlmixed.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/show-hint.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/xml-hint.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/html-hint.js"></script>
+<script>
+    jQuery(function () {
+        var editor = CodeMirror.fromTextArea(document.getElementById("options-template"), {
+            lineNumbers: true,
+            mode: 'htmlmixed',
+            extraKeys: {"Ctrl-Space": "autocomplete"}
+        });
+    });
+</script>
+-->
 <div class="wrap" id="tnp-wrap">
 
     <?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>

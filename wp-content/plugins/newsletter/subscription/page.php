@@ -12,7 +12,7 @@
 //
 // and modify that copy.
 
-include '../../../../wp-load.php';
+if (!defined('ABSPATH')) exit;
 
 $module = NewsletterSubscription::instance();
 $user = $module->get_user_from_request();

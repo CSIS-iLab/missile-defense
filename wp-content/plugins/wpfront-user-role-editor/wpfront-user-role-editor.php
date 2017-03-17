@@ -4,7 +4,7 @@
  * Plugin Name: WPFront User Role Editor
  * Plugin URI: http://wpfront.com/user-role-editor-pro/ 
  * Description: Allows you to manage user roles.
- * Version: 2.12.4
+ * Version: 2.13
  * Author: Syam Mohan
  * Author URI: http://wpfront.com
  * License: GPL v3 

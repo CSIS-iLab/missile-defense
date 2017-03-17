@@ -38,8 +38,8 @@ $options['subscription_text'] =
 // Message show after a subbscription request has made.
 $options['confirmation_text'] =
 "<p>You have successfully subscribed to the newsletter. You'll
-receive a confirmation email in few minutes. Please follow the
-link in it to confirm your subscription. If the email takes
+receive a confirmation email in a few minutes. Please follow the
+link to confirm your subscription. If the email takes
 more than 15 minutes to appear in your mailbox, please check
 your spam folder.</p>";
 

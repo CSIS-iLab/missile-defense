@@ -1,7 +1,9 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 /* READ THE BLOCKS */
 $blocks_dir = NEWSLETTER_DIR . '/emails/tnp-composer/blocks/';
-$files = glob($blocks_dir . '*.block', GLOB_BRACE);
+$files = glob($blocks_dir . '*.block.php', GLOB_BRACE);
 foreach ($files as $file) {
     $path_parts = pathinfo($file);
     $filename = $path_parts['filename'];
@@ -64,10 +66,10 @@ $block_options = get_option('newsletter_main');
                             echo $body;
                         }
                     } else {
-                        include $blocks_dir . 'header-01-header.block';
-                        include $blocks_dir . 'content-01-hero.block';
-                        include $blocks_dir . 'footer-01-footer.block';
-                        include $blocks_dir . 'footer-02-canspam.block';
+                        include $blocks_dir . 'header-01-header.block.php';
+                        include $blocks_dir . 'content-01-hero.block.php';
+                        include $blocks_dir . 'footer-01-footer.block.php';
+                        include $blocks_dir . 'footer-02-canspam.block.php';
                     }
                     ?>
 

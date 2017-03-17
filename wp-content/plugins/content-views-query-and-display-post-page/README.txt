@@ -3,8 +3,8 @@ Contributors: PT Guy
 Donate link: https://www.contentviewspro.com/pricing/?utm_source=wporg&utm_medium=link&utm_campaign=donate
 Tags: post, posts, page, pages, grid, author, category, categories, tag, responsive, title, thumbnail, content
 Requires at least: 3.3
-Tested up to: 4.6.1
-Stable tag: 1.9.0
+Tested up to: 4.7.2
+Stable tag: 1.9.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,48 @@ If you are using "Your latest posts" as home page, you should paste this code `<
 
 
 == Changelog ==
+
+= 1.9.5 - February 08 2017 =
+* Fix: In some cases, HTML output of excerpt is broken when allows HTML tags in excerpt
+* Improvement: More clear and simple label, text for some settings
+* Update: Remove `<!-- [et_pb_line_break_holder] -->` of Divi theme from excerpt
+* Update: Hide empty `<p>` tag from excerpt (which can add unnecessary blank space to content area)
+* Update: Add default font-style normal for link & button
+
+= 1.9.4 - January 25 2016 =
+* New: Show link to add new View from Admin bar
+
+= 1.9.3.3 - January 21 2016 =
+* Fix: Correct output of Scrollable list in Tablet devices
+
+= 1.9.3.2 - January 11 2016 =
+* Update: simplify label of some settings in Add/Edit View page
+* Improvement: simplify code base and improve performance of Grid, Collapsible List
+* Improvement: some style adjustments for Scrollable List
+
+= 1.9.3.1 - December 27 2016 =
+* Update: Save temporary View data to WordPress transient if SESSION is not available
+* Improvement: Show all content of Collapsible list when printing
+
+= 1.9.3 - November 22 2016 =
+* Improvement: Remove prefix "by", "in" (before taxonomy, author) to save translation effort
+* Improvement: More accurate, time-saving mechanism to remove raw shortcodes text of other plugins in post content
+* Fix: "View maybe not exist" error, caused by custom filter hook (which modifies `post_type` in WordPress query) of another plugin
+
+= 1.9.2.1 - November 05 2016 =
+* Tweak: Update message when something went wrong, show exact error in Preview panel
+* Tweak: Update description for keyword setting
+* Tweak: Introduce filter "pt_cv_link_html" to modify HTML output of title, thumbnail, read-more button
+
+= 1.9.2 - October 24 2016 =
+* Revert force_balance_tags() for item HTML wrapper, to prevent broken output
+* Tweak: Remove unused functions
+* Tweak: Introduce filter "pt_cv_pagination_text" to customize pagination text
+
+= 1.9.1 - October 10 2016 =
+* Fix: XSS security flaw (a big thank to Tristan Madani)
+* Tweak: Improve logic/coding in settings processing, view output functions
+* Tweak: Update some descriptions in View dashboard
 
 = 1.9.0 - September 19 2016 =
 * Update: Make excerpt length works with languages which don't use spaces between words

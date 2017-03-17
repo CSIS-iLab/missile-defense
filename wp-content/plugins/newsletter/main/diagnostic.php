@@ -1,4 +1,7 @@
 <?php
+if (!defined('ABSPATH'))
+    exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $module = Newsletter::instance();
 $controls = new NewsletterControls();
@@ -37,6 +40,11 @@ if ($controls->is_action('engine_on')) {
     wp_clear_scheduled_hook('newsletter');
     wp_schedule_event(time() + 30, 'newsletter', 'newsletter');
     $controls->messages = 'Delivery engine reactivated.';
+}
+
+if ($controls->is_action('reset_stats')) {
+    update_option('newsletter_diagnostic_cron_calls', array(), false);
+    $controls->messages = 'Scheduler statistics reset.';
 }
 
 if ($controls->is_action('upgrade')) {
@@ -165,7 +173,34 @@ if (count($calls) > 1) {
             $max = $diff;
         }
     }
-    $mean = $mean / count($calls) - 1;
+    $mean = $mean / (count($calls) - 1);
+}
+
+// Send calls stats
+$send_calls = get_option('newsletter_diagnostic_send_calls', array());
+if (count($send_calls)) {
+    $send_max = 0;
+    $send_min = PHP_INT_MAX;
+    $send_total_time = 0;
+    $send_total_emails = 0;
+    $send_completed = 0;
+    for ($i = 0; $i < count($send_calls); $i++) {
+        if (empty($send_calls[$i][2])) continue;
+        
+        $delta = $send_calls[$i][1] - $send_calls[$i][0];
+        $send_total_time += $delta;
+        $send_total_emails += $send_calls[$i][2];
+        $send_mean = $delta / $send_calls[$i][2];
+        if ($send_min > $send_mean) {
+            $send_min = $send_mean;
+        }
+        if ($send_max < $send_mean) {
+            $send_max = $send_mean;
+        }
+        if (isset($send_calls[$i][3]))
+            $send_completed++;
+    }
+    $send_mean = $send_total_time / $send_total_emails;
 }
 ?>
 
@@ -194,14 +229,10 @@ if (count($calls) > 1) {
             <div id="tabs">
 
                 <ul>
-                    <li><a href="#tabs-tests"><?php _e('Tests', 'newsletter')?></a></li>
-                    <li><a href="#tabs-2"><?php _e('Scheduler', 'newsletter')?></a></li>
-                    <li><a href="#tabs-logging"><?php _e('Logging', 'newsletter')?></a></li>
-                    <li><a href="#tabs-4"><?php _e('System', 'newsletter')?></a></li>
-                    <li><a href="#tabs-upgrade"><?php _e('Maintenance', 'newsletter')?></a></li>
-                    <?php if (isset($_GET['debug'])) { ?>
-                        <li><a href="#tabs-debug">Debug Data</a></li>
-                    <?php } ?>
+                    <li><a href="#tabs-tests"><?php _e('Tests', 'newsletter') ?></a></li>
+                    <li><a href="#tabs-2"><?php _e('Scheduler', 'newsletter') ?></a></li>
+                    <li><a href="#tabs-logging"><?php _e('Logging', 'newsletter') ?></a></li>
+                    <li><a href="#tabs-upgrade"><?php _e('Maintenance', 'newsletter') ?></a></li>
                 </ul>
 
                 <!-- TESTS -->
@@ -235,7 +266,7 @@ if (count($calls) > 1) {
                     </p>
 
                     <table class="form-table">
-                       
+
                         <tbody>
                             <tr>
                                 <td>
@@ -250,7 +281,7 @@ if (count($calls) > 1) {
                                     Log folder
                                 </td>
                                 <td>
-                                    <code><?php echo NEWSLETTER_LOG_DIR?></code>
+                                    <code><?php echo NEWSLETTER_LOG_DIR ?></code>
                                     <br>
                                     <?php
                                     if (!is_dir(NEWSLETTER_LOG_DIR)) {
@@ -261,14 +292,8 @@ if (count($calls) > 1) {
                                     ?>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>
-                                    Log secret
-                                </td>
-                                <td>
-                                    <code><?php echo get_option("newsletter_logger_secret")?></code>
-                                </td>
-                            </tr>
+                            
+                            
                         </tbody>
                     </table>
 
@@ -278,8 +303,8 @@ if (count($calls) > 1) {
                 <!-- SEMAPHORES -->
                 <div id="tabs-2">
 
-                    <h3>Crons</h3>
-                    <table class="widefat">
+                    <h3>Scheduler</h3>
+                    <table class="widefat" style="width: auto; margin: 0">
                         <thead>
                             <tr>
                                 <th>Function</th>
@@ -288,94 +313,34 @@ if (count($calls) > 1) {
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>Scheduler execution interval mean</td>
-                                <td>
-                                    <?php
-                                    if (count($calls) > 10) {
-                                        echo (int) $mean . ' seconds';
-                                        if ($mean < NEWSLETTER_CRON_INTERVAL * 1.2) {
-                                            echo ' (<span style="color: green; font-weight: bold">OK</span>)';
-                                        } else {
-                                            echo ' (<span style="color: red; font-weight: bold">KO</span>)';
-                                        }
-                                    } else {
-                                        echo 'Still not enough data. It requires few hours to collect a relevant data set.';
-                                    }
-                                    ?>
 
-                                    <p class="description">
-                                        Should be less than <?php echo NEWSLETTER_CRON_INTERVAL; ?> seconds.
-                                        <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_blank">Read more</a>.
-                                    </p>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    WordPress Cron System
-                                </td>
-                                <td>
-                                    <?php
-                                    if (defined('DISABLE_WP_CRON') && DISABLE_WP_CRON)
-                                        echo 'DISABLED. (can be a problem, see the <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-delivery-engine" target="_tab">delivery engine documentation</a>)';
-                                    else
-                                        echo "ENABLED. (it's ok)";
-                                    ?>
-                                </td>
-                            </tr>
+
+
 
                             <tr>
+                                <td>Sending statistics</td>
                                 <td>
-                                    WordPress schedules
-                                </td>
-                                <td>
-                                    <?php
-                                    $schedules = wp_get_schedules();
-                                    if (empty($schedules)) {
-                                        echo 'Really bad, no schedules found, missing even the WordPress default schedules!';
-                                    } else {
-                                        $found = false;
 
-                                        foreach ($schedules as $key => &$data) {
-                                            if ($key == 'newsletter')
-                                                $found = true;
-                                            echo $key . ' - ' . $data['interval'] . ' s<br>';
-                                        }
-
-                                        if (!$found) {
-                                            echo 'The "newsletter" schedule was not found, email delivery won\'t work.';
-                                        }
-                                    }
-                                    ?>
+                                    <?php if (!$send_calls) { ?>
+                                        <em>Still not enough data.</em>
+                                    <?php } else { ?>
+                                        Average time to send an email: <?php echo sprintf("%.2f", $send_mean) ?> seconds<br>
+                                        Max mean time measured: <?php echo $send_max ?> seconds<br>
+                                        Min mean time measured: <?php echo $send_min ?> seconds<br>
+                                        Total emails: <?php echo $send_total_emails ?><br>
+                                        Batches prematurely interrupted: <?php echo sprintf("%.2f", (count($send_calls) - $send_completed) * 100.0 / count($send_calls)) ?>%<br>
+                                        Collected batch samples: <?php echo count($send_calls); ?><br> 
+                                    <?php } ?>                                    
                                 </td>
                             </tr>
-
-                            <tr>
-                                <td>
-                                    Delivery Engine
-                                </td>
-                                <td>
-                                    <?php echo NewsletterModule::format_scheduler_time('newsletter'); ?>
-                                    <?php $controls->button('trigger', 'Trigger now'); ?>
-                                    <p class="description">
-                                        If inactive or always in "running now" status your blog has a problem: <a href="http://www.thenewsletterplugin.com/how-to-make-the-wordpress-cron-work" target="_blank">read more here</a>.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Collected samples</td>
-                                <td>
-                                    <?php echo count($calls); ?>
-                                    <p class="description">Samples are collected in a maximum number of <?php echo Newsletter::MAX_CRON_SAMPLES; ?></p>
-                                </td>
-                            </tr>
+                           
 
                         </tbody>
                     </table>
-                    
+
                     <h3>Semaphores</h3>
-                    <table class="widefat">
+                    <table class="widefat" style="width: auto; margin: 0">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -401,169 +366,8 @@ if (count($calls) > 1) {
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <!-- SYSTEM -->
-                <div id="tabs-4">
-
-                    <table class="widefat">
-                        <thead>
-                            <tr>
-                                <th>Parameter</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>PHP Version</td>
-                                <td>
-                                    <?php echo phpversion(); ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Database Wait Timeout</td>
-                                <td>
-                                    <?php $wait_timeout = $wpdb->get_var("select @@wait_timeout"); ?>
-                                    <?php echo $wait_timeout; ?> (seconds)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>PHP Execution Time</td>
-                                <td>
-                                    <?php echo ini_get('max_execution_time'); ?> (seconds)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>NEWSLETTER_MAX_EXECUTION_TIME</td>
-                                <td>
-                                    <?php
-                                    if (defined('NEWSLETTER_MAX_EXECUTION_TIME')) {
-                                        echo NEWSLETTER_MAX_EXECUTION_TIME . ' (seconds)';
-                                    } else {
-                                        echo 'Not set';
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>NEWSLETTER_CRON_INTERVAL</td>
-                                <td>
-                                    <?php echo NEWSLETTER_CRON_INTERVAL . ' (seconds)'; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>PHP Memory Limit</td>
-                                <td>
-                                    <?php echo @ini_get('memory_limit'); ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>WordPress plugin url</td>
-                                <td>
-                                    <?php echo WP_PLUGIN_URL; ?>
-                                    <br>
-                                    Filters:
-
-                                    <?php
-                                    $filters = $wp_filter['plugins_url'];
-                                    if (!is_array($filters))
-                                        echo 'no filters attached to "plugin_urls"';
-                                    else {
-                                        echo '<ul>';
-                                        foreach ($filters as &$filter) {
-                                            foreach ($filter as &$entry) {
-                                                echo '<li>';
-                                                if (is_array($entry['function']))
-                                                    echo get_class($entry['function'][0]) . '->' . $entry['function'][1];
-                                                else
-                                                    echo $entry['function'];
-                                                echo '</li>';
-                                            }
-                                        }
-                                        echo '</ul>';
-                                    }
-                                    ?>
-                                    <p class="description">
-                                        This value should contains the full URL to your plugin folder. If there are filters
-                                        attached, the value can be different from the original generated by WordPress and sometime worng.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Blog Charset</td>
-                                <td>
-                                    <?php echo get_option('blog_charset'); ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>WordPress Memory limit</td>
-                                <td>
-                                    <?php echo WP_MEMORY_LIMIT; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>WP_DEBUG</td>
-                                <td>
-                                    <?php echo WP_DEBUG ? 'true' : 'false'; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Absolute path</td>
-                                <td>
-                                    <?php echo ABSPATH; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tables Prefix</td>
-                                <td>
-                                    <?php echo $wpdb->prefix; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Database Charset and Collate</td>
-                                <td>
-                                    <?php echo DB_CHARSET; ?> <?php echo DB_COLLATE; ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Action file accessibility (obsolete)</td>
-                                <td>
-                                    <?php
-                                    $res = wp_remote_get(plugins_url('newsletter') . '/do/subscribe.php?test=1');
-                                    if (is_wp_error($res)) {
-                                        echo 'It seems the Newsletter action files are not reachable. See the note and the file permission check below.';
-                                    } else {
-                                        echo 'OK';
-                                    }
-                                    ?>
-                                    <p class="description">
-                                        If this internal test fails, subscription, confirmation and so on could fail. Try to open 
-                                        <a href="<?php echo plugins_url('newsletter') . '/do/subscribe.php?test=1' ?>" target="_blank">this link</a>: if
-                                        it reports "ok", consider this test as passed.
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>File permissions (obsolete)</td>
-                                <td>
-                                    <?php
-                                    $index_owner = fileowner(ABSPATH . '/index.php');
-                                    $index_permissions = fileperms(ABSPATH . '/index.php');
-                                    $subscribe_permissions = fileperms(NEWSLETTER_DIR . '/do/subscribe.php');
-                                    $subscribe_owner = fileowner(NEWSLETTER_DIR . '/do/subscribe.php');
-                                    if ($index_permissions != $subscribe_permissions || $index_owner != $subscribe_owner) {
-                                        echo 'Plugin file permissions or owner differ from blog index.php permissions, that may compromise the subscription process';
-                                    } else {
-                                        echo 'OK';
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-
+                    
+            </div>
                 <div id="tabs-upgrade">
                     <p>
                         Plugin and modules are able to upgrade them self when needed. If you urgently need to try to force an upgrade, press the
@@ -592,17 +396,6 @@ if (count($calls) > 1) {
                         <?php $controls->button('upgrade_old', 'Force an upgrade from very old versions'); ?>
                     </p>
                 </div>
-
-                <?php if (isset($_GET['debug'])) { ?>
-                    <div id="tabs-debug">
-                        <h3>Extension versions data</h3>
-                        <pre style="font-size: 11px"><?php echo esc_html(print_r(get_option('newsletter_extension_versions'), true)); ?></pre>
-
-                        <h3>Update plugins data</h3>
-                        <pre style="font-size: 11px"><?php echo esc_html(print_r(get_site_transient('update_plugins'), true)); ?></pre>
-                    </div>
-                <?php } ?>
-            </div>
 
         </form>
 

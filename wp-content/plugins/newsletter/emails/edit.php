@@ -26,12 +26,18 @@ if (!$controls->is_action()) {
     $email_options = unserialize($email['options']);
     if (is_array($email_options)) {
         $controls->data = array_merge($controls->data, $email_options);
+        
+        foreach ($email_options as $name=>$value) {
+            $controls->data['options_' . $name] = $value;
+        }
     }
 }
 
 if ($controls->is_action('test') || $controls->is_action('save') || $controls->is_action('send') || $controls->is_action('editor')) {
 
     // If we were editing with visual editor (==0), we must read the extra <body> content
+    $controls->data['message'] = str_ireplace('<script', '<noscript', $controls->data['message']);
+    $controls->data['message'] = str_ireplace('</script', '</noscript', $controls->data['message']);
     if ($email['editor'] == 0) {
         $x = strpos($email['message'], '<body');
         if ($x !== false) {
@@ -43,7 +49,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     } else {
         $email['message'] = $controls->data['message'];
     }
-    $email['message_text'] = $controls->data['message_text'];
+    $email['message_text'] = str_ireplace('<script', '', $controls->data['message_text']);
     $email['subject'] = $controls->data['subject'];
     $email['track'] = $controls->data['track'];
     $email['private'] = $controls->data['private'];
@@ -56,6 +62,12 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
     }
     if (isset($controls->data['sex'])) {
         $email['options']['sex'] = $controls->data['sex'];
+    }
+    
+    foreach($controls->data as $name=>$value) {
+        if (strpos($name, 'options_') === 0) {
+            $email['options'][substr($name, 8)] = $value;
+        }
     }
 
     $email['options']['status'] = $controls->data['status'];
@@ -237,21 +249,33 @@ if ($email['editor'] == 0) {
         theme_advanced_resizing: true,
         theme_advanced_toolbar_location: "top",
         document_base_url: "<?php echo get_option('home'); ?>/",
-        content_css: ["<?php echo plugins_url('newsletter') ?>/emails/editor.css", "<?php echo plugins_url('newsletter') . '/emails/css.php?id=' . $email_id . '&' . time(); ?>"]
+        content_css: ["<?php echo plugins_url('newsletter') ?>/emails/editor.css", "<?php echo home_url('/') . '?na=emails-css&id=' . $email_id . '&' . time(); ?>"]
     });
+    
+    function tnp_media(name) {
+        var tnp_uploader = wp.media({
+            title: "Select an image",
+            button: {
+                text: "Select"
+            },
+            frame: 'post',
+            multiple: false,
+            displaySetting: true,
+            displayUserSettings: true
+        }).on("insert", function() {
+            wp.media;
+            var media = tnp_uploader.state().get("selection").first();
+            if (media.attributes.url.indexOf("http") !== 0) media.attributes.url = "http:" + media.attributes.url;
 
-    jQuery(document).ready(function () {
-        jQuery('#upload_image_button').click(function () {
-            tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
-            return false;
-        });
-
-        window.send_to_editor = function (html) {
-            var imgURL = html.match(/src=\"(.*?)\"/);
-            tinyMCE.execCommand('mceInsertContent', false, '<img src="' + imgURL[1] + '" />');
-            tb_remove();
-        }
-    });
+            if (!media.attributes.mime.startsWith("image")) {
+                tinyMCE.execCommand('mceInsertLink', false, media.attributes.url);
+            } else {
+                var display = tnp_uploader.state().display(media);
+                var url = media.attributes.sizes[display.attributes.size].url;
+                tinyMCE.execCommand('mceInsertContent', false, '<img src="' + url + '" />');
+            }
+        }).open();
+    }
 
     function template_refresh() {
         var d = document.getElementById('options_preview').contentWindow.document;
@@ -284,7 +308,7 @@ if ($email['editor'] == 0) {
     <form method="post" action="" id="newsletter-form">
         <?php $controls->init(array('cookie_name' => 'newsletter_emails_edit_tab')); ?>
 
-        <p class="submit">
+        <div class="tnp-submit">
             <?php $controls->button_back('?page=newsletter_emails_index') ?>
             <?php if ($email['status'] != 'sending' && $email['status'] != 'sent') $controls->button_save(); ?>
             <?php if ($email['status'] != 'sending' && $email['status'] != 'sent') $controls->button_confirm('test', 'Save and test', 'Save and send test emails to test addresses?'); ?>
@@ -294,7 +318,7 @@ if ($email['editor'] == 0) {
             <?php if ($email['status'] == 'paused') $controls->button_confirm('continue', __('Continue', 'newsletter'), 'Continue the delivery?'); ?>
             <?php if ($email['status'] == 'paused') $controls->button_confirm('abort', __('Stop', 'newsletter'), __('This totally stop the delivery, ok?', 'newsletter')); ?>
             <?php if ($email['status'] != 'sending' && $email['status'] != 'sent') $controls->button_confirm('editor', 'Save and switch to ' . ($email['editor'] == 0 ? 'HTML source' : 'visual') . ' editor', 'Sure?'); ?>
-        </p>
+        </div>
 
         <div id="tabs">
             <ul>
@@ -312,7 +336,7 @@ if ($email['editor'] == 0) {
 
 
 
-                <input id="upload_image_button" type="button" value="Choose or upload an image" />
+                <input type="button" value="Add media" onclick="tnp_media()">
 
                 <a href="http://www.thenewsletterplugin.com/plugins/newsletter/newsletter-tags" target="_blank"><?php _e('Available tags', 'newsletter') ?></a>
 
@@ -444,13 +468,15 @@ if ($email['editor'] == 0) {
                         </td>
                     </tr>
                 </table>
+                
+                <?php do_action('newsletter_emails_edit_other', $module->get_email($email_id), $controls) ?>
             </div>
             
             <div id="tabs-status">
                 <table class="form-table">
                     <tr valign="top">
                         <th>Email status</th>
-                        <td><?php echo $email['status']; ?></td>
+                        <td><?php echo esc_html($email['status']); ?></td>
                     </tr>
                     <tr valign="top">
                         <th>Messages sent</th>
@@ -458,7 +484,11 @@ if ($email['editor'] == 0) {
                     </tr>
                     <tr valign="top">
                         <th>Query (tech)</th>
-                        <td><?php echo $email['query']; ?></td>
+                        <td><?php echo esc_html($email['query']); ?></td>
+                    </tr>
+                    <tr valign="top">
+                        <th>Token (tech)</th>
+                        <td><?php echo esc_html($email['token']); ?></td>
                     </tr>
                 </table>
             </div>

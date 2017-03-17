@@ -1,7 +1,7 @@
 
 @import url(//fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:700);
-@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css);
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @import url(css/dropdown.css);
 @import url(css/jquery-ui/jquery-ui.css);
 @import url(statistics/css/tnp-statistics.css);
@@ -99,12 +99,7 @@
 .col-md-offset-0 {margin-left: 0;}
 
 
-/* jQuery UI tab patch */
-.ui-widget-header {
-    background: none;
-    border: 0;
-    border-bottom: 1px solid #ddd;
-}
+
 
 /* HEADER *********************************************************************/
 #tnp-header {
@@ -196,63 +191,171 @@
 }
 */
 
-.tnp-wrap select {
-    height: auto;
-    vertical-align: initial;
-}
-.tnp-wrap {
-    /*background-color: white;*/
-    /*padding: 10px;*/
-}
-
-.tnp-wrap td a {
-    text-decoration: underline;
+#tnp-body,
+#tnp-body p,
+#tnp-body td,
+#tnp-body th,
+#tnp-body input,
+#tnp-body select,
+#tnp-body textarea
+{
+    xfont-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
-.tnp-wrap a {
-    font-weight: bold;
+/* Default font colors for our dark background page body */
+#tnp-body h1, 
+#tnp-body h2, 
+#tnp-body h3, 
+#tnp-body h4, 
+#tnp-body p {
+    color: #fff;
 }
 
-.tnp-wrap h2 {
+#tnp-body .form-table h1,  
+#tnp-body .form-table h2,
+#tnp-body .form-table h3 {
+    font-family: "Montserrat",sans-serif!important;
 }
 
-.tnp-wrap h3 {
+#tnp-body a, #tnp-body a:hover, #tnp-body a:visited, #tnp-body a:active {
+    color: #E67E22; /* Orange */
 }
 
-.tnp-wrap h4 {
+/* Actiojn button container */
+#tnp-body .tnp-submit {
+    margin-bottom: 10px;
 }
 
-.tnp-wrap h5 {
-
+/* Primary button correction */
+#tnp-body .button,
+#tnp-body .button:visited,
+#tnp-body .button:hover,
+#tnp-body .button-primary, 
+#tnp-body .button-primary:visited, 
+#tnp-body .button-primary:hover,
+#tnp-body .button-secondary, 
+#tnp-body .button-secondary:visited, 
+#tnp-body .button-secondary:hover {
+    color: #fff;
 }
 
-.tnp-wrap ul li {
-    margin-left: 20px;
-    list-style-type: disc;
+/* Form tables correction */
+#tnp-body .form-table h1,  
+#tnp-body .form-table h2,
+#tnp-body .form-table h4,
+#tnp-body .form-table h3 {
+    color: #444;
 }
 
-.form-table {
+#tnp-body .form-table th, 
+#tnp-body .form-table td, 
+#tnp-body .form-table p {
+    color: #444;
+}
+
+#tnp-body .form-table td a, 
+#tnp-body .form-table td a:visited {
+    color: #27AE60; /* Green */
+}
+
+#tnp-body .form-table {
     background-color: #fff;
     border: 1px solid #ddd;
 }
 
-.form-table th {
+#tnp-body .form-table th {
     text-align: right;
     font-weight: bold;
     border-right: 1px solid #ddd;
     max-width: 200px;
     color: #000000;
 }
-.form-table th small {
+
+#tnp-body .form-table th small {
     font-weight: normal;
 }
 
-.widefat th {
+#tnp-body .form-table textarea {
+    width: 100%;
+}
+
+/* Table inside a field form table to create a grid of options */
+#tnp-body .form-table table {
+    border-collapse: collapse;
+}
+
+#tnp-body .form-table table td, 
+.form-table table th {
+    padding: 5px;
+    font-size: .9em;
+    font-weight: normal;
+    border: 1px solid #eee;
+}
+
+#tnp-body .form-table table thead th {
+    text-align: left;
+    font-weight: bold;
+}
+/* End of a table inside a form table */
+
+/* Wide fat tables */
+#tnp-body .widefat th {
     text-align: left;
 }
 
+/* Buttons on widgets top bar */
+#tnp-body .tnp-widget h3 a, 
+#tnp-body .tnp-widget h3 a:visited, 
+#tnp-body .tnp-widget h3 a:hover {
+    color: #fff;
+}
 
-p.submit {
+/* jQuery UI tabs corrections */
+#tnp-body #tabs h1,  
+#tnp-body #tabs h2,
+#tnp-body #tabs h3,
+#tnp-body #tabs h4,
+#tnp-body #tabs p,
+#tnp-body #tabs td,
+#tnp-body #tabs th,
+#tnp-body #tabs input,
+#tnp-body #tabs select,
+#tnp-body #tabs textarea,
+#tnp-body #tabs a {
+    color: #444;
+}
+
+/* Button correction */
+#tnp-body #tabs .button,
+#tnp-body #tabs .button:visited,
+#tnp-body #tabs .button:hover,
+#tnp-body #tabs .button-primary, 
+#tnp-body #tabs .button-primary:visited, 
+#tnp-body #tabs .button-primary:hover,
+#tnp-body #tabs .button-secondary, 
+#tnp-body #tabs .button-secondary:visited, 
+#tnp-body #tabs .button-secondary:hover {
+    color: #fff;
+}
+
+#tnp-body #tabs .ui-widget-header {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#tnp-body #tabs .ui-tabs-panel {
+    padding: 15px!important;
+}
+
+#tnp-body #tabs a.ui-tabs-anchor,
+#tnp-body #tabs a.ui-tabs-anchor:visited {
+    color: #444;
+}
+
+
+
+div.submit {
     margin-top: 5px;
     padding: 5px;
 }
@@ -291,9 +394,7 @@ table.clicks {
     background-color: #aaa;
 }
 
-.form-table textarea {
-    width: 100%;
-}
+
 
 .hints {
     xborder: 1px solid #e4e4ee;
@@ -704,11 +805,11 @@ p.description {
 
 #tnp-body {
     padding: 10px;
-    background-color: #34495E;
-    border-radius: 5px;
-    border-color: #34495E;
+    background-color: #28313C;
+    border-color: #28313C;
     border-width: 10px;
     border-style: solid;
+    overflow: auto;
 }
 
 .tnp-darkbg {
@@ -716,7 +817,7 @@ p.description {
 }
 
 #tnp-body h3 {
-    margin-top: 15px;
+    margin-top: 25px;
     clear: both;
 }
 
@@ -729,7 +830,7 @@ p.description {
 
 #tnp-heading {
     padding: 10px;
-    background-color: #34495E;
+    background-color: #28313C;
     margin-bottom: 10px;
     border-radius: 5px;
 }
@@ -848,6 +949,10 @@ p.description {
 
 /* Dashboard Box */
 
+.metabox-holder {
+    width: 100%;
+}
+
 .postbox {
     border: none;
 }
@@ -935,8 +1040,7 @@ p.description {
 #tnp-footer {
     margin-top: 10px;
     padding: 20px 10px 10px 40px;
-    background-color: #34495E;
-    border-radius: 5px;
+    background-color: #28313C;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -970,7 +1074,7 @@ p.description {
 /* Wrapper Background */
 
 #wpwrap {
-    background-color: #2C3E50;
+    background-color: #222B36 !important;
 }
 
 /* Global buttons styles */
@@ -1118,3 +1222,230 @@ span.wp-media-buttons-icon:before {
 .tnp-chart {
     border: 1px solid #eee;
 }  
+
+.tnp-db-table {
+    width: auto;
+    background-color: #fff; 
+}
+
+.tnp-db-table thead {
+    border-bottom: 1px solid #eee;
+}
+
+.tnp-db-table th {
+    font-weight: bold;
+}
+
+.tnp-db-table td, .tnp-db-table th {
+    padding: 3px;
+    font-family: monospace;
+    border: 0;
+}
+
+/* STATUS PANEL */
+
+.tnp-main-status h3, .tnp-main-status h4 {
+    color: #fff;
+}
+
+#tnp-status-table .tnp-ok {
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    background-color: #27AE60;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+#tnp-status-table .tnp-ko {
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    background-color: #E74C41;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+#tnp-status-table .tnp-maybe {
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    background-color: #F1C40F;
+    padding: 2px 10px;
+    border-radius: 10px;
+}
+
+.tnp-main-status .tnp-log-files li {
+    padding-left: 15px;
+}
+
+.tnp-main-status .tnp-log-files li, .tnp-main-status .tnp-log-files li a {
+    color: #fff;
+}
+
+.tnp-main-status .tnp-log-files .tnp-log-size {
+    font-style: italic;
+}
+
+table.widefat {
+    border: 0;
+    box-shadow: none;
+}
+
+#tnp-status-table tbody tr:nth-child(2n+1) {
+    background-color: #ECF0F1;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+#tnp-parameters-table tbody tr:nth-child(2n+1) {
+    background-color: #ECF0F1;
+    border-radius: 2px;
+    margin: 5px;
+}
+
+
+
+
+/* Extension Panel */
+
+
+
+.tnp-extension-premium-box, .tnp-extension-free-box, .tnp-integration-box {
+    width: 300px; 
+    height: 220px; 
+    background-color: #222B36; 
+    text-align: center;
+    margin: 20px; 
+    float: left;
+    position: relative;
+}
+
+.tnp-extension-premium-box:hover, .tnp-extension-free-box:hover, .tnp-integration-box:hover {
+    background-color: #232C35;
+    box-shadow: 1px 1px 15px #222B36;
+}
+
+.tnp-extension-premium-box p, .tnp-extension-free-box p, .tnp-integration-box p {
+    padding: 5px 10px;
+    color: #72777c;
+    font-size: 14px;
+    margin-top: 0px;
+}
+
+/*.tnp-extension-premium-box {
+    border-top: 10px solid #F39C12;
+}
+
+.tnp-extension-free-box {
+    border-top: 10px solid #2ECC71;
+}
+
+.tnp-integration-box {
+    border-top: 10px solid #3498DB;
+}*/
+
+.tnp-extension-premium-box h3 {
+    font-family: "Montserrat", sans-serif;
+    padding: 5px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-weight: 300;
+}
+
+.tnp-extension-free-box h3 {
+    font-family: "Montserrat", sans-serif;
+    padding: 5px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 0;
+    margin-top: 0px;
+    font-weight: 300;
+}
+
+.tnp-integration-box h3 {
+    font-family: "Montserrat", sans-serif;
+    padding: 5px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 0;
+    margin-top: 0px;
+    font-weight: 300;
+}
+
+.tnp-extension-premium-action {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding: 12px; 
+    font-family: "Montserrat", sans-serif;
+}
+
+.tnp-extension-free-action {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding: 12px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.tnp-integration-action {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    padding: 12px;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+.tnp-extension-premium-action span {
+    color: #27AE60;
+}
+
+.tnp-extension-free-action span {
+    color: #27AE60;
+}
+
+.tnp-integration-action span {
+    color: #27AE60;
+}
+
+.tnp-extension-activate {
+    color: #1ABC9C;
+    padding: 5px 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tnp-extension-install {
+    color: #2980B9;
+    padding: 5px 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tnp-extension-buy {
+    color: #F1C40F;
+    padding: 5px 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tnp-extension-free {
+    color: #D35400;
+    padding: 5px 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tnp-extensions-image img {
+    margin: 25px 0px -10px;
+}

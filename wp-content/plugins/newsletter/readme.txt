@@ -1,8 +1,8 @@
 === Newsletter ===
 Tags: newsletter,email,subscription,mass mail,list build,email marketing,direct mailing,automation,automated
 Requires at least: 3.4.0
-Tested up to: 4.6.0
-Stable tag: 4.6.0
+Tested up to: 4.7.2
+Stable tag: 4.8.0
 Contributors: satollo,webagile,michael-travan
 
 Add a real newsletter system to your blog. For free. With unlimited newsletters and subscribers.
@@ -76,6 +76,112 @@ Thank you, The Newsletter Team
 3. The Reports extension
 
 == Changelog ==
+
+= 4.8.0 =
+
+* New media selection on newsletter editor with size picker
+* Fixed the required attribute on profile form
+* Support for Analytics extension
+
+= 4.7.9 =
+
+* Removed the TGMPA library
+* Some CSS fixes
+* Fix few debug notices
+
+= 4.7.8 =
+
+* Old TGMPA library compatibility
+
+= 4.7.7 =
+
+* New extensions panel
+* Minor fixes and enhancements
+* New media selection on newsletter edit panel
+* Removed enqueuing of no more used scripts
+* Fixed the subscriber count on targeting panel
+
+= 4.7.6 =
+
+* New status panel
+
+= 4.7.5 =
+
+* Removed references to old css
+* Fixed the relative URLs problem in the composer
+
+= 4.7.4 =
+
+* Improved widget CSS
+* Added Instagram to social icons
+* Little style improvements
+
+= 4.7.3 =
+
+* Added custom CSS field to customize the forms appearance
+* Added codemirror for CSS edit
+* Added plugin version to style link
+* Added plugin version to script link
+* Corrected a tag in newsletter widget minimal
+* Added line height on form fields
+* Changed CSS class prefixes to tnp
+* Fixed a divide by zero on diagnostic panel
+* Improved the collection of emails sending speed data
+* Fixed a bug when adding a new subscriber from the admin panel
+
+= 4.7.2 =
+
+* Fixed a debug notice
+
+= 4.7.1 =
+
+* Fixed missing files in the package
+
+= 4.7.0 =
+
+* Added the selection for the Newsletter messages dedicated page
+* New forms CSS and validator
+* New widget for a minimal form
+* Use shortcode attribute "layout" to revert to old style table forms, using layout=table
+* Added reset button for diagnostic scheduler statistics
+
+= 4.6.8 =
+
+* Fixed the image browser/upload URL error in themes
+
+= 4.6.7 =
+
+* Fixed blank page without a newsletter dedicated page
+
+= 4.6.6 =
+
+* Fixed the blocks reload
+
+= 4.6.5 =
+
+* Fixed the style stripped when switching back and forth betwenn the visual and raw editor (from version 4.6.4)
+
+= 4.6.4 =
+
+* Fixed the profile link in admin panels
+* Fixed the composer editor
+* Cleanup of old code
+* Force the composer editor to keep the absolute urls
+
+= 4.6.3 =
+
+* Fixed the profile save with new action url
+
+= 4.6.2 =
+
+* Fixed the import option "override status" not working in update mode
+* Fixed the missing http when the couldflare plugin is installed (!)
+* Improved controls and security on open tracking link
+* Added few new diagnostic parameters
+
+= 4.6.1 =
+
+* Fixed a security issue on admin side only exploitable by logged in admins
 
 = 4.6.0 =
 
@@ -333,7 +439,7 @@ Thank you, The Newsletter Team
 * Added import subscribers from CSV file
 * Updated the WP compatibility version number
 * Fixed the save button on sent emails
-* Fixed the List-§Unsubscribe header with new URL schema
+* Fixed the List-�Unsubscribe header with new URL schema
 
 = 3.7.8 =
 
