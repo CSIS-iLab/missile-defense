@@ -214,6 +214,10 @@ article {
     	margin-left:20px;
     	margin-bottom:12px;
     }
+
+    &.relatedLinks p {
+    	columns: initial;
+    }
 }
 
 /*=====  End of Post Content  ======*/
