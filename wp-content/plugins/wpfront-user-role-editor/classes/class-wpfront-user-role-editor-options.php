@@ -62,6 +62,19 @@ if (!class_exists('WPFront_User_Role_Editor_Options')) {
 
             return $post_types;
         }
+        
+        private function get_extendable_post_types() {
+            $types = $this->main->get_extendable_post_types();
+            $post_types = get_post_types(NULL, 'objects');
+            $disable = $this->disable_extended_permission_post_types();
+            
+            $names = array();
+            foreach ($types as $value) {
+                $names[$value] = (OBJECT) array('label' => $post_types[$value]->label, 'enabled' => in_array($value, $disable)); 
+            }
+            
+            return $names;
+        }
 
         public function update_options_callback() {
             check_ajax_referer($_POST['referer'], 'nonce');
@@ -73,6 +86,7 @@ if (!class_exists('WPFront_User_Role_Editor_Options')) {
             $this->update_option_boolean('remove_nonstandard_capabilities_restore');
             $this->update_option_boolean('override_edit_permissions');
             $this->update_option_boolean('disable_navigation_menu_permissions');
+            $this->update_option_boolean('override_navigation_menu_permissions');
 
             if ($this->multisite && wp_is_large_network()) {
                 $this->update_option_boolean('enable_large_network_functionalities');
@@ -97,6 +111,24 @@ if (!class_exists('WPFront_User_Role_Editor_Options')) {
 
                     do_action('wpfront_ure_update_customize_permission_custom_post_types', $post_type_values, $this->customize_permission_custom_post_types());
                     $this->update_option('customize_permission_custom_post_types', implode(',', $post_type_values));
+                }
+            }
+            
+            if (isset($_POST['extendable-post-types'])) {
+                $extendable_post_types = $_POST['extendable-post-types'];
+                if (is_array($extendable_post_types)) {
+                    $post_type_values = $this->disable_extended_permission_post_types();
+                    foreach ($extendable_post_types as $key => $value) {
+                        if ($value === 'true') {
+                            if (!in_array($key, $post_type_values))
+                                $post_type_values[] = $key;
+                        } else {
+                            if (in_array($key, $post_type_values))
+                                $post_type_values = array_diff($post_type_values, array($key));
+                        }
+                    }
+
+                    $this->update_option('disable_extended_permission_post_types', implode(',', $post_type_values));
                 }
             }
 
@@ -209,6 +241,13 @@ if (!class_exists('WPFront_User_Role_Editor_Options')) {
 
             return $this->get_boolean_option('disable_navigation_menu_permissions');
         }
+        
+        public function override_navigation_menu_permissions() {
+            if ($this->multisite)
+                return $this->ms_override_navigation_menu_permissions();
+
+            return $this->get_boolean_option('override_navigation_menu_permissions');
+        }
 
         public function remove_data_on_uninstall() {
             if ($this->multisite)
@@ -219,6 +258,14 @@ if (!class_exists('WPFront_User_Role_Editor_Options')) {
 
         public function customize_permission_custom_post_types() {
             $value = $this->get_option('customize_permission_custom_post_types');
+            if ($value === NULL || $value === '')
+                return array();
+
+            return explode(',', $value);
+        }
+        
+        public function disable_extended_permission_post_types() {
+            $value = $this->get_option('disable_extended_permission_post_types');
             if ($value === NULL || $value === '')
                 return array();
 
@@ -259,6 +306,10 @@ if (!class_exists('WPFront_User_Role_Editor_Options')) {
 
         public function ms_disable_navigation_menu_permissions() {
             return $this->get_boolean_option('disable_navigation_menu_permissions', TRUE);
+        }
+        
+        public function ms_override_navigation_menu_permissions() {
+            return $this->get_boolean_option('override_navigation_menu_permissions', TRUE);
         }
 
         public function ms_remove_data_on_uninstall() {
@@ -307,6 +358,11 @@ if (!class_exists('WPFront_User_Role_Editor_Options')) {
                         . $this->__('If enabled, disables navigation menu permissions functionality.')
                         . '</p>'
                         . '<p><strong>'
+                        . $this->__('Override Navigation Menu Permissions')
+                        . '</strong>: '
+                        . $this->__('If enabled, tries to reset navigation menu permissions UI.')
+                        . '</p>'
+                        . '<p><strong>'
                         . $this->__('Remove Data on Uninstall')
                         . '</strong>: '
                         . $this->__('If enabled, removes all data related to this plugin from database (except roles data) including license information if any. This will not deactivate the license automatically.')
@@ -337,6 +393,11 @@ if (!class_exists('WPFront_User_Role_Editor_Options')) {
                         . $this->__('Disable Navigation Menu Permissions')
                         . '</strong>: '
                         . $this->__('If enabled, disables navigation menu permissions functionality.')
+                        . '</p>'
+                        . '<p><strong>'
+                        . $this->__('Override Navigation Menu Permissions')
+                        . '</strong>: '
+                        . $this->__('If enabled, tries to reset navigation menu permissions UI.')
                         . '</p>'
                         . '<p><strong>'
                         . $this->__('Remove Data on Uninstall')

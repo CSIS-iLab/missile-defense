@@ -8,7 +8,9 @@ jQuery.fn.hover_edit = function () {
                 });
                 jQuery(".tnpc-row-edit-hover i").click(function (e) {
                     e.preventDefault();
-                    target = jQuery(this).parent().parent();
+                    $this = jQuery(this);
+                    target = $this.parent().parent();
+                    $this.parent().remove();
 
                     //edit image
                     if (target.attr("data-type") == 'image') {
@@ -30,8 +32,9 @@ jQuery.fn.hover_edit = function () {
                     if (target.attr("data-type") == 'link') {
                         jQuery("#tnpc-edit-link .title").val(target.text());
                         jQuery("#tnpc-edit-link .url").val(target.attr("href"));
-                        jQuery("#tnpc-edit-link").fadeIn(500);
-                        jQuery("#tnpc-edit-link .tnpc-edit-box").slideDown(500);
+                        jQuery("#tnpc-edit-link").show();
+                        jQuery("#tnpc-edit-link .tnpc-edit-box").show();
+                        //jQuery("#tnpc-edit-link .tnpc-edit-box").slideDown(300);
                         jQuery("#tnpc-edit-link .tnpc-edit-box-buttons-save").click(function () {
                             jQuery(this).parent().parent().parent().fadeOut(500)
                             jQuery(this).parent().parent().slideUp(500)
@@ -90,6 +93,8 @@ jQuery.fn.hover_edit = function () {
                         tinymce.init({
                             selector: '#tnpc-edit-text .text',
                             menubar: false,
+                            relative_urls: false,
+                            remove_script_host: false,
                             toolbar: [
                                 'fontselect fontsizeselect forecolor | bold italic underline | link | bullist numlist | emoticons | alignleft aligncenter alignright alignjustify tnp'
                             ],
@@ -234,7 +239,7 @@ jQuery.fn.perform_block_edit = function () {
             });
             var data = {
                 'action': 'tnpc_render',
-                'b': target.parent().parent().parent().data('block'),
+                'b': target.parent().parent().parent().data('block') + ".block",
                 'num': jQuery("#tnpc-edit-posts .number").val(),
                 'tags': jQuery("#tnpc-edit-posts .tags").val(),
                 'categories': categories

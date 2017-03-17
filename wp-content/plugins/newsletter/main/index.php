@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 
 $controls = new NewsletterControls();
@@ -349,7 +351,7 @@ $labels = array_reverse($labels);
                                                 ?></td>
                                             <td style="white-space:nowrap">
                                                 <a class="button" title="<?php _e('Edit', 'newsletter') ?>" href="<?php echo $users_module->get_admin_page_url('edit'); ?>&amp;id=<?php echo $s->id; ?>"><i class="fa fa-pencil"></i></a>
-                                                <a title="<?php _e('Profile', 'newsletter') ?>" href="<?php echo plugins_url('newsletter/do/profile.php'); ?>?nk=<?php echo $s->id . '-' . $s->token; ?>" class="button" target="_blank"><i class="fa fa-user"></i></a>
+                                                <a title="<?php _e('Profile', 'newsletter') ?>" href="<?php echo home_url('/') ?>?na=p&nk=<?php echo $s->id . '-' . $s->token; ?>" class="button" target="_blank"><i class="fa fa-user"></i></a>
                                             </td>
                                         </tr>
 <?php } ?>

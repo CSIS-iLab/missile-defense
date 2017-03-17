@@ -13,6 +13,7 @@ if ($controls->is_action('theme')) {
         $email['status'] = 'new';
         $email['subject'] = __('Here the email subject', 'newsletter');
         $email['track'] = 1;
+        $email['token'] = $module->get_token();
 
         $theme_options = $module->get_current_theme_options();
         $theme_url = $module->get_current_theme_url();
@@ -124,7 +125,6 @@ function newsletter_emails_get_theme_options($theme) {
 
 <div class="wrap" id="tnp-wrap">
 
-    <?php $help_url = 'http://www.thenewsletterplugin.com/plugins/newsletter/newsletters-module';  ?>
 	<?php include NEWSLETTER_DIR . '/tnp-header.php'; ?>
 
 	<div id="tnp-heading">
@@ -138,34 +138,34 @@ function newsletter_emails_get_theme_options($theme) {
            </div>
 
 	<div id="tnp-body" class="tnp-body-lite"> 
-            
-    <form method="post" action="<?php echo $module->get_admin_page_url('new'); ?>">
-        <?php $controls->init(); ?>
-        <?php $controls->hidden('theme'); ?>
 
-        <table style="width: 100%; border-collapse: collapse">
-            <tr>
-                <td style="text-align: left; vertical-align: top; border-bottom: 1px solid #ddd; padding-bottom: 10px">
-                    <div style="float: right; margin-left: 15px;"><?php $controls->button_primary('save', __('Refresh the preview', 'newsletter')); ?></div>
+        <form method="post" action="<?php echo $module->get_admin_page_url('new'); ?>">
+            <?php $controls->init(); ?>
+            <?php $controls->hidden('theme'); ?>
 
-                </td>
-                <td style="text-align: left; vertical-align: top; border-bottom: 1px solid #ddd; padding-bottom: 10px">
-                    <div style="float: right"><?php $controls->button_primary('create', 'Proceed to edit &raquo;', 'this.form.action=\'' . plugins_url('newsletter') . '/emails/create.php\';this.form.submit()'); ?></div>
-                    <img style="position: relative; left: 5px; top: 10px;"src="<?php echo plugins_url('newsletter') ?>/images/arrow.png" height="35">
-                </td>
-            </tr>
-            <tr>
-                <td style="width: 600px; vertical-align: top; padding-top: 10px">
-                    <?php @include $module->get_current_theme_file_path('theme-options.php'); ?>
-                </td>
-                <td style="vertical-align: top; padding-top: 15px; padding-left: 15px">
-                    <iframe src="<?php echo wp_nonce_url(plugins_url('newsletter') . '/emails/preview.php?' . time(), 'view'); ?>" height="700" style="width: 100%; border: 1px solid #ccc"></iframe>
-                </td>
-            </tr>
-        </table>
+            <table style="width: 100%; border-collapse: collapse">
+                <tr>
+                    <td style="text-align: left; vertical-align: top; border-bottom: 1px solid #ddd; padding-bottom: 10px">
+                        <div style="float: right; margin-left: 15px;"><?php $controls->button_primary('save', __('Refresh the preview', 'newsletter')); ?></div>
 
-    </form>
-</div>
+                    </td>
+                    <td style="text-align: left; vertical-align: top; border-bottom: 1px solid #ddd; padding-bottom: 10px">
+                        <div style="float: right"><?php $controls->button_primary('create', 'Proceed to edit &raquo;', 'this.form.action=\'' . home_url('/') . '?na=emails-create\';this.form.submit()'); ?></div>
+                        <img style="position: relative; left: 5px; top: 10px;"src="<?php echo plugins_url('newsletter') ?>/images/arrow.png" height="35">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 600px; vertical-align: top; padding-top: 10px">
+                        <?php @include $module->get_current_theme_file_path('theme-options.php'); ?>
+                    </td>
+                    <td style="vertical-align: top; padding-top: 15px; padding-left: 15px">
+                        <iframe src="<?php echo wp_nonce_url(home_url('/') . '?na=emails-preview&ts=' . time(), 'view'); ?>" height="700" style="width: 100%; border: 1px solid #ccc"></iframe>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
 
     <?php include NEWSLETTER_DIR . '/tnp-footer.php'; ?>
     

@@ -1,17 +1,17 @@
 <?php
 /*
 Plugin Name: Easy Twitter Feed Widget
-Plugin URI: http://designorbital.com/easy-twitter-feed-widget/
+Plugin URI: https://designorbital.com/easy-twitter-feed-widget/
 Description: Add twitter feeds on your WordPress site by using the Easy Twitter Feed Widget plugin.
 Author: DesignOrbital.com
-Author URI: http://designorbital.com
-Text Domain: kamn-easy-twitter-feed-widget
+Author URI: https://designorbital.com
+Text Domain: do-etfw
 Domain Path: /languages/
-Version: 0.5
+Version: 0.6
 License: GPL v3
 
 Easy Twitter Feed Widget Plugin
-Copyright (C) 2013, DesignOrbital.com
+Copyright (C) 2012-2016, DesignOrbital.com
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,24 +27,46 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/** Plugin Constants */
-if ( !defined( 'KAMN_EASY_TWITTER_FEED_WIDGET_VERSION' ) ) {
-	define( 'KAMN_EASY_TWITTER_FEED_WIDGET_VERSION', '0.1' );
+/**
+ * Constants
+ */
+if ( ! defined( 'DO_ETFW_VERSION' ) ) {
+	define( 'DO_ETFW_VERSION', '0.6' );
 }
 
-/** Directory Location Constants */
-if ( !defined( 'KAMN_EASY_TWITTER_FEED_WIDGET_DIR' ) ) {
-	define( 'KAMN_EASY_TWITTER_FEED_WIDGET_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
+if ( ! defined( 'DO_ETFW_DIR' ) ) {
+	define( 'DO_ETFW_DIR', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 }
 
-if ( !defined( 'KAMN_EASY_TWITTER_FEED_WIDGET_DIR_BASENAME' ) ) {
-	define( 'KAMN_EASY_TWITTER_FEED_WIDGET_DIR_BASENAME', trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) );
+if ( ! defined( 'DO_ETFW_DIR_BASENAME' ) ) {
+	define( 'DO_ETFW_DIR_BASENAME', trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) );
 }
 
-/** URI Location Constants */
-if ( !defined( 'KAMN_EASY_TWITTER_FEED_WIDGET_URI' ) ) {
-	define( 'KAMN_EASY_TWITTER_FEED_WIDGET_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+if ( ! defined( 'DO_ETFW_URI' ) ) {
+	define( 'DO_ETFW_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 }
 
-/** Plugin Init */
-require_once( KAMN_EASY_TWITTER_FEED_WIDGET_DIR . 'lib/init.php' );
+/**
+ * Load plugin textdomain.
+ */
+function do_etfw_load_textdomain() {
+  load_plugin_textdomain( 'do-etfw', false, DO_ETFW_DIR_BASENAME. 'languages/' );
+}
+add_action( 'plugins_loaded', 'do_etfw_load_textdomain' );
+
+/**
+ * Custom functions.
+ */
+require DO_ETFW_DIR . 'inc/extras.php';
+
+/**
+ * Implement the Custom widgets.
+ */
+require DO_ETFW_DIR . '/inc/widgets.php';
+
+/**
+ * Admin Page
+ */
+if ( is_admin() ) {
+	require DO_ETFW_DIR . 'inc/admin.php';
+}

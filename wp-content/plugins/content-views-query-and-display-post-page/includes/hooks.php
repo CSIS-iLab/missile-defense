@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Custom filters/actions
  *
@@ -15,6 +14,7 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 	 * @name PT_CV_Hooks
 	 */
 	class PT_CV_Hooks {
+
 		/**
 		 * Add custom filters/actions
 		 */
@@ -22,6 +22,11 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 			add_filter( PT_CV_PREFIX_ . 'validate_settings', array( __CLASS__, 'filter_validate_settings' ), 10, 2 );
 			add_filter( PT_CV_PREFIX_ . 'field_content_excerpt', array( __CLASS__, 'filter_field_content_excerpt' ), 9, 3 );
 			add_filter( PT_CV_PREFIX_ . 'item_col_class', array( __CLASS__, 'filter_item_col_class' ), 20, 2 );
+
+			if ( apply_filters( PT_CV_PREFIX_ . 'prevent_broken_excerpt', true ) ) {
+				add_filter( PT_CV_PREFIX_ . 'before_trim_words', array( __CLASS__, 'filter_before_trim_words' ) );
+				add_filter( PT_CV_PREFIX_ . 'after_trim_words', array( __CLASS__, 'filter_after_trim_words' ) );
+			}
 
 			/**
 			 * @since 1.7.5
@@ -33,6 +38,7 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 			add_action( PT_CV_PREFIX_ . 'before_query', array( __CLASS__, 'action_before_query' ) );
 			add_action( PT_CV_PREFIX_ . 'before_process_item', array( __CLASS__, 'action_before_process_item' ) );
 			add_action( PT_CV_PREFIX_ . 'after_process_item', array( __CLASS__, 'action_after_process_item' ) );
+			add_action( PT_CV_PREFIX_ . 'before_content', array( __CLASS__, 'action_before_content' ) );
 
 			// For only Frontend
 			add_action( 'init', array( __CLASS__, 'action_init' ), 1 );
@@ -45,16 +51,8 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 		 * @param array  $args  The Query parameters array
 		 */
 		public static function filter_validate_settings( $errors, $args ) {
-			$dargs = PT_CV_Functions::get_global_variable( 'dargs' );
-
-			//			echo "<pre>";
-			//			var_dump( 'query args', $args );
-			//			echo "</pre>";
-			//			echo "<pre>";
-			//			var_dump( 'display args', $dargs );
-			//			echo "</pre>";
-
-			$messages = array(
+			$dargs		 = PT_CV_Functions::get_global_variable( 'dargs' );
+			$messages	 = array(
 				'field'	 => array(
 					'select' => __( 'Please select an option in', 'content-views-query-and-display-post-page' ) . ' : ',
 					'text'	 => __( 'Please set value in', 'content-views-query-and-display-post-page' ) . ' : ',
@@ -72,12 +70,12 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 
 			// View type
 			if ( empty( $dargs[ 'view-type' ] ) ) {
-				$errors[] = $messages[ 'field' ][ 'select' ] . $messages[ 'tab' ][ 'display' ] . ' > ' . __( 'View type (Layout)', 'content-views-query-and-display-post-page' );
+				$errors[] = $messages[ 'field' ][ 'select' ] . $messages[ 'tab' ][ 'display' ] . ' > ' . __( 'Layout', 'content-views-query-and-display-post-page' );
 			}
 
 			// Layout format
 			if ( empty( $dargs[ 'layout-format' ] ) ) {
-				$errors[] = $messages[ 'field' ][ 'select' ] . $messages[ 'tab' ][ 'display' ] . ' > ' . __( 'Layout format', 'content-views-query-and-display-post-page' );
+				$errors[] = $messages[ 'field' ][ 'select' ] . $messages[ 'tab' ][ 'display' ] . ' > ' . __( 'Format', 'content-views-query-and-display-post-page' );
 			}
 
 			// Field settings
@@ -96,7 +94,7 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 				switch ( $dargs[ 'view-type' ] ) {
 					case 'grid':
 						if ( empty( $dargs[ 'number-columns' ] ) ) {
-							$errors[] = $messages[ 'field' ][ 'text' ] . $messages[ 'tab' ][ 'display' ] . ' > ' . __( 'View type (Layout)', 'content-views-query-and-display-post-page' ) . ' > ' . __( 'Items per row', 'content-views-query-and-display-post-page' );
+							$errors[] = $messages[ 'field' ][ 'text' ] . $messages[ 'tab' ][ 'display' ] . ' > ' . __( 'Layout', 'content-views-query-and-display-post-page' ) . ' > ' . __( 'Items per row', 'content-views-query-and-display-post-page' );
 						}
 						break;
 				}
@@ -136,20 +134,84 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 		 * @return array
 		 */
 		public static function filter_item_col_class( $args, $span_width ) {
-			// In CV: apply for Grid only
 			if ( PT_CV_Functions::get_global_variable( 'view_type' ) === 'grid' ) {
-				// If was not applied in CVPro
-				$key = PT_CV_PREFIX_ . 'item_col_class';
-				if ( array_key_exists( $key, $GLOBALS[ 'wp_filter' ] ) && count( $GLOBALS[ 'wp_filter' ][ $key ] ) == 1 ) {
-					$tablet_col	 = (int) PT_CV_Functions::setting_value( PT_CV_PREFIX . 'resp-tablet-number-columns' );
-					$mobile_col	 = (int) PT_CV_Functions::setting_value( PT_CV_PREFIX . 'resp-number-columns' );
+				$tablet_col	 = (int) PT_CV_Functions::setting_value( PT_CV_PREFIX . 'resp-tablet-number-columns' );
+				$mobile_col	 = (int) PT_CV_Functions::setting_value( PT_CV_PREFIX . 'resp-number-columns' );
 
-					$args[]	 = 'col-sm-' . (int) ( 12 / ($tablet_col ? $tablet_col : 2) );
-					$args[]	 = 'col-xs-' . (int) ( 12 / ($mobile_col ? $mobile_col : 1) );
+				$sm_class	 = 'col-sm-' . (int) ( 12 / ($tablet_col ? $tablet_col : 2) );
+				$xs_class	 = 'col-xs-' . (int) ( 12 / ($mobile_col ? $mobile_col : 1) );
+
+				if ( !in_array( $sm_class, $args ) ) {
+					$args[] = $sm_class;
+				}
+
+				if ( !in_array( $xs_class, $args ) ) {
+					$args[] = $xs_class;
 				}
 			}
 
 			return $args;
+		}
+
+		public static function filter_before_trim_words( $content ) {
+			if ( PT_CV_Functions::setting_value( PT_CV_PREFIX . 'field-excerpt-allow_html' ) ) {
+				global $cv_replaced_tags, $cv_replaced_idx;
+				# reset for each post
+				$cv_replaced_tags	 = array();
+				$cv_replaced_idx	 = 0;
+
+				$content = preg_replace_callback( '/<(\/?)[^>]+>/', array( __CLASS__, '_callback_before_trim_words' ), $content );
+			}
+
+			return $content;
+		}
+
+		/**
+		 * Temporary replace HTML tag content by a simple code which doesn't impact trimming word function
+		 * @since 1.9.4
+		 *
+		 * @global type $cv_replaced_tags
+		 * @global type $cv_replaced_idx
+		 * @param type $matches
+		 * @return string
+		 */
+		public static function _callback_before_trim_words( $matches ) {
+			global $cv_replaced_tags, $cv_replaced_idx;
+
+			$return = $matches;
+			if ( !empty( $matches[ 0 ] ) ) {
+				$cv_replaced_tags[ ++$cv_replaced_idx ]	 = $matches[ 0 ];
+				$return									 = "@@" . $cv_replaced_idx;
+			}
+
+			return $return;
+		}
+
+		public static function filter_after_trim_words( $content ) {
+			if ( PT_CV_Functions::setting_value( PT_CV_PREFIX . 'field-excerpt-allow_html' ) ) {
+				$content = preg_replace_callback( '/@@(\d+)/', array( __CLASS__, '_callback_after_trim_words' ), $content );
+			}
+
+			return $content;
+		}
+
+		/**
+		 * Revert HTML tag content
+		 * @since 1.9.4
+		 *
+		 * @global type $cv_replaced_tags
+		 * @param type $matches
+		 * @return \type
+		 */
+		public static function _callback_after_trim_words( $matches ) {
+			global $cv_replaced_tags;
+
+			$return = $matches;
+			if ( !empty( $matches[ 1 ] ) && isset( $cv_replaced_tags[ (int) $matches[ 1 ] ] ) ) {
+				$return = $cv_replaced_tags[ (int) $matches[ 1 ] ];
+			}
+
+			return $return;
 		}
 
 		// Disable WP 4.4 responsive image
@@ -183,6 +245,37 @@ if ( !class_exists( 'PT_CV_Hooks' ) ) {
 		public static function action_after_process_item() {
 			// Enable View Shortcode again
 			PT_CV_Functions::disable_view_shortcode( 'recovery' );
+		}
+
+		public static function action_before_content() {
+			global $shortcode_tags, $cv_refresh_sct, $cv_get_sct, $cv_sc_tagnames, $cv_sc_complete;
+			$trans_key		 = 'cv_shortcode_tags_193';
+			# Make it theme independently
+			$cv_sc_complete	 = get_option( 'cv_save_sc_complete' );
+
+			if ( !defined( 'PT_CV_DOING_PAGINATION' ) && !defined( 'PT_CV_DOING_PREVIEW' ) ) {
+				if ( !$cv_refresh_sct ) {
+					if ( $cv_sc_complete ) {
+						set_transient( $trans_key, $shortcode_tags, HOUR_IN_SECONDS );
+					} else {
+						$tagnames		 = array_keys( $shortcode_tags );
+						$cv_sc_tagnames	 = join( '|', array_map( 'preg_quote', $tagnames ) );
+						set_transient( $trans_key, $cv_sc_tagnames, HOUR_IN_SECONDS );
+					}
+
+					$cv_refresh_sct = 1;
+				}
+			} else {
+				if ( !$cv_get_sct && $stored_sct = get_transient( $trans_key ) ) {
+					if ( $cv_sc_complete ) {
+						$shortcode_tags = $stored_sct;
+					} else {
+						$cv_sc_tagnames = $stored_sct;
+					}
+
+					$cv_get_sct = 1;
+				}
+			}
 		}
 
 		public static function action_init() {

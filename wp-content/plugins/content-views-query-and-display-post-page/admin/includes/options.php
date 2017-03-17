@@ -171,7 +171,7 @@ if ( !class_exists( 'PT_Options_Framework' ) ) {
 			}
 
 			if ( $value === '' && (isset( $param[ 'std' ] ) && $param[ 'std' ] !== '') ) {
-				if ( in_array( $param[ 'type' ], array( 'number', 'text', 'color' ) ) ) {
+				if ( in_array( $param[ 'type' ], array( 'number', 'text' ) ) ) {
 					if ( $name !== PT_CV_PREFIX . 'limit' ) {
 						$value = $param[ 'std' ];
 					}
@@ -205,7 +205,7 @@ if ( !class_exists( 'PT_Options_Framework' ) ) {
 			$id			 = !empty( $param[ 'id' ] ) ? "id='" . PT_CV_PREFIX . esc_attr( $param[ 'id' ] ) . "'" : '';
 			$value		 = isset( $value_ ) ? $value_ : self::field_value( $data, $param, $name );
 			$description = isset( $param[ 'desc' ] ) ? $param[ 'desc' ] : '';
-			$placeholder = isset( $param[ 'placeholder' ] ) ? $param[ 'placeholder' ] : '';
+			$placeholder = isset( $param[ 'placeholder' ] ) ? esc_attr( $param[ 'placeholder' ] ) : '';
 
 			// Add extra information of option type
 			switch ( $type ) {
@@ -238,6 +238,8 @@ if ( !class_exists( 'PT_Options_Framework' ) ) {
 				case 'password':
 				case 'number':
 				case 'url':
+					$value = !empty( $value ) ? (($type === 'number') ? intval( $value ) : esc_attr( $value )) : $value;
+
 					$prepend_text	 = !empty( $param[ 'prepend_text' ] ) ? $param[ 'prepend_text' ] : '';
 					$append_text	 = !empty( $param[ 'append_text' ] ) ? $param[ 'append_text' ] : '';
 
@@ -251,11 +253,14 @@ if ( !class_exists( 'PT_Options_Framework' ) ) {
 					break;
 
 				case 'color':
+					$value = esc_attr( $value );
+
 					$html .= "<input type='text' name='$name' value='$value' class='$class' $id $extend style='background-color:$value;'>";
 					$html .= "<div class='" . PT_CV_PREFIX . "colorpicker' style='z-index: 100; background:#eee; border:1px solid #ccc; position:absolute; display:none;'></div><br>";
 					break;
 
 				case 'textarea':
+					$value = esc_textarea( $value );
 					$html .= "<textarea name='$name' class='$class' $id $extend placeholder='$placeholder' rows=4>$value</textarea>";
 					break;
 
@@ -333,12 +338,12 @@ if ( !class_exists( 'PT_Options_Framework' ) ) {
 			}
 
 			$description = apply_filters( PT_CV_PREFIX_ . 'options_description', $description, $param );
-
 			if ( !empty( $description ) ) {
 				// Append dot to end of description
 				if ( trim( strip_tags( $description ) ) != '' && substr( $description, -1 ) != '?' ) {
 					$description .= '.';
 				}
+				// esc_html will break popover
 				$html .= "<p class='text-muted'>$description</p>";
 			}
 

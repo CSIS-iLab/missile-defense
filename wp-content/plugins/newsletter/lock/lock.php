@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 require_once NEWSLETTER_INCLUDES_DIR . '/module.php';
 

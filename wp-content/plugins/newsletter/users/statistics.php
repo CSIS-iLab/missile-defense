@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 
 $all_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_USERS_TABLE);

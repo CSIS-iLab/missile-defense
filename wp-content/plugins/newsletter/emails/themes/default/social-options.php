@@ -1,3 +1,6 @@
+<?php
+if (!defined('ABSPATH')) exit;
+?>
 <h3>Social icons</h3>
 <table class="form-table">
     <tr>
@@ -35,5 +38,9 @@
     <tr>
         <th>Soundcloud</th>
         <td><?php $controls->text_url('theme_soundcloud', 30); ?></td>
+    </tr>
+     <tr>
+        <th>Instagram</th>
+        <td><?php $controls->text_url('theme_instagram', 30); ?></td>
     </tr>
 </table>

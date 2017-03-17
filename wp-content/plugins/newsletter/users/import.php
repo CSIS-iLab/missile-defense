@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterUsers::instance();
@@ -95,11 +97,13 @@ if ($controls->is_action('import')) {
                 }
 
                 // Prepare the preference to zero
-                for ($i = 1; $i < NEWSLETTER_LIST_MAX; $i++)
+                for ($i = 1; $i < NEWSLETTER_LIST_MAX; $i++) {
                     $subscriber['list_' . $i] = 0;
+                }
 
-                foreach ($controls->data['preferences'] as $i)
+                foreach ($controls->data['preferences'] as $i) {
                     $subscriber['list_' . $i] = 1;
+                }
             }
 
             if ($mode == 'update') {
@@ -108,9 +112,12 @@ if ($controls->is_action('import')) {
                 if (isset($data[3])) {
                     $subscriber['sex'] = $newsletter->normalize_sex($data[3]);
                 }
-                $subscriber['status'] = $controls->data['import_as'];
-                foreach ($controls->data['preferences'] as $i)
+                if (isset($controls->data['override_status'])) {
+                    $subscriber['status'] = $controls->data['import_as'];
+                }
+                foreach ($controls->data['preferences'] as $i) {
                     $subscriber['list_' . $i] = 1;
+                }
             }
 
             NewsletterUsers::instance()->save_user($subscriber);

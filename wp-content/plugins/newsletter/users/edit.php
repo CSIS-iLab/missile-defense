@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
@@ -205,7 +206,7 @@ function percentValue($value, $total) {
                         for ($i = 1; $i <= NEWSLETTER_PROFILE_MAX; $i++) {
                             echo '<tr><td>(' . $i . ') ';
                             echo '</td><td>';
-                            echo $options_profile['profile_' . $i];
+                            echo esc_html($options_profile['profile_' . $i]);
                             echo '</td><td>';
                             $controls->text('profile_' . $i, 70);
                             echo '</td></tr>';
@@ -255,7 +256,7 @@ function percentValue($value, $total) {
                     <tr valign="top">
                         <th>Profile URL</th>
                         <td>
-                            <?php echo plugins_url('newsletter/do/profile.php') . '?nk=' . $id . '-' . $controls->data['token']; ?>
+                            <?php echo esc_html(home_url('/') . '?na=pe&nk=' . $id . '-' . $controls->data['token']) ?>
                             <p class="description">
                                 The URL which lands on the user profile editing page. It can be added on newsletters using the {profile_url} tag.
                             </p>

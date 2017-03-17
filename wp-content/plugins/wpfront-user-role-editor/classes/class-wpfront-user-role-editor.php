@@ -38,7 +38,7 @@ if (!class_exists('WPFront_User_Role_Editor')) {
     class WPFront_User_Role_Editor extends WPFront_Base_URE {
 
         //Constants
-        const VERSION = '2.12.4';
+        const VERSION = '2.13';
         const OPTIONS_GROUP_NAME = 'wpfront-user-role-editor-options-group';
         const OPTION_NAME = 'wpfront-user-role-editor-options';
         const PLUGIN_SLUG = 'wpfront-user-role-editor';
@@ -588,9 +588,17 @@ if (!class_exists('WPFront_User_Role_Editor')) {
         public function disable_navigation_menu_permissions() {
             return $this->options->disable_navigation_menu_permissions();
         }
+        
+        public function override_navigation_menu_permissions() {
+            return $this->options->override_navigation_menu_permissions();
+        }
 
         public function customize_permission_custom_post_types() {
             return $this->options->customize_permission_custom_post_types();
+        }
+        
+        public function disable_extended_permission_post_types() {
+            return $this->options->disable_extended_permission_post_types();
         }
 
         public function enable_multisite_only_options($multisite) {
@@ -615,6 +623,14 @@ if (!class_exists('WPFront_User_Role_Editor')) {
             }
 
             return $all_roles;
+        }
+        
+        public function menu_walker_override_warning() {
+            $this->objNavMenu->menu_walker_override_warning();
+        }
+        
+        public function get_extendable_post_types() {
+            return array();
         }
 
         private function rename_role_capabilities() {

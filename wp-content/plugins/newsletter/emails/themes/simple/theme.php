@@ -10,6 +10,9 @@
 
 global $newsletter, $post;
 
+if (!defined('ABSPATH'))
+    exit;
+
 $color = $theme_options['theme_color'];
 if (empty($color))
     $color = '#0088cc';

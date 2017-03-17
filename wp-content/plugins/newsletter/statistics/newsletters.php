@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $module = NewsletterStatistics::instance();
 $controls = new NewsletterControls();
@@ -68,9 +70,9 @@ function percentValue($value, $total) {
                         <?php if ($email->type != 'message' && $email->type != 'feed') continue; ?>
                         <tr>
                             <td><?php echo $email->id; ?></td>
-                            <td><?php echo htmlspecialchars($email->subject); ?></td>
-                            <td><?php echo $module->get_email_type_label($email) ?></td>
-                            <td><?php echo $module->get_email_status_label($email)?></td>
+                            <td><?php echo esc_html($email->subject); ?></td>
+                            <td><?php echo esc_html($module->get_email_type_label($email)) ?></td>
+                            <td><?php echo esc_html($module->get_email_status_label($email)) ?></td>
                             <td><?php if ($email->status == 'sent' || $email->status == 'sending') echo $email->sent . ' ' . __('of', 'newsletter') . ' ' . $email->total; ?></td>
                             <td><?php if ($email->status == 'sent' || $email->status == 'sending') echo $module->format_date($email->send_on); ?></td>
                             <td><?php echo $email->track == 1 ? 'Yes' : 'No'; ?></td>

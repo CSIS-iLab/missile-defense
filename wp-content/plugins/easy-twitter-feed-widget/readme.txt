@@ -3,9 +3,9 @@ Contributors: designorbital
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: twitter, twitter feed, tweet, twitter widget, feed, widget, twitter sidebar, social, social media, sidebar, plugin
-Requires at least: 4.2
-Tested up to: 4.4
-Stable tag: 0.5
+Requires at least: 4.5
+Tested up to: 4.7
+Stable tag: 0.6
 
 Add twitter feeds on your WordPress site by using the Easy Twitter Feed Widget plugin.
 
@@ -13,7 +13,7 @@ Add twitter feeds on your WordPress site by using the Easy Twitter Feed Widget p
 
 Easy Twitter Feed Widget plugin uses the `Twitter Widget` without creating an API to display tweets on your WordPress site. There is no need to create Twitter application. Easy Twitter Feed Widget Plugin provides a nice interface to implement your tweets in an easy way.
 
-If you are planning to display tweets on your blog's sidebar without bells and whistles than our plugin can be your ideal choice.
+If you are planning to display twitter timeline on your blog's sidebar without bells and whistles than our plugin can be your ideal choice.
 
 = Features =
 * Easy Twitter Feed Widget Plugin is very easy to setup and use.
@@ -21,7 +21,7 @@ If you are planning to display tweets on your blog's sidebar without bells and w
 * Make it your own by customizing the link color, border color, background choice and other useful options.
 
 = Further Useful Stuff =
-Easy Twitter Feed Widget plugin is developed by DesignOrbital. You may be interesed to use our [Premium WordPress Themes](http://designorbital.com/) or [Free WordPress Themes](http://designorbital.com/free-wordpress-themes/) to run your website under the clean and SEO optimized code.
+Easy Twitter Feed Widget plugin is developed by DesignOrbital. You may be interested to use our [Premium WordPress Themes](https://designorbital.com/) or [Free WordPress Themes](https://designorbital.com/free-wordpress-themes/) to run your website under the clean and SEO optimized code.
 
 == Installation ==
 
@@ -30,13 +30,28 @@ Easy Twitter Feed Widget plugin is developed by DesignOrbital. You may be intere
 1. Configure the plugin by going to the `Settings > Easy Twitter Feed Widget Options`
 1. Use the Easy Twitter Feed Widget by going to the `Appearance > Widgets`
 
+= Timeline Type =
+
+You can display tweets by using one of the following two methods.
+
+1. Twitter Username
+1. Twitter Widget ID
+
+= Twitter Username =
+
+1. It is easy method to setup twitter widget. You only need to enter your twitter username in the Twitter Username field.
+
+= Twitter Widget ID =
+
+1. You can setup twitter widget by using Widget ID. Here are the steps to get your Twitter Widget ID.
+
 = How to get Twitter Widget ID =
 
 1. Sign In to your `Twitter Account`
 1. Go to `Settings > Widgets > Create new`
 1. Click `Create Widget` button
-1. You can copy the Widget ID from `Browser Address Bar` e.g. `419173025219799552`
-1. OR You can copy the Widget ID from the given HTML under the Widget Preview i.e. `data-widget-id="419173025219799552"`
+1. You can copy the Widget ID from `Browser Address Bar` e.g. `344713329262084096`
+1. OR You can copy the Widget ID from the given HTML under the Widget Preview i.e. `data-widget-id="344713329262084096"`
 
 == Screenshots ==
 
@@ -46,6 +61,13 @@ Easy Twitter Feed Widget plugin is developed by DesignOrbital. You may be intere
 4. Easy Twitter Feed Widget Frontend Example: You can use our twitter widget with any color scheme of your WordPress theme. This is an example of Light and Dark WordPress theme layout.
 
 == Changelog ==
+
+= 0.6 - December 18, 2016 =
+
+* New: Twitter embedded timeline can be displayed by using Twitter username.
+* New: Widget Id is optional now.
+* Enhancement: Plugin is re-written to provide an easy interface and secured code.
+* Hardening: Code hardening.
 
 = 0.5 - December 18, 2015 =
 

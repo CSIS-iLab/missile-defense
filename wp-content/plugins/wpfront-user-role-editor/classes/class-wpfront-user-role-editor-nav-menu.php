@@ -59,21 +59,43 @@ if (!class_exists('WPFront_User_Role_Editor_Nav_Menu')) {
 
             add_action('admin_print_scripts-nav-menus.php', array($this, 'enqueue_menu_scripts'));
             add_action('admin_print_styles-nav-menus.php', array($this, 'enqueue_menu_styles'));
+            add_action('load-nav-menus.php', array($this, 'menu_walker_override_notice_action'));
         }
 
-        public static function nav_menu_help_url() {
+        public function nav_menu_help_url() {
             return 'https://wpfront.com/user-role-editor-pro/navigation-menu-permissions/';
         }
 
         public function wp_init() {
-            add_filter('wp_edit_nav_menu_walker', array($this, 'override_edit_nav_menu_walker'), 9999);
+            add_filter('wp_edit_nav_menu_walker', array($this, 'override_edit_nav_menu_walker'), 999999);
+        }
+        
+        public function menu_walker_override_notice_action() {
+            add_action('admin_notices', array($this, 'menu_walker_override_warning'));
         }
 
-        public static function override_edit_nav_menu_walker($current = 'Walker_Nav_Menu_Edit') {
-            if ($current !== 'Walker_Nav_Menu_Edit')
+        public function override_edit_nav_menu_walker($current = 'Walker_Nav_Menu_Edit') {
+            if ($current !== 'Walker_Nav_Menu_Edit' && !$this->main->override_navigation_menu_permissions())
                 return $current;
 
             return 'WPFront_User_Role_Editor_Nav_Menu_Walker';
+        }
+        
+        public function menu_walker_override_warning() {
+            if ($this->main->disable_navigation_menu_permissions() === FALSE) {
+                $menu_walker = apply_filters('wp_edit_nav_menu_walker', 'Walker_Nav_Menu_Edit', 0);
+                if ($menu_walker !== $this->override_edit_nav_menu_walker()) {
+                    printf(
+                            '<div class="notice notice-error is-dismissible"><p>%s</p></div>', 
+                            sprintf(
+                                    $this->__('Menu walker class is overriden by a theme/plugin. Current value = %s. Navigation menu permissions may still work. %s'), 
+                                    $menu_walker, 
+                                    '<a target="_blank" href="' . $this->nav_menu_help_url() . '#navigation-menu-permission-warning">' . $this->__('More information') . '</a>'
+                            )
+                    );
+                    
+                }
+            }
         }
 
         public function menu_item_title_user_restriction_type($item_id, $item, $depth, $args) {

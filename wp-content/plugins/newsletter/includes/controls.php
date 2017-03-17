@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 class NewsletterControls {
 
@@ -112,16 +113,25 @@ class NewsletterControls {
     }
 
     function add_message_saved() {
-        if (!empty($this->messages))
+        if (!empty($this->messages)) {
             $this->messages .= '<br><br>';
+        }
         $this->messages .= __('Saved.', 'newsletter');
+    }
+    
+    function add_message_done() {
+        if (!empty($this->messages)) {
+            $this->messages .= '<br><br>';
+        }
+        $this->messages .= __('Done.', 'newsletter');
     }
 
     function hint($text, $url = '') {
         echo '<div class="hints">';
+        // Do not escape that, it can be formatted
         echo $text;
         if (!empty($url)) {
-            echo " <a href='$url' target='_blank'>Read more</a>.";
+            echo ' <a href="' . esc_attr($url) . '" target="_blank">Read more</a>.';
         }
         echo '</div>';
     }
@@ -129,14 +139,16 @@ class NewsletterControls {
     function yesno($name) {
         $value = isset($this->data[$name]) ? (int) $this->data[$name] : 0;
 
-        echo '<select style="width: 60px" name="options[' . $name . ']">';
+        echo '<select style="width: 60px" name="options[' . esc_attr($name) . ']">';
         echo '<option value="0"';
-        if ($value == 0)
+        if ($value == 0) {
             echo ' selected';
+        }
         echo '>No</option>';
         echo '<option value="1"';
-        if ($value == 1)
+        if ($value == 1) {
             echo ' selected';
+        }
         echo '>Yes</option>';
         echo '</select>&nbsp;&nbsp;&nbsp;';
     }
@@ -144,7 +156,7 @@ class NewsletterControls {
     function enabled($name) {
         $value = isset($this->data[$name]) ? (int) $this->data[$name] : 0;
 
-        echo '<select style="width: 100px" name="options[' . $name . ']">';
+        echo '<select style="width: 100px" name="options[' . esc_attr($name) . ']">';
         echo '<option value="0"';
         if ($value == 0) {
             echo ' selected';
@@ -161,14 +173,16 @@ class NewsletterControls {
     function disabled($name) {
         $value = isset($this->data[$name]) ? (int) $this->data[$name] : 0;
 
-        echo '<select style="width: 100px" name="options[' . $name . ']">';
+        echo '<select style="width: 100px" name="options[' . esc_attr($name) . ']">';
         echo '<option value="0"';
-        if ($value == 0)
+        if ($value == 0) {
             echo ' selected';
+        }
         echo '>Enabled</option>';
         echo '<option value="1"';
-        if ($value == 1)
+        if ($value == 1) {
             echo ' selected';
+        }
         echo '>Disabled</option>';
         echo '</select>';
     }
@@ -191,12 +205,14 @@ class NewsletterControls {
         echo "<div class='newsletter-checkboxes-group'>";
         foreach ($values_labels as $value => $label) {
             echo "<div class='newsletter-checkboxes-item'>";
-            echo "<label><input type='checkbox' id='$name' name='options[$name][]' value='$value'";
-            if (array_search($value, $value_array) !== false)
-                echo " checked";
-            echo '/>';
-            if ($label != '')
-                echo $label;
+            echo '<label><input type="checkbox" id="' . esc_attr($name) . '" name="options[' . esc_attr($name) . '][]" value="' . esc_attr($value) . '"';
+            if (array_search($value, $value_array) !== false) {
+                echo ' checked';
+            }
+            echo '>';
+            if ($label != '') {
+                echo esc_html($label);
+            }
             echo "</label></div>";
         }
         echo "</div><div style='clear: both'></div>";
@@ -207,11 +223,20 @@ class NewsletterControls {
     function post_types($name = 'post_types') {
         $list = array();
         $post_types = get_post_types(array('public' => true), 'objects', 'and');
-        foreach ($post_types as &$post_type) {
+        foreach ($post_types as $post_type) {
             $list[$post_type->name] = $post_type->labels->name;
         }
 
         $this->checkboxes_group($name, $list);
+    }
+    
+    function page($name='page', $first = null) {
+        $pages = get_pages();
+        $options = array();
+        foreach ($pages as $page) {
+            $options[$page->ID] = $page->post_title;
+        }
+        $this->select($name, $options, $first);
     }
 
     /** Used to create a select which is part of a group of controls identified by $name that will
@@ -222,14 +247,14 @@ class NewsletterControls {
     function select_group($name, $options) {
         $value_array = $this->get_value_array($name);
 
-        echo '<select name="options[' . $name . '][]">';
+        echo '<select name="options[' . esc_attr($name) . '][]">';
 
         foreach ($options as $key => $label) {
-            echo '<option value="' . $key . '"';
+            echo '<option value="' . esc_attr($key) . '"';
             if (array_search($key, $value_array) !== false) {
                 echo ' selected';
             }
-            echo '>' . htmlspecialchars($label) . '</option>';
+            echo '>' . esc_html($label) . '</option>';
         }
 
         echo '</select>';
@@ -238,15 +263,15 @@ class NewsletterControls {
     function select($name, $options, $first = null) {
         $value = $this->get_value($name);
 
-        echo '<select id="options-' . $name . '" name="options[' . $name . ']">';
+        echo '<select id="options-' . esc_attr($name) . '" name="options[' . esc_attr($name) . ']">';
         if (!empty($first)) {
-            echo '<option value="">' . htmlspecialchars($first) . '</option>';
+            echo '<option value="">' . esc_html($first) . '</option>';
         }
         foreach ($options as $key => $label) {
-            echo '<option value="' . $key . '"';
+            echo '<option value="' . esc_attr($key) . '"';
             if ($value == $key)
                 echo ' selected';
-            echo '>' . htmlspecialchars($label) . '</option>';
+            echo '>' . esc_html($label) . '</option>';
         }
         echo '</select>';
     }
@@ -257,15 +282,17 @@ class NewsletterControls {
         echo '<select name="options[' . $name . ']">';
 
         foreach ($groups as $group) {
-            echo '<optgroup label="' . htmlspecialchars($group['']) . '">';
+            echo '<optgroup label="' . esc_attr($group['']) . '">';
             if (!empty($group)) {
                 foreach ($group as $key => $label) {
-                    if ($key == '')
+                    if ($key == '') {
                         continue;
-                    echo '<option value="' . $key . '"';
-                    if ($value == $key)
+                    }
+                    echo '<option value="' . esc_attr($key) . '"';
+                    if ($value == $key) {
                         echo ' selected';
-                    echo '>' . htmlspecialchars($label) . '</option>';
+                    }
+                    echo '>' . esc_html($label) . '</option>';
                 }
             }
             echo '</optgroup>';
@@ -280,9 +307,9 @@ class NewsletterControls {
     function themes($name, $themes, $submit_on_click = true) {
         foreach ($themes as $key => $data) {
             echo '<label style="display: block; float: left; text-align: center; margin-right: 10px;">';
-            echo $key . '<br>';
-            echo '<img src="' . $data['screenshot'] . '" width="100" height="100" style="border: 1px solid #666; padding: 5px"><br>';
-            echo '<input style="position: relative; top: -40px" type="radio" onchange="this.form.act.value=\'theme\';this.form.submit()" name="options[' . $name . ']" value="' . $key . '"';
+            echo esc_html($key) . '<br>';
+            echo '<img src="' . esc_attr($data['screenshot']) . '" width="100" height="100" style="border: 1px solid #666; padding: 5px"><br>';
+            echo '<input style="position: relative; top: -40px" type="radio" onchange="this.form.act.value=\'theme\';this.form.submit()" name="options[' . esc_attr($name) . ']" value="' . esc_attr($key) . '"';
             if ($this->data[$name] == $key) {
                 echo ' checked';
             }
@@ -326,32 +353,32 @@ class NewsletterControls {
 
     function text_email($name, $size = 40) {
         $value = $this->get_value($name);
-        echo '<input name="options[' . $name . ']" type="email" placeholder="';
+        echo '<input name="options[' . esc_attr($name) . ']" type="email" placeholder="';
         echo esc_attr(__('Valid email address', 'newsletter'));
-        echo '" size="' . $size . '" value="';
+        echo '" size="' . esc_attr($size) . '" value="';
         echo esc_attr($value);
         echo '">';
     }
 
     function text_url($name, $size = 40) {
         $value = $this->get_value($name);
-        echo '<input name="options[' . $name . ']" type="url" placeholder="http://..." size="' . $size . '" value="';
-        echo htmlspecialchars($value);
+        echo '<input name="options[' . esc_attr($name) . ']" type="url" placeholder="http://..." size="' . esc_attr($size) . '" value="';
+        echo esc_attr($value);
         echo '"/>';
     }
 
     function hidden($name) {
         $value = $this->get_value($name);
         echo '<input name="options[' . $name . ']" type="hidden" value="';
-        echo htmlspecialchars($value);
+        echo esc_attr($value);
         echo '"/>';
     }
 
     function button($action, $label, $function = null) {
         if ($function != null) {
-            echo '<input class="button-secondary" type="button" value="' . $label . '" onclick="this.form.act.value=\'' . $action . '\';' . htmlspecialchars($function) . '"/>';
+            echo '<input class="button-secondary" type="button" value="' . esc_attr($label) . '" onclick="this.form.act.value=\'' . esc_attr($action) . '\';' . esc_html($function) . '"/>';
         } else {
-            echo '<input class="button-secondary" type="submit" value="' . $label . '" onclick="this.form.act.value=\'' . $action . '\';return true;"/>';
+            echo '<input class="button-secondary" type="submit" value="' . esc_attr($label) . '" onclick="this.form.act.value=\'' . esc_attr($action) . '\';return true;"/>';
         }
     }
 
@@ -373,7 +400,7 @@ class NewsletterControls {
 
     function button_back($url) {
         echo '<a href="';
-        echo $url;
+        echo esc_attr($url);
         echo '" class="button"><i class="fa fa-chevron-left"></i>&nbsp;';
         _e('Back', 'newsletter');
         echo '</a>';
@@ -407,30 +434,30 @@ class NewsletterControls {
 
     function button_primary($action, $label, $function = null) {
         if ($function != null) {
-            echo '<input class="button-primary" type="button" value="' . $label . '" onclick="this.form.act.value=\'' . $action . '\';' . htmlspecialchars($function) . '"/>';
+            echo '<input class="button-primary" type="button" value="' . esc_attr($label) . '" onclick="this.form.act.value=\'' . esc_attr($action) . '\';' . esc_attr($function) . '"/>';
         } else {
-            echo '<input class="button-primary" type="button" value="' . $label . '" onclick="this.form.act.value=\'' . $action . '\';this.form.submit()"/>';
+            echo '<input class="button-primary" type="button" value="' . esc_attr($label) . '" onclick="this.form.act.value=\'' . esc_attr($action) . '\';this.form.submit()"/>';
         }
     } 
 
     function button_confirm($action, $label, $message = '', $data = '') {
         if (empty($message)) {
-            echo '<input class="button-secondary" type="button" value="' . $label . '" onclick="this.form.btn.value=\'' . $data . '\';this.form.act.value=\'' . $action . '\';this.form.submit()"/>';
+            echo '<input class="button-secondary" type="button" value="' . esc_attr($label) . '" onclick="this.form.btn.value=\'' . esc_attr($data) . '\';this.form.act.value=\'' . esc_attr($action) . '\';this.form.submit()"/>';
         } else {
-            echo '<input class="button-secondary" type="button" value="' . $label . '" onclick="this.form.btn.value=\'' . $data . '\';this.form.act.value=\'' . $action . '\';if (confirm(\'' .
+            echo '<input class="button-secondary" type="button" value="' . esc_attr($label) . '" onclick="this.form.btn.value=\'' . esc_attr($data) . '\';this.form.act.value=\'' . esc_attr($action) . '\';if (confirm(\'' .
             esc_attr(esc_js($message)) . '\')) this.form.submit()"/>';
         }
     }
 
     function editor($name, $rows = 5, $cols = 75) {
-        echo '<textarea class="visual" name="options[' . $name . ']" style="width: 100%" wrap="off" rows="' . $rows . '">';
+        echo '<textarea class="visual" name="options[' . esc_attr($name) . ']" style="width: 100%" wrap="off" rows="' . esc_attr($rows) . '">';
         echo esc_html($this->get_value($name));
         echo '</textarea>';
     }
 
     function wp_editor($name, $settings = array()) {
         $value = $this->get_value($name);
-        wp_editor($value, $name, array_merge(array('textarea_name' => 'options[' . $name . ']', 'wpautop' => false), $settings));
+        wp_editor($value, $name, array_merge(array('textarea_name' => 'options[' . esc_attr($name) . ']', 'wpautop' => false), $settings));
         if (!is_plugin_active('mce_table_buttons/mce_table_buttons.php')) {
             echo '<p class="description">You can install <a href="https://wordpress.org/plugins/mce-table-buttons/" target="_blank">MCE Table Button</a> for a table management toolbar add on.</p>';
         }
@@ -438,14 +465,14 @@ class NewsletterControls {
 
     function textarea($name, $width = '100%', $height = '50') {
         $value = $this->get_value($name);
-        echo '<textarea class="dynamic" name="options[' . $name . ']" wrap="off" style="width:' . $width . ';height:' . $height . '">';
+        echo '<textarea id="options-' . esc_attr($name) . '" class="dynamic" name="options[' . esc_attr($name) . ']" wrap="off" style="width:' . esc_attr($width) . ';height:' . esc_attr($height) . '">';
         echo esc_html($value);
         echo '</textarea>';
     }
 
     function textarea_fixed($name, $width = '100%', $height = '200') {
         $value = $this->get_value($name);
-        echo '<textarea id="options-' . $name . '" name="options[' . $name . ']" wrap="off" style="width:' . $width . ';height:' . $height . 'px">';
+        echo '<textarea id="options-' . esc_attr($name) . '" name="options[' . esc_attr($name) . ']" wrap="off" style="width:' . esc_attr($width) . ';height:' . esc_attr($height) . 'px">';
         echo esc_html($value);
         echo '</textarea>';
     }
@@ -453,13 +480,13 @@ class NewsletterControls {
     function textarea_preview($name, $width = '100%', $height = '200', $header = '', $footer = '') {
         $value = $this->get_value($name);
         //do_action('newsletter_controls_textarea_preview', $name);
-        echo '<input class="button" type="button" onclick="newsletter_textarea_preview(\'options-' . $name . '\', \'\', \'\')" value="Switch editor/preview">';
+        echo '<input class="button" type="button" onclick="newsletter_textarea_preview(\'options-' . esc_attr($name) . '\', \'\', \'\')" value="Switch editor/preview">';
         echo '<br><br>';
         echo '<div style="position: relative">';
-        echo '<textarea id="options-' . $name . '" name="options[' . $name . ']" wrap="off" style="width:' . $width . ';height:' . $height . 'px">';
+        echo '<textarea id="options-' . esc_attr($name) . '" name="options[' . esc_attr($name) . ']" wrap="off" style="width:' . esc_attr($width) . ';height:' . esc_attr($height) . 'px">';
         echo esc_html($value);
         echo '</textarea>';
-        echo '<iframe id="options-' . $name . '-iframe" class="newsletter-textarea-preview" style="background-color: #fff; width: ' . $width . '; height: ' . $height . 'px; position: absolute; top: 0; left: 0; z-index: 10000; display: none"></iframe>';
+        echo '<iframe id="options-' . esc_attr($name) . '-iframe" class="newsletter-textarea-preview" style="background-color: #fff; width: ' . esc_attr($width) . '; height: ' . esc_attr($height) . 'px; position: absolute; top: 0; left: 0; z-index: 10000; display: none"></iframe>';
         echo '</div>';
     }
 
@@ -484,13 +511,13 @@ class NewsletterControls {
         if ($label != '') {
             echo '<label>';
         }
-        echo '<input type="checkbox" id="' . $name . '" name="options[' . $name . ']" value="1"';
+        echo '<input type="checkbox" id="' . esc_attr($name) . '" name="options[' . esc_attr($name) . ']" value="1"';
         if (!empty($this->data[$name])) {
             echo ' checked="checked"';
         }
         echo '>';
         if ($label != '') {
-            echo '&nbsp;' . $label . '</label>';
+            echo '&nbsp;' . esc_html($label) . '</label>';
         }
     }
 
@@ -498,15 +525,15 @@ class NewsletterControls {
         if ($label != '') {
             echo '<label>';
         }
-        echo '<input type="checkbox" id="' . $name . '" onchange="document.getElementById(\'' . $name . '_hidden\').value=this.checked?\'1\':\'0\'"';
+        echo '<input type="checkbox" id="' . esc_attr($name) . '" onchange="document.getElementById(\'' . esc_attr($name) . '_hidden\').value=this.checked?\'1\':\'0\'"';
         if (!empty($this->data[$name])) {
             echo ' checked="checked"';
         }
         echo '>';
         if ($label != '') {
-            echo '&nbsp;' . $label . '</label>';
+            echo '&nbsp;' . esc_html($label) . '</label>';
         }
-        echo '<input type="hidden" id="' . $name . '_hidden" name="options[' . $name . ']" value="';
+        echo '<input type="hidden" id="' . esc_attr($name) . '_hidden" name="options[' . esc_attr($name) . ']" value="';
 
         echo empty($this->data[$name]) ? '0' : '1';
         echo '">';
@@ -516,14 +543,14 @@ class NewsletterControls {
         if ($label != '') {
             echo '<label>';
         }
-        echo '<input type="radio" id="' . $name . '" name="options[' . $name . ']" value="' . esc_attr($value) . '"';
+        echo '<input type="radio" id="' . esc_attr($name) . '" name="options[' . esc_attr($name) . ']" value="' . esc_attr($value) . '"';
         $v = $this->get_value($name);
         if ($v == $value) {
             echo ' checked="checked"';
         }
         echo '>';
         if ($label != '') {
-            echo '&nbsp;' . $label . '</label>';
+            echo '&nbsp;' . esc_html($label) . '</label>';
         }
     }
 
@@ -532,13 +559,13 @@ class NewsletterControls {
      * the key $name an array containig the passed value.
      */
     function checkbox_group($name, $value, $label = '') {
-        echo '<label><input type="checkbox" id="' . $name . '" name="options[' . $name . '][]" value="' . esc_attr($value) . '"';
+        echo '<label><input type="checkbox" id="' . esc_attr($name) . '" name="options[' . esc_attr($name) . '][]" value="' . esc_attr($value) . '"';
         if (isset($this->data[$name]) && is_array($this->data[$name]) && array_search($value, $this->data[$name]) !== false) {
             echo ' checked';
         }
-        echo '/>';
+        echo '>';
         if ($label != '') {
-            echo $label;
+            echo esc_html($label);
         }
         echo '</label>';
     }
@@ -552,7 +579,7 @@ class NewsletterControls {
     function categories($name = 'category') {
         $categories = get_categories();
         echo '<div class="newsletter-checkboxes-group">';
-        foreach ($categories as &$c) {
+        foreach ($categories as $c) {
             echo '<div class="newsletter-checkboxes-item">';
             $this->checkbox($name . '_' . $c->cat_ID, esc_html($c->cat_name));
             echo '</div>';
@@ -671,8 +698,8 @@ class NewsletterControls {
         $year = date('Y', $this->data[$name]);
         $day = date('j', $this->data[$name]);
         $month = date('m', $this->data[$name]);
-        $onchange = "this.form.elements['options[" . $name . "]'].value = new Date(document.getElementById('" . $name . "_year').value, document.getElementById('" . $name . "_month').value, document.getElementById('" . $name . "_day').value, 12, 0, 0).getTime()/1000";
-        echo '<select id="' . $name . '_month" onchange="' . $onchange . '">';
+        $onchange = "this.form.elements['options[" . esc_attr($name) . "]'].value = new Date(document.getElementById('" . esc_attr($name) . "_year').value, document.getElementById('" . esc_attr($name) . "_month').value, document.getElementById('" . esc_attr($name) . "_day').value, 12, 0, 0).getTime()/1000";
+        echo '<select id="' . $name . '_month" onchange="' . esc_attr($onchange) . '">';
         for ($i = 0; $i < 12; $i++) {
             echo '<option value="' . $i . '"';
             if ($month - 1 == $i) {
@@ -682,7 +709,7 @@ class NewsletterControls {
         }
         echo '</select>';
 
-        echo '<select id="' . $name . '_day" onchange="' . $onchange . '">';
+        echo '<select id="' . esc_attr($name) . '_day" onchange="' . esc_attr($onchange) . '">';
         for ($i = 1; $i <= 31; $i++) {
             echo '<option value="' . $i . '"';
             if ($day == $i) {
@@ -692,7 +719,7 @@ class NewsletterControls {
         }
         echo '</select>';
 
-        echo '<select id="' . $name . '_year" onchange="' . $onchange . '">';
+        echo '<select id="' . esc_attr($name) . '_year" onchange="' . esc_attr($onchange) . '">';
         for ($i = 2011; $i <= 2021; $i++) {
             echo '<option value="' . $i . '"';
             if ($year == $i) {
@@ -707,14 +734,14 @@ class NewsletterControls {
      * Date and time (hour) selector. Timestamp stored.
      */
     function datetime($name) {
-        echo '<input type="hidden" name="fields[' . $name . ']" value="datetime">';
+        echo '<input type="hidden" name="fields[' . esc_attr($name) . ']" value="datetime">';
         $time = $this->data[$name] + get_option('gmt_offset') * 3600;
         $year = gmdate('Y', $time);
         $day = gmdate('j', $time);
         $month = gmdate('m', $time);
         $hour = gmdate('H', $time);
 
-        echo '<select name="' . $name . '_month">';
+        echo '<select name="' . esc_attr($name) . '_month">';
         for ($i = 1; $i <= 12; $i++) {
             echo '<option value="' . $i . '"';
             if ($month == $i) {
@@ -724,7 +751,7 @@ class NewsletterControls {
         }
         echo '</select>';
 
-        echo '<select name="' . $name . '_day">';
+        echo '<select name="' . esc_attr($name) . '_day">';
         for ($i = 1; $i <= 31; $i++) {
             echo '<option value="' . $i . '"';
             if ($day == $i) {
@@ -734,7 +761,7 @@ class NewsletterControls {
         }
         echo '</select>';
 
-        echo '<select name="' . $name . '_year">';
+        echo '<select name="' . esc_attr($name) . '_year">';
         for ($i = 2011; $i <= 2021; $i++) {
             echo '<option value="' . $i . '"';
             if ($year == $i) {
@@ -744,7 +771,7 @@ class NewsletterControls {
         }
         echo '</select>';
 
-        echo '<select name="' . $name . '_hour">';
+        echo '<select name="' . esc_attr($name) . '_hour">';
         for ($i = 0; $i <= 23; $i++) {
             echo '<option value="' . $i . '"';
             if ($hour == $i) {
@@ -838,7 +865,7 @@ class NewsletterControls {
 
     function js_redirect($url) {
         echo '<script>';
-        echo 'location.href="' . $url . '"';
+        echo 'location.href="' . esc_js($url) . '"';
         echo '</script>';
     }
 
@@ -859,7 +886,7 @@ class NewsletterControls {
     function css_font_size($name) {
         $value = $this->get_value($name);
 
-        echo '<select id="options-' . $name . '" name="options[' . $name . ']">';
+        echo '<select id="options-' . esc_attr($name) . '" name="options[' . esc_attr($name) . ']">';
         for ($i = 8; $i < 50; $i++) {
             echo '<option value="' . $i . '"';
             if ($value == $i) {
@@ -873,7 +900,7 @@ class NewsletterControls {
     function css_border($name) {
         $value = $this->get_value($name . '_width');
 
-        echo 'width&nbsp;<select id="options-' . $name . '-width" name="options[' . $name . '_width]">';
+        echo 'width&nbsp;<select id="options-' . esc_attr($name) . '-width" name="options[' . esc_attr($name) . '_width]">';
         for ($i = 0; $i < 10; $i++) {
             echo '<option value="' . $i . '"';
             if ($value == $i) {
@@ -889,7 +916,7 @@ class NewsletterControls {
 
         $value = $this->get_value($name . '_radius');
 
-        echo '&nbsp;&nbsp;radius&nbsp;<select id="options-' . $name . '-radius" name="options[' . $name . '_radius]">';
+        echo '&nbsp;&nbsp;radius&nbsp;<select id="options-' . esc_attr($name) . '-radius" name="options[' . esc_attr($name) . '_radius]">';
         for ($i = 0; $i < 10; $i++) {
             echo '<option value="' . $i . '"';
             if ($value == $i) {
@@ -907,24 +934,24 @@ class NewsletterControls {
 
         if ($media === false) {
             $media = array('', '', '');
-            echo '<img style="width: 200px" id="' . $name . '_img" src="' . plugins_url('newsletter') . '/images/nomedia.png" onclick="newsletter_media(\'' . $name . '\')">';
+            echo '<img style="width: 200px" id="' . esc_attr($name) . '_img" src="' . plugins_url('newsletter') . '/images/nomedia.png" onclick="newsletter_media(\'' . esc_attr($name) . '\')">';
         } else {
-            echo '<img style="width: 200px" id="' . $name . '_img" src="' . $media[0] . '" onclick="newsletter_media(\'' . $name . '\')">';
+            echo '<img style="width: 200px" id="' . esc_attr($name) . '_img" src="' . $media[0] . '" onclick="newsletter_media(\'' . esc_attr($name) . '\')">';
             echo '<br>';
-            echo '<a href="#" onclick="newsletter_media_remove(\'' . $name . '\'); return false">Remove</a>';
+            echo '<a href="#" onclick="newsletter_media_remove(\'' . esc_attr($name) . '\'); return false">Remove</a>';
         }
 
-        echo '<input type="hidden" id="' . $name . '_id" name="options[' . $name . '][id]" value="' . $media_id . '" size="5">';
-        echo '<input type="hidden" id="' . $name . '_url" name="options[' . $name . '][url]" value="' . esc_attr($media_full[0]) . '" size="50">';
+        echo '<input type="hidden" id="' . esc_attr($name) . '_id" name="options[' . esc_attr($name) . '][id]" value="' . esc_attr($media_id) . '" size="5">';
+        echo '<input type="hidden" id="' . esc_attr($name) . '_url" name="options[' . esc_attr($name) . '][url]" value="' . esc_attr($media_full[0]) . '" size="50">';
     }
 
     function media_input($option, $name, $label) {
 
         if (!empty($label)) {
-            $output = '<label class="select" for="tnp_' . $name . '">' . $label . ':</label>';
+            $output = '<label class="select" for="tnp_' . esc_attr($name) . '">' . esc_html($label) . ':</label>';
         }
-        $output .= '<input id="tnp_' . $name . '" type="text" size="36" name="' . $option . '[' . $name . ']" value="' . esc_attr($val) . '" />';
-        $output .= '<input id="tnp_' . $name . '_button" class="button" type="button" value="Select Image" />';
+        $output .= '<input id="tnp_' . esc_attr($name) . '" type="text" size="36" name="' . esc_attr($option) . '[' . esc_attr($name) . ']" value="' . esc_attr($val) . '" />';
+        $output .= '<input id="tnp_' . esc_attr($name) . '_button" class="button" type="button" value="Select Image" />';
         $output .= '<br class="clear"/>';
 
         echo $output;

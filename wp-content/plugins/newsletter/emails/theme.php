@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterEmails::instance();
@@ -69,15 +71,15 @@ $themes = $module->themes->get_all_with_data();
                     </a>
                 </div>
             
-            <?php foreach ($themes as $key => &$data) { ?>
+            <?php foreach ($themes as $key => $data) { ?>
                 <div class="tnp-theme-preview">
-                    <p><?php echo $data['name']; ?></p>
+                    <p><?php echo esc_html($data['name']) ?></p>
                     <a href="#" onclick="var f = document.getElementById('newsletter-form');
                             f.act.value = 'theme';
-                            f.elements['options[theme]'].value = '<?php echo $data['id']; ?>';
+                            f.elements['options[theme]'].value = '<?php echo esc_js($data['id']) ?>';
                             f.submit();
                             return false;" style="margin-right: 20px; margin-bottom: 20px">
-                        <img src="<?php echo $data['screenshot'] ?>" width="200" height="200">
+                        <img src="<?php echo esc_attr($data['screenshot']) ?>" width="200" height="200">
                     </a>
                 </div>
             <?php } ?>

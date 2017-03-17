@@ -2,6 +2,9 @@
 global $newsletter; // Newsletter object
 global $post; // Current post managed by WordPress
 
+if (!defined('ABSPATH'))
+    exit;
+
 // This file is included inside a function so it inherit all the local variables.
 
 // Since a theme has it's own options, it must check if there is new content to send

@@ -1,4 +1,5 @@
 <?php
+if (!defined('ABSPATH')) exit;
 
 class NewsletterModule {
 
@@ -61,6 +62,7 @@ class NewsletterModule {
 
             if ($this->old_version == '0.0.0') {
                 $this->first_install();
+                update_option($this->prefix."_first_install_time", time(), FALSE);
             }
 
             if (strcmp($this->old_version, $this->version) != 0) {
@@ -100,9 +102,9 @@ class NewsletterModule {
         $options = array_merge($default_options, $options);
         $this->save_options($options, $sub);
         if ($autoload) {
-            $this->upgrade_query('update ' . $wpdb->options . " set autoload='yes' where option_name='" . $this->get_prefix($sub) . "' limit 1");
+            $this->upgrade_query('update ' . $wpdb->options . " set autoload='yes' where option_name='" . esc_sql($this->get_prefix($sub)) . "' limit 1");
         } else {
-            $this->upgrade_query('update ' . $wpdb->options . " set autoload='no' where option_name='" . $this->get_prefix($sub) . "' limit 1");
+            $this->upgrade_query('update ' . $wpdb->options . " set autoload='no' where option_name='" . esc_sql($this->get_prefix($sub)) . "' limit 1");
         }
     }
 
@@ -375,7 +377,7 @@ class NewsletterModule {
     static function format_scheduler_time($name) {
         $time = wp_next_scheduled($name);
         if ($time === false) {
-            return 'Not active';
+            return 'No next run scheduled';
         }
         $delta = $time - time();
         // If less 10 minutes late it can be a cron problem but now it is working
@@ -496,19 +498,21 @@ class NewsletterModule {
         }
 
         $dir = WP_CONTENT_DIR . '/extensions/newsletter/' . $this->module . '/styles';
-        $handle = @opendir($dir);
+        if (is_dir($dir)) {
+            $handle = @opendir($dir);
 
-        if ($handle !== false) {
-            while ($file = readdir($handle)) {
-                if ($file == '.' || $file == '..')
-                    continue;
-                if (isset($list[$file]))
-                    continue;
-                if (substr($file, -4) != '.css')
-                    continue;
-                $list[$file] = substr($file, 0, strlen($file) - 4);
+            if ($handle !== false) {
+                while ($file = readdir($handle)) {
+                    if ($file == '.' || $file == '..')
+                        continue;
+                    if (isset($list[$file]))
+                        continue;
+                    if (substr($file, -4) != '.css')
+                        continue;
+                    $list[$file] = substr($file, 0, strlen($file) - 4);
+                }
+                closedir($handle);
             }
-            closedir($handle);
         }
         return $list;
     }
@@ -526,16 +530,6 @@ class NewsletterModule {
 
     function add_menu_page($page, $title) {
         global $newsletter;
-
-//        Why check the plugin dir? I don't remember!
-//        $file = WP_PLUGIN_DIR . '/newsletter-' . $this->module . '/' . $page . '.php';
-//        if (!is_file($file)) {
-//            $file = WP_CONTENT_DIR . '/extensions/newsletter/' . $this->module . '/' . $page . '.php';
-//        }
-//        if (!is_file($file)) {
-//            $file = NEWSLETTER_DIR . '/' . $this->module . '/' . $page . '.php';
-//        }
-
         $name = 'newsletter_' . $this->module . '_' . $page;
         add_submenu_page('newsletter_main_index', $title, $title, ($newsletter->options['editor'] == 1) ? 'manage_categories' : 'manage_options', $name, array($this, 'menu_page'));
     }
@@ -546,7 +540,7 @@ class NewsletterModule {
         $name = apply_filters('newsletter_admin_page', $name);
         add_submenu_page(null, $title, $title, ($newsletter->options['editor'] == 1) ? 'manage_categories' : 'manage_options', $name, array($this, 'menu_page'));
     }
-    
+
     function sanitize_file_name($name) {
         return preg_replace('/[^a-z_\\-]/i', '', $name);
     }
@@ -757,6 +751,7 @@ class NewsletterModule {
         echo '<html><head></head><body>';
         echo '<form method="post" action="' . home_url('/') . '" id="form">';
         foreach ($_REQUEST as $name => $value) {
+            if ($name == 'submit') continue;
             if (is_array($value)) {
                 foreach ($value as $element) {
                     echo '<input type="hidden" name="';

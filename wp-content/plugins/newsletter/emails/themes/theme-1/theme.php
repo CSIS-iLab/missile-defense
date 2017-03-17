@@ -2,6 +2,9 @@
 global $newsletter; // Newsletter object
 global $post; // Current post managed by WordPress
 
+if (!defined('ABSPATH'))
+    exit;
+
 /*
  * Some variabled are prepared by Newsletter Plus and are available inside the theme,
  * for example the theme options used to build the email body as configured by blog

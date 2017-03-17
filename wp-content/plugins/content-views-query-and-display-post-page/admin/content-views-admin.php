@@ -108,7 +108,7 @@ class PT_Content_Views_Admin {
 		global $pagenow;
 		if ( $pagenow === 'post-new.php' ) {
 			$post_type = isset( $_GET[ 'post_type' ] ) ? $_GET[ 'post_type' ] : '';
-			if ( $post_type === PT_CV_POST_TYPE ) {
+			if ( apply_filters( PT_CV_PREFIX_ . 'modify_post_url', $post_type === PT_CV_POST_TYPE ) ) {
 				wp_redirect( admin_url( 'admin.php?page=' . $this->plugin_slug . '-add' ), 301 );
 				exit;
 			}
@@ -219,9 +219,7 @@ class PT_Content_Views_Admin {
 				'supported_version'	 => PT_CV_Functions::wp_version_compare( '3.5' ),
 				'text'				 => array(
 					'no_taxonomy'		 => __( 'There is no taxonomy for selected content type', 'content-views-query-and-display-post-page' ),
-					'pagination_disable' => __( 'Pagination is disabled when Limit = -1', 'content-views-query-and-display-post-page' ),
-					'prevent_click'		 => __( 'Opening a link is prevented in preview box', 'content-views-query-and-display-post-page' ),
-					'visible_shortcode'	 => __( 'If shortcode is visible in below panel, please click Save button, then paste View shortcode to a page and check', 'content-views-query-and-display-post-page' ),
+					'visible_shortcode'	 => __( 'If post excerpt contains shortcode of theme or another plugin, please save this View, paste its shortcode to a page, then view that page', 'content-views-query-and-display-post-page' ),
 				),
 				'btn'				 => array(
 					'preview' => array(
@@ -263,6 +261,7 @@ class PT_Content_Views_Admin {
 			wp_dequeue_style( 'unifStyleSheet' );
 			wp_dequeue_style( 'ssrc_grid_admin_styles' );
 			wp_dequeue_script( 'ssrc_grid_admin_scripts' );
+			wp_dequeue_script( 'chartjs' ); /* optimizePressExperiments/js/chart.min.js */
 			do_action( PT_CV_PREFIX_ . 'remove_unwanted_assets' );
 		}
 	}
@@ -423,18 +422,16 @@ class PT_Content_Views_Admin {
 	 * Filter link of Title in All Views page
 	 */
 	public function filter_get_edit_post_link( $edit_link, $post_id, $context ) {
-
-		// Get current post type
 		$post_type = PT_CV_Functions::admin_current_post_type();
 
 		if ( $post_type != PT_CV_POST_TYPE ) {
 			return $edit_link;
 		}
 
-		// Get View id
-		$view_id = get_post_meta( $post_id, PT_CV_META_ID, true );
-
-		$edit_link = PT_CV_Functions::view_link( $view_id );
+		if ( apply_filters( PT_CV_PREFIX_ . 'modify_post_url', true ) ) {
+			$view_id	 = get_post_meta( $post_id, PT_CV_META_ID, true );
+			$edit_link	 = PT_CV_Functions::view_link( $view_id );
+		}
 
 		return $edit_link;
 	}

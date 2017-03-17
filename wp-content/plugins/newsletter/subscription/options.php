@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterSubscription::instance();
@@ -51,6 +53,10 @@ if ($controls->is_action()) {
 
         $controls->data['confirmed_url'] = trim($controls->data['confirmed_url']);
         $controls->data['confirmation_url'] = trim($controls->data['confirmation_url']);
+        
+        if (!empty($controls->data['page'])) {
+            $controls->data['url'] = ''; // do not unset
+        }
 
         $module->merge_options($controls->data);
         $controls->add_message_saved();
@@ -121,7 +127,43 @@ if ($controls->is_action()) {
 } else {
     $controls->data = get_option('newsletter', array());
 }
+
+if (empty($controls->data['page'])) {
+    $controls->messages .= '<p>You should set a dedicated page for Newsletter which used to interact with your subscribers.</p>';
+} else {
+    $post = get_post($controls->data['page']);
+    
+    if (!$post || $post->post_status != 'publish') {
+        $controls->errors .= '<p>The dedicated page selected below does not exist anymore or has been unpublished. Please, select a different one.</p>';
+    } else {
+        if (strpos($post->post_content, '[newsletter]') === false) {
+            $controls->errors .= '<p>The dedicated page selected DOES NOT contain the [newsletter] shortcode. Please fix it. It should contain ONLY the [newsletter] shortcode.</p>';
+        }
+    }
+}
+
 ?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/codemirror.css" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/show-hint.css">
+<style>
+    .CodeMirror {
+        border: 1px solid #ddd;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/codemirror.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/mode/css/css.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/show-hint.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/addon/hint/css-hint.js"></script>
+<script>
+    jQuery(function () {
+        var editor = CodeMirror.fromTextArea(document.getElementById("options-css"), {
+            lineNumbers: true,
+            mode: 'css',
+            extraKeys: {"Ctrl-Space": "autocomplete"}
+        });
+    });
+</script>
 
 <div class="wrap" id="tnp-wrap">
 
@@ -171,25 +213,20 @@ if ($controls->is_action()) {
                         <tr valign="top">
                             <th>Newsletter dedicated page</th>
                             <td>
-                                <?php $controls->text('url', 70); ?>
+                                <?php $controls->page('page', 'The Newsletter standard unstyled page'); ?>
                                 <?php
-                                if (empty($controls->data['url'])) {
+                                if (empty($controls->data['url']) && empty($controls->data['page'])) {
                                     $controls->button('create', 'Create a page for me');
                                 }
                                 ?>
-
+                                <?php if (!empty($controls->data['url'])) { ?>
                                 <p class="description">
-                                    Optional (but recommended) an address of a WordPress page (eg. <?php echo get_option('home') . '/newsletter'; ?>)
-                                    you <strong>manually created</strong> for subscription and messages.
-                                    <br>
-                                    The page must have in its body <strong>only</strong> the short code <strong>[newsletter]</strong> (as is).
-
-                                    <?php if (!empty($controls->data['url'])) { ?>
-                                        <br>
-                                        If something is not working as expected with this address you can empty the field above and save: a button will appear
-                                        to create that page automatically.
-                                    <?php } ?>
+                                    <strong>
+                                        You're currently using the URL <code><?php echo esc_html($controls->data['url'])?></code>
+                                        as dedicated page. Please select the corrisponding page above (new as version 4.6.5+).
+                                    </strong>
                                 </p>
+                                <?php } ?>
                             </td>
                         </tr>
                         <tr valign="top">
@@ -200,6 +237,15 @@ if ($controls->is_action()) {
                                 <p class="description">
                                     Notifications are sent on confirmed subscriptions and cancellations.
                                 </p>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <th><?php _e('Custom styles', 'newsletter')?></th>
+                            <td>
+                                <?php if (apply_filters('newsletter_enqueue_style', true) === false) { ?>
+                                <p><strong>Warning: Newsletter styles and custom styles are disable by your theme or a plugin.</strong></p>
+                                <?php } ?>
+                                <?php $controls->textarea('css'); ?>
                             </td>
                         </tr>
                     </table>

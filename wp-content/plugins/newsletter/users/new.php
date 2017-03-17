@@ -1,4 +1,6 @@
 <?php
+if (!defined('ABSPATH')) exit;
+
 require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = NewsletterUsers::instance();
@@ -12,7 +14,9 @@ if ($controls->is_action('save')) {
     if ($user === false) {
         $controls->errors = 'This email already exists.';
     } else {
-        $controls->js_redirect($module->get_admin_page_url('edit') . '&id=' . $user->id);
+        echo '<script>';
+        echo 'location.href="' . $module->get_admin_page_url('edit') . '&id=' . $user->id . '"';
+        echo '</script>';
         return;
     }
 }

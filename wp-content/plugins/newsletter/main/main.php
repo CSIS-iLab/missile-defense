@@ -1,4 +1,7 @@
 <?php
+if (!defined('ABSPATH'))
+    exit;
+
 @include_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 $controls = new NewsletterControls();
 $module = Newsletter::instance();
@@ -45,14 +48,18 @@ if (!$controls->is_action()) {
         if (!$newsletter->is_email($controls->data['reply_to'], true)) {
             $controls->errors .= __('Reply to email is not correct.', 'newsletter') . '<br>';
         }
-        
+
         $controls->data['contract_key'] = trim($controls->data['contract_key']);
-        
+
         if (empty($controls->errors)) {
             $module->merge_options($controls->data);
             $controls->messages .= __('Saved.', 'newsletter');
         }
+        
+        update_option('newsletter_log_level', $controls->data['log_level']);
+        
         $module->hook_newsletter_extension_versions(true);
+        delete_transient("tnp_extensions_json");
     }
 }
 
@@ -76,6 +83,19 @@ if (!empty($controls->data['contract_key'])) {
     $module->merge_options($controls->data);
 }
 
+
+$return_path = $module->options['return_path'];
+if (!empty($return_path)) {
+    list($return_path_local, $return_path_domain) = explode('@', $return_path);
+
+    $sender = $module->options['sender_email'];
+    list($sender_local, $sender_domain) = explode('@', $sender);
+
+
+    if ($sender_domain != $return_path_domain) {
+        $controls->messages .= '<br><br>Your Return Path domain is different from your Sender domain. Providers may require them to be identical';
+    }
+}
 ?>
 
 <div class="wrap" id="tnp-wrap">
@@ -224,6 +244,25 @@ if (!empty($controls->data['contract_key'])) {
                             </td>
                         </tr>
 
+                        <tr>
+                            <th>
+                                Log level
+                            </th>
+                            <td>
+                                <?php $controls->log_level('log_level'); ?>
+                            </td>
+                        </tr>
+
+                        <tr valign="top">
+                            <th>Debug mode</th>
+                            <td>
+                                <?php $controls->yesno('debug', 40); ?>
+                                <p class="description">
+                                    In debug mode Newsletter intercepts PHP errors. To be used only by the support team. 
+                                </p>
+                            </td>
+                        </tr>
+
                         <tr valign="top">
                             <th>API key</th>
                             <td>
@@ -240,18 +279,16 @@ if (!empty($controls->data['contract_key'])) {
                             <td>
                                 <?php $controls->textarea('css'); ?>
                                 <p class="description">
-                                    Add here your own css to style the forms. The whole form is enclosed in a div with class
-                                    "newsletter" and it's made with a table (guys, I know about your table less design
-                                    mission, don't blame me too much!)
+                                    This option is obsolete and will be removed, use the custom style field in the subscription configuration panel.
                                 </p>
                             </td>
                         </tr>
                         <tr valign="top">
-                            <th>Send emails directly</th>
+                            <th>Send email directly</th>
                             <td>
                                 <?php $controls->yesno('phpmailer'); ?>
                                 <p class="description">
-                                    Instead of using WordPress emails are sent directly by Newsletter. 
+                                    Instead of using WordPress email are sent directly by Newsletter. 
                                     This enable the textual part of newsletters and the content encoding setting. 
                                     Keep at "No" if you're using
                                     ans SMTP plugin like Postman. 
@@ -280,14 +317,6 @@ if (!empty($controls->data['contract_key'])) {
                                 </p>
                             </td>
                         </tr>
-                        <!--
-                        <tr valign="top">
-                            <th>Totally remove this plugin</th>
-                            <td>
-                        <?php $controls->button_confirm('remove', 'Totally remove this plugin', 'Really sure to totally remove this plugin. All data will be lost!'); ?>
-                            </td>
-                        </tr>
-                        -->
                     </table>
 
                 </div>

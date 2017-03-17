@@ -5,6 +5,9 @@
  * - no top noticies
  * - no donation link
  */
+
+if (!defined('ABSPATH')) exit;
+
 ?>
 <?php if (NEWSLETTER_HEADER) { ?>
 <div id="newsletter-header-ext">

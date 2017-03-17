@@ -141,7 +141,7 @@ if (!class_exists('WPFront_User_Role_Editor_Nav_Menu_Walker')) {
 				</div>
 			</div>
 
-			<div class="menu-item-settings" id="menu-item-settings-<?php echo $item_id; ?>">
+			<div class="menu-item-settings wp-clearfix" id="menu-item-settings-<?php echo $item_id; ?>">
 				<?php if ( 'custom' == $item->type ) : ?>
 					<p class="field-url description description-wide">
 						<label for="edit-menu-item-url-<?php echo $item_id; ?>">

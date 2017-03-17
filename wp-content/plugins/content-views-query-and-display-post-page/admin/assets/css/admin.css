@@ -69,9 +69,10 @@ html {
 .pt-cv-caution {
 	background-color: #F44336;
 	color: #fff;
-	padding: 5px 15px;
+	padding: 8px 10px;
 	margin-bottom: 1px;
 	text-align: center;
+	font-size: 1.2em;
 }
 .hide {
 	display: none;

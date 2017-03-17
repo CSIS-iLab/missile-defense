@@ -150,7 +150,7 @@ article {
 .entry-meta {
 	font-size: .9em;
     font-family: $font__SourceSans;
-    margin-bottom:0px;
+    margin-bottom: 25px;
     font-weight: normal;
     text-transform: uppercase;
 
@@ -213,6 +213,10 @@ article {
 
     	margin-left:20px;
     	margin-bottom:12px;
+    }
+
+    &.relatedLinks p {
+    	columns: initial;
     }
 }
 
