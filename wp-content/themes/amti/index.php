@@ -45,7 +45,7 @@ get_header(); ?>
 
 						<div class='hpsection-header'>
 							<h1 class='home'>FEATURED<span>ITEMS</span></h1>
-							<button class='ltblue moreposts'><a class='moreposts' href='/analysis/'>Read All</a></button>
+							<a class='link-btn ltblue moreposts' href='/analysis/'>Read All</a>
 							</div>
 							<?php
 							$optionsFeatures = get_option( 'transparency_hpFeaturesPosts_options' );
@@ -67,7 +67,7 @@ get_header(); ?>
 							endwhile; // end of the loop.
 							wp_reset_postdata();
 
-							echo "<button class='ltblue moreposts-bottom'><a href='/analysis/'>Read All Articles</a></button>";
+							echo "<a href='/analysis/' class='link-btn ltblue moreposts-bottom'>Read All Articles</a>";
 					?>
 			</div>
 		</div>
@@ -109,9 +109,7 @@ get_header(); ?>
 							<div class="col-sm-9">
 								<p>A growing collection of information on various countries’ missile systems, with illustrations and up-to-date information on their capabilities and history.</p>
 
-								<button class="blue gray">
-									<a href='/missile/'>LEARN MORE</a>
-								</button>
+								<a href='/missile/' class="link-btn blue gray">LEARN MORE</a>
 							
 						</div>
 					</div>
@@ -134,9 +132,7 @@ get_header(); ?>
 							<div class="col-sm-9">
 								<p>Explore the components that go into making missile defense effective, including sensors, interceptors, command and  control.</p>
 
-								<button class="blue gray">
-									<a href='/defsys/'>LEARN MORE</a>
-								</button>
+								<a href='/defsys/' class="link-btn blue gray">LEARN MORE</a>
 						
 						</div>
 					</div>
@@ -156,7 +152,7 @@ get_header(); ?>
 			<div class="col-sm-12">
 				<div class='hpsection-header'>
 				<h1 class='home'>LATEST<span>NEWS</span></h1>
-				<button class='ltblue moreposts'><a class='moreposts' href='/category/news/'>Read All</a></button>
+				<a class='link-btn ltblue moreposts' href='/category/news/'>Read All</a>
 				</div>
 				</div>
 				<div class="col-sm-8">
@@ -198,7 +194,7 @@ get_header(); ?>
 						<div class="newsletter-widget">
 							<h5> NEWSLETTER </h5>
 							<p>Sign up for the CSIS Missile Defense Project’s monthly newsletter for info on the project’s latest publications, upcoming events, and analysis on recent missile defense news.</p>
-							<button class="blue"><a href="/newsletter">Sign up</a></button>
+							<a href="/newsletter" class="link-btn blue">Sign up</a>
 						</div>
 						</div>
 					</div>
