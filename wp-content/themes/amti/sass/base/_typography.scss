@@ -44,17 +44,19 @@ h1 {
 	text-transform: uppercase;
 }
 
+
+
+
+
 h2 {
-	line-height: 1.5em;
+    line-height: 1.5em ;
     font-size: 34px;
     font-size: 1.3em;
     color: $blue-gray;
     margin-top: 20px;
     margin-bottom: 20px;
     font-family: $font__SourceSans;
-
-
-    
+    font-weight: normal ;
 
     &.landingPage {
 		font-weight: 100;
@@ -74,7 +76,6 @@ h2 {
 		margin-bottom: 0px;
 		margin-top: 0px;
 		margin-bottom: 10px;
-		
 
 	}
 }
@@ -86,6 +87,39 @@ h3 {
     color: #073447;
     font-weight: 600;
 }
+
+.entry-content h2 {
+	line-height: 41px;
+    font-size: 28px;
+    font-size: 2.6rem;
+    color: #073447 ;
+    font-weight: 600;
+
+        &.landingPage {
+		font-weight: 100;
+	    font-style: italic;
+	    font-size: 1.3em;
+	    text-align: center;
+	    margin: 40px 0 10px;
+	    border-bottom: 3px $light-blue solid;
+	    color: $blue-gray;
+	    line-height: 2em;
+	}
+	
+}
+
+.entry-content h3 {
+	line-height: 1.5em;
+    font-size: 34px;
+    font-size: 1.3em;
+    color: $blue-gray !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: $font__SourceSans;
+    font-weight: normal ;
+}
+
+
 
 h4 {
 	line-height: 26px;
