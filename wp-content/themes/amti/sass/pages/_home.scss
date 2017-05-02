@@ -8,47 +8,53 @@ main {
     text-transform: uppercase;
 }
 
-.link-btn {
-    font-size: 0.8em;
-    font-weight: 600;
-    font-family: $font__OpenSans;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 8px 28px;
-    display: inline-block;
-}
-
 button {
     font-size: .8em;
      font-weight: 600;
 }
 
-a.blue {
+button.blue {
     background-color: $dark-blue;
-    color: white !important;
-    font-weight: normal;
+    a {
+        color: white !important;
+        background-color: transparent;
+           font-weight: normal;
+    }
 }
 
-a.blue:hover {
+button:hover {
     background-color: $gray;
+    cursor: pointer !important;
 }
 
-a.ltblue {
+button.ltblue {
     background-color: $light-blue;
-    color: $dark-blue !important;
+    padding: 8px;
+    a {
+        color: $dark-blue !important;
+        background-color: transparent;
+    }
+
 }
 
-a.ltblue:hover {
+button.ltblue:hover {
     background-color: #CBD4D9;
-    color: $dark-blue !important;
+   
+    a {
+        color: $dark-blue !important;
+        background-color: transparent;
+    }
 }
 
 
 .missileSys {
-    a.blue:hover {
-        background-color: $gold;
+    button.blue:hover {
+    background-color: $gold;
+     a {
         color: $dark-blue !important;
+        
     }
+}
 }
 
 
@@ -130,7 +136,7 @@ section {
         color: $blue-gray;
         letter-spacing: 2px;
     }
-    .moreposts {
+    button {
         position: absolute;
         right: 0px;
         bottom: 0px;
@@ -345,7 +351,7 @@ section {
             margin-bottom: 5px;
         }
     }
-    .link-btn {
+    button {
         margin-top: 10px;
         position: relative;
     }

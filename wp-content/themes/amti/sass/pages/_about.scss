@@ -7,27 +7,15 @@
         line-height: 1.5;
         margin-bottom: 5px;
     }
-    .link-btn {
-        font-size: 0.8em;
-        font-weight: 600;
-        font-family: $font__OpenSans;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        padding: 8px 28px;
-        display: inline-block;
+    button a {
         text-decoration: none;
-        font-size: 0.8em;
+        font-size: 1.2em;
     }
-
-    a.blue {
-        background-color: $dark-blue;
-        color: white !important;
-        font-weight: normal;
+    button {
         margin-bottom: 20px;
     }
+    a {
 
-    a.blue:hover {
-        background-color: $gray;
     }
 
     .email-link {
