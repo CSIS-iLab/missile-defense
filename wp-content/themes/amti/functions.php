@@ -445,3 +445,29 @@ function transparency_hpFeaturesPosts_validate_options( $input ) {
 	}
 	return $valid;
 }
+
+/**
+ * Add iFrame to allowed wp_kses_post tags
+ *
+ * @param string $tags Allowed tags, attributes, and/or entities.
+ * @param string $context Context to judge allowed tags by. Allowed values are 'post',
+ *
+ * @return mixed
+ */
+function custom_wpkses_post_tags( $tags, $context ) {
+	if ( 'post' === $context ) {
+		$tags['iframe'] = array(
+			'src'             => true,
+			'height'          => true,
+			'width'           => true,
+			'frameborder'     => true,
+			'allowfullscreen' => true,
+			'allowvr allowfullscreen' => true,
+			'mozallowfullscreen' => true,
+			'webkitallowfullscreen' => true,
+			'onmousewheel' => true
+		);
+	}
+	return $tags;
+}
+add_filter( 'wp_kses_allowed_html', 'custom_wpkses_post_tags', 10, 2 );
