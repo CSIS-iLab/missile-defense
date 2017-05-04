@@ -467,6 +467,9 @@ function custom_wpkses_post_tags( $tags, $context ) {
 			'webkitallowfullscreen' => true,
 			'onmousewheel' => true
 		);
+		$tags['style'] = array(
+			'type' => true
+		);
 	}
 	return $tags;
 }
