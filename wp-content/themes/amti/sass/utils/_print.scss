@@ -15,7 +15,8 @@
         }
         body {
         	padding: 0px !important;
-            font-size: 12pt;
+            font-size: 12pt !important;
+            overflow: visible !important;
 
             &:before {
             	content: 'Missile Threat';
@@ -34,6 +35,10 @@
 
         .site-content {
             margin-top: 0 !important;
+        }
+
+        #content, #missileTable_wrapper {
+            overflow: visible !important;
         }
 
         article.post {
@@ -56,7 +61,7 @@
             page-break-inside: avoid;
         }
 
-        a[href^=http]:after {
+        a[href]:after {
             content: none !important;
         }
 
@@ -90,12 +95,33 @@
             }
         }
 
+        table { page-break-inside:auto; font-size: 1vw !important; overflow: visible !important; }
+        tr    { page-break-inside:avoid; page-break-after:auto;overflow: visible !important; }
+        thead { display:table-header-group;overflow: visible !important; }
+        tfoot { display:table-footer-group }
+
+        #missileTable {
+            width: 100% !important;
+            overflow: visible !important;
+            table-layout: fixed !important;
+
+            thead th {
+                width: auto !important;
+            }
+
+            .hidden-xs {
+                display: table-cell !important;
+            }
+        }
+
         // Hide Elements
         .sharedaddy,
         .site-footer,
         .topbutton,
         .post-edit-link,
-        .relatedposts
+        .relatedposts,
+        #missileTable_filter,
+        article header img 
         {
             display: none !important;
         }
