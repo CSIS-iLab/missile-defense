@@ -39,3 +39,16 @@ function transparency_infinite_scroll_render() {
 		endif;
 	}
 }
+
+/**
+ * Displays Share Icons on Archive Pages
+ * @return [type] [description]
+ */
+function transparency_shareOnArchives() {
+	if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
+		echo '<div class="addtoany_share_save_container addtoany_content_bottom">';
+		echo '<div class="addtoany_header">Share this:</div>'; 
+	    ADDTOANY_SHARE_SAVE_KIT( array( 'use_current_page' => true ) );
+	    echo '</div>';
+	}
+}
