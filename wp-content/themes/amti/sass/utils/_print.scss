@@ -1,0 +1,104 @@
+/*=========================================
+=            Print Stylesheets            =
+=========================================*/
+    
+    @media print {
+        *,
+        *:before,
+        *:after {
+            background: transparent !important;
+            color: #000 !important; // Black prints faster: h5bp.com/s
+            box-shadow: none !important;
+            text-shadow: none !important;
+            filter: none !important;
+            -ms-filter: none !important;
+        }
+        body {
+        	padding: 0px !important;
+            font-size: 12pt;
+
+            &:before {
+            	content: 'Missile Threat';
+            	margin-bottom: 1cm;
+            	font-size: 24pt;
+            	display: block;
+            }
+
+            &:after {
+
+            	content: 'Printed from Missile Threat, ©2017 by the Center for Strategic and International Studies. All rights reserved.';
+            	margin-top: 1cm;
+            	font-size: 12pt;
+            }
+        }
+
+        .site-content {
+            margin-top: 0 !important;
+        }
+
+        article.post {
+            border-bottom: 0 !important;
+        }
+
+        h1.entry-title {
+            margin-top: 0 !important;
+        }
+
+        h2,
+        h3 {
+            page-break-after: avoid;
+        }
+        article {
+          
+        }
+       
+        img {
+            page-break-inside: avoid;
+        }
+
+        a[href^=http]:after {
+            content: none !important;
+        }
+
+        header.entry-header {
+            height: auto !important;
+
+            .container {
+                position: relative !important;
+                top: initial !important;
+                left: initial !important;
+                transform: initial !important;
+            }
+        }
+
+        .tax-system .archive-description, .tax-countries .archive-description {
+            margin-top: 0 !important;
+        }
+
+        .tax-system .system-elements {
+            margin: 0 0 25px 0 !important;
+        }
+
+        .sketchfab-embed-wrapper {
+            margin: 0 25px 25px;
+            iframe {
+                display: none !important;
+            }
+
+            p br {
+                display: none !important;
+            }
+        }
+
+        // Hide Elements
+        .sharedaddy,
+        .site-footer,
+        .topbutton,
+        .post-edit-link,
+        .relatedposts
+        {
+            display: none !important;
+        }
+
+
+    }
