@@ -129,26 +129,25 @@ jQuery(document).ready(function($) {
 jQuery(document).ready(function($) {
 
     //sticky map placement
-    if( $('.resources-menu').length ) {
+    if( $('.resources-menu, .tableOfContents').length ) {
 
-        var absolute = $('.resources-menu');
-        var fixed = $('.resources-menu.sticky');
+        var absolute = $('.resources-menu, .tableOfContents');
+        var fixed = $('.resources-menu.sticky, .tableOfContents.sticky');
 
         calculate(absolute);
 
 
         var msie6 = $.browser == 'msie' && $.browser.version < 7;
         if (!msie6) {
-            var top2 = $('.resources-menu').offset().top;
+            var top2 = $('.resources-menu, .tableOfContents').offset().top;
             var top = top2 - 100;
             $(window).scroll(function(event) {
                 var y = $(this).scrollTop();
                 if (y >= top) {
-                    $('.resources-menu').addClass('sticky');
-     
+                    $('.resources-menu, .tableOfContents').addClass('sticky');
                 
                 } else {
-                    $('.resources-menu').removeClass('sticky');
+                    $('.resources-menu, .tableOfContents').removeClass('sticky');
                 }
             });
 
@@ -176,7 +175,7 @@ jQuery(document).ready(function($) {
                 var size = container / 2;
             } else if (winW < 768) {
             	var size = container;
-                $('.resources-menu').removeClass('sticky');
+                $('.resources-menu, .tableOfContents').removeClass('sticky');
 
             } else {
                 var size = container / 4;
@@ -193,7 +192,7 @@ jQuery(document).ready(function($) {
                     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
                     if (target.length) {
                         $('html, body').animate({
-                            scrollTop: target.offset().top
+                            scrollTop: (target.offset().top - 100)
                         }, 1000);
                         return false;
                     }
