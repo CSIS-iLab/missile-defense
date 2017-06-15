@@ -334,6 +334,11 @@ add_filter( 'comments_open', 'filter_media_comment_status', 10 , 2 );
 /*-----------------------------------------------------------------------------------*/
 require get_template_directory() . '/inc/shortcodes.php';
 
+/*-----------------------------------------------------------------------------------*/
+/* TinyMCE Editor Buttons
+/*-----------------------------------------------------------------------------------*/
+require get_template_directory() . '/inc/tinymce.php';
+
 /**
  * Homepage image size
  */
