@@ -329,12 +329,10 @@ function filter_media_comment_status( $open, $post_id ) {
 add_filter( 'comments_open', 'filter_media_comment_status', 10 , 2 );
 // ------------------------------------
 
-// Full Width Shortcode
-// Add Shortcode
-function shortcode_fullWidth( $atts , $content = null ) {
-	return "<div class='fullWidthFeatureContent'>".$content."</div>";
-}
-add_shortcode( 'fullWidth', 'shortcode_fullWidth' );
+/*-----------------------------------------------------------------------------------*/
+/* Shortcodes
+/*-----------------------------------------------------------------------------------*/
+require get_template_directory() . '/inc/shortcodes.php';
 
 /**
  * Homepage image size

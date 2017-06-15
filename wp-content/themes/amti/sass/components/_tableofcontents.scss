@@ -1,0 +1,83 @@
+/*=========================================
+=            Table of Contents            =
+=========================================*/
+
+.tableOfContents {
+    padding-left: 40px;
+    padding-top: 40px;
+    display: block;
+    width: 25%;
+    float: right;
+    margin-right: 20px;
+
+    &.sticky {
+	    position: fixed;
+	    right: auto;
+	    top: 100px;
+	}
+
+	h2 {
+	    margin-bottom: 0px;
+	    text-align: left;
+	    border-bottom: 2px solid $light-blue;
+	    text-transform: uppercase;
+	    letter-spacing: 1px;
+	    font-size: 1.1em;
+	    font-weight: bold;
+	    font-family: $font__OpenSans;
+	}
+
+	ul, ol {
+	    margin: 10px auto;
+	    list-style: none;
+	    text-align: left;
+
+		li {
+			padding-bottom: 10px;
+			line-height: 1.2em;
+
+			a {
+				text-decoration: none;
+				color: $gray;
+				font-weight: normal;
+			}
+		}
+	}
+
+}
+
+.tableOfContents-mainContent {
+    width: 70%;
+    float: left;
+}
+
+@media screen and (max-width: 992px) {
+    .tableOfContents-mainContent {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .tableOfContents {
+        display: block;
+        width: 80%;
+     	margin-left: 15px;
+        float: none;
+        padding-left: 0px;
+        padding-top: 30px;
+
+        &.sticky {
+	        position: relative;
+	        margin-left: 30px;
+	        right: auto;
+	        top: auto;
+	        width: 80%;
+	       
+	    }
+    }
+    .tableOfContents-mainContent {
+        width: 100%;
+        float: none;
+    }
+}
+
