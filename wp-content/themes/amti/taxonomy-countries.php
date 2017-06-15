@@ -74,6 +74,7 @@ if(get_archive_thumbnail_src()) {
 					endif;
 
 					the_archive_bottom_content();
+					transparency_shareOnArchives();
 				?>
 			</main><!-- #main -->
 		</div>
