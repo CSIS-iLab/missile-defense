@@ -83,7 +83,8 @@
 #rebels-strike-uae-vessel-marker .tl-icon-image:after,
 #houthis-fire-a-revenge-missile-at-riyadh-marker .tl-icon-image:after,
 #senior-yemeni-general-killed-in-houthi-missile-attack-marker .tl-icon-image:after,
-#houthi-rebels-report-strike-on-saudis-king-salaman-air-base-with-ballistic-missile-marker .tl-icon-image:after  
+#houthi-rebels-report-strike-on-saudis-king-salaman-air-base-with-ballistic-missile-marker .tl-icon-image:after,
+#houthi-forces-attack-uae-ship-with-cruise-missile-marker .tl-icon-image:after  
 {
  content: url(STRIKE.png);
 }
