@@ -89,6 +89,7 @@ Thumbs.db
 !.editorconfig
 !README.md
 !CHANGELOG.md
+!composer.json
 
 # track favicon files, if they exist
 !android-chrome-*.png
