@@ -1,0 +1,31 @@
+{
+    "name": "CSIS-iLab/missile-defense",
+    "description": "WordPress theme for MissileThreat",
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "wpackagist-plugin/add-to-any": "*",
+        "wpackagist-plugin/akismet":"*",
+        "wpackagist-plugin/archive-control": "*",
+        "wpackagist-plugin/co-authors-plus": "*",
+        "wpackagist-plugin/disable-comments": "*",
+        "wpackagist-plugin/disable-emojis": "*",
+        "wpackagist-plugin/duplicate-page": "*",
+        "wpackagist-plugin/easy-twitter-feed-widget": "*",
+        "wpackagist-plugin/endnotes": "*",
+        "wpackagist-plugin/google-authenticator": "*",
+        "wpackagist-plugin/jetpack": "*",
+        "wpackagist-plugin/list-category-posts": "*",
+        "wpackagist-plugin/redirection": "*",
+        "wpackagist-plugin/search-by-algolia-instant-relevant-results": "*",
+        "wpackagist-plugin/stream": "*",
+        "wpackagist-plugin/tag-pages": "*",
+        "wpackagist-plugin/wpfront-user-role-editor": "*",
+        "wpackagist-plugin/tinymce-advanced": "*",
+        "wpackagist-plugin/wordpress-seo": "*"
+    }
+}
