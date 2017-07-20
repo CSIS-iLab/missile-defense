@@ -61,7 +61,7 @@
 @media screen and (max-width: 767px) {
     .tableOfContents {
         display: block;
-        width: 80%;
+        width: 80% !important;
      	margin-left: 15px;
         float: none;
         padding-left: 0px;

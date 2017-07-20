@@ -163,6 +163,8 @@ article {
 }
 
 .endnotes {
+	clear: left;
+
 	h3 {
 		line-height: 71px;
 	    font-size: 1.3em;
@@ -178,6 +180,11 @@ article {
     	font-size: 1em;
     	word-wrap: break-word;
 	}
+}
+
+.resources-content ~ .endnotes,
+.tableOfContents-mainContent ~ .endnotes {
+	width: 70%;
 }
 
 .post-meta {
