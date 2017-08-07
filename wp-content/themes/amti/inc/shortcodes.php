@@ -12,7 +12,7 @@
  * @return string          Full width embedded content
  */
 function shortcode_fullWidth( $atts , $content = null ) {
-	return "<div class='fullWidthFeatureContent'>".$content."</div>";
+	return "<div class='fullWidthFeatureContent'>".do_shortcode($content)."</div>";
 }
 add_shortcode( 'fullWidth', 'shortcode_fullWidth' );
 
@@ -23,7 +23,7 @@ add_shortcode( 'fullWidth', 'shortcode_fullWidth' );
  * @return string          Full width embedded content
  */
 function shortcode_tableOfContentsSidebar( $atts , $content = null ) {
-	return "<div class='tableOfContents'>".$content."</div>";
+	return "<div class='tableOfContents'>".do_shortcode($content)."</div>";
 }
 add_shortcode( 'tocSidebar', 'shortcode_tableOfContentsSidebar' );
 
@@ -34,6 +34,6 @@ add_shortcode( 'tocSidebar', 'shortcode_tableOfContentsSidebar' );
  * @return string          Full width embedded content
  */
 function shortcode_tableOfContentsMain( $atts , $content = null ) {
-	return "<div class='tableOfContents-mainContent'>".$content."</div>";
+	return "<div class='tableOfContents-mainContent'>".do_shortcode($content)."</div>";
 }
 add_shortcode( 'tocMain', 'shortcode_tableOfContentsMain' );
