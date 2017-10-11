@@ -477,3 +477,15 @@ function custom_wpkses_post_tags( $tags, $context ) {
 	return $tags;
 }
 add_filter( 'wp_kses_allowed_html', 'custom_wpkses_post_tags', 10, 2 );
+
+add_action( 'pre_get_posts', 'missilethreat_custom_sort_posts' );
+/**
+ * Change the default post query to show private pages on missile pages.
+ *
+ * @param  array $query Query object.
+ */
+function missilethreat_custom_sort_posts( $query ) {
+	if ( is_tax( 'countries' ) && $query->is_main_query() ) {
+		$query->set( 'post_status', array( 'publish', 'private' ) );
+	}
+}
