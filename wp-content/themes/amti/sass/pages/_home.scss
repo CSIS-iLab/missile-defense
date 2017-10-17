@@ -309,8 +309,9 @@ section {
     }
     .missileimg {
         background-image: url($image__homepage-missilesystems);
+        background-color: $black;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center top;
         background-size: cover;
         overflow: hidden;
         min-width: 100px;
