@@ -27,7 +27,7 @@
                             minWidth: 700,
                             minHeight: 200
                         },
-                    
+
                     ],
                     onsubmit: function( e ) {
                         editor.insertContent( '[tocSidebar]'+e.data.tableOfContentsSidebar+'[/tocSidebar]\n[tocMain]'+e.data.tableOfContentsMain+'[/tocMain]');
@@ -36,5 +36,5 @@
             },
         });
     });
- 
+
 })();
