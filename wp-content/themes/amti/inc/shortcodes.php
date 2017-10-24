@@ -51,6 +51,6 @@ function shortcode_definition($atts, $content = null) {
 		'define'
 	);
 
-	return "<span class='term-definition' aria-label='".$definition."'>".$content."</span>";
+	return "<span class='term-definition' aria-label='".$atts['definition']."'>".$content."</span>";
 }
 add_shortcode( 'define', 'shortcode_definition' );
