@@ -37,3 +37,20 @@ function shortcode_tableOfContentsMain( $atts , $content = null ) {
 	return "<div class='tableOfContents-mainContent'>".do_shortcode($content)."</div>";
 }
 add_shortcode( 'tocMain', 'shortcode_tableOfContentsMain' );
+
+/**
+ * Shortcode for displaying definition/jargon
+ */
+
+function shortcode_definition($atts, $content = null) {
+	$atts = shortcode_atts (
+		array(
+			'definition' => null,
+		),
+		$atts,
+		'define'
+	);
+
+	return "<span class='term-definition' aria-label='".$definition."'>".$content."</span>";
+}
+add_shortcode( 'define', 'shortcode_definition' );
