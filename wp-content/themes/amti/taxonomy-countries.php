@@ -45,7 +45,6 @@ if(get_archive_thumbnail_src()) {
 							<th class="hidden-xs">Class</th>
 							<th class="hidden-xs">Range</th>
 							<th class="hidden-xs">Status</th>
-							<th>Menu Order</th>
 						</thead>
 						<tbody>
 
@@ -86,16 +85,8 @@ if(get_archive_thumbnail_src()) {
 	<script>
 		jQuery(document).ready(function($) {
 		    $('#missileTable').DataTable( {
-		        "order": [[ 4, "asc" ]],
 		        "paging": false,
-		        "info": false,
-		        "columnDefs": [
-		            {
-		                "targets": [ 4 ],
-		                "visible": false,
-		                "searchable": false
-		            }
-		        ]
+		        "info": false
 		    } );
 		    $('#missileTable_filter input').removeClass('input-sm');
 		} );
