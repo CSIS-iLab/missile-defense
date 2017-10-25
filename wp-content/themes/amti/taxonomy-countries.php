@@ -86,7 +86,8 @@ if(get_archive_thumbnail_src()) {
 		jQuery(document).ready(function($) {
 		    $('#missileTable').DataTable( {
 		        "paging": false,
-		        "info": false
+		        "info": false,
+		        "order": []
 		    } );
 		    $('#missileTable_filter input').removeClass('input-sm');
 		} );
