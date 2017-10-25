@@ -47,16 +47,16 @@
                         {
                             type: 'textbox',
                             multiline: false,
-                            name: 'definition',
-                            label: 'Definition',
-                            placeholder: 'This is the definition'
+                            name: 'term',
+                            label: 'Term',
+                            placeholder: 'This is the term'
                         },
                         {
                             type: 'textbox',
                             multiline: false,
-                            name: 'term',
-                            label: 'Term',
-                            placeholder: 'This is the term'
+                            name: 'definition',
+                            label: 'Definition',
+                            placeholder: 'This is the definition'
                         }
                     ],
                     onsubmit: function( e ) {
