@@ -60,7 +60,7 @@
                         }
                     ],
                     onsubmit: function( e ) {
-                        editor.insertContent( "[define definition='"+e.data.definition+"']"+e.data.term+"[/define]");
+                        editor.insertContent( '[define definition="'+e.data.definition+'"]'+e.data.term+'[/define]');
                     }
                 })
             }
