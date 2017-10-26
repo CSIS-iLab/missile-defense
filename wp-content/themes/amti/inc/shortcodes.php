@@ -50,7 +50,7 @@ function shortcode_definition($atts, $content = null) {
 		$atts,
 		'define'
 	);
-	$definition = esc_attr($atts['definition']);
-	return "<span class='term-definition tooltipped tooltipped-multiline tooltipped-n' aria-label='".$definition."'>".$content."</span>";
+	$definition = $atts['definition'];
+	return '<span class="term-definition tooltipped tooltipped-multiline tooltipped-n" aria-label="'.esc_attr($definition).'">'.$content.'</span>';
 }
 add_shortcode( 'define', 'shortcode_definition' );
