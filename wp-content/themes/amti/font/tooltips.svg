@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2017 by original authors @ fontello.com</metadata>
+<defs>
+<font id="tooltips" horiz-adv-x="1000" >
+<font-face font-family="tooltips" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="tooltip-i" unicode="&#xeae4;" d="M0 850v-795h260l162-205 146 205h275v795h-843z m461-633h-78v337h78l0-337z m-39 415l0 0c-22 0-39 17-39 39s17 39 39 39c21 0 39-18 39-39s-18-39-39-39l0 0z" horiz-adv-x="843" />
+
+<glyph glyph-name="tooltip-e" unicode="&#xeae5;" d="M0 850v-830h340l213-170 192 170h361v830h-1106z m262-474c-38 0-69 31-69 70s31 69 69 69 70-31 70-69-31-70-70-70l0 0z m291 0c-38 0-69 31-69 70s31 69 69 69c39 0 70-31 70-69v0c0-39-31-70-70-70z m291 0c-38 0-69 31-69 70s31 69 69 69c38 0 70-31 70-69v0c0-39-32-70-70-70z" horiz-adv-x="1106" />
+</font>
+</defs>
+</svg>

@@ -2,6 +2,7 @@
 
 .tooltipped {
   position: relative;
+  font-weight: bold;
 }
 
 // This is the tooltip bubble
@@ -28,6 +29,7 @@
 }
 
 // This is the tooltip arrow
+/*
 .tooltipped::before {
   position: absolute;
   z-index: 1000001;
@@ -39,7 +41,9 @@
   content: "";
   border: 5px solid transparent;
   opacity: 0;
-}
+}*/
+
+
 
 // delay animation for tooltip
 @keyframes tooltip-appear {
