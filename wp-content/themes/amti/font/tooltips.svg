@@ -6,9 +6,7 @@
 <font id="tooltips" horiz-adv-x="1000" >
 <font-face font-family="tooltips" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
 <missing-glyph horiz-adv-x="1000" />
-<glyph glyph-name="tooltip-i" unicode="&#xeae4;" d="M0 850v-795h260l162-205 146 205h275v795h-843z m461-633h-78v337h78l0-337z m-39 415l0 0c-22 0-39 17-39 39s17 39 39 39c21 0 39-18 39-39s-18-39-39-39l0 0z" horiz-adv-x="843" />
-
-<glyph glyph-name="tooltip-e" unicode="&#xeae5;" d="M0 850v-830h340l213-170 192 170h361v830h-1106z m262-474c-38 0-69 31-69 70s31 69 69 69 70-31 70-69-31-70-70-70l0 0z m291 0c-38 0-69 31-69 70s31 69 69 69c39 0 70-31 70-69v0c0-39-31-70-70-70z m291 0c-38 0-69 31-69 70s31 69 69 69c38 0 70-31 70-69v0c0-39-32-70-70-70z" horiz-adv-x="1106" />
+<glyph glyph-name="asset-2-01" unicode="&#xeaeb;" d="M45 334h76v-37h-121v525h120v-37h-75z m560 489v-37h68v-452h-68v-37h108v526z m-408-244h-5a44 44 0 0 1-40-48 44 44 0 1 1 89 0 44 44 0 0 1-44 48z m163 0h-6a44 44 0 0 1-39-48 44 44 0 1 1 88 0 44 44 0 0 1-43 48z m163 0h-5a44 44 0 0 1-39-48 44 44 0 1 1 88 0 44 44 0 0 1-44 48z" horiz-adv-x="713" />
 </font>
 </defs>
 </svg>
