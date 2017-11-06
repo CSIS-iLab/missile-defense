@@ -42,7 +42,7 @@
 
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2em;
+  margin-left: 0;
 
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
@@ -55,4 +55,4 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-asset-2-01:before { content: '\eaeb'; } /* '' */
+.icon-asset-2-01:before { content: '\eaeb'; color:$blue-gray; font-weight: bold;} /* '' */
