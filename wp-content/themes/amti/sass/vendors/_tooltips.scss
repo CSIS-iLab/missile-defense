@@ -2,7 +2,12 @@
 
 .tooltipped {
   position: relative;
-  font-weight: bold;
+  //text-decoration: underline;
+  span{
+      -webkit-box-shadow: inset 0 -1px 0 0 $blue-gray;
+      -moz-box-shadow: inset 0 -1px 0 0 $blue-gray;
+      box-shadow: inset 0px -1px 0 0 $blue-gray;
+  }
 }
 
 // This is the tooltip bubble
@@ -26,6 +31,7 @@
   background: $tooltip-background-color;
   border-radius: 3px;
   opacity: 0;
+
 }
 
 // This is the tooltip arrow
