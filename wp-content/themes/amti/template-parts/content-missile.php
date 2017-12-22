@@ -73,9 +73,4 @@ if(isset($custom['missile_range'])) {
 			}
 		?>
 	</td>
-	<td>
-		<?php
-			echo $post->menu_order;
-		?>
-	</td>
 </tr><!-- #post-## -->

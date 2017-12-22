@@ -28,6 +28,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Utils
 # Layout
 # Pages
+# Vendors
 --------------------------------------------------------------*/
 @import "base/base";
 
@@ -50,3 +51,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Pages
 --------------------------------------------------------------*/
 @import "pages/pages";
+
+/*--------------------------------------------------------------
+# Vendors
+--------------------------------------------------------------*/
+@import "vendors/vendors";

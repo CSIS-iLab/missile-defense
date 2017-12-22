@@ -28,7 +28,7 @@ get_header(); ?>
 			</div>
 
 			<div class="col-sm-8 mission-statement">
-				<div class=""><?php the_content(); ?> 
+				<div class=""><?php the_content(); ?>
 				</div>
 			</div>
 		</div>
@@ -55,7 +55,7 @@ get_header(); ?>
 								$featuresLimit = 3;
 							}
 
-							$argsAnalysis = array( 
+							$argsAnalysis = array(
 								'posts_per_page' => $featuresLimit,
 								'cat' => '34',
 							);
@@ -87,12 +87,12 @@ get_header(); ?>
 				<div class="col-sm-6">
 				<div class="missiletext">
 					<div class="row missile-intro">
-						
+
 							<h1 class='home'>MISSILE<span>SYSTEMS</span></h1>
 							<p>Explore <em>Missile Threat’s</em> dynamic database of information on offensive and defensive missile systems from across the globe.</p>
 						</div>
 
-					
+
 
 					<div class="missile-subsection">
 						<div class="row">
@@ -104,13 +104,13 @@ get_header(); ?>
 						<div class="row">
 							<div class="col-sm-3 missile-icon">
 								<img class="img-responsive missile-icon" src="wp-content/themes/amti/img/missiles-of-the-world-icon.svg" alt="Missile Defense">
-							</div>								
+							</div>
 
 							<div class="col-sm-9">
 								<p>A growing collection of information on various countries’ missile systems, with illustrations and up-to-date information on their capabilities and history.</p>
 
 								<a href='/missile/' class="link-btn blue gray">LEARN MORE</a>
-							
+
 						</div>
 					</div>
 
@@ -120,20 +120,20 @@ get_header(); ?>
 								<h5>DEFENSE SYSTEMS</h5>
 							</div>
 						</div>
-					
 
-					
+
+
 						<div class="row">
 							<div class="col-sm-3 missile-icon">
 								<img class="img-responsive missile-icon" src="/wp-content/themes/amti/img/defense-systems-icon.svg" alt="Missile Defense">
-							</div>	
+							</div>
 
 
 							<div class="col-sm-9">
 								<p>Explore the components that go into making missile defense effective, including sensors, interceptors, command and  control.</p>
 
 								<a href='/defsys/' class="link-btn blue gray">LEARN MORE</a>
-						
+
 						</div>
 					</div>
 					</div>
@@ -165,7 +165,7 @@ get_header(); ?>
 								$newsLimit = 3;
 							}
 
-							$argsNews = array( 
+							$argsNews = array(
 								'posts_per_page' => $newsLimit,
 								'cat' => '42',
 							);
@@ -175,17 +175,17 @@ get_header(); ?>
 						    	get_template_part( 'template-parts/content', 'hp-news');
 							endwhile; // end of the loop.
 							wp_reset_postdata();
-							
+
 						?>
-				<button class='ltblue moreposts-bottom'><a href='/analysis/'>Read All Articles</a></button>
+				<button class='ltblue moreposts-bottom'><a href='/category/news/'>Read All News</a></button>
 					<div class="row">
 						<div class="col-sm-6 hp-widget">
 						<div class="events-widget">
 							<h5>EVENTS</h5>
 							<?php if ( is_active_sidebar( 'sidebar-2' ) ) : ?>
-										
+
 							<?php dynamic_sidebar( 'sidebar-2' ); ?>
-											
+
 							<?php endif; ?>
 							</div>
 						</div>
@@ -205,7 +205,7 @@ get_header(); ?>
 					</div>
 				</div>
 </div>
-		
+
 		</div>
 	</div>
 
