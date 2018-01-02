@@ -38,7 +38,7 @@
 			</p>
 		</div>
 		<div class="col-sm-6 text-right">
-<p>©2017 by the Center for Strategic and International Studies. <br>All rights reserved.</p>
+<p>&copy; <?php echo date("Y"); ?> by the Center for Strategic and International Studies. <br>All rights reserved.</p>
 		</div>
 	</div>
 	</div>
