@@ -19,6 +19,12 @@
 		<?php
 		endif; ?>
 		<?php the_post_thumbnail('full'); ?>
+		<?php
+			if ( has_post_thumbnail() ) {
+				echo '<div class="post-featured-caption">' . esc_html_x( 'Photo Credit: ', 'transparency' ) . get_the_post_thumbnail_caption() . '</div>';
+			}
+		?>
+
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

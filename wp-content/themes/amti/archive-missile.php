@@ -20,16 +20,12 @@ if(get_archive_thumbnail_src()) {
 		<div class="overlay"></div>
 	</header>
 	<div id="primary" class="container">
-<?
-} else {
-	?>
+<?php } else { ?>
 	<div id="primary" class="container">
 		<header class="entry-header">
 			<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
 		</header>
-	<?
-}
-?>
+	<?php } ?>
 		<div class="row">
 			<main id="main" class="col-xs-12" role="main">
 				<?php the_archive_top_content(); ?>
@@ -61,7 +57,7 @@ if(get_archive_thumbnail_src()) {
 				        		</div>
 		        			</div>
 
-		        			<?
+		        			<?php
 		        			}
 						  }
 						}  

@@ -249,3 +249,9 @@ a {
 	color: $gray;
 	font-weight:bold;
 }
+
+%caption {
+	@include font-size(22px);
+	line-height: 1;
+	color: $blue-gray;
+}

@@ -42,7 +42,13 @@ object {
 }
 
 .wp-caption-text {
+	@extend %caption;
 	text-align: center;
+}
+
+.post-featured-caption {
+	@extend %caption;
+	margin: 0.8075em 0;
 }
 
 

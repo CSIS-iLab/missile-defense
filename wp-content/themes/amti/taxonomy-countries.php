@@ -20,16 +20,13 @@ if(get_archive_thumbnail_src()) {
 		<div class="overlay"></div>
 	</header>
 	<div id="primary" class="container">
-<?
-} else {
+<?php } else {
 	?>
 	<div id="primary" class="container">
 		<header class="entry-header">
 			<h1 class="page-title"><?php echo str_replace('Country: ','Missiles of ', get_the_archive_title()); ?></h1>
 		</header>
-	<?
-}
-?>
+	<?php } ?>
 		<div class="row">
 			<main id="main" class="col-xs-12" role="main">
 				<?php
