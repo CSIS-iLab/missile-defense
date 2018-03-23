@@ -260,7 +260,7 @@ section {
            .analysis-block article:last-of-type {
             margin-bottom: 0px;
     }
-        
+
     }
     @media screen and (max-width: 420px) {
         .img-thumbs {
@@ -285,8 +285,100 @@ section {
         }
 
 }
+
+//Ongoing Projects
+#ongoing {
+    background-color: $color__background-home-mission;
+    .ongoing-container {
+        padding: 25px 0px;
+    }
+    span.meta {
+        color: $gray;
+    }
+    em.lowercase {
+      text-transform: lowercase;
+    }
+    article {
+        border-bottom: none;
+        .article-image {
+            overflow: hidden;
+            height: 150px;
+        }
+        .img-thumbs {
+            position: absolute;
+            padding-right: 15px;
+        }
+        span.meta {
+            display: block;
+            font-size: .9em;
+        }
+        h2 {
+            margin: 0px;
+            line-height: 1.1em;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+            margin-top: 10px;
+        }
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.5em;
+    }
+    .ongoing-header-container {
+        padding-left: 0px;
+    }
+    .ongoing-header {
+        height: 100%;
+        line-height: 1em;
+        border-right: 2px solid $light-blue;
+    }
+    h5 {
+        display: block;
+        border-bottom: none;
+        margin-top: 0px;
+        position: absolute;
+        top: 40%;
+        text-align: right;
+        width: 100%;
+        padding-right: 60px;
+        margin-bottom: 0px;
+    }
+    .row-eq-height {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .ongoing-statement {
+      margin-top: 20px;
+      p {
+        margin: 5px 0px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+        .row-eq-height {
+            display: block;
+            float: left;
+        }
+        h5 {
+            display: block;
+            position: relative;
+            top: auto;
+            text-align: left;
+        }
+        .ongoing-header {
+            border-bottom: 2px solid $light-blue;
+            border-right: none;
+            width: 80%;
+        }
+    }
+}
+
 //Missile Systems
-//
 .missiles {
     margin-left: 0px;
     margin-right: 0px;

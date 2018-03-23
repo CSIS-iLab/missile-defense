@@ -75,6 +75,57 @@ get_header(); ?>
 </div>
 </section>
 
+<!-- Ongoing Projects -->
+<div id="ongoing" class="container-fluid">
+	<div class="row">
+	<div class="container">
+		<div class="row-eq-height ongoing-container">
+
+			<div class="col-sm-4 ongoing-header-container">
+				<div class="ongoing-header">
+					<div><h1>ONGOING<span>PROJECTS</span></h1></div>
+					<?php
+						$transparency_desc = get_option( 'transparency_homepage_ongoing_projects_desc' );
+						echo '<p>' . $transparency_desc . '</p>';
+				  ?>
+					<a href='/analysis/' class="link-btn blue gray">See All</a>
+
+				</div>
+			</div>
+
+			<div class="col-sm-8">
+				<div class="ongoing-statement">
+					<?php
+						$ongoing_project1 = get_option( 'transparency_homepage_ongoing_projects_1' );
+						$ongoing_project2 = get_option( 'transparency_homepage_ongoing_projects_2' );
+						$ongoing_project3 = get_option( 'transparency_homepage_ongoing_projects_3' );
+
+						if( $ongoing_project1 || $ongoing_project2 || $ongoing_project3 ) {
+							$ongoing_projectsArgs = array(
+								'post__in' => array(
+									$ongoing_project1,
+									$ongoing_project2,
+									$ongoing_project3
+								),
+								'orderby' => 'post__in'
+							);
+							$ongoing_projects = get_posts($ongoing_projectsArgs);
+							foreach ($ongoing_projects as $post) : setup_postdata($post);
+								get_template_part( 'template-parts/content', 'hp-ongoing' );
+						  endforeach;
+							wp_reset_postdata();
+						}
+					?>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+
+
+
 <!-- Missile Systems -->
 
 <section class="hpsection missiles">
