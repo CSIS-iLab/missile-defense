@@ -303,6 +303,7 @@ section {
         .article-image {
             overflow: hidden;
             height: 150px;
+            float: right;
         }
         .img-thumbs {
             position: absolute;
@@ -358,8 +359,26 @@ section {
         margin: 5px 0px;
       }
     }
-
     @media screen and (max-width: 768px) {
+
+      article{
+        .article-image {
+            overflow: hidden;
+            height: 150px;
+            float: none;
+        }
+      }
+        
+    }
+
+    @media screen and (max-width: 991px) {
+
+        .ongoing-header-container {
+            width: 100%;
+        }
+        .col-sm-8 {
+            width: 100%;
+        }
         .row-eq-height {
             display: block;
             float: left;
@@ -373,7 +392,7 @@ section {
         .ongoing-header {
             border-bottom: 2px solid $light-blue;
             border-right: none;
-            width: 80%;
+            width: 100%;
         }
     }
 }

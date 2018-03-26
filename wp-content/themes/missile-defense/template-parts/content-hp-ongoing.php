@@ -10,7 +10,11 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <div class="row">
-
+	<div class="col-sm-6 article-image">
+			<div class="img-thumbs" >
+				<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><img class="img-responsive" src="<?php the_post_thumbnail_url( 'homeImage' ); ?>"  alt="<?php the_title(); ?>" width="" height=""></a>
+			</div>
+		</div>
 	<div class="col-sm-6">
 	<span class="meta"><em>L</em><em class="lowercase">ast updated</em> <?php the_modified_time('F j, Y'); ?></span>
 	<h2>
@@ -20,11 +24,7 @@
 	</h2>
 	<?php the_excerpt(); ?>
 	</div>
-	<div class="col-sm-6 article-image">
-			<div class="img-thumbs" >
-				<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark"><img class="img-responsive" src="<?php the_post_thumbnail_url( 'homeImage' ); ?>"  alt="<?php the_title(); ?>" width="" height=""></a>
-			</div>
-		</div>
+
 	</div>
 	<div class="clearfix"></div>
 </article><!-- #post-## -->
