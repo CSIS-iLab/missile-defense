@@ -33,16 +33,21 @@ add_action( 'admin_init', 'transparency_admin_init_section_homepage' );
  * Create the "Homepage" settings section.
  */
  function transparency_admin_init_section_homepage() {
+  $projects_category = get_option( 'transparency_homepage_ongoing_projects_category' );
+
    $post_types = array( 'post' );
    $post_selection = array();
    foreach ($post_types as $type) {
      $post_selection[$type] = get_posts(
          array(
            'post_type' => $type,
-           'numberposts' => -1
+           'numberposts' => -1,
+           'category' => $projects_category
          )
        );
    }
+
+   $categories = get_categories(array('hide_empty' => 0));
 
    add_settings_section(
      'transparency_settings_section_homepage',
@@ -58,6 +63,15 @@ add_action( 'admin_init', 'transparency_admin_init_section_homepage' );
       'transparency-options-page',
       'transparency_settings_section_homepage',
       array( 'transparency_homepage_ongoing_projects_desc' )
+   );
+
+   add_settings_field(
+      'transparency_homepage_ongoing_projects_category',
+      'Ongoing Projects Category',
+      'transparency_category_callback',
+      'transparency-options-page',
+      'transparency_settings_section_homepage',
+      array( 'transparency_homepage_ongoing_projects_category', $categories )
    );
 
    add_settings_field(
@@ -94,6 +108,12 @@ add_action( 'admin_init', 'transparency_admin_init_section_homepage' );
       'transparency_settings',
       'transparency_homepage_ongoing_projects_desc',
       'wp_filter_post_kses'
+   );
+
+   register_setting(
+      'transparency_settings',
+      'transparency_homepage_ongoing_projects_category',
+      'sanitize_text_field'
    );
 
    register_setting(
@@ -145,6 +165,25 @@ function transparency_posts_callback( $args ) {
     }
 
     echo '<option value="' . esc_attr( $post->ID ) . '" ' . $selected . '>' . esc_attr( $post->post_title ) . '</option>';
+  }
+  echo '</select>';
+}
+/**
+ * Renders the category dropdown fields.
+ *
+ * @param Array $args Array of arguments passed by callback function.
+ */
+function transparency_category_callback( $args ) {
+  $option = get_option( $args[0] );
+  echo '<select name="' . esc_attr( $args[0] ) . '" id="' . esc_attr( $args[0] ) . '" name="' . esc_attr( $args[0] ) . '">';
+  foreach ( $args[1] as $category ) {
+    if ( $category->term_id == esc_attr( $option ) ) {
+      $selected = "selected";
+    } else {
+      $selected = '';
+    }
+
+    echo '<option value="' . esc_attr( $category->term_id ) . '" ' . $selected . '>' . esc_attr( $category->name ) . '</option>';
   }
   echo '</select>';
 }
