@@ -1,0 +1,418 @@
+main {
+    padding: 0px 0px;
+}
+
+.date,
+.meta,
+.event-title {
+    text-transform: uppercase;
+}
+
+.link-btn {
+    font-size: 0.8em;
+    font-weight: 600;
+    font-family: $font__OpenSans;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 28px;
+    display: inline-block;
+}
+
+button {
+    font-size: .8em;
+     font-weight: 600;
+}
+
+a.blue {
+    background-color: $dark-blue;
+    color: white !important;
+    font-weight: normal;
+}
+
+a.blue:hover {
+    background-color: $gray;
+}
+
+a.ltblue {
+    background-color: $light-blue;
+    color: $dark-blue !important;
+}
+
+a.ltblue:hover {
+    background-color: #CBD4D9;
+    color: $dark-blue !important;
+}
+
+
+.missileSys {
+    a.blue:hover {
+        background-color: $gold;
+        color: $dark-blue !important;
+    }
+}
+
+
+
+section {
+    margin: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .homepage h1 {
+        font-size: 1.5em;
+    }
+}
+
+//Mission
+#mission {
+    background-color: $color__background-home-mission;
+    .mission-container {
+        padding: 25px 0px;
+    }
+    p {
+        font-size: 1em;
+        line-height: 1.5em;
+    }
+    .mission-header {
+        height: 100%;
+        line-height: 1em;
+        border-right: 2px solid $light-blue;
+    }
+    h5 {
+        display: block;
+        border-bottom: none;
+        margin-top: 0px;
+        position: absolute;
+        top: 40%;
+        text-align: right;
+        width: 100%;
+        padding-right: 60px;
+        margin-bottom: 0px;
+    }
+    .row-eq-height {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mission-statement p {
+        margin: 5px 0px;
+    }
+    @media screen and (max-width: 768px) {
+        .row-eq-height {
+            display: block;
+            float: left;
+        }
+        h5 {
+            display: block;
+            position: relative;
+            top: auto;
+            text-align: left;
+        }
+        .mission-header {
+            border-bottom: 2px solid $light-blue;
+            border-right: none;
+            width: 80%;
+        }
+    }
+}
+
+//Homepage Articles
+.hpsection {
+    margin: 80px 15px 100px;
+    .hpsection-header {
+        position: relative;
+        border-bottom: 3px solid $light-blue;
+        margin-bottom: 30px;
+    }
+    h1 {
+        margin-bottom: 0px;
+        color: $blue-gray;
+        letter-spacing: 2px;
+    }
+    .moreposts {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        margin: 0px;
+    }
+    .hp-widget button {
+        display: block;
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: auto;
+        margin-top: 10px;
+    }
+    .moreposts-bottom {
+        display: none;
+    }
+    span.meta {
+        color: $gray;
+    }
+    @media screen and (max-width: 768px) {
+        .moreposts-bottom {
+            display: block;
+            position: relative;
+            right: auto;
+            bottom: auto;
+            margin: auto;
+        }
+        .moreposts {
+            display: none;
+        }
+        .hpsection-header {
+            margin-bottom: 10px;
+        }
+    }
+    article {
+        border-bottom: none;
+        .article-image {
+            overflow: hidden;
+            height: 150px;
+        }
+        .img-thumbs {
+            position: absolute;
+            padding-right: 15px;
+        }
+        span.meta {
+            display: block;
+            font-size: .9em;
+        }
+        h2 {
+            margin: 0px;
+            line-height: 1.1em;
+            text-transform: uppercase;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+            margin-top: 10px;
+        }
+    }
+    .events-widget,
+    .newsletter-widget {
+        width: 80%;
+        margin-top: 50px;
+    }
+    .hp-widget {
+        .event-title {
+            color: $gray;
+            font-size: .9em;
+            line-height: 1em;
+        }
+        .textwidget {
+            padding-bottom: 15px;
+            font-size: .9em !important;
+        }
+        p {
+            line-height: 1.45em;
+            font-size: .9em;
+        }
+        button {
+            margin: 0 0;
+        }
+    }
+    .newsletter-widget p {
+        margin-bottom: 10px;
+        font-size: .9em;
+    }
+    @media screen and (max-width: 767px) {
+        .col-xs-12 {
+            padding: 0px;
+        }
+        article {
+            .article-image {
+                margin-left: -3em;
+                margin-right: 4em;
+                width: calc(100% + 6.6em);
+            }
+            .img-thumbs {
+                width: 100%;
+                img {
+                    width: 100%;
+                    position: absolute;
+                    top: -50px;
+                }
+            }
+            span.meta {
+                margin-top: 15px;
+            }
+            .hp-widget h5 {
+                margin-top: 20px;
+            }
+            .row {
+                padding: 0px;
+            }
+        }
+        .news-block .col-sm-8 {
+            padding: 0px;
+        }
+        .events-widget,
+        ,
+        .newsletter-widget {
+            width: 100%;
+            margin-top: 25px;
+        }
+        .events-widget {
+            margin-top: 50px;
+        }
+           .analysis-block article:last-of-type {
+            margin-bottom: 0px;
+    }
+        
+    }
+    @media screen and (max-width: 420px) {
+        .img-thumbs {
+            width: 100%;
+            img {
+                width: 100%;
+                position: absolute;
+                top: 0px;
+            }
+        }
+    }
+    .news-block {
+        article {
+            margin-bottom: 0px;
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+
+.hpsection {
+            margin: 20px 15px 30px
+        }
+
+}
+//Missile Systems
+//
+.missiles {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin: 0px;
+}
+
+@media screen and (max-width: 767px) {
+    section.missiles {
+        margin-top: 70px;
+    }
+}
+
+.missileSys {
+    background-color: $blue-gray;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    p {
+        line-height: 1.3em;
+    }
+    .missileimg {
+        background-image: url($image__homepage-missilesystems);
+        background-color: $black;
+        background-repeat: no-repeat;
+        background-position: center top;
+        background-size: cover;
+        overflow: hidden;
+        min-width: 100px;
+        min-height: 100px;
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+    }
+    .missiletext {
+        margin: 90px auto 100px;
+    }
+    .row {
+        padding-left: 10px;
+        padding-right: 30px;
+    }
+    .missile-intro p {
+        margin-bottom: 5px;
+    }
+    h1,
+    h5 {
+        color: white;
+        margin-top: 0px;
+        margin-bottom: 10px;
+    }
+    h5 {
+        border-color: $med-gray;
+    }
+    .missile-subsection {
+        p {
+            line-height: 1.3em;
+            margin-bottom: 5px;
+        }
+    }
+    .link-btn {
+        margin-top: 10px;
+        position: relative;
+    }
+    .missile-subsection {
+        margin-top: 50px;
+    }
+    .missile-icon {
+        height: 100px;
+        margin: 0 auto;
+    }
+    @media screen and (max-width: 767px) {
+        .missile-icon {
+            display: none;
+        }
+        .missile-subsection {
+            .row {
+                padding: 0px;
+            }
+        }
+        .container {
+            padding: 0px;
+        }
+        .missileimg {
+            display: block;
+            height: 300px;
+            position: relative;
+            margin-left: -3em;
+            width: calc(100% + 6em);
+            padding-bottom: 15px;
+        }
+        .missileimg img {
+            height: 100%;
+            max-width: calc(100% + 6em);
+        }
+        .row {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .missiletext {
+            margin: 50px auto 70px;
+        }
+    }
+}
+
+//Twitter Sidebar
+.twitter-sidebar .widget-container {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+.twitter-sidebar div{
+    width: 100%;
+}
+.widget-title {
+    padding-left: 10px;
+}
+
+.twitter-sidebar {
+    h5 {
+        border-bottom: none;
+    }
+    @media screen and (max-width: 767px) {
+        .twitter-sidebar {
+            display: none;
+        }
+    }
+}

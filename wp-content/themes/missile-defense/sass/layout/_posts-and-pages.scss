@@ -1,0 +1,448 @@
+/*===================================
+=            Post Header            =
+===================================*/
+header.entry-header.full-width {
+	text-align:center;
+	width:100%;
+	height:$header-img-height;
+	overflow:hidden;
+	margin:0px auto !important;
+	padding:0px;
+	position:relative;
+	top:0px;
+	left:0px;
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+	background-size:cover;
+	background-image:url($image__page-feature-ballback);
+	position:relative;
+    display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+    justify-content:center;
+    flex-direction:column;
+
+	@include breakpoint("small") {
+		min-height: 260px;
+	}
+
+	.container {
+		align-self:center;
+	    width:100%;
+	    z-index:2;
+	    position:absolute;
+	    top:50%;
+	    left:50%;
+	    transform: translate(-50%, -50%);
+	}
+
+	.overlay {
+	    width:100%;
+	    height:100%;
+	    background-color: rgba(95,121,129,1.0);
+	    opacity: 0.5;
+	    z-index:1;
+	    align-self:center;
+	}
+
+	h1 {
+		color: $white;
+	    font-size: 2.5em;
+	    font-weight: 700;
+	    letter-spacing: 1.5px;
+	    background: transparent;
+	    padding: 15px;
+	    margin-top: 0;
+	    position: relative;
+	    z-index:10;
+	    margin-bottom:10px;
+	    border-bottom:0px;
+	    line-height: 1.2em;
+	  
+
+	    @include breakpoint("small") {
+			font-size: 3em;
+		}
+	}
+}
+
+.page header.entry-header {
+	margin-top:2em;
+	margin-bottom:2em;
+}
+.page-header {
+	border-bottom:none;
+}
+
+header {
+	img {
+		width:100%;
+	}
+}
+/*=====  End of Post Header  ======*/
+
+/*====================================
+=            Post Content            =
+====================================*/
+
+article.post {
+	border-bottom: 1px solid $light-gray;
+}
+
+article {
+	.fullWidthFeatureContent {
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+	}
+}
+
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+
+.byline,
+.updated:not(.published){
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+.pt-cv-title a {
+	text-transform: uppercase !important;
+    font-weight: 300 !important;
+    font-size: 1.3em;
+    padding-left: 0 !important;
+    text-decoration:underline !important;
+}
+
+.meta-container {
+	line-height: 14.8px;
+    font-size:0.7em;
+    text-transform: uppercase;
+    letter-spacing: .9px;
+    margin-bottom:15px;
+    margin-top:10px;
+
+    .cat-links {
+    	margin-bottom:10px;
+    	a {
+    		margin-right:10px;
+    	}
+    }
+}
+
+.entry-meta {
+	font-size: .9em;
+    font-family: $font__SourceSans;
+    margin-bottom: 25px;
+    font-weight: normal;
+    text-transform: uppercase;
+
+	&, a:link, a:active, a:visited {
+		color: $gray;
+	}
+	a:hover {
+		color: $gray;
+	}
+}
+
+.endnotes {
+	clear: left;
+
+	h3 {
+		line-height: 71px;
+	    font-size: 1.3em;
+	    text-transform: uppercase;
+	    font-weight: bold;
+	    letter-spacing: 1.2px;
+	    font-weight: 600;
+	    color: $blue-gray;
+	}
+
+	ol li {
+		padding-bottom: 18px;
+    	font-size: 1em;
+    	word-wrap: break-word;
+	}
+}
+
+.resources-content ~ .endnotes,
+.tableOfContents-mainContent ~ .endnotes {
+	width: 70%;
+}
+
+.post-meta {
+	font-size: 18px !important;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: $med-gray;
+    text-align:right;
+    border-top:1px solid $gray;
+
+    span {
+    	color: $black;
+    }
+}
+
+
+
+.ataglance {
+	padding-bottom: 10px !important;
+    margin-bottom: 25px;
+    clear: right;
+    padding-top: 10px;
+    padding-right: 25px;
+    border-top: 2px solid $light-green;
+    margin: 35px 0 35px 0;
+    border-bottom: 2px solid $light-green;
+
+   p {
+
+    	@include breakpoint("medium") {
+			columns: 2;
+		}
+
+    	margin-left:20px;
+    	margin-bottom:12px;
+    }
+
+    &.relatedLinks p {
+    	columns: initial;
+    }
+}
+
+/*=====  End of Post Content  ======*/
+
+/*=====================================================
+=            Previous/Next Post Navigation            =
+=====================================================*/
+.nav-links {
+	div {
+		margin: 0;
+		width:100%;
+		text-transform:uppercase;
+
+		&.nav-previous {
+			text-align:left;
+			margin-top: 15px;
+
+		}
+
+		&.nav-previous:before {
+			content: "< ";
+		}
+
+		&.nav-next {
+			text-align:right;
+				margin-top: 15px;
+		}
+		&.nav-next:after {
+			content: " >";
+		}
+
+	    h4 {
+	    	margin: 0;
+    		font-weight: 700;
+	    }
+	}
+}
+/*=====  End of Previous/Next Post Navigation  ======*/
+
+/*=================================================
+=            Missile & Defense Systems            =
+=================================================*/
+.tax-system .archive-description, .tax-countries .archive-description {
+	margin-top:40px;
+}
+
+.single-missile header, .single-defsys header {
+	margin-bottom:30px;
+}
+
+.archive {
+	h2 {
+		line-height: 41px;
+	    font-size: 28px;
+	    font-size: 2.6rem;
+	    color: #073447;
+	    font-weight: 600;
+	}
+	
+	h3 {
+		line-height: 1.5em ;
+	    font-size: 34px;
+	    font-size: 1.3em;
+	    color: $blue-gray;
+	    margin-top: 20px;
+	    margin-bottom: 20px;
+	    font-family: $font__SourceSans;
+	    font-weight: normal ;
+	}
+
+}
+
+
+/*=====  End of Missile & Defense Systems  ======*/
+
+
+/*================================
+=            404 Page            =
+================================*/
+.error-404-header {text-align:center;background-color:$dark-blue;}
+
+
+/*=====  End of 404 Page  ======*/
+
+/*==================================================
+=            List Category Posts Plugin            =
+==================================================*/
+#lcp_instance_0 {
+    margin: 0 20px 0 20px;
+    display: inline-block;
+    list-style: none !important;
+    text-transform: capitalize !important;
+}
+
+.lcp_catlist {
+    .list-item {
+        margin-bottom:20px;
+
+        .lcp_meta {
+            font-size:13px;
+            color: $gray;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            margin: 5px auto;
+
+            a {
+                text-decoration:none;
+            }
+        }
+    }
+}
+
+.relatedposts {
+	display: block;
+	border-left: 8px solid $light-blue;
+	padding-left: 20px;
+	padding-bottom:1px;
+	padding-top: 5px;
+
+
+	h3 {
+		line-height: 1.3em;
+	    font-size: 2.2rem;
+	    text-transform: uppercase;
+	    letter-spacing: 1.2px;
+	    font-weight: 600;
+	    color: $blue-gray;
+	    margin-top: 5px;
+	}
+
+	ul.lcp_catlist {
+	    margin: 0px 20px 10px 0px !important;
+	    display: inline-block;
+	    list-style: none !important;
+	    text-transform: capitalize !important;
+
+	    li {
+	    	margin: 5px 0;
+	    }
+
+	    a::after {
+			content: " - ";
+		    font-size: .7em;
+		    color: $black;
+		    font-weight: 400;
+		    padding: 5px;
+		}
+	}
+
+	ul.lcp_paginator {
+		margin-left: 0px;
+
+		li {
+		    border: none !important;
+		}
+	}
+
+	.relatedDates {
+		font-size: .9em;
+		color: $gray;
+		text-transform: uppercase;
+	}
+
+
+
+
+}
+
+
+
+.moreposts {
+    margin: 13px 20px 0 20px;
+    font-weight: 600;
+    background-color: $dark-blue;
+    color: $blue-gray !important;
+    padding: 5px;
+    text-decoration:none !important;
+}
+
+
+p a.moreposts {
+
+    background-color: $dark-blue;
+    color: $white !important;
+    padding: 10px 20px;
+    margin-left: 0px;
+    text-transform: uppercase;
+    font-size: .8em;
+    font-weight: 600;
+}
+
+p a.moreposts:hover {
+
+    background-color: $blue-gray;
+}
+/*=====  End of List Category Posts Plugin  ======*/
+
+.excerpt-container p {
+	font-size: .9em;
+	line-height: 1.3em;
+}
+
+.excerpt-container p {
+	margin-bottom: 0px;
+}
+
+.archive.entry-meta {
+	margin-top: 20px;
+}
+
+.archive-article {
+	padding-bottom: 15px;
+}
+
+
+
+.archive-control-area-inside {
+	border-bottom: none;
+}
