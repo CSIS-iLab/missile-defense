@@ -796,7 +796,7 @@
                         APTO.sticky_toggle(jQuery(this).closest('li'));
                     })
         
-        jQuery('ul#sortable, ul#sortable_top, ul#sortable_bottom').on('mouseup', '.i_description', function () {
+        jQuery('#sortable, #sortable_top, #sortable_bottom').on('mouseup', '.i_description', function () {
                     
                         var parent_li = jQuery(this).closest('li'); 
                         if(jQuery(parent_li).hasClass('ui-sortable-helper'))

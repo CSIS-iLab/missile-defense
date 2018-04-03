@@ -78,12 +78,15 @@ table.acf-rules tbody a.add {        background-position: -153px -8px;}
 
 #order-post-type .sortable-list.view-list img {vertical-align: middle; width: 64px}
 #order-post-type .sortable-list, #order-post-type #sortable_top, #order-post-type #sortable_bottom { list-style-type: none; margin: 10px 0 0; padding: 0; width: 100%; }
+#order-post-type ol#sortable {list-style: decimal; list-style-position: outside; margin-left: 15px}
+#order-post-type ol#sortable ol {list-style-type: none;}
 #order-post-type #sortable_top, #order-post-type #sortable_bottom {opacity: 0.5}
 #order-post-type .sortable-list li {position: relative; width: 100%; }
+#order-post-type ol.sortable-list > li {position: relative; width: 100%;     width: -webkit-calc(100% - 15px);    width: -moz-calc(100% - 15px);width: calc(100% - 15px);}
 #order-post-type .sortable-list.animate li {transition:All 0.5s ease;-webkit-transition:All 0.5s ease;-moz-transition:All 0.5s ease;-o-transition:All 0.5s ease;}
-#order-post-type ul ul {margin-top: 6px}
-#order-post-type ul {list-style: none; margin-left:20px; list-style: none; }
-#order-post-type ul#sortable {margin-left: 0px}
+#order-post-type ul ul, #order-post-type ol ol {margin-top: 6px}
+#order-post-type ul, #order-post-type ol {list-style: none; margin-left:20px; list-style: none; }
+#order-post-type #sortable {margin-left: 0px}
 #order-post-type li .item { border: 1px solid #E6E6E6;height: auto;line-height: 27px;overflow: hidden;padding-left: 10px;position: relative; text-shadow: 0 1px 0 #FFFFFF;width: auto;word-wrap: break-word;cursor: move;background: url("../images/gray-grad.png") repeat-x scroll left top #DFDFDF;-webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px;transition:All 0.5s ease;-webkit-transition:All 0.5s ease;-moz-transition:All 0.5s ease;-o-transition:All 0.5s ease;}
 #order-post-type li .item.is-sticky {margin-left: 30px;}
 #order-post-type li .item .post_type_thumbnail {float: left; display: none; padding: 0px 5px 0px 0; margin-left: -10px;}
@@ -113,13 +116,13 @@ table.acf-rules tbody a.add {        background-position: -153px -8px;}
 #order-post-type li .options {float: right; padding: 0px 5px 0 10px}
 #order-post-type li .a_sticky {left: 0;    position: absolute;    top: 2px;}
 #order-post-type li .a_sticky input{ font-size: 10px;    min-height: 26px;    padding: 3px;    text-align: center;    width: 30px;}
-#order-post-type .ui-sortable-placeholder{border-color:#bbb;background-color:#FCFCFC; height:30px; background-image: none; -moz-border-radius: 6px 6px 6px 6px; border: 3px dashed #E6E6E6; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; box-sizing: border-box;}
+#order-post-type .ui-sortable-placeholder{border-color:#bbb;background-color:#FCFCFC; height:32px; background-image: none; -moz-border-radius: 6px 6px 6px 6px; border: 3px dashed #E6E6E6; -webkit-border-radius: 4px;-moz-border-radius: 4px;border-radius: 4px; box-sizing: border-box;}
 #order-post-type .ui-sortable-helper{filter:alpha(opacity=75); /* for internet explorer */opacity: 0.75; /* CSS3 standard */-moz-opacity:0.75; /* for older gecko browsers */-khtml-opacity: 0.75; /* for older webkit browsers */}
 #order-post-type .no-nesting .ui-sortable-placeholder {background-color: transparent; border: none}
 
 #order-post-type .postbox {margin-bottom: 0px; border-top: none;}
 
-#dragHelper li, #dragHelper ul {background: transparent !important;}
+#dragHelper li, #dragHelper ul, #dragHelper ol {background: transparent !important;}
 #dragHelper ol {list-style: none;}
 
 #order-post-type #nav-menu-header {background: url("../images/gray-grad.png") repeat-x scroll left top #DFDFDF; -moz-border-radius-topleft: 6px; -moz-border-radius-topright: 6px;border-width: 1px 1px 0;border-color: #CCCCCC;border-style: solid; margin-bottom: 0;}

@@ -426,18 +426,20 @@
                                             '_capability'
                                             );
                                             
-                    $default_options_values =   array(
-                                                        '_pto_interface_sort'           =>  'no',
-                                                        '_pagination_posts_per_page'    =>  100,
-                                                        '_pagination_offset_posts'      =>  5  ,
-                                                        
-                                                        '_wpml_synchronize'             =>  'no',
-                                                        );
+                    $default_options_values         =   array(
+                                                                '_pto_interface_sort'           =>  'no',
+                                                                '_pagination_posts_per_page'    =>  100,
+                                                                '_pagination_offset_posts'      =>  5  ,
+                                                                
+                                                                '_wpml_synchronize'             =>  'no',
+                                                                );
                     
-                    $post_main_fields   =   array(
-                                                    '_title'         =>  'post_title',
-                                                    '_description'   =>  'post_content'
-                                                    );                        
+                    $post_main_fields               =   array(
+                                                                '_title'         =>  'post_title',
+                                                                '_description'   =>  'post_content'
+                                                                );
+                                                    
+                    $overwrite_options              =   array();                        
                     
                     foreach($options as $option)
                         {
@@ -451,7 +453,10 @@
                             //never allow pagination for hierarhical post types
                             if($option == '_pagination' && $this->get_is_hierarhical_by_settings($sort_id)   === TRUE)
                                 {
-                                    $value  =   'no';    
+                                    $value  =   'no';
+                                    
+                                    $overwrite_options['_pagination_posts_per_page']    =   '';
+                                    $overwrite_options['_pagination_offset_posts']      =   '';
                                 }
                             
                             if(empty($value)    && isset($default_options_values[$option]))
@@ -472,7 +477,25 @@
                                     wp_update_post( $post_data );
                                 }
                         }
-                    
+                        
+                    //if no pagination option, reset other related settings
+                    if ( array_search ( '_pagination', $options ) ===   FALSE )
+                        {
+                            $overwrite_options['_pagination']                   =   'no';
+                            $overwrite_options['_pagination_posts_per_page']    =   '';
+                            $overwrite_options['_pagination_offset_posts']      =   '';   
+                        }
+                        
+                    if ( count ( $overwrite_options ) > 0 )
+                        {
+                            foreach ($overwrite_options as  $option    =>  $value )
+                                {
+                                    update_post_meta($sort_id, $option, $value);
+                                }   
+                            
+                        }
+                        
+                               
                     //process the status
                     global $wp_post_statuses;
                     $statuses = $_POST['interface']['_status'];
@@ -1781,7 +1804,7 @@
                     unset($query_args['paged']);
                     
                     $args   =   $this->get_interface_query_arguments($pagination_args['sort_view_ID'], $query_args);
-                    $args   =   apply_filters('apto_interface_query_args', $args, $pagination_args['sort_view_ID']);
+                    $args   =   apply_filters('apto/interface_query_args', $args, $pagination_args['sort_view_ID']);
                                                     
                     $custom_query = new WP_Query($args);
                     $found_posts = $custom_query->posts;        
@@ -2388,7 +2411,7 @@
                             $query_args =   array(); 
                                          
                             $args   =   $this->get_interface_query_arguments($sort_view_id, $query_args);
-                            $args   =   apply_filters('apto_interface_query_args', $args, $sort_view_id);
+                            $args   =   apply_filters('apto/interface_query_args', $args, $sort_view_id);
               
                             $custom_query = new WP_Query($args);
                             $found_posts = $custom_query->posts;
@@ -2473,9 +2496,8 @@
                             $this->functions->delete_sort_list_from_table($reference_sort_view_id);
                         }
                        
-                    if (is_array($data_list)    && count($data_list) > 0)
-                        {
-                            $args   =   array(
+                    
+                    $args   =   array(
                                                 'sortID'                =>  $sortID,
                                                 'sort_settings'         =>  $sort_settings,
                                                 
@@ -2486,6 +2508,9 @@
                                                 'is_hierarhical'        =>  $is_hierarhical,
                                                 'reference_sort_view_id'    =>  $reference_sort_view_id
                                                     );
+                    
+                    if (is_array($data_list)    && count($data_list) > 0)
+                        {
                             
                             $this->AjaxProcessSortList($data_list, $args);
                             
@@ -2494,157 +2519,7 @@
                             update_post_meta($sort_view_id, '_sticky_data', $_data_sticky_parsed);    
                         }
                     
-                    
-                    //prccess the ored items for WPML if syncronized settings 
-                    if(count($data_list) > 0 && $this->get_sort_meta($sortID, '_wpml_synchronize') ==  'yes' &&  $_USE_PAGED_AJAX    === FALSE  &&  defined('ICL_LANGUAGE_CODE') && defined('ICL_SITEPRESS_VERSION')    &&  $is_hierarhical === FALSE)
-                        {
-                            global $sitepress;
-                            
-                            $current_language   =   $this->functions->get_sort_view_language($sort_view_id);
-                            
-                            //check if current post type is translatable
-                            $sort_rules =   $this->functions->get_sort_current_language_rules($sort_settings, FALSE);
-                            $_wpml_post_types_are_translatable  =   TRUE;
-                            foreach($sort_rules['post_type']    as  $post_type)
-                                {
-                                    if($post_type   ==  'any')
-                                        continue;
-                                    
-                                    if(!APTO_WPML_utils::is_translatable_post_type($post_type))
-                                        {
-                                            $_wpml_post_types_are_translatable  =   FALSE;   
-                                            break;
-                                        }
-                                }
-                            
-                            //get all languages to be syncronized
-                            $wpml_languages     =   APTO_WPML_utils::get_wpml_languages();
-                            foreach($wpml_languages as  $wpml_language)
-                                {
-                                                                        
-                                    //skipp if the same language
-                                    if($wpml_language['code']   ==  $current_language)
-                                        continue;
-                                        
-                                    //check if translatable post type
-                                    if($_wpml_post_types_are_translatable   === FALSE)
-                                        {
-                                            $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' .  __( "as post type is not translatable.", 'apto' );
-                                            break;
-                                        }
-                                        
-                                    $translated_objects =   APTO_WPML_utils::translate_objects_to_language($data_list, $wpml_language['code']);
-                                
-                                    //if false there's been an error, either no all objects are syncronized, or theres a difference.
-                                    if($translated_objects  === FALSE)
-                                        {
-                                            //add the error
-                                            $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' . __( "for", 'apto' ) . ' ' . strtoupper($wpml_language['code']) . ' ' . __( "language", 'apto' ). ' ' . __( "as it contain a different number of objects.", 'apto' );
-                                            continue;   
-                                        }
-                                        
-                                        
-                                    //check the taxonomy if set
-                                    if($sort_view_settings['_view_selection']   ==  'taxonomy'  &&  !APTO_WPML_utils::is_translatable_taxonomy($sort_view_settings['_taxonomy']))
-                                        {
-                                            $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' .  __( "as taxonomy is not translatable.", 'apto' );
-                                            break;
-                                        }
-                                    
-                                    //check if there's a translation of current term
-                                    if($sort_view_settings['_view_selection']   ==  'taxonomy')
-                                        {
-                                            $term_id_translation    =   icl_object_id($sort_view_settings['_term_id'], $sort_view_settings['_taxonomy'], FALSE, $wpml_language['code']);
-                                            
-                                            if(empty($term_id_translation))
-                                                {
-                                                    $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' .  __( "as term is not translated.", 'apto' );
-                                                    break;
-                                                }
-                                        }
-                                    
-                                                                        
-                                    //identify the sort view for this sort and language
-                                    $attr   =   array(
-                                                '_view_selection'   =>  $sort_view_settings['_view_selection'],
-                                                '_view_language'    =>  $wpml_language['code']
-                                                );
-                                    
-                                    if($sort_view_settings['_view_selection']   ==  'taxonomy')
-                                        {
-                                            $attr['_taxonomy' ]     =    $sort_view_settings['_taxonomy'];
-                                            $attr['_term_id' ]      =    $term_id_translation;
-                                        }
-                                    
-                                    $lang_sort_view_ID   =   $this->functions->get_sort_view_id_by_attributes($sortID, $attr); 
-                                    
-                                    if(empty($lang_sort_view_ID))
-                                        {
-                                            //create the sort view
-                                            $sort_view_meta     =   array(
-                                                                            '_order_type'               =>  'manual',
-                                                                            '_view_selection'           =>  $sort_view_settings['_view_selection'],
-                                                                            '_view_language'            =>  $wpml_language['code']
-                                                                            );
-                                            if($sort_view_settings['_view_selection']   ==  'taxonomy')
-                                                {
-                                                    $sort_view_meta['_taxonomy']  =   $sort_view_settings['_taxonomy'];
-                                                    $sort_view_meta['_term_id']   =   $term_id_translation;
-                                                }
-                                                
-                                            $lang_sort_view_ID       =   $this->create_view($sortID, $sort_view_meta);     
-                                        }
-                                    
-                                    //check if both languages contain the same number of objects to make sure on syncronization, no object is left outside
-                                    $args   =   $this->get_interface_query_arguments($lang_sort_view_ID, array('ignore_custom_sort' =>  TRUE));
-                                    $args   =   apply_filters('apto_interface_query_args', $args, $lang_sort_view_ID);
-                                    
-                                    $sitepress->switch_lang($wpml_language['code']);
-                                                                   
-                                    $custom_query = new WP_Query($args);
-                                    $found_posts = $custom_query->posts;
-                                                            
-                                    $sitepress->switch_lang($current_language);
-                                    
-                                    //if count does not match then continue
-                                    if(count($found_posts)  !=  count($data_list))
-                                        {
-                                            //add the error
-                                            $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' . __( "for", 'apto' ) . ' ' . strtoupper($wpml_language['code']) . ' ' . __( "language", 'apto' ) . ' ' . __( "as it contain a different number of objects.", 'apto' );
-                                            continue;
-                                        }
-                                    
-                                    //++++
-                                    //to compare the $found_posts with $translated_objects if they are the same???
-                                    
-                                    $sort_view_settings         =   $this->functions->get_sort_view_settings($lang_sort_view_ID);    
-                                    $reference_sort_view_id     =   $lang_sort_view_ID;
-                                                                   
-                                    //update the sort for that language too
-                                    $args   =   array(
-                                                        'sortID'                =>  $sortID,
-                                                        'sort_settings'         =>  $sort_settings,
-                                                        
-                                                        'sort_view_id'          =>  $lang_sort_view_ID,
-                                                        'sort_view_settings'    =>  $sort_view_settings,
-                                                        
-                                                        '_USE_PAGED_AJAX'       =>  $_USE_PAGED_AJAX,
-                                                        'is_hierarhical'        =>  $is_hierarhical,
-                                                        'reference_sort_view_id'    =>  $reference_sort_view_id
-                                                            );
-                                    
-                                    $this->AjaxProcessSortList($translated_objects, $args);
-                                    
-                                    
-                                    //save the sticky data if any
-                                    $lang_data_sticky   =   APTO_WPML_utils::translate_sticky_list($_data_sticky_parsed, $data_list, $translated_objects);
-                                    update_post_meta($lang_sort_view_ID, '_sticky_data', $lang_data_sticky);
-                                    
-                                    
-                                }
-                            
-                        }
-                    
+                    $this->multilingual_syncronize( $data_list , $args);
                     
                     //check if all items has been processed, to remove old sort and replace with new one
                     if($_USE_PAGED_AJAX === TRUE   &&  $ajax_total_pages    ==  $ajax_page)
@@ -2751,6 +2626,173 @@
                             $current_item_menu_order++;
         
                         }
+                    
+                }
+                
+                
+        
+            /**
+            * Syncroniz the order to other languages
+            * Runs if there's specific MultiLingual plugins e.g WPML, Polylang etc
+            * 
+            * @param mixed $data_list
+            * @param mixed $args
+            */
+            function multilingual_syncronize ( $data_list, $args )
+                {
+                    
+                    extract($args);
+                       
+                    //prccess the ored items for WPML if syncronized settings 
+                    if(count($data_list) > 0 && $this->get_sort_meta($sortID, '_wpml_synchronize') ==  'yes' &&  $_USE_PAGED_AJAX    === FALSE  &&  defined('ICL_LANGUAGE_CODE') && defined('ICL_SITEPRESS_VERSION')    &&  $is_hierarhical === FALSE)
+                        {
+                            global $sitepress;
+                            
+                            $current_language   =   $this->functions->get_sort_view_language($sort_view_id);
+                            
+                            //check if current post type is translatable
+                            $sort_rules =   $this->functions->get_sort_current_language_rules($sort_settings, FALSE);
+                            $_wpml_post_types_are_translatable  =   TRUE;
+                            foreach($sort_rules['post_type']    as  $post_type)
+                                {
+                                    if($post_type   ==  'any')
+                                        continue;
+                                    
+                                    if(!APTO_WPML_utils::is_translatable_post_type($post_type))
+                                        {
+                                            $_wpml_post_types_are_translatable  =   FALSE;   
+                                            break;
+                                        }
+                                }
+                            
+                            //get all languages to be syncronized
+                            $wpml_languages     =   APTO_WPML_utils::get_wpml_languages();
+                            foreach($wpml_languages as  $wpml_language)
+                                {
+                                                                        
+                                    //skipp if the same language
+                                    if($wpml_language['code']   ==  $current_language)
+                                        continue;
+                                        
+                                    //check if translatable post type
+                                    if($_wpml_post_types_are_translatable   === FALSE)
+                                        {
+                                            $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' .  __( "as post type is not translatable.", 'apto' );
+                                            break;
+                                        }
+                                        
+                                    $translated_objects =   APTO_WPML_utils::translate_objects_to_language($data_list, $wpml_language['code']);
+                                
+                                    //if false there's been an error, either no all objects are syncronized, or theres a difference.
+                                    if($translated_objects  === FALSE)
+                                        {
+                                            //add the error
+                                            $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' . __( "for", 'apto' ) . ' ' . strtoupper($wpml_language['code']) . ' ' . __( "language", 'apto' ). ' ' . __( "as it contain a different number of objects.", 'apto' );
+                                            continue;   
+                                        }
+                                        
+                                        
+                                    //check the taxonomy if set
+                                    if($sort_view_settings['_view_selection']   ==  'taxonomy'  &&  !APTO_WPML_utils::is_translatable_taxonomy($sort_view_settings['_taxonomy']))
+                                        {
+                                            $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' .  __( "as taxonomy is not translatable.", 'apto' );
+                                            break;
+                                        }
+                                    
+                                    //check if there's a translation of current term
+                                    if($sort_view_settings['_view_selection']   ==  'taxonomy')
+                                        {
+                                            $term_id_translation    =   icl_object_id($sort_view_settings['_term_id'], $sort_view_settings['_taxonomy'], FALSE, $wpml_language['code']);
+                                            
+                                            if(empty($term_id_translation))
+                                                {
+                                                    $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' .  __( "as term is not translated.", 'apto' );
+                                                    break;
+                                                }
+                                        }
+                                    
+                                                                        
+                                    //identify the sort view for this sort and language
+                                    $attr   =   array(
+                                                '_view_selection'   =>  $sort_view_settings['_view_selection'],
+                                                '_view_language'    =>  $wpml_language['code']
+                                                );
+                                    
+                                    if($sort_view_settings['_view_selection']   ==  'taxonomy')
+                                        {
+                                            $attr['_taxonomy' ]     =    $sort_view_settings['_taxonomy'];
+                                            $attr['_term_id' ]      =    $term_id_translation;
+                                        }
+                                    
+                                    $lang_sort_view_ID   =   $this->functions->get_sort_view_id_by_attributes($sortID, $attr); 
+                                    
+                                    if(empty($lang_sort_view_ID))
+                                        {
+                                            //create the sort view
+                                            $sort_view_meta     =   array(
+                                                                            '_order_type'               =>  'manual',
+                                                                            '_view_selection'           =>  $sort_view_settings['_view_selection'],
+                                                                            '_view_language'            =>  $wpml_language['code']
+                                                                            );
+                                            if($sort_view_settings['_view_selection']   ==  'taxonomy')
+                                                {
+                                                    $sort_view_meta['_taxonomy']  =   $sort_view_settings['_taxonomy'];
+                                                    $sort_view_meta['_term_id']   =   $term_id_translation;
+                                                }
+                                                
+                                            $lang_sort_view_ID       =   $this->create_view($sortID, $sort_view_meta);     
+                                        }
+                                    
+                                    //check if both languages contain the same number of objects to make sure on syncronization, no object is left outside
+                                    $args   =   $this->get_interface_query_arguments($lang_sort_view_ID, array('ignore_custom_sort' =>  TRUE));
+                                    $args   =   apply_filters('apto/interface_query_args', $args, $lang_sort_view_ID);
+                                    
+                                    $sitepress->switch_lang($wpml_language['code']);
+                                                                   
+                                    $custom_query = new WP_Query($args);
+                                    $found_posts = $custom_query->posts;
+                                                            
+                                    $sitepress->switch_lang($current_language);
+                                    
+                                    //if count does not match then continue
+                                    if(count($found_posts)  !=  count($data_list))
+                                        {
+                                            //add the error
+                                            $_JSON_response['errors'][] =   __( "A syncronization could not be completed", 'apto' ) . ' ' . __( "for", 'apto' ) . ' ' . strtoupper($wpml_language['code']) . ' ' . __( "language", 'apto' ) . ' ' . __( "as it contain a different number of objects.", 'apto' );
+                                            continue;
+                                        }
+                                    
+                                    //++++
+                                    //to compare the $found_posts with $translated_objects if they are the same???
+                                    
+                                    $sort_view_settings         =   $this->functions->get_sort_view_settings($lang_sort_view_ID);    
+                                    $reference_sort_view_id     =   $lang_sort_view_ID;
+                                                                   
+                                    //update the sort for that language too
+                                    $args   =   array(
+                                                        'sortID'                =>  $sortID,
+                                                        'sort_settings'         =>  $sort_settings,
+                                                        
+                                                        'sort_view_id'          =>  $lang_sort_view_ID,
+                                                        'sort_view_settings'    =>  $sort_view_settings,
+                                                        
+                                                        '_USE_PAGED_AJAX'       =>  $_USE_PAGED_AJAX,
+                                                        'is_hierarhical'        =>  $is_hierarhical,
+                                                        'reference_sort_view_id'    =>  $reference_sort_view_id
+                                                            );
+                                    
+                                    $this->AjaxProcessSortList($translated_objects, $args);
+                                    
+                                    
+                                    //save the sticky data if any
+                                    $lang_data_sticky   =   APTO_WPML_utils::translate_sticky_list($_data_sticky_parsed, $data_list, $translated_objects);
+                                    update_post_meta($lang_sort_view_ID, '_sticky_data', $lang_data_sticky);
+                                    
+                                    
+                                }
+                            
+                        }
+                       
                     
                 }
                 
