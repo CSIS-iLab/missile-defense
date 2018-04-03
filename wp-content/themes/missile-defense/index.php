@@ -76,45 +76,51 @@ get_header(); ?>
 </section>
 
 <!-- Ongoing Projects -->
+<?php
+$ongoing_project1 = get_option( 'missiledefense_homepage_ongoing_projects_1' );
+$ongoing_project2 = get_option( 'missiledefense_homepage_ongoing_projects_2' );
+$ongoing_project3 = get_option( 'missiledefense_homepage_ongoing_projects_3' );
+
+if( $ongoing_project1 || $ongoing_project2 || $ongoing_project3 ) {
+?>
 <section class="hpsection ongoing">
 	<div class="container">
 		<div class="row row-eq-height">
 			<div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 ongoing-header-container">
 				<h1>Ongoing<span>Projects</span></h1>
 				<?php
-					$projects_desc = get_option( 'transparency_homepage_ongoing_projects_desc' );
+					$projects_desc = get_option( 'missiledefense_homepage_ongoing_projects_desc' );
 					echo '<p>' . $projects_desc . '</p>';
-					$projects_category_id = get_option( 'transparency_homepage_ongoing_projects_category' );
+					$projects_category_id = get_option( 'missiledefense_homepage_ongoing_projects_category' );
 			  ?>
 				<a href='<?php echo esc_url( get_category_link( $projects_category_id ) ); ?>' class="link-btn blue gray">See All</a>
 			</div>
 
 			<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8 ongoing-posts">
 				<?php
-					$ongoing_project1 = get_option( 'transparency_homepage_ongoing_projects_1' );
-					$ongoing_project2 = get_option( 'transparency_homepage_ongoing_projects_2' );
-					$ongoing_project3 = get_option( 'transparency_homepage_ongoing_projects_3' );
+					$ongoing_project1 = get_option( 'missiledefense_homepage_ongoing_projects_1' );
+					$ongoing_project2 = get_option( 'missiledefense_homepage_ongoing_projects_2' );
+					$ongoing_project3 = get_option( 'missiledefense_homepage_ongoing_projects_3' );
 
-					if( $ongoing_project1 || $ongoing_project2 || $ongoing_project3 ) {
-						$ongoing_projectsArgs = array(
-							'post__in' => array(
-								$ongoing_project1,
-								$ongoing_project2,
-								$ongoing_project3
-							),
-							'orderby' => 'post__in'
-						);
-						$ongoing_projects = get_posts($ongoing_projectsArgs);
-						foreach ($ongoing_projects as $post) : setup_postdata($post);
-							get_template_part( 'template-parts/content', 'hp-ongoing' );
-					  endforeach;
-						wp_reset_postdata();
-					}
+					$ongoing_projectsArgs = array(
+						'post__in' => array(
+							$ongoing_project1,
+							$ongoing_project2,
+							$ongoing_project3
+						),
+						'orderby' => 'post__in'
+					);
+					$ongoing_projects = get_posts($ongoing_projectsArgs);
+					foreach ($ongoing_projects as $post) : setup_postdata($post);
+						get_template_part( 'template-parts/content', 'hp-ongoing' );
+				  endforeach;
+					wp_reset_postdata();
 				?>
 			</div>
 		</div>
 	</div>
 </section>
+<?php } ?>
 
 <!-- Missile Systems -->
 <section class="hpsection missiles">

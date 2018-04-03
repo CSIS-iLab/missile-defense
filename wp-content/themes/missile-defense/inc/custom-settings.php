@@ -3,37 +3,37 @@
  *
  * Custom settings page for the theme
  *
- * @package Transparency
+ * @package Missile_Defense
  */
 
-add_action( 'admin_menu', 'transparency_add_options_page' );
+add_action( 'admin_menu', 'missiledefense_add_options_page' );
 
 
-function transparency_add_options_page() {
+function missiledefense_add_options_page() {
   add_options_page(
     'Missile Threat Settings',
     'Missile Threat Settings',
     'manage_options',
-    'transparency-options-page',
-    'transparency_display_options_page'
+    'missiledefense-options-page',
+    'missiledefense_display_options_page'
   );
 }
 
-function transparency_display_options_page() {
+function missiledefense_display_options_page() {
   echo '<h1>Missile Threat Settings</h1>';
   echo '<form method="post" action="options.php">';
-  do_settings_sections( 'transparency-options-page' );
-  settings_fields ( 'transparency_settings' );
+  do_settings_sections( 'missiledefense-options-page' );
+  settings_fields ( 'missiledefense_settings' );
   submit_button();
   echo '</form>';
 }
 
-add_action( 'admin_init', 'transparency_admin_init_section_homepage' );
+add_action( 'admin_init', 'missiledefense_admin_init_section_homepage' );
 /**
  * Create the "Homepage" settings section.
  */
- function transparency_admin_init_section_homepage() {
-  $projects_category = get_option( 'transparency_homepage_ongoing_projects_category' );
+ function missiledefense_admin_init_section_homepage() {
+  $projects_category = get_option( 'missiledefense_homepage_ongoing_projects_category' );
 
    $post_types = array( 'post' );
    $post_selection = array();
@@ -50,92 +50,92 @@ add_action( 'admin_init', 'transparency_admin_init_section_homepage' );
    $categories = get_categories(array('hide_empty' => 0));
 
    add_settings_section(
-     'transparency_settings_section_homepage',
+     'missiledefense_settings_section_homepage',
      'Homepage',
-     'transparency_display_section_homepage_message',
-     'transparency-options-page'
+     'missiledefense_display_section_homepage_message',
+     'missiledefense-options-page'
    );
 
    add_settings_field(
-      'transparency_homepage_ongoing_projects_desc',
+      'missiledefense_homepage_ongoing_projects_desc',
       'Ongoing Projects Description',
-      'transparency_textarea_callback',
-      'transparency-options-page',
-      'transparency_settings_section_homepage',
-      array( 'transparency_homepage_ongoing_projects_desc' )
+      'missiledefense_textarea_callback',
+      'missiledefense-options-page',
+      'missiledefense_settings_section_homepage',
+      array( 'missiledefense_homepage_ongoing_projects_desc' )
    );
 
    add_settings_field(
-      'transparency_homepage_ongoing_projects_category',
+      'missiledefense_homepage_ongoing_projects_category',
       'Ongoing Projects Category',
-      'transparency_category_callback',
-      'transparency-options-page',
-      'transparency_settings_section_homepage',
-      array( 'transparency_homepage_ongoing_projects_category', $categories )
+      'missiledefense_category_callback',
+      'missiledefense-options-page',
+      'missiledefense_settings_section_homepage',
+      array( 'missiledefense_homepage_ongoing_projects_category', $categories )
    );
 
    add_settings_field(
-      'transparency_homepage_ongoing_projects_1',
+      'missiledefense_homepage_ongoing_projects_1',
       'Ongoing Projects #1',
-      'transparency_posts_callback',
-      'transparency-options-page',
-      'transparency_settings_section_homepage',
-      array( 'transparency_homepage_ongoing_projects_1',
+      'missiledefense_posts_callback',
+      'missiledefense-options-page',
+      'missiledefense_settings_section_homepage',
+      array( 'missiledefense_homepage_ongoing_projects_1',
       $post_selection['post'] )
    );
 
    add_settings_field(
-      'transparency_homepage_ongoing_projects_2',
+      'missiledefense_homepage_ongoing_projects_2',
       'Ongoing Projects #2',
-      'transparency_posts_callback',
-      'transparency-options-page',
-      'transparency_settings_section_homepage',
-      array( 'transparency_homepage_ongoing_projects_2',
+      'missiledefense_posts_callback',
+      'missiledefense-options-page',
+      'missiledefense_settings_section_homepage',
+      array( 'missiledefense_homepage_ongoing_projects_2',
       $post_selection['post'] )
    );
 
    add_settings_field(
-      'transparency_homepage_ongoing_projects_3',
+      'missiledefense_homepage_ongoing_projects_3',
       'Ongoing Projects #3',
-      'transparency_posts_callback',
-      'transparency-options-page',
-      'transparency_settings_section_homepage',
-      array( 'transparency_homepage_ongoing_projects_3',
+      'missiledefense_posts_callback',
+      'missiledefense-options-page',
+      'missiledefense_settings_section_homepage',
+      array( 'missiledefense_homepage_ongoing_projects_3',
       $post_selection['post'] )
    );
 
    register_setting(
-      'transparency_settings',
-      'transparency_homepage_ongoing_projects_desc',
+      'missiledefense_settings',
+      'missiledefense_homepage_ongoing_projects_desc',
       'wp_filter_post_kses'
    );
 
    register_setting(
-      'transparency_settings',
-      'transparency_homepage_ongoing_projects_category',
+      'missiledefense_settings',
+      'missiledefense_homepage_ongoing_projects_category',
       'sanitize_text_field'
    );
 
    register_setting(
-      'transparency_settings',
-      'transparency_homepage_ongoing_projects_1',
+      'missiledefense_settings',
+      'missiledefense_homepage_ongoing_projects_1',
       'sanitize_text_field'
    );
 
    register_setting(
-      'transparency_settings',
-      'transparency_homepage_ongoing_projects_2',
+      'missiledefense_settings',
+      'missiledefense_homepage_ongoing_projects_2',
       'sanitize_text_field'
    );
 
    register_setting(
-      'transparency_settings',
-      'transparency_homepage_ongoing_projects_3',
+      'missiledefense_settings',
+      'missiledefense_homepage_ongoing_projects_3',
       'sanitize_text_field'
    );
  }
 
-function transparency_display_section_homepage_message() {
+function missiledefense_display_section_homepage_message() {
 	echo 'The ongoing projects post shown on the home page.';
 }
 
@@ -144,7 +144,7 @@ function transparency_display_section_homepage_message() {
  *
  * @param Array $args Array of arguments passed by callback function.
  */
-function transparency_textarea_callback( $args ) {
+function missiledefense_textarea_callback( $args ) {
   $option = get_option( $args[0] );
   echo '<textarea class="regular-text" id="' . esc_attr( $args[0] ) . '" name="' . esc_attr( $args[0] ) . '" rows="5">' . esc_attr( $option ) . '</textarea>';
 }
@@ -154,7 +154,7 @@ function transparency_textarea_callback( $args ) {
  *
  * @param Array $args Array of arguments passed by callback function.
  */
-function transparency_posts_callback( $args ) {
+function missiledefense_posts_callback( $args ) {
   $option = get_option( $args[0] );
   echo '<select name="' . esc_attr( $args[0] ) . '" id="' . esc_attr( $args[0] ) . '" name="' . esc_attr( $args[0] ) . '">';
   foreach ( $args[1] as $post ) {
@@ -173,7 +173,7 @@ function transparency_posts_callback( $args ) {
  *
  * @param Array $args Array of arguments passed by callback function.
  */
-function transparency_category_callback( $args ) {
+function missiledefense_category_callback( $args ) {
   $option = get_option( $args[0] );
   echo '<select name="' . esc_attr( $args[0] ) . '" id="' . esc_attr( $args[0] ) . '" name="' . esc_attr( $args[0] ) . '">';
   foreach ( $args[1] as $category ) {
