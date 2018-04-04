@@ -273,3 +273,20 @@ function missiledefense_add_search_box( $items, $args ) {
     return $items;
 }
 add_filter( 'wp_nav_menu_items','missiledefense_add_search_box', 10, 2 );
+
+/**
+ * Alter the titles of the archives for categories & tags.
+ * @param  string $title Archive title
+ * @return string        Modified archive title.
+ */
+function missiledefense_archive_titles( $title ) {
+    if( is_category() ) {
+        $title = single_cat_title( '<span class="archive-label">Category:</span> ', false );
+    } elseif( is_tag() ) {
+        $title = single_tag_title( '<span class="archive-label">Keyword:</span> ', false );
+    } elseif( is_author() ) {
+        $title = '<span class="archive-label">Author:</span> ' . get_the_author();
+    }
+    return $title;
+}
+add_filter( 'get_the_archive_title', 'missiledefense_archive_titles' );

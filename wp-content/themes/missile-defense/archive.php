@@ -8,13 +8,22 @@
  * Template Name: Archive Page
  */
 
+if ( get_archive_top_content() ) {
+    $description = get_archive_top_content();
+} else {
+    $description = get_the_archive_description();
+}
+
 get_header(); ?>
 
 	<div id="primary" class="container archives-index">
 		<div class="row">
 			<main id="main" class="col-xs-12" role="main">
 				<header class="page-header">
-					<h1 class="page-title">Related Results:</h1>
+					<?php the_archive_title('<h1 class="page-title">', '</h1>'); ?>
+					<div class="archive-description">
+                        <?php echo $description; ?>
+                    </div>
 				</header><!-- .page-header -->
 
 			<?php
@@ -29,7 +38,7 @@ get_header(); ?>
 					 * If you want to override this in a child theme, then include a file
 					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 					 */
-					get_template_part( 'template-parts/content', 'archive' );
+					get_template_part( 'template-parts/content', get_post_format() );
 
 				endwhile;
 

@@ -1,12 +1,13 @@
 // Rem output with px fallback
+$browser-context: 16px;
 @function calculateRem($size) {
-  $remSize: $size / 16px;
-  @return $remSize * 1rem;
+    $remSize: $size / $browser-context;
+    @return #{$remSize}rem;
 }
 
-@mixin font-size($size) {
-  font-size: $size;
-  font-size: calculateRem($size);
+@mixin fontSize($size) {
+    font-size: $size; //Fallback in px
+    font-size: calculateRem($size);
 }
 
 // Center block

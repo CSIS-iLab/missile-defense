@@ -85,10 +85,6 @@ header {
 =            Post Content            =
 ====================================*/
 
-article.post {
-	border-bottom: 1px solid $light-gray;
-}
-
 article {
 	.fullWidthFeatureContent {
 		width: 100vw;
@@ -187,21 +183,6 @@ article {
 	width: 70%;
 }
 
-.post-meta {
-	font-size: 18px !important;
-    margin-bottom: 20px;
-    font-weight: 500;
-    color: $med-gray;
-    text-align:right;
-    border-top:1px solid $gray;
-
-    span {
-    	color: $black;
-    }
-}
-
-
-
 .ataglance {
 	padding-bottom: 10px !important;
     margin-bottom: 25px;
@@ -274,29 +255,6 @@ article {
 .single-missile header, .single-defsys header {
 	margin-bottom:30px;
 }
-
-.archive {
-	h2 {
-		line-height: 41px;
-	    font-size: 28px;
-	    font-size: 2.6rem;
-	    color: #073447;
-	    font-weight: 600;
-	}
-	
-	h3 {
-		line-height: 1.5em ;
-	    font-size: 34px;
-	    font-size: 1.3em;
-	    color: $blue-gray;
-	    margin-top: 20px;
-	    margin-bottom: 20px;
-	    font-family: $font__SourceSans;
-	    font-weight: normal ;
-	}
-
-}
-
 
 /*=====  End of Missile & Defense Systems  ======*/
 
@@ -433,16 +391,38 @@ p a.moreposts:hover {
 	margin-bottom: 0px;
 }
 
-.archive.entry-meta {
-	margin-top: 20px;
-}
-
-.archive-article {
-	padding-bottom: 15px;
-}
-
-
-
 .archive-control-area-inside {
 	border-bottom: none;
+}
+
+/*----------  Post Cards  ----------*/
+.post-card {
+	margin: 0 -15px 5rem;
+
+	h2 {
+	    color: $dark-blue;
+	    font-weight: 600;
+	    line-height: 1.3;
+		text-transform: uppercase;
+		margin: 0.25rem 0 1rem;
+	}
+
+	.article-image {
+        overflow: hidden;
+        height: 150px;
+        margin-bottom: 0.5rem;
+
+        @include breakpoint("medium") {
+        	margin-bottom: 0;
+        }
+    }
+    .img-thumbs {
+        position: absolute;
+        padding-right: 15px;
+    }
+
+    .post-excerpt p {
+    	line-height: 1.5;
+    	margin-bottom: 0;
+    }
 }

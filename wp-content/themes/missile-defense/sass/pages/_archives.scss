@@ -1,0 +1,40 @@
+/*================================
+=            Archives            =
+================================*/
+
+.archives-index {
+	.page-title {
+		font-size: 2em;
+		line-height: 1.5;
+		font-weight: 400;
+	    text-align: center;
+	    margin: 40px 0 10px;
+	    border-bottom: 3px $light-blue solid;
+	    color: $dark-blue;
+
+	    @include breakpoint("medium") {
+	    	font-size: 2.25em;
+			line-height: 2;
+	    }
+	}
+
+	.archive-label {
+		font-weight: 900;
+	}
+
+	.archive-description {
+		text-align: center;
+		font-style: italic;
+	}
+	
+	h3 {
+		line-height: 1.5em ;
+	    font-size: 34px;
+	    font-size: 1.3em;
+	    color: $blue-gray;
+	    margin-top: 20px;
+	    margin-bottom: 20px;
+	    font-family: $font__SourceSans;
+	    font-weight: normal ;
+	}
+}

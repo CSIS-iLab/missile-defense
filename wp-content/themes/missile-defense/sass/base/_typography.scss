@@ -44,10 +44,6 @@ h1 {
 	text-transform: uppercase;
 }
 
-
-
-
-
 h2 {
     line-height: 1.5em ;
     font-size: 34px;
@@ -70,13 +66,6 @@ h2 {
 
 	a {
 		font-weight: normal;
-	}
-
-	&.entry-title.archive {
-		margin-bottom: 0px;
-		margin-top: 0px;
-		margin-bottom: 10px;
-
 	}
 }
 
@@ -118,8 +107,6 @@ h3 {
     font-family: $font__SourceSans;
     font-weight: normal ;
 }
-
-
 
 h4 {
 	line-height: 26px;
@@ -219,8 +206,6 @@ a {
 	}
 }
 
-
-
 .entry-content a {
 	text-decoration:underline;
 
@@ -251,7 +236,13 @@ a {
 }
 
 %caption {
-	@include font-size(22px);
+	@include fontSize(22px);
 	line-height: 1;
+	color: $blue-gray;
+}
+
+%meta {
+	font-size: 0.9em;
+	text-transform: uppercase;
 	color: $blue-gray;
 }
