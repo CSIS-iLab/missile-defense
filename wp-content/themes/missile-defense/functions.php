@@ -145,9 +145,6 @@ function missiledefense_scripts() {
 	// Font Awesome
 	wp_enqueue_script('missiledefense-font-awesome', 'https://use.fontawesome.com/08b1a76eab.js');
 
-	// jQuery
-	wp_enqueue_script('jquery');
-
 	// Bootstrap
 	wp_enqueue_script('missiledefense-bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20151215', true );
 }
@@ -174,7 +171,7 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
- * Register Custom Settings
+ * Register Custom Settings.
  */
 require get_template_directory() . '/inc/custom-settings.php';
 
@@ -186,126 +183,26 @@ if (defined('JETPACK__VERSION') ) {
 }
 
 /**
- * Load Custom Post Types & Taxonomies
+ * Load Custom Post Types & Taxonomies.
  */
 require get_template_directory() . '/inc/custom-posttypes.php';
 
 /**
- * Load Custom Post Formats
+ * Load Custom Post Formats.
  */
 require get_template_directory() . '/inc/custom-post-formats.php';
 
-/*-----------------------------------------------------------------------------------*/
-/* Register Custom Navigation Walker - Adds Bootstrap styling to menu
-/*-----------------------------------------------------------------------------------*/
-require_once('wp_bootstrap_navwalker.php');
+/**
+ * Add custom navigation walker to main navigation.
+ */
+require get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
 
-/*-----------------------------------------------------------------------------------*/
-/* Add Search Bar to Menu
-/*-----------------------------------------------------------------------------------*/
-add_filter( 'wp_nav_menu_items','add_search_box', 10, 2 );
-function add_search_box( $items, $args ) {
-	if($args->theme_location == 'primary') {
-	    $search = '<li class="search">';
-	    $search .= '<form method="get" id="searchform" action="/"><div class="input-group">';
-	    $search .= '<label class="screen-reader-text" for="navSearchInput">Search for:</label>';
-	    $search .= '<input type="text" class="form-control" name="s" id="navSearchInput" placeholder="Search" />';
-	    $search .= '<label for="navSearchInput" id="navSearchLabel"><i class="fa fa-search" aria-hidden="true"></i></label>';
-	    $search .= '</div></form>';
-	    $search .= '</li>';
-	    return $items.$search;
-	}
-	return $items;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/* Shortcodes
-/*-----------------------------------------------------------------------------------*/
+/**
+ * Load custom shortcodes.
+ */
 require get_template_directory() . '/inc/shortcodes.php';
 
-/*-----------------------------------------------------------------------------------*/
-/* TinyMCE Editor Buttons
-/*-----------------------------------------------------------------------------------*/
+/**
+ * Load custom TinyMCE toolbar buttons.
+ */
 require get_template_directory() . '/inc/tinymce.php';
-
-/*-----------------------------------------------------------------------------------*/
-/* Add Setting to "Reading" options for # of featured items & news posts on home page
-/*-----------------------------------------------------------------------------------*/
-// Register and define the settings
-add_action('admin_init', 'missiledefense_hpNewsPosts_admin_init');
-function missiledefense_hpNewsPosts_admin_init(){
-	register_setting(
-		'reading',                 						// settings page
-		'missiledefense_hpFeaturesPosts_options',          	// option name
-		'missiledefense_hpFeaturesPosts_validate_options'  	// validation callback
-	);
-	add_settings_field(
-		'missiledefense_hpFeaturesPosts_limit',      			// # of Posts to Display
-		'Home Page Featured Items Post Limit',           // setting title
-		'missiledefense_hpFeaturesPosts_setting_input',    	// display callback
-		'reading',                 						// settings page
-		'default'                  						// settings section
-	);
-	register_setting(
-		'reading',                 						// settings page
-		'missiledefense_hpNewsPosts_options',          	// option name
-		'missiledefense_hpNewsPosts_validate_options'  	// validation callback
-	);
-	add_settings_field(
-		'missiledefense_hpNewsPosts_limit',      			// # of Posts to Display
-		'Home Page News Articles Post Limit',           // setting title
-		'missiledefense_hpNewsPosts_setting_input',    	// display callback
-		'reading',                 						// settings page
-		'default'                  						// settings section
-	);
-}
-// Display and fill the form field
-function missiledefense_hpNewsPosts_setting_input() {
-	// get option 'post_limit' value from the database
-	$options = get_option( 'missiledefense_hpNewsPosts_options' );
-	$value = $options['post_limit'];
-	?>
-<input id='post_limit' name='missiledefense_hpNewsPosts_options[post_limit]'
- type='number' step='1' min='1' class='small-text' value='<?php echo esc_attr( $value ); ?>' /> posts
-	<?php
-}
-// Validate user input
-function missiledefense_hpNewsPosts_validate_options( $input ) {
-	$valid = array();
-	$valid['post_limit'] = intval(sanitize_text_field( $input['post_limit'] ));
-	// Something dirty entered? Warn user.
-	if( $valid['post_limit'] != $input['post_limit'] ) {
-		add_settings_error(
-			'missiledefense_hpNewsPosts_post_limit',           // setting title
-			'missiledefense_hpNewsPosts_texterror',            // error ID
-			'Invalid number',   // error message
-			'error'                        // type of message
-		);
-	}
-	return $valid;
-}
-// Display and fill the form field
-function missiledefense_hpFeaturesPosts_setting_input() {
-	// get option 'post_limit' value from the database
-	$options = get_option( 'missiledefense_hpFeaturesPosts_options' );
-	$value = $options['post_limit'];
-	?>
-<input id='post_limit' name='missiledefense_hpFeaturesPosts_options[post_limit]'
- type='number' step='1' min='1' class='small-text' value='<?php echo esc_attr( $value ); ?>' /> posts
-	<?php
-}
-// Validate user input
-function missiledefense_hpFeaturesPosts_validate_options( $input ) {
-	$valid = array();
-	$valid['post_limit'] = intval(sanitize_text_field( $input['post_limit'] ));
-	// Something dirty entered? Warn user.
-	if( $valid['post_limit'] != $input['post_limit'] ) {
-		add_settings_error(
-			'missiledefense_hpFeaturesPosts_post_limit',           // setting title
-			'missiledefense_hpFeaturesPosts_texterror',            // error ID
-			'Invalid number',   // error message
-			'error'                        // type of message
-		);
-	}
-	return $valid;
-}
