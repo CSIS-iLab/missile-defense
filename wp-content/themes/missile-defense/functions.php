@@ -151,6 +151,17 @@ function missiledefense_scripts() {
 add_action( 'wp_enqueue_scripts', 'missiledefense_scripts' );
 
 /**
+ * Enqueue admin scripts and styles.
+ */
+function missiledefense_enqueue_admin_scripts() {
+    $screen = get_current_screen();
+    if ( in_array( $screen->id, array( 'missile' ) ) ) {
+        wp_enqueue_script('missiledefense-admin-cpts', get_template_directory_uri().'/js/admin-cpts.js', 'jquery', '', true);
+    }
+}
+add_action( 'admin_enqueue_scripts', 'missiledefense_enqueue_admin_scripts' );
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';

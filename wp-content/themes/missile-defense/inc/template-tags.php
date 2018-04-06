@@ -107,3 +107,19 @@ function missiledefense_category_transient_flusher() {
 }
 add_action( 'edit_category', 'missiledefense_category_transient_flusher' );
 add_action( 'save_post',     'missiledefense_category_transient_flusher' );
+
+if ( ! function_exists( 'missiledefense_countries_secondary_content' ) ) :
+	/**
+	 * Returns HTML for the secondary content for country posts.
+	 *
+	 * @param  int $id Post ID.
+	 */
+	function missiledefense_countries_secondary_content( $id ) {
+		if ( 'countries' === get_post_type() ) {
+			$secondary_content = get_post_meta( $id, '_countries_secondary_content', true );
+			if ( '' !== $secondary_content ) {
+				printf( '<section class="countries-secondary-content">%1$s</section>', $secondary_content); // WPCS: XSS OK.
+			}
+		}
+	}
+endif;

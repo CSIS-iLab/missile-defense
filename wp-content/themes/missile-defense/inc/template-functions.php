@@ -290,3 +290,24 @@ function missiledefense_archive_titles( $title ) {
     return $title;
 }
 add_filter( 'get_the_archive_title', 'missiledefense_archive_titles' );
+
+/**
+*
+* Recreate the default filters on the_content so we can pull formated content with get_post_meta
+*/
+add_filter( 'meta_content', 'wptexturize' );
+add_filter( 'meta_content', 'convert_smilies' );
+add_filter( 'meta_content', 'convert_chars' );
+add_filter( 'meta_content', 'wpautop' );
+add_filter( 'meta_content', 'shortcode_unautop' );
+add_filter( 'meta_content', 'prepend_attachment' );
+add_filter( 'meta_content', 'do_shortcode' );
+
+/**
+ * Move Yoast SEO meta boxes to bottom of editing screen.
+ * @return string Priority level.
+ */
+function missile_defenseyoasttobottom() {
+    return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'missile_defenseyoasttobottom');
