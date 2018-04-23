@@ -119,7 +119,7 @@ section {
 
 //Homepage Articles
 .hpsection {
-    margin: 80px 15px 100px;
+    margin: 80px 15px;
     .hpsection-header {
         position: relative;
         border-bottom: 3px solid $light-blue;
@@ -295,7 +295,7 @@ section {
     padding-bottom: 6rem;
 
     .row-eq-height {
-        @include breakpoint("small") {
+        @include breakpoint("medium") {
             display: -webkit-box;
             display: -webkit-flex;
             display: -ms-flexbox;
@@ -319,13 +319,19 @@ section {
         border-bottom: none;
 
         .article-image {
-            overflow: hidden;
-            height: 150px;
             float: right;
         }
         .img-thumbs {
-            position: absolute;
-            padding-right: 15px;
+            height: 100%;
+            position: relative;
+
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+                position: relative;
+                top: unset;
+            }
         }
         span.meta {
             display: block;
@@ -352,7 +358,7 @@ section {
         padding-right: 2rem;
         margin-bottom: 4rem;
 
-        @include breakpoint("small") {
+        @include breakpoint("medium") {
             padding-left: 0px;
             padding-right: 3rem;
             margin-bottom: 0;
@@ -365,7 +371,7 @@ section {
         padding-left: 2rem;
         padding-right: 2rem;
 
-        @include breakpoint("small") {
+        @include breakpoint("medium") {
             padding-left: 3rem;
         }
     }
