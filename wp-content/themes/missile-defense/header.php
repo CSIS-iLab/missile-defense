@@ -29,7 +29,7 @@
         	<div class="row">
 	          	<div class="navbar-header">
 		            <a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-		            	<img src="/wp-content/themes/amti/img/missiledefense-logo.svg" class="logo" />
+		            	<img src="/wp-content/themes/missile-defense/img/missiledefense-logo.svg" class="logo" />
 		            </a>
 		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu-top-wrapper">
 		              <span class="sr-only">Toggle navigation</span>

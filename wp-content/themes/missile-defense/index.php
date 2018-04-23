@@ -171,7 +171,7 @@ if( $ongoing_project1 || $ongoing_project2 || $ongoing_project3 ) {
 
 						<div class="row">
 							<div class="col-sm-3 missile-icon">
-								<img class="img-responsive missile-icon" src="/wp-content/themes/amti/img/defense-systems-icon.svg" alt="Missile Defense">
+								<img class="img-responsive missile-icon" src="/wp-content/themes/missile-defense/img/defense-systems-icon.svg" alt="Missile Defense">
 							</div>
 
 

@@ -26,8 +26,8 @@
 		<?php endif; ?>
 		</div>
 		<div class="col-sm-6 text-right icons">
-		<a href="https://www.facebook.com/missiledefenseproject/?fref=nf#" alt="#"> <img class="smIcon" src="/wp-content/themes/amti/img/facebook-icon.svg" alt="Facebook Icon" height="30px" width="30px"> </a>
-		<a href="https://twitter.com/missile_defense?lang=en" alt="Missile Threat Twitter"><img class="smIcon" src="/wp-content/themes/amti/img/twitter-icon.svg" alt="Facebook Icon" height="30px" width="30px"></a>
+		<a href="https://www.facebook.com/missiledefenseproject/?fref=nf#" alt="#"> <img class="smIcon" src="/wp-content/themes/missile-defense/img/facebook-icon.svg" alt="Facebook Icon" height="30px" width="30px"> </a>
+		<a href="https://twitter.com/missile_defense?lang=en" alt="Missile Threat Twitter"><img class="smIcon" src="/wp-content/themes/missile-defense/img/twitter-icon.svg" alt="Facebook Icon" height="30px" width="30px"></a>
 		</div>
 	</div>
 
