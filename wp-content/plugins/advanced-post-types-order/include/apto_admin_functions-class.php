@@ -137,7 +137,9 @@
                                 else
                                 {
                                     $link_query         =   parse_url($location_menus_item[2]);
-                                    parse_str($link_query['query']);
+                                    parse_str($link_query['query'], $output);
+                                    
+                                    $post_type  =   $output['post_type'];
                                 }
                             $locations[$location_menus_item[2]] =   array(
                                                                                             'slug'      =>  sanitize_title($location_menus_item[2]),  
@@ -335,7 +337,7 @@
                                 }
                         }
                         
-                    if(count($apto_system_messages['relocate']) > 0)
+                    if( isset($apto_system_messages['relocate'])    &&  is_array ( $apto_system_messages['relocate'] )   &&  count($apto_system_messages['relocate']) > 0)
                         {
                             array_unshift($apto_system_messages['relocate'], __( "Advanced Post Types Order - At least one menu has changed:", 'apto' ));
                             add_action('admin_notices', array($this, 'relocate_nottices'));
@@ -367,7 +369,7 @@
                 {
                     global $apto_system_messages;
             
-                    if(count($apto_system_messages['relocate']) < 1)
+                    if( ! isset($apto_system_messages['relocate'])    ||  ! is_array ( $apto_system_messages['relocate'] )  || count($apto_system_messages['relocate']) < 1 )
                         return;
                     
                     echo "<div id='notice' class='updated fade'><p>". implode("</p><p>", $apto_system_messages['relocate'] )  ."</p></div>";

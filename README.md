@@ -11,5 +11,5 @@ Repo for Missile Defense Project
 - Upload `master` to production server
 
 ## Updating SASS
-1. Navigate to the theme directory `cd /wp-content/themes/amti`
+1. Navigate to the theme directory `cd /wp-content/themes/missile-defense`
 2. Run `compass watch` to watch for changes in .sass files and compile them to .css files

@@ -713,7 +713,7 @@ class APTO_interface
                                                         </select>
                                                     </td></tr>
                                                     <tr><td>
-                                                        <h4><?php _e( "Auto Sort", 'apto' ) ?></h4>
+                                                        <h4><?php _e( "Auto Apply Sort", 'apto' ) ?></h4>
                                                         <p class="description"><?php _e( "Automatically apply the sort to theme queries if match.", 'apto' ) ?></p>
                                                         <fieldset>
                                                             <label><input type="radio" <?php if($this->interface_helper->get_sort_meta($this->sortID, '_autosort') == 'yes' || $this->interface_helper->get_sort_meta($this->sortID, '_autosort') == '') { ?>checked="checked"<?php } ?> value="yes" name="interface[_autosort]"> <span><?php _e( "Yes", 'apto' ) ?></span></label><br>
@@ -722,7 +722,7 @@ class APTO_interface
                                                     </td></tr>
                                                     <tr><td>
                                                         <h4><?php _e( "Admin Sort", 'apto' ) ?></h4>
-                                                        <p class="description"><?php _e( "Update admin order if match.", 'apto' ) ?></p>
+                                                        <p class="description"><?php _e( "Automatically apply the sort to admin queries if match.", 'apto' ) ?></p>
                                                         <fieldset>
                                                             <label><input type="radio" <?php if($this->interface_helper->get_sort_meta($this->sortID, '_adminsort') == 'yes' || $this->interface_helper->get_sort_meta($this->sortID, '_adminsort') == '') { ?>checked="checked"<?php } ?> value="yes" name="interface[_adminsort]"> <span><?php _e( "Yes", 'apto' ) ?></span></label><br>
                                                             <label><input type="radio" <?php if($this->interface_helper->get_sort_meta($this->sortID, '_adminsort') == 'no') { ?>checked="checked"<?php } ?> value="no" name="interface[_adminsort]"> <span><?php _e( "No", 'apto' ) ?></span></label><br>
@@ -842,7 +842,8 @@ class APTO_interface
                                                             <label><input type="radio" <?php if($this->interface_helper->get_sort_meta($this->sortID, '_show_thumbnails') == 'no' || $this->interface_helper->get_sort_meta($this->sortID, '_show_thumbnails') == '') { ?>checked="checked"<?php } ?> value="no" name="interface[_show_thumbnails]"> <span><?php _e( "No", 'apto' ) ?></span></label><br>
                                                         </fieldset>
                                                     </td></tr>
-                                                    <?php if( $this->sortID ==  ''  ||  ($this->interface_helper->get_is_hierarhical_by_settings($this->sortID) !== TRUE || ($this->functions->is_woocommerce($this->sortID) === TRUE && $this->current_sort_view_settings['_view_selection'] != 'archive'))) { ?>
+                                                    <?php 
+                                                    if( $this->sortID ==  ''  ||  ($this->interface_helper->get_is_hierarhical_by_settings($this->sortID) !== TRUE || ($this->functions->is_woocommerce($this->sortID) === TRUE && $this->current_sort_view_settings['_view_selection'] != 'archive'))) { ?>
                                                     <tr><td>
                                                         <h4><?php _e( "Pagination", 'apto' ) ?></h4>
                                                         <p class="description"><?php _e( "Set pagination for sort list", 'apto' ) ?></p>
@@ -1465,7 +1466,7 @@ class APTO_interface
                                         <tr class="submit">
                                             <td class="label">&nbsp;</td>
                                             <td>
-                                                <a id="send_to_manual" class="button-primary alignleft" href="Javascript:void(0);" onClick="APTO.automatic_order_Send_to_Manual(<?php echo $this->current_sort_view_ID ?>)">Send order to Manual List</a>
+                                                <a id="send_to_manual" class="button-primary alignleft" href="Javascript:void(0);" onClick="APTO.automatic_order_Send_to_Manual(<?php echo $this->current_sort_view_ID ?>)">Send order to Manual Order List</a>
                                             </td>
                                             <td>
                                                 <input type="submit" value="Update" class="button-primary" name="update">
@@ -1611,10 +1612,10 @@ class APTO_interface
                                     <a href="javascript: void(0)" onClick="APTO.interface_id_order('DESC')"><?php _e( "Id order Desc", 'apto' ) ?></a>
                                 </div>
                                 
-                                <?php if (!$is_hierarchical) { ?>
+                                <?php if (!$is_hierarchical ||  ($is_hierarchical   &&  $this->current_sort_view_settings['_view_selection'] != 'archive')) { ?>
                                 <div id="sort_list_type" class="view-switch">
                                     <a class="view-list current" href="javascript: void(0)" onClick="APTO.ChangeViewType('view-list')" title="<?php _e( "List view", 'apto' ) ?>"><span class="screen-reader-text"><?php _e( "List view", 'apto' ) ?></span></a>
-                                    <a class="view-grid" href="javascript: void(0)" onClick="APTO.ChangeViewType('view-grid')"><span class="screen-reader-text" title="<?php _e( "Grid view", 'apto' ) ?>">title="<?php _e( "Grid view", 'apto' ) ?>"</span></a>
+                                    <a class="view-grid" href="javascript: void(0)" onClick="APTO.ChangeViewType('view-grid')" title="<?php _e( "Grid view", 'apto' ) ?>"><span class="screen-reader-text" title="<?php _e( "Grid view", 'apto' ) ?>">title="<?php _e( "Grid view", 'apto' ) ?>"</span></a>
                                 </div>
                                 <?php } ?>
                                 
@@ -1656,9 +1657,14 @@ class APTO_interface
                                             $this->interface_helper->pagination_sortable_html($pagination_args, $additional_query_string);
                                         }
                                 
+                                
+                                $html_list_type  =   apply_filters('apto/sort_interface/list_type_tag', 'ul');
+                                
+                                $additional_query_string['html_list_type']   =   $html_list_type;
+                                
                                 ?>
                                                                
-                                <ul class="view-list sortable-list<?php if($hierarhical_sortable) {echo ' hierarhical-list';} ?>" id="sortable"<?php
+                                <<?php echo $html_list_type; ?> class="view-list sortable-list<?php if($hierarhical_sortable) {echo ' hierarhical-list';} ?>" id="sortable"<?php
                             
                                             if ($hierarhical_sortable)
                                                 {
@@ -1669,7 +1675,7 @@ class APTO_interface
                                                 $found_posts  =   $this->listPostTypeObjects($additional_query_string); 
                                             ?>
                                             
-                                </ul>
+                                </<?php echo $html_list_type; ?>>
                                 <?php
                                 
                                     if($this->sort_settings['_pagination'] ==  'yes')
@@ -1763,10 +1769,10 @@ class APTO_interface
                             jQuery(document).ready(function() {
                                  
                                 //jQuery( "#sortable" ).sortable();
-                                jQuery('ul#sortable, ul#sortable_top, ul#sortable_bottom').nestedSortable({
+                                jQuery('#sortable, #sortable_top, #sortable_bottom').nestedSortable({
                                         handle:             'div',
                                         tabSize:            30,
-                                        listType:           'ul',
+                                        listType:           '<?php echo $html_list_type ?>',
                                         items:              'li',
                                         toleranceElement:   '> div',
                                         placeholder:        'ui-sortable-placeholder',
@@ -1863,7 +1869,7 @@ class APTO_interface
         function listPostTypeObjects($args = '') 
             {
                 $args   =   $this->interface_helper->get_interface_query_arguments($this->current_sort_view_ID, $args);
-                $args   =   apply_filters('apto_interface_query_args', $args, $this->current_sort_view_ID);
+                $args   =   apply_filters('apto/interface_query_args', $args, $this->current_sort_view_ID);
                                                 
                 $custom_query = new WP_Query($args);
                 $found_posts = $custom_query->posts;

@@ -151,6 +151,44 @@
                             }
 
                     return($orderBy);
+                }
+                
+                
+            function APTO_posts_groupby($groupby, $query) 
+                {
+                    
+                    if (isset($query->query_vars['ignore_custom_sort']) && $query->query_vars['ignore_custom_sort'] === TRUE)
+                        return $groupby;
+                    
+                    //not for search queries
+                    if( $query->is_search() )
+                        return $groupby;
+                    
+                    //check for NOT IN taxonomy operator
+                    if(isset($query->tax_query->queries) && APTO_query_utils::tax_queries_count($query->tax_query->queries) == 1 )
+                        {
+                            if(isset($query->tax_query->queries[0]['operator']) && $query->tax_query->queries[0]['operator'] == 'NOT IN')
+                                $groupby = '';
+                        }
+                       
+                    return $groupby;
+                    
+                }
+                
+            function APTO_posts_distinct($distinct, $query) 
+                {
+                   
+                    if (isset($query->query_vars['ignore_custom_sort']) && $query->query_vars['ignore_custom_sort'] === TRUE)
+                        return $distinct;
+                    
+                    //check for NOT IN taxonomy operator
+                    if(isset($query->tax_query->queries) && APTO_query_utils::tax_queries_count($query->tax_query->queries) == 1 )
+                        {
+                            if(isset($query->tax_query->queries[0]['operator']) && $query->tax_query->queries[0]['operator'] == 'NOT IN')
+                                $distinct = 'DISTINCT';
+                        }
+                           
+                    return($distinct);
                 }  
                 
             function create_start_log()

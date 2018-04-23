@@ -340,11 +340,10 @@
 
                             //build the request query
                             $args = array(
-                                                'sl_action'         => 'deactivate',
-                                                'licence_key'       => $license_key,
-                                                'product_id'        => APTO_PRODUCT_ID,
-                                                'secret_key'        => APTO_SECRET_KEY,
-                                                'sl_instance'          => APTO_INSTANCE
+                                                'woo_sl_action'         => 'deactivate',
+                                                'product_unique_id'     => APTO_PRODUCT_ID,
+                                                'licence_key'           => $license_key,
+                                                'domain'                => APTO_INSTANCE,
                                             );
                             $request_uri    = APTO_APP_API_URL . '?' . http_build_query( $args , '', '&');
                             $data           = wp_remote_get( $request_uri,  array(
@@ -357,14 +356,22 @@
                                     $apto_form_submit_messages[] .= __('There was a problem connecting to ', 'apto') . APTO_APP_API_URL;
                                     return;  
                                 }
-                                
-                            $data_body = json_decode($data['body']);
-                            if(isset($data_body->status))
+                            
+                            $response_block = json_decode($data['body']);
+
+                            if(!is_array($response_block) || count($response_block) < 1)
                                 {
-                                    if($data_body->status == 'success' && $data_body->status_code == 's201')
+                                    $apto_form_submit_messages[] = __('There was a problem with the data block received from ' . APTO_APP_API_URL, 'apto');
+                                        return;   
+                                }
+
+                            $response_block = $response_block[count($response_block) - 1];
+                            if (is_object($response_block))
+                                {
+                                    if($response_block->status == 'success' && $response_block->status_code == 's201')
                                         {
                                             //the license is active and the software is active
-                                            $apto_form_submit_messages[] = $data_body->message;
+                                            $apto_form_submit_messages[] = $response_block->message;
                                             
                                             $license_data = get_site_option('apto_license');
                                             
@@ -376,10 +383,10 @@
                                         }
                                         else
                                         {
-                                            $apto_form_submit_messages[] = __('There was a problem deactivating the licence: ', 'apto') . $data_body->message;
+                                            $apto_form_submit_messages[] = __('There was a problem deactivating the licence: ', 'apto') . $response_block->message;
                                             
                                             //if message code is e104  force de-activation
-                                            if ($data_body->status_code == 'e102' || $data_body->status_code == 'e104')
+                                            if ($response_block->status_code == 'e312')
                                                 {
                                                      $license_data = get_site_option('apto_license');
                                             
@@ -391,7 +398,7 @@
                                                 }
                                             
                                             return;
-                                        }   
+                                        }    
                                 }
                                 else
                                 {
@@ -419,14 +426,13 @@
                                 
                             //build the request query
                             $args = array(
-                                                'sl_action'         => 'activate',
-                                                'licence_key'       => $license_key,
-                                                'product_id'        => APTO_PRODUCT_ID,
-                                                'secret_key'        => APTO_SECRET_KEY,
-                                                'sl_instance'          => APTO_INSTANCE
+                                                'woo_sl_action'         => 'activate',
+                                                'product_unique_id'     => APTO_PRODUCT_ID,
+                                                'licence_key'           => $license_key,
+                                                'domain'                => APTO_INSTANCE,
                                             );
                             $request_uri    = APTO_APP_API_URL . '?' . http_build_query( $args , '', '&');
-                            $data           = wp_remote_get( $request_uri, array(
+                            $data           = wp_remote_get( $request_uri,  array(
                                                                                     'timeout'     => 20,
                                                                                     'user-agent'  => 'WordPress/' . $wp_version . '; APTO/' . APTO_VERSION .'; ' . get_bloginfo( 'url' ),
                                                                                     ) );
@@ -436,14 +442,22 @@
                                     $apto_form_submit_messages[] .= __('There was a problem connecting to ', 'apto') . APTO_APP_API_URL;
                                     return;  
                                 }
-                                
-                            $data_body = json_decode($data['body']);
-                            if(isset($data_body->status))
+                            
+                            $response_block = json_decode($data['body']);
+
+                            if(!is_array($response_block) || count($response_block) < 1)
                                 {
-                                    if($data_body->status == 'success' && $data_body->status_code == 's200')
+                                    $apto_form_submit_messages[] = __('There was a problem with the data block received from ' . APTO_APP_API_URL, 'apto');
+                                        return;   
+                                }    
+                                
+                            $response_block = $response_block[count($response_block) - 1];
+                            if (is_object($response_block))
+                                {
+                                    if($response_block->status == 'success' && ( $response_block->status_code == 's100' || $response_block->status_code == 's101' ) )
                                         {
                                             //the license is active and the software is active
-                                            $apto_form_submit_messages[] = $data_body->message;
+                                            $apto_form_submit_messages[] = $response_block->message;
                                             
                                             $license_data = get_site_option('apto_license');
                                             
@@ -459,15 +473,17 @@
                                         }
                                         else
                                         {
-                                            $apto_form_submit_messages[] = __('There was a problem activating the licence: ', 'apto') . $data_body->message;
+                                            $apto_form_submit_messages[] = __('There was a problem activating the licence: ', 'apto') . $response_block->message;
                                             return;
-                                        }   
+                                        }       
                                 }
                                 else
                                 {
                                     $apto_form_submit_messages[] = __('There was a problem with the data block received from ' . APTO_APP_API_URL, 'apto');
                                     return;
-                                }
+                                }    
+                            
+                            
                         }   
                     
                 }

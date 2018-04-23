@@ -146,16 +146,16 @@
             /**
             * We expect 2 txonomies, product_visibility and a custom one
             */
-            if(count($tax_data) !=  2)
-                return $query;
-                
+                  
             //we need product_cat and product_visibility taxonomy
             //format is taxonomy => number of terms it should expect to be found, or false to replace
-            $search_for_taxonomies  =   array(
-                                                'product_cat'           =>  1,  
-                                                'product_tag'           =>  1,
-                                                'product_visibility'    =>  false
-                                                );
+            $search_for_taxonomies  =   array();
+            $product_taxonomies                          =   get_object_taxonomies( 'product');
+            foreach ($product_taxonomies as  $key    =>  $product_taxonomy)
+                {
+                    $search_for_taxonomies[ $product_taxonomy ] =   1;
+                }
+            $search_for_taxonomies['product_visibility']    =   FALSE;
             
             $search_for_taxonomies  =   apply_filters( 'APTO/query_filter_valid_data/woocommerce_taxonomies', $search_for_taxonomies, $query );
             
@@ -185,7 +185,6 @@
                     if(is_array($item_tax_data) &&  isset($item_tax_data['taxonomy'])   &&  $item_tax_data['taxonomy']   ==  'product_visibility')
                         {
                              unset($query->tax_query->queries[$key]);
-                             break;
                         }
                 }
             
@@ -251,5 +250,19 @@
             
             return $options;
         }
+        
+    /**
+    * Turn off the custom sorting when using "YITH WooCommerce Ajax Search Premium"  on AJAX calls
+    */
+    add_filter( 'ywcas_query_arguments', 'apto_ywcas_query_arguments', 99, 2 );
+    function apto_ywcas_query_arguments( $args, $search_key )
+        {
+            
+            $args['ignore_custom_sort']   = TRUE;
+            
+            return $args;
+                
+        }
+    
 
 ?>

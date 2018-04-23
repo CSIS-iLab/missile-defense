@@ -93,6 +93,30 @@
                                                                                 )
                                             ));
                                             
+                    $this->add_rule(array(
+                                            'id'                    =>  'is_user_id',
+                                            'title'                 =>  'User',
+                                            'admin_html'            =>  array($this, 'conditional_rule_is_user_id_admin_html'),
+                                            'query_check_callback'  =>  array($this, 'conditional_rule_is_user_id_query_check'),
+                                            'comparison'            =>  array('IS', 'IS NOT')
+                                            ));
+                    
+                    $this->add_rule(array(
+                                            'id'                    =>  'user_role',
+                                            'title'                 =>  'User Role',
+                                            'admin_html'            =>  array($this, 'conditional_rule_user_role_admin_html'),
+                                            'query_check_callback'  =>  array($this, 'conditional_rule_user_role_query_check'),
+                                            'comparison'            =>  array('IS', 'IS NOT')
+                                            ));
+                                            
+                    $this->add_rule(array(
+                                            'id'                    =>  'user_capability',
+                                            'title'                 =>  'User Capability',
+                                            'admin_html'            =>  array($this, 'conditional_rule_user_capability_admin_html'),
+                                            'query_check_callback'  =>  array($this, 'conditional_rule_user_capability_query_check'),
+                                            'comparison'            =>  array('IS', 'IS NOT')
+                                            ));
+                                            
                     do_action('apto_conditionals_add', $this);
                     
                 }
@@ -465,7 +489,147 @@
                         }
                            
                     return $condition_status;    
-                }    
+                }
+                
+                
+                
+            function conditional_rule_is_user_id_admin_html($options)
+                {
+                    $args = array(
+                                        'name'          =>  'conditional_rules['.$options['group_id'].']['.$options['row_id'].'][conditional_value]',
+                                        'title_li'      =>  '',
+                                        'echo'          =>  0,
+                                        'multi'         =>  false,
+                                        'selected'      =>  $options['selected_value'] 
+                                    );   
+                    $html = wp_dropdown_users($args);
+                    
+                    return $html;   
+                }
+
+            function conditional_rule_is_user_id_query_check($comparison, $value, $query)
+                {
+                    //check against the main query
+                    global $wp_the_query;
+                    
+                    $condition_status = false;
+                    
+                    if ( ! is_user_logged_in() )
+                        return FALSE;
+                        
+                    $user = wp_get_current_user();
+                    if  ( $value == $user->ID)
+                        $condition_status   =   TRUE;
+                        
+                    if($comparison == 'IS NOT')
+                        $condition_status   =   ($condition_status) ?  FALSE : TRUE;
+                           
+                    return $condition_status;   
+                } 
+            
+            function conditional_rule_user_role_admin_html($options)
+                {
+                    $html = '';
+                    
+                    $html = '<select name="conditional_rules['.$options['group_id'].']['.$options['row_id'].'][conditional_value]">';
+                    
+                    $editable_roles = array_reverse( get_editable_roles() );
+
+                    foreach ( $editable_roles as $role => $details ) 
+                        {
+                            $name = translate_user_role($details['name'] );
+                            // preselect specified role
+                            if ( $options['selected_value'] == $role ) {
+                                $html .= "\n\t<option selected='selected' value='" . esc_attr( $role ) . "'>$name</option>";
+                            } else {
+                                $html .= "\n\t<option value='" . esc_attr( $role ) . "'>$name</option>";
+                            }
+                        }
+                    
+                    $html .= '</select>';
+                    
+                    return $html;   
+                }
+
+            function conditional_rule_user_role_query_check($comparison, $value, $query)
+                {
+                    //check against the main query
+                    global $wp_the_query;
+                    
+                    $condition_status = false;
+                    
+                    if ( ! is_user_logged_in() )
+                        return FALSE;
+
+                    $user = wp_get_current_user();
+                    if ( in_array( $value, (array) $user->roles ) ) 
+                        {
+                            $condition_status   =   TRUE;
+                        }                           
+                           
+                    if($comparison == 'IS NOT')
+                        $condition_status   =   ($condition_status) ?  FALSE : TRUE;
+                           
+                    return $condition_status;   
+                }
+            
+                
+            function conditional_rule_user_capability_admin_html($options)
+                {
+                    $html = '';
+                    
+                    $html = '<select name="conditional_rules['.$options['group_id'].']['.$options['row_id'].'][conditional_value]">';
+                    
+                    $editable_roles = array_reverse( get_editable_roles() );
+                    $all_capabilities   =   array();
+
+                    foreach ( $editable_roles as $role => $details ) 
+                        {
+                            foreach ( $details['capabilities']  as $capability  =>  $is_set )
+                                {
+                                    if( ! in_array( $capability, $all_capabilities ) )
+                                        {
+                                            $all_capabilities[] =   $capability;
+                                        }
+                                }
+                        }
+                    
+                    sort($all_capabilities, SORT_NATURAL);
+                    
+                    foreach ($all_capabilities  as $capability)
+                        {
+                            if ( $options['selected_value'] == $capability ) {
+                                    $html .= "\n\t<option selected='selected' value='" . esc_attr( $capability ) . "'>$capability</option>";
+                                } else {
+                                    $html .= "\n\t<option value='" . esc_attr( $capability ) . "'>$capability</option>";
+                                }   
+                        }
+                    
+                    $html .= '</select>';
+                    
+                    return $html;   
+                }
+
+            function conditional_rule_user_capability_query_check($comparison, $value, $query)
+                {
+                    //check against the main query
+                    global $wp_the_query;
+                    
+                    $condition_status = false;
+                    
+                    if ( ! is_user_logged_in() )
+                        return FALSE;
+
+                    if  ( current_user_can ( $value ) )
+                        $condition_status   =   TRUE;
+                        
+                    if($comparison == 'IS NOT')
+                        $condition_status   =   ($condition_status) ?  FALSE : TRUE;
+                           
+                    return $condition_status;   
+                } 
+                
+                  
             
         }
                 

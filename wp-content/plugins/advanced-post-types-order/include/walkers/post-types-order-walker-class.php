@@ -26,7 +26,7 @@
                     extract($args, EXTR_SKIP);
                       
                     $indent = str_repeat("\t", $depth);
-                    $output .= "\n$indent<ul class='children'>\n";
+                    $output .= "\n$indent<". $html_list_type ." class='children'>\n";
                 }
 
             /**
@@ -45,7 +45,7 @@
                     extract($args, EXTR_SKIP);
                            
                     $indent = str_repeat("\t", $depth);
-                    $output .= "$indent</ul>\n";
+                    $output .= "$indent</" . $html_list_type . ">\n";
                 }
 
             /**
