@@ -48,8 +48,7 @@ get_header(); ?>
 							<a class='link-btn ltblue moreposts' href='/analysis/'>Read All</a>
 							</div>
 							<?php
-							$optionsFeatures = get_option( 'missiledefense_hpFeaturesPosts_options' );
-							$featuresLimit = $optionsFeatures['post_limit'];
+							$featuresLimit = get_option( 'missiledefense_hpFeaturesPosts_limit' );
 
 							if(!$featuresLimit) {
 								$featuresLimit = 3;
@@ -204,8 +203,7 @@ if( $ongoing_project1 || $ongoing_project2 || $ongoing_project3 ) {
 				<div class="col-sm-8">
 
 							<?php
-							$options = get_option( 'missiledefense_hpNewsPosts_options' );
-							$newsLimit = $options['post_limit'];
+							$newsLimit = get_option( 'missiledefense_hpNewsPosts_limit' );
 
 							if(!$newsLimit) {
 								$newsLimit = 3;
