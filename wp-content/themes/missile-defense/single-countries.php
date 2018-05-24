@@ -27,16 +27,24 @@ if ( has_post_thumbnail() ) {
 	<div id="primary" class="container">
 		<div class="row">
 			<main id="main" class="entry-content col-xs-12" role="main">
-				<?php
-					the_content();
+			<?php
+				the_content();
 
+				$terms = wp_get_post_terms( $post->ID, 'countries', array('fields' => 'ids')  );
+				$missiles = null;
+				if ( !empty( $terms ) ) {
 					$args = array(
 						'post_type' => 'missile',
-					    'meta_key'   => 'missile_countries',
-					    'meta_value' => $post->ID,
-					    'meta_compare' => '='
+					    'tax_query' => array(
+				            array(
+				                'taxonomy' => 'countries',
+				                'field' => 'term_id',
+				                'terms' => $terms[0],
+				            )
+				        )
 					);
 					$missiles = get_posts( $args );
+				}
 
 				if ( $missiles ) : ?>
 

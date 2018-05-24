@@ -17,44 +17,24 @@ function missiledefense_cpt_missile() {
 				'singular_name' => __( 'World Missile' )
 			),
 			'supports' => array( 'title', 'editor', 'excerpt', 'publicize', 'thumbnail' ),
-			'public' => true,
-			'has_archive' => true,
-			'menu_icon'   => 'dashicons-layout',
+			'hierarchical'      => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'				=> 'dashicons-layouts',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'post',
+		'show_in_rest'          => true,
     	)
   	);
 }
 add_action( 'init', 'missiledefense_cpt_missile' );
-
-/**
- * Create Countries taxonomy for Missile post type.
- * @return array Custom taxonomy.
- */
-function missiledefense_taxonomy_countries() {
-	$labels = array(
-		'name'              => _x( 'Countries', 'taxonomy general name' ),
-		'singular_name'     => _x( 'Country', 'taxonomy singular name' ),
-		'search_items'      => __( 'Search Countries' ),
-		'all_items'         => __( 'All Countries' ),
-		'parent_item'       => __( 'Parent Country' ),
-		'parent_item_colon' => __( 'Parent Country:' ),
-		'edit_item'         => __( 'Edit Country' ),
-		'update_item'       => __( 'Update Country' ),
-		'add_new_item'      => __( 'Add New Country' ),
-		'new_item_name'     => __( 'New Country Name' ),
-		'menu_name'         => __( 'Countries' ),
-	);
-	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'country' ),
-		'with_front'        => false,
-	);
-	register_taxonomy( 'countries', array( 'missile' ), $args );
-}
-add_action( 'init', 'missiledefense_taxonomy_countries', 0 );
 
 /**
  * Add meta box
@@ -64,8 +44,6 @@ add_action( 'init', 'missiledefense_taxonomy_countries', 0 );
  */
 function missile_add_meta_boxes( $post ) {
 	add_meta_box( 'missile_meta_box', __( 'Additional Missile Information', 'missiledefense' ), 'missile_build_meta_box', 'missile', 'normal', 'high' );
-
-	add_meta_box( 'missile_meta_box_countries', __( 'Countries', 'missiledefense' ), 'missile_build_meta_box_countries', 'missile', 'side' );
 }
 add_action( 'add_meta_boxes', 'missile_add_meta_boxes' );
 /**
@@ -133,63 +111,6 @@ function missile_build_meta_box( $post ) {
 }
 
 /**
- * Custom Meta Box for Country selection.
- * @param  array $post Post array.
- * @return string       Meta box HTML.
- */
-function missile_build_meta_box_countries( $post ) {
-	// Make sure the form request comes from WordPress.
-	wp_nonce_field( basename( __FILE__ ), 'missile_meta_box_nonce' );
-
-	$current_missile_countries = get_post_meta( $post->ID, 'missile_countries' );
-	if ( !is_array( $current_missile_countries ) ) {
-		$current_missile_countries = array();
-	}
-
-	$current_missile_countries_primary = get_post_meta( $post->ID, 'missile_countries_primary', true );
-
-	$countries = get_posts(
-		array(
-			'post_type' => 'countries',
-			'numberposts' => -1,
-			'orderby' => 'title',
-			'order' => 'ASC'
-		)
-	);
-	$options = '';
-	foreach($countries as $country) {
-		$checked = '';
-		if ( in_array( $country->ID, $current_missile_countries ) ) {
-			$checked = ' checked';
-		}
-		$primary_class = 'wpseo-make-primary-term';
-		$primary_text = 'Make Primary';
-		if ( $country->ID == $current_missile_countries_primary ) {
-			$primary_class = 'wpseo-is-primary-term';
-			$primary_text = 'Primary';
-		}
-
-		$options .= '<li style="clear: both;">
-			<label for="country_' . esc_attr( $country->ID ) . '">
-			<input type="checkbox" id="country_' . esc_attr( $country->ID ) . '" name="missile_countries[]" value="' . esc_attr( $country->ID ) . '"' . $checked . ' /> ' . esc_html( $country->post_title ) . '
-			</label>
-			<span class="country-make-primary ' . $primary_class . '" data-country="' . esc_attr( $country->ID ) . '">' . $primary_text . '</span>
-		</li>';
-	}
-	?>
-	<div class="taxonomydiv">
-		<div class="tabs-panel">
-			<input type="hidden" name="missile_countries_primary" value="<?php esc_attr( $current_missile_countries_primary ); ?>" />
-			<ul class="categorychecklist form-noclear">
-				<?php echo $options; ?>
-			</ul>
-		</div>
-	</div>
-
-	<?php
-}
-
-/**
  * Store custom field meta box data
  *
  * @param int $post_id The post ID.
@@ -229,23 +150,6 @@ function missile_save_meta_box_data( $post_id ) {
 		update_post_meta( $post_id, 'missile_url', intval(  wp_unslash( $_POST['missile_url'] ) ) ); // Input var okay.
 	} else {
 		delete_post_meta( $post_id, 'missile_url' );
-	}
-
-	if ( isset( $_REQUEST['missile_countries'] ) ) { // Input var okay.
-		delete_post_meta( $post_id, 'missile_countries' );
-
-		foreach( $_POST['missile_countries'] as $country ) {
-			add_post_meta( $post_id, 'missile_countries', intval( wp_unslash( $country ) ) ); // Input var okay.
-		}
-
-	} else {
-		delete_post_meta( $post_id, 'missile_countries' );
-	}
-
-	if ( isset( $_REQUEST['missile_countries_primary'] ) ) {
-		update_post_meta( $post_id, 'missile_countries_primary', intval( $_POST['missile_countries_primary'] ) );
-	} else {
-		update_post_meta( $post_id, 'missile_countries_primary', '' );
 	}
 }
 add_action( 'save_post', 'missile_save_meta_box_data' );
