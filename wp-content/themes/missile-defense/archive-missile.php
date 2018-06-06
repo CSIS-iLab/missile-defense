@@ -32,14 +32,14 @@ if(get_archive_thumbnail_src()) {
 				<div class="row">
 					<?php
 						$args = array(
-							'post_type' => 'countries',
+							'post_type' => 'actors',
 							'numberposts' => -1,
 							'orderby' => 'title',
 							'order' => 'ASC'
 						);
-						$countries = get_posts( $args );
+						$actors = get_posts( $args );
 						
-		        		foreach ( $countries as $post) {
+		        		foreach ( $actors as $post) {
 		        			setup_postdata( $post );
 	        				$feature_image = get_the_post_thumbnail_url();
 		        			?>

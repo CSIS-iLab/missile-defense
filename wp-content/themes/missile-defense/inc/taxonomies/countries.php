@@ -29,9 +29,9 @@ function missiledefense_taxonomy_countries() {
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => 'country' ),
+		'rewrite'           => array( 'slug' => 'country_tax' ),
 		'with_front'        => false,
 	);
-	register_taxonomy( 'countries', array( 'missile', 'countries' ), $args );
+	register_taxonomy( 'countries', array( 'missile', 'actors' ), $args );
 }
 add_action( 'init', 'missiledefense_taxonomy_countries', 0 );

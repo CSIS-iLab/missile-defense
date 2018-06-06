@@ -9,7 +9,7 @@
  * Create Countries custom post type.
  * @return array Custom post type.
  */
-function missiledefense_cpt_countries() {
+function missiledefense_cpt_actors() {
 	$labels = array(
 		'name'                  => _x( 'Countries', 'Post Type General Name', 'missiledefense' ),
 		'singular_name'         => _x( 'Country', 'Post Type Singular Name', 'missiledefense' ),
@@ -37,7 +37,7 @@ function missiledefense_cpt_countries() {
 		'uploaded_to_this_item' => __( 'Uploaded to this country', 'missiledefense' ),
 		'items_list'            => __( 'Countries list', 'missiledefense' ),
 		'items_list_navigation' => __( 'Countries list navigation', 'missiledefense' ),
-		'filter_items_list'     => __( 'Filter countries list', 'missiledefense' ),
+		'filter_items_list'     => __( 'Filter actors list', 'missiledefense' ),
 	);
 	$args = array(
 		'label'                 => __( 'Country', 'missiledefense' ),
@@ -54,15 +54,16 @@ function missiledefense_cpt_countries() {
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
 		'has_archive'           => true,
+		'rewrite'				=> array('slug' => 'country'),
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'post',
 		'show_in_rest'          => true,
 	);
-	register_post_type( 'countries', $args );
+	register_post_type( 'actors', $args );
 
 }
-add_action( 'init', 'missiledefense_cpt_countries', 0 );
+add_action( 'init', 'missiledefense_cpt_actors', 0 );
 
 /**
  * Add meta box
@@ -70,21 +71,21 @@ add_action( 'init', 'missiledefense_cpt_countries', 0 );
  * @param post $post The post object.
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference/add_meta_boxes
  */
-function countries_add_meta_boxes( $post ) {
-	add_meta_box( 'countries_meta_box', __( 'Additional Countries Information', 'missiledefense' ), 'countries_build_meta_box', 'countries', 'normal', 'high' );
+function actors_add_meta_boxes( $post ) {
+	add_meta_box( 'actors_meta_box', __( 'Additional Countries Information', 'missiledefense' ), 'actors_build_meta_box', 'actors', 'normal', 'high' );
 }
-add_action( 'add_meta_boxes', 'countries_add_meta_boxes' );
+add_action( 'add_meta_boxes', 'actors_add_meta_boxes' );
 /**
  * Build custom field meta box
  *
  * @param post $post The post object.
  */
-function countries_build_meta_box( $post ) {
+function actors_build_meta_box( $post ) {
 	// Make sure the form request comes from WordPress.
-	wp_nonce_field( basename( __FILE__ ), 'countries_meta_box_nonce' );
+	wp_nonce_field( basename( __FILE__ ), 'actors_meta_box_nonce' );
 
 	// Retrieve current value of fields.
-	$current_secondary_content = get_post_meta( $post->ID, '_countries_secondary_content', true );
+	$current_secondary_content = get_post_meta( $post->ID, '_actors_secondary_content', true );
 	?>
 	<div class='inside'>
 		<h3><?php esc_html_e( 'Secondary Content: Below Missile Table', 'missiledefense' ); ?></h3>
@@ -92,7 +93,7 @@ function countries_build_meta_box( $post ) {
 			<?php
 				wp_editor(
 					$current_secondary_content,
-					'countries_secondary_content'
+					'actors_secondary_content'
 				);
 			?>
 		</p>
@@ -106,9 +107,9 @@ function countries_build_meta_box( $post ) {
  * @param int $post_id The post ID.
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference/save_post
  */
-function countries_save_meta_box_data( $post_id ) {
+function actors_save_meta_box_data( $post_id ) {
 	// Verify meta box nonce.
-	if ( ! isset( $_POST['countries_meta_box_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['countries_meta_box_nonce'] ) ), basename( __FILE__ ) ) ) { // Input var okay.
+	if ( ! isset( $_POST['actors_meta_box_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['actors_meta_box_nonce'] ) ), basename( __FILE__ ) ) ) { // Input var okay.
 		return;
 	}
 	// Return if autosave.
@@ -121,7 +122,11 @@ function countries_save_meta_box_data( $post_id ) {
 	}
 
 	if ( isset( $_REQUEST['secondary_content'] ) ) { // Input var okay.
-		update_post_meta( $post_id, '_countries_secondary_content', wp_kses_post( wp_unslash( $_POST['secondary_content'] ) ) ); // Input var okay.
+		update_post_meta( $post_id, '_actors_secondary_content', wp_kses_post( wp_unslash( $_POST['secondary_content'] ) ) ); // Input var okay.
+	}
+
+	if ( isset( $_REQUEST['country_tax_id'] ) ) { // Input var okay.
+		update_post_meta( $post_id, '_actors_taxonomy_id', intval( wp_unslash( $_POST['country_tax_id'] ) ) ); // Input var okay.
 	}
 }
-add_action( 'save_post', 'countries_save_meta_box_data' );
+add_action( 'save_post', 'actors_save_meta_box_data' );

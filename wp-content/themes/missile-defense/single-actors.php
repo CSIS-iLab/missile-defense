@@ -8,6 +8,7 @@
  */
 
 get_header();
+$featured_img_html = null;
 
 $header_class = 'entry-header';
 if ( has_post_thumbnail() ) {
@@ -34,7 +35,9 @@ if ( has_post_thumbnail() ) {
 				$missiles = null;
 				if ( !empty( $terms ) ) {
 					$args = array(
+						'posts_per_page' => -1,
 						'post_type' => 'missile',
+						'post_status' => 'publish,private',
 					    'tax_query' => array(
 				            array(
 				                'taxonomy' => 'countries',
