@@ -311,3 +311,14 @@ function missile_defenseyoasttobottom() {
     return 'low';
 }
 add_filter( 'wpseo_metabox_prio', 'missile_defenseyoasttobottom');
+
+/**
+ * Set default attributes for the accordion shortcode.
+ * @param array $atts Shortcode attributes.
+ */
+function set_accordion_shortcode_defaults($atts) {
+    $atts['autoclose'] = false;
+    $atts['clicktoclose'] = true;
+    return $atts;
+}
+add_filter('shortcode_atts_accordion', 'set_accordion_shortcode_defaults', 10, 3);

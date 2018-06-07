@@ -1,12 +1,12 @@
 <?php
 /**
- * Custom Post Types: Countries
+ * Custom Post Types: Actors
  *
  * @package Missile_Defense
  */
 
 /**
- * Create Countries custom post type.
+ * Create Actors custom post type.
  * @return array Custom post type.
  */
 function missiledefense_cpt_actors() {
@@ -72,7 +72,7 @@ add_action( 'init', 'missiledefense_cpt_actors', 0 );
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference/add_meta_boxes
  */
 function actors_add_meta_boxes( $post ) {
-	add_meta_box( 'actors_meta_box', __( 'Additional Countries Information', 'missiledefense' ), 'actors_build_meta_box', 'actors', 'normal', 'high' );
+	add_meta_box( 'actors_meta_box', __( 'Additional Page Information', 'missiledefense' ), 'actors_build_meta_box', 'actors', 'normal', 'high' );
 }
 add_action( 'add_meta_boxes', 'actors_add_meta_boxes' );
 /**
@@ -86,9 +86,10 @@ function actors_build_meta_box( $post ) {
 
 	// Retrieve current value of fields.
 	$current_secondary_content = get_post_meta( $post->ID, '_actors_secondary_content', true );
+	$current_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
 	?>
 	<div class='inside'>
-		<h3><?php esc_html_e( 'Secondary Content: Below Missile Table', 'missiledefense' ); ?></h3>
+		<h3><?php esc_html_e( 'Secondary Content', 'missiledefense' ); ?></h3>
 		<p>
 			<?php
 				wp_editor(
@@ -97,7 +98,12 @@ function actors_build_meta_box( $post ) {
 				);
 			?>
 		</p>
-		<p class="howto"><?php esc_html_e( 'Content in this field is only available on the default country post template.', 'missiledefense' ); ?></p>
+		<p class="howto"><?php esc_html_e( 'On the default page template, this content will appear below the missile table. On the page with the sidebar template, this content will appear in the sidebar.', 'missiledefense' ); ?></p>
+		<p>
+			<label for="archive_name"><strong><?php esc_html_e( 'Archive Name', 'missiledefense' ); ?></strong></label>
+			<input type="text" class="regular-text" id="archive_name" name="archive_name" value="<?php echo esc_textarea( $current_archive_name ); ?>" />
+			<span class="howto"><?php esc_html_e( 'If you want to use different text for this post on the Missiles of the World page, fill this field out.', 'missiledefense' ); ?></span>
+		</p>
 	</div>
 	<?php
 }
@@ -121,12 +127,12 @@ function actors_save_meta_box_data( $post_id ) {
 		return;
 	}
 
-	if ( isset( $_REQUEST['secondary_content'] ) ) { // Input var okay.
-		update_post_meta( $post_id, '_actors_secondary_content', wp_kses_post( wp_unslash( $_POST['secondary_content'] ) ) ); // Input var okay.
+	if ( isset( $_REQUEST['actors_secondary_content'] ) ) { // Input var okay.
+		update_post_meta( $post_id, '_actors_secondary_content', wp_kses_post( wp_unslash( $_POST['actors_secondary_content'] ) ) ); // Input var okay.
 	}
 
-	if ( isset( $_REQUEST['country_tax_id'] ) ) { // Input var okay.
-		update_post_meta( $post_id, '_actors_taxonomy_id', intval( wp_unslash( $_POST['country_tax_id'] ) ) ); // Input var okay.
+	if ( isset( $_REQUEST['archive_name'] ) ) { // Input var okay.
+		update_post_meta( $post_id, '_actors_archive_name', wp_kses_post( wp_unslash( $_POST['archive_name'] ) ) ); // Input var okay.
 	}
 }
 add_action( 'save_post', 'actors_save_meta_box_data' );

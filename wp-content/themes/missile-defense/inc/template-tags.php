@@ -108,18 +108,35 @@ function missiledefense_category_transient_flusher() {
 add_action( 'edit_category', 'missiledefense_category_transient_flusher' );
 add_action( 'save_post',     'missiledefense_category_transient_flusher' );
 
-if ( ! function_exists( 'missiledefense_countries_secondary_content' ) ) :
+if ( ! function_exists( 'missiledefense_actors_secondary_content' ) ) :
 	/**
 	 * Returns HTML for the secondary content for country posts.
 	 *
 	 * @param  int $id Post ID.
 	 */
-	function missiledefense_countries_secondary_content( $id ) {
-		if ( 'countries' === get_post_type() ) {
-			$secondary_content = get_post_meta( $id, '_countries_secondary_content', true );
+	function missiledefense_actors_secondary_content( $id ) {
+		if ( 'actors' === get_post_type() ) {
+			$secondary_content = get_post_meta( $id, '_actors_secondary_content', true );
 			if ( '' !== $secondary_content ) {
-				printf( '<section class="countries-secondary-content">%1$s</section>', $secondary_content); // WPCS: XSS OK.
+				printf( '%1$s', $secondary_content); // WPCS: XSS OK.
 			}
 		}
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_citation' ) ) :
+	/**
+	 * Returns HTML with post citation.
+	 *
+	 * @param int $id Post ID.
+	 */
+	function missiledefense_citation() {
+		$year = get_the_date( 'Y' );
+		if ( 'data' === get_post_type() ) {
+			$authors = get_bloginfo('name');
+		} else {
+			$authors = coauthors( ', ', null, null, null, false );
+		}
+		printf( '<span class="meta-label">Cite this Page</span><p><span class="citation">' . esc_html( '%1$s,', 'missiledefense') . ' <em>%2$s</em> ' . esc_html( '(Washington D.C.: Center for Strategic and International Studies, %3$s), %4$s', 'missiledefense' ) . '</span><button id="btn-copy" class="btn btn-gray" data-clipboard-target=".citation" aria-label="Copied!">Copy</button></p>', $authors, get_the_title(), $year, get_the_permalink() ); // WPCS: XSS OK.
 	}
 endif;

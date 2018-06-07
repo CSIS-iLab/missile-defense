@@ -1,0 +1,51 @@
+/*=================================
+=            Accordion            =
+=================================*/
+
+.accordion {
+	margin: 2rem 0;
+
+	.accordion-title {
+		position: relative;
+		margin: 0 0 0.5rem;
+		padding: 1rem 1.5rem;
+		background-color: $color__background-home-mission;
+		@include fontSize(30px);
+		color: $black !important;
+		clear: both;
+
+		&::after {
+			display: inline-block;
+			content: "+";
+			position: absolute;
+			right: 1.5rem;
+		}
+
+		&:hover,
+		&.open {
+			font-weight: 600;
+			cursor: pointer;
+		}
+
+		&.open::after {
+			content: "\02013";
+		}
+	}
+
+	.accordion-content {
+		display: none;
+		padding: 1.5rem;
+
+		p:last-of-type {
+			margin-bottom: 0;
+		}
+
+		/*----------  Image Alignments  ----------*/
+		.alignright.wp-caption {
+			margin-right: 0;
+		}
+		.alignleft.wp-caption {
+			margin-left: 0;
+		}
+	}
+}

@@ -75,7 +75,9 @@ if ( has_post_thumbnail() ) {
 					<?php
 					endif;
 
-					missiledefense_countries_secondary_content($post->ID);
+					echo '<section class="actors-secondary-content">';
+					missiledefense_actors_secondary_content($post->ID);
+					echo '</section>';
 					missiledefense_shareOnArchives();
 				?>
 			</main><!-- #main -->

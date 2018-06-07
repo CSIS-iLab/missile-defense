@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "wpackagist-plugin/accordion-shortcodes": "*",
         "wpackagist-plugin/add-to-any": "*",
         "wpackagist-plugin/akismet":"*",
         "wpackagist-plugin/archive-control": "*",
