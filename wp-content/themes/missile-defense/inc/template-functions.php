@@ -286,6 +286,8 @@ function missiledefense_archive_titles( $title ) {
         $title = single_tag_title( '<span class="archive-label">Keyword:</span> ', false );
     } elseif( is_author() ) {
         $title = '<span class="archive-label">Author:</span> ' . get_the_author();
+    } elseif ( is_tax( 'system' ) ) {
+        $title = single_term_title( '', false );
     }
     return $title;
 }

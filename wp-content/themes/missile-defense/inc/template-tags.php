@@ -131,12 +131,42 @@ if ( ! function_exists( 'missiledefense_citation' ) ) :
 	 * @param int $id Post ID.
 	 */
 	function missiledefense_citation() {
-		$year = get_the_date( 'Y' );
-		if ( 'data' === get_post_type() ) {
-			$authors = get_bloginfo('name');
-		} else {
-			$authors = coauthors( ', ', null, null, null, false );
+		$authors = coauthors( ', ', null, null, null, false );
+
+		$modified_date = null;
+		if ( get_the_modified_date() ) {
+			$modified_date = 'last modified ' . get_the_modified_date() . ', ';
 		}
-		printf( '<span class="meta-label">Cite this Page</span><p><span class="citation">' . esc_html( '%1$s,', 'missiledefense') . ' <em>%2$s</em> ' . esc_html( '(Washington D.C.: Center for Strategic and International Studies, %3$s), %4$s', 'missiledefense' ) . '</span><button id="btn-copy" class="btn btn-gray" data-clipboard-target=".citation" aria-label="Copied!">Copy</button></p>', $authors, get_the_title(), $year, get_the_permalink() ); // WPCS: XSS OK.
+
+		$title = get_the_title();
+		if ( is_tax() ) {
+			$title = get_the_archive_title();
+		}
+
+		printf( '<h4 class="post-footer-heading">Cite this Page</h4><p class="citation-container"><span class="citation">' . esc_html( '%1$s, "%2$s,"', 'missiledefense' ) . ' <em>%3$s</em>' . esc_html( ', published %4$s, %5$s%6$s', 'missiledefense') . '</span><button id="btn-copy" class="btn btn-square btn-small btn-gray" data-clipboard-target=".citation" aria-label="Copied!">Copy</button></p>', $authors, $title, get_bloginfo( 'name' ), get_the_date(), $modified_date, get_the_permalink() ); // WPCS: XSS OK.
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_related_posts' ) ) :
+	/**
+	 * Returns HTML with related posts if related tag was provided.
+	 *
+	 * @param int $id Post ID.
+	 */
+	function missiledefense_related_posts() {
+		global $post;
+		$current_related_tags = get_post_meta( $post->ID, '_post_related_tags', true );
+
+		if ( is_tax() ) {
+			$term = get_queried_object_id();
+			$current_related_tags = get_term_meta( $term, 'archive_related_tags', true );
+		}
+
+		echo '<div class="relatedposts"><h4 class="post-footer-heading">Related Posts</h4>';
+		echo do_shortcode( '[catlist pagination=no tags="' . $current_related_tags . '" numberposts=3 date=yes date_class="relatedDates"]' );
+
+		if ( $current_related_tags ) {
+			echo '<a class="moreposts" href="' . esc_url( '/tags/' . $current_related_tags) . '">Read all related posts</a></div>';
+		}
 	}
 endif;

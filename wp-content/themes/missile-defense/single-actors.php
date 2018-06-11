@@ -21,7 +21,7 @@ if ( has_post_thumbnail() ) {
 
 	<header class="<?php echo $header_class; ?>" <?php echo $featured_img_html; ?>>
 		<div class="container title">
-			<?php the_title( '<h1 class="page-title">Missiles of ', '</h1>' ); ?>
+			<?php the_title( '<h1 class="page-title">', '</h1>' ); ?>
 		</div>
 		<div class="overlay"></div>
 	</header>
@@ -74,14 +74,15 @@ if ( has_post_thumbnail() ) {
 
 					<?php
 					endif;
+					wp_reset_postdata();
 
 					echo '<section class="actors-secondary-content">';
 					missiledefense_actors_secondary_content($post->ID);
 					echo '</section>';
-					missiledefense_shareOnArchives();
 				?>
 			</main><!-- #main -->
 		</div>
+		<?php get_template_part( 'template-parts/post-footer' ); ?>
 	</div><!-- #primary -->
 
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.css"/>

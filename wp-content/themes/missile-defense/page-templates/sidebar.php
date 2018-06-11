@@ -18,15 +18,15 @@ get_header();
 			</header>
 			<main id="main" class="entry-content col-xs-12" role="main">
 				<div class="tableOfContents">
-					<h2>Table of Contents</h2>
+					<h2><?php esc_html_e( 'Table of Contents', 'missiledefense' ); ?></h2>
 					<?php missiledefense_actors_secondary_content($post->ID); ?>
 				</div>
 				<div class="tableOfContents-mainContent">
 					<?php the_content(); ?>
 				</div>
 			</main>
-			<?php get_template_part( 'template-parts/post-footer' ); ?>
 		</div>
+		<?php get_template_part( 'template-parts/post-footer' ); ?>
 	</div><!-- #primary -->
 <?php
 get_footer();

@@ -28,6 +28,7 @@ while ( have_posts() ) : the_post();
 
 			</main><!-- #main -->
 		</div><!-- .row -->
+		<?php get_template_part( 'template-parts/post-footer' ); ?>
 	</div><!-- #primary -->
 
 <?php
