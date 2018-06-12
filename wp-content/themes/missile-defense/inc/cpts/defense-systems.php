@@ -46,11 +46,11 @@ function missiledefense_taxonomy_system() {
 		'hierarchical'      => true,
 		'labels'            => $labels,
 		'show_ui'           => true,
-		'rewrite'           => array( 'slug' => 'system' ),
+		'rewrite'           => array( 'slug' => 'system_tax' ),
 		'show_admin_column' => true,
 		'query_var'         => true,
 	);
-	register_taxonomy( 'system', array( 'defsys' ), $args );
+	register_taxonomy( 'system', array( 'defsys', 'systems' ), $args );
 }
 add_action( 'init', 'missiledefense_taxonomy_system', 0 );
 

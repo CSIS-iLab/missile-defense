@@ -50,7 +50,7 @@
 			?>
 			<li><?php the_title(); ?></li>
 		</ul><br style="clear:left;" />
-		<?php echo get_the_term_list( $post->ID, 'system', 'Systems: ', ', ', '' ); ?>
+		<?php missiledefense_system_terms(); ?>
 		<div style="clear:left;"></div>
 	</header><!-- .entry-header -->
 	<div class="entry-content">

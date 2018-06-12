@@ -18,4 +18,5 @@
 	<section class="entry-footer-right col-xs-12 col-md-4">
 		<?php missiledefense_related_posts(); ?>
 	</section>
+	<?php missiledefense_display_footnotes(); ?>
 </footer>

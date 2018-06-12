@@ -304,6 +304,7 @@ add_filter( 'meta_content', 'wpautop' );
 add_filter( 'meta_content', 'shortcode_unautop' );
 add_filter( 'meta_content', 'prepend_attachment' );
 add_filter( 'meta_content', 'do_shortcode' );
+add_filter( 'term_description', 'do_shortcode' );
 
 /**
  * Move Yoast SEO meta boxes to bottom of editing screen.
@@ -324,3 +325,11 @@ function set_accordion_shortcode_defaults($atts) {
     return $atts;
 }
 add_filter('shortcode_atts_accordion', 'set_accordion_shortcode_defaults', 10, 3);
+
+function missiledefense_undo_footnote_reset() {
+    if ( in_array( get_post_type(), array( 'actors', 'systems' ) ) && is_single() ) {
+        global $easyFootnotes;
+        remove_filter( 'the_content', array($easyFootnotes, 'easy_footnote_reset'), 999 );
+    }
+}
+add_action( 'template_redirect', 'missiledefense_undo_footnote_reset' );

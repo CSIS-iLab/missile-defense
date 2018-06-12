@@ -142,6 +142,8 @@ function missiledefense_scripts() {
 
 	wp_enqueue_script( 'missiledefense-topbutton', get_template_directory_uri() . '/js/topbutton.js', array(), '20151215', true );
 
+	wp_enqueue_script( 'missiledefense-collapsible-content', get_template_directory_uri() . '/js/collapsible-content.js', array(), '20180612', true );
+
 	// Font Awesome
 	wp_enqueue_script('missiledefense-font-awesome', 'https://use.fontawesome.com/08b1a76eab.js');
 

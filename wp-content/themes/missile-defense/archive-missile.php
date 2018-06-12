@@ -34,8 +34,9 @@ if(get_archive_thumbnail_src()) {
 					$args = array(
 						'post_type' => 'actors',
 						'numberposts' => -1,
-						'orderby' => 'title',
-						'order' => 'ASC'
+						'orderby' => 'meta_value',
+						'order' => 'ASC',
+						'meta_key' => '_actors_archive_name'
 					);
 					$actors = get_posts( $args );
 					
