@@ -16,6 +16,15 @@
 		line-height: 1.4em;
 	}
 
+	a {
+		color: $color__text-footer;
+		font-weight: normal;
+
+		&:hover {
+			color: $white;
+		}
+	}
+
 
 	#searchform {
 

@@ -327,7 +327,7 @@ function set_accordion_shortcode_defaults($atts) {
 add_filter('shortcode_atts_accordion', 'set_accordion_shortcode_defaults', 10, 3);
 
 function missiledefense_undo_footnote_reset() {
-    if ( in_array( get_post_type(), array( 'actors', 'systems' ) ) && is_single() ) {
+    if ( in_array( get_post_type(), array( 'actors', 'systems', 'post' ) ) && is_single() ) {
         global $easyFootnotes;
         remove_filter( 'the_content', array($easyFootnotes, 'easy_footnote_reset'), 999 );
     }

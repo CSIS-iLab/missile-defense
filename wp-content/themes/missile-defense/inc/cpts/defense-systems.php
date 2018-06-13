@@ -16,6 +16,7 @@ function missiledefense_cpt_defsys() {
 				'name' => __( 'Defense Systems' ),
 				'singular_name' => __( 'Defense System' )
 			),
+            'supports' => array( 'title', 'editor', 'excerpt', 'publicize', 'thumbnail', 'author' ),
 			'public' => true,
 			'has_archive' => true,
 	    )

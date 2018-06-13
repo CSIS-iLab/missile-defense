@@ -16,7 +16,7 @@ function missiledefense_cpt_missile() {
 				'name' => __( 'World Missiles' ),
 				'singular_name' => __( 'World Missile' )
 			),
-			'supports' => array( 'title', 'editor', 'excerpt', 'publicize', 'thumbnail' ),
+			'supports' => array( 'title', 'editor', 'excerpt', 'publicize', 'thumbnail', 'author' ),
 			'hierarchical'      => false,
 		'public'                => true,
 		'show_ui'               => true,
@@ -153,17 +153,3 @@ function missile_save_meta_box_data( $post_id ) {
 	}
 }
 add_action( 'save_post', 'missile_save_meta_box_data' );
-
-add_action( 'admin_enqueue_scripts', function() {
-    if ( 'post' !== get_current_screen()->id ) {
-        return;
-    }
-    // Enqueue code editor and settings for manipulating HTML.
-    wp_add_inline_script(
-        'code-editor',
-        sprintf(
-            'jQuery( function() { wp.codeEditor.initialize( "custom_css", %s ); } );',
-            wp_json_encode( $settings )
-        )
-    );
-} );

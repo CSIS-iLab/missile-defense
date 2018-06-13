@@ -38,7 +38,7 @@
 			</p>
 		</div>
 		<div class="col-sm-6 text-right">
-<p>&copy; <?php echo date("Y"); ?> by the Center for Strategic and International Studies. <br>All rights reserved.</p>
+			<p>&copy; <?php echo date("Y"); ?> by the Center for Strategic and International Studies. <br>All rights reserved. | <a href="https://www.csis.org/privacy-policy" target="_blank">Privacy Policy</a></p>
 		</div>
 	</div>
 	</div>

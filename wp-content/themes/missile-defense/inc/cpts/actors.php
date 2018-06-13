@@ -43,7 +43,7 @@ function missiledefense_cpt_actors() {
 		'label'                 => __( 'Country', 'missiledefense' ),
 		'description'           => __( 'Countries and non-state actors for the missiles of the world section.', 'missiledefense' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'author' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,

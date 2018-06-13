@@ -43,7 +43,7 @@ function missiledefense_cpt_systems() {
 		'label'                 => __( 'System', 'missiledefense' ),
 		'description'           => __( 'Defense Systems', 'missiledefense' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'supports'              => array( 'title', 'editor', 'thumbnail', 'author' ),
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,

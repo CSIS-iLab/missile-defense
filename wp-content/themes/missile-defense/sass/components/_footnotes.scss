@@ -74,6 +74,10 @@
       width: 13px;
     }
 
+    &:nth-of-type(n+100) .easy-footnote-margin-adjust {
+      width: 17px;
+    }
+
     a {
       float: left;
       margin-left: 0;

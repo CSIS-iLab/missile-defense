@@ -229,6 +229,7 @@ if ( ! function_exists( 'missiledefense_display_footnotes' ) ) :
 	function missiledefense_display_footnotes() {
 		if ( class_exists( 'easyFootnotes' ) ) {
 			global $easyFootnotes;
+
 			$footnotes = $easyFootnotes->easy_footnote_after_content('');
 
 			if ( $footnotes != '' ) {
