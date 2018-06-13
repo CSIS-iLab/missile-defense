@@ -38,7 +38,7 @@ if ( ! function_exists( 'missiledefense_add_buttons' ) ) {
 
 if ( ! function_exists( 'missiledefense_register_buttons' ) ) {
     function missiledefense_register_buttons( $buttons ) {
-        array_push( $buttons, 'tableOfContents', 'definition', 'note');
+        array_push( $buttons, 'tableOfContents', 'definition', 'systemElements', 'note');
         return $buttons;
     }
 }
@@ -49,8 +49,8 @@ if ( !function_exists( 'missiledefense_tinymce_extra_vars' ) ) {
 		<script type="text/javascript">
 			var tinyMCE_object = <?php echo json_encode(
 				array(
-					'button_name' => esc_html__('ToC','missiledefense','note'),
-					'button_title' => esc_html__('Table of Contents', 'missiledefense','note')
+					'button_name' => esc_html__('ToC','missiledefense','systemElements','note'),
+					'button_title' => esc_html__('Table of Contents', 'missiledefense','systemElements','note')
 				)
 				);
 			?>;

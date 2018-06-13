@@ -87,6 +87,14 @@
         				});
       			}
       		});
+          editor.addButton('systemElements', {
+        			text: 'System Elements',
+        			icon: null,
+        			tooltip: 'Insert systemElements',
+        			onclick: function() {
+              						editor.insertContent( '[systemElements]' );
+        			}
+        	});
     });
 
 })();
