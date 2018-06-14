@@ -34,7 +34,7 @@ if(isset($custom['missile_range'])) {
 <tr id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<td>
 		<?php
-			if(isset($custom['missile_name'])) {
+			if(isset($custom['missile_name']) && $custom['missile_name'][0] != '') {
 				if(get_post_status() != 'publish' && !isset($custom['missile_url'])) {
 					echo $custom['missile_name'][0];
 				}
@@ -47,7 +47,7 @@ if(isset($custom['missile_range'])) {
 					the_title();
 				}
 				else {
-					the_title( '<a href="'.$url.'" rel="bookmark">', '</a>' );
+					the_title( '<a href="'.$url.'" rel="bookmark">', '</a>');
 				}
 			}
 		?>
