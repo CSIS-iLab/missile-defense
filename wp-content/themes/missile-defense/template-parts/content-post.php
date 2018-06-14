@@ -41,7 +41,4 @@
 			) );
 		?>
 	</div><!-- .entry-content -->
-	<div class='meta-container'>
-		<?php missiledefense_entry_categories(); ?>
-	</div>
 </article>

@@ -136,23 +136,43 @@ jQuery(document).ready(function($) {
 
         calculate(absolute);
 
-
         var msie6 = $.browser == 'msie' && $.browser.version < 7;
         if (!msie6) {
-            var top2 = $('.resources-menu, .tableOfContents').offset().top;
+            var top2 = absolute.offset().top;
             var top = top2 - 100;
+
+            var bottom = null
+            if ( $('.tableOfContents-mainContent').length > 0 ) {
+                bottom = $('.tableOfContents-mainContent').height() - absolute.height();
+            }
+
+            var rightPosInitial = parseFloat(absolute.css('right'))
+            
             $(window).scroll(function(event) {
                 var y = $(this).scrollTop();
                 if (y >= top) {
-                    $('.resources-menu, .tableOfContents').addClass('sticky');
-                
+                    if ( bottom && y >= bottom) {
+                        absolute.removeClass('sticky').addClass('absolute');
+                        absolute.css({
+                            'top': bottom - top,
+                            'right': 15
+                        });
+                    } else {
+                        absolute.removeClass('absolute').addClass('sticky');
+                        absolute.css({
+                            'top': '',
+                            'right': rightPosInitial
+                        });
+                    }
                 } else {
-                    $('.resources-menu, .tableOfContents').removeClass('sticky');
+                    absolute.removeClass('sticky').removeClass('absolute');
+                    absolute.css({
+                        'top': '',
+                        'right': rightPosInitial
+                    });
                 }
             });
-
         }
-
 
         $(window).resize(function() {
         	var y = $(this).scrollTop();

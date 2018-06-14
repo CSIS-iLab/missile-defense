@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying Defense Systems type of system pages
+ * The template for displaying single systems posts.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -9,17 +9,18 @@
 
 get_header();
 
+$featured_img_html = null;
 $feat_image_caption = '';
 
-if(get_archive_thumbnail_src()) {
-	$feat_image = 'style="background-image:url('.get_archive_thumbnail_src("full").');"';
-	$feat_image_id = get_archive_thumbnail_id();
-	$feat_image_caption = wp_get_attachment_caption($feat_image_id);
+if( has_post_thumbnail() ) {
+	$featured_img_url = get_the_post_thumbnail_url();
+	$featured_img_html = ' style="background-image:url(' . esc_url( $featured_img_url ) . ');"'; 
+	// $feat_image_caption = wp_get_attachment_caption($feat_image_id);
 ?>
 
-	<header class="entry-header full-width" <?php echo $feat_image; ?>>
+	<header class="entry-header full-width" <?php echo $featured_img_html; ?>>
 		<div class="container title">
-			<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
+			<?php the_title( '<h1 class="page-title">', '</h1>' ); ?>
 		</div>
 		<div class="overlay"></div>
 	</header>
@@ -28,13 +29,13 @@ if(get_archive_thumbnail_src()) {
 	?>
 	<div id="primary" class="container">
 		<header class="entry-header">
-			<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
+			<?php the_title( '<h1 class="page-title">', '</h1>' ); ?>
 		</header>
 	<?php } ?>
 		<div class="row">
 			<main id="main" class="entry-content col-xs-12" role="main">
 				<?php
-					the_archive_bottom_content( '<div class="archive-description">', '</div>' );
+					the_content();
 					if ( $feat_image_caption ) {
 						echo '<div class="post-featured-caption">' . esc_html_x( 'Photo Credit: ', 'missiledefense' ) . $feat_image_caption . '</div>';
 					}

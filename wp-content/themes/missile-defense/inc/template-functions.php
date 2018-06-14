@@ -286,7 +286,50 @@ function missiledefense_archive_titles( $title ) {
         $title = single_tag_title( '<span class="archive-label">Keyword:</span> ', false );
     } elseif( is_author() ) {
         $title = '<span class="archive-label">Author:</span> ' . get_the_author();
+    } elseif ( is_tax( 'system' ) ) {
+        $title = single_term_title( '', false );
     }
     return $title;
 }
 add_filter( 'get_the_archive_title', 'missiledefense_archive_titles' );
+
+/**
+*
+* Recreate the default filters on the_content so we can pull formated content with get_post_meta
+*/
+add_filter( 'meta_content', 'wptexturize' );
+add_filter( 'meta_content', 'convert_smilies' );
+add_filter( 'meta_content', 'convert_chars' );
+add_filter( 'meta_content', 'wpautop' );
+add_filter( 'meta_content', 'shortcode_unautop' );
+add_filter( 'meta_content', 'prepend_attachment' );
+add_filter( 'meta_content', 'do_shortcode' );
+add_filter( 'term_description', 'do_shortcode' );
+
+/**
+ * Move Yoast SEO meta boxes to bottom of editing screen.
+ * @return string Priority level.
+ */
+function missile_defenseyoasttobottom() {
+    return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'missile_defenseyoasttobottom');
+
+/**
+ * Set default attributes for the accordion shortcode.
+ * @param array $atts Shortcode attributes.
+ */
+function set_accordion_shortcode_defaults($atts) {
+    $atts['autoclose'] = false;
+    $atts['clicktoclose'] = true;
+    return $atts;
+}
+add_filter('shortcode_atts_accordion', 'set_accordion_shortcode_defaults', 10, 3);
+
+function missiledefense_undo_footnote_reset() {
+    if ( in_array( get_post_type(), array( 'actors', 'systems', 'post' ) ) && is_single() ) {
+        global $easyFootnotes;
+        remove_filter( 'the_content', array($easyFootnotes, 'easy_footnote_reset'), 999 );
+    }
+}
+add_action( 'template_redirect', 'missiledefense_undo_footnote_reset' );

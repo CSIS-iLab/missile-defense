@@ -6,7 +6,7 @@ header.entry-header.full-width {
 	width:100%;
 	height:$header-img-height;
 	overflow:hidden;
-	margin:0px auto !important;
+	margin: 0 auto 2rem;
 	padding:0px;
 	position:relative;
 	top:0px;
@@ -66,7 +66,7 @@ header.entry-header.full-width {
 	}
 }
 
-.page header.entry-header {
+.page header.entry-header:not(.full-width) {
 	margin-top:2em;
 	margin-bottom:2em;
 }
@@ -80,6 +80,30 @@ header {
 	}
 }
 /*=====  End of Post Header  ======*/
+
+/*==============================
+=            Footer            =
+==============================*/
+.entry-footer {
+	margin-top: 4rem;
+	padding-left: 0;
+	padding-right: 0;
+
+	&-left,
+	&-right {
+		margin: 0;
+	}
+
+	&-left {
+		@include breakpoint("medium") {
+			padding-right: 4rem;
+		}
+	}
+}
+
+
+/*=====  End of Footer  ======*/
+
 
 /*====================================
 =            Post Content            =
@@ -263,124 +287,7 @@ article {
 =            404 Page            =
 ================================*/
 .error-404-header {text-align:center;background-color:$dark-blue;}
-
-
 /*=====  End of 404 Page  ======*/
-
-/*==================================================
-=            List Category Posts Plugin            =
-==================================================*/
-#lcp_instance_0 {
-    margin: 0 20px 0 20px;
-    display: inline-block;
-    list-style: none !important;
-    text-transform: capitalize !important;
-}
-
-.lcp_catlist {
-    .list-item {
-        margin-bottom:20px;
-
-        .lcp_meta {
-            font-size:13px;
-            color: $gray;
-        }
-
-        h2 {
-            text-transform: uppercase;
-            margin: 5px auto;
-
-            a {
-                text-decoration:none;
-            }
-        }
-    }
-}
-
-.relatedposts {
-	display: block;
-	border-left: 8px solid $light-blue;
-	padding-left: 20px;
-	padding-bottom:1px;
-	padding-top: 5px;
-
-
-	h3 {
-		line-height: 1.3em;
-	    font-size: 2.2rem;
-	    text-transform: uppercase;
-	    letter-spacing: 1.2px;
-	    font-weight: 600;
-	    color: $blue-gray;
-	    margin-top: 5px;
-	}
-
-	ul.lcp_catlist {
-	    margin: 0px 20px 10px 0px !important;
-	    display: inline-block;
-	    list-style: none !important;
-	    text-transform: capitalize !important;
-
-	    li {
-	    	margin: 5px 0;
-	    }
-
-	    a::after {
-			content: " - ";
-		    font-size: .7em;
-		    color: $black;
-		    font-weight: 400;
-		    padding: 5px;
-		}
-	}
-
-	ul.lcp_paginator {
-		margin-left: 0px;
-
-		li {
-		    border: none !important;
-		}
-	}
-
-	.relatedDates {
-		font-size: .9em;
-		color: $gray;
-		text-transform: uppercase;
-	}
-
-
-
-
-}
-
-
-
-.moreposts {
-    margin: 13px 20px 0 20px;
-    font-weight: 600;
-    background-color: $dark-blue;
-    color: $blue-gray !important;
-    padding: 5px;
-    text-decoration:none !important;
-}
-
-
-p a.moreposts {
-
-    background-color: $dark-blue;
-    color: $white !important;
-    padding: 10px 20px;
-    margin-left: 0px;
-    text-transform: uppercase;
-    font-size: .8em;
-    font-weight: 600;
-}
-
-p a.moreposts:hover {
-
-    background-color: $blue-gray;
-}
-/*=====  End of List Category Posts Plugin  ======*/
 
 .excerpt-container p {
 	font-size: .9em;

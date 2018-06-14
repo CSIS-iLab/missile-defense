@@ -2,11 +2,12 @@
 	height: $header-img-height;
 }
 
-.tax-countries {
+.single-actors {
 
 	header.entry-header.full-width {
 		height: $header-img-height;
 		background-position: 0, 0;
+		margin-bottom: 30px;
 
 		.overlay {
 		    width:100%;
@@ -86,5 +87,15 @@
 	}
 	table.dataTable thead th.sorting_desc:after {
 	    content: "\f0dd";
+	}
+
+	/*----------  Sidebar  ----------*/
+	.entry-sidebar {
+
+		&.sticky {
+		    position: fixed;
+		    right: auto;
+		    top: 100px;
+		}
 	}
 }

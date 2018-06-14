@@ -30,38 +30,39 @@ if(get_archive_thumbnail_src()) {
 			<main id="main" class="col-xs-12" role="main">
 				<?php the_archive_top_content(); ?>
 				<div class="row">
-					<?php 
-						$args=array(
-						  'name' => 'countries'
-						);
-						$output = 'objects'; // or names
-						$taxonomies = get_taxonomies($args,$output); 
-						if  ($taxonomies) {
-						  foreach ($taxonomies  as $taxonomy ) {
-						  	$terms = get_terms(array(
-						  		'taxonomy' => $taxonomy->name,
-						  		'hide_empty' => true
-						  		));
-		        			foreach ( $terms as $term) {
-		        				$feature_image = get_archive_thumbnail_src("full", null, $term->term_id);
-		        			?>
+				<?php
+					$args = array(
+						'post_type' => 'actors',
+						'numberposts' => -1,
+						'orderby' => 'meta_value',
+						'order' => 'ASC',
+						'meta_key' => '_actors_archive_name'
+					);
+					$actors = get_posts( $args );
+					
+	        		foreach ( $actors as $post) {
+	        			setup_postdata( $post );
+        				$feature_image = get_the_post_thumbnail_url();
+        				$archive_name = get_the_title();
+        				$replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
 
-		        			<div class="col-xs-12 col-sm-4 wide-grid">
-		        				<div class="grid_container">
-			        				<a href="/country/<?php echo $term->slug; ?>">
-				        				<div class="grid_card" style="background-image:url('<?php echo $feature_image; ?>');">
-				        					<div class="title"><?php echo $term->name; ?></div>
-				        					<div class="overlay"></div>
-				        				</div>
-				        			</a>
-				        		</div>
-		        			</div>
+        				if ( $replacement_archive_name ) {
+        					$archive_name = $replacement_archive_name;
+        				}
 
-		        			<?php
-		        			}
-						  }
-						}  
-					?>
+	        			?>
+
+	        			<div class="col-xs-12 col-sm-4 wide-grid">
+	        				<div class="grid_container">
+		        				<a href="<?php echo esc_url( get_permalink() ); ?>">
+			        				<div class="grid_card" style="background-image:url('<?php echo $feature_image; ?>');">
+			        					<div class="title"><?php echo $archive_name; ?></div>
+			        					<div class="overlay"></div>
+			        				</div>
+			        			</a>
+			        		</div>
+	        			</div>
+        			<?php } ?>
 				</div>
 			</main><!-- #main -->
 		</div>

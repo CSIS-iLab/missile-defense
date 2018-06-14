@@ -19,7 +19,14 @@
 	a {
 		color: $color__text-footer;
 		font-weight: normal;
+<<<<<<< HEAD
 		&:hover { color: $white; }
+=======
+
+		&:hover {
+			color: $white;
+		}
+>>>>>>> redesign
 	}
 
 

@@ -107,3 +107,178 @@ function missiledefense_category_transient_flusher() {
 }
 add_action( 'edit_category', 'missiledefense_category_transient_flusher' );
 add_action( 'save_post',     'missiledefense_category_transient_flusher' );
+
+if ( ! function_exists( 'missiledefense_actors_secondary_content' ) ) :
+	/**
+	 * Returns HTML for the secondary content for country posts.
+	 *
+	 * @param  int $id Post ID.
+	 */
+	function missiledefense_actors_secondary_content( $id ) {
+		if ( 'actors' === get_post_type() ) {
+			$secondary_content = get_post_meta( $id, '_actors_secondary_content', true );
+			if ( '' !== $secondary_content ) {
+				$secondary_content = apply_filters( 'meta_content', $secondary_content );
+				printf( '%1$s', $secondary_content); // WPCS: XSS OK.
+			}
+		}
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_citation' ) ) :
+	/**
+	 * Returns HTML with post citation.
+	 *
+	 * @param int $id Post ID.
+	 */
+	function missiledefense_citation() {
+		$authors = coauthors( ', ', null, null, null, false );
+
+		$modified_date = null;
+		if ( get_the_modified_date() ) {
+			$modified_date = 'last modified ' . get_the_modified_date() . ', ';
+		}
+
+		$title = get_the_title();
+		if ( is_tax() ) {
+			$title = get_the_archive_title();
+		}
+
+		printf( '<h4 class="post-footer-heading">Cite this Page</h4><p class="citation-container"><span class="citation">' . esc_html( '%1$s, "%2$s,"', 'missiledefense' ) . ' <em>%3$s</em>' . esc_html( ', published %4$s, %5$s%6$s', 'missiledefense') . '</span><button id="btn-copy" class="btn btn-square btn-small btn-gray" data-clipboard-target=".citation" aria-label="Copied!">Copy</button></p>', $authors, $title, get_bloginfo( 'name' ), get_the_date(), $modified_date, get_the_permalink() ); // WPCS: XSS OK.
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_related_posts' ) ) :
+	/**
+	 * Returns HTML with related posts if related tag was provided.
+	 *
+	 * @param int $id Post ID.
+	 */
+	function missiledefense_related_posts() {
+		global $post;
+		$current_related_tags = get_post_meta( $post->ID, '_post_related_tags', true );
+
+		if ( is_tax() ) {
+			$term = get_queried_object_id();
+			$current_related_tags = get_term_meta( $term, 'archive_related_tags', true );
+		}
+
+		echo '<div class="relatedposts"><h4 class="post-footer-heading">Related Posts</h4>';
+		echo do_shortcode( '[catlist pagination=no tags="' . $current_related_tags . '" numberposts=3 date=yes date_class="relatedDates"]' );
+
+		if ( $current_related_tags ) {
+			echo '<a class="moreposts" href="' . esc_url( '/tags/' . $current_related_tags) . '">Read all related posts</a></div>';
+		}
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_display_system_elements' ) ) :
+	/**
+	 * Returns HTML with system elements for system taxonomy terms.
+	 *
+	 * @param int $id Post ID.
+	 */
+	function missiledefense_display_system_elements() {
+		global $post;
+		$terms = wp_get_post_terms( $post->ID, 'system', array('fields' => 'ids')  );
+		$elements = null;
+		if ( !empty( $terms ) ) {
+			$args = array(
+				'posts_per_page' => -1,
+				'post_type' => 'defsys',
+				'orderby' => 'post_title',
+				'order' => 'ASC',
+			    'tax_query' => array(
+		            array(
+		                'taxonomy' => 'system',
+		                'field' => 'term_id',
+		                'terms' => $terms[0],
+		            )
+		        )
+			);
+			$elements = get_posts( $args );
+		}
+
+		if ( $elements ) {
+			$archiveTitle = get_post_meta( $post->ID, '_systems_elements_list_title', true );
+			if(!$archiveTitle) {
+				$archiveTitle = esc_html__( 'System Elements', 'missiledefense' );
+			}
+
+			$html = '<div class="system-elements">
+					<h1>' . $archiveTitle . '</h1>
+					<ul>';
+
+			foreach ( $elements as $element ) {
+				$html .= '<li id="post-' . $element->ID . '"><a href="' . esc_url( get_permalink( $element->ID )) . '" rel="bookmark">' . $element->post_title . '</a></li>';
+			}
+			wp_reset_postdata();
+			$html .= '</ul></div>';
+
+			return $html;
+		}
+		return;
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_display_footnotes' ) ) :
+	/**
+	 * Returns HTML with easy footnotes.
+	 *
+	 */
+	function missiledefense_display_footnotes() {
+		if ( class_exists( 'easyFootnotes' ) ) {
+			global $easyFootnotes;
+
+			$footnotes = $easyFootnotes->easy_footnote_after_content('');
+
+			if ( $footnotes != '' ) {
+				printf( '<div class="entry-footnotes col-xs-12 collapsible-content-container"><h4 class="post-footer-heading collapsible-title">' . esc_html( 'Footnotes', 'missiledefense') . '</h4><ol class="easy-footnotes-wrapper collapsible-content">%1$s</ol></div>', $footnotes ); // WPCS: XSS OK.
+				}
+		}
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_system_terms' ) ) :
+	/**
+	 * Returns HTML with breadcrumbs for system terms.
+	 *
+	 */
+	function missiledefense_system_terms() {
+		global $post;
+		$terms = wp_get_post_terms( $post->ID, 'system', array('fields' => 'ids')  );
+		$systems = null;
+		if ( !empty( $terms ) ) {
+			$args = array(
+				'posts_per_page' => -1,
+				'post_type' => 'systems',
+				'orderby' => 'post_title',
+				'order' => 'ASC',
+			    'tax_query' => array(
+		            array(
+		                'taxonomy' => 'system',
+		                'field' => 'term_id',
+		                'terms' => $terms,
+		            )
+		        )
+			);
+			$systems = get_posts( $args );
+		}
+
+		if ( $systems ) {
+			$html = 'Systems: ';
+			$i = 0;
+			foreach ( $systems as $system ) {
+				$prefix = ', ';
+				if ( $i == 0 ) {
+					$prefix = '';
+				}
+				$html .= $prefix . '<a href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . '</a>';
+				$i++;
+			}
+			wp_reset_postdata();
+
+			printf( '%1$s', $html);
+		}
+	}
+endif;

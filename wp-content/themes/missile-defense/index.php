@@ -97,10 +97,6 @@ if( $ongoing_project1 || $ongoing_project2 || $ongoing_project3 ) {
 
 			<div class="col-xs-12 col-md-8 ongoing-posts">
 				<?php
-					$ongoing_project1 = get_option( 'missiledefense_homepage_ongoing_projects_1' );
-					$ongoing_project2 = get_option( 'missiledefense_homepage_ongoing_projects_2' );
-					$ongoing_project3 = get_option( 'missiledefense_homepage_ongoing_projects_3' );
-
 					$ongoing_projectsArgs = array(
 						'post__in' => array(
 							$ongoing_project1,

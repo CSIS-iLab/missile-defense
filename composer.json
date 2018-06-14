@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "wpackagist-plugin/accordion-shortcodes": "*",
         "wpackagist-plugin/add-to-any": "*",
         "wpackagist-plugin/akismet":"*",
         "wpackagist-plugin/archive-control": "*",
@@ -15,6 +16,7 @@
         "wpackagist-plugin/disable-comments": "*",
         "wpackagist-plugin/disable-emojis": "*",
         "wpackagist-plugin/duplicate-page": "*",
+        "wpackagist-plugin/easy-footnotes": "*",
         "wpackagist-plugin/easy-twitter-feed-widget": "*",
         "wpackagist-plugin/endnotes": "*",
         "wpackagist-plugin/google-authenticator": "*",

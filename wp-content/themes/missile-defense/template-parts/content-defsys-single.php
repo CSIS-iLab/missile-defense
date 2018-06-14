@@ -50,7 +50,7 @@
 			?>
 			<li><?php the_title(); ?></li>
 		</ul><br style="clear:left;" />
-		<?php echo get_the_term_list( $post->ID, 'system', 'Systems: ', ', ', '' ); ?>
+		<?php missiledefense_system_terms(); ?>
 		<div style="clear:left;"></div>
 	</header><!-- .entry-header -->
 	<div class="entry-content">
@@ -61,4 +61,5 @@
 	<div class="post-meta">
 		<p>Last Updated: <span><?php the_time('m.d.Y'); ?></span></p>
 	</div>
+	<?php get_template_part( 'template-parts/post-footer' ); ?>
 </article><!-- #post-## -->

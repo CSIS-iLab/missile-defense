@@ -54,3 +54,14 @@ function shortcode_definition($atts, $content = null) {
 	return '<span class="term-definition tooltipped tooltipped-multiline tooltipped-n" aria-label="'.esc_attr($definition).'"><span>'.$content.'</span><i class="icon-asset-2-01"></i></span>';
 }
 add_shortcode( 'define', 'shortcode_definition' );
+
+/**
+ * Shortcode for displaying system elements table.
+ * @param  array $atts    Modifying arguments
+ * @param  string $content 
+ * @return string          System elements table.
+ */
+function shortcode_systemElements( $atts , $content = null ) {
+	return missiledefense_display_system_elements();
+}
+add_shortcode( 'systemElements', 'shortcode_systemElements' );

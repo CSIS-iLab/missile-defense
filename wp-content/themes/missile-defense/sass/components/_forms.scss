@@ -66,6 +66,25 @@ button {
     letter-spacing: 1px;
 }
 
+.btn-square {
+    border-radius: 0;
+}
+
+.btn-gray {
+    background-color: $light-blue;
+    color: $black;
+}
+
+.btn-small {
+    font-size: 12px;
+    letter-spacing: 0;
+    padding: 4px 8px;
+
+    &:hover {
+        font-weight: bold;
+    }
+}
+
 /*===================================
 =            Search Bars            =
 ===================================*/

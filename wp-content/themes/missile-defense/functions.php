@@ -142,13 +142,34 @@ function missiledefense_scripts() {
 
 	wp_enqueue_script( 'missiledefense-topbutton', get_template_directory_uri() . '/js/topbutton.js', array(), '20151215', true );
 
+	wp_enqueue_script( 'missiledefense-collapsible-content', get_template_directory_uri() . '/js/collapsible-content.js', array(), '20180612', true );
+
 	// Font Awesome
 	wp_enqueue_script('missiledefense-font-awesome', 'https://use.fontawesome.com/08b1a76eab.js');
 
 	// Bootstrap
 	wp_enqueue_script('missiledefense-bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '20151215', true );
+
+	wp_enqueue_script('missiledefense-clipboard', 'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js', array(), '20170713', true );
+	wp_add_inline_script('missiledefense-clipboard', "var clipboard = new ClipboardJS('#btn-copy');
+		clipboard.on('success', function(e) {
+		    var d = document.getElementById('btn-copy');
+			d.className += ' tooltipped tooltipped-n tooltipped-no-delay';
+		});
+	");
 }
 add_action( 'wp_enqueue_scripts', 'missiledefense_scripts' );
+
+/**
+ * Enqueue admin scripts and styles.
+ */
+function missiledefense_enqueue_admin_scripts() {
+    $screen = get_current_screen();
+    if ( in_array( $screen->id, array( 'missile' ) ) ) {
+        wp_enqueue_script('missiledefense-admin-cpts', get_template_directory_uri().'/js/admin-cpts.js', 'jquery', '', true);
+    }
+}
+add_action( 'admin_enqueue_scripts', 'missiledefense_enqueue_admin_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -191,6 +212,11 @@ require get_template_directory() . '/inc/custom-posttypes.php';
  * Load Custom Post Formats.
  */
 require get_template_directory() . '/inc/custom-post-formats.php';
+
+/**
+ * Load Custom Post Meta.
+ */
+require get_template_directory() . '/inc/custom-post-meta.php';
 
 /**
  * Add custom navigation walker to main navigation.
