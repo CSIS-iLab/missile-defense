@@ -14,7 +14,7 @@
  * @link https://codex.wordpress.org/Plugin_API/Action_Reference/add_meta_boxes
  */
 function related_tags_add_meta_boxes( $post ) {
-	add_meta_box( 'related_tags_meta_box', __( 'Related Posts', 'missiledefense' ), 'related_tags_build_meta_box', array( 'post','actors','defsys', 'systems' ), 'normal', 'high' );
+	add_meta_box( 'related_tags_meta_box', __( 'Related Posts', 'missiledefense' ), 'related_tags_build_meta_box', array( 'post','actors','defsys', 'systems', 'missile' ), 'normal', 'high' );
 }
 add_action( 'add_meta_boxes', 'related_tags_add_meta_boxes' );
 /**
