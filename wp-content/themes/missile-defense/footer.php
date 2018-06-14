@@ -17,13 +17,7 @@
 	<div class="container">
 	<div class="row">
 		<div class="col-sm-6">
-		<?php if ( is_active_sidebar( 'footer' ) ) : ?>
-			<div class="container">
-				<div id="footer-widgets" class="widget-area row" role="complementary">
-					<?php dynamic_sidebar( 'footer' ); ?>
-				</div><!-- #footer-widgets -->
-			</div>
-		<?php endif; ?>
+			<a href="https://csis.org" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/img/csis-mt-logo-white-2.svg" alt="Center for Strategic and International Studies" title="Center for Strategic and International Studies" /></a>
 		</div>
 		<div class="col-sm-6 text-right icons">
 		<a href="https://www.facebook.com/missiledefenseproject/?fref=nf#" alt="#"> <img class="smIcon" src="/wp-content/themes/missile-defense/img/facebook-icon.svg" alt="Facebook Icon" height="30px" width="30px"> </a>
