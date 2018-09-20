@@ -5,43 +5,83 @@
 	bottom: 0;
 	width: auto;
 	z-index: -1;
-	padding: 40px 10px;
+	padding: 40px 10px 20px;
 	background-color: $color__background-footer;
 	color: $color__text-footer;
 	text-align:left;
 
+	.csis-logo {
+		display: block;
+		margin-bottom: 1.5rem;
+	}
+
 	p {
-		margin-top: 20px;
-		font-size: .8em;
-		line-height: 1.4em;
+		font-size: 14px;
+		line-height: 1.4;
+
+		@include breakpoint('medium') {
+		  font-size: 16px;
+			line-height: 1.5;
+		}
+	}
+
+	.site-desc {
+
+		p {
+			@include breakpoint('medium') {
+			  max-width: 80%;
+			}
+		}
+
+		.contact {
+			@include breakpoint('medium') {
+			 	display: flex;
+				align-items: center; 
+			}
+		}
+
+		address {
+			font-size: 12px;
+			margin-top: 10px;
+
+			@include breakpoint('medium') {
+			  display: inline-block;
+				margin: 0 0 0 10px;
+				font-size: 14px;
+			}
+		}
 	}
 
 	a {
-		color: $color__text-footer;
+		color: $light-blue;
 		font-weight: normal;
 		&:hover { color: $white; }
 	}
 
-
-	#searchform {
-
-		@include breakpoint("small") {
-			width: 35%;
+	.newsletter {
+		h5 {
+			margin: 2rem 0 0.5rem;
+			color: $white;
+			border-bottom: 0;
 		}
 
-		width:90%;
-		margin:20px auto;
+		.link-btn {
+	    background-color: $light-blue;
+	    color: $dark-blue !important;
 
-		.input-group {
-			width:100%;
-		}
-
-		.input-group-btn {
-			display:none;
+	    &:hover {
+	    	background-color: $gold;
+	    }
 		}
 	}
-	.form-control {
-		background-color: $color__background-footer-search;
+
+	.copyright {
+		margin-top: 20px;
+
+		p {
+			font-size: 12px;
+			margin: 0;
+		}
 	}
 }
 
@@ -60,22 +100,11 @@
 .smIcon {
 	background-color: $white;
 	height: 30px;
+	margin-right: 10px;
 	bottom: calc(100% - 30px);
-}
+	transition: background-color 0.3s ease-in-out;
 
-.icons {
-		border: 1px solid $dark-blue;
-
+	&:hover {
+		background-color: $gold;
+	}
 }
-.smIcon:hover {
-	background-color: $gold;
-}
-
-@media screen and (max-width: 767px) {
-    .site-footer .text-right {
-        text-align:left;
-    }
-    .text-right.icons {
-    	margin-top: 1em;
-    }
-    }
