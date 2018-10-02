@@ -333,3 +333,16 @@ function missiledefense_undo_footnote_reset() {
     }
 }
 add_action( 'template_redirect', 'missiledefense_undo_footnote_reset' );
+
+if ( class_exists( 'easyFootnotes' ) ) {
+    /**
+     * Removes the easy footnotes from the content so we can display them separately elsewhere.
+     * @param  string $content The post content.
+     * @return string          The modified post content.
+     */
+    function missiledefense_remove_easy_footnotes($content) {
+        $content = preg_replace('#<ol[^>]*class="easy-footnotes-wrapper"[^>]*>.*?</ol>#is', '', $content);
+        return $content;
+    }
+    add_filter('the_content', 'missiledefense_remove_easy_footnotes', 20);
+}
