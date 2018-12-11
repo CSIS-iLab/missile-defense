@@ -36,7 +36,7 @@
 		?>
 	</div><!-- .entry-content -->
 	<div class="post-meta">
-		<p>Last Updated: <span><?php the_time('m.d.Y'); ?></span></p>
+		<p>Last Updated: <span><?php the_modified_date('m.d.Y'); ?></span></p>
 	</div>
 	<?php get_template_part( 'template-parts/post-footer' ); ?>
 </article><!-- #post-## -->
