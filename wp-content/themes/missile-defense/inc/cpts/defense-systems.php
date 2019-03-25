@@ -45,11 +45,12 @@ function missiledefense_taxonomy_system() {
 
 	$args = array(
 		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
+        'labels'            => $labels,
+        'query_var'         => true,
 		'rewrite'           => array( 'slug' => 'system_tax' ),
-		'show_admin_column' => true,
-		'query_var'         => true,
+        'show_admin_column' => true,
+        'show_in_rest'      => true,
+        'show_ui'           => true,
 	);
 	register_taxonomy( 'system', array( 'defsys', 'systems' ), $args );
 }
