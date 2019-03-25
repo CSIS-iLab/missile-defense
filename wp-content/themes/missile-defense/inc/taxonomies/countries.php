@@ -31,6 +31,7 @@ function missiledefense_taxonomy_countries() {
 		'query_var'         => true,
 		'rewrite'           => array( 'slug' => 'country_tax' ),
 		'with_front'        => false,
+		'show_in_rest'      => true
 	);
 	register_taxonomy( 'countries', array( 'missile', 'actors' ), $args );
 }

@@ -50,6 +50,7 @@ function missiledefense_taxonomy_system() {
 		'rewrite'           => array( 'slug' => 'system_tax' ),
 		'show_admin_column' => true,
 		'query_var'         => true,
+		'show_in_rest'      => true
 	);
 	register_taxonomy( 'system', array( 'defsys', 'systems' ), $args );
 }
