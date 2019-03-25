@@ -26,10 +26,11 @@ function missiledefense_taxonomy_countries() {
 	$args = array(
 		'hierarchical'      => true,
 		'labels'            => $labels,
-		'show_ui'           => true,
-		'show_admin_column' => true,
 		'query_var'         => true,
 		'rewrite'           => array( 'slug' => 'country_tax' ),
+		'show_admin_column' => true,
+		'show-in-rest'      => true,
+		'show_ui'           => true,
 		'with_front'        => false,
 	);
 	register_taxonomy( 'countries', array( 'missile', 'actors' ), $args );
