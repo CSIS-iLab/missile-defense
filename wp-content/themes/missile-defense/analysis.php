@@ -22,7 +22,7 @@ if(get_post_thumbnail_id($post->ID)) {
 		<div class="overlay"></div>
 	</header>
 	<div id="primary" class="container">
-<?
+<?php
 } else {
 	?>
 	<div id="primary" class="container">
@@ -33,7 +33,7 @@ if(get_post_thumbnail_id($post->ID)) {
 			<hr>
 		</div>
 	</header>
-	<?
+	<?php
 }
 ?>
 		<div class="row">
