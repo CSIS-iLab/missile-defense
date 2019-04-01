@@ -53,13 +53,13 @@ function missiledefense_entry_categories() {
 		/* translators: used between list items, there is a space after the comma */
 		$categories_list = get_the_category_list( esc_html__( ' ', 'missiledefense' ) );
 		if ( $categories_list && missiledefense_categorized_blog() ) {
-			printf( '<div class="cat-links">' . esc_html__( '%1$s', 'missiledefense' ) . '</div>', $categories_list ); 
+			printf( '<div class="cat-links">' . esc_html__( '%1$s', 'missiledefense' ) . '</div>', $categories_list );
 		}
 
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'missiledefense' ) );
 		if ( $tags_list ) {
-			printf( '<div class="tags-links">Associated Tags: ' . esc_html__( '%1$s', 'missiledefense' ) . '</div>', $tags_list ); 
+			printf( '<div class="tags-links">Associated Tags: ' . esc_html__( '%1$s', 'missiledefense' ) . '</div>', $tags_list );
 		}
 	}
 }
@@ -167,7 +167,7 @@ if ( ! function_exists( 'missiledefense_related_posts' ) ) :
 		echo do_shortcode( '[catlist pagination=no tags="' . $current_related_tags . '" numberposts=3 date=yes date_class="relatedDates"]' );
 
 		if ( $current_related_tags ) {
-			echo '<a class="moreposts" href="' . esc_url( '/tags/' . $current_related_tags) . '">Read all related posts</a></div>';
+			echo '<a class="moreposts" href="' . esc_url( '/tag/' . $current_related_tags) . '">Read all related posts</a></div>';
 		}
 	}
 endif;
