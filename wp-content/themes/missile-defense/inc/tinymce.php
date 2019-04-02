@@ -42,7 +42,7 @@ if ( ! function_exists( 'missiledefense_register_buttons' ) ) {
         return $buttons;
     }
 }
-add_action ( 'after_wp_tiny_mce', 'missiledefense_tinymce_extra_vars' );
+add_action ( 'enqueue_block_assets', 'missiledefense_tinymce_extra_vars' );
 
 if ( !function_exists( 'missiledefense_tinymce_extra_vars' ) ) {
 	function missiledefense_tinymce_extra_vars() { ?>
