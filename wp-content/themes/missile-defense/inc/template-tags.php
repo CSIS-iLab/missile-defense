@@ -136,7 +136,7 @@ if ( ! function_exists( 'missiledefense_citation' ) ) :
 
 		$modified_date = null;
 		if ( get_the_modified_date() ) {
-			$modified_date = 'Last modified ' . get_the_modified_date() . '. ';
+			$modified_date = 'last modified ' . get_the_modified_date() . ', ';
 		}
 
 		$title = get_the_title();
@@ -144,7 +144,7 @@ if ( ! function_exists( 'missiledefense_citation' ) ) :
 			$title = get_the_archive_title();
 		}
 
-		printf( '<h4 class="post-footer-heading">Cite this Page</h4><p class="citation-container"><span class="citation">' . esc_html( '%1$s, "%2$s,"', 'missiledefense' ) . ' <em>%3$s</em>' . esc_html( ', Center for Strategic and International Studies. %4$s. %5$s%6$s.', 'missiledefense') . '</span><button id="btn-copy" class="btn btn-square btn-small btn-gray" data-clipboard-target=".citation" aria-label="Copied!">Copy</button></p>', $authors, $title, get_bloginfo( 'name' ), get_the_date(), $modified_date, get_the_permalink() ); // WPCS: XSS OK.
+		printf( '<h4 class="post-footer-heading">Cite this Page</h4><p class="citation-container"><span class="citation">' . esc_html( '%1$s, "%2$s,"', 'missiledefense' ) . ' <em>%3$s</em>' . esc_html( ', Center for Strategic and International Studies, %4$s, %5$s%6$s.', 'missiledefense') . '</span><button id="btn-copy" class="btn btn-square btn-small btn-gray" data-clipboard-target=".citation" aria-label="Copied!">Copy</button></p>', $authors, $title, get_bloginfo( 'name' ), get_the_date(), $modified_date, get_the_permalink() ); // WPCS: XSS OK.
 	}
 endif;
 
