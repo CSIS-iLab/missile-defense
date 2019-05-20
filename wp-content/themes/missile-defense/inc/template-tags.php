@@ -164,7 +164,6 @@ if ( ! function_exists( 'missiledefense_related_posts' ) ) :
 		}
 
 		echo '<div class="relatedposts"><h4 class="post-footer-heading">Related Posts</h4>';
-		var_dump( $current_related_tags);
 		echo do_shortcode( '[catlist pagination=no tags="' . $current_related_tags . '" numberposts=3 date=yes date_class="relatedDates"]' );
 
 		if ( $current_related_tags ) {
