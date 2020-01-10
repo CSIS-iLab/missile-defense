@@ -1,11 +1,11 @@
 (function() {
   tinymce.PluginManager.add("missilethreat", function(editor, url) {
     editor.addButton("tableOfContents", {
-      text: tinyMCE_object.button_name,
+      text: "ToC",
       icon: false,
       onclick: function() {
         editor.windowManager.open({
-          title: tinyMCE_object.button_title,
+          title: "Table of Contents",
           body: [
             {
               type: "textbox",

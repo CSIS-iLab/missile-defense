@@ -42,18 +42,3 @@ if ( ! function_exists( 'missiledefense_register_buttons' ) ) {
         return $buttons;
     }
 }
-add_action ( 'enqueue_block_assets', 'missiledefense_tinymce_extra_vars' );
-
-if ( !function_exists( 'missiledefense_tinymce_extra_vars' ) ) {
-	function missiledefense_tinymce_extra_vars() { ?>
-		<script type="text/javascript">
-			var tinyMCE_object = <?php echo json_encode(
-				array(
-					'button_name' => esc_html__('ToC','missiledefense','systemElements','note'),
-					'button_title' => esc_html__('Table of Contents', 'missiledefense','systemElements','note')
-				)
-				);
-			?>;
-		</script><?php
-	}
-}
