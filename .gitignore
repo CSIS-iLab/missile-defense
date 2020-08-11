@@ -93,6 +93,8 @@ Thumbs.db
 !.travis.yml
 !missile_rsa.enc
 !deploy.sh
+!deploy-development.sh
+!deploy-staging.sh
 
 # track favicon files, if they exist
 !android-chrome-*.png
