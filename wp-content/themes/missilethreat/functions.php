@@ -178,9 +178,6 @@ require get_template_directory() . '/inc/shortcodes.php';
 // Custom Post Types
 require get_template_directory() . '/inc/custom-posttypes.php';
 
-// Custom Post Meta
-require get_template_directory() . '/inc/custom-post-meta.php';
-
 /**
  * Register and Enqueue Styles.
  */
