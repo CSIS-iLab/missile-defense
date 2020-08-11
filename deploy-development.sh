@@ -1,4 +1,4 @@
-chmod 600 /tmp/missilethreat_rsa
+chmod 600 /tmp/missile_rsa
 eval "$(ssh-agent -s)" # Start the ssh agent
 ssh-add /tmp/missile_rsa
 git remote add missilethreat-development git@git.wpengine.com:production/csismtdev.git # add remote for development site
