@@ -111,6 +111,15 @@ Thumbs.db
 !wp-content/plugins/transparency-google-analytics.php
 !wp-content/themes/missile-defense
 
+!wp-content/themes/missilethreat
+!wp-content/themes/missilethreat/.eslintignore
+!wp-content/themes/missilethreat/.eslintrc.js
+!wp-content/themes/missilethreat/.stylelintrc.json
+
+wp-content/themes/*/**/*.css
+wp-content/themes/missilethreat/assets/images
+wp-content/themes/missilethreat/assets/js
+
 wp-content/themes/*/.sass-cache
 **/.DS_Store
 wp-content/themes/missile-defense/.css
