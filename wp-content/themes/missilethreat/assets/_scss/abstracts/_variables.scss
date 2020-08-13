@@ -3,15 +3,44 @@
 =================================*/
 
 /*----------  Colors  ----------*/
+$color-white-100: rgba(255, 255, 255, 1);
+$color-black-100: rgba(0, 0, 0, 1);
+$color-primary-blue-100: rgba(6, 42, 60, 1);
+$color-primary-blue-200: rgba(7, 52, 74, 1);
+$color-primary-blue-300: rgba(22, 68, 88, 1);
+$color-primary-blue-400: rgba(42, 85, 101, 1);
+$color-primary-blue-500: rgba(66, 103, 115, 1);
+$color-primary-blue-600: rgba(95, 121, 129, 1);
+$color-primary-blue-700: rgba(114, 136, 143, 1);
+$color-primary-blue-800: rgba(135, 154, 160, 1);
+$color-primary-blue-900: rgba(159, 174, 179, 1);
+$color-primary-gold: rgba(242, 194, 97, 1);
+$color-primary-light-blue: rgba(223, 228, 231, 1);
+$color-primary-light-gray: rgba(240, 243, 245, 1);
+$color-text-light-100: $color-white-100;
+$color-text-light-190: rgba(255, 255, 255, 0.9);
+$color-text-light-170: rgba(255, 255, 255, 0.7);
+$color-text-light-155: rgba(255, 255, 255, 0.55);
+$color-text-dark-100: $color-black-100;
+$color-text-dark-190: rgba(0, 0, 0, 0.9);
+$color-text-dark-170: rgba(0, 0, 0, 0.7);
+$color-text-dark-155: rgba(0, 0, 0, 0.55);
+$color-table-row-base: rgba(205, 213, 218, 1);
+$color-table-row-header: rgba(95, 121, 129, 1);
+$color-line-mid-gray: rgba(169, 176, 184, 1);
+$color-line-light-gray: rgba(196, 201, 207, 1);
+$color-focus: rgba(45, 156, 219, 1);
 
 /*----------  Fonts  ----------*/
+$font-source-serif: 'Source Serif Pro', serif;
+$font-source-sans: 'Source Sans Pro', sans-serif;
 
 /*----------  Structure  ----------*/
 $breakpoints: (
   'small': 30em,
   'medium': 40em,
-  'large': 64em,
-  'xlarge': 80em,
+  'large': 63.75em,
+  'xlarge': 75em,
   'xxlarge': 87.5em,
 );
 
