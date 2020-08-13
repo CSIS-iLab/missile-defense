@@ -15,7 +15,12 @@
 }
 
 %font-ui-text-lg {
-  font-size: 17px;
+  @include font-clamp(16px, 17px);
+  line-height: 1.14;
+}
+
+%font-ui-page-title-lg {
+  @include font-clamp(42px, 54px);
   line-height: 1.14;
 }
 
@@ -25,28 +30,38 @@
 }
 
 %font-ui-heading-md {
-  font-size: 20px;
+  @include font-clamp(20px, 24px);
+  line-height: 1.14;
+}
+
+%font-ui-heading-lg {
+  @include font-clamp(22px, 26px);
   line-height: 1.14;
 }
 
 %font-ui-headline-md {
-  font-size: 19px;
+  font-size: 18px;
   line-height: 1.14;
 }
 
 %font-ui-headline-lg {
-  font-size: 24px;
+  @include font-clamp(20px, 24px);
   line-height: 1.14;
 }
 
 %font-ui-page-title-sm {
-  font-size: 33px;
+  @include font-clamp(28px, 33px);
   line-height: 1.14;
 }
 
 %font-ui-page-title-md {
-  font-size: 42px;
+  @include font-clamp(36px, 42px);
   line-height: 1.14;
+}
+
+%font-ui-text-md-semibold-mobile-nav {
+  font-size: 16px;
+  line-height: 1;
 }
 
 %font-copy-quote-sm {
@@ -55,13 +70,19 @@
   line-height: 1.5;
 }
 
+%font-copy-quote-lg {
+  font-family: $font-source-serif;
+  @include font-clamp(20px, 24px);
+  line-height: 1.35;
+}
+
 %font-copy-heading-2 {
-  font-size: 32px;
+  @include font-clamp(28px, 32px);
   line-height: 1.14;
 }
 
 %font-copy-heading-3 {
-  font-size: 29px;
+  @include font-clamp(24px, 28px);
   line-height: 1.14;
 }
 
@@ -73,12 +94,6 @@
 %font-copy-heading-6 {
   font-size: 18px;
   line-height: 1.14;
-}
-
-%font-copy-quote-lg {
-  font-family: $font-source-serif;
-  font-size: 24px;
-  line-height: 1.35;
 }
 
 %font-body-short-sm {
@@ -104,19 +119,19 @@
 
 %font-body-short-lg-serif {
   font-family: $font-source-serif;
-  font-size: 18px;
+  @include font-clamp(17px, 18px);
   line-height: 1.35;
 }
 
 %font-body-short-lede {
   font-family: $font-source-serif;
-  font-size: 20px;
+  @include font-clamp(19px, 20px);
   line-height: 1.35;
 }
 
 %font-body-long-lg {
   font-family: $font-source-serif;
-  font-size: 18px;
+  @include font-clamp(17px, 18px);
   line-height: 1.6;
 }
 
@@ -127,27 +142,6 @@
 
 %font-body-list-lg {
   font-family: $font-source-serif;
-  font-size: 18px;
+  @include font-clamp(17px, 18px);
   line-height: 1.35;
-}
-
-%font-ui-page-title-lg {
-  // font-size: #{'clamp(42px, 1vw, 54px)'};
-  @include font-clamp(42px, 54px);
-  line-height: 1.14;
-}
-
-%font-ui-heading-lg {
-  font-size: 28px;
-  line-height: 1.14;
-}
-
-%font-ui-headline-lg {
-  font-size: 24px;
-  line-height: 1.14;
-}
-
-%font-ui-text-md-semibold-mobile-nav {
-  font-size: 16px;
-  line-height: 1;
 }
