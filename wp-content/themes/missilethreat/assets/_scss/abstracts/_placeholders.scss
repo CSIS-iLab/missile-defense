@@ -19,6 +19,21 @@
   line-height: 1.14;
 }
 
+%font-ui-text-md-semibold-mobile-nav {
+  font-size: 16px;
+  line-height: 1;
+}
+
+%font-ui-page-title-sm {
+  @include font-clamp(28px, 33px);
+  line-height: 1.14;
+}
+
+%font-ui-page-title-md {
+  @include font-clamp(36px, 42px);
+  line-height: 1.14;
+}
+
 %font-ui-page-title-lg {
   @include font-clamp(42px, 54px);
   line-height: 1.14;
@@ -47,21 +62,6 @@
 %font-ui-headline-lg {
   @include font-clamp(20px, 24px);
   line-height: 1.14;
-}
-
-%font-ui-page-title-sm {
-  @include font-clamp(28px, 33px);
-  line-height: 1.14;
-}
-
-%font-ui-page-title-md {
-  @include font-clamp(36px, 42px);
-  line-height: 1.14;
-}
-
-%font-ui-text-md-semibold-mobile-nav {
-  font-size: 16px;
-  line-height: 1;
 }
 
 %font-copy-quote-sm {
