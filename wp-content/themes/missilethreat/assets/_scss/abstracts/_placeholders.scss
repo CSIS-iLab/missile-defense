@@ -49,6 +49,11 @@
   line-height: 1.14;
 }
 
+%font-ui-heading-md-bold {
+  @include font-clamp(13px, 14px);
+  line-height: 1.14;
+}
+
 %font-ui-heading-lg {
   @include font-clamp(22px, 26px);
   line-height: 1.14;
