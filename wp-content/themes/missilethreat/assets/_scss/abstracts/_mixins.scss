@@ -48,13 +48,13 @@
   font-size: rem($size);
 }
 
-//
+// Font scales in size with the smallest media query size allowed to the ideal and largest.  
+// Parameters are the minimum and maximum font size(px) as dictated in Figma.
 @mixin font-clamp($min, $max) {
   $min-rem: rem($min);
   $half-min-rem: calc(#{$min-rem} / 2);
   font-size: $min; //Fallback in px
   font-size: $min-rem;
-  // font-size: #{'clamp(#{rem($min)}, (#{$value} + 0.333vw), #{rem($max)})'};
   font-size: clamp(#{$min-rem}, calc(#{$half-min-rem} + 0.666vw), #{rem($max)});
 }
 
