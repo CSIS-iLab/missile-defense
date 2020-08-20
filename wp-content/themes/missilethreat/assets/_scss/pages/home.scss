@@ -1,1 +1,6 @@
 @use '../abstracts' as *;
+
+.title {
+  margin: 5rem 0;
+  @extend %font-ui-page-title-lg;
+}

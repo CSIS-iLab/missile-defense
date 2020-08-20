@@ -4,3 +4,149 @@
 /*==============================
 =          Placeholders        =
 ==============================*/
+%font-ui-text-sm {
+  @include font-size(12px);
+  line-height: 1.14;
+}
+
+%font-ui-text-md {
+  @include font-size(14px);
+  line-height: 1.14;
+}
+
+%font-ui-text-lg {
+  @include font-clamp(16px, 17px);
+  line-height: 1.14;
+}
+
+%font-ui-text-md-semibold-mobile-nav {
+  @include font-size(16px);
+  line-height: 1;
+}
+
+%font-ui-page-title-sm {
+  @include font-clamp(28px, 33px);
+  line-height: 1.14;
+}
+
+%font-ui-page-title-md {
+  @include font-clamp(36px, 42px);
+  line-height: 1.14;
+}
+
+%font-ui-page-title-lg {
+  @include font-clamp(42px, 54px);
+  line-height: 1.14;
+}
+
+%font-ui-heading-xs {
+  @include font-clamp(13px, 14px);
+  line-height: 1.14;
+}
+
+%font-ui-heading-sm {
+  @include font-size(17px);
+  line-height: 1.14;
+}
+
+%font-ui-heading-md {
+  @include font-clamp(20px, 24px);
+  line-height: 1.14;
+}
+
+%font-ui-heading-lg {
+  @include font-clamp(22px, 26px);
+  line-height: 1.14;
+}
+
+%font-ui-headline-md {
+  @include font-size(18px);
+  line-height: 1.14;
+}
+
+%font-ui-headline-lg {
+  @include font-clamp(20px, 24px);
+  line-height: 1.14;
+}
+
+%font-copy-quote-sm {
+  font-family: $font-source-serif;
+  @include font-size(18px);
+  line-height: 1.5;
+}
+
+%font-copy-quote-lg {
+  font-family: $font-source-serif;
+  @include font-clamp(20px, 24px);
+  line-height: 1.35;
+}
+
+%font-copy-heading-2 {
+  @include font-clamp(28px, 32px);
+  line-height: 1.14;
+}
+
+%font-copy-heading-3 {
+  @include font-clamp(24px, 28px);
+  line-height: 1.14;
+}
+
+%font-copy-heading-5 {
+  @include font-size(20px);
+  line-height: 1.14;
+}
+
+%font-copy-heading-6 {
+  @include font-size(18px);
+  line-height: 1.14;
+}
+
+%font-body-short-sm {
+  @include font-size(14px);
+  line-height: 1.35;
+}
+
+%font-body-short-md {
+  @include font-size(16px);
+  line-height: 1.35;
+}
+
+%font-body-short-md-serif {
+  font-family: $font-source-serif;
+  @include font-size(16px);
+  line-height: 1.35;
+}
+
+%font-body-short-lg {
+  @include font-size(17px);
+  line-height: 1.35;
+}
+
+%font-body-short-lg-serif {
+  font-family: $font-source-serif;
+  @include font-clamp(17px, 18px);
+  line-height: 1.35;
+}
+
+%font-body-short-lede {
+  font-family: $font-source-serif;
+  @include font-clamp(19px, 20px);
+  line-height: 1.35;
+}
+
+%font-body-long-lg {
+  font-family: $font-source-serif;
+  @include font-clamp(17px, 18px);
+  line-height: 1.6;
+}
+
+%font-body-list-md {
+  @include font-size(16px);
+  line-height: 1.14;
+}
+
+%font-body-list-lg {
+  font-family: $font-source-serif;
+  @include font-clamp(17px, 18px);
+  line-height: 1.35;
+}
