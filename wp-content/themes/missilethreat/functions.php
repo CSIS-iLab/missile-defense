@@ -185,6 +185,8 @@ function missilethreat_register_styles() {
 
 	$theme_version = wp_get_theme()->get( 'Version' );
 
+	wp_enqueue_style( 'missilethreat-fonts', 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400&display=swap', array(), $theme_version );
+
 	wp_enqueue_style( 'missilethreat-style', get_stylesheet_directory_uri() . '/style.min.css', array(), $theme_version );
 
 	if ( is_front_page() || is_home() ) {
