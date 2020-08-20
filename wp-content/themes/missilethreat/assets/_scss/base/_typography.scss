@@ -1,5 +1,21 @@
 @use 'abstracts' as *;
 
+body {
+  font-family: $font-source-sans;
+}
+
+.text--bold {
+  font-weight: bold;
+}
+
+.text--semibold {
+  font-weight: semibold;
+}
+
+.text--italic {
+  font-style: italic;
+}
+
 a {
   color: inherit;
   text-decoration: none;
