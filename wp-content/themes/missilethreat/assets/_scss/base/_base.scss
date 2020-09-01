@@ -15,26 +15,18 @@ body {
 }
 
 .container {
-  --container-padding: #{rem(20)};
-
-  $padding: (
-    'small': 24,
-    'large': 48,
-    'xlarge': 64,
-  );
+  --container-padding: 6vw;
 
   position: relative;
   max-width: $size__container-max-width;
   margin-right: auto;
   margin-left: auto;
-  padding-right: rem(20);
+  padding-right: 6vw;
   padding-right: var(--container-padding);
-  padding-left: rem(20);
+  padding-left: 6vw;
   padding-left: var(--container-padding);
 
-  @each $size, $value in $padding {
-    @include breakpoint($size) {
-      --container-padding: #{rem($value)};
-    }
+  @include breakpoint(xxlarge) {
+    --container-padding: #{rem(80)};
   }
 }
