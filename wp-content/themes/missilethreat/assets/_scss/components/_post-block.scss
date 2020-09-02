@@ -1,1 +1,47 @@
 @use 'abstracts' as *;
+
+.post-block {
+  position: relative;
+  margin: rem(40px) 0;
+  color: $color-text-dark-170;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: rem(40px);
+
+  &:first-of-type {
+    margin: rem(24px) 0 rem(40px) 0;
+  }
+
+  &__category,
+  &__title,
+  .post-meta__date,
+  .post-meta__authors,
+  p {
+    grid-column: 1 / span 1;
+  }
+
+  &__category {
+    @extend %font-ui-text-sm;
+    margin-bottom: rem(16px);
+  }
+
+  &__title {
+    @extend %font-ui-headline-lg;
+    margin-bottom: rem(8px);
+    color: $color-text-dark-100;
+  }
+
+  .post-meta__authors {
+    margin-bottom: rem(16px);
+  }
+
+  .wp-post-image {
+    position: absolute;
+    grid-column: 2 / span 1;
+  }
+
+  p {
+    @extend %font-body-short-md-serif;
+    color: $color-text-dark-190;
+  }
+}
