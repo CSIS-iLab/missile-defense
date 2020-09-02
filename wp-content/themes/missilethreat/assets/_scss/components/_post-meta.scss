@@ -1,1 +1,12 @@
 @use 'abstracts' as *;
+
+.post-meta {
+  @extend %font-ui-text-md;
+  &__date {
+    color: $color-text-dark-170;
+  }
+
+  &__author {
+    color: $color-primary-blue-200;
+  }
+}

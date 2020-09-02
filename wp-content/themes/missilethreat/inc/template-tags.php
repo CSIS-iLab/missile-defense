@@ -137,7 +137,7 @@ function missilethreat_posted_on() {
 		return;
 	}
 
-	echo '<div class="post-meta__date">' . get_the_time( get_option( 'date_format' ) ) . '</div>';
+	echo '<div class="post-meta post-meta__date">' . get_the_time( get_option( 'date_format' ) ) . '</div>';
 }
 
 /**
@@ -153,7 +153,7 @@ function missilethreat_last_updated() {
 		return;
 	}
 
-	echo '<div class="post-meta__date">' . get_the_modified_time( get_option( 'date_format' ) ) . '</div>';
+	echo '<div class="post-meta post-meta__date">' . get_the_modified_time( get_option( 'date_format' ) ) . '</div>';
 }
 
 /**
