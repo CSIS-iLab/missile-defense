@@ -19,11 +19,11 @@
 
 	foreach (get_the_category() as $category) {
 		if ( $category->name !== 'Featured' ) {
-				echo '<a href="' . get_category_link($category->term_id) . '">' .$category->name . '</a> '; //Markup as you see fit
+				echo '<a class="post-block__category" href="' . get_category_link($category->term_id) . '">' .$category->name . '</a> '; //Markup as you see fit
 		}
 	}
 
-	the_title( '<h3 class="post-block__title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
+	the_title( '<h3 class="post-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
 
 	missilethreat_posted_on();
 
