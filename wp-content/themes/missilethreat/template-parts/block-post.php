@@ -15,7 +15,7 @@
 
 <article <?php post_class('post-block post-block--post'); ?> id="post-<?php the_ID(); ?>">
 
-<p>
+<div>
 
 <?php
 	foreach (get_the_category() as $category) {
@@ -25,7 +25,7 @@
 	}
 ?>
 
-</p>
+</div>
 
 	<?php
 
