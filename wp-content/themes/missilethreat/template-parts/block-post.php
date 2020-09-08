@@ -15,13 +15,19 @@
 
 <article <?php post_class('post-block post-block--post'); ?> id="post-<?php the_ID(); ?>">
 
-<?php
+<p>
 
+<?php
 	foreach (get_the_category() as $category) {
 		if ( $category->name !== 'Featured' ) {
-				echo '<a class="post-block__category" href="' . get_category_link($category->term_id) . '">' .$category->name . '</a> '; //Markup as you see fit
+				echo '<a class="post-block__category" href="' . get_category_link($category->term_id) . '">' .$category->name . '</a>'; //Markup as you see fit
 		}
 	}
+?>
+
+</p>
+
+	<?php
 
 	the_title( '<h3 class="post-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
 

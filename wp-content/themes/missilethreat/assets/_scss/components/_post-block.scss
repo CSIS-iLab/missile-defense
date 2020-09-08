@@ -22,13 +22,22 @@
 
   &__category {
     @extend %font-ui-text-sm;
+    display: inline-block;
     margin-bottom: rem(16px);
+
+    &:not(:last-child) {
+      margin-right: rem(4px);
+    }
   }
 
   &__title {
     @extend %font-ui-headline-lg;
     margin-bottom: rem(8px);
     color: $color-text-dark-100;
+  }
+
+  .post-meta__date {
+    margin-bottom: rem(4px);
   }
 
   .post-meta__authors {
