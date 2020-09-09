@@ -4,9 +4,11 @@
   @extend %font-ui-text-md;
   &__date {
     color: $color-text-dark-170;
+    margin-bottom: rem(4px);
   }
 
   &__authors {
     color: $color-primary-blue-200;
+    margin-bottom: rem(16px);
   }
 }

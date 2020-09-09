@@ -34,9 +34,11 @@
 	missilethreat_posted_on();
 
 	missilethreat_authors();
+	?>
 		
-	the_excerpt();
+	<p class="post-block__excerpt"> <?php echo get_the_excerpt(); ?></p>	
 
+	<?php
 	the_post_thumbnail(array(200, 160));
 	?>
 

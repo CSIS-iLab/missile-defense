@@ -13,31 +13,33 @@
 
 ?>
 
-<article <?php post_class('post-block post-block--featured'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('featured-post'); ?> id="post-<?php the_ID(); ?>">
 
-<div>
+	<?php
+		the_post_thumbnail(array(400, 304));
+	?>
 
-<?php
-	foreach (get_the_category() as $category) {
-		if ( $category->name !== 'Featured' ) {
-				echo '<a class="post-block__category" href="' . get_category_link($category->term_id) . '">' .$category->name . '</a>'; //Markup as you see fit
-		}
-	}
-?>
+	<div>
 
-</div>
+		<?php
+			foreach (get_the_category() as $category) {
+				if ( $category->name !== 'Featured' ) {
+						echo '<a class="featured-post__category" href="' . get_category_link($category->term_id) . '">' .$category->name . '</a>'; //Markup as you see fit
+				}
+			}
+		?>
+
+	</div>
 
 	<?php
 
-	the_title( '<h3 class="post-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
+	the_title( '<h3 class="featured-post__title text--semibold"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
 
 	missilethreat_posted_on();
 
 	missilethreat_authors();
-	
-	the_excerpt();
+	?>
 
-	the_post_thumbnail(array(200, 160));
-?>
+<p class="featured-post__excerpt"><?php echo get_the_excerpt(); ?></p>
 
 </article><!-- .post -->

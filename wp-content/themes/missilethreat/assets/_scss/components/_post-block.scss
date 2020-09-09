@@ -36,20 +36,12 @@
     color: $color-text-dark-100;
   }
 
-  .post-meta__date {
-    margin-bottom: rem(4px);
-  }
-
-  .post-meta__authors {
-    margin-bottom: rem(16px);
-  }
-
   .wp-post-image {
     position: absolute;
     grid-column: 2 / span 1;
   }
 
-  p {
+  &__excerpt {
     @extend %font-body-short-md-serif;
     color: $color-text-dark-190;
   }

@@ -4,3 +4,36 @@
   margin: 5rem 0;
   @extend %font-ui-page-title-lg;
 }
+
+.featured-post {
+  margin-bottom: rem(40px);
+
+  .wp-post-image {
+    margin-bottom: rem(40px);
+  }
+
+  &__category {
+    @extend %font-ui-text-sm;
+    color: $color-text-dark-170;
+    margin-bottom: rem(16px);
+
+    &:not(:first-child) {
+      font-weight: 600;
+    }
+
+    &:not(:last-child) {
+      margin-right: rem(4px);
+    }
+  }
+
+  &__title {
+    @extend %font-ui-page-title-sm;
+    color: $color-text-dark-100;
+    margin-bottom: rem(8px);
+  }
+
+  &__excerpt {
+    @extend %font-body-short-md-serif;
+    color: $color-text-dark-190;
+  }
+}
