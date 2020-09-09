@@ -13,19 +13,19 @@
 
 ?>
 
-<article <?php post_class('post-block post-block--post'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('post-block post-block--featured'); ?> id="post-<?php the_ID(); ?>">
 
-	<div>
+<div>
 
-		<?php
-			foreach (get_the_category() as $category) {
-				if ( $category->name !== 'Featured' ) {
-						echo '<a class="post-block__category" href="' . get_category_link($category->term_id) . '">' .$category->name . '</a>'; //Markup as you see fit
-				}
-			}
-		?>
+<?php
+	foreach (get_the_category() as $category) {
+		if ( $category->name !== 'Featured' ) {
+				echo '<a class="post-block__category" href="' . get_category_link($category->term_id) . '">' .$category->name . '</a>'; //Markup as you see fit
+		}
+	}
+?>
 
-	</div>
+</div>
 
 	<?php
 
@@ -34,10 +34,10 @@
 	missilethreat_posted_on();
 
 	missilethreat_authors();
-		
+	
 	the_excerpt();
 
 	the_post_thumbnail(array(200, 160));
-	?>
+?>
 
 </article><!-- .post -->
