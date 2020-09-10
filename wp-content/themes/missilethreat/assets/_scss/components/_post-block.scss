@@ -1,31 +1,22 @@
 @use 'abstracts' as *;
 
 .post-block {
-  position: relative;
   margin: rem(40px) 0;
   color: $color-text-dark-170;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  column-gap: rem(40px);
+  grid-template-columns: 1fr;
 
   &:first-of-type {
     margin: rem(24px) 0 rem(40px) 0;
-  }
-
-  &__category,
-  &__title,
-  .post-meta__date,
-  .post-meta__authors,
-  p {
-    grid-column: 1 / span 1;
   }
 
   &__category {
     @extend %font-ui-text-sm;
     display: inline-block;
     margin-bottom: rem(16px);
+    grid-row: 1;
 
-    &:not(:last-child) {
+    a:not(:last-child) {
       margin-right: rem(4px);
     }
   }
@@ -34,15 +25,114 @@
     @extend %font-ui-headline-lg;
     margin-bottom: rem(8px);
     color: $color-text-dark-100;
+    grid-row: 2;
+  }
+
+  .post-meta__date {
+    grid-row: 3;
+  }
+
+  .post-meta__authors {
+    grid-row: 4;
   }
 
   .wp-post-image {
-    position: absolute;
-    grid-column: 2 / span 1;
+    grid-row: 6;
+    margin-bottom: rem(24px);
   }
 
   &__excerpt {
     @extend %font-body-short-md-serif;
     color: $color-text-dark-190;
+    grid-row: 7;
+  }
+
+  @include breakpoint('medium') {
+    grid-template-columns: 2fr 1fr;
+    column-gap: rem(40px);
+    position: relative;
+
+    &__category,
+    &__title,
+    .post-meta__date,
+    .post-meta__authors,
+    &__excerpt {
+      grid-column: 1 / span 1;
+    }
+
+    .wp-post-image {
+      position: absolute;
+      grid-column: 2 / span 1;
+      grid-row: 1;
+      max-width: rem(200px);
+    }
+  }
+}
+
+.home {
+  .post-block {
+    .wp-post-image {
+      position: initial;
+      grid-row: 1;
+    }
+
+    &__category {
+      grid-row: 2;
+    }
+
+    &__title {
+      grid-row: 3;
+    }
+
+    .post-meta__date {
+      grid-row: 4;
+    }
+
+    .post-meta__authors {
+      grid-row: 5;
+    }
+
+    @include breakpoint('medium') {
+      grid-template-columns: 1fr 2fr;
+      column-gap: rem(32px);
+
+      &:nth-of-type(4),
+      &:nth-of-type(5) {
+        position: initial;
+        display: block;
+
+        .wp-post-image {
+          position: initial;
+        }
+      }
+      &__category,
+      &__title,
+      .post-meta__date,
+      .post-meta__authors,
+      &__excerpt {
+        grid-column: 2;
+      }
+
+      &__category {
+        grid-row: 1;
+      }
+
+      &__title {
+        grid-row: 2;
+      }
+
+      .post-meta__date {
+        grid-row: 3;
+      }
+
+      .post-meta__authors {
+        grid-row: 4;
+      }
+
+      .wp-post-image {
+        grid-column: 1 / span 1;
+        position: absolute;
+      }
+    }
   }
 }
