@@ -49,6 +49,27 @@ get_header();
 	?>
 	</section>
 
+	<section class="home__projects">
+
+<?php
+
+$ongoingProjects = get_field('ongoing_projects');
+
+if ( $ongoingProjects ) {
+
+	foreach ( $ongoingProjects as $post ) {
+		setup_postdata($post);
+
+		get_template_part( 'template-parts/block-project' );
+
+	}
+
+	wp_reset_postdata();
+}
+
+?>
+</section>
+
 </main><!-- #site-content -->
 
 <?php get_footer(); ?>
