@@ -4,3 +4,11 @@
   margin: 5rem 0;
   @extend %font-ui-page-title-lg;
 }
+
+.home {
+  &__card {
+    background: $color-text-light-100;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12),
+      0px 3px 10px rgba(0, 0, 0, 0.11);
+  }
+}
