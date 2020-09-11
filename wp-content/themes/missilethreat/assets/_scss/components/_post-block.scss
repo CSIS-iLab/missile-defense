@@ -34,6 +34,7 @@
 
   .post-meta__authors {
     grid-row: 4;
+    margin-bottom: rem(16px);
   }
 
   .wp-post-image {
@@ -90,6 +91,7 @@
 
     .post-meta__authors {
       grid-row: 5;
+      margin-bottom: 0;
     }
 
     @include breakpoint('medium') {
@@ -127,6 +129,7 @@
 
       .post-meta__authors {
         grid-row: 4;
+        margin-bottom: rem(16px);
       }
 
       .wp-post-image {

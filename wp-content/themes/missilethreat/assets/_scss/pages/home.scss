@@ -32,6 +32,10 @@
     margin-bottom: rem(8px);
   }
 
+  .post-meta__authors {
+    margin-bottom: rem(16px);
+  }
+
   &__excerpt {
     @extend %font-body-short-md-serif;
     color: $color-text-dark-190;
