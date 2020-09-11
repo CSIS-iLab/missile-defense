@@ -6,9 +6,40 @@
 }
 
 .home {
+  &__cards {
+    margin-top: rem(64px);
+    @include breakpoint('large') {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
   &__card {
+    display: grid;
+    padding: rem(24px);
+    margin-bottom: rem(32px);
     background: $color-text-light-100;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12),
       0px 3px 10px rgba(0, 0, 0, 0.11);
+    width: 100%;
+    // height: rem(200px);
+
+    &-icon {
+      margin-bottom: rem(24px);
+    }
+
+    &-title {
+      @extend %font-ui-heading-md;
+      color: $color-text-dark-100;
+      margin-bottom: rem(8px);
+    }
+
+    &-desc {
+      @extend %font-body-short-md-serif;
+      color: $color-text-dark-190;
+    }
+
+    @include breakpoint('small') {
+      grid-template-columns: 1fr 3fr;
+    }
   }
 }

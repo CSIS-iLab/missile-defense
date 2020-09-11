@@ -52,6 +52,7 @@
 %font-ui-heading-md {
   @include font-clamp(20px, 24px);
   line-height: 1.14;
+  font-weight: 400;
 }
 
 %font-ui-heading-lg {
