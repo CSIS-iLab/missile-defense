@@ -11,14 +11,14 @@
 
 ?>
 
-<article <?php post_class('post-block post-block--post'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('project-block project-block--post'); ?> id="post-<?php the_ID(); ?>">
 
 
 
-<a href=" <?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>	
+<a href=" <?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail', array('class' => 'project-block__thumbnail')); ?></a>	
 
 <?php
-	the_title( '<h3 class="post-block__title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
+	the_title( '<h3 class="project-block__title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
 	
 	missilethreat_posted_on();
 

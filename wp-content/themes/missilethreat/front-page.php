@@ -51,24 +51,32 @@ get_header();
 
 	<section class="home__projects">
 
-<?php
+		<h2 class="home__projects-title">Ongoing Projects</h2>
+		<p class="home__projects-desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
+		<?php 
+			$cat_link = home_url('/category/ongoing-projects/');
+		?>
+		<a href="<?php echo esc_url($cat_link); ?>">View All <?php echo missilethreat_get_svg('chevron-right') ?></a>
+		<div class="home__projects-wrapper">
+			<?php
 
-$ongoingProjects = get_field('ongoing_projects');
+			$ongoingProjects = get_field('ongoing_projects');
 
-if ( $ongoingProjects ) {
+			if ( $ongoingProjects ) {
 
-	foreach ( $ongoingProjects as $post ) {
-		setup_postdata($post);
+				foreach ( $ongoingProjects as $post ) {
+					setup_postdata($post);
 
-		get_template_part( 'template-parts/block-project' );
+					get_template_part( 'template-parts/block-project' );
 
-	}
+				}
 
-	wp_reset_postdata();
-}
+				wp_reset_postdata();
+			}
 
-?>
-</section>
+			?>
+		</div>
+	</section>
 
 </main><!-- #site-content -->
 
