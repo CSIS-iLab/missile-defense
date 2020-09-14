@@ -13,4 +13,9 @@
     color: $color-text-dark-100;
     margin-bottom: rem(8px);
   }
+
+  &__date {
+    @extend %font-ui-text-md;
+    color: $color-text-dark-170;
+  }
 }

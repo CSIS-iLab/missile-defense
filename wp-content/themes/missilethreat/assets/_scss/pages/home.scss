@@ -8,8 +8,8 @@
 .home {
   &__projects {
     @include full-width-background($color-primary-light-gray);
-    background: $color-primary-light-gray;
     padding: rem(56px) 0;
+    background: $color-primary-light-gray;
 
     &-wrapper {
       display: grid;
@@ -19,14 +19,14 @@
 
     &-title {
       @extend %font-ui-heading-lg;
-      color: $color-primary-blue-200;
       margin-bottom: rem(4px);
+      color: $color-primary-blue-200;
     }
 
     &-info {
       display: flex;
-      margin-bottom: rem(24px);
       justify-content: space-between;
+      margin-bottom: rem(24px);
     }
 
     &-desc {
@@ -37,10 +37,10 @@
 
     &-view-all {
       display: inline;
+      color: $color-text-dark-190;
       font-size: rem(17px);
       font-style: italic;
       line-height: 1.15;
-      color: $color-text-dark-190;
     }
   }
 }
