@@ -19,9 +19,10 @@
 
 <?php
 	the_title( '<h3 class="project-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
-	
-	missilethreat_posted_on();
 
 	?>
+	<div class="project-block__date">
+		Last Updated <?php the_modified_date(); ?>
+	</div>
 
 </article><!-- .post -->
