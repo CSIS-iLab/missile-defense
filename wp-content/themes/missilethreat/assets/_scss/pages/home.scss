@@ -7,22 +7,40 @@
 
 .home {
   &__projects {
+    @include full-width-background($color-primary-light-gray);
     background: $color-primary-light-gray;
+    padding: rem(56px) 0;
 
     &-wrapper {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      column-gap: rem(64px);
     }
 
     &-title {
       @extend %font-ui-heading-lg;
       color: $color-primary-blue-200;
+      margin-bottom: rem(4px);
+    }
+
+    &-info {
+      display: flex;
+      margin-bottom: rem(24px);
+      justify-content: space-between;
     }
 
     &-desc {
       @extend %font-body-short-md-serif;
       width: 50%;
       color: $color-text-dark-170;
+    }
+
+    &-view-all {
+      display: inline;
+      font-size: rem(17px);
+      font-style: italic;
+      line-height: 1.15;
+      color: $color-text-dark-190;
     }
   }
 }

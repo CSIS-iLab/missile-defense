@@ -1,2 +1,16 @@
+@use '../abstracts' as *;
+
 .project-block {
+  &__thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: rem(16px);
+  }
+
+  &__title {
+    @extend %font-ui-headline-md;
+    color: $color-text-dark-100;
+    margin-bottom: rem(8px);
+  }
 }
