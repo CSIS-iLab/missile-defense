@@ -52,11 +52,13 @@ get_header();
 	<section class="home__projects">
 
 		<h2 class="home__projects-title">Ongoing Projects</h2>
-		<p class="home__projects-desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
-		<?php 
-			$cat_link = home_url('/category/ongoing-projects/');
-		?>
-		<a href="<?php echo esc_url($cat_link); ?>">View All <?php echo missilethreat_get_svg('chevron-right') ?></a>
+		<div class="home__projects-info">
+			<p class="home__projects-desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
+			<?php 
+				$cat_link = home_url('/category/ongoing-projects/');
+			?>
+			<a href="<?php echo esc_url($cat_link); ?>" class="home__projects-view-all">View All <?php echo missilethreat_get_svg('chevron-right') ?></a>
+		</div>
 		<div class="home__projects-wrapper">
 			<?php
 
