@@ -4,3 +4,25 @@
   margin: 5rem 0;
   @extend %font-ui-page-title-lg;
 }
+
+.home {
+  &__projects {
+    background: $color-primary-light-gray;
+
+    &-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-title {
+      @extend %font-ui-heading-lg;
+      color: $color-primary-blue-200;
+    }
+
+    &-desc {
+      @extend %font-body-short-md-serif;
+      width: 50%;
+      color: $color-text-dark-170;
+    }
+  }
+}
