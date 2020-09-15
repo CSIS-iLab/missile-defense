@@ -49,7 +49,6 @@ get_header();
 	?>
 	</section>
 
-<<<<<<< HEAD
 	<section class="home__projects">
 
 		<h2 class="home__projects-title">Ongoing Projects</h2>
@@ -79,7 +78,8 @@ get_header();
 
 			?>
 		</div>
-=======
+		</section>
+		
 	<section class="home__news">
 	<h2 class="home__news-heading">News</h2>
 
@@ -101,7 +101,6 @@ get_header();
 		}
 	}
 	?>
->>>>>>> Homepage news section content
 	</section>
 
 </main><!-- #site-content -->
