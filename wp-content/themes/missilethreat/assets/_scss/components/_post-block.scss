@@ -16,6 +16,10 @@
     grid-row: 1;
     margin-bottom: rem(16px);
 
+    a:not(:first-child) {
+      font-weight: 600;
+    }
+
     a:not(:last-child) {
       margin-right: rem(4px);
     }

@@ -16,15 +16,9 @@
 <article <?php post_class('post-block post-block--post'); ?> id="post-<?php the_ID(); ?>">
 
 	<div class="post-block__category">
-
-		<?php
-			foreach (get_the_category() as $category) {
-				if ( $category->name !== 'Featured' ) {
-						echo '<a href="' . get_category_link($category->term_id) . '">' .$category->name . '</a>'; //Markup as you see fit
-				}
-			}
-		?>
-
+<?php
+	missilethreat_display_categories();
+?>
 	</div>
 
 	<?php
