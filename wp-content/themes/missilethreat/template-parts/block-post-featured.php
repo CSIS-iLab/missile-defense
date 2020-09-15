@@ -18,7 +18,7 @@
 	<?php
 		the_post_thumbnail(array(400, 304));
 ?>
-<div>
+<div class="featured-post__category">
 <?php
 	missilethreat_display_categories();
 	?>
