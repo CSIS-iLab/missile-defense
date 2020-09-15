@@ -18,7 +18,7 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
-
+<h1>Hello</h1>
 	<?php
 
 	$archive_title    = '';
@@ -85,7 +85,7 @@ get_header();
 			}
 			the_post();
 
-			get_template_part( 'template-parts/block-post', get_post_type() );
+			get_template_part( 'template-parts/content', get_post_type() );
 
 		}
 	} elseif ( is_search() ) {
