@@ -14,8 +14,7 @@
     margin-bottom: rem(8px);
   }
 
-  &__date {
-    @extend %font-ui-text-md;
-    color: $color-text-dark-170;
+  .post-meta__date {
+    display: inline;
   }
 }
