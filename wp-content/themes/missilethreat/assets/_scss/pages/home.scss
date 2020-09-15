@@ -30,7 +30,7 @@
       margin-top: 0;
     }
   }
-  
+
   &__cards {
     margin-top: rem(64px);
 
@@ -91,4 +91,6 @@
       &:last-child {
         margin-left: rem(64px);
       }
+    }
+  }
 }
