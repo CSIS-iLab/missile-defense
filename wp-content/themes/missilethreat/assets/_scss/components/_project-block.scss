@@ -4,13 +4,10 @@
   &:not(:last-of-type) {
     margin-bottom: rem(40px);
   }
-  @include breakpoint('small') {
-    margin-bottom: 0;
-  }
 
   &__thumbnail {
     width: 100%;
-    height: 200px;
+    height: rem(200px);
     object-fit: cover;
     margin-bottom: rem(16px);
   }
@@ -23,5 +20,27 @@
 
   .post-meta__date {
     display: inline;
+  }
+
+  @include breakpoint('small') {
+    display: grid;
+    column-gap: rem(32px);
+    grid-template-columns: 1fr 2fr;
+
+    &:not(:last-of-type) {
+      margin-bottom: 0;
+    }
+
+    &__thumbnail {
+      height: rem(125px);
+    }
+  }
+
+  @include breakpoint('large') {
+    display: block;
+
+    &__thumbnail {
+      height: rem(200px);
+    }
   }
 }

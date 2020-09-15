@@ -39,7 +39,14 @@
     &-wrapper {
       @include breakpoint('small') {
         display: grid;
+      }
+
+      @include breakpoint('large') {
         grid-template-columns: repeat(3, 1fr);
+        column-gap: rem(48px);
+      }
+
+      @include breakpoint('xlarge') {
         column-gap: rem(64px);
       }
     }
@@ -73,6 +80,7 @@
 
     &-view-all {
       display: inline;
+      align-self: flex-end;
       color: $color-text-dark-190;
       font-size: rem(17px);
       font-style: italic;
