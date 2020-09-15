@@ -59,7 +59,7 @@ get_header();
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
 			<a href="<?php echo site_url('/defsys') ?>" class="home__card-link">
-				<h3 class="home__card-title">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></h3>
+				<h2 class="home__card-title">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></h2>
 			</a>
 			<p class="home__card-desc">Explore the components that go into making missile defense effective, including sensors, interceptors, command and control.</p>
 		</div>
@@ -67,7 +67,7 @@ get_header();
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
 			<a href="<?php echo site_url('/missile') ?>" class="home__card-link">
-				<h3 class="home__card-title">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></h3>
+				<h2 class="home__card-title">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></h2>
 			</a>
 			<p class="home__card-desc">A growing collection of information on various countries’ missile systems, with illustrations and information on their capabilities and history.</p>
 		</div>
