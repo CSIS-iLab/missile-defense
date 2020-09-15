@@ -36,21 +36,6 @@
     padding: rem(56px) 0;
     background: $color-primary-light-gray;
 
-    &-wrapper {
-      @include breakpoint('small') {
-        display: grid;
-      }
-
-      @include breakpoint('large') {
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: rem(48px);
-      }
-
-      @include breakpoint('xlarge') {
-        column-gap: rem(64px);
-      }
-    }
-
     &-title {
       @extend %font-ui-heading-lg;
       margin-bottom: rem(4px);
@@ -59,12 +44,6 @@
 
     &-info {
       margin-bottom: rem(32px);
-
-      @include breakpoint('medium') {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: rem(24px);
-      }
     }
 
     &-desc {
@@ -72,10 +51,6 @@
       width: 50%;
       margin-bottom: rem(8px);
       color: $color-text-dark-170;
-
-      @include breakpoint('medium') {
-        margin-bottom: 0;
-      }
     }
 
     &-view-all {
@@ -85,6 +60,37 @@
       font-size: rem(17px);
       font-style: italic;
       line-height: 1.15;
+    }
+
+    @include breakpoint('small') {
+      &-wrapper {
+        display: grid;
+      }
+    }
+
+    @include breakpoint('medium') {
+      &-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem(24px);
+      }
+
+      &-desc {
+        margin-bottom: 0;
+      }
+    }
+
+    @include breakpoint('large') {
+      &-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: rem(48px);
+      }
+    }
+
+    @include breakpoint('xlarge') {
+      &-wrapper {
+        column-gap: rem(64px);
+      }
     }
   }
 }

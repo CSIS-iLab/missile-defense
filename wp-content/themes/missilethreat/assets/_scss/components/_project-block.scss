@@ -6,10 +6,10 @@
   }
 
   &__thumbnail {
+    margin-bottom: rem(16px);
     width: 100%;
     height: rem(200px);
     object-fit: cover;
-    margin-bottom: rem(16px);
   }
 
   &__title {
@@ -32,7 +32,13 @@
     }
 
     &__thumbnail {
-      height: rem(125px);
+      height: rem(100px);
+    }
+  }
+
+  @include breakpoint('medium') {
+    &__thumbnail {
+      height: rem(150px);
     }
   }
 
