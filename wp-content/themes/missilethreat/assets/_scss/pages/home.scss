@@ -108,6 +108,9 @@
       .wp-post-image {
         position: absolute;
         grid-column: 1 / span 1;
+      }
+    }
+  }
 
   &__news {
     margin-top: rem(56px);
