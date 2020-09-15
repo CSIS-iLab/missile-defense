@@ -49,6 +49,31 @@ get_header();
 	?>
 	</section>
 
+
+		
+	<section class="home__news">
+	<h2 class="home__news-heading">News</h2>
+
+	<?php 
+	$newsPosts = new WP_Query( array(
+		'post_type' => 'post',
+    'post_status' => 'publish',
+		'posts_per_page' => 5,
+		'category_name' => 'news'
+	) );
+
+	if ( $newsPosts->have_posts() ) {
+		while ( $newsPosts->have_posts() ) {
+			$newsPosts->the_post();
+
+			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
+
+			missilethreat_posted_on();
+		}
+	}
+	?>
+	</section>
+
 	<section class="home__projects">
 
 		<h2 class="home__projects-title">Ongoing Projects</h2>
@@ -79,29 +104,6 @@ get_header();
 			?>
 		</div>
 		</section>
-		
-	<section class="home__news">
-	<h2 class="home__news-heading">News</h2>
-
-	<?php 
-	$newsPosts = new WP_Query( array(
-		'post_type' => 'post',
-    'post_status' => 'publish',
-		'posts_per_page' => 5,
-		'category_name' => 'news'
-	) );
-
-	if ( $newsPosts->have_posts() ) {
-		while ( $newsPosts->have_posts() ) {
-			$newsPosts->the_post();
-
-			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
-
-			missilethreat_posted_on();
-		}
-	}
-	?>
-	</section>
 
 </main><!-- #site-content -->
 
