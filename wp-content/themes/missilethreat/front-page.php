@@ -50,10 +50,29 @@ get_header();
 	</section>
 
 
+	<section class="home__news">
+	<h2 class="home__news-heading">News</h2>
 
+	<?php 
+	$newsPosts = new WP_Query( array(
+		'post_type' => 'post',
+    'post_status' => 'publish',
+		'posts_per_page' => 5,
+		'category_name' => 'news'
+	) );
 
+	if ( $newsPosts->have_posts() ) {
+		while ( $newsPosts->have_posts() ) {
+			$newsPosts->the_post();
 
+			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
 
+			missilethreat_posted_on();
+		}
+	}
+	?>
+
+  </section>
 
 <section class="home__cards">
 		<div class="home__card">
@@ -71,6 +90,7 @@ get_header();
 			</a>
 			<p class="home__card-desc">A growing collection of information on various countries’ missile systems, with illustrations and information on their capabilities and history.</p>
 		</div>
+
 	</section>
 
 </main><!-- #site-content -->
