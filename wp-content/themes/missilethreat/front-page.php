@@ -19,29 +19,21 @@ get_header();
 
 	<?php
 
-  $args = array(
-    'post_type' => 'post',
-    'post_status' => 'publish',
-    'posts_per_page' => 5
-  );
+	$featuredPosts = get_field('featured_posts');
 
-  $featuredPosts = new WP_Query( $args );
+	if ( $featuredPosts ) {
 
-	if ( $featuredPosts->have_posts() ) {
-
-		while ( $featuredPosts->have_posts() ) {
-			$featuredPosts->the_post();
+		foreach($featuredPosts as $key => $post):
+			setup_postdata($post);
 
 			// If you need to have the first featured post look different, you can use this code to use a different template-part for it.
-			// if ($featuredPosts->current_post === 0) {
-			// 	get_template_part( 'template-parts/block-posts-featured' );
-			// } else {
-			// 	get_template_part( 'template-parts/block', get_post_type() );
-			// }
+			if ($key === array_key_first($featuredPosts)) {
+				get_template_part( 'template-parts/block-post-featured' );
+			} else {
+				get_template_part( 'template-parts/block', get_post_type() );
+			}
 
-			get_template_part( 'template-parts/block', get_post_type() );
-
-		}
+			endforeach;
 
 		wp_reset_postdata();
 	}

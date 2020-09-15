@@ -1,1 +1,14 @@
 @use 'abstracts' as *;
+
+.post-meta {
+  @extend %font-ui-text-md;
+
+  &__date {
+    margin-bottom: rem(4px);
+    color: $color-text-dark-170;
+  }
+
+  &__authors {
+    color: $color-primary-blue-200;
+  }
+}
