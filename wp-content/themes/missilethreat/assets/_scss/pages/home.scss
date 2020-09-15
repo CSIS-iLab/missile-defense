@@ -108,6 +108,91 @@
       .wp-post-image {
         position: absolute;
         grid-column: 1 / span 1;
+
+  &__news {
+    margin-top: rem(56px);
+
+    &-heading {
+      @extend %font-ui-heading-lg;
+      color: $color-primary-blue-200;
+      font-weight: 400;
+      margin-bottom: rem(32px);
+    }
+
+    &-title {
+      @extend %font-ui-headline-md;
+      color: $color-text-dark-100;
+      margin-bottom: rem(8px);
+    }
+
+    .post-meta__date {
+      margin-bottom: rem(32px);
+    }
+
+    @include breakpoint('medium') {
+      margin-top: 0;
+    }
+  }
+
+  &__cards {
+    margin-top: rem(64px);
+
+    @include breakpoint('large') {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: rem(56px);
+    }
+  }
+
+  &__card {
+    display: grid;
+    padding: rem(24px);
+    margin-bottom: rem(32px);
+    background: $color-text-light-100;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12),
+      0px 3px 10px rgba(0, 0, 0, 0.11);
+    width: 100%;
+
+    &-icon {
+      margin-bottom: rem(24px);
+    }
+
+    &-title {
+      @extend %font-ui-heading-md;
+      color: $color-text-dark-100;
+      margin-bottom: rem(8px);
+
+      .icon {
+        width: rem(8px);
+        height: rem(8px);
+        margin-bottom: rem(2px);
+        color: $color-primary-blue-600;
+      }
+    }
+
+    &-desc {
+      @extend %font-body-short-md-serif;
+      color: $color-text-dark-190;
+    }
+
+    @include breakpoint('small') {
+      grid-template-columns: auto auto;
+      column-gap: rem(24px);
+
+      &-icon {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+      }
+
+      &-title,
+      &-desc {
+        grid-column: 2;
+      }
+    }
+
+    @include breakpoint('large') {
+      &:last-child {
+        margin-left: rem(64px);
       }
     }
   }
