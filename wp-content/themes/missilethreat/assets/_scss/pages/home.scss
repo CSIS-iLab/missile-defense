@@ -14,8 +14,8 @@
 
   &__category {
     @extend %font-ui-text-sm;
-    color: $color-text-dark-170;
     margin-bottom: rem(16px);
+    color: $color-text-dark-170;
 
     &:not(:first-child) {
       font-weight: 600;
@@ -28,8 +28,8 @@
 
   &__title {
     @extend %font-ui-page-title-sm;
-    color: $color-text-dark-100;
     margin-bottom: rem(8px);
+    color: $color-text-dark-100;
   }
 
   .post-meta__authors {
@@ -39,5 +39,76 @@
   &__excerpt {
     @extend %font-body-short-md-serif;
     color: $color-text-dark-190;
+  }
+}
+
+.home {
+  .post-block {
+    .wp-post-image {
+      position: initial;
+      grid-row: 1;
+    }
+
+    &__category {
+      grid-row: 2;
+    }
+
+    &__title {
+      grid-row: 3;
+    }
+
+    .post-meta__date {
+      grid-row: 4;
+    }
+
+    .post-meta__authors {
+      grid-row: 5;
+      margin-bottom: 0;
+    }
+
+    @include breakpoint('medium') {
+      grid-template-columns: 1fr 2fr;
+      column-gap: rem(32px);
+
+      &:nth-of-type(4),
+      &:nth-of-type(5) {
+        position: initial;
+        display: block;
+
+        .wp-post-image {
+          position: initial;
+        }
+      }
+
+      &__category,
+      &__title,
+      .post-meta__date,
+      .post-meta__authors,
+      &__excerpt {
+        grid-column: 2;
+      }
+
+      &__category {
+        grid-row: 1;
+      }
+
+      &__title {
+        grid-row: 2;
+      }
+
+      .post-meta__date {
+        grid-row: 3;
+      }
+
+      .post-meta__authors {
+        grid-row: 4;
+        margin-bottom: rem(16px);
+      }
+
+      .wp-post-image {
+        position: absolute;
+        grid-column: 1 / span 1;
+      }
+    }
   }
 }

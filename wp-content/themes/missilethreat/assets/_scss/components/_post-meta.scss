@@ -2,9 +2,10 @@
 
 .post-meta {
   @extend %font-ui-text-md;
+
   &__date {
-    color: $color-text-dark-170;
     margin-bottom: rem(4px);
+    color: $color-text-dark-170;
   }
 
   &__authors {
