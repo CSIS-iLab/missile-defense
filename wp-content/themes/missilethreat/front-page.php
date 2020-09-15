@@ -70,6 +70,7 @@ get_header();
 
 			missilethreat_posted_on();
 		}
+		wp_reset_postdata();
 	}
 	?>
 	</section>
