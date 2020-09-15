@@ -6,16 +6,16 @@
   }
 
   &__thumbnail {
-    margin-bottom: rem(16px);
     width: 100%;
     height: rem(200px);
+    margin-bottom: rem(16px);
     object-fit: cover;
   }
 
   &__title {
     @extend %font-ui-headline-md;
-    color: $color-text-dark-100;
     margin-bottom: rem(8px);
+    color: $color-text-dark-100;
   }
 
   .post-meta__date {
@@ -24,8 +24,8 @@
 
   @include breakpoint('small') {
     display: grid;
-    column-gap: rem(32px);
     grid-template-columns: 1fr 2fr;
+    column-gap: rem(32px);
 
     &:not(:last-of-type) {
       margin-bottom: 0;
