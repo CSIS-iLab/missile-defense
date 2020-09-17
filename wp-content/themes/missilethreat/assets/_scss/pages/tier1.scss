@@ -1,0 +1,10 @@
+@use '../abstracts' as *;
+
+.tier-1 {
+  display: grid;
+  row-gap: rem(48px);
+
+  @include breakpoint('large') {
+    column-gap: 6vw;
+  }
+}
