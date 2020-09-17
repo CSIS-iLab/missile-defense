@@ -41,7 +41,6 @@ get_header();
 	?>
 	</section>
 
-
 	<section class="home__news">
 	<h2 class="home__news-heading">News</h2>
 
@@ -61,6 +60,7 @@ get_header();
 
 			missilethreat_posted_on();
 		}
+		wp_reset_postdata();
 	}
 	?>
 
@@ -84,6 +84,37 @@ get_header();
 		</div>
 
 	</section>
+
+	<section class="home__projects">
+
+		<h2 class="home__projects-title">Ongoing Projects</h2>
+		<div class="home__projects-info">
+			<p class="home__projects-desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
+			<?php 
+				$cat_link = home_url('/category/ongoing-projects/');
+			?>
+			<a href="<?php echo esc_url($cat_link); ?>" class="home__projects-view-all">View All <?php echo missilethreat_get_svg('chevron-right') ?></a>
+		</div>
+		<div class="home__projects-wrapper">
+			<?php
+
+			$ongoingProjects = get_field('ongoing_projects');
+
+			if ( $ongoingProjects ) {
+
+				foreach ( $ongoingProjects as $post ) {
+					setup_postdata($post);
+
+					get_template_part( 'template-parts/block-project' );
+
+				}
+
+				wp_reset_postdata();
+			}
+
+			?>
+		</div>
+		</section>
 
 </main><!-- #site-content -->
 
