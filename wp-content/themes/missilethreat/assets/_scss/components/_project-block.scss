@@ -1,0 +1,52 @@
+@use '../abstracts' as *;
+
+.project-block {
+  &:not(:last-of-type) {
+    margin-bottom: rem(40px);
+  }
+
+  &__thumbnail {
+    width: 100%;
+    height: rem(200px);
+    margin-bottom: rem(16px);
+    object-fit: cover;
+  }
+
+  &__title {
+    @extend %font-ui-headline-md;
+    margin-bottom: rem(8px);
+    color: $color-text-dark-100;
+  }
+
+  .post-meta__date {
+    display: inline;
+  }
+
+  @include breakpoint('small') {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: rem(32px);
+
+    &:not(:last-of-type) {
+      margin-bottom: 0;
+    }
+
+    &__thumbnail {
+      height: rem(100px);
+    }
+  }
+
+  @include breakpoint('medium') {
+    &__thumbnail {
+      height: rem(150px);
+    }
+  }
+
+  @include breakpoint('large') {
+    display: block;
+
+    &__thumbnail {
+      height: rem(200px);
+    }
+  }
+}

@@ -117,15 +117,15 @@
 
     &-heading {
       @extend %font-ui-heading-lg;
+      margin-bottom: rem(32px);
       color: $color-primary-blue-200;
       font-weight: 400;
-      margin-bottom: rem(32px);
     }
 
     &-title {
       @extend %font-ui-headline-md;
-      color: $color-text-dark-100;
       margin-bottom: rem(8px);
+      color: $color-text-dark-100;
     }
 
     .post-meta__date {
@@ -137,6 +137,70 @@
     }
   }
 
+
+  &__projects {
+    @include full-width-background($color-primary-light-gray);
+    padding: rem(56px) 0;
+    background: $color-primary-light-gray;
+
+    &-title {
+      @extend %font-ui-heading-lg;
+      margin-bottom: rem(4px);
+      color: $color-primary-blue-200;
+    }
+
+    &-info {
+      margin-bottom: rem(32px);
+    }
+
+    &-desc {
+      @extend %font-body-short-md-serif;
+      width: 50%;
+      margin-bottom: rem(8px);
+      color: $color-text-dark-170;
+    }
+
+    &-view-all {
+      display: inline;
+      align-self: flex-end;
+      color: $color-text-dark-190;
+      font-size: rem(17px);
+      font-style: italic;
+      line-height: 1.15;
+    }
+
+    @include breakpoint('small') {
+      &-wrapper {
+        display: grid;
+      }
+    }
+
+    @include breakpoint('medium') {
+      &-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem(24px);
+      }
+
+      &-desc {
+        margin-bottom: 0;
+      }
+    }
+    
+        @include breakpoint('large') {
+      &-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: rem(48px);
+      }
+    }
+
+    @include breakpoint('xlarge') {
+      &-wrapper {
+        column-gap: rem(64px);
+      }
+    }
+  }
+      
   &__cards {
     margin-top: rem(64px);
 
@@ -190,10 +254,11 @@
       &-title,
       &-desc {
         grid-column: 2;
+
       }
     }
 
-    @include breakpoint('large') {
+@include breakpoint('large') {
       &:last-child {
         margin-left: rem(64px);
       }
