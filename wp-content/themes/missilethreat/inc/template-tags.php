@@ -137,7 +137,7 @@ function missilethreat_posted_on() {
 		return;
 	}
 
-	echo '<div class="post-meta__date">' . get_the_time( get_option( 'date_format' ) ) . '</div>';
+	echo '<div class="post-meta post-meta__date">' . get_the_time( get_option( 'date_format' ) ) . '</div>';
 }
 
 /**
@@ -153,7 +153,7 @@ function missilethreat_last_updated() {
 		return;
 	}
 
-	echo '<div class="post-meta__date">' . get_the_modified_time( get_option( 'date_format' ) ) . '</div>';
+	echo '<div class="post-meta post-meta__date">' . get_the_modified_time( get_option( 'date_format' ) ) . '</div>';
 }
 
 /**
@@ -210,20 +210,13 @@ endif;
 if (! function_exists('missilethreat_display_categories')) :
 	function missilethreat_display_categories() {
 
-		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list('<ul class="post-meta__categories"><li>', '</li><li>', '</li></ul>');
-
-		if ('Uncategorized' === $categories_list) {
-				return;
-		}
-					
-		if ( $categories_list ) {
-			/* translators: 1: list of categories. */
-			printf( '<div class="entry__categories">' . esc_html__( '%1$s', 'missilethreat' ) . '</div>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		foreach (get_the_category() as $category) {
+			if ( $category->name !== 'Featured' ) {
+				echo '<a class="featured-post__category" href="' . get_category_link($category->term_id) . '">' .$category->name . '</a>'; //Markup as you see fit
+			}
 		}
 	}
 endif;
-
 
 /**
  * Displays the post's categories.

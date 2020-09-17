@@ -5,7 +5,113 @@
   @extend %font-ui-page-title-lg;
 }
 
+.featured-post {
+  margin-bottom: rem(40px);
+
+  .wp-post-image {
+    margin-bottom: rem(40px);
+  }
+
+  &__category {
+    @extend %font-ui-text-sm;
+    margin-bottom: rem(16px);
+    color: $color-text-dark-170;
+
+    &:not(:first-child) {
+      font-weight: 600;
+    }
+
+    &:not(:last-child) {
+      margin-right: rem(4px);
+    }
+  }
+
+  &__title {
+    @extend %font-ui-page-title-sm;
+    margin-bottom: rem(8px);
+    color: $color-text-dark-100;
+  }
+
+  .post-meta__authors {
+    margin-bottom: rem(16px);
+  }
+
+  &__excerpt {
+    @extend %font-body-short-md-serif;
+    color: $color-text-dark-190;
+  }
+}
+
 .home {
+  .post-block {
+    .wp-post-image {
+      position: initial;
+      grid-row: 1;
+    }
+
+    &__category {
+      grid-row: 2;
+    }
+
+    &__title {
+      grid-row: 3;
+    }
+
+    .post-meta__date {
+      grid-row: 4;
+    }
+
+    .post-meta__authors {
+      grid-row: 5;
+      margin-bottom: 0;
+    }
+
+    @include breakpoint('medium') {
+      grid-template-columns: 1fr 2fr;
+      column-gap: rem(32px);
+
+      &:nth-of-type(4),
+      &:nth-of-type(5) {
+        position: initial;
+        display: block;
+
+        .wp-post-image {
+          position: initial;
+        }
+      }
+
+      &__category,
+      &__title,
+      .post-meta__date,
+      .post-meta__authors,
+      &__excerpt {
+        grid-column: 2;
+      }
+
+      &__category {
+        grid-row: 1;
+      }
+
+      &__title {
+        grid-row: 2;
+      }
+
+      .post-meta__date {
+        grid-row: 3;
+      }
+
+      .post-meta__authors {
+        grid-row: 4;
+        margin-bottom: rem(16px);
+      }
+
+      .wp-post-image {
+        position: absolute;
+        grid-column: 1 / span 1;
+      }
+    }
+  }
+
   &__news {
     margin-top: rem(56px);
 
@@ -30,6 +136,7 @@
       margin-top: 0;
     }
   }
+
 
   &__projects {
     @include full-width-background($color-primary-light-gray);
@@ -79,8 +186,8 @@
         margin-bottom: 0;
       }
     }
-
-    @include breakpoint('large') {
+    
+        @include breakpoint('large') {
       &-wrapper {
         grid-template-columns: repeat(3, 1fr);
         column-gap: rem(48px);
@@ -90,6 +197,70 @@
     @include breakpoint('xlarge') {
       &-wrapper {
         column-gap: rem(64px);
+      }
+    }
+  }
+      
+  &__cards {
+    margin-top: rem(64px);
+
+    @include breakpoint('large') {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: rem(56px);
+    }
+  }
+
+  &__card {
+    display: grid;
+    padding: rem(24px);
+    margin-bottom: rem(32px);
+    background: $color-text-light-100;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 1px 18px rgba(0, 0, 0, 0.12),
+      0px 3px 10px rgba(0, 0, 0, 0.11);
+    width: 100%;
+
+    &-icon {
+      margin-bottom: rem(24px);
+    }
+
+    &-title {
+      @extend %font-ui-heading-md;
+      color: $color-text-dark-100;
+      margin-bottom: rem(8px);
+
+      .icon {
+        width: rem(8px);
+        height: rem(8px);
+        margin-bottom: rem(2px);
+        color: $color-primary-blue-600;
+      }
+    }
+
+    &-desc {
+      @extend %font-body-short-md-serif;
+      color: $color-text-dark-190;
+    }
+
+    @include breakpoint('small') {
+      grid-template-columns: auto auto;
+      column-gap: rem(24px);
+
+      &-icon {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+      }
+
+      &-title,
+      &-desc {
+        grid-column: 2;
+
+      }
+    }
+
+@include breakpoint('large') {
+      &:last-child {
+        margin-left: rem(64px);
       }
     }
   }
