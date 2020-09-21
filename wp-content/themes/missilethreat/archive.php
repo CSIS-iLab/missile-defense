@@ -47,8 +47,9 @@ Heeeadeeeeeerrrrrrrrrrrrrr
   
   
   <aside class="tier-1__sidebar">
-    
-    Sidebar ish goes here
+    <?php
+    get_template_part( 'template-parts/filter' )
+    ?>
   </aside>
 </div>
 
