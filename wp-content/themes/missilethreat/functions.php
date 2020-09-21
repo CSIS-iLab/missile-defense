@@ -189,15 +189,15 @@ function missilethreat_register_styles() {
 
 	wp_enqueue_style( 'missilethreat-style', get_stylesheet_directory_uri() . '/style.min.css', array(), $theme_version );
 
-	if ( is_front_page() || is_home() ) {
+	if ( is_front_page() ) {
 		wp_enqueue_style( 'missilethreat-style-home', get_stylesheet_directory_uri() . '/assets/css/pages/home.min.css', array(), $theme_version );
 	}
 
-	if ( is_archive() || is_page('analysis') ) {
+	if ( is_archive() || is_home() ) {
 		wp_enqueue_style( 'missilethreat-style-archive', get_stylesheet_directory_uri() . '/assets/css/pages/archive.min.css', array(), $theme_version );
 	}
 
-	if ( is_singular() && !is_page('analysis') ) {
+	if ( is_singular() ) {
 		wp_enqueue_style( 'missilethreat-style-single', get_stylesheet_directory_uri() . '/assets/css/pages/single.min.css', array(), $theme_version );
 	}
 

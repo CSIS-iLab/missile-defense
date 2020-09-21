@@ -7,8 +7,9 @@
  * @since 1.0.0
  */
 
+echo do_shortcode( '[searchandfilter fields="category,system,countries" types="checkbox,checkbox,checkbox" operators="OR" hierarchial="0,1,1"]' );
 
-// var_dump(get_taxonomies());
+var_dump(get_taxonomies());
 // var_dump(get_categories());
 
 if( $terms = get_terms( array(
@@ -17,10 +18,10 @@ if( $terms = get_terms( array(
 	),
 	'orderby' => 'name',
 	'exclude_tree' => array(
-		17,
-		34,
-		275,
-		1
+		17, // Analysis
+		34, // Featured
+		275, // Ongoing Projects
+		1 // Uncategorized
 		)
 		))) :
 		
