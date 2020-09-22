@@ -314,6 +314,17 @@ function missilethreat_sidebar_registration() {
 		)
 	);
 
+			// Primary Sidebar
+			register_sidebar(
+				array(
+						'name'        => __( 'Page Sidebar', 'missilethreat' ),
+						'id'          => 'sidebar',
+						'description' => __( 'Widgets in this area will be displayed on the right side of landing pages.', 'missilethreat' ),
+						'before_widget' => '',
+						'after_widget' => ''
+					)
+			);
+
 	// Social Share
 	register_sidebar(
 		array(

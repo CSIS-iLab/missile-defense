@@ -13,15 +13,15 @@ get_header();
 
 <main id="site-content" role="main">
 
-<header class="tier-1__header">
+<header class="archive__header">
 
 Heeeadeeeeeerrrrrrrrrrrrrr
 
 </header>
 
-<div class='tier-1'>
+<div class='archive'>
 
-  <section class="tier-1__content">
+  <section class="archive__content">
     
   <?php
   
@@ -61,9 +61,10 @@ Heeeadeeeeeerrrrrrrrrrrrrr
   
   
   
-  <aside class="tier-1__sidebar">
+  <aside class="archive__sidebar">
     <?php
-    get_template_part( 'template-parts/filter' )
+    // get_template_part( 'template-parts/filter' )
+    dynamic_sidebar( 'sidebar' )
     ?>
   </aside>
 </div>
