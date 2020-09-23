@@ -323,6 +323,19 @@ function missilethreat_custom_sort_posts( $query ) {
 add_action( 'pre_get_posts', 'missilethreat_custom_sort_posts' );
 
 /**
+ * Change the default post query to exclude News on Analysis page.
+ *
+ * @param  array $query Query object.
+ */
+function missilethreat_analysis_exclude_category($query) {
+    if ( $query->is_home() ) {
+    $query->set('cat', '-42');
+    }
+    return $query;
+    }
+    add_filter('pre_get_posts', 'missilethreat_analysis_exclude_category');
+
+/**
  * Add search link to the main menu.
  * @param  string $items Menu items content.
  * @param  array $args  Menu.
@@ -350,9 +363,9 @@ add_filter( 'wp_nav_menu_items','missiledefense_add_search_box', 10, 2 );
  */
 function missiledefense_archive_titles( $title ) {
     if( is_category() ) {
-        $title = single_cat_title( '<span class="archive-label">Category:</span> ', false );
+        $title = single_cat_title( '<span class="archive-label">Tag:</span> ', false );
     } elseif( is_tag() ) {
-        $title = single_tag_title( '<span class="archive-label">Keyword:</span> ', false );
+        $title = single_tag_title( '<span class="archive-label">Tag:</span> ', false );
     } elseif( is_author() ) {
         $title = '<span class="archive-label">Author:</span> ' . get_the_author();
     } elseif ( is_tax( 'system' ) ) {
@@ -364,7 +377,7 @@ add_filter( 'get_the_archive_title', 'missiledefense_archive_titles' );
 
 /**
 *
-* Recreate the default filters on the_content so we can pull formated content with get_post_meta
+* Recreate the default filters on the_content so we can pull formatted content with get_post_meta
 */
 add_filter( 'meta_content', 'wptexturize' );
 add_filter( 'meta_content', 'convert_smilies' );
