@@ -24,22 +24,7 @@ Heeeadeeeeeerrrrrrrrrrrrrr
   <section class="archive__content">
     
   <?php
-  
-  // $catPosts = new WP_Query( array(
-	// 	'post_type' => 'post',
-  //   'post_status' => 'publish',
-	// 	// 'posts_per_page' => 5,
-	// 	'category_name' => 'analysis'
-	// ) );
 
-	// if ( $catPosts->have_posts() ) {
-
-	// 	while ( $catPosts->have_posts() ) {
-	// 		$catPosts->the_post();
-
-	// 		get_template_part( 'template-parts/block-post' );
-	// 	}
-	// }
 
   if ( have_posts() ) {
 
@@ -63,8 +48,8 @@ Heeeadeeeeeerrrrrrrrrrrrrr
   
   <aside class="archive__sidebar">
     <?php
-    // get_template_part( 'template-parts/filter' )
-    dynamic_sidebar( 'sidebar' )
+    get_template_part( 'template-parts/sidebar' )
+    // dynamic_sidebar( 'sidebar' )
     ?>
   </aside>
 </div>
