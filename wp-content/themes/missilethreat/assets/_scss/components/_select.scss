@@ -1,0 +1,6 @@
+@use '../abstracts' as *;
+
+.component-select {
+  max-width: rem(280px);
+  background: $color-primary-light-gray;
+}

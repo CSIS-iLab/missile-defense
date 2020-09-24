@@ -18,7 +18,7 @@ $query = new WP_Query( array(
 ) )
 	// if categories exist, display the dropdown
 	?>
-	<label for="system-select">SEARCH</label>
+	<label for="system-select" class="component-select__label">SEARCH</label>
 	<select name="componentSelect" id="system-select" class="component-select"><option value="">Choose a component...</option>
 	<?php
 	while( $query->have_posts() ) {
@@ -40,7 +40,7 @@ $query = new WP_Query( array(
 ) )
 	// if categories exist, display the dropdown
 	?>
-	<label for="missile-select">SEARCH</label>
+	<label for="missile-select" class="component-select__label">SEARCH</label>
 	<select name="missileSelect" id="missile-select" class="component-select"><option value="">Choose a component...</option>
 	<?php
 	while( $query->have_posts() ) {
