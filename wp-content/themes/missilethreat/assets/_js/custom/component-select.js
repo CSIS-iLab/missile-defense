@@ -2,9 +2,12 @@ document.addEventListener(
   'input',
   function (event) {
     // Only run on our select menu
-    if (event.target.id !== 'component-select') return
+    if (
+      event.target.id !== 'system-select' &&
+      event.target.id !== 'missile-select'
+    )
+      return
 
-    console.log(event.target.value)
     window.location.href = event.target.value
   },
   false
