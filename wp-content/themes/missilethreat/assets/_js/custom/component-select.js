@@ -1,14 +1,26 @@
-document.addEventListener(
-  'input',
-  function (event) {
-    // Only run on our select menu
-    if (
-      event.target.id !== 'system-select' &&
-      event.target.id !== 'missile-select'
-    )
-      return
+let systemSubmit = document.querySelector('#system-select-go')
+let missileSubmit = document.querySelector('#missile-select-go')
 
-    window.location.href = event.target.value
-  },
-  false
-)
+if (missileSubmit) {
+  missileSubmit.addEventListener(
+    'click',
+    function () {
+      let missileSelection = document.querySelector('#missile-select').value
+
+      window.location.href = missileSelection
+    },
+    false
+  )
+}
+
+if (systemSubmit) {
+  systemSubmit.addEventListener(
+    'click',
+    function () {
+      let systemSelection = document.querySelector('#system-select').value
+
+      window.location.href = systemSelection
+    },
+    false
+  )
+}
