@@ -19,7 +19,8 @@ $query = new WP_Query( array(
 	?>
 
 	<label for="system-select" class="component-select__label">SEARCH</label>
-	<select name="componentSelect" id="system-select" class="component-select"><option value="">Choose a component...</option>
+	<div class=component-select>
+	<select name="componentSelect" id="system-select" class="component-select__dropdown"><option value="">Choose a component...</option>
 
 	<?php
 	while( $query->have_posts() ) {
@@ -27,7 +28,7 @@ $query = new WP_Query( array(
 		echo '<option value="' . esc_url( get_permalink() ) . '" class="component-select__option">' . get_the_title() . '</option>';
 	}
 
-	echo '</select><button type="submit" form="system-select" class="component-select__submit" id="system-select-go">Go</button>';
+	echo '</select><button type="submit" form="system-select" class="btn btn--dark component-select__submit" id="system-select-go">Go</button></div>';
 
 	wp_reset_postdata();
 
@@ -42,7 +43,8 @@ $query = new WP_Query( array(
 	?>
 
 	<label for="missile-select" class="component-select__label">SEARCH</label>
-	<select name="missileSelect" id="missile-select" class="component-select"><option value="">Choose a missile...</option>
+	<div class=component-select>
+		<select name="missileSelect" id="missile-select" class="component-select__dropdown"><option value="">Choose a missile...</option>
 
 	<?php
 	while( $query->have_posts() ) {
@@ -50,7 +52,7 @@ $query = new WP_Query( array(
 		echo '<option value="' . esc_url( get_permalink() ) . '" class="component-select__option">' . get_the_title() . '</option>';
 	}
 
-	echo '</select><button type="submit" form="missile-select" class="component-select__submit" id="missile-select-go">Go</button>';
+	echo '</select><button type="submit" form="missile-select" class="component-select__submit" id="missile-select-go">Go</button></div>';
 
 	wp_reset_postdata();
 
