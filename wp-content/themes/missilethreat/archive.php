@@ -49,7 +49,7 @@ Heeeadeeeeeerrrrrrrrrrrrrr
   <aside class="archive__sidebar">
     <?php
     get_template_part( 'template-parts/sidebar' )
-    // dynamic_sidebar( 'sidebar' )
+
     ?>
   </aside>
 </div>

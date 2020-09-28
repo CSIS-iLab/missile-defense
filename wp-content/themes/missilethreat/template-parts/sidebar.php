@@ -42,7 +42,7 @@ $query = new WP_Query( array(
 	?>
 
 	<label for="missile-select" class="component-select__label">SEARCH</label>
-	<select name="missileSelect" id="missile-select" class="component-select"><option value="">Choose a component...</option>
+	<select name="missileSelect" id="missile-select" class="component-select"><option value="">Choose a missile...</option>
 
 	<?php
 	while( $query->have_posts() ) {

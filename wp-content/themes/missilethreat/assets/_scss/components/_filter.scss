@@ -1,0 +1,101 @@
+@use 'abstracts' as *;
+
+.searchandfilter {
+  h4 {
+    @extend %font-ui-text-md;
+    color: $color-text-dark-170;
+  }
+
+  .sf-input-checkbox {
+    position: absolute;
+    left: -9999px;
+    appearance: none;
+
+    &:not(:checked) + label,
+    &:checked + label {
+      @extend %font-ui-text-lg;
+      position: relative;
+      padding-left: rem(28px);
+      color: $color-text-dark-190;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-text-dark-100;
+      }
+    }
+
+    &:not(:checked) + label::before,
+    &:checked + label::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: rem(16px);
+      height: rem(16px);
+      border: 1px solid $color-text-dark-100;
+    }
+
+    &:hover:not(:checked) + label::before,
+    &:hover:checked + label::before {
+      background: $color-primary-light-blue;
+    }
+
+    &:focus + label::before {
+      outline: 3px solid $color-focus;
+    }
+
+    &:not(:checked) + label::after,
+    &:checked + label::after {
+      content: '\2713\0020';
+      position: absolute;
+      top: rem(2px);
+      left: rem(4px);
+      color: $color-primary-blue-200;
+      font-size: rem(12px);
+      transition: all 0.2s;
+    }
+
+    &:not(:checked) + label::after {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    &:checked + label::after {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    &:disabled:not(:checked) + label::before,
+    &:disabled:checked + label::before,
+    &:disabled:checked + label::after,
+    &:disabled + label {
+      opacity: 0.4;
+    }
+  }
+
+  .sf-field-category,
+  .sf-field-post_type {
+    padding: 0;
+  }
+
+  .sf-level-0 {
+    padding: rem(4px) 0;
+  }
+
+  // Remove analysis checkbox from the analysis form
+  &[data-sf-form-id='7300'] .sf-item-17 {
+    display: none;
+  }
+
+  // Styles for archive filter
+  &[data-sf-form-id='7299'] {
+    .sf-field-category li:not(:first-child) {
+      margin-left: rem(16px);
+    }
+
+    .sf-field-category li:first-child,
+    .sf-field-post_type {
+      font-weight: 600;
+    }
+  }
+}
