@@ -11,18 +11,20 @@ function get_archive_post_type() {
 	return is_archive() ? get_queried_object()->name : false;
 }
 
-if( get_archive_post_type() ) {
+$post_type = get_archive_post_type();
+
+if( is_post_type_archive( array( 'defsys', 'missile' ) ) ) {
 	$query = new WP_Query( array(
-			'post_type' => get_archive_post_type(),
+			'post_type' => $post_type,
 			'post_status' => 'publish',
 			'orderby' => 'name',
 			'order' => 'ASC',
 			'posts_per_page' => -1
 	) );
 
-	if( get_archive_post_type() === 'defsys') {
+	if( $post_type === 'defsys') {
 		$archive_type = 'component';
-	} elseif( get_archive_post_type() === 'missile' ) {
+	} elseif( $post_type === 'missile' ) {
 		$archive_type = 'missile';
 	}
 		?>

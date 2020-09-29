@@ -2,14 +2,13 @@
 
 .archive {
   display: grid;
-  row-gap: rem(48px);
+  grid-gap: rem(48px);
   width: 100%;
 
   @include breakpoint('large') {
     grid-template-columns: auto 300px;
     justify-content: center;
-    column-gap: 6vw;
-    row-gap: 0;
+    grid-gap: 6vw;
 
     &__content {
       grid-column: 1;
