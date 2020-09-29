@@ -73,8 +73,10 @@
     }
   }
 
+  /* stylelint-disable */
   .sf-field-category,
   .sf-field-post_type {
+    /* stylelint-enable */
     padding: 0;
   }
 
@@ -93,8 +95,10 @@
       margin-left: rem(16px);
     }
 
+    /* stylelint-disable */
     .sf-field-category li:first-child,
     .sf-field-post_type {
+      /* stylelint-enable */
       font-weight: 600;
     }
   }
