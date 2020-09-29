@@ -16,6 +16,10 @@ get_header();
 	<section class="home__recent">
 
 	<h1 class="title text--bold">Hello, World!</h1>
+	<button class="btn">Base</button>
+	<button class="btn btn--short">Base short</button>
+	<button class="btn btn--tall">Base tall</button>
+	<button class="btn btn--blue">Base blue</button>
 
 	<?php
 
