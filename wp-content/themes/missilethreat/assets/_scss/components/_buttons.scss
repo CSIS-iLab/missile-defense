@@ -1,26 +1,16 @@
 @use '../abstracts' as *;
 
 .btn {
+  @extend %font-ui-text-md;
   display: inline-block;
-  padding: rem(8) rem(12);
-  // @extend %font-button;
+  padding: rem(14) rem(20);
+  max-height: rem(40px);
   text-align: center;
   text-transform: uppercase;
   background: transparent;
-  // border: 1px solid $color-primary-dark;
-  border-radius: 3px;
+  border: none;
+  border-radius: 2px;
   transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
-
-  // &:hover {
-  //   color: $color-text-gray-05;
-  //   background: $color-primary-dark-200;
-  //   border: 1px solid $color-primary-dark;
-  // }
-
-  // &:focus {
-  //   outline: none;
-  //   box-shadow: 0 0 0 2px $color-primary-light;
-  // }
 
   &:not([disabled]) {
     cursor: pointer;
@@ -31,35 +21,24 @@
   }
 }
 
-// .btn--solid {
-//   color: $color-text-gray-05;
-//   background: $color-primary-dark;
+.btn--short {
+  padding: rem(8px) rem(20px);
+}
 
-//   &:focus {
-//     color: $color-text-gray-05;
-//   }
-// }
+.btn--light {
+  color: $color-primary-blue-200;
+  background: $color-primary-light-blue;
 
-// .btn--outline {
-//   color: $color-primary-dark;
-//   background: transparent;
-// }
+  &:hover {
+    background: $color-primary-light-gray;
+  }
+}
 
-// .btn--gray {
-//   color: $color-white-100;
-//   background: $color-primary-darkest;
+.btn--dark {
+  color: $color-text-light-100;
+  background: $color-primary-blue-600;
 
-//   &:focus {
-//     color: $color-white-100;
-//   }
-// }
-
-.btn--circle {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border-radius: 50%;
+  &:hover {
+    background: $color-primary-blue-400;
+  }
 }
