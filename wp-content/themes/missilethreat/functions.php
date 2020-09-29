@@ -189,11 +189,11 @@ function missilethreat_register_styles() {
 
 	wp_enqueue_style( 'missilethreat-style', get_stylesheet_directory_uri() . '/style.min.css', array(), $theme_version );
 
-	if ( is_front_page() || is_home() ) {
+	if ( is_front_page() ) {
 		wp_enqueue_style( 'missilethreat-style-home', get_stylesheet_directory_uri() . '/assets/css/pages/home.min.css', array(), $theme_version );
 	}
 
-	if ( is_archive() ) {
+	if ( is_archive() || is_home() ) {
 		wp_enqueue_style( 'missilethreat-style-archive', get_stylesheet_directory_uri() . '/assets/css/pages/archive.min.css', array(), $theme_version );
 	}
 
@@ -313,6 +313,17 @@ function missilethreat_sidebar_registration() {
 			)
 		)
 	);
+
+			// Primary Sidebar
+			register_sidebar(
+				array(
+						'name'        => __( 'Page Sidebar', 'missilethreat' ),
+						'id'          => 'sidebar',
+						'description' => __( 'Widgets in this area will be displayed on the right side of landing pages.', 'missilethreat' ),
+						'before_widget' => '',
+						'after_widget' => ''
+					)
+			);
 
 	// Social Share
 	register_sidebar(

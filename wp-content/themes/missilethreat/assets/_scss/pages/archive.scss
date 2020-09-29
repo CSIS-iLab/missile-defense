@@ -1,1 +1,23 @@
 @use '../abstracts' as *;
+
+.archive {
+  display: grid;
+  grid-gap: rem(48px);
+  width: 100%;
+
+  @include breakpoint('large') {
+    grid-template-columns: auto 300px;
+    justify-content: center;
+    grid-gap: 6vw;
+
+    &__content {
+      grid-column: 1;
+      max-width: rem(700px);
+    }
+
+    &__sidebar {
+      grid-column: 2;
+      max-width: rem(300px);
+    }
+  }
+}
