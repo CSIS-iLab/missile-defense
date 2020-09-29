@@ -327,13 +327,13 @@ add_action( 'pre_get_posts', 'missilethreat_custom_sort_posts' );
  *
  * @param  array $query Query object.
  */
-function missilethreat_analysis_exclude_category($query) {
-    if ( $query->is_home() ) {
-    $query->set('cat', '-42');
-    }
-    return $query;
-    }
-    add_filter('pre_get_posts', 'missilethreat_analysis_exclude_category');
+// function missilethreat_analysis_exclude_category($query) {
+//     if ( $query->is_home() ) {
+//     $query->set('cat', '-42');
+//     }
+//     return $query;
+//     }
+//     add_filter('pre_get_posts', 'missilethreat_analysis_exclude_category');
 
 /**
  * Add search link to the main menu.
