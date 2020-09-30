@@ -3,12 +3,11 @@
 .btn {
   @extend %font-ui-text-md;
   display: inline-block;
-  padding: rem(14) rem(20);
-  max-height: rem(40px);
+  padding: rem(13) rem(20);
   text-align: center;
   text-transform: uppercase;
   background: transparent;
-  border: none;
+  border: 0;
   border-radius: 2px;
   transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
 
