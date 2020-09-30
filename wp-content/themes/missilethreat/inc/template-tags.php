@@ -396,10 +396,13 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 		}
 
 		if ( $systems ) {
-			$html = '<h3 class="parent-label">Parent Systems: </h3>';
+			$html = '<h3 class="parent-system__label">Parent Systems: </h3>';
 			foreach ( $systems as $system ) {
 				$prefix = '<br/>';
-				$html .= $prefix . '<a href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . '</a>';
+				if ( $i == 0 ) {
+					$prefix = '';
+				}
+				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . '</a>';
 			}
 			wp_reset_postdata();
 
