@@ -22,7 +22,6 @@
   &__dropdown {
     @extend %font-ui-text-lg;
     max-width: rem(280px);
-    height: rem(40px);
     padding: 0 rem(40px) 0 rem(8px);
     color: $color-text-dark-155;
     text-overflow: ellipsis;

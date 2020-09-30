@@ -6,9 +6,9 @@
   width: 100%;
 
   @include breakpoint('large') {
+    grid-gap: 6vw;
     grid-template-columns: auto 300px;
     justify-content: center;
-    grid-gap: 6vw;
 
     &__content {
       grid-column: 1;
