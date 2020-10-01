@@ -1,6 +1,6 @@
 <?php
 /**
- * The default template for displaying content
+ * The default template for displaying defense system content
  *
  * Used for both singular and index.
  *
@@ -11,14 +11,18 @@
  * @since 1.0.0
  */
 
+get_template_part( 'template-parts/breadcrumbs' )
 ?>
+
+
+
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
 	<?php
 
 	get_template_part( 'template-parts/entry-header' );
-	get_template_part( 'template-parts/breadcrumbs' );
+	missiledefense_system_terms()
 	?>
 
 	<div class="single__content">

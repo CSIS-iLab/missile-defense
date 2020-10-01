@@ -20,6 +20,7 @@ get_header();
 <main id="site-content" role="main">
 
 	<?php
+		get_template_part( 'template-parts/breadcrumbs' );
 
 	$archive_title    = '';
 	$archive_subtitle = '';

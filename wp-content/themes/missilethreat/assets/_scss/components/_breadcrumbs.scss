@@ -1,0 +1,47 @@
+@use '../abstracts' as *;
+
+.breadcrumbs {
+  @extend %font-ui-text-lg;
+  margin: 0;
+  margin-bottom: rem(16px);
+  padding: 0;
+  color: $color-text-dark-170;
+  font-size: 0.9em;
+  list-style-type: none;
+
+  &:hover {
+    color: $color-text-dark-100;
+  }
+
+  &--light {
+    color: $color-text-light-190;
+
+    &:hover {
+      color: $color-text-light-100;
+    }
+  }
+
+  li {
+    float: left;
+
+    &::after {
+      content: '>';
+      margin: 0 rem(8px);
+      color: $color-primary-blue-900;
+    }
+
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  li:last-child {
+    &::after {
+      content: '';
+    }
+  }
+}
