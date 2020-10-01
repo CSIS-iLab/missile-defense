@@ -18,7 +18,6 @@
 	<?php
 
 	get_template_part( 'template-parts/entry-header' );
-	get_template_part( 'template-parts/breadcrumbs' );
 	?>
 
 	<div class="single__content">
