@@ -32,14 +32,14 @@ if ( !empty( $terms ) ) {
 
 if ( $missiles ) : ?>
 
-	<div class="missiletable">
+	<div class="missile-table">
 	<h2><?php esc_html_e( 'Missiles', 'missiledefense' ); ?></h2>
 	<table id="missileTable">
 		<thead>
 			<th><?php esc_html_e( 'Missile Name', 'missiledefense' ); ?></th>
-			<th class="hidden-xs"><?php esc_html_e( 'Class', 'missiledefense' ); ?></th>
-			<th class="hidden-xs"><?php esc_html_e( 'Range', 'missiledefense' ); ?></th>
-			<th class="hidden-xs"><?php esc_html_e( 'News', 'missiledefense' ); ?></th>
+			<th><?php esc_html_e( 'Class', 'missiledefense' ); ?></th>
+			<th><?php esc_html_e( 'Range', 'missiledefense' ); ?></th>
+			<th><?php esc_html_e( 'News', 'missiledefense' ); ?></th>
 		</thead>
 		<tbody>
 		<?php
@@ -48,8 +48,10 @@ if ( $missiles ) : ?>
 			setup_postdata( $post );
       $custom = get_post_custom();
 
+      $missileURL = get_field('missile_url');
+
       if(isset($custom['missile_url'])) {
-        $url = $custom['missile_url'][0];
+        $url = esc_url(get_permalink($missileURL[0]));
       }
       else {
         $url = esc_url( get_permalink());
@@ -91,21 +93,21 @@ if ( $missiles ) : ?>
             }
           ?>
         </td>
-        <td class="hidden-xs">
+        <td>
           <?php
             if(isset($custom['missile_class'])) {
               echo $custom['missile_class'][0];
             }
           ?>
         </td>
-        <td class="hidden-xs" data-order="<?php echo $range; ?>">
+        <td data-order="<?php echo $range; ?>">
           <?php
             if(isset($custom['missile_range'])) {
               echo $custom['missile_range'][0];
             }
           ?>
         </td>
-        <td class="hidden-xs">
+        <td>
           <?php
             if(isset($custom['missile_status'])) {
               echo $custom['missile_status'][0];

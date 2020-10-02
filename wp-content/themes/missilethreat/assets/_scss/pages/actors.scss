@@ -1,0 +1,15 @@
+@use '../abstracts' as *;
+
+.missile-table {
+  tbody {
+    @extend %font-body-short-lg;
+
+    tr:nth-child(odd) {
+      background: $color-primary-light-gray;
+    }
+  }
+
+  a {
+    color: $color-primary-blue-200;
+  }
+}
