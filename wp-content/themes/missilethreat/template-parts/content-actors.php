@@ -32,7 +32,7 @@ if ( !empty( $terms ) ) {
 
 if ( $missiles ) : ?>
 
-	<div class="missile-table">
+	<div class="missile-table banded">
 	<h2><?php esc_html_e( 'Missiles', 'missiledefense' ); ?></h2>
 	<table id="missileTable">
 		<thead>

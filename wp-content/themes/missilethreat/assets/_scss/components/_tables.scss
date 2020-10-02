@@ -1,0 +1,57 @@
+@use 'abstracts' as *;
+
+table {
+  @extend %font-body-short-md;
+  width: 100%;
+  color: $color-text-dark-190;
+  border-collapse: collapse;
+}
+
+thead {
+  @extend %font-ui-heading-sm;
+  color: $color-text-dark-100;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: rem(2px) solid #5f7981;
+}
+
+tr {
+  border-bottom: rem(1px) solid #cdd5da;
+}
+
+td,
+th {
+  padding: rem(8px);
+  padding-left: rem(12px);
+}
+
+.wp-block-table {
+  margin: rem(32px) auto;
+  border-bottom: none !important;
+
+  figcaption {
+    @extend %font-ui-text-md;
+    width: rem(680px);
+    margin: rem(16px) auto rem(32px) auto;
+    color: $color-text-dark-155;
+  }
+}
+
+.is-style-highlighted-header {
+  max-width: rem(680px);
+
+  thead {
+    background: $color-primary-light-blue;
+  }
+
+  tbody {
+    tr:first-child {
+      border-top: rem(1px) solid #cdd5da;
+    }
+
+    td:first-child {
+      @extend %font-ui-heading-sm;
+      font-weight: 600;
+    }
+  }
+}
