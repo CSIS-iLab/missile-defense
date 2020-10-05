@@ -21,6 +21,7 @@ get_header();
 
 	<?php
 
+
 	$archive_title    = '';
 	$archive_subtitle = '';
 
