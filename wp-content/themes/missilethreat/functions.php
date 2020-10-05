@@ -209,6 +209,9 @@ function missilethreat_register_styles() {
 		wp_enqueue_style( 'missilethreat-style-post', get_stylesheet_directory_uri() . '/assets/css/pages/actors.min.css', array(), $theme_version );
 	}
 
+	// Font Awesome
+	wp_enqueue_script('missilethreat-font-awesome', 'https://use.fontawesome.com/08b1a76eab.js');
+	
 	// Add print CSS.
 	wp_enqueue_style( 'missilethreat-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );
 

@@ -21,13 +21,15 @@ tr {
 
 td,
 th {
-  padding: rem(8px);
-  padding-left: rem(12px);
+  padding: rem(8px) !important; //Important to override data tables styling
+  padding-left: rem(
+    12px
+  ) !important; //Important to override data tables styling
 }
 
 .wp-block-table {
   margin: rem(32px) auto;
-  border-bottom: none !important;
+  border-bottom: 0 !important;
 
   figcaption {
     @extend %font-ui-text-md;
