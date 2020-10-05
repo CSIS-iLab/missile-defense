@@ -30,3 +30,11 @@ body {
     --container-padding: #{rem(80)};
   }
 }
+
+.hidden {
+  &-m {
+    @include breakpoint($break: 'medium', $dir: 'max-width') {
+      display: none;
+    }
+  }
+}
