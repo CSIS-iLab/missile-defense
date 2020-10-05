@@ -219,7 +219,7 @@ if (! function_exists('missilethreat_display_categories')) :
 endif;
 
 /**
- * Displays the post's categories.
+ * Displays the post's tags.
  *
  *
  * @return string $html The categories.
@@ -384,27 +384,25 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 				'post_type' => 'systems',
 				'orderby' => 'post_title',
 				'order' => 'ASC',
-			    'tax_query' => array(
-		            array(
-		                'taxonomy' => 'system',
-		                'field' => 'term_id',
-		                'terms' => $terms,
-		            )
-		        )
+					'tax_query' => array(
+								array(
+										'taxonomy' => 'system',
+										'field' => 'term_id',
+										'terms' => $terms,
+								)
+						)
 			);
 			$systems = get_posts( $args );
 		}
 
 		if ( $systems ) {
-			$html = 'Systems: ';
-			$i = 0;
+			$html = '<h3 class="parent-system__label">Parent Systems: </h3>';
 			foreach ( $systems as $system ) {
-				$prefix = ', ';
+				$prefix = '<br/>';
 				if ( $i == 0 ) {
 					$prefix = '';
 				}
-				$html .= $prefix . '<a href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . '</a>';
-				$i++;
+				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . '</a>';
 			}
 			wp_reset_postdata();
 

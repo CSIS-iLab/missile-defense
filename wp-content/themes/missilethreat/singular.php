@@ -15,6 +15,7 @@ get_header();
 <main id="site-content" role="main">
 
 	<?php
+get_template_part( 'template-parts/breadcrumbs' );
 
 	if ( have_posts() ) {
 
