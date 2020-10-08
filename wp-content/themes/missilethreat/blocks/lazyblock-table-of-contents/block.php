@@ -40,14 +40,14 @@
       }
 
       if( get_page_link() === $chapter_url ) {
-        echo "<p class='tableOfContents__current text--bold'>You are reading</p>"; ?>
-        <li><a href="<?php echo esc_url($chapter_url); ?>" target="_self" rel="nofollow" style="font-weight:600;"><span>Chapter <?php echo $i; ?> | </span><?php echo $chapter_title; echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
+      ?>
+        <li><a href="<?php echo esc_url($chapter_url); ?>" target="_self" rel="nofollow" class="chapter is-active" aria-current='page'><span>Chapter <?php echo $i; ?> | </span><?php echo $chapter_title; echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
         <?php 
       }
 
       else { 
         ?>
-        <li><a href="<?php echo esc_url($chapter_url); ?>" target="_self" rel="nofollow"><span>Chapter <?php echo $i; ?> | </span><?php echo $chapter_title; echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
+        <li><a href="<?php echo esc_url($chapter_url); ?>" target="_self" rel="nofollow" class="chapter"><span>Chapter <?php echo $i; ?> | </span><?php echo $chapter_title; echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
         <?php
       }
       
@@ -56,7 +56,7 @@
 
     if( isset( $appendix ) && !empty( $appendix ) ) {
     ?>
-      <li><a href="<?php echo esc_url($appendix); ?>" target="_self" rel="nofollow">Appendix<?php  echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
+      <li><a href="<?php echo esc_url($appendix); ?>" target="_self" rel="nofollow" class="chapter">Appendix<?php  echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
     <?php } ?>
 
     </ul>

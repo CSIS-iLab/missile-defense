@@ -24,9 +24,16 @@
     }
   }
 
-  &__current {
-    @extend %font-ui-text-sm;
-    color: $color-primary-blue-600;
+  .is-active {
+    font-weight: 600;
+
+    &::before {
+      content: 'You are reading';
+      @extend %font-ui-text-sm;
+      display: block;
+      color: $color-primary-blue-600;
+      text-transform: uppercase;
+    }
   }
 
   button {
