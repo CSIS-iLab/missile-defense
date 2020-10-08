@@ -11,9 +11,10 @@
 ?>
 
 <div class="tableOfContents">
-  <h2 style="font-weight: 600;">In this publication</h2>
-  <ul class="resources">
-    <ul class="chapters">
+  <div class="tableOfContents__details">
+  <h2>In this publication</h2>
+  <ul class="tableOfContents__resources">
+    <ul class="tableOfContents__chapters">
 
   <?php 
 
@@ -27,21 +28,26 @@
     $i = 1;
     foreach( $chapters as $chapter ) {
       $chapter_url = esc_url($chapter['link-to-post']);
+      $chapter_title = $chapter['chapter-title'];
       $chapter_id = url_to_postid($chapter_url);
 
-      if( $chapter_id > 0 ){
+      if( isset( $chapter_title ) && !empty( $chapter_title ) ) {
+        $chapter_title = $chapter_title;
+      }
+
+      else {
         $chapter_title = get_the_title( $chapter_id );
       }
 
       if( get_page_link() === $chapter_url ) {
-        echo "<p class='tableOfContents__current'>You are reading</p>"; ?>
-        <li><a href="<?php echo esc_url($chapter_url); ?>" target="_blank" rel="nofollow" style="font-weight:600;"><span>Chapter <?php echo $i; ?> | </span><?php echo $chapter_title; ?></a></li>
+        echo "<p class='tableOfContents__current text--bold'>You are reading</p>"; ?>
+        <li><a href="<?php echo esc_url($chapter_url); ?>" target="_self" rel="nofollow" style="font-weight:600;"><span>Chapter <?php echo $i; ?> | </span><?php echo $chapter_title; echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
         <?php 
       }
 
       else { 
         ?>
-        <li><a href="<?php echo esc_url($chapter_url); ?>" target="_blank" rel="nofollow"><span>Chapter <?php echo $i; ?> | </span><?php echo $chapter_title; ?></a></li>
+        <li><a href="<?php echo esc_url($chapter_url); ?>" target="_self" rel="nofollow"><span>Chapter <?php echo $i; ?> | </span><?php echo $chapter_title; echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
         <?php
       }
       
@@ -50,7 +56,7 @@
 
     if( isset( $appendix ) && !empty( $appendix ) ) {
     ?>
-      <li><a href="<?php echo esc_url($appendix); ?>" target="_blank" rel="nofollow">Appendix</a></li>
+      <li><a href="<?php echo esc_url($appendix); ?>" target="_self" rel="nofollow">Appendix<?php  echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
     <?php } ?>
 
     </ul>
@@ -62,16 +68,16 @@
     } 
 
     if( isset( $graphics_link ) && !empty( $graphics_link ) ) { ?>
-    <li><a href="<?php echo esc_url($graphics_link); ?>" target="_blank" rel="nofollow">See all illustrations & graphics</a></li>
+    <li class="tableOfContents__graphics"><a href="<?php echo esc_url($graphics_link); ?>" target="_self" rel="nofollow">See all illustrations & graphics<?php  echo missilethreat_get_svg( 'chevron-right' ); ?></a></li>
     <?php
     } 
 
     if( isset( $video_link ) && !empty( $video_link ) ) { ?>
-    <li><a href="<?php echo esc_url($video_link); ?>" target="_blank" rel="nofollow">Watch the video</a></li>
+    <li class="tableOfContents__video-link"><a href="<?php echo esc_url($video_link); ?>" target="_blank" rel="nofollow">Watch the video<?php  echo missilethreat_get_svg( 'external-link' ); ?></a></li>
     <?php } ?>
 
   </ul>
-
+  </div>
 <?php
   if ( isset( $report_cover['link'] ) && !empty( $report_cover['link'] ) ) { ?>
     <img src="<?php echo esc_url($report_cover['link']); ?>" alt="<?php echo $report_cover['alt']; ?>">
