@@ -120,14 +120,21 @@
   &__recent-col1 {
     @include breakpoint('small') {
       grid-column: 1 / span 2;
+    }
 
-      .post-block {
+    .post-block {
+      @include breakpoint('small') {
         grid-template-columns: 1fr 2fr;
         column-gap: rem(32px);
-
+        
+        &:not(:last-of-type) {
+          margin-bottom: rem(16px);
+        }
+        
         .wp-post-image {
           grid-column: 1;
           grid-row: 1 / span 4;
+
         }
 
         &__category,
@@ -173,6 +180,16 @@
       &:last-of-type {
         margin-bottom: 0;
       }
+
+      @include breakpoint('medium') {
+        position: initial;
+        
+        .wp-post-image {
+          position: initial;
+          grid-column: 1;
+          grid-row: 1;
+        }
+      }
     }
 
     @include breakpoint('small') {
@@ -203,54 +220,6 @@
       grid-row: 5;
       margin-bottom: 0;
     }
-
-    // @include breakpoint('medium') {
-    //   position: relative;
-    //   // display: grid;
-
-    //   &:nth-of-type(n+4) {
-    //     // position: initial;
-    //     display: block;
-
-    //     .wp-post-image {
-    //       // position: initial;
-    //     }
-    //   }
-
-    //   &__category,
-    //   &__title,
-    //   .post-meta__date,
-    //   .post-meta__authors,
-    //   &__excerpt {
-    //     grid-column: 2;
-    //   }
-
-    //   &__category {
-    //     grid-row: 1;
-    //   }
-
-    //   &__title {
-    //     grid-row: 2;
-    //   }
-
-    //   .post-meta__date {
-    //     grid-row: 3;
-    //   }
-
-    //   .post-meta__authors {
-    //     grid-row: 4;
-    //     margin-bottom: rem(16px);
-    //   }
-
-    //   .wp-post-image {
-    //     position: absolute;
-    //     grid-column: 1 / span 1;
-    //   }
-    // }
-
-    // @include breakpoint('large') {
-
-    // }
   }
 
   &__news {
@@ -371,7 +340,7 @@
     @include full-width-background($color-primary-light-gray);
     z-index: -1;
     margin-top: rem(-88px);
-    padding: rem(112px) 0 rem(56px) 0 ;
+    padding: rem(112px) 0 rem(56px) 0;
     background: $color-primary-light-gray;
 
     &-title {
