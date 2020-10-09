@@ -13,28 +13,42 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
-	<section class="home__recent">
-
-	<h1 class="title text--bold">Hello, World!</h1>
-	<button class="btn btn--dark btn--short text--semibold">Short</button>
-	<button class="btn btn--light text--semibold">Light</button>
-	<button class="btn btn--dark text--semibold">Dark</button>
-
-	<?php
-
+	
+	<div class="home__hero">
+		<div class="home__about">
+				<?php the_content(); ?>
+		</div>
+		<div class="home__credits">
+			<p class="home__initiative">an initiative from<br/><a href="https://www.csis.org/programs/international-security-program/missile-defense-project" class="text--semibold">Missile Defense Project</a></p>
+			<a href="https://www.csis.org" class="home__logo"><?php include( get_template_directory() . '/assets/static/csis-logo.svg'); ?></a>
+		</div>
+	</div>
+	
+<?php
 	$featuredPosts = get_field('featured_posts');
 
 	if ( $featuredPosts ) {
-
+		$i = 0;
 		foreach($featuredPosts as $key => $post):
 			setup_postdata($post);
 
 			// If you need to have the first featured post look different, you can use this code to use a different template-part for it.
 			if ($key === array_key_first($featuredPosts)) {
+				echo '<section class="home__recent-col1">';
 				get_template_part( 'template-parts/block-post-featured' );
+			} elseif ($i === 2) {
+				get_template_part( 'template-parts/block', get_post_type() );
+				echo '</section>';
+			} elseif ($i === 3) {
+				echo '<section class="home__recent-col2">';
+				get_template_part( 'template-parts/block', get_post_type() );
+			} elseif ($i === 4) {
+				get_template_part( 'template-parts/block', get_post_type() );
+				echo '</section>';
 			} else {
 				get_template_part( 'template-parts/block', get_post_type() );
 			}
+			$i++;
 
 			endforeach;
 
@@ -42,7 +56,6 @@ get_header();
 	}
 
 	?>
-	</section>
 
 	<section class="home__news">
 	<h2 class="home__news-heading">News</h2>
@@ -67,7 +80,9 @@ get_header();
 	}
 	?>
 
-  </section>
+	</section>
+	
+	<div class="home__all-analysis"><a href="<?php echo site_url('/analysis') ?>">All Analysis <?php echo missilethreat_get_svg('chevron-right') ?></a></div>
 
 <section class="home__cards">
 		<div class="home__card">
@@ -117,6 +132,26 @@ get_header();
 
 			?>
 		</div>
+		</section>
+
+		<section class="home__newsletter">
+			<h2>Newsletter Placeholder</h2>
+			<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue nisi quis erat ullamcorper malesuada. Fusce dapibus ligula sit amet eros lobortis, quis iaculis dui molestie. Curabitur tortor libero, imperdiet quis justo eu, pellentesque sagittis augue. Ut maximus tincidunt nibh quis laoreet. Suspendisse potenti. Etiam vulputate in dui at tempor. Vivamus commodo iaculis massa, vel ultricies elit euismod eu. Mauris a sapien suscipit, venenatis ligula in, iaculis lacus. Cras at ex cursus, placerat turpis nec, lacinia purus. Praesent sagittis mattis enim a vulputate. Vestibulum maximus, metus sed gravida tincidunt, augue tortor dignissim tortor, mattis lobortis sapien lorem nec mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu luctus quam. Etiam eget lobortis metus, in luctus sapien. Fusce finibus bibendum augue nec ultrices.
+			</p>
+
+			</section>
+		<section class="home__events">
+			<h2>Events Placeholder</h2>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue nisi quis erat ullamcorper malesuada. Fusce dapibus ligula sit amet eros lobortis, quis iaculis dui molestie. Curabitur tortor libero, imperdiet quis justo eu, pellentesque sagittis augue. Ut maximus tincidunt nibh quis laoreet. Suspendisse potenti. Etiam vulputate in dui at tempor. Vivamus commodo iaculis massa, vel ultricies elit euismod eu. Mauris a sapien suscipit, venenatis ligula in, iaculis lacus. Cras at ex cursus, placerat turpis nec, lacinia purus. Praesent sagittis mattis enim a vulputate. Vestibulum maximus, metus sed gravida tincidunt, augue tortor dignissim tortor, mattis lobortis sapien lorem nec mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu luctus quam. Etiam eget lobortis metus, in luctus sapien. Fusce finibus bibendum augue nec ultrices.
+			</p>
+		</section>
+		<section class="home__twitter">
+			<h2>Twitter Placeholder</h2>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue nisi quis erat ullamcorper malesuada. Fusce dapibus ligula sit amet eros lobortis, quis iaculis dui molestie. Curabitur tortor libero, imperdiet quis justo eu, pellentesque sagittis augue. Ut maximus tincidunt nibh quis laoreet. Suspendisse potenti. Etiam vulputate in dui at tempor. Vivamus commodo iaculis massa, vel ultricies elit euismod eu. Mauris a sapien suscipit, venenatis ligula in, iaculis lacus. Cras at ex cursus, placerat turpis nec, lacinia purus. Praesent sagittis mattis enim a vulputate. Vestibulum maximus, metus sed gravida tincidunt, augue tortor dignissim tortor, mattis lobortis sapien lorem nec mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu luctus quam. Etiam eget lobortis metus, in luctus sapien. Fusce finibus bibendum augue nec ultrices.
+			</p>
 		</section>
 
 </main><!-- #site-content -->
