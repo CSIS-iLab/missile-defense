@@ -469,5 +469,10 @@
       grid-column: 2 / span 2;
       padding-left: rem(32px);
     }
+
+    &-heading {
+      @extend %font-ui-heading-lg;
+      color: $color-primary-blue-200;
+    }
   }
 }
