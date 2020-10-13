@@ -1,68 +1,68 @@
 @use '../abstracts' as *;
 
-#site-content {
-  @include breakpoint('small') {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: rem(64px);
-  }
-
-  @include breakpoint('large') {
-    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
-    column-gap: 0;
-  }
-}
-
-.featured-post {
-  width: 100%;
-  margin-top: rem(-48px);
-  margin-bottom: rem(40px);
-
-  .wp-post-image {
-    width: 100%;
-    margin-bottom: rem(40px);
-  }
-
-  &__category {
-    @extend %font-ui-text-sm;
-    margin-bottom: rem(16px);
-    color: $color-text-dark-170;
-
-    &:not(:first-child) {
-      font-weight: 600;
-    }
-
-    &:not(:last-child) {
-      margin-right: rem(4px);
-    }
-  }
-
-  &__title {
-    @extend %font-ui-page-title-sm;
-    margin-bottom: rem(8px);
-    color: $color-text-dark-100;
-  }
-
-  .post-meta__authors {
-    margin-bottom: rem(16px);
-  }
-
-  &__excerpt {
-    @extend %font-body-short-md-serif;
-    color: $color-text-dark-190;
-  }
-
-  @include breakpoint('small') {
-    grid-column: 1 / span 2;
-  }
-
-  @include breakpoint('large') {
-    grid-column: 1 / span 1;
-    margin-top: rem(32px);
-  }
-}
-
 .home {
+  #site-content {
+    @include breakpoint('small') {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: rem(64px);
+    }
+
+    @include breakpoint('large') {
+      grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+      column-gap: 0;
+    }
+  }
+
+  .featured-post {
+    width: 100%;
+    margin-top: rem(-48px);
+    margin-bottom: rem(40px);
+
+    .wp-post-image {
+      width: 100%;
+      margin-bottom: rem(40px);
+    }
+
+    &__category {
+      @extend %font-ui-text-sm;
+      margin-bottom: rem(16px);
+      color: $color-text-dark-170;
+
+      &:not(:first-child) {
+        font-weight: 600;
+      }
+
+      &:not(:last-child) {
+        margin-right: rem(4px);
+      }
+    }
+
+    &__title {
+      @extend %font-ui-page-title-sm;
+      margin-bottom: rem(8px);
+      color: $color-text-dark-100;
+    }
+
+    .post-meta__authors {
+      margin-bottom: rem(16px);
+    }
+
+    &__excerpt {
+      @extend %font-body-short-md-serif;
+      color: $color-text-dark-190;
+    }
+
+    @include breakpoint('small') {
+      grid-column: 1 / span 2;
+    }
+
+    @include breakpoint('large') {
+      grid-column: 1 / span 1;
+      margin-top: rem(32px);
+    }
+  }
+
   &__hero {
     z-index: -1;
     padding-top: rem(32px);
@@ -189,6 +189,10 @@
         &:last-of-type {
           margin-bottom: 0;
         }
+      }
+
+      @include breakpoint('xlarge') {
+        grid-template-columns: 1fr 2fr;
       }
     }
   }
