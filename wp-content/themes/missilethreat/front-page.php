@@ -72,7 +72,7 @@ get_header();
 		while ( $newsPosts->have_posts() ) {
 			$newsPosts->the_post();
 
-			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '" class="link--hover">', '</a></h3>' );
+			the_title( '<a href="' . esc_url( get_permalink() ) . '"><h3 class="home__news-title link--hover">', '</h3></a>' );
 
 			missilethreat_posted_on();
 		}
@@ -88,7 +88,7 @@ get_header();
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
 			<a href="<?php echo site_url('/defsys') ?>" class="home__card-link">
-				<h2 class="home__card-title">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></h2>
+				<h2 class="home__card-title link--hover">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></h2>
 			</a>
 			<p class="home__card-desc">Explore the components that go into making missile defense effective, including sensors, interceptors, command and control.</p>
 		</div>
@@ -96,7 +96,7 @@ get_header();
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
 			<a href="<?php echo site_url('/missile') ?>" class="home__card-link">
-				<h2 class="home__card-title">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></h2>
+				<h2 class="home__card-title link--hover">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></h2>
 			</a>
 			<p class="home__card-desc">A growing collection of information on various countries’ missile systems, with illustrations and information on their capabilities and history.</p>
 		</div>
@@ -109,7 +109,7 @@ get_header();
 		<div class="home__projects-info">
 			<p class="home__projects-desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
 			<?php 
-				$cat_link = home_url('/category/ongoing-projects/');
+				$cat_link = site_url('/category/ongoing-projects');
 			?>
 			<a href="<?php echo esc_url($cat_link); ?>" class="home__projects-view-all">View All <?php echo missilethreat_get_svg('chevron-right') ?></a>
 		</div>

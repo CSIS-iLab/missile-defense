@@ -5,7 +5,7 @@ body {
 }
 
 .link--hover:hover {
-  color: $color-primary-blue-300;
+  color: $color-primary-blue-300 !important;
   text-decoration: underline;
 }
 
