@@ -142,10 +142,40 @@ get_header();
 
 			</section>
 		<section class="home__events">
-			<h2>Events Placeholder</h2>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue nisi quis erat ullamcorper malesuada. Fusce dapibus ligula sit amet eros lobortis, quis iaculis dui molestie. Curabitur tortor libero, imperdiet quis justo eu, pellentesque sagittis augue. Ut maximus tincidunt nibh quis laoreet. Suspendisse potenti. Etiam vulputate in dui at tempor. Vivamus commodo iaculis massa, vel ultricies elit euismod eu. Mauris a sapien suscipit, venenatis ligula in, iaculis lacus. Cras at ex cursus, placerat turpis nec, lacinia purus. Praesent sagittis mattis enim a vulputate. Vestibulum maximus, metus sed gravida tincidunt, augue tortor dignissim tortor, mattis lobortis sapien lorem nec mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu luctus quam. Etiam eget lobortis metus, in luctus sapien. Fusce finibus bibendum augue nec ultrices.
-			</p>
+			<h2 class="home__events-heading">Events</h2>
+			<?php
+				$eventsDescription = get_field('events_description');
+				$event1 = get_field('event_1');
+				$event2 = get_field('event_2');
+				$event3 = get_field('event_3');
+
+				if($eventsDescription) : ?>
+				<p class="home__events-desc"><?php echo $eventsDescription; ?></p>
+				<?php  endif;
+				
+				if($event1) : ?>
+				<div class="event">
+					<p class="event__date"><?php echo $event1['date']; ?></p>
+					<a href="<?php echo esc_url($event1['link']); ?>"  class="event__link"><?php echo $event1['title']; ?></a>
+				</div>
+
+				<?php endif; 
+				
+				if($event2) : ?>
+					<div class="event">
+						<p class="event__date"><?php echo $event2['date']; ?></p>
+						<a href="<?php echo esc_url($event2['link']); ?>"  class="event__link"><?php echo $event2['title']; ?></a>
+					</div>
+	
+					<?php endif;
+					
+					if($event3) : ?>
+						<div class="event">
+							<p class="event__date"><?php echo $event3['date']; ?></p>
+							<a href="<?php echo esc_url($event3['link']); ?>"  class="event__link"><?php echo $event3['title']; ?></a>
+						</div>
+		
+						<?php endif; ?>
 		</section>
 		<section class="home__twitter">
 			<h2 class="home__twitter-heading">Twitter</h2>
