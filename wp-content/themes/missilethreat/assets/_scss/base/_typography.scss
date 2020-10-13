@@ -4,6 +4,11 @@ body {
   font-family: $font-source-sans;
 }
 
+.link--hover:hover {
+  color: $color-primary-blue-300;
+  text-decoration: underline;
+}
+
 .text--bold {
   font-weight: bold;
 }

@@ -72,7 +72,7 @@ get_header();
 		while ( $newsPosts->have_posts() ) {
 			$newsPosts->the_post();
 
-			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
+			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '" class="link--hover">', '</a></h3>' );
 
 			missilethreat_posted_on();
 		}
@@ -149,30 +149,37 @@ get_header();
 				$event2 = get_field('event_2');
 				$event3 = get_field('event_3');
 
+				$formatIn = 'm/d/Y';
+				$formatOut = 'M j';
+
+				$date1 = DateTime::createFromFormat($formatIn, get_field('event_1_date'));
+				$date2 = DateTime::createFromFormat($formatIn, get_field('event_2_date'));
+				$date3 = DateTime::createFromFormat($formatIn, get_field('event_3_date'));
+
 				if($eventsDescription) : ?>
 				<p class="home__events-desc"><?php echo $eventsDescription; ?></p>
 				<?php  endif;
 				
 				if($event1) : ?>
 				<div class="event">
-					<p class="event__date"><?php echo $event1['date']; ?></p>
-					<a href="<?php echo esc_url($event1['link']); ?>"  class="event__link"><?php echo $event1['title']; ?></a>
+					<p class="event__date text--semibold"><?php echo $date1->format($formatOut); ?></p>
+					<a href="<?php echo esc_url($event1['link']); ?>"  class="event__link link--hover"><?php echo $event1['title']; ?></a>
 				</div>
 
 				<?php endif; 
 				
 				if($event2) : ?>
 					<div class="event">
-						<p class="event__date"><?php echo $event2['date']; ?></p>
-						<a href="<?php echo esc_url($event2['link']); ?>"  class="event__link"><?php echo $event2['title']; ?></a>
+						<p class="event__date text--semibold"><?php echo $date2->format($formatOut); ?></p>
+						<a href="<?php echo esc_url($event2['link']); ?>"  class="event__link link--hover"><?php echo $event2['title']; ?></a>
 					</div>
 	
 					<?php endif;
 					
 					if($event3) : ?>
 						<div class="event">
-							<p class="event__date"><?php echo $event3['date']; ?></p>
-							<a href="<?php echo esc_url($event3['link']); ?>"  class="event__link"><?php echo $event3['title']; ?></a>
+							<p class="event__date text--semibold"><?php echo $date3->format($formatOut); ?></p>
+							<a href="<?php echo esc_url($event3['link']); ?>"  class="event__link link--hover"><?php echo $event3['title']; ?></a>
 						</div>
 		
 						<?php endif; ?>

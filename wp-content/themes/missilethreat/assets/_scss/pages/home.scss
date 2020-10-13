@@ -460,6 +460,33 @@
     @include breakpoint('large') {
       padding-right: rem(32px);
     }
+
+    &-heading {
+      @extend %font-ui-heading-lg;
+      margin-bottom: rem(16px);
+      color: $color-primary-blue-200;
+    }
+
+    &-desc {
+      @extend %font-body-short-md-serif;
+      margin-bottom: rem(40px);
+      color: $color-text-dark-190;
+    }
+
+    .event {
+      margin-bottom: rem(40px);
+      
+      &__date {
+        @extend %font-ui-heading-md;
+        margin-bottom: rem(8px);
+        color: $color-primary-blue-600;
+      }
+      
+      &__link {
+        @extend %font-ui-headline-md;
+        color: $color-text-dark-100;
+      }
+    }
   }
 
   &__twitter {
