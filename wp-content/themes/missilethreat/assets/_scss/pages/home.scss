@@ -8,7 +8,8 @@
   }
 
   @include breakpoint('large') {
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    column-gap: 0;
   }
 }
 
@@ -75,7 +76,12 @@
     }
 
     @include breakpoint('large') {
-      grid-column: 2 / span 2;
+      grid-column: 1 / -1;
+      grid-row: 1;
+      margin-bottom: rem(96px);
+      padding-top: rem(88px);
+      padding-bottom: 0;
+      padding-left: 50%;
     }
   }
   
@@ -122,6 +128,12 @@
       grid-column: 1 / span 2;
     }
 
+    @include breakpoint('large') {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      margin-right: rem(32px);
+    }
+    
     .post-block {
       @include breakpoint('small') {
         grid-template-columns: 1fr 2fr;
@@ -132,9 +144,8 @@
         }
         
         .wp-post-image {
-          grid-column: 1;
+          grid-column: 1 / span 1;
           grid-row: 1 / span 4;
-
         }
 
         &__category,
@@ -165,11 +176,20 @@
           grid-row: 5;
         }
       }
-    }
 
-    @include breakpoint('large') {
-      grid-column: 1;
-      grid-row: 1 / span 2;
+      @include breakpoint('medium') {
+        .wp-post-image {
+          position: initial;
+        }
+      }
+
+      @include breakpoint('large') {
+        grid-template-columns: 1fr 1fr;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 
@@ -182,18 +202,24 @@
       }
 
       @include breakpoint('medium') {
-        position: initial;
+        grid-template-columns: 1fr;
         
         .wp-post-image {
           position: initial;
           grid-column: 1;
           grid-row: 1;
+          max-width: 100%;
         }
       }
     }
 
     @include breakpoint('small') {
       grid-column: 1;
+    }
+
+    @include breakpoint('large') {
+      grid-column: 2;
+      margin: 0 rem(32px);
     }
   }
 
@@ -252,6 +278,7 @@
 
     @include breakpoint('large') {
       grid-column: 3;
+      margin-left: rem(32px);
     }
   }
 
@@ -330,6 +357,8 @@
     }
 
     @include breakpoint('large') {
+      margin-bottom: 0;
+
       &:last-child {
         margin-left: rem(64px);
       }
@@ -394,6 +423,7 @@
 
     @include breakpoint('large') {
       grid-column: 1 / span 3;
+      margin-top: rem(-120px);
 
       &-wrapper {
         grid-template-columns: repeat(3, 1fr);
@@ -418,13 +448,22 @@
 
   &__events {
     margin-bottom: rem(24px);
-
+    
     @include breakpoint('small') {
       margin-bottom: rem(56px);
+    }
+    
+    @include breakpoint('large') {
+      padding-right: rem(32px);
     }
   }
 
   &__twitter {
     margin-bottom: rem(56px);
+    
+    @include breakpoint('large') {
+      grid-column: 2 / span 2;
+      padding-left: rem(32px);
+    }
   }
 }
