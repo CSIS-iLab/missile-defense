@@ -1,0 +1,69 @@
+@use 'abstracts' as *;
+
+.tableOfContents {
+  @extend %font-ui-text-lg;
+  margin-bottom: rem(56px);
+  padding: rem(24px) rem(32px);
+  color: $color-text-dark-190;
+  background: $color-primary-light-gray;
+
+  h2 {
+    @extend %font-ui-heading-md;
+    margin-bottom: rem(16px);
+    color: $color-text-dark-100;
+  }
+
+  &__chapters {
+    li:not(:last-child) {
+      margin-bottom: rem(12px);
+    }
+
+    li:last-child {
+      padding-bottom: rem(24px);
+      border-bottom: solid rem(1px) $color-primary-blue-900;
+    }
+  }
+
+  .is-active {
+    font-weight: 600;
+
+    &::before {
+      content: 'You are reading';
+      @extend %font-ui-text-sm;
+      display: block;
+      color: $color-primary-blue-600;
+      text-transform: uppercase;
+    }
+  }
+
+  button {
+    margin: rem(16px) 0;
+  }
+
+  &__graphics {
+    margin-bottom: rem(8px);
+  }
+
+  &__video-link {
+    margin-bottom: rem(12px);
+  }
+
+  img {
+    object-fit: contain;
+    max-width: rem(250px);
+  }
+
+  .icon {
+    margin-left: rem(2px);
+    color: $color-primary-blue-600;
+    font-size: rem(12px);
+  }
+
+  @include breakpoint('medium') {
+    display: flex;
+
+    img {
+      margin-left: rem(32px);
+    }
+  }
+}

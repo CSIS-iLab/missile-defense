@@ -1,2 +1,8 @@
 @use '../abstracts' as *;
 @use '../components/footnotes';
+
+.single__content {
+  max-width: $size__content-max-width;
+  margin-right: auto;
+  margin-left: auto;
+}
