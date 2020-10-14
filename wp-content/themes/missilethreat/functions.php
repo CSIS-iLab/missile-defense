@@ -205,6 +205,14 @@ function missilethreat_register_styles() {
 		wp_enqueue_style( 'missilethreat-style-post', get_stylesheet_directory_uri() . '/assets/css/pages/post.min.css', array(), $theme_version );
 	}
 
+	if ( 'actors' === get_post_type() ) {
+		wp_enqueue_style( 'missilethreat-style-datatables', 'https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css', array(), $theme_version );
+		wp_enqueue_style( 'missilethreat-style-post', get_stylesheet_directory_uri() . '/assets/css/pages/actors.min.css', array(), $theme_version );
+	}
+
+	// Font Awesome
+	wp_enqueue_script('missilethreat-font-awesome', 'https://use.fontawesome.com/08b1a76eab.js');
+	
 	// Add print CSS.
 	wp_enqueue_style( 'missilethreat-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );
 
@@ -232,6 +240,11 @@ function missilethreat_register_scripts() {
 
 	wp_enqueue_script( 'missilethreat-custom-js', get_template_directory_uri() . '/assets/js/custom.min.js', array(), $theme_version, true );
 	wp_script_add_data( 'missilethreat-custom-js', 'defer', true );
+	
+	if ( 'actors' === get_post_type() ) {
+		wp_enqueue_script( 'missilethreat-datatables-js', 'https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.js', array(), $theme_version, true );
+
+	}
 
 }
 
