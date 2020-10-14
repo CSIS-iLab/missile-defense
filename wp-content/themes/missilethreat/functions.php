@@ -309,7 +309,7 @@ function missilethreat_sidebar_registration() {
 			$footer_shared_args,
 			array(
 				'name'        => __( 'Footer #1', 'missilethreat' ),
-				'id'          => 'sidebar-1',
+				'id'          => 'footer-1',
 				'description' => __( 'Widgets in this area will be displayed in the first column in the footer.', 'missilethreat' ),
 			)
 		)
