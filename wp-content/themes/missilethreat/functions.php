@@ -211,7 +211,7 @@ function missilethreat_register_styles() {
 	}
 
 	// Font Awesome
-	wp_enqueue_script('missilethreat-font-awesome', 'https://use.fontawesome.com/08b1a76eab.js');
+	wp_enqueue_script('missilethreat-font-awesome', 'https://kit.fontawesome.com/e0bde54006.js');
 	
 	// Add print CSS.
 	wp_enqueue_style( 'missilethreat-print-style', get_template_directory_uri() . '/print.css', null, $theme_version, 'print' );

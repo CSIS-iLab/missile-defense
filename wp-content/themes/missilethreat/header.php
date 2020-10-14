@@ -36,7 +36,6 @@
 
 			<header id="site-header" class="header" role="banner">
 
-				<!-- TODO: Add MT Logo -->
 				<a href="<?php echo get_home_url(); ?>" class="header__logo" title="Go home">
 				<?php 
 					include( get_template_directory() . '/assets/static/missilethreat-logo.svg'); 
@@ -48,6 +47,7 @@
 					?>
 
 						<nav class="site-nav" aria-label="<?php esc_attr_e( 'Site Navigation', 'missilethreat' ); ?>" role="navigation">
+						<div class="hamburger"><i class="fas fa-bars"></i></div>
 
 							<ul class="primary-menu">
 
