@@ -31,10 +31,3 @@ body {
   }
 }
 
-.hidden {
-  &-m {
-    @include breakpoint($break: 'medium', $dir: 'max-width') {
-      display: none;
-    }
-  }
-}

@@ -37,9 +37,9 @@ if ( $missiles ) : ?>
 	<table id="missileTable">
 		<thead>
 			<th><?php esc_html_e( 'Missile Name', 'missiledefense' ); ?></th>
-			<th class="hidden-m"><?php esc_html_e( 'Class', 'missiledefense' ); ?></th>
-			<th class="hidden-m"><?php esc_html_e( 'Range', 'missiledefense' ); ?></th>
-			<th class="hidden-m"><?php esc_html_e( 'News', 'missiledefense' ); ?></th>
+			<th class="hidden--m"><?php esc_html_e( 'Class', 'missiledefense' ); ?></th>
+			<th class="hidden--m"><?php esc_html_e( 'Range', 'missiledefense' ); ?></th>
+			<th class="hidden--m"><?php esc_html_e( 'News', 'missiledefense' ); ?></th>
 		</thead>
 		<tbody>
 		<?php
@@ -93,21 +93,21 @@ if ( $missiles ) : ?>
             }
           ?>
         </td>
-        <td class="hidden-m">
+        <td class="hidden--m">
           <?php
             if(isset($custom['missile_class'])) {
               echo $custom['missile_class'][0];
             }
           ?>
         </td>
-        <td class="hidden-m" data-order="<?php echo $range; ?>">
+        <td class="hidden--m" data-order="<?php echo $range; ?>">
           <?php
             if(isset($custom['missile_range'])) {
               echo $custom['missile_range'][0];
             }
           ?>
         </td>
-        <td class="hidden-m">
+        <td class="hidden--m">
           <?php
             if(isset($custom['missile_status'])) {
               echo $custom['missile_status'][0];
