@@ -47,8 +47,8 @@
 					?>
 
 						<nav class="site-nav" aria-label="<?php esc_attr_e( 'Site Navigation', 'missilethreat' ); ?>" role="navigation">
-						<div class="hamburger"><i class="fas fa-bars"></i></div>
-
+						<button class="hamburger"><i class="fas fa-bars"></i></button>
+						<button class='close-btn'><?php echo missilethreat_get_svg( 'close' ); ?></button>
 							<ul class="primary-menu">
 
 							<?php
