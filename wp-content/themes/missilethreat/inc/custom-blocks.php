@@ -1,6 +1,6 @@
 <?php
 /**
- * CSIS Mag Custom Blocks
+ * Missile Threat Custom Blocks
  *
  * @package CSIS iLab
  * @subpackage @package MissileThreat
@@ -46,3 +46,14 @@ function missilethreat_keep_plugins_blocks( $allowed_block_types, $post ) {
 }
 
 add_filter( 'allowed_block_types', 'missilethreat_keep_plugins_blocks', 10, 2 );
+
+
+//  Enqueue custom styles for Gutenberg blocks
+add_action('init', function() {
+	wp_register_style('missilethreat_table_styles', get_template_directory_uri() . '/assets/scss/components/tables.scss', false);
+	register_block_style('core/table', [
+		'name' => 'highlighted-header',
+		'label' => __('Highlighted Header Row', 'txtdomain'),
+		'style_handle' => 'missilethreat_table_styles'
+	]);
+});

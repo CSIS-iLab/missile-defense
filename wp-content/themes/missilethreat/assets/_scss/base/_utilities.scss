@@ -33,3 +33,11 @@
   clip: auto !important;
   clip-path: none;
 }
+
+.hidden {
+  &--m {
+    @include breakpoint($break: 'medium', $dir: 'max-width') {
+      display: none;
+    }
+  }
+}
