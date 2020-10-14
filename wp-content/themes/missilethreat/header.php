@@ -1,6 +1,6 @@
 <?php
 /**
- * Header file for the CSIS Mag WordPress default theme.
+ * Header file for the CSIS Missile Threat WordPress default theme.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -37,11 +37,11 @@
 			<header id="site-header" class="header" role="banner">
 
 				<!-- TODO: Add MT Logo -->
-				<!-- <a href="<?php echo get_home_url(); ?>" class="header__logo" title="Go home">
+				<a href="<?php echo get_home_url(); ?>" class="header__logo" title="Go home">
 				<?php 
-					// include( get_template_directory() . '/assets/static/missilethreat-logo.svg'); 
+					include( get_template_directory() . '/assets/static/missilethreat-logo.svg'); 
 				?>
-				</a> -->
+				</a>
 
 				<?php
 				if ( has_nav_menu( 'primary' ) ) {
