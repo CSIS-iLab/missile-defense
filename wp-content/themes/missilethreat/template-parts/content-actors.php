@@ -122,23 +122,6 @@ if ( $missiles ) : ?>
 	</table>
 	</div>
 
-
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"/>
-	<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/datatables.min.js"></script>
-
-	<script>
-		jQuery(document).ready(function($) {
-		    $('#missileTable').DataTable( {
-		        "paging": false,
-		        "info": false,
-            "order": [],
-            "searching": false
-		    } );
-		    $('#missileTable_filter input').removeClass('input-sm');
-		} );
-  </script>
-  
-
 	<?php
 	endif;
 	wp_reset_postdata();
