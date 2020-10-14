@@ -4,6 +4,7 @@
 @use 'base/base';
 @use 'base/typography';
 @use 'base/utilities';
+@use 'components/breadcrumbs';
 @use 'components/buttons';
 @use 'components/filter';
 @use 'components/media';
@@ -12,6 +13,7 @@
 @use 'components/project-block';
 @use 'components/select';
 @use 'components/share';
+@use 'components/table-of-contents';
 @use 'components/tables';
 @use 'layout/header';
 @use 'layout/footer';
