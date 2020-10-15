@@ -49,7 +49,7 @@
 						<nav class="site-nav" aria-label="<?php esc_attr_e( 'Site Navigation', 'missilethreat' ); ?>" role="navigation">
 						<button class="hamburger"><i class="fas fa-bars"></i></button>
 						<button class='close-btn'><?php echo missilethreat_get_svg( 'close' ); ?></button>
-							<ul class="primary-menu">
+							<ul class="primary-menu text--semibold">
 
 							<?php
 							if ( has_nav_menu( 'primary' ) ) {

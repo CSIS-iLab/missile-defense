@@ -5,21 +5,28 @@
   width: 100%;
   margin: 0 auto;
   background: linear-gradient(180deg, rgba(5, 32, 46, 0.56) 0%, rgba(6, 42, 59, 0.287778) 43.48%, rgba(7, 52, 74, 0) 100%);
-
+  
   .primary-menu {
+    @extend %font-ui-text-md-semibold-mobile-nav;
     display: none;
-
+    color: $color-text-light-190;
+    text-transform: uppercase;
+    
     &.visible {
       display: flex;
       flex-direction: column;
       background: $color-primary-blue-200;
     }
+
+    li {
+      padding: rem(16px);
+    }
   }
 
   .hamburger {
-    background: transparent;
-    border: 0;
     color: $color-text-light-100;
+    background: none;
+    border: 0;
 
     &.invisible {
       display: none;
@@ -32,6 +39,8 @@
     &.visible {
       display: block;
       color: $color-text-light-100;
+      background: none;
+      border: 0;
     }
   }
 }
