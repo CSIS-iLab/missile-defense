@@ -68,12 +68,13 @@
 					<?php
 				} ?>
 
+				<button for="navSearchInput" class="header__search-icon"><?php echo missilethreat_get_svg('search') ?></button>
 				<div class="header__search">
 					<form method="get" id="searchform" action="/">
 						<!-- <div class="input-group"> -->
 							<label class="screen-reader-text" for="navSearchInput">Search for:</label>
 							<input type="text" class="form-control header__search-field" name="s" id="navSearchInput" placeholder="Search" />
-							<label for="navSearchInput" id="navSearchLabel" class="header__search-icon"><?php echo missilethreat_get_svg('search') ?></label>
+							<label for="navSearchInput" id="navSearchLabel" class="header__search-label">Search</label>
 							<button class='header__search-submit'><?php echo missilethreat_get_svg( 'arrow-right' ); ?></button>
 						<!-- </div> -->
 					</form>

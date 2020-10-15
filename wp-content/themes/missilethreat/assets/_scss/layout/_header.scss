@@ -73,7 +73,6 @@
     
     &.visible {
       display: block;
-      // width: rem(65px);
       color: $color-primary-light-blue;
       background: none;
       border: 0;
@@ -81,8 +80,12 @@
   }
 
   &__search {
-    display: flex;
+    display: none;
     width: 100vw;
+
+    &.visible {
+      display: flex;
+    }
   }
 
   #searchform {
@@ -91,37 +94,27 @@
   }
 
   &__search-icon {
+    grid-column: 3;
+    grid-row: 1;
+
     &.invisible {
       display: none;
     }
   }
 
-  &__search-field {
+  &__search-label {
     display: none;
+  }
+
+  &__search-field {
     color: $color-text-light-155;
     width: 100%;
-
-    &.visible {
-      display: inline;
-    }
   }
 
-  &__search-close {
-    display: none;
-
-    &.visible {
-      display: inline;
-    }
-  }
-
+  &__search-close,
   &__search-submit {
-    display: none;
     color: $color-text-light-155;
     background: none;
     border: 0;
-
-    &.visible {
-      display: inline;
-    }
   }
 }
