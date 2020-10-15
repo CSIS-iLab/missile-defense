@@ -15,8 +15,6 @@ get_header();
 <main id="site-content" role="main">
 	<section class="home__recent">
 
-	<h1 class="title text--bold">Hello, World!</h1>
-
 	<?php
 
 	$featuredPosts = get_field('featured_posts');

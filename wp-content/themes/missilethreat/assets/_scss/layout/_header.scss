@@ -1,13 +1,43 @@
 @use 'abstracts' as *;
 
 .header {
-  // position: fixed;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  column-gap: rem(12px);
   width: 100%;
-  margin: 0 auto;
+  color: $color-primary-light-blue;
+  margin: 0;
+  padding: rem(12px);
   background: linear-gradient(180deg, rgba(5, 32, 46, 0.56) 0%, rgba(6, 42, 59, 0.287778) 43.48%, rgba(7, 52, 74, 0) 100%);
+
+  body .logged-in & {
+    top: 32px;
+  }
+
+  &__logo {
+    grid-column: 2;
+    grid-row: 1;
+
+    &.invisible {
+      display: none;
+    }
+  }
+
+  .site-nav {
+    right: 0;
+    left: 0;
+    grid-column: 1 / span 3;
+    grid-row: 2;
+    width: 100%;
+    margin: 0;
+  }
   
   .primary-menu {
     @extend %font-ui-text-md-semibold-mobile-nav;
+    top: 0;
     display: none;
     color: $color-text-light-190;
     text-transform: uppercase;
@@ -15,6 +45,7 @@
     &.visible {
       display: flex;
       flex-direction: column;
+      width: 100%;
       background: $color-primary-blue-200;
     }
 
@@ -24,7 +55,9 @@
   }
 
   .hamburger {
-    color: $color-text-light-100;
+    grid-column: 1;
+    grid-row: 1;
+    color: $color-primary-light-blue;
     background: none;
     border: 0;
 
@@ -33,14 +66,62 @@
     }
   }
   
-  .close-btn {
+  .nav-close {
     display: none;
+    grid-column: 1;
+    grid-row: 1;
     
     &.visible {
       display: block;
-      color: $color-text-light-100;
+      // width: rem(65px);
+      color: $color-primary-light-blue;
       background: none;
       border: 0;
+    }
+  }
+
+  &__search {
+    display: flex;
+    width: 100vw;
+  }
+
+  #searchform {
+    display: flex;
+    width: 75%;
+  }
+
+  &__search-icon {
+    &.invisible {
+      display: none;
+    }
+  }
+
+  &__search-field {
+    display: none;
+    color: $color-text-light-155;
+    width: 100%;
+
+    &.visible {
+      display: inline;
+    }
+  }
+
+  &__search-close {
+    display: none;
+
+    &.visible {
+      display: inline;
+    }
+  }
+
+  &__search-submit {
+    display: none;
+    color: $color-text-light-155;
+    background: none;
+    border: 0;
+
+    &.visible {
+      display: inline;
     }
   }
 }

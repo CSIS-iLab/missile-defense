@@ -45,10 +45,9 @@
 				<?php
 				if ( has_nav_menu( 'primary' ) ) {
 					?>
-
-						<nav class="site-nav" aria-label="<?php esc_attr_e( 'Site Navigation', 'missilethreat' ); ?>" role="navigation">
 						<button class="hamburger"><i class="fas fa-bars"></i></button>
-						<button class='close-btn'><?php echo missilethreat_get_svg( 'close' ); ?></button>
+						<button class='nav-close'><?php echo missilethreat_get_svg( 'close' ); ?></button>
+						<nav class="site-nav" aria-label="<?php esc_attr_e( 'Site Navigation', 'missilethreat' ); ?>" role="navigation">
 							<ul class="primary-menu text--semibold">
 
 							<?php
@@ -69,4 +68,15 @@
 					<?php
 				} ?>
 
+				<div class="header__search">
+					<form method="get" id="searchform" action="/">
+						<!-- <div class="input-group"> -->
+							<label class="screen-reader-text" for="navSearchInput">Search for:</label>
+							<input type="text" class="form-control header__search-field" name="s" id="navSearchInput" placeholder="Search" />
+							<label for="navSearchInput" id="navSearchLabel" class="header__search-icon"><?php echo missilethreat_get_svg('search') ?></label>
+							<button class='header__search-submit'><?php echo missilethreat_get_svg( 'arrow-right' ); ?></button>
+						<!-- </div> -->
+					</form>
+					<button class='header__search-close'><?php echo missilethreat_get_svg( 'close' ); ?></button>
+				</div>
 			</header><!-- #site-header -->
