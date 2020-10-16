@@ -1,1 +1,63 @@
 @use 'abstracts' as *;
+
+footer {
+  @extend %font-body-short-md;
+  @include full-width-background($color-primary-blue-200);
+  padding-top: 2.5em;
+  padding-bottom: 1em;
+  color: $color-text-light-170;
+  background-color: $color-primary-blue-200;
+}
+
+.footer__logo, .mdp, .news-title, .pp {
+  color: $color-text-light-100;
+}
+
+.nav_side {
+  color: $color-text-light-190;
+}
+
+.footer__copyright {
+  color: $color-text-light-155;
+}
+
+.footer__logo, 
+.description, 
+.footer__contact, 
+.nav_side,
+.news-title, 
+.news-body, 
+.footer__copyright {
+  display: block;
+  background-color: $color-primary-blue-100;
+}
+
+.description-container {
+  padding-top: 1.5em;
+  padding-bottom: 2em;
+}
+
+// .facebook_icon, .twitter_icon {
+//   border-radius: 60px;
+//   background-color: white;
+// }
+
+.facebook-icon {
+  padding-right: .5em;
+}
+
+.twitter-icon {
+  padding-right: 2em;
+}
+.footer__contact {
+  margin-bottom: 2em;
+}
+
+.news-title, .news-body {
+  margin-bottom: 0.75em;
+}
+
+.nav_side {
+  margin-top: 2em;
+  margin-bottom: 3em;
+}
