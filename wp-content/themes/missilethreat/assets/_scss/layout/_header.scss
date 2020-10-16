@@ -14,9 +14,14 @@
   column-gap: rem(12px);
   justify-items: center;
   background: linear-gradient(180deg, rgba(5, 32, 46, 0.56) 0%, rgba(6, 42, 59, 0.287778) 43.48%, rgba(7, 52, 74, 0) 100%);
+  transition: background 0.3s ease-in-out;
 
   body .logged-in & {
     top: 32px;
+  }
+
+  &.full-color {
+    background: $color-primary-blue-600;
   }
 
   &__logo {
@@ -41,16 +46,21 @@
   .primary-menu {
     @extend %font-ui-text-md-semibold-mobile-nav;
     top: 0;
-    display: none;
+    display: flex;
+    flex-direction: column;
+    width: 0;
+    height: 0;
     color: $color-text-light-190;
     text-transform: uppercase;
-    
+    background: $color-primary-blue-200;
+    @include full-width-background($color-primary-blue-200);
+    opacity: 0;
+    transition: opacity 0.5s linear, height 0.2s ease-in;
+
     &.visible {
-      display: flex;
-      flex-direction: column;
       width: 100%;
-      background: $color-primary-blue-200;
-      @include full-width-background($color-primary-blue-200);
+      height: 100%;
+      opacity: 1;
     }
 
     li {
@@ -74,7 +84,7 @@
     display: none;
     grid-column: 1;
     grid-row: 1;
-    
+
     &.visible {
       display: block;
       color: $color-primary-light-gray;
@@ -84,16 +94,21 @@
   }
 
   &__search {
-    display: none;
-    width: 100vw;
-    height: rem(48px);
+    display: flex;
+    width: 0;
+    height: 0;
     padding: rem(12px);
     background: $color-primary-blue-400;
-    
+    opacity: 0;
+    transition: opacity 0.5s linear, width 0.2s ease-in;
+
     &.visible {
-      display: flex;
+      width: 100vw;
+      height: rem(48px);
+      opacity: 1;
     }
   }
+
   
   #searchform {
     display: flex;
@@ -133,9 +148,9 @@
   }
 
   &__search-submit {
+    margin-left: rem(8px);
     color: $color-line-mid-gray;
     line-height: 50%;
-    margin-left: rem(8px);
   }
 
   &__search-close {
