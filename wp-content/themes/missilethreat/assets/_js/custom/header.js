@@ -5,6 +5,7 @@ const logo = document.querySelector('.header__logo')
 const searchIcon = document.querySelector('.header__search-icon')
 const searchClose = document.querySelector('.header__search-close')
 const searchForm = document.querySelector('.header__search')
+const content = document.querySelector('#site-content')
 
 hamburger.addEventListener('click', () => {
   menu.classList.add('visible')
@@ -12,11 +13,7 @@ hamburger.addEventListener('click', () => {
   hamburger.classList.add('invisible')
 })
 
-navClose.addEventListener('click', () => {
-  menu.classList.remove('visible')
-  navClose.classList.remove('visible')
-  hamburger.classList.remove('invisible')
-})
+navClose.addEventListener('click', closeNav)
 
 searchIcon.addEventListener('click', () => {
   searchForm.classList.add('visible')
@@ -33,3 +30,23 @@ searchClose.addEventListener('click', () => {
   logo.classList.remove('invisible')
   hamburger.classList.remove('invisible')
 })
+
+searchClose.addEventListener('click', closeSearch)
+
+content.addEventListener('click', closeNav)
+content.addEventListener('click', closeSearch)
+
+function closeNav() {
+  menu.classList.remove('visible')
+  navClose.classList.remove('visible')
+  hamburger.classList.remove('invisible')
+}
+
+function closeSearch() {
+  menu.classList.remove('visible')
+  navClose.classList.remove('visible')
+  searchForm.classList.remove('visible')
+  searchIcon.classList.remove('invisible')
+  logo.classList.remove('invisible')
+  hamburger.classList.remove('invisible')
+}

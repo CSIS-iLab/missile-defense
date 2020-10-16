@@ -97,7 +97,7 @@
   
   #searchform {
     display: flex;
-    width: 80%;
+    width: 100%;
   }
 
   &__search-icon {
@@ -149,5 +149,9 @@
     line-height: 50%;
     background: $color-primary-blue-200;
     border: 0;
+  }
+
+  @include breakpoint('small') {
+    justify-content: space-between;
   }
 }
