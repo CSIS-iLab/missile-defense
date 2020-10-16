@@ -10,6 +10,7 @@
   margin: 0;
   padding: rem(12px);
   color: $color-primary-light-blue;
+  font-size: rem(20px);
   column-gap: rem(12px);
   justify-items: center;
   background: linear-gradient(180deg, rgba(5, 32, 46, 0.56) 0%, rgba(6, 42, 59, 0.287778) 43.48%, rgba(7, 52, 74, 0) 100%);
@@ -49,6 +50,7 @@
       flex-direction: column;
       width: 100%;
       background: $color-primary-blue-200;
+      @include full-width-background($color-primary-blue-200);
     }
 
     li {
@@ -59,7 +61,7 @@
   .hamburger {
     grid-column: 1;
     grid-row: 1;
-    color: $color-primary-light-blue;
+    color: $color-primary-light-gray;
     background: none;
     border: 0;
 
@@ -75,7 +77,7 @@
     
     &.visible {
       display: block;
-      color: $color-primary-light-blue;
+      color: $color-primary-light-gray;
       background: none;
       border: 0;
     }
@@ -86,7 +88,6 @@
     width: 100vw;
     height: rem(48px);
     padding: rem(12px);
-    @include full-width-background($color-primary-blue-400);
     background: $color-primary-blue-400;
     
     &.visible {
@@ -113,6 +114,7 @@
   }
 
   &__search-field {
+    @extend %font-ui-text-lg;
     width: 100%;
     color: $color-text-light-155;
     background: $color-primary-blue-400;
@@ -127,7 +129,7 @@
   }
   
   &__search-icon {
-    color: $color-text-light-155;
+    color: $color-primary-light-blue;
   }
 
   &__search-submit {
