@@ -84,7 +84,7 @@ get_header();
 	
 	<div class="home__all-analysis"><a href="<?php echo site_url('/analysis') ?>">All Analysis <?php echo missilethreat_get_svg('chevron-right') ?></a></div>
 
-<section class="home__cards">
+	<section class="home__cards">
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
 				<h2 class="home__card-title">

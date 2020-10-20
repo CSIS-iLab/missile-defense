@@ -66,6 +66,16 @@ function missilethreat_theme_support() {
 	// Add custom image size used in Cover Template.
 	add_image_size( 'missilethreat-fullscreen', 1980, 9999 );
 
+	// Link thumbnail to post
+	add_filter( 'post_thumbnail_html', 'my_post_image_html', 10, 3 );
+
+	function my_post_image_html( $html, $post_id, $post_image_id ) {
+
+  $html = '<a href="' . get_permalink( $post_id ) . '" class="thumbnail-link">' . $html . '</a>';
+  return $html;
+
+	}
+
 	// Custom logo.
 	$logo_width  = 120;
 	$logo_height = 90;
