@@ -30,6 +30,7 @@
       @extend %font-ui-text-sm;
       margin-bottom: rem(16px);
       color: $color-text-dark-170;
+      text-transform: uppercase;
 
       &:not(:first-child) {
         font-weight: 600;

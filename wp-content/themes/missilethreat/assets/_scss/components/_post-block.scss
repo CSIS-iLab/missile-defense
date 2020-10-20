@@ -15,6 +15,7 @@
     display: inline-block;
     grid-row: 1;
     margin-bottom: rem(16px);
+    text-transform: uppercase;
 
     a:not(:first-child) {
       font-weight: 600;
