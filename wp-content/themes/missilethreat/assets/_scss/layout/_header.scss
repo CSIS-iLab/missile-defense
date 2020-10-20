@@ -26,6 +26,7 @@
     background-image: linear-gradient(180deg, rgba(5, 32, 46, 0.56) 0%, rgba(6, 42, 59, 0.287778) 43.48%, rgba(7, 52, 74, 0) 100%);
     opacity: 0;
     transition: all 0.5s linear;
+    pointer-events: none;
   }
   
   body .logged-in & {
@@ -113,11 +114,13 @@
     background: $color-primary-blue-400;
     opacity: 0;
     transition: opacity 0.5s linear, width 0.2s ease-in;
+    pointer-events: none;
 
     &.visible {
       width: 100vw;
       height: rem(48px);
       opacity: 1;
+      pointer-events: all;
     }
   }
 
@@ -130,6 +133,7 @@
     grid-column: 3;
     grid-row: 1;
     color: $color-primary-light-blue;
+    cursor: pointer;
 
     &.invisible {
       display: none;
@@ -159,6 +163,7 @@
     margin-left: rem(8px);
     color: $color-line-mid-gray;
     line-height: 50%;
+    cursor: pointer;
   }
 
   &__search-close {
@@ -172,6 +177,7 @@
     line-height: 50%;
     background: $color-primary-blue-200;
     border: 0;
+    cursor: pointer;
   }
 
   @include breakpoint('small') {
