@@ -72,7 +72,7 @@ get_header();
 		while ( $newsPosts->have_posts() ) {
 			$newsPosts->the_post();
 
-			the_title( '<a href="' . esc_url( get_permalink() ) . '"><h3 class="home__news-title link--hover">', '</h3></a>' );
+			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '" class="post-title--hover">', '</a></h3>' );
 
 			missilethreat_posted_on();
 		}
@@ -87,17 +87,18 @@ get_header();
 <section class="home__cards">
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
-			<a href="<?php echo site_url('/defsys') ?>" class="home__card-link">
-				<h2 class="home__card-title link--hover">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></h2>
-			</a>
+				<h2 class="home__card-title">
+					<a href="<?php echo site_url('/defsys') ?>" class="home__card-link post-title--hover">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></a>
+				</h2>
 			<p class="home__card-desc">Explore the components that go into making missile defense effective, including sensors, interceptors, command and control.</p>
 		</div>
 
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
-			<a href="<?php echo site_url('/missile') ?>" class="home__card-link">
-				<h2 class="home__card-title link--hover">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></h2>
-			</a>
+			
+				<h2 class="home__card-title">
+					<a href="<?php echo site_url('/missile') ?>" class="home__card-link post-title--hover">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></a>
+				</h2>
 			<p class="home__card-desc">A growing collection of information on various countries’ missile systems, with illustrations and information on their capabilities and history.</p>
 		</div>
 
@@ -163,7 +164,7 @@ get_header();
 				if($event1) : ?>
 				<div class="event">
 					<p class="event__date text--semibold"><?php echo $date1->format($formatOut); ?></p>
-					<a href="<?php echo esc_url($event1['link']); ?>"  class="event__link link--hover"><?php echo $event1['title']; ?></a>
+					<a href="<?php echo esc_url($event1['link']); ?>"  class="event__link post-title--hover"><?php echo $event1['title']; ?></a>
 				</div>
 
 				<?php endif; 
@@ -171,7 +172,7 @@ get_header();
 				if($event2) : ?>
 					<div class="event">
 						<p class="event__date text--semibold"><?php echo $date2->format($formatOut); ?></p>
-						<a href="<?php echo esc_url($event2['link']); ?>"  class="event__link link--hover"><?php echo $event2['title']; ?></a>
+						<a href="<?php echo esc_url($event2['link']); ?>"  class="event__link post-title--hover"><?php echo $event2['title']; ?></a>
 					</div>
 	
 					<?php endif;
@@ -179,7 +180,7 @@ get_header();
 					if($event3) : ?>
 						<div class="event">
 							<p class="event__date text--semibold"><?php echo $date3->format($formatOut); ?></p>
-							<a href="<?php echo esc_url($event3['link']); ?>"  class="event__link link--hover"><?php echo $event3['title']; ?></a>
+							<a href="<?php echo esc_url($event3['link']); ?>"  class="event__link post-title--hover"><?php echo $event3['title']; ?></a>
 						</div>
 		
 						<?php endif; ?>

@@ -23,7 +23,7 @@
 
 	<?php
 
-	the_title( '<h2 class="post-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '" class="link--hover">', '</a></h2>' );
+	the_title( '<h2 class="post-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '" class="post-title--hover">', '</a></h2>' );
 
 	missilethreat_posted_on();
 
