@@ -109,7 +109,6 @@
     }
   }
 
-  
   #searchform {
     display: flex;
     width: 100%;
@@ -118,6 +117,7 @@
   &__search-icon {
     grid-column: 3;
     grid-row: 1;
+    color: $color-primary-light-blue;
 
     &.invisible {
       display: none;
@@ -142,10 +142,6 @@
     background: none;
     border: 0;
   }
-  
-  &__search-icon {
-    color: $color-primary-light-blue;
-  }
 
   &__search-submit {
     margin-left: rem(8px);
@@ -168,5 +164,72 @@
 
   @include breakpoint('small') {
     justify-content: space-between;
+  }
+
+  @include breakpoint('large') {
+    grid-template-columns: 1fr 3fr rem(48px);
+    justify-content: initial;
+    padding-right: 6vw;
+    padding-left: 6vw;
+    column-gap: unset;
+    
+    &__logo {
+      grid-column: 1;
+      justify-self: start;
+
+      &.invisible {
+        display: block;
+      }
+    }
+
+    .site-nav {
+      grid-column: 2;
+      grid-row: 1;
+      padding-left: rem(48px);
+    }
+
+    .primary-menu {
+      flex-direction: row;
+      justify-content: flex-end;
+      width: 100%;
+      height: 100%;
+      @include full-width-background(0);
+      background: 0;
+      opacity: 1;
+      transition: opacity 0.2s linear, width 0.4s ease-in;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+
+      &.invisible {
+        width: 0;
+        height: 0;
+        opacity: 0;
+      }
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    &__search-icon {
+      justify-self: start;
+    }
+
+    &__search {
+      grid-column: 3;
+      grid-row: 1;
+      
+      &.visible {
+        grid-column: 2 / span 2;
+        width: 100%;
+      }
+    }
+  }
+
+  @include breakpoint('xxlarge') {
+    letter-spacing: 0.01em;
   }
 }

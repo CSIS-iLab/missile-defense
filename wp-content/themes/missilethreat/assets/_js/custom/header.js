@@ -20,6 +20,7 @@ searchIcon.addEventListener('click', () => {
   logo.classList.add('invisible')
   hamburger.classList.add('invisible')
   menu.classList.remove('visible')
+  menu.classList.add('invisible')
   navClose.classList.remove('visible')
 })
 
@@ -36,6 +37,7 @@ function closeSearch() {
   logo.classList.remove('invisible')
   hamburger.classList.remove('invisible')
   menu.classList.remove('visible')
+  menu.classList.remove('invisible')
   navClose.classList.remove('visible')
 }
 

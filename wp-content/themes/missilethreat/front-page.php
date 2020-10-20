@@ -64,7 +64,7 @@ get_header();
 
   </section>
 
-<section class="home__cards">
+	<section class="home__cards">
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
 			<a href="<?php echo site_url('/defsys') ?>" class="home__card-link">
@@ -112,7 +112,7 @@ get_header();
 
 			?>
 		</div>
-		</section>
+	</section>
 
 </main><!-- #site-content -->
 
