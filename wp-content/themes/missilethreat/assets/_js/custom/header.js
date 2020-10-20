@@ -23,6 +23,7 @@ searchIcon.addEventListener('click', () => {
   menu.classList.remove('visible')
   menu.classList.add('invisible')
   navClose.classList.remove('visible')
+  header.classList.remove('reduce-padding')
 })
 
 

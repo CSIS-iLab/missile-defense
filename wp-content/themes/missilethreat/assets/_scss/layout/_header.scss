@@ -42,6 +42,7 @@
   }
 
   &__logo {
+    z-index: 15;
     grid-column: 2;
     grid-row: 1;
 
@@ -63,6 +64,7 @@
     transition: opacity 0.5s linear, height 0.2s ease-in;
 
     &.visible {
+      z-index: 15;
       grid-row: 2;
       width: 100%;
       height: initial;
@@ -73,9 +75,9 @@
   .primary-menu {
     @extend %font-ui-text-md-semibold-mobile-nav;
     top: 0;
-    height: inherit;
     display: flex;
     flex-direction: column;
+    height: inherit;
     color: $color-text-light-190;
     text-transform: uppercase;
     background: $color-primary-blue-200;
@@ -87,6 +89,7 @@
   }
 
   .hamburger {
+    z-index: 15;
     grid-column: 1;
     grid-row: 1;
     color: $color-primary-light-gray;
@@ -99,7 +102,6 @@
   }
   
   .nav-close {
-    // display: none;
     grid-column: 1;
     grid-row: 1;
     width: 0;
@@ -107,7 +109,7 @@
     opacity: 0;
 
     &.visible {
-      display: block;
+      z-index: 15;
       width: 100%;
       height: 100%;
       color: $color-primary-light-gray;
@@ -118,9 +120,9 @@
   }
 
   &__search {
+    display: flex;
     grid-column: 3;
     grid-row: 1;
-    display: flex;
     width: 0;
     height: 0;
     padding: rem(12px);
@@ -144,6 +146,7 @@
   }
 
   &__search-icon {
+    z-index: 15;
     grid-column: 3;
     grid-row: 1;
     color: $color-primary-light-blue;
