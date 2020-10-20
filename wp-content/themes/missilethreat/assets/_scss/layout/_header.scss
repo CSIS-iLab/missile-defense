@@ -122,22 +122,25 @@
   }
 
   &__search {
+    position: absolute;
     display: flex;
     grid-column: 3;
     grid-row: 1;
-    width: 0;
-    height: 0;
+    width: 100%;
+    height: rem(48px);
+    visibility: hidden;
     padding: rem(12px);
     background: $color-primary-blue-400;
     opacity: 0;
-    transition: opacity 0.5s linear, width 0.2s ease-in;
+    transition: opacity 0.5s linear, position 0.2s ease-in, visibility 0.2s linear;
     pointer-events: none;
 
     &.visible {
+      visibility: visible;
       position: relative;
       grid-column: 1 / span 3;
-      width: 100%;
-      height: rem(48px);
+      // width: 100%;
+      // height: rem(48px);
       opacity: 1;
       pointer-events: all;
     }
