@@ -1,5 +1,5 @@
 const hamburger = document.querySelector('.hamburger')
-const menu = document.querySelector('.primary-menu')
+const menu = document.querySelector('.site-nav')
 const navClose = document.querySelector('.nav-close')
 const logo = document.querySelector('.header__logo')
 const searchIcon = document.querySelector('.header__search-icon')
@@ -12,6 +12,7 @@ hamburger.addEventListener('click', () => {
   menu.classList.add('visible')
   navClose.classList.add('visible')
   hamburger.classList.add('invisible')
+  header.classList.add('reduce-padding')
 })
 
 searchIcon.addEventListener('click', () => {
@@ -29,6 +30,7 @@ function closeNav() {
   menu.classList.remove('visible')
   navClose.classList.remove('visible')
   hamburger.classList.remove('invisible')
+  header.classList.remove('reduce-padding')
 }
 
 function closeSearch() {
