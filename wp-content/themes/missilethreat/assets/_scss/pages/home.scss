@@ -305,6 +305,8 @@
   }
 
   &__cards {
+    display: flex;
+    flex-wrap: wrap;
     position: relative;
     z-index: 2;
     margin-top: rem(64px);
@@ -314,7 +316,7 @@
     }
 
     @include breakpoint('large') {
-      display: flex;
+      flex-wrap: nowrap;
       grid-column: 1 / span 3;
       justify-content: space-between;
       margin-bottom: rem(56px);
@@ -323,8 +325,8 @@
 
   &__card {
     display: grid;
-    width: 100%;
-    margin-bottom: rem(32px);
+    max-width: rem(416px);
+    margin: 0 auto rem(32px) auto;
     padding: rem(24px);
     background: $color-text-light-100;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 1px 18px rgba(0, 0, 0, 0.12),
@@ -367,6 +369,7 @@
     }
 
     @include breakpoint('large') {
+      max-width: 100%;
       margin-bottom: 0;
 
       &:last-child {
@@ -377,7 +380,6 @@
 
   &__projects {
     @include full-width-background($color-primary-light-gray);
-    // z-index: 1;
     margin-top: rem(-88px);
     padding: rem(112px) 0 rem(56px) 0;
     background: $color-primary-light-gray;
