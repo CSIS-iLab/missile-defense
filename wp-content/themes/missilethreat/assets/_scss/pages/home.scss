@@ -305,6 +305,7 @@
   }
 
   &__cards {
+    position: relative;
     z-index: 2;
     margin-top: rem(64px);
 
@@ -376,7 +377,7 @@
 
   &__projects {
     @include full-width-background($color-primary-light-gray);
-    z-index: 1;
+    // z-index: 1;
     margin-top: rem(-88px);
     padding: rem(112px) 0 rem(56px) 0;
     background: $color-primary-light-gray;
