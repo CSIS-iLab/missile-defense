@@ -112,7 +112,7 @@ get_header();
 			<?php 
 				$cat_link = site_url('/category/ongoing-projects');
 			?>
-			<a href="<?php echo esc_url($cat_link); ?>" class="home__projects-view-all">View All <?php echo missilethreat_get_svg('chevron-right') ?></a>
+			<a href="<?php echo esc_url($cat_link); ?>" class="home__projects-view-all">View all <?php echo missilethreat_get_svg('chevron-right') ?></a>
 		</div>
 		<div class="home__projects-wrapper">
 			<?php
@@ -142,7 +142,7 @@ get_header();
 		</p>
 
 	</section>
-	
+
 	<section class="home__events">
 		<h2 class="home__events-heading">Events</h2>
 		<?php

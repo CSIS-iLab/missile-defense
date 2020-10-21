@@ -411,6 +411,11 @@
       font-size: rem(17px);
       font-style: italic;
       line-height: 1.15;
+
+      .icon {
+        font-size: rem(12px);
+        color: $color-primary-blue-600;
+      }
     }
 
     @include breakpoint('small') {

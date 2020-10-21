@@ -20,7 +20,7 @@
 	<?php
 		the_title( '<h2 class="project-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '" class="post-title--hover">', '</a></h2>' );
 		?>
-		<div class="project-block__updated">Last Updated <?php missilethreat_last_updated(); ?></div>
+		<div class="project-block__updated">Updated <?php missilethreat_last_updated(); ?></div>
 </div>
 
 </article><!-- .post -->
