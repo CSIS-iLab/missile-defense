@@ -485,6 +485,7 @@
         @extend %font-ui-heading-md;
         margin-bottom: rem(8px);
         color: $color-primary-blue-600;
+        text-transform: uppercase;
       }
       
       &__link {

@@ -58,27 +58,27 @@ get_header();
 	?>
 
 	<section class="home__news">
-	<h2 class="home__news-heading">News</h2>
+		<h2 class="home__news-heading">News</h2>
 
-	<?php 
-	$newsPosts = new WP_Query( array(
-		'post_type' => 'post',
-    'post_status' => 'publish',
-		'posts_per_page' => 5,
-		'category_name' => 'news'
-	) );
+		<?php 
+		$newsPosts = new WP_Query( array(
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'posts_per_page' => 5,
+			'category_name' => 'news'
+		) );
 
-	if ( $newsPosts->have_posts() ) {
-		while ( $newsPosts->have_posts() ) {
-			$newsPosts->the_post();
+		if ( $newsPosts->have_posts() ) {
+			while ( $newsPosts->have_posts() ) {
+				$newsPosts->the_post();
 
-			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '" class="post-title--hover">', '</a></h3>' );
+				the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '" class="post-title--hover">', '</a></h3>' );
 
-			missilethreat_posted_on();
+				missilethreat_posted_on();
+			}
+			wp_reset_postdata();
 		}
-		wp_reset_postdata();
-	}
-	?>
+		?>
 
 	</section>
 	
@@ -133,62 +133,64 @@ get_header();
 
 			?>
 		</div>
-		</section>
+	</section>
 
-		<section class="home__newsletter">
-			<h2>Newsletter Placeholder</h2>
-			<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue nisi quis erat ullamcorper malesuada. Fusce dapibus ligula sit amet eros lobortis, quis iaculis dui molestie. Curabitur tortor libero, imperdiet quis justo eu, pellentesque sagittis augue. Ut maximus tincidunt nibh quis laoreet. Suspendisse potenti. Etiam vulputate in dui at tempor. Vivamus commodo iaculis massa, vel ultricies elit euismod eu. Mauris a sapien suscipit, venenatis ligula in, iaculis lacus. Cras at ex cursus, placerat turpis nec, lacinia purus. Praesent sagittis mattis enim a vulputate. Vestibulum maximus, metus sed gravida tincidunt, augue tortor dignissim tortor, mattis lobortis sapien lorem nec mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu luctus quam. Etiam eget lobortis metus, in luctus sapien. Fusce finibus bibendum augue nec ultrices.
-			</p>
+	<section class="home__newsletter">
+		<h2>Newsletter Placeholder</h2>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue nisi quis erat ullamcorper malesuada. Fusce dapibus ligula sit amet eros lobortis, quis iaculis dui molestie. Curabitur tortor libero, imperdiet quis justo eu, pellentesque sagittis augue. Ut maximus tincidunt nibh quis laoreet. Suspendisse potenti. Etiam vulputate in dui at tempor. Vivamus commodo iaculis massa, vel ultricies elit euismod eu. Mauris a sapien suscipit, venenatis ligula in, iaculis lacus. Cras at ex cursus, placerat turpis nec, lacinia purus. Praesent sagittis mattis enim a vulputate. Vestibulum maximus, metus sed gravida tincidunt, augue tortor dignissim tortor, mattis lobortis sapien lorem nec mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu luctus quam. Etiam eget lobortis metus, in luctus sapien. Fusce finibus bibendum augue nec ultrices.
+		</p>
 
-			</section>
-		<section class="home__events">
-			<h2 class="home__events-heading">Events</h2>
-			<?php
-				$eventsDescription = get_field('events_description');
-				$event1 = get_field('event_1');
-				$event2 = get_field('event_2');
-				$event3 = get_field('event_3');
+	</section>
+	
+	<section class="home__events">
+		<h2 class="home__events-heading">Events</h2>
+		<?php
+			$eventsDescription = get_field('events_description');
+			$event1 = get_field('event_1');
+			$event2 = get_field('event_2');
+			$event3 = get_field('event_3');
 
-				$formatIn = 'm/d/Y';
-				$formatOut = 'M j';
+			$formatIn = 'm/d/Y';
+			$formatOut = 'M j';
 
-				$date1 = DateTime::createFromFormat($formatIn, get_field('event_1_date'));
-				$date2 = DateTime::createFromFormat($formatIn, get_field('event_2_date'));
-				$date3 = DateTime::createFromFormat($formatIn, get_field('event_3_date'));
+			$date1 = DateTime::createFromFormat($formatIn, get_field('event_1_date'));
+			$date2 = DateTime::createFromFormat($formatIn, get_field('event_2_date'));
+			$date3 = DateTime::createFromFormat($formatIn, get_field('event_3_date'));
 
-				if($eventsDescription) : ?>
-				<p class="home__events-desc"><?php echo $eventsDescription; ?></p>
-				<?php  endif;
-				
-				if($event1) : ?>
+			if($eventsDescription) : ?>
+			<p class="home__events-desc"><?php echo $eventsDescription; ?></p>
+			<?php  endif;
+			
+			if($event1) : ?>
+			<div class="event">
+				<p class="event__date text--semibold"><?php echo $date1->format($formatOut); ?></p>
+				<a href="<?php echo esc_url($event1['link']); ?>"  class="event__link post-title--hover"><?php echo $event1['title']; ?></a>
+			</div>
+
+			<?php endif; 
+			
+			if($event2) : ?>
 				<div class="event">
-					<p class="event__date text--semibold"><?php echo $date1->format($formatOut); ?></p>
-					<a href="<?php echo esc_url($event1['link']); ?>"  class="event__link post-title--hover"><?php echo $event1['title']; ?></a>
+					<p class="event__date text--semibold"><?php echo $date2->format($formatOut); ?></p>
+					<a href="<?php echo esc_url($event2['link']); ?>"  class="event__link post-title--hover"><?php echo $event2['title']; ?></a>
 				</div>
 
-				<?php endif; 
+				<?php endif;
 				
-				if($event2) : ?>
+				if($event3) : ?>
 					<div class="event">
-						<p class="event__date text--semibold"><?php echo $date2->format($formatOut); ?></p>
-						<a href="<?php echo esc_url($event2['link']); ?>"  class="event__link post-title--hover"><?php echo $event2['title']; ?></a>
+						<p class="event__date text--semibold"><?php echo $date3->format($formatOut); ?></p>
+						<a href="<?php echo esc_url($event3['link']); ?>"  class="event__link post-title--hover"><?php echo $event3['title']; ?></a>
 					</div>
 	
-					<?php endif;
-					
-					if($event3) : ?>
-						<div class="event">
-							<p class="event__date text--semibold"><?php echo $date3->format($formatOut); ?></p>
-							<a href="<?php echo esc_url($event3['link']); ?>"  class="event__link post-title--hover"><?php echo $event3['title']; ?></a>
-						</div>
-		
-						<?php endif; ?>
-		</section>
-		<section class="home__twitter">
-			<h2 class="home__twitter-heading">Twitter</h2>
-			<?php 	dynamic_sidebar( 'twitter-feed' ); ?>
-		</section>
+					<?php endif; ?>
+	</section>
+
+	<section class="home__twitter">
+		<h2 class="home__twitter-heading">Twitter</h2>
+		<?php 	dynamic_sidebar( 'twitter-feed' ); ?>
+	</section>
 
 </main><!-- #site-content -->
 
