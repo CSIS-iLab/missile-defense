@@ -52,6 +52,11 @@ $breakpoints: (
   'xxlarge': 87.5em,
 );
 
+// Used to calculate font size in font-clamp mixin.
+$container-min-width: 30rem;
+$container-max-width: 87.5rem;
+$container-width-diff: 57.5rem; // Difference in rems between small & large breakpoints
+
 $size__container-max-width: 1400px;
 $size__content-max-width: 680px;
 $size__content-wide-max-width: 1120px;
