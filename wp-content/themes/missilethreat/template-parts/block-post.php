@@ -36,7 +36,10 @@
 
 	<?php
 	}
-	the_post_thumbnail();
-	?>
+	if ( has_post_thumbnail()) : ?>
+    <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>" class="thumbnail-link">
+        <?php the_post_thumbnail(array(400, 304)); ?>
+    </a>
+	<?php endif; ?>
 
 </article><!-- .post -->

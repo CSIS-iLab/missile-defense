@@ -140,13 +140,14 @@
     .post-block {
       @include breakpoint('small') {
         grid-template-columns: 1fr 2fr;
+        grid-template-rows: repeat(3, max-content) auto;
         column-gap: rem(32px);
         
         &:not(:last-of-type) {
           margin-bottom: rem(16px);
         }
         
-        .wp-post-image {
+        .thumbnail-link {
           grid-column: 1 / span 1;
           grid-row: 1 / span 4;
         }
@@ -181,7 +182,7 @@
       }
 
       @include breakpoint('medium') {
-        .wp-post-image {
+        .thumbnail-link {
           position: initial;
         }
       }
@@ -211,7 +212,7 @@
       @include breakpoint('medium') {
         grid-template-columns: 1fr;
         
-        .wp-post-image {
+        .thumbnail-link {
           position: initial;
           grid-column: 1;
           grid-row: 1;
@@ -233,7 +234,7 @@
   .post-block {
     display: grid;
 
-    .wp-post-image {
+    .thumbnail-link {
       grid-row: 1;
     }
 
