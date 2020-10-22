@@ -18,9 +18,8 @@
     position: relative;
     z-index: 2;
     width: 100%;
-    margin-top: rem(-48px);
     margin-bottom: rem(40px);
-
+    
     .wp-post-image {
       width: 100%;
       margin-bottom: rem(40px);
@@ -67,12 +66,12 @@
   }
 
   &__hero {
-    z-index: 1;
+    margin-bottom: rem(-48px);
     padding-top: rem(32px);
-    padding-bottom: rem(96px);
+    padding-bottom: rem(88px);
     background: linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%);
     @include full-width-background(linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%));
-
+    
     @include breakpoint('small') {
       display: flex;
       grid-column: 1 / span 2;
@@ -81,14 +80,12 @@
     @include breakpoint('large') {
       grid-column: 1 / -1;
       grid-row: 1;
-      margin-bottom: rem(96px);
-      padding-top: rem(88px);
-      padding-bottom: 0;
-      padding-left: 50%;
+      margin-bottom: rem(48px);
+      padding: rem(88px) 0 0 50%;
     }
   }
-  
-  &__about {
+
+  .mission {
     @extend %font-body-short-md-serif;
     margin-bottom: rem(16px);
     color: $color-primary-light-gray;
@@ -105,7 +102,6 @@
   }
   
   &__initiative {
-    margin-bottom: rem(4px);
     color: $color-text-light-155;
     font-size: rem(12px);
     font-style: italic;
@@ -119,9 +115,11 @@
   }
 
   &__logo {
+    display: block;
     color: $color-text-light-190;
     
     svg {
+      display: block;
       max-width: rem(144px);
     }
   }
@@ -305,10 +303,10 @@
   }
 
   &__cards {
-    display: flex;
-    flex-wrap: wrap;
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: rem(64px);
 
     @include breakpoint('small') {
@@ -413,8 +411,8 @@
       line-height: 1.15;
 
       .icon {
-        font-size: rem(12px);
         color: $color-primary-blue-600;
+        font-size: rem(12px);
       }
     }
 
