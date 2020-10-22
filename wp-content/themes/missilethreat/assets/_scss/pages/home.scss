@@ -5,7 +5,7 @@
     @include breakpoint('small') {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: rem(64px);
+      // column-gap: rem(64px);
     }
 
     @include breakpoint('large') {
@@ -221,6 +221,7 @@
 
     @include breakpoint('small') {
       grid-column: 1;
+      padding-right: rem(32px);
       border-right: rem(1px) solid $color-line-light-gray;
     }
     
@@ -279,6 +280,7 @@
     @include breakpoint('small') {
       grid-column: 2;
       margin-top: 0;
+      padding-left: rem(32px);
     }
     @include breakpoint('medium') {
       margin-top: 0;
@@ -468,10 +470,8 @@
     
     @include breakpoint('small') {
       margin-bottom: rem(56px);
-    }
-    
-    @include breakpoint('large') {
       padding-right: rem(32px);
+      border-right: rem(1px) solid $color-line-light-gray;
     }
 
     &-heading {
@@ -505,10 +505,13 @@
 
   &__twitter {
     margin-bottom: rem(56px);
+
+    @include breakpoint('small') {
+      padding-left: rem(32px);
+    }
     
     @include breakpoint('large') {
       grid-column: 2 / span 2;
-      padding-left: rem(32px);
     }
 
     &-heading {
