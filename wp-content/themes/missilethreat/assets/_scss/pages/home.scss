@@ -80,7 +80,11 @@
       grid-column: 1 / -1;
       grid-row: 1;
       margin-bottom: rem(48px);
-      padding: rem(88px) 0 rem(48px) 50%;
+      padding: 0 0 rem(48px) 50%;
+    }
+
+    @include breakpoint('xlarge') {
+      padding-top: rem(88);
     }
   }
 
