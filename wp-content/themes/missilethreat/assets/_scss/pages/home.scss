@@ -221,11 +221,13 @@
 
     @include breakpoint('small') {
       grid-column: 1;
+      border-right: rem(1px) solid $color-line-light-gray;
     }
-
+    
     @include breakpoint('large') {
       grid-column: 2;
-      margin: 0 rem(32px);
+      padding: 0 rem(32px);
+      border-left: rem(1px) solid $color-line-light-gray;
     }
   }
 
