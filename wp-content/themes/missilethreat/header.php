@@ -28,16 +28,21 @@
 
 		<?php
 		wp_body_open();
+
+		if( is_singular('post') OR is_singular('defsys') OR is_singular('missile') ) {
+			$solidBg = 'solid-bg';
+		}
 		?>
 
 		<?php missilethreat_get_svg_icons(); ?>
 
 		<div class="container">
 
-			<header id="site-header" class="header" role="banner">
+			<header id="site-header" class="header <?php echo $solidBg; ?>" role="banner">
 
 				<a href="<?php echo get_home_url(); ?>" class="header__logo" title="Go home">
 				<?php 
+
 					include( get_template_directory() . '/assets/static/missilethreat-logo.svg'); 
 				?>
 				</a>
