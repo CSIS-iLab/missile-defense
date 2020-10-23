@@ -1,6 +1,7 @@
 @use 'variables' as *;
 @use 'functions' as *;
 @use 'sass:map';
+@use 'sass:list';
 
 /*=================================
 =            Mixins            =
@@ -48,16 +49,30 @@
   font-size: rem($size);
 }
 
-// Font scales in size with the smallest media query size allowed to the ideal and largest.  
+// Font scales in size with the smallest media query size allowed to the ideal and largest.
 // Parameters are the minimum and maximum font size(px) as dictated in Figma.
+// Taken from: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
 @mixin font-clamp($min, $max) {
-  $min-rem: rem($min);
-  $half-min-rem: calc(#{$min-rem} / 2);
-  font-size: $min; //Fallback in px
-  font-size: $min-rem;
-  font-size: clamp(#{$min-rem}, calc(#{$half-min-rem} + 0.666vw), #{rem($max)});
-}
+  $min-font-size: rem($min);
+  $max-font-size: rem($max);
 
+  $preferred-value: calc-preferred-font-value($min-font-size, $max-font-size);
+
+  $preferred-font-size: list.nth($preferred-value, 1);
+
+  $preferred-vw: list.nth($preferred-value, 2);
+
+  font-size: $min; //Fallback in px
+  font-size: $min-font-size;
+
+  /* stylelint-disable */
+  font-size: clamp(
+    #{$min-font-size},
+    calc(#{$preferred-font-size} + #{$preferred-vw}),
+    #{$max-font-size}
+  );
+  /* stylelint-enable */
+}
 @mixin vw100() {
   width: 100vw; // Fallback for old browsers
   width: calc(100vw - var(--scrollbar));
