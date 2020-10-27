@@ -6,7 +6,6 @@
   right: 0;
   left: 0;
   z-index: 10;
-  // display: grid;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -16,7 +15,6 @@
   padding: rem(12px);
   color: $color-primary-light-blue;
   font-size: rem(20px);
-  // column-gap: rem(12px);
   background-image: $gradient-header;
   
   &::after {
@@ -51,8 +49,6 @@
 
   &__logo {
     z-index: 15;
-    // grid-column: 2;
-    // grid-row: 1;
     order: 2;
     margin: 0;
 
@@ -66,8 +62,6 @@
     right: 0;
     left: 0;
     z-index: -1;
-    // grid-column: 1 / span 3;
-    // grid-row: 1;
     order: 4;
     margin-left: rem(-12px);
     visibility: hidden;
@@ -98,8 +92,6 @@
 
   .hamburger {
     z-index: 15;
-    // grid-column: 1;
-    // grid-row: 1;
     order: 1;
     color: $color-primary-light-gray;
     background: none;
@@ -113,8 +105,6 @@
   
   .nav-close {
     z-index: -1;
-    // grid-column: 1;
-    // grid-row: 1;
     display: none;
     order: 1;
 
@@ -135,11 +125,9 @@
 
   &__search {
     position: absolute;
-    left: rem(12px);
     right: rem(12px);
+    left: rem(12px);
     display: flex;
-    // grid-column: 3;
-    // grid-row: 1;
     height: rem(48px);
     padding: rem(12px);
     background: $color-primary-blue-400;
@@ -151,7 +139,6 @@
     &.visible {
       z-index: 15;
       visibility: visible;
-      // grid-column: 1 / span 3;
       opacity: 1;
       pointer-events: all;
     }
@@ -160,8 +147,6 @@
   &__search-icon {
     z-index: 15;
     justify-self: right;
-    // grid-column: 3;
-    // grid-row: 1;
     order: 3;
     color: $color-primary-light-blue;
     cursor: pointer;
@@ -219,14 +204,14 @@
   }
 
   @include breakpoint('large') {
-    grid-template-columns: auto 3fr rem(48px);
+    flex-wrap: nowrap;
     justify-content: initial;
     padding-right: 6vw;
     padding-left: 6vw;
     column-gap: unset;
     
     &__logo {
-      grid-column: 1;
+      order: 1;
       justify-self: start;
       padding-right: rem(48px);
 
@@ -236,24 +221,21 @@
     }
 
     .site-nav {
-      grid-column: 2;
-      grid-row: 1;
+      z-index: 15;
+      order: 2;
       width: 100%;
-      height: 100%;
+      margin: 0;
+      visibility: visible;
       opacity: 1;
-      transition: opacity 0.2s linear, width 0.3s ease-in;
-
-      &.invisible {
-        width: 0;
-        height: 0;
-        opacity: 0;
-      }
+      clip-path: inset(0);
     }
 
     .primary-menu {
-      z-index: 15;
+      @include large-breakpoint-font-ui-text-md-semibold();
+      z-index: 75;
       flex-direction: row;
       justify-content: flex-end;
+      width: 100%;
       @include full-width-background(0);
       white-space: nowrap;
       background: 0;
@@ -271,14 +253,15 @@
     &__search-icon {
       justify-self: start;
     }
-
+    
     &__search {
-      grid-column: 3;
-      grid-row: 1;
+      order: 3;
+      width: calc((100% - 6vw) - (6vw + 248px));
+      transition: opacity 0.3s linear;
       
       &.visible {
-        grid-column: 2 / span 2;
-        width: 100%;
+        right: 6vw;
+        left: initial;
       }
     }
   }
