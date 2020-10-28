@@ -1,6 +1,6 @@
 const hamburger = document.querySelector('.hamburger')
 const menu = document.querySelector('.primary-menu')
-// const menu = document.querySelector('.site-nav')
+const nav = document.querySelector('.site-nav')
 const navClose = document.querySelector('.nav-close')
 const logo = document.querySelector('.header__logo')
 const searchIcon = document.querySelector('.header__search-icon')
@@ -12,6 +12,7 @@ const entryHeader = document.querySelector('.entry-header')
 
 hamburger.addEventListener('click', () => {
   menu.classList.add('visible')
+  nav.setAttribute('aria-expanded', true)
   navClose.classList.add('visible')
   hamburger.classList.add('invisible')
   header.classList.add('reduce-padding')
@@ -24,6 +25,7 @@ searchIcon.addEventListener('click', () => {
   hamburger.classList.add('invisible')
   menu.classList.remove('visible')
   menu.classList.add('invisible')
+  nav.setAttribute('aria-expanded', false)
   navClose.classList.remove('visible')
   header.classList.remove('reduce-padding')
 })
@@ -31,6 +33,7 @@ searchIcon.addEventListener('click', () => {
 
 function closeNav() {
   menu.classList.remove('visible')
+  nav.setAttribute('aria-expanded', false)
   navClose.classList.remove('visible')
   hamburger.classList.remove('invisible')
   header.classList.remove('reduce-padding')
