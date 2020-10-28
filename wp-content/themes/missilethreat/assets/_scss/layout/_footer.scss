@@ -3,10 +3,17 @@
 footer {
   @extend %font-body-short-md;
   @include full-width-background($color-primary-blue-200);
-  padding-top: 2.5em;
-  padding-bottom: 1em;
+  padding-top: rem(40px);
+  padding-bottom: rem(16px);
   color: $color-text-light-170;
   background-color: $color-primary-blue-200;
+}
+
+.flex-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-column-gap: rem(32px);
+  margin-top: rem(32px);
 }
 
 .footer__logo, .mdp, .news-title, .pp {
@@ -22,42 +29,103 @@ footer {
 }
 
 .footer__logo, 
-.description, 
-.footer__contact, 
+.description,  
 .nav_side,
+.social-icon-fb,
+.social-icon-tw,
+.contact-address,
 .news-title, 
 .news-body, 
+.footer-button,
 .footer__copyright {
-  display: block;
   background-color: $color-primary-blue-100;
 }
 
 .description-container {
-  padding-top: 1.5em;
-  padding-bottom: 2em;
+  padding-top: rem(24px);
 }
 
-// .facebook_icon, .twitter_icon {
-//   border-radius: 60px;
-//   background-color: white;
-// }
-
-.facebook-icon {
-  padding-right: .5em;
+.social-icons {
+  margin-top: rem(10px);
 }
 
-.twitter-icon {
-  padding-right: 2em;
+.facebook_icon, .twitter_icon {
+  border-radius: rem(60px);
+  padding: rem(3px);
+  background-color: $color-text-light-100;
+  color: $color-primary-blue-100;
+  margin-top: rem(160px);
 }
+
+.social-icon-fb, .social-icon-tw{
+  padding: rem(3px)
+}
+
 .footer__contact {
-  margin-bottom: 2em;
+  margin-bottom: rem(32px);
 }
 
 .news-title, .news-body {
-  margin-bottom: 0.75em;
+  margin-bottom: rem(12px);
 }
 
 .nav_side {
-  margin-top: 2em;
-  margin-bottom: 3em;
+  margin-top: rem(32px);
+  margin-bottom: rem(48px);
 }
+
+@include breakpoint('medium') {
+  .news-nav {
+    display: grid;
+    grid-template-columns: 60% 40%;
+
+  }
+
+  .news-title, .news-body, .footer-button {
+    max-width: rem(350px);
+  }
+
+  .nav_side {
+    margin-top: 0px;
+  }
+
+  .footer-button {
+    margin-bottom: rem(48px);
+  }
+} 
+
+@include breakpoint('large') {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 50% 30% 20%;
+    grid-column-gap: rem(80px);
+    margin-top: rem(24px);
+  }
+
+  .news-nav {
+    display: grid;
+    grid-template-columns: rem(200px) rem(150px);
+    grid-column-gap: rem(48px);
+    // margin-left: rem(80px);
+  }
+
+  .news-letter {
+    max-width: rem(200px);
+  }
+
+  .nav-side {
+    max-height: rem(174px);
+  }
+
+  .description-container {
+    padding-top: rem(0px);
+    max-width: rem(526px);
+  }
+
+  .flex-container {
+    grid-template-columns: 15% 85%;
+    margin-top: rem(32px);
+    grid-column-gap: rem(2px);
+  }
+
+} 
