@@ -10,7 +10,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  max-height: rem(72px);
+  height: rem(72px);
   margin: 0;
   padding: rem(12px);
   color: $color-primary-light-blue;
@@ -93,12 +93,12 @@
   .nav-close {
     width: rem(48px);
     height: rem(48px);
+    color: $color-primary-light-gray;
   }
 
   .hamburger {
     z-index: 15;
     order: 1;
-    color: $color-primary-light-gray;
     background: none;
     border: 0;
 
@@ -116,7 +116,6 @@
     &.visible {
       z-index: 15;
       display: initial;
-      color: $color-primary-light-gray;
       background: none;
       border: 0;
     }
