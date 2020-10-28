@@ -7,6 +7,7 @@ const searchClose = document.querySelector('.header__search-close')
 const searchForm = document.querySelector('.header__search')
 const content = document.querySelector('#site-content')
 const header = document.querySelector('.header')
+const entryHeader = document.querySelector('.entry-header')
 
 hamburger.addEventListener('click', () => {
   menu.classList.add('visible')
@@ -44,18 +45,25 @@ function closeSearch() {
   navClose.classList.remove('visible')
 }
 
-function headerColor() {
-  if (window.scrollY >= 72) {
-    header.classList.add('full-color')
-  } else {
-    header.classList.remove('full-color')
-  }
-}
-
 navClose.addEventListener('click', closeNav)
 content.addEventListener('click', closeNav)
 
 searchClose.addEventListener('click', closeSearch)
 content.addEventListener('click', closeSearch)
 
-window.addEventListener('scroll', headerColor)
+
+const entryHeaderOptions = {
+  rootMargin: '-72px 0px 0px 0px'
+}
+
+const entryHeaderObserver = new IntersectionObserver(function (entries, entryHeaderObserver) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      header.classList.add('full-color')
+    } else {
+      header.classList.remove('full-color')
+    }
+  })
+}, entryHeaderOptions)
+
+entryHeaderObserver.observe(entryHeader)

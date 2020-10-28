@@ -13,7 +13,7 @@ get_header();
 
 <main id="site-content" role="main">
 
-<header class="archive__header">
+<header class="archive__header entry-header">
   <?php 
 
     $posts_page = get_option( 'page_for_posts' );
