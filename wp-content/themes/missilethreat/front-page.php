@@ -58,7 +58,7 @@ get_header();
 	?>
 
 	<section class="home__news">
-		<h2 class="home__news-heading">News</h2>
+		<h2 class="home__heading home__news-heading">News</h2>
 
 		<?php 
 		$newsPosts = new WP_Query( array(
@@ -82,7 +82,7 @@ get_header();
 
 	</section>
 	
-	<div class="home__all-analysis"><a href="<?php echo site_url('/analysis') ?>">All Analysis <?php echo missilethreat_get_svg('chevron-right') ?></a></div>
+	<div class="home__see-all home__all-analysis"><a href="<?php echo site_url('/analysis') ?>">All Analysis <?php echo missilethreat_get_svg('chevron-right') ?></a></div>
 
 	<section class="home__cards">
 		<div class="home__card">
@@ -90,7 +90,7 @@ get_header();
 				<h2 class="home__card-title">
 					<a href="<?php echo site_url('/defsys') ?>" class="home__card-link post-title--hover">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></a>
 				</h2>
-			<p class="home__card-desc">Explore the components that go into making missile defense effective, including sensors, interceptors, command and control.</p>
+			<p class="home__card-desc home__desc">Explore the components that go into making missile defense effective, including sensors, interceptors, command and control.</p>
 		</div>
 
 		<div class="home__card">
@@ -99,20 +99,20 @@ get_header();
 				<h2 class="home__card-title">
 					<a href="<?php echo site_url('/missile') ?>" class="home__card-link post-title--hover">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></a>
 				</h2>
-			<p class="home__card-desc">A growing collection of information on various countries’ missile systems, with illustrations and information on their capabilities and history.</p>
+			<p class="home__card-desc home__desc">A growing collection of information on various countries’ missile systems, with illustrations and information on their capabilities and history.</p>
 		</div>
 
 	</section>
 
 	<section class="home__projects">
 
-		<h2 class="home__projects-title">Ongoing Projects</h2>
+		<h2 class="home__heading home__projects-heading">Ongoing Projects</h2>
 		<div class="home__projects-info">
-			<p class="home__projects-desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
+			<p class="home__projects-desc home__desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
 			<?php 
 				$cat_link = site_url('/category/ongoing-projects');
 			?>
-			<a href="<?php echo esc_url($cat_link); ?>" class="home__projects-view-all">View all <?php echo missilethreat_get_svg('chevron-right') ?></a>
+			<a href="<?php echo esc_url($cat_link); ?>" class="home__see-all home__projects-view-all">View all <?php echo missilethreat_get_svg('chevron-right') ?></a>
 		</div>
 		<div class="home__projects-wrapper">
 			<?php
@@ -144,12 +144,12 @@ get_header();
 	</section>
 
 	<section class="home__events">
-		<h2 class="home__events-heading">Events</h2>
+		<h2 class="home__heading home__events-heading">Events</h2>
 		<?php
 			$eventsDescription = get_field('events_description');
 
 			if($eventsDescription) : ?>
-				<p class="home__events-desc"><?php echo $eventsDescription; ?></p>
+				<p class="home__events-desc home__desc"><?php echo $eventsDescription; ?></p>
 			<?php  endif;
 				
 
@@ -172,7 +172,7 @@ get_header();
 	</section>
 
 	<section class="home__twitter">
-		<h2 class="home__twitter-heading">Twitter</h2>
+		<h2 class="home__heading home__twitter-heading">Twitter</h2>
 		<?php 	dynamic_sidebar( 'twitter-feed' ); ?>
 	</section>
 

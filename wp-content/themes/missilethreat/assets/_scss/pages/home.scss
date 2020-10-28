@@ -12,6 +12,26 @@
     }
   }
 
+  &__desc {
+    @extend %font-body-short-md-serif;
+  }
+
+  &__heading {
+    @extend %font-ui-heading-lg;
+    color: $color-primary-blue-200;
+  }
+
+  &__see-all {
+    @extend %font-ui-heading-sm;
+    color: $color-text-dark-190;
+    font-style: italic;
+
+    .icon {
+      color: $color-primary-blue-600;
+      font-size: rem(12px);
+    }
+  }
+
   .featured-post {
     position: relative;
     z-index: 2;
@@ -274,9 +294,7 @@
     margin-top: rem(56px);
 
     &-heading {
-      @extend %font-ui-heading-lg;
       margin-bottom: rem(24px);
-      color: $color-primary-blue-200;
       font-weight: 400;
     }
 
@@ -306,17 +324,9 @@
   }
 
   &__all-analysis {
-    @extend %font-ui-heading-sm;
     grid-column: 1 / -1;
     margin-top: rem(24px);
-    color: $color-text-dark-190;
-    font-style: italic;
     text-align: center;
-
-    .icon {
-      color: $color-primary-blue-600;
-      font-size: rem(12px);
-    }
   }
 
   &__cards {
@@ -364,7 +374,6 @@
     }
 
     &-desc {
-      @extend %font-body-short-md-serif;
       color: $color-text-dark-190;
     }
 
@@ -399,10 +408,8 @@
     padding: rem(112px) 0 rem(56px) 0;
     background: $color-primary-light-gray;
 
-    &-title {
-      @extend %font-ui-heading-lg;
+    &-heading {
       margin-bottom: rem(12px);
-      color: $color-primary-blue-200;
     }
 
     &-info {
@@ -410,7 +417,6 @@
     }
 
     &-desc {
-      @extend %font-body-short-md-serif;
       margin-bottom: rem(8px);
       color: $color-text-dark-170;
 
@@ -422,15 +428,6 @@
     &-view-all {
       display: inline;
       align-self: flex-end;
-      color: $color-text-dark-190;
-      font-size: rem(17px);
-      font-style: italic;
-      line-height: 1.15;
-
-      .icon {
-        color: $color-primary-blue-600;
-        font-size: rem(12px);
-      }
     }
 
     @include breakpoint('small') {
@@ -488,13 +485,10 @@
     }
 
     &-heading {
-      @extend %font-ui-heading-lg;
       margin-bottom: rem(16px);
-      color: $color-primary-blue-200;
     }
 
     &-desc {
-      @extend %font-body-short-md-serif;
       margin-bottom: rem(40px);
       color: $color-text-dark-190;
     }
@@ -525,11 +519,6 @@
     
     @include breakpoint('large') {
       grid-column: 2 / span 2;
-    }
-
-    &-heading {
-      @extend %font-ui-heading-lg;
-      color: $color-primary-blue-200;
     }
   }
 }
