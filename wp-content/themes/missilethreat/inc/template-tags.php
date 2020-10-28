@@ -161,10 +161,11 @@ function missilethreat_last_updated() {
  *
  */
 function missilethreat_authors() {
-	if ( function_exists( 'coauthors' ) ) {
-    $authors = coauthors_links( ', ', ', ', null, null, false );
+	if ( function_exists( 'coauthors_posts_links' ) ) {
+    $authors = coauthors_posts_links( ', ', ' and ', null, null, false );
 	} else {
-		$authors = get_the_author();
+		// $authors = get_the_author();
+		$authors = the_author_posts_link();
 	}
 
 	if ( !$authors ) {
