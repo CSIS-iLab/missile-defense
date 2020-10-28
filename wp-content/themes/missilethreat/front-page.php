@@ -147,44 +147,28 @@ get_header();
 		<h2 class="home__events-heading">Events</h2>
 		<?php
 			$eventsDescription = get_field('events_description');
-			$event1 = get_field('event_1');
-			$event2 = get_field('event_2');
-			$event3 = get_field('event_3');
+
+			if($eventsDescription) : ?>
+				<p class="home__events-desc"><?php echo $eventsDescription; ?></p>
+			<?php  endif;
+				
 
 			$formatIn = 'm/d/Y';
 			$formatOut = 'M j';
 
-			$date1 = DateTime::createFromFormat($formatIn, get_field('event_1_date'));
-			$date2 = DateTime::createFromFormat($formatIn, get_field('event_2_date'));
-			$date3 = DateTime::createFromFormat($formatIn, get_field('event_3_date'));
+			$arr = array(1, 2, 3);
+			foreach ($arr as $value) {
+				$event = get_field('event_' . $value);
+				$date = DateTime::createFromFormat($formatIn, get_field('event_' . $value . '_date'));
 
-			if($eventsDescription) : ?>
-			<p class="home__events-desc"><?php echo $eventsDescription; ?></p>
-			<?php  endif;
-			
-			if($event1) : ?>
-			<div class="event">
-				<p class="event__date text--semibold"><?php echo $date1->format($formatOut); ?></p>
-				<a href="<?php echo esc_url($event1['link']); ?>"  class="event__link post-title--hover"><?php echo $event1['title']; ?></a>
-			</div>
-
-			<?php endif; 
-			
-			if($event2) : ?>
-				<div class="event">
-					<p class="event__date text--semibold"><?php echo $date2->format($formatOut); ?></p>
-					<a href="<?php echo esc_url($event2['link']); ?>"  class="event__link post-title--hover"><?php echo $event2['title']; ?></a>
-				</div>
-
-				<?php endif;
-				
-				if($event3) : ?>
+				if($event) { ?>
 					<div class="event">
-						<p class="event__date text--semibold"><?php echo $date3->format($formatOut); ?></p>
-						<a href="<?php echo esc_url($event3['link']); ?>"  class="event__link post-title--hover"><?php echo $event3['title']; ?></a>
+						<p class="event__date text--semibold"><?php echo $date->format($formatOut); ?></p>
+						<a href="<?php echo esc_url($event['link']); ?>"  class="event__link post-title--hover"><?php echo $event['title']; ?></a>
 					</div>
-	
-					<?php endif; ?>
+				<?php }
+			}
+			?>
 	</section>
 
 	<section class="home__twitter">
