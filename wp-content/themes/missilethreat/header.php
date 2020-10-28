@@ -50,9 +50,9 @@
 				<?php
 				if ( has_nav_menu( 'primary' ) ) {
 					?>
-						<button class="hamburger"><i class="fas fa-bars"></i></button>
-						<button class='nav-close'><?php echo missilethreat_get_svg( 'close' ); ?></button>
 						<nav class="site-nav" aria-label="<?php esc_attr_e( 'Site Navigation', 'missilethreat' ); ?>" role="navigation">
+							<button class="hamburger" aria-label="Open the navigation menu"><i class="fas fa-bars"></i></button>
+							<button class='nav-close'><?php echo missilethreat_get_svg( 'close' ); ?></button>
 							<ul class="primary-menu text--semibold">
 
 							<?php

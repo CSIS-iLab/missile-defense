@@ -1,5 +1,6 @@
 const hamburger = document.querySelector('.hamburger')
-const menu = document.querySelector('.site-nav')
+const menu = document.querySelector('.primary-menu')
+// const menu = document.querySelector('.site-nav')
 const navClose = document.querySelector('.nav-close')
 const logo = document.querySelector('.header__logo')
 const searchIcon = document.querySelector('.header__search-icon')

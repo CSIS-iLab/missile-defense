@@ -59,35 +59,40 @@
   }
 
   .site-nav {
-    right: 0;
-    left: 0;
-    z-index: -1;
-    order: 4;
+    z-index: 10;
+    order: 1;
     margin-left: rem(-12px);
+  }
+  
+  .primary-menu {
+    @extend %font-ui-text-md-semibold-mobile-nav;
+    position: absolute;
+    top: rem(62px);
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
     visibility: hidden;
+    color: $color-text-light-190;
+    text-transform: uppercase;
+    background: $color-primary-blue-200;
     transition: clip-path 0.3s linear, visibility 0.3s linear;
     clip-path: inset(0 0 100% 0);
-    
+        
     &.visible {
       z-index: 15;
       visibility: visible;
       clip-path: inset(0);
     }
-  }
-  
-  .primary-menu {
-    @extend %font-ui-text-md-semibold-mobile-nav;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    color: $color-text-light-190;
-    text-transform: uppercase;
-    background: $color-primary-blue-200;
 
     li {
       padding: rem(16px);
     }
+  }
+
+  .hamburger,
+  .nav-close {
+    width: rem(48px);
+    height: rem(48px);
   }
 
   .hamburger {
