@@ -16,6 +16,11 @@ $entry_header_classes = '';
 	<div class="single__header-wrapper">
 
 		<?php
+		if(is_singular()) {
+			echo 'singular';
+		}
+		echo get_post_type();
+
 			missilethreat_posted_on();
 
 			the_title( '<h1 class="single__title">', '</h1>' );

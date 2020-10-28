@@ -9,13 +9,17 @@
 **/
 
 get_header();
+
 ?>
 
-<main id="site-content" role="main">
+<main id="site-content" role="main" style="margin-top:250px;">
+  
+  <!-- <header class="archive__header"> -->
+<?php 
 
-<header class="archive__header">
+get_template_part( 'template-parts/entry-header', get_post_type() );
 
-Heeeadeeeeeerrrrrrrrrrrrrr
+?>
 
 </header>
 
@@ -24,7 +28,6 @@ Heeeadeeeeeerrrrrrrrrrrrrr
   <section class="archive__content">
     
   <?php
-
 
   if ( have_posts() ) {
 
