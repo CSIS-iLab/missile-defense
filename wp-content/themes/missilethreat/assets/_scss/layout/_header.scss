@@ -232,11 +232,13 @@
     }
 
     .primary-menu {
-      @include large-breakpoint-font-ui-text-md-semibold();
+      @include font-size(14px);
       top: 0;
       flex-direction: row;
       justify-content: flex-end;
       width: 100%;
+      font-weight: 600;
+      line-height: 1.14;
       white-space: nowrap;
       @include full-width-background(0);
       background: 0;
