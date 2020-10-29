@@ -2,16 +2,16 @@
 
 footer {
   @extend %font-body-short-md;
-  @include full-width-background($color-primary-blue-200);
+  @include full-width-background($color-primary-blue-100);
   padding-top: rem(40px);
   padding-bottom: rem(16px);
   color: $color-text-light-170;
-  background-color: $color-primary-blue-200;
+  background-color: $color-primary-blue-100;
 }
 
 .flex-container {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 25% 75%;
   grid-column-gap: rem(32px);
   margin-top: rem(32px);
 }
@@ -28,18 +28,18 @@ footer {
   color: $color-text-light-155;
 }
 
-.footer__logo, 
-.description,  
-.nav_side,
-.social-icon-fb,
-.social-icon-tw,
-.contact-address,
-.news-title, 
-.news-body, 
-.footer-button,
-.footer__copyright {
-  background-color: $color-primary-blue-100;
-}
+// .footer__logo, 
+// .description,  
+// .nav_side,
+// .social-icon-fb,
+// .social-icon-tw,
+// .contact-address,
+// .news-title, 
+// .news-body, 
+// .footer-button,
+// .footer__copyright {
+//   background-color: $color-primary-blue-100;
+// }
 
 .description-container {
   padding-top: rem(24px);
@@ -58,7 +58,7 @@ footer {
 }
 
 .social-icon-fb, .social-icon-tw{
-  padding: rem(3px)
+  padding: rem(4px)
 }
 
 .footer__contact {
@@ -75,10 +75,14 @@ footer {
 }
 
 @include breakpoint('medium') {
+
+  .flex-container {
+    grid-column-gap: rem(0px);
+  }
   .news-nav {
     display: grid;
-    grid-template-columns: 60% 40%;
-
+    grid-template-columns: rem(350px) rem(165);
+    grid-column-gap: rem(80px);
   }
 
   .news-title, .news-body, .footer-button {
@@ -97,34 +101,17 @@ footer {
 @include breakpoint('large') {
   .grid-container {
     display: grid;
-    grid-template-columns: 50% 30% 20%;
+    grid-template-columns: rem(526px) rem(200) rem(150px);
     grid-column-gap: rem(80px);
     margin-top: rem(24px);
   }
 
-  .news-nav {
-    display: grid;
-    grid-template-columns: rem(200px) rem(150px);
-    grid-column-gap: rem(48px);
-    // margin-left: rem(80px);
-  }
-
-  .news-letter {
-    max-width: rem(200px);
-  }
-
-  .nav-side {
-    max-height: rem(174px);
-  }
-
   .description-container {
     padding-top: rem(0px);
-    max-width: rem(526px);
   }
 
   .flex-container {
     grid-template-columns: 15% 85%;
-    margin-top: rem(32px);
     grid-column-gap: rem(2px);
   }
 

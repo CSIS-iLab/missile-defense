@@ -75,7 +75,7 @@
 						_x( 'Y', 'copyright date format', 'missilethreat' )
 					);
 					?>
-					Center for Strategic and International Studies.<br />All rights reserved. | <a class="pp" href="https://www.csis.org/privacy-policy">Privacy Policy</a>
+					Center for Strategic and International Studies. All rights reserved. | <a class="pp" href="https://www.csis.org/privacy-policy">Privacy Policy</a>
 				</p><!-- .footer-copyright -->
 			</div>
 			</footer><!-- #site-footer -->
