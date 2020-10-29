@@ -11,39 +11,39 @@ const header = document.querySelector('.header')
 const entryHeader = document.querySelector('.entry-header')
 
 hamburger.addEventListener('click', () => {
-  menu.classList.add('visible')
+  menu.classList.add('is-visible')
   nav.setAttribute('aria-expanded', true)
-  navClose.classList.add('visible')
-  hamburger.classList.add('invisible')
+  navClose.classList.add('is-visible')
+  hamburger.classList.add('is-invisible')
 })
 
 searchIcon.addEventListener('click', () => {
-  searchForm.classList.add('visible')
-  searchIcon.classList.add('invisible')
-  logo.classList.add('invisible')
-  hamburger.classList.add('invisible')
-  menu.classList.remove('visible')
-  menu.classList.add('invisible')
+  searchForm.classList.add('is-visible')
+  searchIcon.classList.add('is-invisible')
+  logo.classList.add('is-invisible')
+  hamburger.classList.add('is-invisible')
+  menu.classList.remove('is-visible')
+  menu.classList.add('is-invisible')
   nav.setAttribute('aria-expanded', false)
-  navClose.classList.remove('visible')
+  navClose.classList.remove('is-visible')
 })
 
 
 function closeNav() {
-  menu.classList.remove('visible')
+  menu.classList.remove('is-visible')
   nav.setAttribute('aria-expanded', false)
-  navClose.classList.remove('visible')
-  hamburger.classList.remove('invisible')
+  navClose.classList.remove('is-visible')
+  hamburger.classList.remove('is-invisible')
 }
 
 function closeSearch() {
-  searchForm.classList.remove('visible')
-  searchIcon.classList.remove('invisible')
-  logo.classList.remove('invisible')
-  hamburger.classList.remove('invisible')
-  menu.classList.remove('visible')
-  menu.classList.remove('invisible')
-  navClose.classList.remove('visible')
+  searchForm.classList.remove('is-visible')
+  searchIcon.classList.remove('is-invisible')
+  logo.classList.remove('is-invisible')
+  hamburger.classList.remove('is-invisible')
+  menu.classList.remove('is-visible')
+  menu.classList.remove('is-invisible')
+  navClose.classList.remove('is-visible')
 }
 
 navClose.addEventListener('click', closeNav)

@@ -20,7 +20,7 @@
   transition: clip-path 0.3s linear, visibility 0.3s linear;
   clip-path: inset(0 0 100% 0);
       
-  &.visible {
+  &.is-visible {
     z-index: 15;
     visibility: visible;
     clip-path: inset(0);
@@ -44,7 +44,7 @@
   background: none;
   border: 0;
 
-  &.invisible {
+  &.is-invisible {
     z-index: -1;
     display: none;
   }
@@ -55,7 +55,7 @@
   display: none;
   order: 1;
 
-  &.visible {
+  &.is-visible {
     z-index: 15;
     display: initial;
     background: none;

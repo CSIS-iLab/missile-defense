@@ -20,7 +20,7 @@
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     pointer-events: none;
 
-    &.visible {
+    &.is-visible {
       z-index: 15;
       visibility: visible;
       opacity: 1;
@@ -36,7 +36,7 @@
     visibility: visible;
     cursor: pointer;
 
-    &.invisible {
+    &.is-invisible {
       visibility: hidden;
     }
   }
@@ -94,7 +94,7 @@
       width: calc((100% - 6vw) - (6vw + 248px));
       transition: opacity 0.3s linear;
       
-      &.visible {
+      &.is-visible {
         right: 6vw;
         left: initial;
       }
