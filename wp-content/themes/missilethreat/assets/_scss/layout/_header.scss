@@ -148,11 +148,12 @@
     z-index: 15;
     justify-self: right;
     order: 3;
+    visibility: visible;
     color: $color-primary-light-blue;
     cursor: pointer;
 
     &.invisible {
-      display: none;
+      visibility: hidden;
     }
   }
 
