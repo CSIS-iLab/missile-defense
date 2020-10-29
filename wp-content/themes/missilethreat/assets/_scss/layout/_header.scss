@@ -39,10 +39,6 @@
     top: 32px;
   }
 
-  &.reduce-padding {
-    padding-bottom: 0;
-  }
-
   * > {
     flex: 1 1 auto;
   }
@@ -201,10 +197,6 @@
     background: $color-primary-blue-200;
     border: 0;
     cursor: pointer;
-  }
-
-  @include breakpoint('small') {
-    justify-content: space-between;
   }
 
   @include breakpoint('large') {

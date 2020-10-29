@@ -15,7 +15,6 @@ hamburger.addEventListener('click', () => {
   nav.setAttribute('aria-expanded', true)
   navClose.classList.add('visible')
   hamburger.classList.add('invisible')
-  header.classList.add('reduce-padding')
 })
 
 searchIcon.addEventListener('click', () => {
@@ -27,7 +26,6 @@ searchIcon.addEventListener('click', () => {
   menu.classList.add('invisible')
   nav.setAttribute('aria-expanded', false)
   navClose.classList.remove('visible')
-  header.classList.remove('reduce-padding')
 })
 
 
@@ -36,7 +34,6 @@ function closeNav() {
   nav.setAttribute('aria-expanded', false)
   navClose.classList.remove('visible')
   hamburger.classList.remove('invisible')
-  header.classList.remove('reduce-padding')
 }
 
 function closeSearch() {
