@@ -74,7 +74,7 @@
 				} ?>
 
 			<div class="header__search-group">
-				<button for="navSearchInput" class="header__search-icon" aria-label="Open search form"><?php echo missilethreat_get_svg('search') ?></button>
+				<button for="navSearchInput" class="header__search-icon" aria-expanded="false" aria-label="Open search form"><?php echo missilethreat_get_svg('search') ?></button>
 					<form method="get" id="searchform" class='header__search' role='search' action="/">
 							<label class="screen-reader-text" for="navSearchInput">Search for:</label>
 							<input type="text" class="form-control header__search-field" name="s" id="navSearchInput" placeholder="Search" />

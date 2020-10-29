@@ -24,6 +24,7 @@ searchIcon.addEventListener('click', () => {
   hamburger.classList.add('is-invisible')
   menu.classList.remove('is-visible')
   menu.classList.add('is-invisible')
+  searchIcon.setAttribute('aria-expanded', true)
   nav.setAttribute('aria-expanded', false)
   navClose.classList.remove('is-visible')
 })
@@ -44,6 +45,7 @@ function closeSearch() {
   menu.classList.remove('is-visible')
   menu.classList.remove('is-invisible')
   navClose.classList.remove('is-visible')
+  searchIcon.setAttribute('aria-expanded', false)
 }
 
 navClose.addEventListener('click', closeNav)
