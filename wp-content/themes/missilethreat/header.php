@@ -52,7 +52,7 @@
 					?>
 						<nav class="site-nav" aria-label="<?php esc_attr_e( 'Site Navigation', 'missilethreat' ); ?>" role="navigation">
 							<button class="hamburger" aria-label="Open the navigation menu"><i class="fas fa-bars"></i></button>
-							<button class='nav-close'><?php echo missilethreat_get_svg( 'close' ); ?></button>
+							<button class='nav-close' aria-label="Close the navigation menu"><?php echo missilethreat_get_svg( 'close' ); ?></button>
 							<ul class="primary-menu text--semibold">
 
 							<?php
@@ -74,12 +74,12 @@
 				} ?>
 
 			<div class="header__search-group">
-				<button for="navSearchInput" class="header__search-icon"><?php echo missilethreat_get_svg('search') ?></button>
+				<button for="navSearchInput" class="header__search-icon" aria-label="Open search form"><?php echo missilethreat_get_svg('search') ?></button>
 					<form method="get" id="searchform" class='header__search' role='search' action="/">
 							<label class="screen-reader-text" for="navSearchInput">Search for:</label>
 							<input type="text" class="form-control header__search-field" name="s" id="navSearchInput" placeholder="Search" />
 							<label for="navSearchInput" id="navSearchLabel" class="header__search-label">Search</label>
-							<button class='header__search-submit' type='submit'><?php echo missilethreat_get_svg( 'arrow-right' ); ?></button>
+							<button class='header__search-submit' type='submit' aria-label="Submit search"><?php echo missilethreat_get_svg( 'arrow-right' ); ?></button>
 						<button class='header__search-close' type='reset' aria-label='Close Search Form'><?php echo missilethreat_get_svg( 'close' ); ?></button>
 					</form>
 				</div>
