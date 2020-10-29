@@ -26,7 +26,8 @@
     clip-path: inset(0);
   }
 
-  li {
+  a {
+    display: block;
     padding: rem(16px);
   }
 }
