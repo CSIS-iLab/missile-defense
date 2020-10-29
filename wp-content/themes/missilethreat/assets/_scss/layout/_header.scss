@@ -54,69 +54,6 @@
     }
   }
 
-  .site-nav {
-    z-index: 10;
-    order: 1;
-    margin-left: rem(-12px);
-  }
-  
-  .primary-menu {
-    @extend %font-ui-text-md-semibold-mobile-nav;
-    position: absolute;
-    top: rem(72px);
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    color: $color-text-light-190;
-    text-transform: uppercase;
-    background: $color-primary-blue-200;
-    visibility: hidden;
-    transition: clip-path 0.3s linear, visibility 0.3s linear;
-    clip-path: inset(0 0 100% 0);
-        
-    &.visible {
-      z-index: 15;
-      visibility: visible;
-      clip-path: inset(0);
-    }
-
-    li {
-      padding: rem(16px);
-    }
-  }
-
-  .hamburger,
-  .nav-close {
-    width: rem(48px);
-    height: rem(48px);
-    color: $color-primary-light-gray;
-  }
-
-  .hamburger {
-    z-index: 15;
-    order: 1;
-    background: none;
-    border: 0;
-
-    &.invisible {
-      z-index: -1;
-      display: none;
-    }
-  }
-  
-  .nav-close {
-    z-index: -1;
-    display: none;
-    order: 1;
-
-    &.visible {
-      z-index: 15;
-      display: initial;
-      background: none;
-      border: 0;
-    }
-  }
-
   @include breakpoint('large') {
     flex-wrap: nowrap;
     justify-content: initial;
@@ -132,43 +69,6 @@
       &.invisible {
         display: block;
       }
-    }
-
-    .site-nav {
-      z-index: 15;
-      order: 2;
-      width: 100%;
-      margin: 0;
-    }
-
-    .primary-menu {
-      @include font-size(14px);
-      top: 0;
-      flex-direction: row;
-      justify-content: flex-end;
-      width: 100%;
-      font-weight: 600;
-      line-height: 1.14;
-      white-space: nowrap;
-      @include full-width-background(0);
-      background: 0;
-      visibility: visible;
-      opacity: 1;
-      clip-path: inset(0);
-
-      &::before,
-      &::after {
-        content: none;
-      }
-
-      li {
-        padding-left: rem(8px);
-      }
-    }
-
-    .hamburger,
-    .nav-close {
-      display: none;
     }
   }
 
