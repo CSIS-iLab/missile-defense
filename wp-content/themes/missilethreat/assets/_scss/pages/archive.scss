@@ -9,14 +9,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     width: 100vw;
-    // height: rem(342px);
-    // height: rem(504px);
     margin: 0 0 0 -6vw;
-    padding: rem(80px) rem(20px) rem(24px) rem(20px);
-    color: $color-text-light-100;
+    padding: rem(112px) rem(20px) rem(24px) rem(20px);
     overflow: hidden;
+    color: $color-text-light-100;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
@@ -25,12 +23,8 @@
 
   &__title {
     @extend %font-ui-page-title-lg;
-    // position: absolute;
-    // top: rem(320px);
     display: inline;
-    // margin-left: 6vw;
     width: 100%;
-    margin-top: rem(40px);
     margin-bottom: rem(12px);
     padding-bottom: rem(12px);
     text-shadow: $dropshadow;
@@ -41,12 +35,18 @@
     @extend %font-body-list-lg;
   }
 
-  // .divider {
-  //   position: absolute;
-  //   display: inline;
-  //   top: rem(316px);
-  //   color: $color-primary-light-blue;
-  // }
+  @include breakpoint('small') {
+    &__header {
+      padding: rem(128px) rem(32px) rem(40px) rem(32px);
+    }
+  }
+
+  @include breakpoint('medium') {
+    &__header {
+      min-height: rem(384px);
+      padding: rem(128px) 6vw rem(56px) 6vw;
+    }
+  }
 
   @include breakpoint('large') {
     grid-gap: 6vw;
