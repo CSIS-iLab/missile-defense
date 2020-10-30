@@ -30,7 +30,7 @@ if ( get_archive_thumbnail_src() ) {
   <header class="archive__header" <?php echo $feat_image; ?>>
     <h1 class="archive__title"><?php the_archive_title(); ?></h1>
 <?php 
-
+the_archive_top_content();
 
 ?>
 
