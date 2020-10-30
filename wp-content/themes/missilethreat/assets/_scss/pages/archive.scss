@@ -39,7 +39,7 @@
     height: rem(4px);
     margin: rem(16px) 0;
     background-color: $color-primary-light-blue;
-    opacity: .5;
+    opacity: 0.5;
   }
 
   &-control-area {
@@ -76,5 +76,11 @@
     //   grid-column: 2;
     //   max-width: rem(300px);
     // }
+  }
+
+  @include breakpoint('xlarge') {
+    &__header {
+      min-height: rem(484px);
+    }
   }
 }
