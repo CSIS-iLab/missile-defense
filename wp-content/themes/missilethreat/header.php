@@ -30,7 +30,7 @@
 		wp_body_open();
 
 		if( is_singular('post') OR is_singular('defsys') OR is_singular('missile') ) {
-			$solidBg = 'solid-bg';
+			$solidBg = 'header--solid-bg';
 		}
 		?>
 

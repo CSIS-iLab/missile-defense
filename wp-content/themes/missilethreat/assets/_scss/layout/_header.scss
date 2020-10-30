@@ -43,6 +43,14 @@
     flex: 1 1 auto;
   }
 
+  &--solid-bg {
+    background-color: $color-primary-blue-300;
+    
+    &::after {
+      content: none;
+    }
+  }
+
   &__logo {
     z-index: 15;
     order: 2;
@@ -77,10 +85,3 @@
   }
 }
 
-.solid-bg {
-  background-color: $color-primary-blue-300;
-  
-  &::after {
-    content: none;
-  }
-}
