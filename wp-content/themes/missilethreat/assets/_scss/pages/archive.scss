@@ -21,14 +21,25 @@
     mask-image: $gradient-standard;
   }
 
+  &__title,
+  &__divider,
+  &-control-area {
+    max-width: $size__content-max-width;
+  }
+
   &__title {
     @extend %font-ui-page-title-lg;
     display: inline;
     width: 100%;
-    margin-bottom: rem(12px);
-    padding-bottom: rem(12px);
     text-shadow: $dropshadow;
-    border-bottom: 4px solid $color-primary-light-blue;
+  }
+
+  &__divider {
+    width: 100%;
+    height: rem(4px);
+    margin: rem(16px) 0;
+    background-color: $color-primary-light-blue;
+    opacity: .5;
   }
 
   &-control-area {
@@ -49,18 +60,21 @@
   }
 
   @include breakpoint('large') {
-    grid-gap: 6vw;
-    grid-template-columns: auto 300px;
-    justify-content: center;
-
-    &__content {
-      grid-column: 1;
-      max-width: rem(700px);
+    &__header {
+      min-height: rem(434px);
     }
+    // grid-gap: 6vw;
+    // grid-template-columns: auto 300px;
+    // justify-content: center;
 
-    &__sidebar {
-      grid-column: 2;
-      max-width: rem(300px);
-    }
+    // &__content {
+    //   grid-column: 1;
+    //   max-width: rem(700px);
+    // }
+
+    // &__sidebar {
+    //   grid-column: 2;
+    //   max-width: rem(300px);
+    // }
   }
 }
