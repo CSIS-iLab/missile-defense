@@ -23,9 +23,7 @@
   td,
   th {
     padding: rem(8px) !important; //Important to override data tables styling
-    padding-left: rem(
-      12px
-    ) !important; //Important to override data tables styling
+    padding-left: rem(12px) !important; //Important to override data tables styling
   }
 
   .wp-block-table {
@@ -46,7 +44,7 @@
     thead {
       background: $color-primary-light-blue;
     }
-
+    /* stylelint-disable */
     tbody {
       tr:first-child {
         border-top: rem(1px) solid #cdd5da;
@@ -57,5 +55,6 @@
         font-weight: 600;
       }
     }
+    /* stylelint-enable */
   }
 }

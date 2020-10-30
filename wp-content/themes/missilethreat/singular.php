@@ -15,7 +15,7 @@ get_header();
 <main id="site-content" role="main">
 
 	<?php
-	get_template_part( 'template-parts/entry-header', get_post_type() );
+	// get_template_part( 'template-parts/entry-header', get_post_type() );
 	get_template_part( 'template-parts/breadcrumbs' );
 
 	if ( have_posts() ) {
