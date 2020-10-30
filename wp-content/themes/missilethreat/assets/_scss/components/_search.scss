@@ -26,6 +26,11 @@
       opacity: 1;
       pointer-events: all;
     }
+
+    &:focus-within {
+      color: $color-text-light-190;
+      background: $color-primary-blue-500;
+    }
   }
 
   &__search-icon {
@@ -39,6 +44,10 @@
     &.is-invisible {
       visibility: hidden;
     }
+
+    &:hover {
+      color: $color-text-light-100;
+    }
   }
 
   &__search-label {
@@ -48,10 +57,14 @@
   &__search-field {
     @extend %font-ui-text-lg;
     width: 100%;
-    color: $color-text-light-155;
-    background: $color-primary-blue-400;
+    color: $color-text-light-155; 
+    background: none;
     border: 0;
     border-bottom: 1px solid $color-primary-blue-900;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__search-icon,
@@ -66,6 +79,10 @@
     color: $color-line-mid-gray;
     line-height: 50%;
     cursor: pointer;
+
+    &:hover {
+      color: $color-text-light-100;
+    }
   }
 
   &__search-close {
@@ -82,6 +99,10 @@
     background: $color-primary-blue-200;
     border: 0;
     cursor: pointer;
+
+    &:hover {
+      color: $color-text-light-100;
+    }
   }
 
   @include breakpoint('large') {
