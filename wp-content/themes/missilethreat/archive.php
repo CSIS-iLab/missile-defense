@@ -28,11 +28,24 @@ if ( get_archive_thumbnail_src() ) {
 <main id="site-content" role="main">
   
   <header class="archive__header" <?php echo $feat_image; ?>>
-    <h1 class="archive__title"><?php the_archive_title(); ?></h1>
-    <div class="archive__divider"></div>
 <?php 
-the_archive_top_content();
 
+if ( get_archive_thumbnail_src() ) { ?>
+  <h1 class="archive__title text--semibold"><?php the_archive_title(); ?></h1>
+  <div class="archive__divider"></div>
+  <div class="archive__desc"><?php the_archive_top_content(); ?> </div>
+
+<?php }  
+elseif ( $page_for_posts ) {
+
+  $post = get_page($page_for_posts);
+  setup_postdata($post); ?>
+  <h1 class="archive__title text--semibold"><?php the_title(); ?></h1>
+  <div class="archive__divider"></div>
+  <div class="archive__desc"><?php the_content(); ?> </div>
+<?php }
+
+wp_reset_postdata();
 ?>
 
 </header>
