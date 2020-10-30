@@ -55,12 +55,19 @@
   }
 
   &__search-field {
-    @extend %font-ui-text-lg;
     width: 100%;
-    color: $color-text-light-155; 
     background: none;
     border: 0;
     border-bottom: 1px solid $color-primary-blue-900;
+
+    &::placeholder {
+      @extend %font-ui-text-lg;
+      color: $color-text-light-155;
+
+      &:focus {
+        color: $color-text-light-155; 
+      }
+    }
 
     &:focus {
       outline: none;
