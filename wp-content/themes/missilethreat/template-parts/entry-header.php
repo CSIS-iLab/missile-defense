@@ -8,7 +8,6 @@
  */
 
 $entry_header_classes = '';
-
 ?>
 
 <header class="single__header<?php echo esc_attr( $entry_header_classes ); ?>">
@@ -16,10 +15,6 @@ $entry_header_classes = '';
 	<div class="single__header-wrapper">
 
 		<?php
-		if(is_singular()) {
-			echo 'singular';
-		}
-		echo get_post_type();
 
 			missilethreat_posted_on();
 
