@@ -29,7 +29,7 @@
 		<?php
 		wp_body_open();
 
-		if( is_singular('post') OR is_singular('defsys') OR is_singular('missile') ) {
+		if( is_singular( array( 'post', 'defsys', 'missile' ) ) ) {
 			$solidBg = 'header--solid-bg';
 		}
 		?>
