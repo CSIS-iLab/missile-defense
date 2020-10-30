@@ -42,6 +42,10 @@
   width: rem(48px);
   height: rem(48px);
   color: $color-primary-light-gray;
+
+  &:hover {
+    color: $color-text-light-100;
+  }
 }
 
 .hamburger {
