@@ -6,6 +6,7 @@
   // width: 100%;
 
   &__header {
+    z-index: -1;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -23,7 +24,7 @@
 
   &__title,
   &__divider,
-  &-control-area {
+  &__desc {
     max-width: $size__content-max-width;
   }
 
@@ -42,7 +43,7 @@
     opacity: 0.5;
   }
 
-  &-control-area {
+  &__desc {
     @extend %font-body-list-lg;
   }
 
