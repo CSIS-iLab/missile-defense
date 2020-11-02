@@ -30,7 +30,7 @@ $page_for_posts = get_option( 'page_for_posts' );
   <?php 
   if ( is_post_type_archive() ) { 
     $feat_image = 'style="background-image:url('.get_archive_thumbnail_src("full").');"';?>
-    <header class="page__header-header" <?php echo $feat_image; ?>>
+    <header class="page__header" <?php echo $feat_image; ?>>
     <h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
     <div class="page__header-divider"></div>
     <div class="page__header-desc"><?php the_archive_top_content(); ?> </div>
@@ -44,7 +44,7 @@ $page_for_posts = get_option( 'page_for_posts' );
     
   <?php } elseif ( $page_for_posts ) { 
     $feat_image = 'style="background-image:url('.get_the_post_thumbnail_url( $page_for_posts ).');"';?>
-    <header class="archive__header" <?php echo $feat_image; ?>>
+    <header class="page__header" <?php echo $feat_image; ?>>
     <?php
     $post = get_page($page_for_posts);
     setup_postdata($post); ?>
