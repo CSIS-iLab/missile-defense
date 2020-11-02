@@ -33,7 +33,7 @@ $page_for_posts = get_option( 'page_for_posts' );
     <header class="archive__header" <?php echo $feat_image; ?>>
   
   <?php } elseif ( is_archive() ) { ?>
-    <header class="archive__header" style='background:linear-gradient(90deg, #2A5565 0%, #5F7981 100%);'>
+    <header class="archive__header" style='background-image:linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%), linear-gradient(90deg, #2A5565 0%, #5F7981 100%);'>
 
   <?php } elseif ( $page_for_posts ) { 
     $feat_image = 'style="background-image:url('.get_the_post_thumbnail_url( $page_for_posts ).');"';?>
@@ -58,7 +58,7 @@ elseif ( $page_for_posts ) {
 <?php }
 
 wp_reset_postdata();
-echo $page_for_posts;
+
 ?>
 
 </header>
