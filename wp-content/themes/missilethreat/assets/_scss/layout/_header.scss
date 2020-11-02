@@ -2,6 +2,10 @@
 
 .header {
   position: fixed;
+  top: 0;
+  left: 0;
   // height: rem(72px);
   // overflow: hidden;
+  width: 100vw;
+  background: linear-gradient(180deg, rgba(5, 32, 46, 0.56) 0%, rgba(6, 42, 59, 0.287778) 43.48%, rgba(7, 52, 74, 0) 100%);
 }
