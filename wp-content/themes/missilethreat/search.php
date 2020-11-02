@@ -1,4 +1,11 @@
+
 <?php
+/* Template Name: Analysis Page Custom */
+
+// include(get_query_template('archive'));
+
+
+
 /**
  * The main template file
  *
@@ -30,7 +37,7 @@ get_header();
 
 		$archive_title = sprintf(
 			'%1$s %2$s',
-			'<span class="color-accent">' . __( 'Search:', 'missilethreat' ) . '</span>',
+			'<span class="archive-label">' . __( 'Search results:', 'missilethreat' ) . '</span>',
 			'&ldquo;' . get_search_query() . '&rdquo;'
 		);
 
