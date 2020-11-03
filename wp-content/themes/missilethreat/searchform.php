@@ -24,5 +24,5 @@ $aria_label = ! empty( $args['label'] ) ? 'aria-label="' . esc_attr( $args['labe
 		<span class="screen-reader-text"><?php _e( 'Search for:', 'missilethreat' ); // phpcs:ignore: WordPress.Security.EscapeOutput.UnsafePrintingFunction -- core trusts translations ?></span>
 		<input type="search" id="<?php echo esc_attr( $unique_id ); ?>" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'missilethreat' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
 	</label>
-	<input type="submit" class="search-submit" value="<?php echo esc_attr_x( 'Search', 'submit button', 'missilethreat' ); ?>" />
+	<button class="page__header-search-submit" type="submit" aria-label="Submit search" value="<?php echo esc_attr_x( 'Search', 'submit button', 'missilethreat' ); ?>">Search <?php echo missilethreat_get_svg('search') ?></button>
 </form>
