@@ -25,7 +25,7 @@ if ( $wp_query->found_posts ) {
     number_format_i18n( $wp_query->found_posts )
   );
 }
-wp_reset_postdata();
+
 		?>
 
 	<header class="page__header page__header--short" style='background:linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%), linear-gradient(90deg, #2A5565 0%, #5F7981 100%);'>

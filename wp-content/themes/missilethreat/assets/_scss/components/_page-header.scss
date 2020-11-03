@@ -2,7 +2,6 @@
 
 .page__header {
   position: relative;
-  z-index: -1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -15,7 +14,6 @@
   background-position: 50% 50%;
   background-size: cover;
   mask-image: $gradient-standard;
-  pointer-events: none;
 
   &--short {
     min-height: 0;
@@ -62,7 +60,6 @@
 
     &--short {
       display: none;
-      pointer-events: none;
     }
   }
 
@@ -71,12 +68,26 @@
 
     &--short {
       display: none;
-      pointer-events: none;
     }
   }
 
-  &-search {
-    z-index: 100;
+  .search-form {
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .search-field {
+    @extend %font-ui-page-title-md;
+    width: 100%;
+    // max-width: $size__content-max-width;
+    color: $color-text-light-100;
+    background: none;
+    border: none;
+    border-bottom: 1px solid $color-text-light-155;
+  }
+
+  .search-submit {
+    margin-left: rem(16px);
   }
 
   @include breakpoint('small') {
