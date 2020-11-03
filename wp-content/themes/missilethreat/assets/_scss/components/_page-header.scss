@@ -79,11 +79,15 @@
   .search-field {
     @extend %font-ui-page-title-md;
     width: 100%;
-    // max-width: $size__content-max-width;
     color: $color-text-light-100;
     background: none;
-    border: none;
+    border: 0;
     border-bottom: 1px solid $color-text-light-155;
+
+    &::placeholder {
+      @extend %font-ui-page-title-md;
+      color: $color-text-light-100;
+    }
   }
 
   .search-submit {
