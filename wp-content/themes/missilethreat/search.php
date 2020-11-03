@@ -1,86 +1,43 @@
 
 <?php
-/* Template Name: Analysis Page Custom */
-
-// include(get_query_template('archive'));
-
-
-
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package WordPress
- * @subpackage MissileThreat
- * @since 1.0.0
- */
+/* 
+Template Name: Search Page Custom 
+*/
 
 get_header();
 ?>
 
 <main id="site-content" role="main">
 
-	<?php
+<?php
 
+global $wp_query;
 
-	$archive_title    = '';
-	$archive_subtitle = '';
-
-	if ( is_search() ) {
-		global $wp_query;
-
-		$archive_title = sprintf(
-			'%1$s %2$s',
-			'<span class="archive-label">' . __( 'Search results:', 'missilethreat' ) . '</span>',
-			'&ldquo;' . get_search_query() . '&rdquo;'
-		);
-
-		if ( $wp_query->found_posts ) {
-			$archive_subtitle = sprintf(
-				/* translators: %s: Number of search results */
-				_n(
-					'We found %s result for your search.',
-					'We found %s results for your search.',
-					$wp_query->found_posts,
-					'missilethreat'
-				),
-				number_format_i18n( $wp_query->found_posts )
-			);
-		} else {
-			$archive_subtitle = __( 'We could not find any results for your search. You can give it another try through the search form below.', 'missilethreat' );
-		}
-	} elseif ( ! is_home() ) {
-		$archive_title    = get_the_archive_title();
-		$archive_subtitle = get_the_archive_description();
-	}
-
-	if ( $archive_title || $archive_subtitle ) {
+if ( $wp_query->found_posts ) {
+  $archive_subtitle = sprintf(
+    /* translators: %s: Number of search results */
+    _n(
+      'We found %s result for your search.',
+      'We found %s results for your search.',
+      $wp_query->found_posts,
+      'missilethreat'
+    ),
+    number_format_i18n( $wp_query->found_posts )
+  );
+}
+wp_reset_postdata();
 		?>
 
-		<header class="archive__header archive__header--short" style='background:linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%), linear-gradient(90deg, #2A5565 0%, #5F7981 100%);'>
+	<header class="page__header page__header--short" style='background:linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%), linear-gradient(90deg, #2A5565 0%, #5F7981 100%);'>
 
-			<!-- <div class="archive__header-inner section-inner medium"> -->
+    <span class="page__header-label">Search results:<br/></span>
+    <?php get_search_form(); ?>
 
-				<?php if ( $archive_title ) { ?>
-					<h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
-				<?php } ?>
-
-				<?php if ( $archive_subtitle ) { ?>
-					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
-				<?php } ?>
-
-			<!-- </div>.archive-header-inner -->
-
-		</header><!-- .archive-header -->
+  </header><!-- .archive-header -->
+  
+  <div class="search-total"><?php echo $archive_subtitle; ?></div>
 
 		<?php
-	}
 
 	if ( have_posts() ) {
 
@@ -96,22 +53,6 @@ get_header();
 			get_template_part( 'template-parts/block-post', get_post_type() );
 
 		}
-	} elseif ( is_search() ) {
-		?>
-
-		<div class="no-search-results-form section-inner thin">
-
-			<?php
-			get_search_form(
-				array(
-					'label' => __( 'search again', 'missilethreat' ),
-				)
-			);
-			?>
-
-		</div><!-- .no-search-results -->
-
-		<?php
 	}
 	?>
 
