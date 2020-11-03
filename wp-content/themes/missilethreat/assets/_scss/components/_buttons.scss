@@ -21,9 +21,9 @@
 
   &--icon {
     display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    flex-wrap: nowrap;
 
     .icon {
       margin-left: rem(2px);
