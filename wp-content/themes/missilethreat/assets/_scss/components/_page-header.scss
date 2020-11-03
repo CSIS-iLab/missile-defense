@@ -6,7 +6,6 @@
   flex-direction: column;
   justify-content: flex-end;
   width: 100vw;
-  max-height: rem(484px);
   margin: 0 0 0 -6vw;
   padding: rem(112px) rem(20px) rem(24px) rem(20px);
   overflow: hidden;
@@ -104,7 +103,6 @@
 
     &--short {
       min-height: 0;
-      max-height: rem(272px);
     }
   }
 
@@ -113,7 +111,6 @@
 
     &--short {
       min-height: 0;
-      max-height: rem(272px);
     }
   }
 
@@ -122,7 +119,6 @@
 
     &--short {
       min-height: 0;
-      max-height: rem(272px);
     }
   }
 }
