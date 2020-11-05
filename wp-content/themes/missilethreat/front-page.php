@@ -13,28 +13,43 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
-	<section class="home__recent">
 
-	<h1 class="title text--bold">Hello, World!</h1>
-	<button class="btn btn--dark btn--short text--semibold">Short</button>
-	<button class="btn btn--light text--semibold">Light</button>
-	<button class="btn btn--dark text--semibold">Dark</button>
-
-	<?php
+	<div class="home__hero entry-header">
+		<div class="home__about">
+			<?php the_content(); ?>
+		</div>
+		<div class="home__credits">
+			<p class="home__initiative">an initiative from<br/><a href="https://www.csis.org/programs/international-security-program/missile-defense-project" class="text--semibold">Missile Defense Project</a></p>
+			<a href="https://www.csis.org" class="home__logo"><?php include( get_template_directory() . '/assets/static/csis-logo.svg'); ?></a>
+		</div>
+	</div>
+	
+<?php
 
 	$featuredPosts = get_field('featured_posts');
 
 	if ( $featuredPosts ) {
-
+		$i = 0;
 		foreach($featuredPosts as $key => $post):
 			setup_postdata($post);
 
 			// If you need to have the first featured post look different, you can use this code to use a different template-part for it.
 			if ($key === array_key_first($featuredPosts)) {
+				echo '<section class="home__recent-col1">';
 				get_template_part( 'template-parts/block-post-featured' );
+			} elseif ($i === 2) {
+				get_template_part( 'template-parts/block', get_post_type() );
+				echo '</section>';
+			} elseif ($i === 3) {
+				echo '<section class="home__recent-col2">';
+				get_template_part( 'template-parts/block', get_post_type() );
+			} elseif ($i === 4) {
+				get_template_part( 'template-parts/block', get_post_type() );
+				echo '</section>';
 			} else {
 				get_template_part( 'template-parts/block', get_post_type() );
 			}
+			$i++;
 
 			endforeach;
 
@@ -42,61 +57,63 @@ get_header();
 	}
 
 	?>
-	</section>
 
 	<section class="home__news">
-	<h2 class="home__news-heading">News</h2>
+		<h2 class="home__heading home__news-heading">News</h2>
 
-	<?php 
-	$newsPosts = new WP_Query( array(
-		'post_type' => 'post',
-    'post_status' => 'publish',
-		'posts_per_page' => 5,
-		'category_name' => 'news'
-	) );
+		<?php 
+		$newsPosts = new WP_Query( array(
+			'post_type' => 'post',
+			'post_status' => 'publish',
+			'posts_per_page' => 5,
+			'category_name' => 'news'
+		) );
 
-	if ( $newsPosts->have_posts() ) {
-		while ( $newsPosts->have_posts() ) {
-			$newsPosts->the_post();
+		if ( $newsPosts->have_posts() ) {
+			while ( $newsPosts->have_posts() ) {
+				$newsPosts->the_post();
 
-			the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '">', '</a></h3>' );
+				the_title( '<h3 class="home__news-title"><a href="' . esc_url( get_permalink() ) . '" class="post-title--hover">', '</a></h3>' );
 
-			missilethreat_posted_on();
+				missilethreat_posted_on();
+			}
+			wp_reset_postdata();
 		}
-		wp_reset_postdata();
-	}
-	?>
+		?>
 
-  </section>
+	</section>
+	
+	<div class="home__see-all home__all-analysis"><a href="<?php echo site_url('/analysis') ?>">All Analysis <?php echo missilethreat_get_svg('chevron-right') ?></a></div>
 
-<section class="home__cards">
+	<section class="home__cards">
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
-			<a href="<?php echo site_url('/defsys') ?>" class="home__card-link">
-				<h2 class="home__card-title">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></h2>
-			</a>
-			<p class="home__card-desc">Explore the components that go into making missile defense effective, including sensors, interceptors, command and control.</p>
+				<h2 class="home__card-title">
+					<a href="<?php echo site_url('/defsys') ?>" class="home__card-link post-title--hover">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></a>
+				</h2>
+			<p class="home__card-desc home__desc">Explore the components that go into making missile defense effective, including sensors, interceptors, command and control.</p>
 		</div>
 
 		<div class="home__card">
 			<img src="https://placekitten.com/64/64" alt="" class="home__card-icon">
-			<a href="<?php echo site_url('/missile') ?>" class="home__card-link">
-				<h2 class="home__card-title">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></h2>
-			</a>
-			<p class="home__card-desc">A growing collection of information on various countries’ missile systems, with illustrations and information on their capabilities and history.</p>
+			
+				<h2 class="home__card-title">
+					<a href="<?php echo site_url('/missile') ?>" class="home__card-link post-title--hover">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></a>
+				</h2>
+			<p class="home__card-desc home__desc">A growing collection of information on various countries’ missile systems, with illustrations and information on their capabilities and history.</p>
 		</div>
 
 	</section>
 
 	<section class="home__projects">
 
-		<h2 class="home__projects-title">Ongoing Projects</h2>
+		<h2 class="home__heading home__projects-heading">Ongoing Projects</h2>
 		<div class="home__projects-info">
-			<p class="home__projects-desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
+			<p class="home__projects-desc home__desc">Missile Threat features numerous interactive projects and data sets, regularly updated by our team as events unfold. Check back for the latest.</p>
 			<?php 
-				$cat_link = home_url('/category/ongoing-projects/');
+				$cat_link = site_url('/category/ongoing-projects');
 			?>
-			<a href="<?php echo esc_url($cat_link); ?>" class="home__projects-view-all">View All <?php echo missilethreat_get_svg('chevron-right') ?></a>
+			<a href="<?php echo esc_url($cat_link); ?>" class="home__see-all home__projects-view-all">View all <?php echo missilethreat_get_svg('chevron-right') ?></a>
 		</div>
 		<div class="home__projects-wrapper">
 			<?php
@@ -117,7 +134,49 @@ get_header();
 
 			?>
 		</div>
-		</section>
+	</section>
+
+	<section class="home__newsletter">
+		<h2>Newsletter Placeholder</h2>
+		<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut congue nisi quis erat ullamcorper malesuada. Fusce dapibus ligula sit amet eros lobortis, quis iaculis dui molestie. Curabitur tortor libero, imperdiet quis justo eu, pellentesque sagittis augue. Ut maximus tincidunt nibh quis laoreet. Suspendisse potenti. Etiam vulputate in dui at tempor. Vivamus commodo iaculis massa, vel ultricies elit euismod eu. Mauris a sapien suscipit, venenatis ligula in, iaculis lacus. Cras at ex cursus, placerat turpis nec, lacinia purus. Praesent sagittis mattis enim a vulputate. Vestibulum maximus, metus sed gravida tincidunt, augue tortor dignissim tortor, mattis lobortis sapien lorem nec mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis eu luctus quam. Etiam eget lobortis metus, in luctus sapien. Fusce finibus bibendum augue nec ultrices.
+		</p>
+
+	</section>
+
+	<section class="home__events">
+		<h2 class="home__heading home__events-heading">Events</h2>
+		<?php
+			$eventsDescription = get_field('events_description');
+
+			if($eventsDescription) : ?>
+				<p class="home__events-desc home__desc"><?php echo $eventsDescription; ?></p>
+			<?php  endif;
+				
+
+			$formatIn = 'm/d/Y';
+			$formatOut = 'M j';
+
+			$arr = array(1, 2, 3);
+			foreach ($arr as $value) {
+				$event = get_field('event_' . $value);
+				$date = DateTime::createFromFormat($formatIn, get_field('event_' . $value . '_date'));
+
+				if($event) { ?>
+					<div class="event">
+						<p class="event__date text--semibold"><?php echo $date->format($formatOut); ?></p>
+						<a href="<?php echo esc_url($event['link']); ?>"  class="event__link post-title--hover"><?php echo $event['title']; ?></a>
+					</div>
+				<?php }
+			}
+			?>
+	</section>
+
+	<section class="home__twitter">
+		<h2 class="home__heading home__twitter-heading">Twitter</h2>
+		<?php 	dynamic_sidebar( 'twitter-feed' ); ?>
+	</section>
+
 
 </main><!-- #site-content -->
 

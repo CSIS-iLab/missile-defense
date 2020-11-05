@@ -17,6 +17,7 @@ $page_for_posts = get_option( 'page_for_posts' );
 
 <main id="site-content" role="main">
 
+
 <?php get_template_part( 'template-parts/entry-header', get_post_type() ); ?>
 
 <div class='archive__content'>

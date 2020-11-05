@@ -30,3 +30,13 @@ body {
     --container-padding: #{rem(80)};
   }
 }
+
+.home,
+.single-post,
+.single-defsys,
+.single-missile {
+  #site-content {
+    padding-top: rem(80px);
+  }
+}
+
