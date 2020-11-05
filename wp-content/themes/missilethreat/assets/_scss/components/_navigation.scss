@@ -34,10 +34,6 @@
       color: $color-text-light-100;
       text-decoration: underline;
     }
-
-    &:first-child {
-      padding-left: rem(8px);
-    }
   }
 }
 
@@ -95,10 +91,14 @@
     font-weight: 600;
     line-height: 1.14;
     white-space: nowrap;
-    background: 0;
+    background: transparent;
     visibility: visible;
     opacity: 1;
     clip-path: inset(0);
+
+    li:first-child a {
+      padding-left: rem(8px);
+    }
   }
 
   .hamburger,
