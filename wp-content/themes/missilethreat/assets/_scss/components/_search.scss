@@ -40,6 +40,7 @@
     color: $color-primary-light-blue;
     visibility: visible;
     cursor: pointer;
+    transition: color 0.3s ease-in-out;
 
     &.is-invisible {
       visibility: hidden;
