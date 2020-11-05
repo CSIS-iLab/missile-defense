@@ -18,6 +18,11 @@
     color: $color-text-dark-100;
   }
 
+  &__updated {
+    @extend %font-ui-text-md;
+    color: $color-text-dark-170;
+  }
+
   .post-meta__date {
     display: inline;
   }

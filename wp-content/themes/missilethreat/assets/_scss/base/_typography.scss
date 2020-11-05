@@ -4,6 +4,11 @@ body {
   font-family: $font-source-sans;
 }
 
+.post-title--hover:hover {
+  color: $color-primary-blue-300 !important;
+  text-decoration: underline;
+}
+
 .text--bold {
   font-weight: bold;
 }

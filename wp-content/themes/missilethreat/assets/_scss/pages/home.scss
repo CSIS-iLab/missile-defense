@@ -1,52 +1,274 @@
 @use '../abstracts' as *;
 
-.title {
-  margin: 5rem 0;
-  @extend %font-ui-page-title-lg;
-}
-
-.featured-post {
-  margin-top: rem(32px);
-  margin-bottom: rem(40px);
-
-  .wp-post-image {
-    margin-bottom: rem(40px);
-  }
-
-  &__category {
-    @extend %font-ui-text-sm;
-    margin-bottom: rem(16px);
-    color: $color-text-dark-170;
-
-    &:not(:first-child) {
-      font-weight: 600;
-    }
-
-    &:not(:last-child) {
-      margin-right: rem(4px);
-    }
-  }
-
-  &__title {
-    @extend %font-ui-page-title-sm;
-    margin-bottom: rem(8px);
-    color: $color-text-dark-100;
-  }
-
-  .post-meta__authors {
-    margin-bottom: rem(16px);
-  }
-
-  &__excerpt {
-    @extend %font-body-short-md-serif;
-    color: $color-text-dark-190;
-  }
-}
-
 .home {
-  .post-block {
+  #site-content {
+    @include breakpoint('small') {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include breakpoint('large') {
+      grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__desc {
+    @extend %font-body-short-md-serif;
+  }
+
+  &__heading {
+    @extend %font-ui-heading-lg;
+    color: $color-primary-blue-200;
+  }
+
+  &__see-all {
+    @extend %font-ui-heading-sm;
+    color: $color-text-dark-190;
+    font-style: italic;
+
+    .icon {
+      color: $color-primary-blue-600;
+      font-size: rem(12px);
+    }
+  }
+
+  .featured-post {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-bottom: rem(40px);
+    
     .wp-post-image {
-      position: initial;
+      width: 100%;
+      margin-bottom: rem(40px);
+    }
+
+    &__category {
+      @extend %font-ui-text-sm;
+      margin-bottom: rem(16px);
+      color: $color-text-dark-170;
+      text-transform: uppercase;
+
+      &:not(:first-child) {
+        font-weight: 600;
+      }
+
+      &:not(:last-child) {
+        margin-right: rem(4px);
+      }
+    }
+
+    &__title {
+      @extend %font-ui-page-title-sm;
+      margin-bottom: rem(8px);
+      color: $color-text-dark-100;
+    }
+
+    .post-meta__authors {
+      margin-bottom: rem(16px);
+    }
+
+    &__excerpt {
+      @extend %font-body-short-md-serif;
+      color: $color-text-dark-190;
+    }
+
+    @include breakpoint('small') {
+      grid-column: 1 / span 2;
+    }
+
+    @include breakpoint('large') {
+      grid-column: 1 / span 1;
+      margin-top: rem(32px);
+    }
+  }
+
+  &__hero {
+    position: relative;
+    margin-top: rem(-80px);
+    margin-bottom: rem(-48px);
+    padding-top: rem(124px);
+    padding-bottom: rem(88px);
+    background-color: $color-primary-blue-300;
+    background-image: linear-gradient(180deg, rgba(7, 52, 74, 0) rem(92px), rgba(6, 43, 61, 0.9) 75.52%);
+    @include full-width-background(linear-gradient(180deg, rgba(7, 52, 74, 0) rem(92px), rgba(6, 43, 61, 0.9) 75.52%));
+
+    &::before,
+    &::after {
+      content: '';
+      background-color: $color-primary-blue-300;
+    }
+    
+    @include breakpoint('small') {
+      display: flex;
+      grid-column: 1 / span 2;
+    }
+
+    @include breakpoint('large') {
+      grid-column: 1 / -1;
+      grid-row: 1;
+      align-items: flex-end;
+      margin-bottom: rem(48px);
+      padding: rem(170px) 0 rem(48px) 50%;
+    }
+
+    @include breakpoint('xlarge') {
+      padding-top: rem(88);
+    }
+  }
+
+  .mission {
+    @extend %font-body-short-md-serif;
+    margin-bottom: rem(16px);
+    color: $color-primary-light-gray;
+
+    @include breakpoint('small') {
+      margin-bottom: 0;
+    }
+  }
+
+  &__credits {
+    @include breakpoint('small') {
+      margin-left: rem(32px);
+    }
+  }
+  
+  &__initiative {
+    color: $color-text-light-155;
+    font-size: rem(12px);
+    font-style: italic;
+    line-height: 1.35;
+    
+    a {
+      color: $color-text-light-190;
+      font-size: rem(14px);
+      font-style: normal;
+    }
+  }
+
+  &__logo {
+    display: block;
+    color: $color-text-light-190;
+    
+    svg {
+      display: block;
+      max-width: rem(144px);
+    }
+  }
+
+  &__recent-col1 {
+    @include breakpoint('small') {
+      grid-column: 1 / span 2;
+    }
+
+    @include breakpoint('large') {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      margin-right: rem(32px);
+      padding-top: rem(92px);
+    }
+    
+    .post-block {
+      @include breakpoint('small') {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: repeat(3, max-content) auto;
+        column-gap: rem(32px);
+        
+        &:not(:last-of-type) {
+          margin-bottom: rem(16px);
+        }
+        
+        .thumbnail-link {
+          grid-column: 1 / span 1;
+          grid-row: 1 / span 4;
+        }
+
+        &__category,
+        &__title,
+        .post-meta__date,
+        .post-meta__authors,
+        &__excerpt {
+          grid-column: 2;
+        }
+
+        &__category {
+          grid-row: 1;
+        }
+
+        &__title {
+          grid-row: 2;
+        }
+
+        .post-meta__date {
+          grid-row: 3;
+        }
+
+        .post-meta__authors {
+          grid-row: 4;
+        }
+
+        &__excerpt {
+          grid-row: 5;
+        }
+      }
+
+      @include breakpoint('medium') {
+        .thumbnail-link {
+          position: initial;
+        }
+      }
+
+      @include breakpoint('large') {
+        grid-template-columns: 1fr 1fr;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      @include breakpoint('xlarge') {
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+  }
+
+  &__recent-col2 {
+    .post-block {
+      margin-top: 0;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      @include breakpoint('medium') {
+        grid-template-columns: 1fr;
+        
+        .thumbnail-link {
+          position: initial;
+          grid-column: 1;
+          grid-row: 1;
+          max-width: 100%;
+        }
+      }
+    }
+
+    @include breakpoint('small') {
+      grid-column: 1;
+      padding-right: rem(32px);
+      border-right: rem(1px) solid $color-line-light-gray;
+    }
+    
+    @include breakpoint('large') {
+      grid-column: 2;
+      padding: 0 rem(32px);
+      border-left: rem(1px) solid $color-line-light-gray;
+    }
+  }
+
+  .post-block {
+    display: grid;
+
+    .thumbnail-link {
       grid-row: 1;
     }
 
@@ -66,60 +288,13 @@
       grid-row: 5;
       margin-bottom: 0;
     }
-
-    @include breakpoint('medium') {
-      grid-template-columns: 1fr 2fr;
-      column-gap: rem(32px);
-
-      &:nth-of-type(4),
-      &:nth-of-type(5) {
-        position: initial;
-        display: block;
-
-        .wp-post-image {
-          position: initial;
-        }
-      }
-
-      &__category,
-      &__title,
-      .post-meta__date,
-      .post-meta__authors,
-      &__excerpt {
-        grid-column: 2;
-      }
-
-      &__category {
-        grid-row: 1;
-      }
-
-      &__title {
-        grid-row: 2;
-      }
-
-      .post-meta__date {
-        grid-row: 3;
-      }
-
-      .post-meta__authors {
-        grid-row: 4;
-        margin-bottom: rem(16px);
-      }
-
-      .wp-post-image {
-        position: absolute;
-        grid-column: 1 / span 1;
-      }
-    }
   }
 
   &__news {
     margin-top: rem(56px);
 
     &-heading {
-      @extend %font-ui-heading-lg;
-      margin-bottom: rem(32px);
-      color: $color-primary-blue-200;
+      margin-bottom: rem(24px);
       font-weight: 400;
     }
 
@@ -129,83 +304,45 @@
       color: $color-text-dark-100;
     }
 
-    .post-meta__date {
+    .post-meta__date:not(:last-child) {
       margin-bottom: rem(32px);
     }
-
+    
+    @include breakpoint('small') {
+      grid-column: 2;
+      margin-top: 0;
+      padding-left: rem(32px);
+    }
     @include breakpoint('medium') {
       margin-top: 0;
     }
-  }
-
-  &__projects {
-    @include full-width-background($color-primary-light-gray);
-    padding: rem(56px) 0;
-    background: $color-primary-light-gray;
-
-    &-title {
-      @extend %font-ui-heading-lg;
-      margin-bottom: rem(4px);
-      color: $color-primary-blue-200;
-    }
-
-    &-info {
-      margin-bottom: rem(32px);
-    }
-
-    &-desc {
-      @extend %font-body-short-md-serif;
-      width: 50%;
-      margin-bottom: rem(8px);
-      color: $color-text-dark-170;
-    }
-
-    &-view-all {
-      display: inline;
-      align-self: flex-end;
-      color: $color-text-dark-190;
-      font-size: rem(17px);
-      font-style: italic;
-      line-height: 1.15;
-    }
-
-    @include breakpoint('small') {
-      &-wrapper {
-        display: grid;
-      }
-    }
-
-    @include breakpoint('medium') {
-      &-info {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: rem(24px);
-      }
-
-      &-desc {
-        margin-bottom: 0;
-      }
-    }
 
     @include breakpoint('large') {
-      &-wrapper {
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: rem(48px);
-      }
+      grid-column: 3;
+      margin-left: rem(32px);
     }
+  }
 
-    @include breakpoint('xlarge') {
-      &-wrapper {
-        column-gap: rem(64px);
-      }
-    }
+  &__all-analysis {
+    grid-column: 1 / -1;
+    margin-top: rem(24px);
+    text-align: center;
   }
 
   &__cards {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
     margin-top: rem(64px);
 
+    @include breakpoint('small') {
+      grid-column: 1 / -1;
+    }
+
     @include breakpoint('large') {
-      display: flex;
+      flex-wrap: nowrap;
+      grid-column: 1 / span 3;
       justify-content: space-between;
       margin-bottom: rem(56px);
     }
@@ -213,8 +350,8 @@
 
   &__card {
     display: grid;
-    width: 100%;
-    margin-bottom: rem(32px);
+    max-width: rem(416px);
+    margin: 0 auto rem(32px) auto;
     padding: rem(24px);
     background: $color-text-light-100;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 1px 18px rgba(0, 0, 0, 0.12),
@@ -230,15 +367,13 @@
       color: $color-text-dark-100;
 
       .icon {
-        width: rem(8px);
-        height: rem(8px);
         margin-bottom: rem(2px);
         color: $color-primary-blue-600;
+        font-size: rem(10px);
       }
     }
 
     &-desc {
-      @extend %font-body-short-md-serif;
       color: $color-text-dark-190;
     }
 
@@ -258,9 +393,132 @@
     }
 
     @include breakpoint('large') {
+      max-width: 100%;
+      margin-bottom: 0;
+
       &:last-child {
         margin-left: rem(64px);
       }
+    }
+  }
+
+  &__projects {
+    @include full-width-background($color-primary-light-gray);
+    margin-top: rem(-88px);
+    padding: rem(112px) 0 rem(56px) 0;
+    background: $color-primary-light-gray;
+
+    &-heading {
+      margin-bottom: rem(12px);
+    }
+
+    &-info {
+      margin-bottom: rem(32px);
+    }
+
+    &-desc {
+      margin-bottom: rem(8px);
+      color: $color-text-dark-170;
+
+      @include breakpoint('medium') {
+        width: 50%;
+      }
+    }
+
+    &-view-all {
+      display: inline;
+      align-self: flex-end;
+    }
+
+    @include breakpoint('small') {
+      grid-column: 1 / -1;
+
+      &-wrapper {
+        display: grid;
+      }
+    }
+
+    @include breakpoint('medium') {
+      &-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: rem(24px);
+      }
+
+      &-desc {
+        margin-bottom: 0;
+      }
+    }
+
+    @include breakpoint('large') {
+      grid-column: 1 / span 3;
+      margin-top: rem(-120px);
+
+      &-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: rem(48px);
+      }
+    }
+
+    @include breakpoint('xlarge') {
+      &-wrapper {
+        column-gap: rem(64px);
+      }
+    }
+  }
+
+  &__newsletter {
+    grid-column: 1 / -1;
+    margin-bottom: rem(56px);
+    color: $color-text-light-100;
+    @include full-width-background($color-primary-blue-200);
+    background: $color-primary-blue-200;
+  }
+
+  &__events {
+    margin-bottom: rem(24px);
+    
+    @include breakpoint('small') {
+      margin-bottom: rem(56px);
+      padding-right: rem(32px);
+      border-right: rem(1px) solid $color-line-light-gray;
+    }
+
+    &-heading {
+      margin-bottom: rem(16px);
+    }
+
+    &-desc {
+      margin-bottom: rem(40px);
+      color: $color-text-dark-190;
+    }
+
+    .event {
+      margin-bottom: rem(40px);
+      
+      &__date {
+        @extend %font-ui-heading-md;
+        margin-bottom: rem(8px);
+        color: $color-primary-blue-600;
+        text-transform: uppercase;
+      }
+      
+      &__link {
+        @extend %font-ui-headline-md;
+        color: $color-text-dark-100;
+      }
+    }
+  }
+
+  &__twitter {
+    margin-bottom: rem(56px);
+
+    @include breakpoint('small') {
+      padding-left: rem(32px);
+    }
+    
+    @include breakpoint('large') {
+      grid-column: 2 / span 2;
     }
   }
 }
