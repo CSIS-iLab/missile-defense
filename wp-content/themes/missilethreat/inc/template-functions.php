@@ -323,40 +323,6 @@ function missilethreat_custom_sort_posts( $query ) {
 add_action( 'pre_get_posts', 'missilethreat_custom_sort_posts' );
 
 /**
- * Change the default post query to exclude News on Analysis page.
- *
- * @param  array $query Query object.
- */
-// function missilethreat_analysis_exclude_category($query) {
-//     if ( $query->is_home() ) {
-//     $query->set('cat', '-42');
-//     }
-//     return $query;
-//     }
-//     add_filter('pre_get_posts', 'missilethreat_analysis_exclude_category');
-
-/**
- * Add search link to the main menu.
- * @param  string $items Menu items content.
- * @param  array $args  Menu.
- * @return string        Modified menu.
- */
-function missiledefense_add_search_box( $items, $args ) {
-    if($args->theme_location == 'primary') {
-        $search = '<li class="search">';
-        $search .= '<form method="get" id="searchform" action="/"><div class="input-group">';
-        $search .= '<label class="screen-reader-text" for="navSearchInput">Search for:</label>';
-        $search .= '<input type="text" class="form-control" name="s" id="navSearchInput" placeholder="Search" />';
-        $search .= '<label for="navSearchInput" id="navSearchLabel"><i class="fa fa-search" aria-hidden="true"></i></label>';
-        $search .= '</div></form>';
-        $search .= '</li>';
-        return $items.$search;
-    }
-    return $items;
-}
-add_filter( 'wp_nav_menu_items','missiledefense_add_search_box', 10, 2 );
-
-/**
  * Alter the titles of the archives for categories & tags.
  * @param  string $title Archive title
  * @return string        Modified archive title.

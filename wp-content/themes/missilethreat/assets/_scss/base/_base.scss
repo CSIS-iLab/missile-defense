@@ -31,3 +31,11 @@ body {
   }
 }
 
+.home,
+.single-post,
+.single-defsys,
+.single-missile {
+  #site-content {
+    padding-top: rem(104px);
+  }
+}

@@ -13,10 +13,10 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
-	
-	<div class="home__hero">
+
+	<div class="home__hero entry-header">
 		<div class="home__about">
-				<?php the_content(); ?>
+			<?php the_content(); ?>
 		</div>
 		<div class="home__credits">
 			<p class="home__initiative">an initiative from<br/><a href="https://www.csis.org/programs/international-security-program/missile-defense-project" class="text--semibold">Missile Defense Project</a></p>
@@ -25,6 +25,7 @@ get_header();
 	</div>
 	
 <?php
+
 	$featuredPosts = get_field('featured_posts');
 
 	if ( $featuredPosts ) {
@@ -175,6 +176,7 @@ get_header();
 		<h2 class="home__heading home__twitter-heading">Twitter</h2>
 		<?php 	dynamic_sidebar( 'twitter-feed' ); ?>
 	</section>
+
 
 </main><!-- #site-content -->
 
