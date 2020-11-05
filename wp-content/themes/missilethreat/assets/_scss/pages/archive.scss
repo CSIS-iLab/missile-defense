@@ -1,8 +1,8 @@
 @use '../abstracts' as *;
 
 .archive {
-  display: grid;
-  grid-gap: rem(48px);
+  // display: grid;
+  // grid-gap: rem(48px);
   width: 100%;
 
   @include breakpoint('large') {
