@@ -62,27 +62,29 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 		<header <?php post_class('single__header'); ?>>
 
 			<div class="single__header-wrapper">
-				<?php
-				// echo get_post_type();
-				missilethreat_display_categories();
-				the_title( '<h1 class="single__header-title">', '</h1>' );
-				
-				if ( has_excerpt() && is_singular() ) { ?>
-					<div class="single__header-excerpt"><?php the_excerpt(); ?></div>
-				<?php } ?>
-				<div class="page__header-divider"></div>
-				<div class="single__header-meta">
-				<?php
-				missilethreat_posted_on();
-				missilethreat_authors(); ?>
-				</div>
+				<div class="single__header-inner">
+					<?php
+					// echo get_post_type();
+					missilethreat_display_categories();
+					the_title( '<h1 class="single__header-title">', '</h1>' );
+					
+					if ( has_excerpt() && is_singular() ) { ?>
+						<div class="single__header-excerpt"><?php the_excerpt(); ?></div>
+					<?php } ?>
+					<div class="page__header-divider"></div>
+					<div class="single__header-meta">
+					<?php
+					missilethreat_posted_on();
+					missilethreat_authors(); ?>
+					</div>
+				</div><!-- .single__header-inner -->
 				<?php
 				if ( has_post_thumbnail() ) {
 					dynamic_sidebar( 'social-share' );
 					the_post_thumbnail();
 				}
 				?>
-			</div><!-- .entry-header-inner -->
+			</div><!-- .single__header-wrapper -->
 
 	<?php } 
 	

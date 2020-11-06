@@ -125,13 +125,17 @@
 
 .single__header {
   max-width: $size__content-max-width;
-  margin: rem(48px) auto rem(32px) auto;
   margin-right: auto;
   margin-left: auto;
+  
+  &-inner{
+    margin: rem(48px) auto rem(32px) auto;
+  }
 
   .featured-post__category {
     @extend %font-ui-text-md;
     color: $color-primary-blue-200;
+    text-transform: uppercase;
 
     &:first-child {
       @extend %font-ui-heading-xs;
@@ -139,18 +143,29 @@
     }
 
     &:not(:last-child)::after {
-      content: " ";
+      content: ' ';
     }
   }
 
   &-title {
     @extend %font-ui-page-title-sm;
     color: $color-text-dark-100;
+    margin: rem(8px) 0;
   }
 
   &-excerpt {
     @extend %font-body-short-lede;
     color: $color-text-dark-100;
+  }
+
+  &-meta {
+    display: flex;
+  }
+
+  .post-meta__authors::before {
+    content: '|';
+    margin: 0 rem(8px);
+    color: $color-primary-blue-900;
   }
 }
 
