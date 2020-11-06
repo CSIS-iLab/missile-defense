@@ -67,9 +67,9 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 				missilethreat_display_categories();
 				the_title( '<h1 class="single__header-title">', '</h1>' );
 				
-				if ( has_excerpt() && is_singular() ) {
-					the_excerpt();
-				} ?>
+				if ( has_excerpt() && is_singular() ) { ?>
+					<div class="single__header-excerpt"><?php the_excerpt(); ?></div>
+				<?php } ?>
 				<div class="page__header-divider"></div>
 				<div class="single__header-meta">
 				<?php

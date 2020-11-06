@@ -147,11 +147,16 @@
     @extend %font-ui-page-title-sm;
     color: $color-text-dark-100;
   }
+
+  &-excerpt {
+    @extend %font-body-short-lede;
+    color: $color-text-dark-100;
+  }
 }
 
 .category-reports,
 .category-news {
   .wp-post-image {
-    // display: none;
+    display: none;
   }
 }
