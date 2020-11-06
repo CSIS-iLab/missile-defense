@@ -125,6 +125,33 @@
 
 .single__header {
   max-width: $size__content-max-width;
+  margin: rem(48px) auto rem(32px) auto;
   margin-right: auto;
   margin-left: auto;
+
+  .featured-post__category {
+    @extend %font-ui-text-md;
+    color: $color-primary-blue-200;
+
+    &:first-child {
+      @extend %font-ui-heading-xs;
+      font-weight: 600;
+    }
+
+    &:not(:last-child)::after {
+      content: " ";
+    }
+  }
+
+  &-title {
+    @extend %font-ui-page-title-sm;
+    color: $color-text-dark-100;
+  }
+}
+
+.category-reports,
+.category-news {
+  .wp-post-image {
+    // display: none;
+  }
 }

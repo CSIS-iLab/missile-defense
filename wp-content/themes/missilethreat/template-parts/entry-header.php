@@ -13,7 +13,7 @@ $page_for_posts = get_option( 'page_for_posts' );
 
 <?php 
 if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === get_post_type() ) { ?>
-	<header class="single__header">
+	<header <?php post_class('single__header'); ?>>
 
 	<div class="single__header-wrapper">
 		<?php
@@ -59,16 +59,18 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 	<?php } 
 	
 	elseif ( is_single() ) { ?>
-		<header class="single__header">
+		<header <?php post_class('single__header'); ?>>
 
 			<div class="single__header-wrapper">
 				<?php
+				// echo get_post_type();
 				missilethreat_display_categories();
-				the_title( '<h1 class="single__title">', '</h1>' );
+				the_title( '<h1 class="single__header-title">', '</h1>' );
 				
 				if ( has_excerpt() && is_singular() ) {
 					the_excerpt();
 				} ?>
+				<div class="page__header-divider"></div>
 				<div class="single__header-meta">
 				<?php
 				missilethreat_posted_on();
