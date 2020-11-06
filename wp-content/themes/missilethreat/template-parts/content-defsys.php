@@ -20,8 +20,8 @@
 
 	<?php
 
-	get_template_part( 'template-parts/entry-header' );
-	missiledefense_system_terms()
+	// get_template_part( 'template-parts/entry-header' );
+	// missiledefense_system_terms()
 	?>
 
 	<div class="single__content">

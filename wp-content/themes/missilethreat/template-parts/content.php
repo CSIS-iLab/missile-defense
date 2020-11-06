@@ -17,7 +17,7 @@
 
 	<?php
 
-	get_template_part( 'template-parts/entry-header' );
+	// get_template_part( 'template-parts/entry-header' );
 	?>
 
 	<div class="single__content">
