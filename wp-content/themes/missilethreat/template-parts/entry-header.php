@@ -83,8 +83,8 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 				<div class="single__header-image-wrapper alignwide">
 					<?php dynamic_sidebar( 'social-share' );
 					the_post_thumbnail(); ?>
-					<div class="single__header-image-caption"><?php the_post_thumbnail_caption(); ?></div>
 				</div><!-- single__header-image-wrapper -->
+				<div class="image-caption"><?php the_post_thumbnail_caption(); ?></div>
 				<?php }
 				?>
 			</div><!-- .single__header-wrapper -->
