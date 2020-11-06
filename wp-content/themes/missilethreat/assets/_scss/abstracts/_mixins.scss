@@ -140,3 +140,23 @@
     }
   }
 }
+
+@mixin csis-block-full-width-wrapper {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+@mixin csis-block-full-width-content {
+  max-width: $size__content-wide-max-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--container-padding);
+  padding-left: var(--container-padding);
+
+  @include breakpoint('large') {
+    max-width: 90vw;
+  }
+  @include breakpoint('xlarge') {
+    max-width: 80vw;
+  }
+}
