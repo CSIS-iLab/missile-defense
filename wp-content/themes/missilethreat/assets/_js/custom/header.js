@@ -8,7 +8,7 @@ const searchClose = document.querySelector('.header__search-close')
 const searchForm = document.querySelector('.header__search')
 const content = document.querySelector('#site-content')
 const header = document.querySelector('.header')
-const entryHeader = document.querySelector('.entry-header')
+const entryHeader = document.querySelector('.page__header-title')
 
 hamburger.addEventListener('click', () => {
   menu.classList.add('is-visible')
@@ -56,7 +56,7 @@ content.addEventListener('click', closeSearch)
 
 
 const entryHeaderOptions = {
-  rootMargin: '-72px 0px 0px 0px'
+  rootMargin: '-172px 0px 0px 0px'
 }
 
 const entryHeaderObserver = new IntersectionObserver(function (entries, entryHeaderObserver) {
