@@ -18,8 +18,15 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 	<div class="single__header-wrapper">
 		<?php
 
+		$missile_short_name = get_field('missile_name');
+
 		get_template_part( 'template-parts/breadcrumbs' );
-		the_title( '<h1 class="single__header-title">', '</h1>' ); ?>
+		if ( $missile_short_name ) { ?>
+			<h1 class="single__header-title"><?php echo $missile_short_name; ?></h1>
+			<?php the_title( '<div class="single__header-excerpt">', '</div>' );
+		} else {
+			the_title( '<h1 class="single__header-title">', '</h1>' );
+		} ?>
 		<div class="page__header-divider"></div>
 		<div class="single__header-meta">
 			Last Updated <?php missilethreat_last_updated(); ?>
