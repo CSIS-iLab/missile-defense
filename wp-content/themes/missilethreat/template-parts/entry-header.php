@@ -19,7 +19,7 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 		<?php
 
 		get_template_part( 'template-parts/breadcrumbs' );
-		the_title( '<h1 class="single__title">', '</h1>' ); ?>
+		the_title( '<h1 class="single__header-title">', '</h1>' ); ?>
 		<div class="page__header-divider"></div>
 		<div class="single__header-meta">
 			Last Updated <?php missilethreat_last_updated(); ?>

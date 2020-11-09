@@ -149,12 +149,13 @@
 
   &-title {
     @extend %font-ui-page-title-sm;
-    margin: rem(8px) 0;
+    margin-top: rem(8px);
     color: $color-text-dark-100;
   }
 
   &-excerpt {
     @extend %font-body-short-lede;
+    margin-top: rem(8px);
     color: $color-text-dark-100;
   }
 
@@ -166,6 +167,28 @@
     content: '|';
     margin: 0 rem(8px);
     color: $color-primary-blue-900;
+  }
+
+  .parent-system__label {
+    @extend %font-ui-heading-xs;
+    color: $color-text-dark-100;
+  }
+
+  .parent-system__link {
+    @extend %font-ui-text-lg;
+    display: block;
+    margin-top: rem(2px);
+    color: $color-text-dark-190;
+
+    .icon {
+      color: $color-primary-blue-600;
+      font-size: rem(12px);
+      margin-left: rem(2px);
+    }
+  }
+
+  &-wrapper {
+    margin: rem(40px) 0 rem(56px) 0;
   }
 }
 

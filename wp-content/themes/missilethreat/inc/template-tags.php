@@ -403,7 +403,7 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 				if ( $i == 0 ) {
 					$prefix = '';
 				}
-				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . '</a>';
+				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . missilethreat_get_svg('chevron-right') . '</a>';
 			}
 			wp_reset_postdata();
 
