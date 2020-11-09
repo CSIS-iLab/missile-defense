@@ -12,22 +12,28 @@ $page_for_posts = get_option( 'page_for_posts' );
 ?>
 
 <?php 
-if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === get_post_type() ) { ?>
+if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === get_post_type() ) { 
+	
+	$missile_short_name = get_field('missile_name');
+
+	?>
 	<header <?php post_class('single__header'); ?>>
 
 	<div class="single__header-wrapper">
 		<?php
-
-		$missile_short_name = get_field('missile_name');
-
 		get_template_part( 'template-parts/breadcrumbs' );
+
 		if ( $missile_short_name ) { ?>
 			<h1 class="single__header-title"><?php echo $missile_short_name; ?></h1>
 			<?php the_title( '<div class="single__header-excerpt">', '</div>' );
-		} else {
+		} 
+		
+		else {
 			the_title( '<h1 class="single__header-title">', '</h1>' );
 		} ?>
+
 		<div class="page__header-divider"></div>
+		
 		<div class="single__header-meta">
 			Last Updated <?php missilethreat_last_updated(); ?>
 		</div>
