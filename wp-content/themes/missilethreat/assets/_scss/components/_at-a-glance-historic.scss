@@ -6,28 +6,26 @@
   color: $color-text-dark-190;
   background: $color-primary-light-gray;
 
-  &:first-child {
+  > *:first-child {
     @extend %font-copy-heading-5;
-    grid-column: 1 / span 2;
     color: $color-text-dark-100;
     font-weight: normal;
+    margin-bottom: rem(12px);
   }
 
-  p:not(:first-child) {
+  p {
     @include font-size(18px);
     line-height: 1.35;
 
     strong {
       @extend %font-ui-heading-xs;
+      margin-top: rem(12px);
     }
   }
 
   @include breakpoint('small') {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: rem(12px) rem(32px);
-
     p:not(:first-child) {
+      column-gap: rem(32px);
       columns: 2;
     }
   }
