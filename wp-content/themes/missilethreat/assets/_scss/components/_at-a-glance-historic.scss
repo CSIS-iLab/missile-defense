@@ -1,23 +1,24 @@
 @use '../abstracts' as *;
 
-.at-a-glance {
+.ataglance {
   margin-bottom: rem(56px);
   padding: rem(24px) rem(32px) rem(48px) rem(32px);
   color: $color-text-dark-190;
   background: $color-primary-light-gray;
 
-  &__title {
+  &:first-child {
     @extend %font-copy-heading-5;
     grid-column: 1 / span 2;
     color: $color-text-dark-100;
+    font-weight: normal;
   }
 
-  &__spec {
-    @extend %font-body-short-lg;
-    
-    &-name {
+  p:not(:first-child) {
+    @include font-size(18px);
+    line-height: 1.35;
+
+    strong {
       @extend %font-ui-heading-xs;
-      text-transform: uppercase;
     }
   }
 
@@ -25,5 +26,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: rem(12px) rem(32px);
+
+    p:not(:first-child) {
+      columns: 2;
+    }
   }
 }
