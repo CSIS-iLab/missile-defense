@@ -194,7 +194,10 @@
 
 .category-reports,
 .category-news {
-  .wp-post-image {
-    display: none;
+  .single__header-wrapper {
+    .wp-post-image,
+    .image-caption {
+      display: none;
+    }
   }
 }
