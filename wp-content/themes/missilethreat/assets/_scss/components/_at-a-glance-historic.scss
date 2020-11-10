@@ -14,12 +14,10 @@
   }
 
   p {
-    @include font-size(18px);
-    line-height: 1.35;
+    @extend %font-body-short-lg;
 
     strong {
       @extend %font-ui-heading-xs;
-      margin-top: rem(12px);
     }
   }
 
