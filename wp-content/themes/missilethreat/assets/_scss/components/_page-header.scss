@@ -19,6 +19,10 @@
     max-height: rem(272px);
   }
 
+  &-inner--narrow {
+    margin: 0 auto;
+  }
+
   .overlay {
     position: absolute;
     top: 0;
@@ -30,7 +34,8 @@
 
   &-title,
   &-divider,
-  &-desc {
+  &-desc,
+  &-inner--narrow {
     z-index: 10;
     max-width: $size__content-max-width;
   }
@@ -67,6 +72,22 @@
 
     &--short {
       display: none;
+    }
+  }
+
+  &-meta {
+    @extend %font-ui-text-lg;
+    display: flex;
+    color: $color-text-light-170;
+    
+    .post-meta__date {
+      @extend %font-ui-text-lg;
+      color: $color-text-light-170;
+
+      &::before {
+        content: '';
+        margin-left: rem(6px);
+      }
     }
   }
 

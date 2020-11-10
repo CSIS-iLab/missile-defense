@@ -42,6 +42,21 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 
 		</div><!-- .entry-header-inner -->
 	<?php } 
+
+	elseif ( 'systems' === get_post_type() ) {
+		$feat_image = get_the_post_thumbnail_url( $post->ID ); ?>
+		<header class="page__header entry-header"  style="background-image: url('<?php echo $feat_image; ?>')">
+			<div class="overlay"></div>
+			<div class="page__header-inner--narrow">
+				<?php get_template_part( 'template-parts/breadcrumbs' ); ?>
+				<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
+				<div class="page__header-divider"></div>
+				<div class="page__header-meta">
+					Last Updated <?php missilethreat_last_updated(); ?>
+				</div>
+			</div>
+
+	<?php }
 	
 	elseif ( is_post_type_archive() ) { 
     $feat_image = 'style="background-image:url('.get_archive_thumbnail_src( 'missilethreat-fullscreen' ).');"';?>
@@ -77,7 +92,6 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 			<div class="single__header-wrapper">
 				<div class="single__header-inner">
 					<?php
-					// echo get_post_type();
 					missilethreat_display_categories();
 					the_title( '<h1 class="single__header-title">', '</h1>' );
 					

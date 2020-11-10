@@ -8,9 +8,9 @@
 
   > *:first-child {
     @extend %font-copy-heading-5;
+    margin-bottom: rem(12px);
     color: $color-text-dark-100;
     font-weight: normal;
-    margin-bottom: rem(12px);
   }
 
   p {
@@ -23,8 +23,8 @@
 
   @include breakpoint('small') {
     p:not(:first-child) {
-      column-gap: rem(32px);
       columns: 2;
+      column-gap: rem(32px);
     }
   }
 }
