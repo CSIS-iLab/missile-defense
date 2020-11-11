@@ -91,13 +91,13 @@
     }
   }
   
-    &-inner--narrow {
-      margin: 0 auto;
-  
-      .page__header-title {
-        @extend %font-ui-page-title-md;
-      }
+  &-inner--narrow {
+    margin: 0 auto;
+
+    .page__header-title {
+      @extend %font-ui-page-title-md;
     }
+  }
 
   .search-form {
     display: flex;
