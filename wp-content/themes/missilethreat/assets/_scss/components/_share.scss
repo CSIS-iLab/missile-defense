@@ -4,6 +4,7 @@
 .addtoany_list {
   display: flex !important;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
 
   a {
@@ -93,7 +94,6 @@
       }
     }
   }
-
 
   .single__footer & {
     margin-bottom: rem(16);

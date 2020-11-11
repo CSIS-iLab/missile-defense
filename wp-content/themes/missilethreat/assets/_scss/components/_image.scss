@@ -2,6 +2,8 @@
 
 .image-caption {
   @extend %font-body-short-md;
-  margin: rem(12px) 0 rem(32px) 0;
+  display: block;
+  max-width: $size__content-max-width;
+  margin: rem(12px) auto rem(32px) auto;
   color: $color-text-dark-170;
 }

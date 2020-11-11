@@ -55,12 +55,13 @@ body {
 /*----------  Alignments  ----------*/
 .alignfull,
 .alignwide {
-  @include csis-block-full-width-wrapper;
+  @include missiledefense-full-width-wrapper;
 }
 
 .alignwide {
-  > *:not(figcaption) {
-    @include csis-block-full-width-content;
+  /* stylelint-disable-next-line */
+  > *:not(figcaption):not(.image-caption):not(.addtoany_list) {
+    @include missiledefense-full-width-content;
   }
 }
 
@@ -96,24 +97,22 @@ body {
   }
 }
 
-.csis-block {
-  &.alignleft {
-    float: none;
-    margin-right: var(--margin-text-side);
-    margin-left: var(--margin-gutter-side, 0);
+.alignleft {
+  float: none;
+  margin-right: var(--margin-text-side);
+  margin-left: var(--margin-gutter-side, 0);
 
-    @include breakpoint('medium') {
-      float: left;
-    }
+  @include breakpoint('medium') {
+    float: left;
   }
+}
 
-  &.alignright {
-    float: none;
-    margin-right: var(--margin-gutter-side, 0);
-    margin-left: var(--margin-text-side);
+.alignright {
+  float: none;
+  margin-right: var(--margin-gutter-side, 0);
+  margin-left: var(--margin-text-side);
 
-    @include breakpoint('medium') {
-      float: right;
-    }
+  @include breakpoint('medium') {
+    float: right;
   }
 }
