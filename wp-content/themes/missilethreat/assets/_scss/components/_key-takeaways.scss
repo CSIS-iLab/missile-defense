@@ -1,0 +1,25 @@
+@use '../abstracts' as *;
+
+.key-takeaways {
+  margin-top: rem(32px);
+  margin-bottom: rem(56px);
+  padding: rem(24px) rem(36px) rem(32px) rem(36px);
+  background: $color-primary-light-gray;
+
+  &__title {
+    @extend %font-ui-heading-md;
+    margin-bottom: rem(12px);
+    color: $color-text-dark-100;
+  }
+  
+  &__list {
+    @extend %font-body-list-lg;
+    color: $color-text-dark-190;
+    margin-bottom: rem(24px) !important;
+    list-style: initial !important;
+
+    &-item {
+      margin: 0 rem(32px) rem(12px) rem(64px);
+    }
+  }
+}
