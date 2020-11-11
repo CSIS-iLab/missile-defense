@@ -43,7 +43,7 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 		</div><!-- .entry-header-inner -->
 	<?php } 
 
-	elseif ( 'systems' === get_post_type() ) {
+	elseif ( 'systems' === get_post_type() || 'actors' === get_post_type() ) {
 		$feat_image = get_the_post_thumbnail_url( $post->ID ); ?>
 		<header class="page__header entry-header"  style="background-image: url('<?php echo $feat_image; ?>')">
 			<div class="overlay"></div>
