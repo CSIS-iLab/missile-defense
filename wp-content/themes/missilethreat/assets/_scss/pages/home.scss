@@ -144,6 +144,11 @@
       color: $color-text-light-190;
       font-size: rem(14px);
       font-style: normal;
+
+      &:hover {
+        color: $color-text-light-100;
+        text-decoration: underline;
+      }
     }
   }
 
