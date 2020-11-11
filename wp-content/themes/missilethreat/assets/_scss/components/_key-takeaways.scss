@@ -15,11 +15,18 @@
   &__list {
     @extend %font-body-list-lg;
     color: $color-text-dark-190;
-    margin-bottom: rem(24px) !important;
     list-style: initial !important;
-
+    
     &-item {
-      margin: 0 rem(32px) rem(12px) rem(64px);
+      margin: 0 rem(32px) rem(12px) rem(32px);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
+  }
+  
+  &__download-btn {
+    margin-top: rem(24px);
   }
 }
