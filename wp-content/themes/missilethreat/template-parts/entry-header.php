@@ -38,7 +38,12 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 			Last Updated <?php missilethreat_last_updated(); ?>
 		</div>
 
-		<?php missiledefense_system_terms(); ?>
+		<?php  if( 'defsys' === get_post_type() ) { ?>
+			<div class="share-wrapper">
+				<?php missiledefense_system_terms(); ?>
+				<?php missiledefense_share(); ?>
+			</div>
+		<?php } ?>
 
 		</div><!-- .entry-header-inner -->
 	<?php } 

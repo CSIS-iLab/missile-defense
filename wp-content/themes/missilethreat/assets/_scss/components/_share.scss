@@ -4,7 +4,6 @@
 .addtoany_list {
   display: flex !important;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
 
   a {
@@ -13,10 +12,6 @@
     align-items: center;
     width: rem(40px);
     height: rem(40px);
-
-    &:first-of-type {
-      margin-left: -4px;
-    }
 
     &:hover img {
       filter: invert(46%) sepia(30%) saturate(283%) hue-rotate(148deg) brightness(91%) contrast(87%);
@@ -96,16 +91,38 @@
   }
 
   .single__footer & {
-    margin-bottom: rem(16);
+    margin: rem(32px) auto rem(32px) 0;
 
-    @include breakpoint('small') {
-      width: fit-content;
-      margin-right: auto;
-      margin-left: auto;
+    .a2a_button_print,
+    .a2a_button_email {
+      margin-bottom: rem(12px);
     }
 
-    @include breakpoint('large') {
-      margin-top: rem(32);
+    .a2a_button_email {
+      margin-right: calc(100% - (88px + 12vw));
+      border-right: 0;
+    }
+    
+    @include breakpoint('small') {
+      .a2a_button_email {
+        margin-right: calc(100% - (72px + 12vw));
+      }
+    }
+
+    @include breakpoint('medium') {
+      width: fit-content;
+      margin-right: 0;
+      margin-left: auto;
+      
+      .a2a_button_print,
+      .a2a_button_email {
+        margin-bottom: 0;
+      }
+
+      .a2a_button_email {
+        margin-right: initial;
+        border-right: 1px solid $color-primary-light-blue;
+      }
     }
 
     // &::before {
@@ -118,24 +135,37 @@
     // }
   }
 
-  .footer & {
-    @include breakpoint($break: 'medium', $dir: 'max-width') {
-      justify-content: center;
-    }
+  // .footer & {
+  //   @include breakpoint($break: 'medium', $dir: 'max-width') {
+  //     justify-content: center;
+  //   }
 
-    a {
-      flex: 1 1 auto;
-      max-width: fit-content;
+  //   a {
+  //     flex: 1 1 auto;
+  //     max-width: fit-content;
 
-      /* stylelint-disable-next-line */
-      path {
-        // fill: $color-text-gray-10;
-      }
+  //     /* stylelint-disable-next-line */
+  //     path {
+  //       // fill: $color-text-gray-10;
+  //     }
 
-      /* stylelint-disable-next-line */
-      &:hover path {
-        // fill: $color-white-100;
-      }
+  //     /* stylelint-disable-next-line */
+  //     &:hover path {
+  //       // fill: $color-white-100;
+  //     }
+  //   }
+  // }
+}
+
+.share-wrapper {
+  position: relative;
+
+  .addtoany_list {
+    margin-top: rem(12px);
+
+    @include breakpoint('large') {
+      margin-top: 0;
+      left: -6vw;
     }
   }
 }

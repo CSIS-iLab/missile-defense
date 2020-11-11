@@ -31,7 +31,8 @@ body {
   }
 }
 
-.single__content {
+.single__content,
+.single__footer {
   max-width: $size__content-max-width;
   margin-right: auto;
   margin-left: auto;

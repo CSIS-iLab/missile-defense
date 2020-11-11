@@ -27,9 +27,7 @@
 	</div><!-- .post-inner -->
 
 	<footer class="single__footer">
-		<div class="alignright">
-			<?php missiledefense_share(); ?>
-		</div>
+		<?php missiledefense_share(); ?>
 		<?php echo missilethreat_authors_list_extended(); ?>
 	</footer>
 

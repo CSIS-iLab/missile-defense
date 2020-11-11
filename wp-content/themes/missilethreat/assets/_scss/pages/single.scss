@@ -1,1 +1,7 @@
 @use '../abstracts' as *;
+
+.single__footer-divider {
+  width: 100%;
+  margin-bottom: rem(48px);
+  border-bottom: 1px solid $color-line-light-gray;
+}

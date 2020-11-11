@@ -31,8 +31,8 @@
 	</div><!-- .post-inner -->
 
 	<footer class="single__footer">
-		<?php get_template_part( 'template-parts/featured-image-caption' ); ?>
-		<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { ADDTOANY_SHARE_SAVE_KIT(); } ?>
+		<?php missiledefense_share(); ?>
+		<div class="single__footer-divider"></div>
 		<?php echo missilethreat_authors_list_extended(); ?>
 	</footer>
 
