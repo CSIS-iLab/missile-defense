@@ -411,3 +411,17 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 		}
 	}
 endif;
+
+/**
+ * Displays the AddToAny Share Links.
+ *
+ *
+ * @return string $html The share links.
+ */
+if (! function_exists('missiledefense_share')) :
+	function missiledefense_share() {
+		if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
+			ADDTOANY_SHARE_SAVE_KIT();
+		}
+	}
+endif;

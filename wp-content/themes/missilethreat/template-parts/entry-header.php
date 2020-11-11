@@ -108,10 +108,10 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 				<?php
 				if ( has_post_thumbnail() ) { ?>
 				<div class="single__header-image-wrapper alignwide">
-					<?php dynamic_sidebar( 'social-share' );
-					the_post_thumbnail(); ?>
+					<?php the_post_thumbnail(); ?>
+					<div class="image-caption"><?php the_post_thumbnail_caption(); ?></div>
+					<?php missiledefense_share(); ?>
 				</div><!-- single__header-image-wrapper -->
-				<div class="image-caption"><?php the_post_thumbnail_caption(); ?></div>
 				<?php }
 				?>
 			</div><!-- .single__header-wrapper -->
