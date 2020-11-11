@@ -68,6 +68,30 @@
     height: rem(20px);
   }
 
+  .single__header & {
+    position: absolute;
+    top: 0;
+    left: 6vw;
+    flex-direction: column;
+
+    /* stylelint-disable-next-line */
+    .a2a_button_email {
+      width: rem(40px);
+      height: rem(64px);
+      margin: rem(12px) 0;
+      padding: rem(12px) 0;
+      border-top: 1px solid $color-primary-light-blue;
+      border-right: 0;
+      border-bottom: 1px solid $color-primary-light-blue;
+      border-left: 0;
+
+      &:hover {
+        border-top: 1px solid $color-primary-light-blue;
+        border-bottom: 1px solid $color-primary-light-blue;
+      }
+    }
+  }
+
 
   .single__footer & {
     margin-bottom: rem(16);

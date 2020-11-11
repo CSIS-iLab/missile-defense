@@ -58,7 +58,7 @@
     background-color: $color-primary-light-blue;
     opacity: 0.5;
 
-    &--thick {
+    &--thicc {
       height: rem(8px);
     }
 
@@ -218,6 +218,10 @@
 
   &-wrapper {
     margin: rem(40px) 0 rem(56px) 0;
+  }
+
+  &-image-wrapper {
+    position: relative;
   }
 }
 
