@@ -46,6 +46,12 @@ body {
   }
 }
 
+@include breakpoint('large') {
+  .home #site-content {
+    padding-top: 0;
+  }
+}
+
 /*----------  Alignments  ----------*/
 .alignfull,
 .alignwide {
