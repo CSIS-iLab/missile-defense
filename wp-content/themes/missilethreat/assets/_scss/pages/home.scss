@@ -148,11 +148,15 @@
 
   &__logo {
     display: block;
-    color: $color-text-light-190;
     
     svg {
       display: block;
       max-width: rem(144px);
+      fill: $color-text-light-190;
+
+      &:hover {
+        fill: $color-text-light-100;
+      }
     }
   }
 
