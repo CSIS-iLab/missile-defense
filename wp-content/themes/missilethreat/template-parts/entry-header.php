@@ -32,7 +32,7 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 			the_title( '<h1 class="single__header-title">', '</h1>' );
 		} ?>
 
-		<div class="page__header-divider"></div>
+		<div class="page__header-divider page__header-divider--thick"></div>
 		
 		<div class="single__header-meta">
 			Last Updated <?php missilethreat_last_updated(); ?>
@@ -98,7 +98,7 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 					if ( has_excerpt() && is_singular() ) { ?>
 						<div class="single__header-excerpt"><?php the_excerpt(); ?></div>
 					<?php } ?>
-					<div class="page__header-divider"></div>
+					<div class="page__header-divider page__header-divider--thick"></div>
 					<div class="single__header-meta">
 					<?php
 					missilethreat_posted_on();
