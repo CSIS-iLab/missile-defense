@@ -8,17 +8,18 @@
  * @var  string $context Preview context [editor,frontend].
  */
 
+$bullet_points = get_lzb_meta('bullet-points');
+$pdf = get_lzb_meta('download-pdf');
+$pdf_url = $pdf['url'];
+$title = get_lzb_meta('list-title');
 ?>
 
 <div class="key-takeaways">
-
-  <h2 class="key-takeaways__title">Key Takeaways</h2>
-  
+<?php if( isset( $title ) && !empty( $title ) ) { ?>
+  <h2 class="key-takeaways__title"><?php echo $title ?></h2>
+<?php } ?>
   <ul class="key-takeaways__list">
   <?php 
-    $bullet_points = get_lzb_meta('bullet-points');
-    $pdf = get_lzb_meta('download-pdf');
-    $pdf_url = $pdf['url'];
 
     foreach ($bullet_points as $bullet) {
       $item = $bullet['point']; ?>
