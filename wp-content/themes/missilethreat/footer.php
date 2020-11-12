@@ -26,7 +26,7 @@
 
 					<p class="footer__phone">(202) 887-0200</p>
 
-					<?php dynamic_sidebar( 'social-share' ); ?>
+					<?php dynamic_sidebar( 'newsletter' ); ?>
 				</div>
 
 
