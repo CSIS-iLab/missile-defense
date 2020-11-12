@@ -4,6 +4,7 @@
 .addtoany_list {
   display: flex !important;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
 
   a {
@@ -69,7 +70,6 @@
       position: absolute;
       top: 0;
       left: 6%;
-      // margin-left: rem(128px);
       flex-direction: column;
 
       /* stylelint-disable-next-line */
@@ -173,7 +173,7 @@
     margin-top: rem(12px);
 
     @include breakpoint('large') {
-      left: -6%;
+      left: -6vw;
       margin-top: 0;
     }
   }
