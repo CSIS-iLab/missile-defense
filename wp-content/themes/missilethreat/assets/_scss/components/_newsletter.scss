@@ -1,0 +1,71 @@
+@use 'abstracts' as *;
+
+.newsletter {
+  &__title {
+    color: $color-text-light-100;
+  }
+  
+  &__desc {
+    color: $color-text-light-170;
+  }
+}
+
+.home__newsletter {
+  padding-top: rem(24px);
+  padding-bottom: rem(24px);
+
+  @include breakpoint('large') {
+    padding: rem(32px) 0;
+    
+    .custom-html-widget {
+      display: flex;
+      gap: rem(64px);
+    }
+
+    .newsletter__title,
+    .newsletter__desc,
+    .newsletter__button {
+      margin: 0;
+    }
+  }
+
+  .newsletter {
+    &__title {
+      @extend %font-ui-heading-md;
+      margin-bottom: rem(16px);
+      
+      &--footer {
+        display: none;
+      }
+    }
+    
+    &__desc {
+      @extend %font-body-short-sm;
+      margin-bottom: rem(16px);
+    }
+
+    &__button--footer {
+      display: none;
+    }
+  }
+}
+
+#site-footer {
+  .newsletter {
+    &__title {
+      @extend %font-ui-heading-sm;
+
+      &--homepage {
+        display: none;
+      }
+    }
+
+    &__desc {
+      @extend %font-body-short-sm;
+    }
+
+    &__button--homepage {
+      display: none;
+    }
+  }
+}
