@@ -9,10 +9,11 @@
 
 
 $page_for_posts = get_option( 'page_for_posts' );
+$post_type = get_post_type();
 ?>
 
 <?php 
-if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === get_post_type() ) { 
+if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post_type ) { 
 	
 	$missile_short_name = get_field('missile_name');
 
@@ -38,7 +39,7 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 			Last Updated <?php missilethreat_last_updated(); ?>
 		</div>
 
-		<?php  if( 'defsys' === get_post_type() ) { ?>
+		<?php  if( 'defsys' === $post_type ) { ?>
 			<div class="share-wrapper">
 				<?php missiledefense_system_terms(); ?>
 				<?php missiledefense_share(); ?>
@@ -48,7 +49,7 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 		</div><!-- .entry-header-inner -->
 	<?php } 
 
-	elseif ( 'systems' === get_post_type() || 'actors' === get_post_type() ) {
+	elseif ( 'systems' === $post_type || 'actors' === $post_type ) {
 		$feat_image = get_the_post_thumbnail_url( $post->ID ); ?>
 		<header class="page__header entry-header"  style="background-image: url('<?php echo $feat_image; ?>')">
 			<div class="overlay"></div>
