@@ -27,8 +27,9 @@
 .btn--light {
   color: $color-primary-blue-200;
   background: $color-primary-light-blue;
-
+  
   &:hover {
+    color: $color-primary-blue-200;
     background: $color-primary-light-gray;
   }
 }
@@ -36,8 +37,9 @@
 .btn--dark {
   color: $color-text-light-100;
   background: $color-primary-blue-600;
-
+  
   &:hover {
+    color: $color-text-light-100;
     background: $color-primary-blue-400;
   }
 }

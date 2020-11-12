@@ -28,6 +28,6 @@ $title = get_lzb_meta('list-title');
   </ul>
 
   <?php if( isset( $pdf ) && !empty( $pdf ) ) { ?>
-    <button class="key-takeaways__download-btn btn btn--short btn--dark" type="submit" onclick="window.open('<?php echo $pdf_url; ?>')">Download PDF</button>
+    <a class="key-takeaways__download-btn btn btn--short btn--dark" type="submit" onclick="window.open('<?php echo $pdf_url; ?>')">Download PDF</a>
   <?php } ?>
 </div>
