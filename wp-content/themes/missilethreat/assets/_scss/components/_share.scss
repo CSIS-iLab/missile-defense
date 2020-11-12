@@ -94,17 +94,21 @@
   .single__footer & {
     margin: rem(32px) auto rem(32px) 0;
 
+    /* stylelint-disable */
     .a2a_button_print,
     .a2a_button_email {
       margin-bottom: rem(12px);
     }
+    /* stylelint-enable */
 
+    /* stylelint-disable-next-line */
     .a2a_button_email {
       margin-right: calc(100% - (88px + 12vw));
       border-right: 0;
     }
     
     @include breakpoint('small') {
+      /* stylelint-disable-next-line */
       .a2a_button_email {
         margin-right: calc(100% - (72px + 12vw));
       }
@@ -115,11 +119,14 @@
       margin-right: 0;
       margin-left: auto;
       
+      /* stylelint-disable */
       .a2a_button_print,
       .a2a_button_email {
         margin-bottom: 0;
       }
+      /* stylelint-enable */
 
+      /* stylelint-disable-next-line */
       .a2a_button_email {
         margin-right: initial;
         border-right: 1px solid $color-primary-light-blue;
@@ -161,12 +168,13 @@
 .share-wrapper {
   position: relative;
 
+  /* stylelint-disable-next-line */
   .addtoany_list {
     margin-top: rem(12px);
 
     @include breakpoint('large') {
-      margin-top: 0;
       left: -6%;
+      margin-top: 0;
     }
   }
 }
