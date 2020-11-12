@@ -49,8 +49,8 @@ body {
 }
 
 /* Remove list styles on ul, ol elements with a class attribute */
-ul[class],
-ol[class] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 
