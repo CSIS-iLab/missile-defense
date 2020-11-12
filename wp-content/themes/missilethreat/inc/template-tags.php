@@ -228,7 +228,7 @@ if (! function_exists('missilethreat_display_tags')) :
 	function missilethreat_display_tags() {
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list('<ul class="post-meta__tags"><li>', '</li><li>', '</li></ul>');
+		$tags_list = get_the_tag_list('<ul class="post-meta__tags" role="list"><li>', '</li><li>', '</li></ul>');
 					
 		if ( $tags_list ) {
 			/* translators: 1: list of tags. */
@@ -337,7 +337,7 @@ if ( ! function_exists( 'missiledefense_display_system_elements' ) ) :
 
 			$html = '<div class="system-elements">
 					<h1>' . $archiveTitle . '</h1>
-					<ul>';
+					<ul role="list">';
 
 			foreach ( $elements as $element ) {
 				$html .= '<li id="post-' . $element->ID . '"><a href="' . esc_url( get_permalink( $element->ID )) . '" rel="bookmark">' . $element->post_title . '</a></li>';

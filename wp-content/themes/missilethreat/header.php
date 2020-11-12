@@ -53,7 +53,7 @@
 						<nav class="site-nav" aria-label="<?php esc_attr_e( 'Site Navigation', 'missilethreat' ); ?>" role="navigation">
 							<button class="hamburger" aria-label="Open the navigation menu"><i class="fas fa-bars"></i></button>
 							<button class='nav-close' aria-label="Close the navigation menu"><?php echo missilethreat_get_svg( 'close' ); ?></button>
-							<ul class="primary-menu text--semibold">
+							<ul class="primary-menu text--semibold" role="list">
 
 							<?php
 							if ( has_nav_menu( 'primary' ) ) {
