@@ -68,7 +68,8 @@
     .single__header & {
       position: absolute;
       top: 0;
-      left: 6vw;
+      left: 6%;
+      // margin-left: rem(128px);
       flex-direction: column;
 
       /* stylelint-disable-next-line */
@@ -165,7 +166,7 @@
 
     @include breakpoint('large') {
       margin-top: 0;
-      left: -6vw;
+      left: -6%;
     }
   }
 }

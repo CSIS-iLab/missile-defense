@@ -112,11 +112,13 @@ if( is_single() && 'defsys' === get_post_type() || is_single() && 'missile' === 
 				</div><!-- .single__header-inner -->
 				<?php
 				if ( has_post_thumbnail() ) { ?>
-				<div class="single__header-image-wrapper alignwide">
-					<?php the_post_thumbnail(); ?>
-					<div class="image-caption"><?php the_post_thumbnail_caption(); ?></div>
-					<?php missiledefense_share(); ?>
-				</div><!-- single__header-image-wrapper -->
+				<div class="alignwide">
+					<div class="single__header-image-wrapper">
+						<?php the_post_thumbnail(); ?>
+						<div class="image-caption"><?php the_post_thumbnail_caption(); ?></div>
+						<?php missiledefense_share(); ?>
+					</div><!-- single__header-image-wrapper -->
+				</div><!-- alignwide -->
 				<?php }
 				?>
 			</div><!-- .single__header-wrapper -->
