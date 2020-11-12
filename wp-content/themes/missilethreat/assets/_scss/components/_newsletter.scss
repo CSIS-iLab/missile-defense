@@ -54,6 +54,7 @@
   .newsletter {
     &__title {
       @extend %font-ui-heading-sm;
+      margin-bottom: rem(12px);
 
       &--homepage {
         display: none;
@@ -62,6 +63,7 @@
 
     &__desc {
       @extend %font-body-short-sm;
+      margin-bottom: rem(12px);
     }
 
     &__button--homepage {
