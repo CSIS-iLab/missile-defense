@@ -33,7 +33,7 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 			the_title( '<h1 class="single__header-title">', '</h1>' );
 		} ?>
 
-		<div class="page__header-divider page__header-divider--thicc"></div>
+		<hr class="page__header-divider page__header-divider--thicc"></hr>
 		
 		<div class="single__header-meta">
 			Last Updated <?php missilethreat_last_updated(); ?>
@@ -56,7 +56,7 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 			<div class="page__header-inner--narrow">
 				<?php get_template_part( 'template-parts/breadcrumbs' ); ?>
 				<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
-				<div class="page__header-divider"></div>
+				<hr class="page__header-divider"></hr>
 				<div class="page__header-meta">
 					Last Updated <?php missilethreat_last_updated(); ?>
 				</div>
@@ -78,7 +78,7 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
     <header class="page__header page__header--short entry-header">
 			<div class="overlay"></div>
 			<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
-			<div class="page__header-divider page__header-divider--short"></div>
+			<hr class="page__header-divider page__header-divider--short"></hr>
 			<div class="page__header-desc page__header-desc--short"><?php the_archive_top_content(); ?> </div>
     
 	<?php } 
@@ -88,7 +88,7 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 		<header class="page__header entry-header"  style="background-image: url('<?php echo $feat_image; ?>')">
 			<div class="overlay"></div>
 			<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
-			<div class="page__header-divider"></div>
+			<hr class="page__header-divider"></hr>
 
 	<?php } 
 	
@@ -104,7 +104,7 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 					if ( has_excerpt() && is_singular() ) { ?>
 						<div class="single__header-excerpt"><?php the_excerpt(); ?></div>
 					<?php } ?>
-					<div class="page__header-divider page__header-divider--thicc"></div>
+					<hr class="page__header-divider page__header-divider--thicc"></hr>
 					<div class="single__header-meta">
 					<?php
 					missilethreat_posted_on();
@@ -134,7 +134,7 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 			$post = get_page($page_for_posts);
 			setup_postdata($post); ?>
 			<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
-			<div class="page__header-divider"></div>
+			<hr class="page__header-divider"></hr>
 			<div class="page__header-desc"><?php the_content(); ?> </div>
 
   <?php }

@@ -8,7 +8,8 @@
 }
 
 .single__footer-divider {
-  width: 100%;
+  height: 1px;
   margin-bottom: rem(48px);
-  border-bottom: 1px solid $color-line-light-gray;
+  background: $color-line-light-gray;
+  border: 0;
 }
