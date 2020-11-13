@@ -10,8 +10,6 @@
 
 get_header();
 
-$page_for_posts = get_option( 'page_for_posts' );
-
 ?>
 
 
@@ -28,8 +26,6 @@ $page_for_posts = get_option( 'page_for_posts' );
 
   if ( have_posts() ) {
 
-		$i = 0;
-
 		while ( have_posts() ) {
 			the_post();
 
@@ -39,8 +35,6 @@ $page_for_posts = get_option( 'page_for_posts' );
 	} 
 	?>
   </section>
-  
-  
   
   <aside class="archive__sidebar">
     <?php
