@@ -66,7 +66,8 @@
   }
 
   @include breakpoint('large') {
-    .single__header & {
+    .single__header &,
+    .at-a-glance__wrapper & {
       position: absolute;
       top: 0;
       left: 6%;
