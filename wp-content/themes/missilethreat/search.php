@@ -27,7 +27,7 @@ if ( $wp_query->found_posts ) {
 
 		?>
 
-	<header class="page__header page__header--short" style='background:linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%), linear-gradient(90deg, #2A5565 0%, #5F7981 100%);'>
+	<header class="page__header page__header--short">
 
     <span class="page__header-label">Search results:<br/></span>
     <?php get_search_form(); ?>

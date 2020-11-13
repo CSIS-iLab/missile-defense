@@ -75,7 +75,7 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 	<?php } 
 	
 	elseif ( is_archive() ) { ?>
-    <header class="page__header page__header--short entry-header" style='background:linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%), linear-gradient(90deg, #2A5565 0%, #5F7981 100%);'>
+    <header class="page__header page__header--short entry-header">
 			<div class="overlay"></div>
 			<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
 			<div class="page__header-divider page__header-divider--short"></div>
