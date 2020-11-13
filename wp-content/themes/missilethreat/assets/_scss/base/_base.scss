@@ -61,7 +61,7 @@ body {
 
 .alignwide {
   /* stylelint-disable-next-line */
-  > *:not(figcaption):not(.image-caption):not(.addtoany_list) {
+  > *:not(figcaption):not(.addtoany_list) {
     @include missiledefense-full-width-content;
   }
 }

@@ -114,11 +114,11 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 				<?php
 				if ( has_post_thumbnail() ) { ?>
 				<div class="alignwide">
-					<div class="single__header-image-wrapper">
+					<figure class="single__header-image-wrapper">
 						<?php the_post_thumbnail(); ?>
-						<div class="image-caption"><?php the_post_thumbnail_caption(); ?></div>
+						<figcaption class="image-caption"><?php the_post_thumbnail_caption(); ?></figcaption>
 						<?php missiledefense_share(); ?>
-					</div><!-- single__header-image-wrapper -->
+				</figure><!-- single__header-image-wrapper -->
 				</div><!-- alignwide -->
 				<?php }
 				?>
