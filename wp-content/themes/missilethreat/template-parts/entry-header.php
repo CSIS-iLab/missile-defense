@@ -52,7 +52,6 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 	elseif ( 'systems' === $post_type || 'actors' === $post_type ) {
 		$feat_image = get_the_post_thumbnail_url( $post->ID ); ?>
 		<header class="page__header entry-header"  style="background-image: url('<?php echo $feat_image; ?>')">
-			<div class="overlay"></div>
 			<div class="page__header-inner--narrow">
 				<?php get_template_part( 'template-parts/breadcrumbs' ); ?>
 				<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
@@ -67,7 +66,6 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 	elseif ( is_post_type_archive() ) { 
     $feat_image = 'style="background-image:url('.get_archive_thumbnail_src( 'missilethreat-fullscreen' ).');"';?>
 		<header class="page__header entry-header" <?php echo $feat_image; ?>>
-			<div class="overlay"></div>
 			<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
 			<div class="page__header-divider"></div>
 			<div class="page__header-desc"><?php the_archive_top_content(); ?> </div>
@@ -76,7 +74,6 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 	
 	elseif ( is_archive() ) { ?>
     <header class="page__header page__header--short entry-header">
-			<div class="overlay"></div>
 			<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
 			<hr class="page__header-divider page__header-divider--short"></hr>
 			<div class="page__header-desc page__header-desc--short"><?php the_archive_top_content(); ?> </div>
@@ -86,7 +83,6 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 	elseif ( is_page() ) { 
 		$feat_image = get_the_post_thumbnail_url( $post->ID ); ?>
 		<header class="page__header entry-header"  style="background-image: url('<?php echo $feat_image; ?>')">
-			<div class="overlay"></div>
 			<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
 			<hr class="page__header-divider"></hr>
 
@@ -129,7 +125,6 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 	elseif ( $page_for_posts ) { 
     $feat_image = 'style="background-image:url('.get_the_post_thumbnail_url( $page_for_posts ).');"';?>
 		<header class="page__header entry-header" <?php echo $feat_image; ?>>
-			<div class="overlay"></div>
 			<?php
 			$post = get_page($page_for_posts);
 			setup_postdata($post); ?>
