@@ -12,18 +12,24 @@
 $missile_short_name = get_field('missile_name');
 
 ?>
-<div class="at-a-glance__wrapper alignwide">
-  <?php dynamic_sidebar( 'social-share' ); ?>
-  <div class="at-a-glance">
-    <h1 class="at-a-glance__title text--semibold">At a Glance</h1>
-    <?php
-    $specs = get_lzb_meta('missile-specs');
+<div class="alignwide">
+  <div class="at-a-glance__wrapper">
+    <div class="at-a-glance">
+      <h1 class="at-a-glance__title text--semibold">At a Glance</h1>
+      
+      <?php
+      $specs = get_lzb_meta('missile-specs');
+      
+      foreach( $specs as $spec ) {
+        $spec_name = $spec['spec'];
+        $spec_value = $spec['value']; ?>
 
-    foreach( $specs as $spec ) {
-      $spec_name = $spec['spec'];
-      $spec_value = $spec['value']; ?>
-
-    <p class="at-a-glance__spec"><span class="at-a-glance__spec-name text--bold"><?php echo $spec_name; ?></span><br><?php echo $spec_value; ?></p>
-    <?php } ?>
+        <dl class="at-a-glance__spec">
+          <dt class="at-a-glance__spec-name text--bold"><?php echo $spec_name; ?></dt>
+          <dd><?php echo $spec_value; ?></dd>
+        </dl>
+        <?php } ?>
+      </div>
+      <?php dynamic_sidebar( 'social-share' ); ?>
   </div>
 </div>
