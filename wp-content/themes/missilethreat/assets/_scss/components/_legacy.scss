@@ -1,5 +1,7 @@
 @use '../abstracts' as *;
 
+
+// These styles control the legacy "At a Glance" box that were added directly to the posts instead of using the specialized block. If old content is converted to using the block, this CSS can be safely removed.
 .ataglance {
   margin-bottom: rem(56px);
   padding: rem(24px) rem(32px) rem(48px) rem(32px);
