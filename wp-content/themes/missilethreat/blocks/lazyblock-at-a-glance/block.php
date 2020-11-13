@@ -10,12 +10,13 @@
 
 
 $missile_short_name = get_field('missile_name');
+$block_title = get_lzb_meta('title')
 
 ?>
 <div class="alignwide">
   <div class="at-a-glance__wrapper">
     <div class="at-a-glance">
-      <h1 class="at-a-glance__title text--semibold">At a Glance</h1>
+      <h1 class="at-a-glance__title text--semibold"><?php echo $block_title ?></h1>
       
       <?php
       $specs = get_lzb_meta('missile-specs');
