@@ -97,7 +97,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 					missilethreat_display_categories();
 					the_title( '<h1 class="single__header-title">', '</h1>' );
 					
-					if ( has_excerpt() && is_singular() ) { ?>
+					if ( has_excerpt() ) { ?>
 						<div class="single__header-excerpt"><?php the_excerpt(); ?></div>
 					<?php } ?>
 					<hr class="page__header-divider page__header-divider--thicc"></hr>
