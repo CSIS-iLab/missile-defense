@@ -13,7 +13,7 @@ $post_type = get_post_type();
 ?>
 
 <?php 
-if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post_type ) { 
+if( is_singular( array( 'defsys', 'missile' ) ) ) { 
 	
 	$missile_short_name = get_field('missile_name');
 
@@ -49,7 +49,7 @@ if( is_single() && 'defsys' === $post_type || is_single() && 'missile' === $post
 		</div><!-- .entry-header-inner -->
 	<?php } 
 
-	elseif ( 'systems' === $post_type || 'actors' === $post_type ) {
+	elseif ( is_singular( array( 'systems', 'actors' ) ) ) {
 		$feat_image = get_the_post_thumbnail_url( $post->ID ); ?>
 		<header class="page__header entry-header"  style="background-image: url('<?php echo $feat_image; ?>')">
 			<div class="page__header-inner--narrow">
