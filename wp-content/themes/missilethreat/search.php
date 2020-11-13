@@ -29,7 +29,7 @@ if ( $wp_query->found_posts ) {
 
 	<header class="page__header page__header--short">
 
-    <span class="page__header-label">Search results:<br/></span>
+    <h1 class="page__header-label">Search results:<br/></h1>
     <?php get_search_form(); ?>
 
   </header><!-- .archive-header -->
