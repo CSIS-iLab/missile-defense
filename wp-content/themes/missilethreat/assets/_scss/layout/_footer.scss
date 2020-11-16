@@ -15,15 +15,9 @@
     margin-bottom: rem(32px);
   }
 
-  &__address,
-  &__news-letter,
-  &__nav-side,
-  &__copyright {
-    @extend %font-body-short-sm
-  }
-
   &__address {
     margin-left: rem(32px);
+    @extend %font-ui-text-md;
   }
 
   &__logo,
@@ -35,28 +29,38 @@
   &__nav-side {
     color: $color-text-light-190;
     white-space: nowrap;
+    @extend %font-body-short-md;
   }
 
   &__copyright {
     margin-top: (48px);
     color: $color-text-light-155;
+    @extend %font-ui-text-md;
   }
 
   &__logo {
     margin-bottom: rem(24px);
   }
 
+  svg {
+    max-width: rem(281px);
+  }
+
   &__social-icons {
     display: flex;
     align-items: center;
+    color: $color-primary-blue-100;
   }
 
   &__facebook-icon,
   &__twitter-icon {
     padding: rem(6.5px) rem(9px);
-    color: $color-primary-blue-100;
-    background-color: $color-text-light-100;
+    background-color: $color-primary-light-blue;
     border-radius: rem(50px);
+
+    &:hover {
+      background-color: $color-text-light-100;
+    }
   }
 
   .icon {
@@ -69,9 +73,14 @@
 
   &__news-letter {
     margin-bottom: rem(32px);
+    @extend %font-body-short-md;
   }
 
   @include breakpoint('small') {
+    svg {
+      max-width: rem(350px);
+    }
+
     &__news-nav {
       display: flex;
       flex-wrap: nowrap;
@@ -83,6 +92,12 @@
 
     &__nav-side {
       margin-left: rem(48px);
+
+      li {
+        &:hover {
+          text-decoration-line: underline;
+        }
+      }
     }
   }
 

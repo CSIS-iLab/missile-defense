@@ -23,7 +23,7 @@
 		<div class="footer__container--large">
 			<div class="footer__description">
 				<p>
-					Missile Threat brings together a wide range of information and analyses relating to the proliferation of cruise and ballistic missiles around the world and the air and missile defense systems designed to defeat them. Missile Threat is a product of the <span class="footer__mdp"><a href="https://www.csis.org/programs/international-security-program/missile-defense-project">Missile Defense Project</a></span> at the Center for Strategic and International Studies.
+					Missile Threat brings together a wide range of information and analyses relating to the proliferation of cruise and ballistic missiles around the world and the air and missile defense systems designed to defeat them. Missile Threat is a product of the <a class="footer__mdp" href="https://www.csis.org/programs/international-security-program/missile-defense-project">Missile Defense Project</a> at the Center for Strategic and International Studies.
 					</p>
 				
 
