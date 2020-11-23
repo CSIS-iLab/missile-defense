@@ -8,12 +8,17 @@
  */
 
 
+if ( is_singular( array( 'systems', 'actors' ) ) || is_single() && has_post_thumbnail() || is_page() ) {
+	$feat_image = get_the_post_thumbnail_url( $post->ID ); ?>
+<?php }
 
-if ( has_post_thumbnail() && ! post_password_required() ) {
+elseif ( is_post_type_archive() ) { 
+	$feat_image = get_archive_thumbnail_src( 'missilethreat-fullscreen' ); ?>
+<?php }
 
-	?>
-
-	<figure class="featured-media">
+elseif ( $page_for_posts ) { 
+	$feat_image = get_the_post_thumbnail_url( $page_for_posts );
+}?>
 
 		<?php the_post_thumbnail(); ?>
 
