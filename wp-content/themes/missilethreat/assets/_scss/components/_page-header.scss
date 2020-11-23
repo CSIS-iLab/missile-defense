@@ -47,6 +47,7 @@
 
   &-label {
     @extend %font-ui-heading-xs;
+    z-index: 10;
     color: $color-text-light-190;
     letter-spacing: 0.02em;
     text-transform: uppercase;
@@ -102,6 +103,7 @@
   }
 
   .search-form {
+    z-index: 10;
     display: flex;
     align-items: flex-end;
   }
