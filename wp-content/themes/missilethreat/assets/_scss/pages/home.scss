@@ -158,8 +158,8 @@
     svg {
       display: block;
       max-width: rem(144px);
-      fill: $color-text-light-190;
       transition: fill 0.3s ease-in-out;
+      fill: $color-text-light-190;
 
       &:hover {
         fill: $color-text-light-100;
