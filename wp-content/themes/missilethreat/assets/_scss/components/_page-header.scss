@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: flex-end;
   width: 100vw;
-  margin: 0 0 0 -6vw;
+  margin: 0 0 0 calc(50% - 50vw);
   padding: rem(112px) rem(20px) rem(24px) rem(20px);
   overflow: hidden;
   color: $color-text-light-100;
