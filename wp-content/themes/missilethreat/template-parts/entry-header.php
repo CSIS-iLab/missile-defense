@@ -108,15 +108,14 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 					</div>
 				</div><!-- .single__header-inner -->
 				<?php
-				if ( has_post_thumbnail() ) { ?>
-				<div class="alignwide">
-					<figure class="single__header-image-wrapper">
-						<?php the_post_thumbnail(); ?>
-						<figcaption class="image-caption"><?php the_post_thumbnail_caption(); ?></figcaption>
-						<?php missiledefense_share(); ?>
-				</figure><!-- single__header-image-wrapper -->
-				</div><!-- alignwide -->
-				<?php }
+        if ( has_post_thumbnail() ) { ?>
+					<div class="alignwide">
+						<div class="single__header-image-wrapper">
+							<?php get_template_part( 'template-parts/featured-image' ); ?>
+							<?php missiledefense_share(); ?>
+						</div><!-- single__header-image-wrapper -->
+					</div><!-- alignwide -->
+					<?php }
 				?>
 			</div><!-- .single__header-wrapper -->
 
