@@ -50,7 +50,7 @@ $posts_page = get_option( 'page_for_posts' );
   <?php
   if ( is_post_type_archive('missile') ) { ?>
 
-    <section>
+    <section class="actors">
     <div class="actors__desc">Ballistic missiles, cruise missiles, rockets, artillery, and mortars (RAM), and even maneuvering hypersonic boost glide delivery systems now form the complicated 21st century strike complex with which U.S., allied, and partner nations must contend. Organized by country, the following represents a growing collection of information on global missile systems, with illustrations and up-to-date information on their capabilities and history.</div>
 
     <?php
@@ -63,8 +63,8 @@ $posts_page = get_option( 'page_for_posts' );
     );
     $actors = get_posts( $args ); ?>
 
-    <div class="actors__countries">
-    <h2 class="acotrs__header">Countries</h2>
+    <h2 class="actors__header">Countries</h2>
+      <div class="actors__group actors__group-countries">
 
         <?php
         foreach ( $actors as $post) {
@@ -93,8 +93,8 @@ $posts_page = get_option( 'page_for_posts' );
     </div><!-- .actors__countries -->
 
 
-    <div class="actors__sub-state">
-      <h2 class="acotrs__header">Sub-state Actors</h2>
+    <h2 class="actors__header">Sub-state Actors</h2>
+      <div class="actors__group actors__group-sub-state">
 
         <?php
         foreach ( $actors as $post) {

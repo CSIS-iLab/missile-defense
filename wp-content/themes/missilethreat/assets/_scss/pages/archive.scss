@@ -4,13 +4,18 @@
   display: grid;
   grid-gap: rem(48px);
   width: 100%;
-  margin-top: 150px;
-  margin-left: 6vw;
+  margin-top: rem(32px);
+  margin-bottom: rem(56px);
+
+  @include breakpoint('small') {
+    margin-top: rem(56px);
+  }
 
   @include breakpoint('large') {
     grid-gap: 6vw;
     grid-template-columns: auto 300px;
     justify-content: center;
+    margin-top: rem(48px);
 
     &__content {
       grid-column: 1;
@@ -29,6 +34,62 @@
 
     .wp-post-image {
       mask-image: $gradient-standard;
+    }
+  }
+
+  .actors {
+    &__desc {
+      @extend %font-copy-quote-sm;
+      margin-bottom: rem(56px);
+      color: $color-text-dark-190;
+    }
+
+    &__header {
+      @extend %font-copy-heading-2;
+      margin-bottom: rem(12px);
+      color: $color-text-dark-100;
+      font-weight: 600;
+    }
+
+    &__group {
+      @include breakpoint('large') {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: rem(32px);
+      }
+
+      &-countries {
+        padding-top: rem(32px);
+        padding-bottom: rem(56px);
+      }
+
+      &-sub-state {
+        margin-bottom: rem(48px);
+
+        @include breakpoint('large') {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      margin-bottom: rem(16px);
+      line-height: 1.5;
+    }
+    
+    &__name {
+      margin-left: rem(16px);
+      color: $color-primary-blue-300;
+      font-weight: normal;
+      font-size: rem(20px);
+      white-space: nowrap;
+    }
+
+    &__icon {
+      width: rem(42px);
+      height: rem(48px);
     }
   }
 }
