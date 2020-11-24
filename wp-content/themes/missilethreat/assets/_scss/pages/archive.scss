@@ -4,6 +4,8 @@
   display: grid;
   grid-gap: rem(48px);
   width: 100%;
+  margin-top: 150px;
+  margin-left: 6vw;
 
   @include breakpoint('large') {
     grid-gap: 6vw;

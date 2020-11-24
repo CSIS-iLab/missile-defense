@@ -9,6 +9,8 @@
 **/
 
 get_header();
+
+$posts_page = get_option( 'page_for_posts' );
 ?>
 
 <main id="site-content" role="main">
@@ -16,7 +18,7 @@ get_header();
 <header class="archive__header entry-header">
   <?php 
 
-    $posts_page = get_option( 'page_for_posts' );
+
     if ( $posts_page ) { // Only target the blog page
       $post = get_queried_object();
       setup_postdata( $post ); 
@@ -45,7 +47,89 @@ get_header();
 
 <div class='archive'>
 
+  <?php
+  if ( is_post_type_archive('missile') ) { ?>
+
+    <section>
+    <div class="actors__desc">Ballistic missiles, cruise missiles, rockets, artillery, and mortars (RAM), and even maneuvering hypersonic boost glide delivery systems now form the complicated 21st century strike complex with which U.S., allied, and partner nations must contend. Organized by country, the following represents a growing collection of information on global missile systems, with illustrations and up-to-date information on their capabilities and history.</div>
+
+    <?php
+    $args = array(
+      'post_type' => 'actors',
+      'numberposts' => -1,
+      'orderby' => 'meta_value',
+      'order' => 'ASC',
+      'meta_key' => '_actors_archive_name'
+    );
+    $actors = get_posts( $args ); ?>
+
+    <div class="actors__countries">
+    <h2 class="acotrs__header">Countries</h2>
+
+        <?php
+        foreach ( $actors as $post) {
+          setup_postdata( $post );
+          $actor_icon = get_field('country_icon', $post->ID);
+          $archive_name = get_the_title();
+          $replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
+
+          if ( $replacement_archive_name ) {
+            $archive_name = $replacement_archive_name;
+          }
+
+          if ( $post->ID === 4179 ) {
+            continue;
+          }
+
+          ?>
+
+          <div class="actors__container">
+            <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
+              <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
+              <h3 class="actors__name"><?php echo $archive_name; ?></h3>
+            </a>
+          </div>
+        <?php }  ?>
+    </div><!-- .actors__countries -->
+
+
+    <div class="actors__sub-state">
+      <h2 class="acotrs__header">Sub-state Actors</h2>
+
+        <?php
+        foreach ( $actors as $post) {
+          setup_postdata( $post );
+          $actor_icon = get_field('country_icon', $post->ID);
+          $archive_name = get_the_title();
+          $replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
+
+          if ( $replacement_archive_name ) {
+            $archive_name = $replacement_archive_name;
+          }
+
+          if ( $post->ID !== 4179 ) {
+            continue;
+          }
+
+          ?>
+
+          <div class="actors__container">
+            <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
+              <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
+              <h3 class="actors__name"><?php echo $archive_name; ?></h3>
+            </a>
+          </div>
+        <?php }  ?>
+
+    </div><!-- .actors__sub-state -->
+    </section>
+    <?php }
+    
+    elseif( $posts_page ) {
+    ?>
+
   <section class="archive__content">
+    
     
   <?php
 
@@ -63,6 +147,8 @@ get_header();
 	} 
 	?>
   </section>
+
+<?php } ?>
   
   
   
@@ -72,7 +158,7 @@ get_header();
 
     ?>
   </aside>
-</div>
+</div> 
 
 </main>
 
