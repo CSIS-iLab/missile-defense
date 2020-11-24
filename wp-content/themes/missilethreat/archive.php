@@ -45,7 +45,7 @@ $posts_page = get_option( 'page_for_posts' );
 
 </header>
 
-<div class='archive'>
+<div class='archive__content'>
 
   <?php
   if ( is_post_type_archive('missile') ) { ?>

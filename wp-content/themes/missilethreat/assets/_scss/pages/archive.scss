@@ -1,30 +1,20 @@
 @use '../abstracts' as *;
 
 .archive {
-  display: grid;
-  grid-gap: rem(48px);
-  width: 100%;
-  margin-top: rem(32px);
-  margin-bottom: rem(56px);
-
-  @include breakpoint('small') {
-    margin-top: rem(56px);
-  }
-
-  @include breakpoint('large') {
-    grid-gap: 6vw;
-    grid-template-columns: auto 300px;
-    justify-content: center;
-    margin-top: rem(48px);
-
-    &__content {
-      grid-column: 1;
-      max-width: rem(700px);
+  &__content {
+    margin-top: rem(32px);
+    margin-bottom: rem(56px);
+    
+    @include breakpoint('small') {
+      margin-top: rem(56px);
     }
 
-    &__sidebar {
-      grid-column: 2;
-      max-width: rem(300px);
+    @include breakpoint('large') {
+      display: grid;
+      grid-gap: 6vw;
+      grid-template-columns: auto 300px;
+      justify-content: center;
+      margin-top: rem(48px);
     }
   }
 
@@ -91,5 +81,10 @@
       width: rem(42px);
       height: rem(48px);
     }
+  }
+
+  &__sidebar {
+    grid-column: 2;
+    max-width: rem(300px);
   }
 }
