@@ -86,7 +86,6 @@ $posts_page = get_option( 'page_for_posts' );
           <div class="actors__container">
             <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
               <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
-              <!-- <svg class="actors__icon"><use href="<?php echo esc_url($actor_icon['url']); ?>" style></use></svg> -->
               <?php echo $archive_name; ?>
             </a>
           </div>
