@@ -66,17 +66,21 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 	elseif ( is_post_type_archive() ) { 
     $feat_image = 'style="background-image:url('.get_archive_thumbnail_src( 'missilethreat-fullscreen' ).');"';?>
 		<header class="page__header entry-header" <?php echo $feat_image; ?>>
-			<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
-			<div class="page__header-divider"></div>
-			<div class="page__header-desc"><?php the_archive_top_content(); ?> </div>
+			<div class="page__header-inner">
+				<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
+				<div class="page__header-divider"></div>
+				<div class="page__header-desc"><?php the_archive_top_content(); ?> </div>
+			</div><!-- .page__header-inner -->
   
 	<?php } 
 	
 	elseif ( is_archive() ) { ?>
     <header class="page__header page__header--short entry-header">
-			<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
-			<hr class="page__header-divider page__header-divider--short"></hr>
-			<div class="page__header-desc page__header-desc--short"><?php the_archive_top_content(); ?> </div>
+			<div class="page__header-inner">
+				<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
+				<hr class="page__header-divider page__header-divider--short"></hr>
+				<div class="page__header-desc page__header-desc--short"><?php the_archive_top_content(); ?> </div>
+			</div><!-- .page__header-inner -->
     
 	<?php } 
 	
@@ -127,10 +131,12 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 			<?php
 			$post = get_page($page_for_posts);
 			setup_postdata($post); ?>
-			<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
-			<hr class="page__header-divider"></hr>
-			<div class="page__header-desc"><?php the_content(); ?> </div>
-
+			<div class="page__header-inner">
+				<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
+				<hr class="page__header-divider"></hr>
+				<div class="page__header-desc"><?php the_content(); ?> </div>
+			</div><!-- .page__header-inner -->
+			
   <?php }
 
 wp_reset_postdata();

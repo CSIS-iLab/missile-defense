@@ -30,11 +30,21 @@
     background-image: $gradient-standard;
   }
 
+  &-inner {
+    z-index: 10;
+    max-width: $size__container-max-width;
+
+    @include breakpoint('xxlarge') {
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
   &-title,
   &-divider,
   &-desc,
   &-inner--narrow {
-    z-index: 10;
     max-width: $size__content-max-width;
   }
 
@@ -149,10 +159,15 @@
 
   @include breakpoint('xlarge') {
     min-height: rem(484px);
-
+    
     &--short {
       min-height: 0;
     }
+  }
+
+
+  @include breakpoint('xxlarge') {
+    padding: rem(128px) rem(80px) rem(56px) rem(80px);
   }
 }
 
