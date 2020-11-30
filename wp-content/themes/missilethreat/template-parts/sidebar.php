@@ -24,10 +24,18 @@ if( is_post_type_archive( array( 'defsys', 'missile' ) ) ) {
 
 	if( $post_type === 'defsys') {
 		$archive_type = 'component';
+		$side_header = 'Individual Components';
+		$side_desc = '';
+		$sidebar = 'systems-in-the-news';
 	} elseif( $post_type === 'missile' ) {
 		$archive_type = 'missile';
+		$side_header = 'Find a Missile';
+		$side_desc = 'Know what you are looking for? Use this alphabetized list to find the page you need.';
+		$sidebar = 'missiles-in-the-news';
 	}
 		?>
+		<h2 class="archive__sidebar-header"><?php echo $side_header; ?></h2>
+		<p class="archive__sidebar-desc"><?php echo $side_desc; ?></p>
 	
 		<label for="item-select" class="component-select__label">Search</label>
 		<div class="component-select">
@@ -41,8 +49,15 @@ if( is_post_type_archive( array( 'defsys', 'missile' ) ) ) {
 	
 		echo '</select><button type="submit" form="item-select" class="btn btn--dark component-select__submit" id="item-select-go">Go</button></div>';
 	
-		wp_reset_postdata();
+		wp_reset_postdata();?>
 
+		<h4 class="archive__sidebar-news font--bold">In the news</h4>
+
+		<hr class="page__header-divider">
+
+		<?php dynamic_sidebar( $sidebar ) ?>
+
+<?php
 } else {
 	dynamic_sidebar( 'sidebar' );
 }

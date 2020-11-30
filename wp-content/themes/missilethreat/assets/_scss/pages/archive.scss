@@ -14,7 +14,7 @@
       grid-gap: 6vw;
       grid-template-columns: auto 300px;
       justify-content: center;
-      margin-top: rem(48px);
+      margin-top: rem(148px);
     }
   }
 
@@ -66,18 +66,31 @@
       display: flex;
       align-items: center;
       margin-bottom: rem(16px);
-      line-height: 1.5;
-    }
-    
-    &__name {
       margin-left: rem(16px);
       color: $color-primary-blue-300;
       font-weight: normal;
       font-size: rem(20px);
+      line-height: 1.5;
       white-space: nowrap;
+      transition: all 0.3s ease-in-out;
+      
+      &:hover {
+        color: $color-primary-blue-100;
+      }
+    }
+    
+    &__link + .actors__icon {
+      transition: all 0.3s ease-in-out;
+      filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg) brightness(92%) contrast(86%);
+      
+      &:hover {
+        filter: invert(13%) sepia(33%) saturate(1061%) hue-rotate(155deg) brightness(102%) contrast(101%);
+      }
+      
     }
 
-    &__icon {
+    &__icon,
+    use {
       width: rem(42px);
       height: rem(48px);
     }
@@ -86,5 +99,54 @@
   &__sidebar {
     grid-column: 2;
     max-width: rem(300px);
+    padding-top: rem(16px);
+    color: $color-text-dark-100;
+
+    @include breakpoint('large') {
+      padding-top: 0;
+    }
+
+    &-header {
+      @extend %font-ui-heading-md;
+    }
+
+    &-desc {
+      @extend %font-body-short-md-serif;
+      margin: rem(12px) 0;
+    }
+
+    &-news {
+      @extend %font-ui-heading-xs;
+      margin-top: rem(32px);
+      padding-bottom: rem(8px);
+      color: $color-text-dark-170;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .page__header-divider {
+      margin-top: 0;
+    }
+
+    &-widget {
+      @extend %font-body-list-md;
+      margin-top: rem(12px);
+      color: $color-primary-blue-300;
+      text-transform: capitalize;
+      
+      a {
+        display: inline;
+        transition: all 0.3s ease-in-out;
+      }
+      
+      a:hover {
+        color: $color-primary-blue-100;
+        text-decoration: underline;
+      }
+
+      p:not(:last-child) {
+        margin-bottom: rem(8px);
+      }
+    }
   }
 }
