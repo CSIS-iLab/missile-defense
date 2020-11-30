@@ -26,6 +26,13 @@
     color: $color-text-light-100;
   }
 
+  &__mdp {
+    &:hover {
+      text-decoration-line: underline;
+      color: $color-text-light-100;
+    }
+  }
+
   &__nav-side {
     color: $color-text-light-190;
     white-space: nowrap;
