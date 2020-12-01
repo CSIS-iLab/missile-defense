@@ -13,7 +13,7 @@
 <div class="tableOfContents">
   <div class="tableOfContents__details">
   <h2>In this publication</h2>
-  <ul class="tableOfContents__resources">
+  <ul class="tableOfContents__resources" role="list">
 
 
   <?php 
@@ -33,7 +33,7 @@
     } 
     
     else { ?>
-      <ul class="tableOfContents__chapters">
+      <ul class="tableOfContents__chapters" role="list">
         <?php
       foreach( $chapters as $chapter ) {
         $chapter_url = esc_url($chapter['link-to-post']);

@@ -18,7 +18,7 @@ $title = get_lzb_meta('list-title');
 <?php if( isset( $title ) && !empty( $title ) ) { ?>
   <h2 class="key-takeaways__title"><?php echo $title ?></h2>
 <?php } ?>
-  <ul class="key-takeaways__list">
+  <ul class="key-takeaways__list" role="list">
   <?php 
 
     foreach ($bullet_points as $bullet) {
