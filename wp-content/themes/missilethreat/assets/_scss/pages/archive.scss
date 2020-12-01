@@ -29,7 +29,6 @@
 
   &__desc {
     @extend %font-copy-quote-sm;
-    margin-bottom: rem(56px);
     color: $color-text-dark-190;
   }
 
@@ -39,6 +38,10 @@
       margin-bottom: rem(12px);
       color: $color-text-dark-100;
       font-weight: 600;
+
+      &--lower {
+        margin-top: rem(56px);
+      }
     }
 
     &__group {
@@ -46,11 +49,12 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         column-gap: rem(32px);
+        margin-top: rem(32px);
+        margin-bottom: rem(56px);
       }
 
       &-countries {
         padding-top: rem(32px);
-        padding-bottom: rem(56px);
       }
 
       &-sub-state {
@@ -71,23 +75,27 @@
       font-weight: normal;
       font-size: rem(20px);
       line-height: 1.5;
-      white-space: nowrap;
+      // white-space: nowrap;
       transition: all 0.3s ease-in-out;
       
       &:hover {
         color: $color-primary-blue-100;
 
+        
+        /* stylelint-disable */
         .actors__icon {
           filter: invert(13%) sepia(33%) saturate(1061%) hue-rotate(155deg) brightness(102%) contrast(101%);
         }
+        /* stylelint-enable */
       }
     }
 
     &__icon {
       width: rem(42px);
       height: rem(48px);
-      transition: all 0.3s ease-in-out;
+      margin-right: rem(16px);
       filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg) brightness(92%) contrast(86%);
+      transition: all 0.3s ease-in-out;
     }
   }
 

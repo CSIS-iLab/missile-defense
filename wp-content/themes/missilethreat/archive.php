@@ -63,7 +63,7 @@ $posts_page = get_option( 'page_for_posts' );
       );
       $actors = get_posts( $args ); ?>
 
-      <h2 class="actors__header">Countries</h2>
+      <h2 class="actors__header actors__header--lower">Countries</h2>
         <div class="actors__group actors__group-countries">
 
           <?php
@@ -131,17 +131,23 @@ $posts_page = get_option( 'page_for_posts' );
       <h2 class="actors__header">U.S. Defense Systems</h2>
       <div class="archive__desc">The United States is a world leader in air and missile defense, with a variety of capabilities on land, sea, air and space.</div>
 
-      <?php missiledefense_defsys_us(); ?>
+      <div class="actors__group actors__group-us">
+        <?php missiledefense_defsys_us(); ?>
+      </div>
 
       <h2 class="actors__header">Defense System Elements</h2>
       <div class="archive__desc">A wide variety of these systems go into making missile defense effective.</div>
 
-      <?php missiledefense_defsys_elements() ?>
+      <div class="actors__group actors__group-elements">
+        <?php missiledefense_defsys_elements() ?>
+      </div>
 
       <h2 class="actors__header">Non U.S. Systems</h2>
       <div class="archive__desc">Learn about air and missile defense systems from around the world.</div>
 
-      <?php missiledefense_defsys_nonUS() ?>
+      <div class="actors__group actors__group-nonUS">
+        <?php missiledefense_defsys_nonUS() ?>
+      </div>
 
     </section>
   <?php }

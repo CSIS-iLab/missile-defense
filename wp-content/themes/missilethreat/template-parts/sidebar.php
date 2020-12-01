@@ -51,11 +51,11 @@ if( is_post_type_archive( array( 'defsys', 'missile' ) ) ) {
 	
 		wp_reset_postdata();?>
 
-		<h4 class="archive__sidebar-news font--bold">In the news</h4>
+		<!-- <h4 class="archive__sidebar-news font--bold">In the news</h4>
 
 		<hr class="page__header-divider">
 
-		<?php dynamic_sidebar( $sidebar ) ?>
+		<?php dynamic_sidebar( $sidebar ) ?> -->
 
 <?php
 } else {
