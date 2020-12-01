@@ -45,6 +45,7 @@
   &-divider,
   &-desc,
   &-inner--narrow {
+    z-index: 10;
     max-width: $size__content-max-width;
   }
 
