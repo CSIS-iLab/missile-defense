@@ -26,7 +26,8 @@
 
 					<p class="footer__phone">(202) 887-0200</p>
 
-					<?php missiledefense_share(); ?>
+					<?php dynamic_sidebar( 'newsletter' ); ?>
+
 				</div>
 
 

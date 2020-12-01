@@ -15,6 +15,7 @@
   <h2>In this publication</h2>
   <ul class="tableOfContents__resources">
 
+
   <?php 
 
     $chapters = get_lzb_meta('table-of-contents');
