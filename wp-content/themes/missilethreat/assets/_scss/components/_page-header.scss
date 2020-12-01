@@ -231,8 +231,14 @@
   .parent-system__link {
     @extend %font-ui-text-lg;
     display: block;
+    width: fit-content;
     margin-top: rem(2px);
     color: $color-text-dark-190;
+
+    &:hover {
+      color: $color-text-dark-100;
+      text-decoration: underline;
+    }
 
     .icon {
       margin-left: rem(2px);
