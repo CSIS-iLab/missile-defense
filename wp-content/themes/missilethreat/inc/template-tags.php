@@ -422,7 +422,7 @@ if ( ! function_exists( 'missiledefense_defsys_us' ) ) :
 			'numberposts' => -1,
 			'orderby' => 'post_title',
 			'order' => 'ASC',
-			'exclude' => array(4087, 4112, 4094, 4103, 4108)
+			'exclude' => array(4087, 4112, 4094, 4103, 4108, 7496, 7492, 7494, 7490)
 		);
 
 		$systems = get_posts( $args );
@@ -456,7 +456,7 @@ if ( ! function_exists( 'missiledefense_defsys_elements' ) ) :
 			'numberposts' => -1,
 			'orderby' => 'post_title',
 			'order' => 'ASC',
-			'exclude' => array(4073, 4098, 4106, 4113, 4103, 4108)
+			'exclude' => array(4073, 4098, 4106, 4113, 4103, 4108, 7497, 4094, 7492, 7494, 7490)
 		);
 
 		$systems = get_posts( $args );
@@ -490,7 +490,7 @@ if ( ! function_exists( 'missiledefense_defsys_nonUS' ) ) :
 			'numberposts' => -1,
 			'orderby' => 'post_title',
 			'order' => 'ASC',
-			'exclude' => array(4073, 4098, 4106, 4113, 4087, 4112, 4094)
+			'exclude' => array(4073, 4098, 4106, 4113, 4087, 4112, 4094, 7497, 4103, 7496)
 		);
 
 		$systems = get_posts( $args );
