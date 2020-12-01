@@ -27,13 +27,13 @@
     }
   }
 
-  .actors {
-    &__desc {
-      @extend %font-copy-quote-sm;
-      margin-bottom: rem(56px);
-      color: $color-text-dark-190;
-    }
+  &__desc {
+    @extend %font-copy-quote-sm;
+    margin-bottom: rem(56px);
+    color: $color-text-dark-190;
+  }
 
+  .actors {
     &__header {
       @extend %font-copy-heading-2;
       margin-bottom: rem(12px);

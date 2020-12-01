@@ -410,3 +410,105 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 		}
 	}
 endif;
+
+if ( ! function_exists( 'missiledefense_defsys_us' ) ) :
+	/**
+	 * Returns links to U.S. Defense Systems and their icons.
+	 *
+	 */
+	function missiledefense_defsys_us() {
+		$args = array(
+			'post_type' => 'systems',
+			'numberposts' => -1,
+			'orderby' => 'post_title',
+			'order' => 'ASC',
+			'exclude' => array(4087, 4112, 4094, 4103, 4108)
+		);
+
+		$systems = get_posts( $args );
+
+		foreach ( $systems as $post) {
+		setup_postdata( $post );
+		$archive_name = get_the_title($post->ID);
+		$system_icon = get_field('defense_system_icon', $post->ID); ?>
+
+		<div class="actors__container">
+			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
+				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
+				<?php echo $archive_name; ?>
+			</a>
+		</div>
+
+	<?php }
+	}
+
+
+endif;
+
+if ( ! function_exists( 'missiledefense_defsys_elements' ) ) :
+	/**
+	 * Returns links to U.S. Defense Systems and their icons.
+	 *
+	 */
+	function missiledefense_defsys_elements() {
+		$args = array(
+			'post_type' => 'systems',
+			'numberposts' => -1,
+			'orderby' => 'post_title',
+			'order' => 'ASC',
+			'exclude' => array(4073, 4098, 4106, 4113, 4103, 4108)
+		);
+
+		$systems = get_posts( $args );
+
+		foreach ( $systems as $post) {
+		setup_postdata( $post );
+		$archive_name = get_the_title($post->ID);
+		$system_icon = get_field('defense_system_icon', $post->ID); ?>
+
+		<div class="actors__container">
+			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
+				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
+				<?php echo $archive_name; ?>
+			</a>
+		</div>
+
+	<?php }
+	}
+
+
+endif;
+
+if ( ! function_exists( 'missiledefense_defsys_nonUS' ) ) :
+	/**
+	 * Returns links to U.S. Defense Systems and their icons.
+	 *
+	 */
+	function missiledefense_defsys_nonUS() {
+		$args = array(
+			'post_type' => 'systems',
+			'numberposts' => -1,
+			'orderby' => 'post_title',
+			'order' => 'ASC',
+			'exclude' => array(4073, 4098, 4106, 4113, 4087, 4112, 4094)
+		);
+
+		$systems = get_posts( $args );
+
+		foreach ( $systems as $post) {
+		setup_postdata( $post );
+		$archive_name = get_the_title($post->ID);
+		$system_icon = get_field('defense_system_icon', $post->ID); ?>
+
+		<div class="actors__container">
+			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
+				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
+				<?php echo $archive_name; ?>
+			</a>
+		</div>
+
+	<?php }
+	}
+
+
+endif;
