@@ -111,6 +111,10 @@
     .page__header-title {
       @extend %font-ui-page-title-md;
     }
+
+    @include breakpoint('large') {
+      width: $size__content-max-width;
+    }
   }
 
   .search-form {

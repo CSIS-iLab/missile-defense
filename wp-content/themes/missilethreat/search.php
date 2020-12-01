@@ -28,10 +28,10 @@ if ( $wp_query->found_posts ) {
 		?>
 
 	<header class="page__header page__header--short">
-
-    <h1 class="page__header-label">Search results:<br/></h1>
-    <?php get_search_form(); ?>
-
+		<div class="page__header-inner">
+    	<h1 class="page__header-label">Search results:<br/></h1>
+    	<?php get_search_form(); ?>
+		</div>
   </header><!-- .archive-header -->
   
   <div class="search-total"><?php echo $archive_subtitle; ?></div>
