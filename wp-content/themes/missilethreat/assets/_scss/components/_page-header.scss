@@ -225,6 +225,7 @@
   .parent-system__label {
     @extend %font-ui-heading-xs;
     color: $color-text-dark-100;
+    text-transform: uppercase;
   }
 
   .parent-system__link {

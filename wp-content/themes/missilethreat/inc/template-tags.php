@@ -397,7 +397,7 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 		}
 
 		if ( $systems ) {
-			$html = '<h3 class="parent-system__label">Parent Systems: </h3>';
+			$html = '<h3 class="parent-system__label">Associated Systems: </h3>';
 			foreach ( $systems as $system ) {
 				$prefix = '<br/>';
 				if ( $i == 0 ) {
