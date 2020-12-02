@@ -53,11 +53,11 @@
         margin-bottom: rem(56px);
       }
 
-      &-countries {
+      &-1 {
         padding-top: rem(32px);
       }
 
-      &-sub-state {
+      &-2 {
         margin-bottom: rem(48px);
 
         @include breakpoint('large') {

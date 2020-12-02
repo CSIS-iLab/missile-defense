@@ -16,13 +16,16 @@ $object = get_queried_object();
 
 $missile_page_desc = get_field( 'description', $object->name );
 
-$cat_1_title = get_field( 'category_1_title', $object->name );
-$cat_2_title = get_field( 'category_2_title', $object->name );
+$actor_cat_1_title = get_field( 'category_1_actors_title', $object->name );
+$actor_cat_2_title = get_field( 'category_2_actors_title', $object->name );
+
+$defsys_cat_1_title = get_field( 'category_1_title', $object->name );
+$defsys_cat_2_title = get_field( 'category_2_title', $object->name );
 $cat_3_title = get_field( 'category_3_title', $object->name );
 
-$cat_1_desc = get_field( 'category_1_description', $object->name );
-$cat_2_desc = get_field( 'category_2_description', $object->name );
-$cat_3_desc = get_field( 'category_3_description', $object->name );
+$defsys_cat_1_desc = get_field( 'category_1_description', $object->name );
+$defsys_cat_2_desc = get_field( 'category_2_description', $object->name );
+$defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
 
 
 ?>
@@ -56,7 +59,6 @@ $cat_3_desc = get_field( 'category_3_description', $object->name );
   ?>
 
 
-
 </header>
 
 <div class='archive__content'>
@@ -67,97 +69,39 @@ $cat_3_desc = get_field( 'category_3_description', $object->name );
     <section class="actors">
       <p class="archive__desc"><?php echo $missile_page_desc; ?></p>
 
-      <?php
-      $args = array(
-        'post_type' => 'actors',
-        'numberposts' => -1,
-        'orderby' => 'meta_value',
-        'order' => 'ASC',
-        'meta_key' => '_actors_archive_name'
-      );
-      $actors = get_posts( $args ); ?>
 
-      <h2 class="actors__header actors__header--lower">Countries</h2>
-        <ul class="actors__group actors__group-countries" role="list">
-
-          <?php
-          foreach ( $actors as $post) {
-            setup_postdata( $post );
-            $actor_icon = get_field('country_icon', $post->ID);
-            $archive_name = get_the_title();
-            $replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
-
-            if ( $replacement_archive_name ) {
-              $archive_name = $replacement_archive_name;
-            }
-
-            if ( $post->post_name === 'hezbollahs-rocket-arsenal' ) {
-              continue;
-            }
-
-            ?>
-
-            <li class="actors__container">
-              <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
-                <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
-                <?php echo $archive_name; ?>
-              </a>
-          </li>
-          <?php }  ?>
-          </ul><!-- .actors__group-countries -->
+      <h2 class="actors__header actors__header--lower"><?php echo $actor_cat_1_title; ?></h2>
+        <ul class="actors__group actors__group-1" role="list">
+          <?php missiledefense_actors_cat1(); ?>
+        </ul><!-- .actors__group-1 -->
 
 
-      <h2 class="actors__header">Sub-state Actors</h2>
-        <ul class="actors__group actors__group-sub-state" role="list">
-
-          <?php
-          foreach ( $actors as $post) {
-            setup_postdata( $post );
-            $actor_icon = get_field('country_icon', $post->ID);
-            $archive_name = get_the_title();
-            $replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
-
-            if ( $replacement_archive_name ) {
-              $archive_name = $replacement_archive_name;
-            }
-
-            if ( $post->post_name !== 'hezbollahs-rocket-arsenal' ) {
-              continue;
-            }
-
-            ?>
-
-            <li class="actors__container">
-              <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
-                <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
-                <?php echo $archive_name; ?>
-              </a>
-          </li>
-          <?php }  ?>
-
-          </ul><!-- .actors__group-sub-state -->
+      <h2 class="actors__header"><?php echo $actor_cat_2_title; ?></h2>
+        <ul class="actors__group actors__group-2" role="list">
+          <?php missiledefense_actors_cat2(); ?>
+        </ul><!-- .actors__group-2 -->
     </section>
     <?php }
 
   elseif ( is_post_type_archive('defsys') ) { ?>
     <section class="defsys">
 
-      <h2 class="actors__header"><?php echo $cat_1_title; ?></h2>
-      <p class="archive__desc"><?php echo $cat_1_desc; ?></p>
+      <h2 class="actors__header"><?php echo $defsys_cat_1_title; ?></h2>
+      <p class="archive__desc"><?php echo $defsys_cat_1_desc; ?></p>
       
       <ul role="list" class="actors__group actors__group-1">
         <?php missiledefense_defsys_cat1(); ?>
       </ul>
       
-      <h2 class="actors__header"><?php echo $cat_2_title; ?></h2>
-      <p class="archive__desc"><?php echo $cat_2_desc; ?></p>
+      <h2 class="actors__header"><?php echo $defsys_cat_2_title; ?></h2>
+      <p class="archive__desc"><?php echo $defsys_cat_2_desc; ?></p>
       
       <ul role="list" class="actors__group actors__group-2">
         <?php missiledefense_defsys_cat2() ?>
       </ul>
       
-      <h2 class="actors__header"><?php echo $cat_3_title; ?></h2>
-      <p class="archive__desc"><?php echo $cat_3_desc; ?></p>
+      <h2 class="actors__header"><?php echo $defsys_cat_3_title; ?></h2>
+      <p class="archive__desc"><?php echo $defsys_cat_3_desc; ?></p>
 
       <ul role="list" class="actors__group actors__group-3">
         <?php missiledefense_defsys_cat3() ?>

@@ -411,6 +411,94 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'missiledefense_actors_cat1' ) ) :
+	/**
+	 * Returns links to Category 1 Actors and their icons.
+	 *
+	 */
+	function missiledefense_actors_cat1() {
+		$object = get_queried_object();
+		$cat_1_actors = get_field( 'category_1_actors', $object->name );
+
+		$args = array(
+			'post_type' => 'actors',
+			'numberposts' => -1,
+			'orderby' => 'meta_value',
+			'order' => 'ASC',
+			'meta_key' => '_actors_archive_name',
+			'include' => $cat_1_actors
+		);
+
+		$actors = get_posts( $args ); ?>
+
+		<?php
+          foreach ( $actors as $post) {
+            setup_postdata( $post );
+            $actor_icon = get_field('country_icon', $post->ID);
+            $archive_name = get_the_title();
+            $replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
+
+            if ( $replacement_archive_name ) {
+              $archive_name = $replacement_archive_name;
+            }
+
+            ?>
+
+            <li class="actors__container">
+              <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
+                <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
+                <?php echo $archive_name; ?>
+              </a>
+          </li>
+          <?php } 
+	}
+
+endif;
+
+if ( ! function_exists( 'missiledefense_actors_cat2' ) ) :
+	/**
+	 * Returns links to Category 2 Actors and their icons.
+	 *
+	 */
+	function missiledefense_actors_cat2() {
+		$object = get_queried_object();
+		$cat_2_actors = get_field( 'category_2_actors', $object->name );
+
+		$args = array(
+			'post_type' => 'actors',
+			'numberposts' => -1,
+			'orderby' => 'meta_value',
+			'order' => 'ASC',
+			'meta_key' => '_actors_archive_name',
+			'include' => $cat_2_actors
+		);
+
+		$actors = get_posts( $args ); ?>
+
+		<?php
+          foreach ( $actors as $post) {
+            setup_postdata( $post );
+            $actor_icon = get_field('country_icon', $post->ID);
+            $archive_name = get_the_title();
+            $replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
+
+            if ( $replacement_archive_name ) {
+              $archive_name = $replacement_archive_name;
+            }
+
+            ?>
+
+            <li class="actors__container">
+              <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
+                <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
+                <?php echo $archive_name; ?>
+              </a>
+          </li>
+          <?php } 
+	}
+
+endif;
+
 if ( ! function_exists( 'missiledefense_defsys_cat1' ) ) :
 	/**
 	 * Returns links to Category 1 Defense Systems and their icons.
