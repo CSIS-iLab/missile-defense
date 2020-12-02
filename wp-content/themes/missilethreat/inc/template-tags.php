@@ -417,12 +417,15 @@ if ( ! function_exists( 'missiledefense_defsys_cat1' ) ) :
 	 *
 	 */
 	function missiledefense_defsys_cat1() {
+		$object = get_queried_object();
+		$cat_1_systems = get_field( 'category_1_systems', $object->name );
+
 		$args = array(
 			'post_type' => 'systems',
 			'numberposts' => -1,
 			'orderby' => 'post_title',
 			'order' => 'ASC',
-			'exclude' => array(4087, 4112, 4094, 4103, 4108, 7496, 7492, 7494, 7490)
+			'include' => $cat_1_systems
 		);
 
 		$systems = get_posts( $args );
@@ -451,12 +454,15 @@ if ( ! function_exists( 'missiledefense_defsys_cat2' ) ) :
 	 *
 	 */
 	function missiledefense_defsys_cat2() {
+		$object = get_queried_object();
+		$cat_2_systems = get_field( 'category_2_systems', $object->name );
+
 		$args = array(
 			'post_type' => 'systems',
 			'numberposts' => -1,
 			'orderby' => 'post_title',
 			'order' => 'ASC',
-			'exclude' => array(4073, 4098, 4106, 4113, 4103, 4108, 7497, 4094, 7492, 7494, 7490)
+			'include' => $cat_2_systems
 		);
 
 		$systems = get_posts( $args );
@@ -485,12 +491,15 @@ if ( ! function_exists( 'missiledefense_defsys_cat3' ) ) :
 	 *
 	 */
 	function missiledefense_defsys_cat3() {
+		$object = get_queried_object();
+		$cat_3_systems = get_field( 'category_3_systems', $object->name );
+
 		$args = array(
 			'post_type' => 'systems',
 			'numberposts' => -1,
 			'orderby' => 'post_title',
 			'order' => 'ASC',
-			'exclude' => array(4073, 4098, 4106, 4113, 4087, 4112, 4094, 7497, 4103, 7496)
+			'include' => $cat_3_systems
 		);
 
 		$systems = get_posts( $args );
