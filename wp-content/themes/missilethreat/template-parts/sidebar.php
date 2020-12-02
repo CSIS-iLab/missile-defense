@@ -25,14 +25,15 @@ if( is_post_type_archive( array( 'defsys', 'missile' ) ) ) {
 	if( $post_type === 'defsys') {
 		$archive_type = 'component';
 		$side_header = 'Individual Components';
-		$side_desc = '';
 		$sidebar = 'systems-in-the-news';
 	} elseif( $post_type === 'missile' ) {
 		$archive_type = 'missile';
 		$side_header = 'Find a Missile';
-		$side_desc = 'Know what you are looking for? Use this alphabetized list to find the page you need.';
 		$sidebar = 'missiles-in-the-news';
 	}
+
+	$side_desc = 'Know what you are looking for? Use this alphabetized list to find the page you need.';
+
 		?>
 		<h2 class="archive__sidebar-header"><?php echo $side_header; ?></h2>
 		<p class="archive__sidebar-desc"><?php echo $side_desc; ?></p>
