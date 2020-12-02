@@ -71,7 +71,7 @@ $non_us_systems_desc = get_field( 'non_us_systems_description', $object->name );
       $actors = get_posts( $args ); ?>
 
       <h2 class="actors__header actors__header--lower">Countries</h2>
-        <div class="actors__group actors__group-countries">
+        <ul class="actors__group actors__group-countries" role="list">
 
           <?php
           foreach ( $actors as $post) {
@@ -90,18 +90,18 @@ $non_us_systems_desc = get_field( 'non_us_systems_description', $object->name );
 
             ?>
 
-            <div class="actors__container">
+            <li class="actors__container">
               <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
                 <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
                 <?php echo $archive_name; ?>
               </a>
-            </div>
+          </li>
           <?php }  ?>
-      </div><!-- .actors__countries -->
+          </ul><!-- .actors__group-countries -->
 
 
       <h2 class="actors__header">Sub-state Actors</h2>
-        <div class="actors__group actors__group-sub-state">
+        <ul class="actors__group actors__group-sub-state" role="list">
 
           <?php
           foreach ( $actors as $post) {
@@ -120,15 +120,15 @@ $non_us_systems_desc = get_field( 'non_us_systems_description', $object->name );
 
             ?>
 
-            <div class="actors__container">
+            <li class="actors__container">
               <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
                 <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
                 <?php echo $archive_name; ?>
               </a>
-            </div>
+          </li>
           <?php }  ?>
 
-      </div><!-- .actors__sub-state -->
+          </ul><!-- .actors__group-sub-state -->
     </section>
     <?php }
 
