@@ -432,27 +432,11 @@ if ( ! function_exists( 'missiledefense_actors_cat1' ) ) :
 		$actors = get_posts( $args ); ?>
 
 		<?php
-          foreach ( $actors as $post) {
-            setup_postdata( $post );
-            $actor_icon = get_field('country_icon', $post->ID);
-            $archive_name = get_the_title();
-            $replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
-
-            if ( $replacement_archive_name ) {
-              $archive_name = $replacement_archive_name;
-            }
-
-            ?>
-
-            <li class="actors__container">
-              <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
-                <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
-                <?php echo $archive_name; ?>
-              </a>
-          </li>
-          <?php } 
+		foreach ( $actors as $post) {
+			setup_postdata( $post );
+			include( locate_template( 'template-parts/actor-block.php' ) );
+		} 
 	}
-
 endif;
 
 if ( ! function_exists( 'missiledefense_actors_cat2' ) ) :
@@ -476,27 +460,11 @@ if ( ! function_exists( 'missiledefense_actors_cat2' ) ) :
 		$actors = get_posts( $args ); ?>
 
 		<?php
-          foreach ( $actors as $post) {
-            setup_postdata( $post );
-            $actor_icon = get_field('country_icon', $post->ID);
-            $archive_name = get_the_title();
-            $replacement_archive_name = get_post_meta( $post->ID, '_actors_archive_name', true );
-
-            if ( $replacement_archive_name ) {
-              $archive_name = $replacement_archive_name;
-            }
-
-            ?>
-
-            <li class="actors__container">
-              <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
-                <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
-                <?php echo $archive_name; ?>
-              </a>
-          </li>
-          <?php } 
+		foreach ( $actors as $post) {
+			setup_postdata( $post );
+			include( locate_template( 'template-parts/actor-block.php' ) );
+		} 
 	}
-
 endif;
 
 if ( ! function_exists( 'missiledefense_defsys_cat1' ) ) :
@@ -520,20 +488,9 @@ if ( ! function_exists( 'missiledefense_defsys_cat1' ) ) :
 
 		foreach ( $systems as $post) {
 		setup_postdata( $post );
-		$archive_name = get_the_title($post->ID);
-		$system_icon = get_field('defense_system_icon', $post->ID); ?>
-
-		<li class="actors__container">
-			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
-				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
-				<?php echo $archive_name; ?>
-			</a>
-		</li>
-
-	<?php }
+		include( locate_template( 'template-parts/system-block.php' ) );
 	}
-
-
+	}
 endif;
 
 if ( ! function_exists( 'missiledefense_defsys_cat2' ) ) :
@@ -557,20 +514,9 @@ if ( ! function_exists( 'missiledefense_defsys_cat2' ) ) :
 
 		foreach ( $systems as $post) {
 		setup_postdata( $post );
-		$archive_name = get_the_title($post->ID);
-		$system_icon = get_field('defense_system_icon', $post->ID); ?>
-
-		<li class="actors__container">
-			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
-				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
-				<?php echo $archive_name; ?>
-			</a>
-		</li>
-
-	<?php }
+		include( locate_template( 'template-parts/system-block.php' ) );
 	}
-
-
+	}
 endif;
 
 if ( ! function_exists( 'missiledefense_defsys_cat3' ) ) :
@@ -594,18 +540,7 @@ if ( ! function_exists( 'missiledefense_defsys_cat3' ) ) :
 
 		foreach ( $systems as $post) {
 		setup_postdata( $post );
-		$archive_name = get_the_title($post->ID);
-		$system_icon = get_field('defense_system_icon', $post->ID); ?>
-
-		<li class="actors__container">
-			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
-				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
-				<?php echo $archive_name; ?>
-			</a>
-		</li>
-
-	<?php }
+		include( locate_template( 'template-parts/system-block.php' ) );
+		}
 	}
-
-
 endif;
