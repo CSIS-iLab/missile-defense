@@ -11,6 +11,13 @@
 get_header();
 
 $posts_page = get_option( 'page_for_posts' );
+
+$object = get_queried_object();
+$missile_page_desc = get_field( 'description', $object->name );
+$us_systems_desc = get_field( 'us_systems_description', $object->name );
+$elements_desc = get_field( 'elements_description', $object->name );
+$non_us_systems_desc = get_field( 'non_us_systems_description', $object->name );
+
 ?>
 
 <main id="site-content" role="main">
@@ -51,7 +58,7 @@ $posts_page = get_option( 'page_for_posts' );
   if ( is_post_type_archive('missile') ) { ?>
 
     <section class="actors">
-      <div class="archive__desc">Ballistic missiles, cruise missiles, rockets, artillery, and mortars (RAM), and even maneuvering hypersonic boost glide delivery systems now form the complicated 21st century strike complex with which U.S., allied, and partner nations must contend. Organized by country, the following represents a growing collection of information on global missile systems, with illustrations and up-to-date information on their capabilities and history.</div>
+      <p class="archive__desc"><?php echo $missile_page_desc; ?></p>
 
       <?php
       $args = array(
@@ -129,21 +136,21 @@ $posts_page = get_option( 'page_for_posts' );
     <section class="defsys">
 
       <h2 class="actors__header">U.S. Defense Systems</h2>
-      <div class="archive__desc">The United States is a world leader in air and missile defense, with a variety of capabilities on land, sea, air and space.</div>
-
+      <p class="archive__desc"><?php echo $us_systems_desc; ?></p>
+      
       <div class="actors__group actors__group-us">
         <?php missiledefense_defsys_us(); ?>
       </div>
-
+      
       <h2 class="actors__header">Defense System Elements</h2>
-      <div class="archive__desc">A wide variety of these systems go into making missile defense effective.</div>
-
+      <p class="archive__desc"><?php echo $elements_desc; ?></p>
+      
       <div class="actors__group actors__group-elements">
         <?php missiledefense_defsys_elements() ?>
       </div>
-
+      
       <h2 class="actors__header">Non U.S. Systems</h2>
-      <div class="archive__desc">Learn about air and missile defense systems from around the world.</div>
+      <p class="archive__desc"><?php echo $non_us_systems_desc; ?></p>
 
       <div class="actors__group actors__group-nonUS">
         <?php missiledefense_defsys_nonUS() ?>

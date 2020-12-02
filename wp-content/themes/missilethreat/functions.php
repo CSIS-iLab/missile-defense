@@ -110,18 +110,18 @@ function missilethreat_theme_support() {
 	);
 
 	/**
- * Register navigation menus uses wp_nav_menu in two places.
- */
-function missilethreat_menus() {
+	 * Register navigation menus uses wp_nav_menu in two places.
+	 */
+	function missilethreat_menus() {
 
-	$locations = array(
-		'primary'  => __( 'Primary', 'missilethreat' ),
-	);
+		$locations = array(
+			'primary'  => __( 'Primary', 'missilethreat' ),
+		);
 
-	register_nav_menus( $locations );
-}
+		register_nav_menus( $locations );
+	}
 
-add_action( 'init', 'missilethreat_menus' );
+	add_action( 'init', 'missilethreat_menus' );
 
 	/*
 	 * Make theme available for translation.
@@ -150,6 +150,20 @@ add_action( 'init', 'missilethreat_menus' );
 	 */
 	$loader = new MissileThreat_Script_Loader();
 	add_filter( 'script_loader_tag', array( $loader, 'filter_script_loader_tag' ), 10, 2 );
+
+	// Add ACF field to archive pages
+	add_filter( 'acf_archive_post_types', 'change_acf_archive_cpt' );
+	function change_acf_archive_cpt( $cpts ) {
+			// 'book' and 'movie' are the cpt key.
+
+			// Remove cpt
+			// unset( $cpts['book'] );
+
+			// Add cpt
+			$cpts['description'] = 'Missile';
+
+			return $cpts;
+	}
 
 }
 
