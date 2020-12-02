@@ -39,3 +39,9 @@ body {
     padding-top: rem(80px);
   }
 }
+
+@include breakpoint('large') {
+  .home #site-content {
+    padding-top: 0;
+  }
+}

@@ -2,6 +2,7 @@
 
 .breadcrumbs {
   @extend %font-ui-text-lg;
+  z-index: 10;
   margin: 0;
   margin-bottom: rem(16px);
   padding: 0;
@@ -37,7 +38,7 @@
   &--light {
     color: $color-text-light-190;
 
-    a:hover {
+    li a:hover {
       color: $color-text-light-100;
     }
   }

@@ -1,8 +1,6 @@
 @use '../abstracts' as *;
 
 .archive {
-  display: grid;
-  grid-gap: rem(48px);
   width: 100%;
 
   @include breakpoint('large') {
@@ -18,15 +16,6 @@
     &__sidebar {
       grid-column: 2;
       max-width: rem(300px);
-    }
-  }
-
-  &__header {
-    @include full-width-background($gradient-standard);
-    background: $gradient-standard;
-
-    .wp-post-image {
-      mask-image: $gradient-standard;
     }
   }
 }

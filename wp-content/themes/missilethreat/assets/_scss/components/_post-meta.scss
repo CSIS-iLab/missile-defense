@@ -12,3 +12,14 @@
     color: $color-primary-blue-200;
   }
 }
+
+.single__header-meta {
+  @extend %font-ui-text-lg;
+  margin-bottom: rem(32px);
+  color: $color-text-dark-170;
+
+  .post-meta {
+    @extend %font-ui-text-lg;
+    margin-left: rem(4px);
+  }
+}

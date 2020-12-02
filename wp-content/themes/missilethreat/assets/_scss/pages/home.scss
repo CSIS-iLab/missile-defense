@@ -113,6 +113,7 @@
     }
 
     @include breakpoint('xlarge') {
+      margin-top: 0;
       padding-top: rem(88);
     }
   }
@@ -143,16 +144,26 @@
       color: $color-text-light-190;
       font-size: rem(14px);
       font-style: normal;
+
+      &:hover {
+        color: $color-text-light-100;
+        text-decoration: underline;
+      }
     }
   }
 
   &__logo {
     display: block;
-    color: $color-text-light-190;
     
     svg {
       display: block;
       max-width: rem(144px);
+      transition: fill 0.3s ease-in-out;
+      fill: $color-text-light-190;
+
+      &:hover {
+        fill: $color-text-light-100;
+      }
     }
   }
 

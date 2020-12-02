@@ -1,0 +1,66 @@
+@use 'abstracts' as *;
+
+/*----------  Alignments  ----------*/
+.alignfull,
+.alignwide {
+  @include missiledefense-full-width-wrapper;
+}
+
+.alignwide {
+  /* stylelint-disable-next-line */
+  > *:not(figcaption):not(.addtoany_list) {
+    @include missiledefense-full-width-content;
+  }
+}
+
+.alignleft,
+.alignright {
+  float: none;
+
+  @include breakpoint('small') {
+    --padding-sides: var(--container-padding);
+    padding: 0 var(--padding-sides);
+  }
+
+  @include breakpoint('medium') {
+    --margin-text-side: #{rem(32)};
+    --padding-sides: 0;
+    max-width: 50%;
+    margin-top: 0;
+  }
+
+  @include breakpoint('large') {
+    --margin-text-side: #{rem(40)};
+    --margin-gutter-side: #{rem(-128)};
+  }
+
+  @include breakpoint('xlarge') {
+    --margin-text-side: #{rem(48)};
+  }
+
+  figcaption {
+    @include breakpoint('medium') {
+      --padding-sides: 0;
+    }
+  }
+}
+
+.alignleft {
+  float: none;
+  margin-right: var(--margin-text-side);
+  margin-left: var(--margin-gutter-side, 0);
+
+  @include breakpoint('medium') {
+    float: left;
+  }
+}
+
+.alignright {
+  float: none;
+  margin-right: var(--margin-gutter-side, 0);
+  margin-left: var(--margin-text-side);
+
+  @include breakpoint('medium') {
+    float: right;
+  }
+}

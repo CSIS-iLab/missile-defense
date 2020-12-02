@@ -17,7 +17,7 @@ if( is_post_type_archive( array( 'defsys', 'missile' ) ) ) {
 	$query = new WP_Query( array(
 			'post_type' => $post_type,
 			'post_status' => 'publish',
-			'orderby' => 'name',
+			'orderby' => 'title',
 			'order' => 'ASC',
 			'posts_per_page' => -1
 	) );

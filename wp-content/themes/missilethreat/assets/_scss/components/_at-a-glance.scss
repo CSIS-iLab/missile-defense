@@ -1,0 +1,33 @@
+@use '../abstracts' as *;
+
+.at-a-glance {
+  margin-bottom: rem(56px);
+  padding: rem(24px) rem(32px) rem(48px) rem(32px);
+  color: $color-text-dark-190;
+  background: $color-primary-light-gray;
+  
+  &__wrapper {
+    position: relative;
+  }
+
+  &__title {
+    @extend %font-copy-heading-5;
+    grid-column: 1 / span 2;
+    color: $color-text-dark-100;
+  }
+
+  &__spec {
+    @extend %font-body-short-lg;
+    
+    &-name {
+      @extend %font-ui-heading-xs;
+      text-transform: uppercase;
+    }
+  }
+
+  @include breakpoint('small') {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(12px) rem(32px);
+  }
+}

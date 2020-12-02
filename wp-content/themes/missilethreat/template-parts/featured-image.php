@@ -7,34 +7,21 @@
  * @since 1.0.0
  */
 
-$is_singular = is_singular();
-$is_front_page = is_front_page();
+
 
 if ( has_post_thumbnail() && ! post_password_required() ) {
 
-	?>
+  ?>
 
-	<figure class="featured-media">
+  <figure class="featured-media">
 
-		<?php
-			if ( !$is_singular || $is_front_page ) {
-				echo '<a href="' . esc_url ( get_permalink() ) . '">';
-			}
+    <?php the_post_thumbnail(); ?>
 
-			$size = '';
+    <figcaption class="image-caption"><?php the_post_thumbnail_caption(); ?></figcaption>
 
-			if ( $is_singular && !$is_front_page ) {
-				$size = 'missilethreat-fullscreen';
-			}
+  </figure><!-- .featured-media -->
 
-			the_post_thumbnail( $size );
 
-			if ( !$is_singular || $is_front_page ) {
-				echo '</a>';
-			}
-		?>
-
-	</figure><!-- .featured-media -->
-
-	<?php
+  <?php
 }
+

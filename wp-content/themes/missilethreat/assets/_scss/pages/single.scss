@@ -1,1 +1,15 @@
 @use '../abstracts' as *;
+
+.single__content,
+.single__footer {
+  max-width: $size__content-max-width;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.single__footer-divider {
+  height: 1px;
+  margin-bottom: rem(48px);
+  background: $color-line-light-gray;
+  border: 0;
+}
