@@ -186,6 +186,7 @@ function missilethreat_register_styles() {
 	$theme_version = wp_get_theme()->get( 'Version' );
 
 	wp_enqueue_style( 'missilethreat-fonts', 'https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400&display=swap', array(), null );
+	wp_enqueue_style( 'missilethreat-font-awesome', 'https://use.fontawesome.com/releases/v5.15.1/css/all.css', array(), null );
 
 	wp_enqueue_style( 'missilethreat-style', get_stylesheet_directory_uri() . '/style.min.css', array(), $theme_version );
 
@@ -244,7 +245,7 @@ function missilethreat_register_scripts() {
 	}
 
 	// Font Awesome
-	wp_enqueue_script('missiledefense-font-awesome', 'https://use.fontawesome.com/08b1a76eab.js');
+	wp_enqueue_script('missiledefense-font-awesome-js', 'https://use.fontawesome.com/08b1a76eab.js');
 
 
 }
