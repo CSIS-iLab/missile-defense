@@ -37,6 +37,14 @@
     color: $color-text-light-190;
     white-space: nowrap;
     @extend %font-body-short-md;
+    transition: all 0.3s ease-in-out;
+    
+    li {
+      &:hover {
+        text-decoration-line: underline;
+        color: $color-text-light-100;
+      }
+    }
   }
 
   &__copyright {
@@ -99,12 +107,6 @@
 
     &__nav-side {
       margin-left: rem(48px);
-
-      li {
-        &:hover {
-          text-decoration-line: underline;
-        }
-      }
     }
   }
 
