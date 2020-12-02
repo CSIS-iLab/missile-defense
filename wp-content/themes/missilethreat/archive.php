@@ -13,10 +13,17 @@ get_header();
 $posts_page = get_option( 'page_for_posts' );
 
 $object = get_queried_object();
+
 $missile_page_desc = get_field( 'description', $object->name );
-$us_systems_desc = get_field( 'us_systems_description', $object->name );
-$elements_desc = get_field( 'elements_description', $object->name );
-$non_us_systems_desc = get_field( 'non_us_systems_description', $object->name );
+
+$cat_1_title = get_field( 'category_1_title', $object->name );
+$cat_2_title = get_field( 'category_2_title', $object->name );
+$cat_3_title = get_field( 'category_3_title', $object->name );
+
+$cat_1_desc = get_field( 'category_1_description', $object->name );
+$cat_2_desc = get_field( 'category_2_description', $object->name );
+$cat_3_desc = get_field( 'category_3_description', $object->name );
+
 
 ?>
 
@@ -135,26 +142,26 @@ $non_us_systems_desc = get_field( 'non_us_systems_description', $object->name );
   elseif ( is_post_type_archive('defsys') ) { ?>
     <section class="defsys">
 
-      <h2 class="actors__header">U.S. Defense Systems</h2>
-      <p class="archive__desc"><?php echo $us_systems_desc; ?></p>
+      <h2 class="actors__header"><?php echo $cat_1_title; ?></h2>
+      <p class="archive__desc"><?php echo $cat_1_desc; ?></p>
       
-      <div class="actors__group actors__group-us">
-        <?php missiledefense_defsys_us(); ?>
-      </div>
+      <ul role="list" class="actors__group actors__group-1">
+        <?php missiledefense_defsys_cat1(); ?>
+      </ul>
       
-      <h2 class="actors__header">Defense System Elements</h2>
-      <p class="archive__desc"><?php echo $elements_desc; ?></p>
+      <h2 class="actors__header"><?php echo $cat_2_title; ?></h2>
+      <p class="archive__desc"><?php echo $cat_2_desc; ?></p>
       
-      <div class="actors__group actors__group-elements">
-        <?php missiledefense_defsys_elements() ?>
-      </div>
+      <ul role="list" class="actors__group actors__group-2">
+        <?php missiledefense_defsys_cat2() ?>
+      </ul>
       
-      <h2 class="actors__header">Non U.S. Systems</h2>
-      <p class="archive__desc"><?php echo $non_us_systems_desc; ?></p>
+      <h2 class="actors__header"><?php echo $cat_3_title; ?></h2>
+      <p class="archive__desc"><?php echo $cat_3_desc; ?></p>
 
-      <div class="actors__group actors__group-nonUS">
-        <?php missiledefense_defsys_nonUS() ?>
-      </div>
+      <ul role="list" class="actors__group actors__group-3">
+        <?php missiledefense_defsys_cat3() ?>
+      </ul>
 
     </section>
   <?php }

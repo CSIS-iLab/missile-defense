@@ -411,12 +411,12 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'missiledefense_defsys_us' ) ) :
+if ( ! function_exists( 'missiledefense_defsys_cat1' ) ) :
 	/**
-	 * Returns links to U.S. Defense Systems and their icons.
+	 * Returns links to Category 1 Defense Systems and their icons.
 	 *
 	 */
-	function missiledefense_defsys_us() {
+	function missiledefense_defsys_cat1() {
 		$args = array(
 			'post_type' => 'systems',
 			'numberposts' => -1,
@@ -432,12 +432,12 @@ if ( ! function_exists( 'missiledefense_defsys_us' ) ) :
 		$archive_name = get_the_title($post->ID);
 		$system_icon = get_field('defense_system_icon', $post->ID); ?>
 
-		<div class="actors__container">
+		<li class="actors__container">
 			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
 				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
 				<?php echo $archive_name; ?>
 			</a>
-		</div>
+		</li>
 
 	<?php }
 	}
@@ -445,12 +445,12 @@ if ( ! function_exists( 'missiledefense_defsys_us' ) ) :
 
 endif;
 
-if ( ! function_exists( 'missiledefense_defsys_elements' ) ) :
+if ( ! function_exists( 'missiledefense_defsys_cat2' ) ) :
 	/**
-	 * Returns links to U.S. Defense Systems and their icons.
+	 * Returns links to Category 2 Defense Systems and their icons.
 	 *
 	 */
-	function missiledefense_defsys_elements() {
+	function missiledefense_defsys_cat2() {
 		$args = array(
 			'post_type' => 'systems',
 			'numberposts' => -1,
@@ -466,12 +466,12 @@ if ( ! function_exists( 'missiledefense_defsys_elements' ) ) :
 		$archive_name = get_the_title($post->ID);
 		$system_icon = get_field('defense_system_icon', $post->ID); ?>
 
-		<div class="actors__container">
+		<li class="actors__container">
 			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
 				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
 				<?php echo $archive_name; ?>
 			</a>
-		</div>
+		</li>
 
 	<?php }
 	}
@@ -479,12 +479,12 @@ if ( ! function_exists( 'missiledefense_defsys_elements' ) ) :
 
 endif;
 
-if ( ! function_exists( 'missiledefense_defsys_nonUS' ) ) :
+if ( ! function_exists( 'missiledefense_defsys_cat3' ) ) :
 	/**
-	 * Returns links to U.S. Defense Systems and their icons.
+	 * Returns links to Category 3 Defense Systems and their icons.
 	 *
 	 */
-	function missiledefense_defsys_nonUS() {
+	function missiledefense_defsys_cat3() {
 		$args = array(
 			'post_type' => 'systems',
 			'numberposts' => -1,
@@ -500,12 +500,12 @@ if ( ! function_exists( 'missiledefense_defsys_nonUS' ) ) :
 		$archive_name = get_the_title($post->ID);
 		$system_icon = get_field('defense_system_icon', $post->ID); ?>
 
-		<div class="actors__container">
+		<li class="actors__container">
 			<a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
 				<img src="<?php echo esc_url($system_icon['url']); ?>" alt="<?php echo esc_attr($system_icon['alt']); ?>" class="actors__icon">
 				<?php echo $archive_name; ?>
 			</a>
-		</div>
+		</li>
 
 	<?php }
 	}
