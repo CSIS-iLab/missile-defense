@@ -110,18 +110,18 @@ function missilethreat_theme_support() {
 	);
 
 	/**
- * Register navigation menus uses wp_nav_menu in two places.
- */
-function missilethreat_menus() {
+	 * Register navigation menus uses wp_nav_menu in two places.
+	 */
+	function missilethreat_menus() {
 
-	$locations = array(
-		'primary'  => __( 'Primary', 'missilethreat' ),
-	);
+		$locations = array(
+			'primary'  => __( 'Primary', 'missilethreat' ),
+		);
 
-	register_nav_menus( $locations );
-}
+		register_nav_menus( $locations );
+	}
 
-add_action( 'init', 'missilethreat_menus' );
+	add_action( 'init', 'missilethreat_menus' );
 
 	/*
 	 * Make theme available for translation.
@@ -317,6 +317,20 @@ function missilethreat_sidebar_registration() {
 		)
 	);
 
+		// Missiles in the News.
+		register_sidebar(
+			array_merge(
+				$footer_shared_args,
+				array(
+					'name'        => __( 'Missiles in the News', 'missilethreat' ),
+					'id'          => 'missiles-in-the-news',
+					'description' => __( 'Widgets in this area will be displayed under the drop down on the Missile of the World page.', 'missilethreat' ),
+					'before_widget' => '<div class="archive__sidebar-widget">',
+					'after_widget' => '</div>'
+				)
+			)
+		);
+
 	// Newsletter.
 	register_sidebar(
 		array_merge(
@@ -329,16 +343,16 @@ function missilethreat_sidebar_registration() {
 		)
 	);
 
-			// Primary Sidebar
-			register_sidebar(
-				array(
-						'name'        => __( 'Page Sidebar', 'missilethreat' ),
-						'id'          => 'sidebar',
-						'description' => __( 'Widgets in this area will be displayed on the right side of landing pages.', 'missilethreat' ),
-						'before_widget' => '',
-						'after_widget' => ''
-					)
-			);
+	// Primary Sidebar
+	register_sidebar(
+		array(
+				'name'        => __( 'Page Sidebar', 'missilethreat' ),
+				'id'          => 'sidebar',
+				'description' => __( 'Widgets in this area will be displayed on the right side of landing pages.', 'missilethreat' ),
+				'before_widget' => '',
+				'after_widget' => ''
+			)
+	);
 
 	// Social Share
 	register_sidebar(
@@ -349,6 +363,20 @@ function missilethreat_sidebar_registration() {
 				'before_widget' => '',
 				'after_widget' => ''
 			)
+	);
+
+	// Systems in the News.
+	register_sidebar(
+		array_merge(
+			$footer_shared_args,
+			array(
+				'name'        => __( 'Systems in the News', 'missilethreat' ),
+				'id'          => 'systems-in-the-news',
+				'description' => __( 'Widgets in this area will be displayed under the drop down on the Defense Systems page.', 'missilethreat' ),
+				'before_widget' => '<div class="archive__sidebar-widget">',
+				'after_widget' => '</div>'
+			)
+		)
 	);
 
 	// Twitter Timeline
