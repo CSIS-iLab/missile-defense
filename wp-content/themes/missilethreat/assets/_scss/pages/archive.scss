@@ -48,9 +48,9 @@
       @include breakpoint('large') {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        column-gap: rem(32px);
         margin-top: rem(32px);
         margin-bottom: rem(56px);
+        column-gap: rem(32px);
       }
 
       &-1 {

@@ -151,20 +151,6 @@ function missilethreat_theme_support() {
 	$loader = new MissileThreat_Script_Loader();
 	add_filter( 'script_loader_tag', array( $loader, 'filter_script_loader_tag' ), 10, 2 );
 
-	// Add ACF field to archive pages
-	add_filter( 'acf_archive_post_types', 'change_acf_archive_cpt' );
-	function change_acf_archive_cpt( $cpts ) {
-			// 'book' and 'movie' are the cpt key.
-
-			// Remove cpt
-			// unset( $cpts['book'] );
-
-			// Add cpt
-			$cpts['description'] = 'Missile';
-
-			return $cpts;
-	}
-
 }
 
 add_action( 'after_setup_theme', 'missilethreat_theme_support' );
