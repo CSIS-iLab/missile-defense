@@ -67,8 +67,8 @@
     @extend %font-body-list-lg;
     margin-top: rem(12px);
     margin-bottom: 0;
-    padding-left: rem(32px);
     padding-bottom: rem(24px);
+    padding-left: rem(32px);
     color: $color-text-dark-190;
 
     li:not(:last-child) {
