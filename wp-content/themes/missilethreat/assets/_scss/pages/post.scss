@@ -7,7 +7,7 @@
   margin-left: auto;
   color: $color-text-dark-100;
 
-  p {
+  > p {
     @extend %font-body-long-lg;
     color: $color-text-dark-190;
     
@@ -16,54 +16,54 @@
     }
   }
 
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
     padding-bottom: rem(12px);
   }
 
-  h3,
-  h4 {
+  > h3,
+  > h4 {
     margin-top: rem(40px);
     font-weight: normal;
   }
 
-  h5,
-  h6 {
+  > h5,
+  > h6 {
     margin-top: rem(32px);
   }
 
-  h2,
-  h5,
-  h6 {
+  > h2,
+  > h5,
+  > h6 {
     font-weight: 600;
   }
 
-  h2 {
+  > h2 {
     @extend %font-copy-heading-2;
     margin-top: rem(56px);
   }
 
-  h3 {
+  > h3 {
     @extend %font-copy-heading-3;
   }
 
-  h4 {
+  > h4 {
     @extend %font-ui-heading-md;
   }
 
-  h5 {
+  > h5 {
     @extend %font-copy-heading-5;
   }
 
-  h6 {
+  > h6 {
     @extend %font-copy-heading-6;
   }
 
-  ul,
-  ol {
+  > ul,
+  > ol {
     @extend %font-body-list-lg;
     margin-top: rem(12px);
     margin-bottom: 0;
