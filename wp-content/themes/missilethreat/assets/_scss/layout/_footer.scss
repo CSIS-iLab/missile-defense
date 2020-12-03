@@ -1,5 +1,142 @@
 @use 'abstracts' as *;
 
-#site-footer {
-  background: $color-primary-blue-200;
+.footer {
+  @extend %font-body-short-md;
+  @include full-width-background($color-primary-blue-200);
+  padding-top: rem(40px);
+  padding-bottom: rem(16px);
+  color: $color-text-light-170;
+  background-color: $color-primary-blue-200;
+
+  &__contact {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: rem(32px);
+    margin-bottom: rem(32px);
+  }
+
+  &__address {
+    margin-left: rem(32px);
+    @extend %font-ui-text-md;
+  }
+
+  &__logo,
+  &__mdp,
+  &__pp {
+    color: $color-text-light-100;
+  }
+
+  &__mdp {
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+
+  &__nav-side {
+    color: $color-text-light-190;
+    white-space: nowrap;
+    @extend %font-body-short-sm;
+    transition: all 0.3s ease-in-out;
+    
+    li {
+      &:hover {
+        text-decoration-line: underline;
+        color: $color-text-light-100;
+      }
+    }
+  }
+
+  &__copyright {
+    margin-top: (48px);
+    color: $color-text-light-155;
+    @extend %font-ui-text-md;
+  }
+
+  &__logo {
+    margin-bottom: rem(24px);
+    
+    svg {
+      max-width: rem(281px);
+    }
+  }
+
+  &__social-icons {
+    display: flex;
+    align-items: center;
+    color: $color-primary-blue-200;
+  }
+
+  &__facebook-icon,
+  &__twitter-icon {
+    padding: rem(6.5px) rem(9px);
+    background-color: $color-primary-light-blue;
+    border-radius: rem(50px);
+
+    &:hover {
+      background-color: $color-text-light-100;
+    }
+  }
+
+  .icon {
+    vertical-align: middle;
+  }
+
+  &__twitter-icon {
+    margin-left: rem(8px);
+  }
+
+  &__news-letter {
+    margin-bottom: rem(32px);
+  }
+
+  @include breakpoint('small') {
+    &__news-nav {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    &__news-letter {
+      margin-bottom: 0;
+    }
+
+    &__nav-side {
+      margin-left: rem(48px);
+    }
+
+    &__logo {
+      svg {
+        max-width: rem(350px);
+      }
+    }
+  }
+
+  @include breakpoint('large') {
+    margin-top: rem(56px);
+
+    &__container--large {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: rem(32px);
+    }
+
+    &__news-nav {
+      margin-bottom: rem(48px);
+      margin-left: rem(48px);
+    }
+
+    &__contact {
+      margin-bottom: 0;
+    }
+
+    &__copyright {
+      margin-top: rem(32px);
+    }
+  }
+
+  @include breakpoint('xlarge') {
+    &__news-nav {
+      margin-left: rem(80px);
+    }
+  }
 }
+
