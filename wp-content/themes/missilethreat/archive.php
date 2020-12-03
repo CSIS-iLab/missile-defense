@@ -33,7 +33,7 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
 <main id="site-content" role="main">
 
 <header class="archive__header entry-header">
-  <?php 
+<?php
 
 
     if ( $posts_page ) { // Only target the blog page
@@ -57,7 +57,6 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
       wp_reset_postdata(); // Restore the $post global
   }
   ?>
-
 
 </header>
 
@@ -119,7 +118,6 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
         
       <?php
 
-
       if ( have_posts() ) {
 
         $i = 0;
@@ -129,14 +127,13 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
 
           get_template_part( 'template-parts/block-post' );
 
+
         }
       } 
       ?>
     </section>
 
 <?php } ?>
-  
-  
   
   <aside class="archive__sidebar">
     <?php

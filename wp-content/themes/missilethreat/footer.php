@@ -12,39 +12,56 @@
  */
 
 ?>
-			<footer id="site-footer" class="footer" role="contentinfo">
-				<a href="https://www.csis.org" class="footer__logo"><?php include( get_template_directory() . '/assets/static/csis-logo.svg'); ?></a>
+	<style>
+	@import 'assets/_scss/layout/_footer';
+	</style>
+	<footer id="site-footer" class="footer" role="contentinfo">
+		<div class="footer__logo">	
+			<a href="https://www.csis.org"><?php include( get_template_directory() . '/assets/static/csis-mt-logo-white-long.svg'); ?></a>
+		</div>
 
-				<?php dynamic_sidebar( 'sidebar-1' ); ?>
-				<?php dynamic_sidebar( 'sidebar-2' ); ?>
+		<div class="footer__container--large">
+			<div class="footer__description">
+				<p>
+					Missile Threat brings together a wide range of information and analyses relating to the proliferation of cruise and ballistic missiles around the world and the air and missile defense systems designed to defeat them. Missile Threat is a product of the <a class="footer__mdp" href="https://www.csis.org/programs/international-security-program/missile-defense-project">Missile Defense Project</a> at the Center for Strategic and International Studies.
+					</p>
+				
 
 				<div class="footer__contact">
-					<address class="footer__address">
+					<div class="footer__social-icons">
+						<a href="https://www.facebook.com/missiledefenseproject/?fref=nf#" class="footer__facebook-icon"><?php echo missilethreat_get_svg( 'facebook' ); ?></a>
+						<a href="https://twitter.com/Missile_Defense" class="footer__twitter-icon"><?php echo missilethreat_get_svg( 'twitter' ); ?></a>
+					</div>
+
+					<div class="footer__address">
 						1616 Rhode Island Ave NW<br />
 						Washington, DC 20036
-					</address>
+					</div>
+				</div>
+			</div>
 
-					<p class="footer__phone">(202) 887-0200</p>
-
+			<div class="footer__news-nav">
+				<div class="footer__news-letter">
 					<?php dynamic_sidebar( 'newsletter' ); ?>
 				</div>
 
+				<div class="footer__nav-side">
+					<?php dynamic_sidebar( 'footer-1' ); ?>
+				</div>
+			</div>
 
-				<p class="footer__copyright">Copyright &copy;
-					<?php
-					echo date_i18n(
-						/* translators: Copyright date format, see https://secure.php.net/date */
-						_x( 'Y', 'copyright date format', 'missilethreat' )
-					);
-					?>
-					Center for Strategic and International Studies.<br />All rights reserved. <a href="https://www.csis.org/privacy-policy">Privacy Policy</a>
-				</p><!-- .footer-copyright -->
-
-			</footer><!-- #site-footer -->
-
-		</div><!-- .container -->
-
+		</div>
+		<p class="footer__copyright">&copy;
+			<?php
+			echo date_i18n(
+				/* translators: Copyright date format, see https://secure.php.net/date */
+				_x( 'Y', 'copyright date format', 'missilethreat' )
+			);
+			?>
+			Center for Strategic and International Studies. All rights reserved. | <a class="footer__pp" href="https://www.csis.org/privacy-policy">Privacy Policy</a>
+		</p><!-- .footer-copyright -->
+	</footer><!-- #site-footer -->
+<!-- .container -->
 		<?php wp_footer(); ?>
-
 	</body>
 </html>

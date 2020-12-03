@@ -161,10 +161,11 @@ function missilethreat_last_updated() {
  *
  */
 function missilethreat_authors() {
-	if ( function_exists( 'coauthors' ) ) {
-    $authors = coauthors_links( ', ', ', ', null, null, false );
+	if ( function_exists( 'coauthors_posts_links' ) ) {
+    $authors = coauthors_posts_links( ', ', ' and ', null, null, false );
 	} else {
-		$authors = get_the_author();
+		// $authors = get_the_author();
+		$authors = the_author_posts_link();
 	}
 
 	if ( !$authors ) {
@@ -396,13 +397,13 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 		}
 
 		if ( $systems ) {
-			$html = '<h3 class="parent-system__label">Parent Systems: </h3>';
+			$html = '<h3 class="parent-system__label">Associated Systems: </h3>';
 			foreach ( $systems as $system ) {
 				$prefix = '<br/>';
 				if ( $i == 0 ) {
 					$prefix = '';
 				}
-				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . '</a>';
+				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . missilethreat_get_svg('chevron-right') . '</a>';
 			}
 			wp_reset_postdata();
 
@@ -464,3 +465,18 @@ if ( ! function_exists( 'missiledefense_defsys' ) ) :
 	}
 	}
 endif;
+
+/**
+ * Displays the AddToAny Share Links.
+ *
+ *
+ * @return string $html The share links.
+ */
+if (! function_exists('missiledefense_share')) :
+	function missiledefense_share() {
+		if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
+			ADDTOANY_SHARE_SAVE_KIT();
+		}
+	}
+endif;
+

@@ -56,9 +56,9 @@ get_header();
 	if ( $archive_title || $archive_subtitle ) {
 		?>
 
-		<header class="archive-header has-text-align-center header-footer-group">
+		<header class="archive__header archive__header--short">
 
-			<div class="archive-header-inner section-inner medium">
+			<!-- <div class="archive__header-inner section-inner medium"> -->
 
 				<?php if ( $archive_title ) { ?>
 					<h1 class="archive-title"><?php echo wp_kses_post( $archive_title ); ?></h1>
@@ -68,7 +68,7 @@ get_header();
 					<div class="archive-subtitle section-inner thin max-percentage intro-text"><?php echo wp_kses_post( wpautop( $archive_subtitle ) ); ?></div>
 				<?php } ?>
 
-			</div><!-- .archive-header-inner -->
+			<!-- </div>.archive-header-inner -->
 
 		</header><!-- .archive-header -->
 

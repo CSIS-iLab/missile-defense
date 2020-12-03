@@ -329,11 +329,11 @@ add_action( 'pre_get_posts', 'missilethreat_custom_sort_posts' );
  */
 function missiledefense_archive_titles( $title ) {
     if( is_category() ) {
-        $title = single_cat_title( '<span class="archive-label">Tag:</span> ', false );
+        $title = single_cat_title( '<span class="page__header-label text--bold">Tag:</span><br/>', false );
     } elseif( is_tag() ) {
-        $title = single_tag_title( '<span class="archive-label">Tag:</span> ', false );
+        $title = single_tag_title( '<span class="page__header-label text--bold">Tag:</span><br/>', false );
     } elseif( is_author() ) {
-        $title = '<span class="archive-label">Author:</span> ' . get_the_author();
+        $title = '<span class="page__header-label text--bold">Author:</span><br/>' . get_the_author();
     } elseif ( is_tax( 'system' ) ) {
         $title = single_term_title( '', false );
     }
