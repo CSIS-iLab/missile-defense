@@ -7,9 +7,9 @@
   color: $color-text-dark-190;
   background: $color-primary-light-gray;
 
-  h2 {
-    @extend %font-ui-heading-md;
-    margin-bottom: rem(16px);
+  &__details > h4 {
+    margin-top: 0 !important;
+    margin-bottom: rem(16px) !important;
     color: $color-text-dark-100;
   }
 
