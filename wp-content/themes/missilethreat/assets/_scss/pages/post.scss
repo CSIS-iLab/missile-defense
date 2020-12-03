@@ -12,7 +12,7 @@
     color: $color-text-dark-190;
     
     &:not(:last-child) {
-      margin-bottom: rem(40px);
+      padding-bottom: rem(40px);
     }
   }
 
@@ -21,7 +21,7 @@
   h4,
   h5,
   h6 {
-    margin-bottom: rem(12px);
+    padding-bottom: rem(12px);
   }
 
   h3,
@@ -60,5 +60,19 @@
 
   h6 {
     @extend %font-copy-heading-6;
+  }
+
+  ul,
+  ol {
+    @extend %font-body-list-lg;
+    margin-top: rem(12px);
+    margin-bottom: 0;
+    padding-left: rem(32px);
+    padding-bottom: rem(24px);
+    color: $color-text-dark-190;
+
+    li:not(:last-child) {
+      margin-bottom: rem(8px);
+    }
   }
 }
