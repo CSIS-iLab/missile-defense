@@ -38,6 +38,10 @@
     @extend %font-body-short-sm;
     transition: all 0.3s ease-in-out;
     
+    #menu-footer-menu {
+      list-style: none;
+    }
+    
     li {
       &:hover {
         text-decoration-line: underline;
