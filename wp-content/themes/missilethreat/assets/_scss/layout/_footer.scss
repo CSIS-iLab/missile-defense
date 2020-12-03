@@ -2,11 +2,11 @@
 
 .footer {
   @extend %font-body-short-md;
-  @include full-width-background($color-primary-blue-100);
+  @include full-width-background($color-primary-blue-200);
   padding-top: rem(40px);
   padding-bottom: rem(16px);
   color: $color-text-light-170;
-  background-color: $color-primary-blue-100;
+  background-color: $color-primary-blue-200;
 
   &__contact {
     display: flex;
@@ -29,14 +29,13 @@
   &__mdp {
     &:hover {
       text-decoration-line: underline;
-      color: $color-text-light-100;
     }
   }
 
   &__nav-side {
     color: $color-text-light-190;
     white-space: nowrap;
-    @extend %font-body-short-md;
+    @extend %font-body-short-sm;
     transition: all 0.3s ease-in-out;
     
     li {
@@ -64,7 +63,7 @@
   &__social-icons {
     display: flex;
     align-items: center;
-    color: $color-primary-blue-100;
+    color: $color-primary-blue-200;
   }
 
   &__facebook-icon,
@@ -86,15 +85,7 @@
     margin-left: rem(8px);
   }
 
-  &__news-letter {
-    margin-bottom: rem(32px);
-    @extend %font-body-short-md;
-  }
-
   @include breakpoint('small') {
-    svg {
-      max-width: rem(350px);
-    }
 
     &__news-nav {
       display: flex;
@@ -107,6 +98,12 @@
 
     &__nav-side {
       margin-left: rem(48px);
+    }
+
+    &__logo {
+      svg {
+        max-width: rem(350px);
+      }
     }
   }
 
