@@ -54,10 +54,10 @@
 
   &__logo {
     margin-bottom: rem(24px);
-  }
-
-  svg {
-    max-width: rem(281px);
+    
+    svg {
+      max-width: rem(281px);
+    }
   }
 
   &__social-icons {
@@ -85,8 +85,11 @@
     margin-left: rem(8px);
   }
 
-  @include breakpoint('small') {
+  &__news-letter {
+    margin-bottom: rem(32px);
+  }
 
+  @include breakpoint('small') {
     &__news-nav {
       display: flex;
       flex-wrap: nowrap;
