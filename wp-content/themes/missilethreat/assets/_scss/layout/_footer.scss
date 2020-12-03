@@ -72,17 +72,14 @@
 
   &__facebook-icon,
   &__twitter-icon {
-    padding: rem(6.5px) rem(9px);
+    display: flex;
+    padding: rem(9px);
     background-color: $color-primary-light-blue;
     border-radius: rem(50px);
 
     &:hover {
       background-color: $color-text-light-100;
     }
-  }
-
-  .icon {
-    vertical-align: middle;
   }
 
   &__twitter-icon {
