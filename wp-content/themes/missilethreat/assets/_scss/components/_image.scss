@@ -1,9 +1,13 @@
 @use '../abstracts' as *;
 
-.image-caption {
+.featured-media {
+  margin-bottom: rem(32px);
+}
+
+img + figcaption {
   @extend %font-body-short-md;
   display: block;
   max-width: $size__content-max-width;
-  margin: rem(12px) auto rem(32px) auto;
+  margin: rem(12px) auto 0 auto;
   color: $color-text-dark-170;
 }

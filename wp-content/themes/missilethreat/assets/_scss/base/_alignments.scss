@@ -4,9 +4,6 @@
 .alignfull,
 .alignwide {
   @include missiledefense-full-width-wrapper;
-}
-
-.alignwide {
   /* stylelint-disable-next-line */
   > *:not(figcaption):not(.addtoany_list) {
     @include missiledefense-full-width-content;
