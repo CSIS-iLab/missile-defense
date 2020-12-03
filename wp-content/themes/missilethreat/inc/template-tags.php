@@ -411,14 +411,14 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'missiledefense_actors_cat1' ) ) :
+if ( ! function_exists( 'missiledefense_actors' ) ) :
 	/**
-	 * Returns links to Category 1 Actors and their icons.
+	 * Returns group of links to Actors and their icons by category.
 	 *
 	 */
-	function missiledefense_actors_cat1() {
+	function missiledefense_actors( $group ) {
 		$object = get_queried_object();
-		$cat_1_actors = get_field( 'category_1_actors', $object->name );
+		$actors_group = get_field( $group, $object->name );
 
 		$args = array(
 			'post_type' => 'actors',
@@ -426,7 +426,7 @@ if ( ! function_exists( 'missiledefense_actors_cat1' ) ) :
 			'orderby' => 'meta_value',
 			'order' => 'ASC',
 			'meta_key' => '_actors_archive_name',
-			'include' => $cat_1_actors
+			'include' => $actors_group
 		);
 
 		$actors = get_posts( $args ); ?>
@@ -435,112 +435,32 @@ if ( ! function_exists( 'missiledefense_actors_cat1' ) ) :
 		foreach ( $actors as $post) {
 			setup_postdata( $post );
 			include( locate_template( 'template-parts/actor-block.php' ) );
-		} 
-	}
-endif;
-
-if ( ! function_exists( 'missiledefense_actors_cat2' ) ) :
-	/**
-	 * Returns links to Category 2 Actors and their icons.
-	 *
-	 */
-	function missiledefense_actors_cat2() {
-		$object = get_queried_object();
-		$cat_2_actors = get_field( 'category_2_actors', $object->name );
-
-		$args = array(
-			'post_type' => 'actors',
-			'numberposts' => -1,
-			'orderby' => 'meta_value',
-			'order' => 'ASC',
-			'meta_key' => '_actors_archive_name',
-			'include' => $cat_2_actors
-		);
-
-		$actors = get_posts( $args ); ?>
-
-		<?php
-		foreach ( $actors as $post) {
-			setup_postdata( $post );
-			include( locate_template( 'template-parts/actor-block.php' ) );
-		} 
-	}
-endif;
-
-if ( ! function_exists( 'missiledefense_defsys_cat1' ) ) :
-	/**
-	 * Returns links to Category 1 Defense Systems and their icons.
-	 *
-	 */
-	function missiledefense_defsys_cat1() {
-		$object = get_queried_object();
-		$cat_1_systems = get_field( 'category_1_systems', $object->name );
-
-		$args = array(
-			'post_type' => 'systems',
-			'numberposts' => -1,
-			'orderby' => 'post_title',
-			'order' => 'ASC',
-			'include' => $cat_1_systems
-		);
-
-		$systems = get_posts( $args );
-
-		foreach ( $systems as $post) {
-		setup_postdata( $post );
-		include( locate_template( 'template-parts/system-block.php' ) );
-	}
-	}
-endif;
-
-if ( ! function_exists( 'missiledefense_defsys_cat2' ) ) :
-	/**
-	 * Returns links to Category 2 Defense Systems and their icons.
-	 *
-	 */
-	function missiledefense_defsys_cat2() {
-		$object = get_queried_object();
-		$cat_2_systems = get_field( 'category_2_systems', $object->name );
-
-		$args = array(
-			'post_type' => 'systems',
-			'numberposts' => -1,
-			'orderby' => 'post_title',
-			'order' => 'ASC',
-			'include' => $cat_2_systems
-		);
-
-		$systems = get_posts( $args );
-
-		foreach ( $systems as $post) {
-		setup_postdata( $post );
-		include( locate_template( 'template-parts/system-block.php' ) );
-	}
-	}
-endif;
-
-if ( ! function_exists( 'missiledefense_defsys_cat3' ) ) :
-	/**
-	 * Returns links to Category 3 Defense Systems and their icons.
-	 *
-	 */
-	function missiledefense_defsys_cat3() {
-		$object = get_queried_object();
-		$cat_3_systems = get_field( 'category_3_systems', $object->name );
-
-		$args = array(
-			'post_type' => 'systems',
-			'numberposts' => -1,
-			'orderby' => 'post_title',
-			'order' => 'ASC',
-			'include' => $cat_3_systems
-		);
-
-		$systems = get_posts( $args );
-
-		foreach ( $systems as $post) {
-		setup_postdata( $post );
-		include( locate_template( 'template-parts/system-block.php' ) );
 		}
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_defsys' ) ) :
+	/**
+	 * Returns group of links to Defense Systems and their icons by category.
+	 *
+	 */
+	function missiledefense_defsys($group) {
+		$object = get_queried_object();
+		$systems_group = get_field( $group, $object->name );
+
+		$args = array(
+			'post_type' => 'systems',
+			'numberposts' => -1,
+			'orderby' => 'post_title',
+			'order' => 'ASC',
+			'include' => $systems_group
+		);
+
+		$systems = get_posts( $args );
+
+		foreach ( $systems as $post) {
+		setup_postdata( $post );
+		include( locate_template( 'template-parts/system-block.php' ) );
+	}
 	}
 endif;

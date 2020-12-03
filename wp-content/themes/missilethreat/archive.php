@@ -64,6 +64,7 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
 <div class='archive__content'>
 
   <?php
+  
   if ( is_post_type_archive('missile') ) { ?>
 
     <section class="actors">
@@ -72,13 +73,13 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
 
       <h2 class="actors__header actors__header--lower"><?php echo $actor_cat_1_title; ?></h2>
         <ul class="actors__group actors__group-1" role="list">
-          <?php missiledefense_actors_cat1(); ?>
+          <?php missiledefense_actors( 'category_1_actors' ); ?>
         </ul><!-- .actors__group-1 -->
 
 
       <h2 class="actors__header"><?php echo $actor_cat_2_title; ?></h2>
         <ul class="actors__group actors__group-2" role="list">
-          <?php missiledefense_actors_cat2(); ?>
+          <?php missiledefense_actors( 'category_2_actors' ); ?>
         </ul><!-- .actors__group-2 -->
     </section>
     <?php }
@@ -90,21 +91,21 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
       <p class="archive__desc"><?php echo $defsys_cat_1_desc; ?></p>
       
       <ul role="list" class="actors__group actors__group-1">
-        <?php missiledefense_defsys_cat1(); ?>
+        <?php missiledefense_defsys( 'category_1_systems' ); ?>
       </ul>
       
       <h2 class="actors__header"><?php echo $defsys_cat_2_title; ?></h2>
       <p class="archive__desc"><?php echo $defsys_cat_2_desc; ?></p>
       
       <ul role="list" class="actors__group actors__group-2">
-        <?php missiledefense_defsys_cat2() ?>
+      <?php missiledefense_defsys( 'category_2_systems' ); ?>
       </ul>
       
       <h2 class="actors__header"><?php echo $defsys_cat_3_title; ?></h2>
       <p class="archive__desc"><?php echo $defsys_cat_3_desc; ?></p>
 
       <ul role="list" class="actors__group actors__group-3">
-        <?php missiledefense_defsys_cat3() ?>
+      <?php missiledefense_defsys( 'category_3_systems' ); ?>
       </ul>
 
     </section>
