@@ -15,6 +15,7 @@
     display: inline-block;
     grid-row: 1;
     margin-bottom: rem(16px);
+    text-transform: uppercase;
 
     a:not(:first-child) {
       font-weight: 600;
@@ -41,7 +42,7 @@
     margin-bottom: rem(16px);
   }
 
-  .wp-post-image {
+  .thumbnail-link {
     grid-row: 6;
     margin-bottom: rem(24px);
   }
@@ -65,7 +66,7 @@
       grid-column: 1 / span 1;
     }
 
-    .wp-post-image {
+    .thumbnail-link {
       position: absolute;
       grid-column: 2 / span 1;
       grid-row: 1;

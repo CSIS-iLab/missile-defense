@@ -20,8 +20,8 @@
 
 	<?php
 
-	get_template_part( 'template-parts/entry-header' );
-	missiledefense_system_terms()
+	// get_template_part( 'template-parts/entry-header' );
+	// missiledefense_system_terms()
 	?>
 
 	<div class="single__content">
@@ -31,8 +31,8 @@
 	</div><!-- .post-inner -->
 
 	<footer class="single__footer">
-		<?php get_template_part( 'template-parts/featured-image-caption' ); ?>
-		<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { ADDTOANY_SHARE_SAVE_KIT(); } ?>
+		<?php missiledefense_share(); ?>
+		<hr class="single__footer-divider"/>
 		<?php echo missilethreat_authors_list_extended(); ?>
 	</footer>
 

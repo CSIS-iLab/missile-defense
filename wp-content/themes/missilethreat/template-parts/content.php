@@ -17,7 +17,7 @@
 
 	<?php
 
-	get_template_part( 'template-parts/entry-header' );
+	// get_template_part( 'template-parts/entry-header' );
 	?>
 
 	<div class="single__content">
@@ -27,8 +27,7 @@
 	</div><!-- .post-inner -->
 
 	<footer class="single__footer">
-		<?php get_template_part( 'template-parts/featured-image-caption' ); ?>
-		<?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { ADDTOANY_SHARE_SAVE_KIT(); } ?>
+		<?php missiledefense_share(); ?>
 		<?php echo missilethreat_authors_list_extended(); ?>
 	</footer>
 

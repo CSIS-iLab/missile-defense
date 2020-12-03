@@ -161,10 +161,11 @@ function missilethreat_last_updated() {
  *
  */
 function missilethreat_authors() {
-	if ( function_exists( 'coauthors' ) ) {
-    $authors = coauthors_links( ', ', ', ', null, null, false );
+	if ( function_exists( 'coauthors_posts_links' ) ) {
+    $authors = coauthors_posts_links( ', ', ' and ', null, null, false );
 	} else {
-		$authors = get_the_author();
+		// $authors = get_the_author();
+		$authors = the_author_posts_link();
 	}
 
 	if ( !$authors ) {
@@ -228,7 +229,7 @@ if (! function_exists('missilethreat_display_tags')) :
 	function missilethreat_display_tags() {
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list('<ul class="post-meta__tags"><li>', '</li><li>', '</li></ul>');
+		$tags_list = get_the_tag_list('<ul class="post-meta__tags" role="list"><li>', '</li><li>', '</li></ul>');
 					
 		if ( $tags_list ) {
 			/* translators: 1: list of tags. */
@@ -337,7 +338,7 @@ if ( ! function_exists( 'missiledefense_display_system_elements' ) ) :
 
 			$html = '<div class="system-elements">
 					<h1>' . $archiveTitle . '</h1>
-					<ul>';
+					<ul role="list">';
 
 			foreach ( $elements as $element ) {
 				$html .= '<li id="post-' . $element->ID . '"><a href="' . esc_url( get_permalink( $element->ID )) . '" rel="bookmark">' . $element->post_title . '</a></li>';
@@ -396,17 +397,31 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 		}
 
 		if ( $systems ) {
-			$html = '<h3 class="parent-system__label">Parent Systems: </h3>';
+			$html = '<h3 class="parent-system__label">Associated Systems: </h3>';
 			foreach ( $systems as $system ) {
 				$prefix = '<br/>';
 				if ( $i == 0 ) {
 					$prefix = '';
 				}
-				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . '</a>';
+				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . missilethreat_get_svg('chevron-right') . '</a>';
 			}
 			wp_reset_postdata();
 
 			printf( '%1$s', $html);
+		}
+	}
+endif;
+
+/**
+ * Displays the AddToAny Share Links.
+ *
+ *
+ * @return string $html The share links.
+ */
+if (! function_exists('missiledefense_share')) :
+	function missiledefense_share() {
+		if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
+			ADDTOANY_SHARE_SAVE_KIT();
 		}
 	}
 endif;

@@ -18,26 +18,37 @@
   &[disabled] {
     cursor: not-allowed;
   }
-}
 
-.btn--short {
-  padding: rem(8px) rem(20px);
-}
+  &--icon {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 
-.btn--light {
-  color: $color-primary-blue-200;
-  background: $color-primary-light-blue;
-
-  &:hover {
-    background: $color-primary-light-gray;
+    .icon {
+      margin-left: rem(2px);
+    }
   }
-}
 
-.btn--dark {
-  color: $color-text-light-100;
-  background: $color-primary-blue-600;
+  &--short {
+    padding: rem(8px) rem(20px);
+  }
 
-  &:hover {
-    background: $color-primary-blue-400;
+  &--light {
+    color: $color-primary-blue-200;
+    background: $color-primary-light-blue;
+
+    &:hover {
+      background: $color-primary-light-gray;
+    }
+  }
+
+  &--dark {
+    color: $color-text-light-100;
+    background: $color-primary-blue-600;
+
+    &:hover {
+      background: $color-primary-blue-400;
+    }
   }
 }

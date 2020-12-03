@@ -13,7 +13,7 @@ $post_type = get_post_type();
 
 if( $post_type === 'defsys') {
 ?>
-<ul class="breadcrumbs">
+<ul class="breadcrumbs" role="list">
   <li><a href="/defsys">Defense Systems</a></li>
   <li>System Component: <span class="text--bold"><?php the_title(); ?></span></li>
 </ul><br style="clear:left;" />
@@ -22,7 +22,7 @@ if( $post_type === 'defsys') {
 
 } elseif ($post_type === 'systems') {
   ?>
-<ul class="breadcrumbs breadcrumbs--light">
+<ul class="breadcrumbs breadcrumbs--light" role="list">
   <li><a href="/defsys">Defense Systems</a></li>
   <li>System: <span class="text--bold"><?php the_title(); ?></span></li>
 </ul><br style="clear:left;" />
@@ -31,7 +31,7 @@ if( $post_type === 'defsys') {
 
 } elseif ($post_type === 'missile') {
   ?>
-<ul class="breadcrumbs">
+<ul class="breadcrumbs" role="list">
   <li><a href="/missile">Missiles of the World</a></li>
   <?php
     $terms = get_the_terms($post->id, 'countries');
@@ -45,7 +45,7 @@ if( $post_type === 'defsys') {
 
 } elseif ($post_type === 'actors') {
   ?>
-<ul class="breadcrumbs breadcrumbs--light">
+<ul class="breadcrumbs breadcrumbs--light" role="list">
   <li><a href="/missile">Missiles of the World</a></li>
   <?php
     $terms = get_the_terms($post->id, 'countries');

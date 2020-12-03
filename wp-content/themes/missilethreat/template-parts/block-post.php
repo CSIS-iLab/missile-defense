@@ -23,7 +23,7 @@
 
 	<?php
 
-	the_title( '<h2 class="post-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '">', '</a></h2>' );
+	the_title( '<h2 class="post-block__title text--semibold"><a href="' . esc_url( get_permalink() ) . '" class="post-title--hover">', '</a></h2>' );
 
 	missilethreat_posted_on();
 
@@ -36,7 +36,10 @@
 
 	<?php
 	}
-	the_post_thumbnail();
-	?>
+	if ( has_post_thumbnail()) : ?>
+    <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>" class="thumbnail-link">
+        <?php the_post_thumbnail(array(400, 304)); ?>
+    </a>
+	<?php endif; ?>
 
 </article><!-- .post -->

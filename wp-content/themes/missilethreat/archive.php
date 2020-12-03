@@ -9,26 +9,22 @@
 **/
 
 get_header();
+
 ?>
+
 
 <main id="site-content" role="main">
 
-<header class="archive__header">
 
-Heeeadeeeeeerrrrrrrrrrrrrr
+<?php get_template_part( 'template-parts/entry-header', get_post_type() ); ?>
 
-</header>
+<div class='archive__content'>
 
-<div class='archive'>
-
-  <section class="archive__content">
+  <section class="archive__posts">
     
   <?php
 
-
   if ( have_posts() ) {
-
-		$i = 0;
 
 		while ( have_posts() ) {
 			the_post();
@@ -39,8 +35,6 @@ Heeeadeeeeeerrrrrrrrrrrrrr
 	} 
 	?>
   </section>
-  
-  
   
   <aside class="archive__sidebar">
     <?php
