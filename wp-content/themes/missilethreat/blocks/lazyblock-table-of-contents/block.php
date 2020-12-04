@@ -12,7 +12,7 @@
 
 <div class="tableOfContents">
   <div class="tableOfContents__details">
-  <h4>In this publication</h4>
+  <h2 class="tableOfContents__heading">In this publication</h2>
   <ul class="tableOfContents__resources" role="list">
 
 

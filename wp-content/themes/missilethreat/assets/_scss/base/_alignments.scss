@@ -4,10 +4,16 @@
 .alignfull,
 .alignwide {
   @include missiledefense-full-width-wrapper;
-  /* stylelint-disable-next-line */
-  > *:not(.addtoany_list) {
-    @include missiledefense-full-width-content;
-  }
+}
+
+/* stylelint-disable-next-line */
+.alignwide > *:not(.addtoany_list) {
+  @include missiledefense-full-width-content;
+}
+
+/* stylelint-disable-next-line */
+.alignfull > *:not(.addtoany_list) {
+  @include missiledefense-full-width-content($size__container-max-width);
 }
 
 .alignleft,

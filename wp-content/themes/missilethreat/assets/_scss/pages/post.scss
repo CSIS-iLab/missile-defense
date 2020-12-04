@@ -86,10 +86,11 @@
     margin-bottom: rem(32px);
     margin-left: rem(32px);
     padding-left: rem(24px);
-    border-left: 3px solid $color-primary-light-blue;
     color: $color-primary-blue-200;
     text-align: left;
+    border-left: 3px solid $color-primary-light-blue;
     
+    /* stylelint-disable-next-line */
     &.has-text-align-right {
       @extend %font-copy-quote-lg;
       margin-top: rem(12px);
@@ -104,6 +105,14 @@
       margin: rem(12px) auto 0 auto;
       color: $color-text-dark-170;
       font-style: normal;
+    }
+  }
+
+  .wp-block-gallery {
+    @include missiledefense-full-width-wrapper;
+    /* stylelint-disable-next-line */
+    > * {
+      @include missiledefense-full-width-content;
     }
   }
 }

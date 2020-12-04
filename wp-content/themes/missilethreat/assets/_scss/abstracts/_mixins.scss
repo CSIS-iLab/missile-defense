@@ -146,16 +146,15 @@
   margin-left: calc(50% - 50vw);
 }
 
-@mixin missiledefense-full-width-content {
+@mixin missiledefense-full-width-content( $width: $size__content-wide-max-width ) {
   width: 100%;
-  max-width: $size__content-wide-max-width;
+  max-width: $width !important;
   margin-right: auto;
   margin-left: auto;
   padding-right: var(--container-padding);
   padding-left: var(--container-padding);
 
-  @include breakpoint('large') {
-    padding-right: calc(var(--container-padding) + 64px);
-    padding-left: calc(var(--container-padding) + 64px);
+  @include breakpoint('1400px') {
+    --container-padding: 0;
   }
 }
