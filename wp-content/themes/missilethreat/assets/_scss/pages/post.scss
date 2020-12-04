@@ -110,9 +110,47 @@
 
   .wp-block-gallery {
     @include missiledefense-full-width-wrapper;
-    /* stylelint-disable-next-line */
-    > * {
-      @include missiledefense-full-width-content;
+
+    > *:not(figcaption) {
+      @include missiledefense-full-width-content($size__container-max-width);
+    }
+
+    > figcaption {
+      @extend %font-body-short-md;
+      width: $size__content-max-width;
+      margin: rem(12px) auto 0 auto !important;
+      color: $color-text-dark-170;
+    }
+
+    .blocks-gallery-grid {
+      flex-direction: column;
+      gap: rem(10px);
+
+      @include breakpoint('medium') {
+        flex-direction: row;
+      }
+    }
+
+    .blocks-gallery-item {
+      margin-right: 0;
+      margin-bottom: 0;
+      width: 100%;
+
+      @include breakpoint('medium') {
+        width: calc(33.33333% - 10.66667px);
+      }
+
+      figure {
+        margin-bottom: 0 !important;
+        max-height: rem(230px);
+      }
+    }
+    
+    .blocks-gallery-item__caption {
+      @extend %font-ui-text-md;
+      padding-bottom: rem(12px);
+      color: $color-text-light-190;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
     }
   }
 }

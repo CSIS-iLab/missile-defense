@@ -148,7 +148,7 @@
 
 @mixin missiledefense-full-width-content( $width: $size__content-wide-max-width ) {
   width: 100%;
-  max-width: $width !important;
+  max-width: $width;
   margin-right: auto;
   margin-left: auto;
   padding-right: var(--container-padding);

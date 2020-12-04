@@ -7,12 +7,12 @@
 }
 
 /* stylelint-disable-next-line */
-.alignwide > *:not(.addtoany_list) {
+.alignwide > *:not(figcaption):not(.addtoany_list) {
   @include missiledefense-full-width-content;
 }
 
 /* stylelint-disable-next-line */
-.alignfull > *:not(.addtoany_list) {
+.alignfull > *:not(figcaption):not(.addtoany_list) {
   @include missiledefense-full-width-content($size__container-max-width);
 }
 
