@@ -12,7 +12,7 @@
 
 .alignleft,
 .alignright,
-.wp-block-quote {
+.has-text-align-right {
   --margin-text-side: #{auto};
   --margin-gutter-side: #{auto};
 
@@ -48,8 +48,7 @@
   }
 }
 
-.alignleft,
-.wp-block-quote {
+.alignleft {
   float: none !important;
   margin-right: var(--margin-text-side, 0) !important;
   margin-left: var(--margin-gutter-side, 0) !important;

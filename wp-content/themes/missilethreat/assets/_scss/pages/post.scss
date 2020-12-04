@@ -79,4 +79,31 @@
   figure {
     margin-bottom: rem(32px) !important;
   }
+
+  blockquote {
+    @extend %font-copy-quote-sm;
+    margin-top: rem(32px);
+    margin-bottom: rem(32px);
+    margin-left: rem(32px);
+    padding-left: rem(24px);
+    border-left: 3px solid $color-primary-light-blue;
+    color: $color-primary-blue-200;
+    text-align: left;
+    
+    &.has-text-align-right {
+      @extend %font-copy-quote-lg;
+      margin-top: rem(12px);
+      margin-bottom: rem(24px);
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    cite {
+      @extend %font-body-short-md;
+      display: block;
+      margin: rem(12px) auto 0 auto;
+      color: $color-text-dark-170;
+      font-style: normal;
+    }
+  }
 }
