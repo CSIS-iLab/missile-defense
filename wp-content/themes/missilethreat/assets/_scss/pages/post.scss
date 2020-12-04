@@ -111,15 +111,19 @@
   .wp-block-gallery {
     @include missiledefense-full-width-wrapper;
 
-    > *:not(figcaption) {
+    > * {
       @include missiledefense-full-width-content($size__container-max-width);
     }
 
     > figcaption {
       @extend %font-body-short-md;
-      width: $size__content-max-width;
       margin: rem(12px) auto 0 auto !important;
       color: $color-text-dark-170;
+
+      @include breakpoint('medium') {
+        width: $size__content-max-width;
+        padding: 0;
+      }
     }
 
     .blocks-gallery-grid {
