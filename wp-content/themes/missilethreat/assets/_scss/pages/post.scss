@@ -12,7 +12,7 @@
     color: $color-text-dark-190;
     
     &:not(:last-child) {
-      padding-bottom: rem(40px);
+      margin-bottom: rem(40px);
     }
   }
 
@@ -21,7 +21,7 @@
   > h4,
   > h5,
   > h6 {
-    padding-bottom: rem(12px);
+    margin-bottom: rem(12px);
   }
 
   > h3,

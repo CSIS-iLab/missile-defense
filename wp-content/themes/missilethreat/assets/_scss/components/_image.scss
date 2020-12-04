@@ -11,3 +11,18 @@ img + figcaption {
   margin: rem(12px) auto 0 auto;
   color: $color-text-dark-170;
 }
+
+.aligncenter.size-large,
+.alignwide.size-large,
+.alignfull.size-large {
+  margin-top: rem(32px);
+}
+
+.aligncenter.size-large {
+  width: 100%;
+  max-width: $size__content-max-width;
+
+  img {
+    width: 100%;
+  }
+}
