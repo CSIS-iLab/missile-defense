@@ -5,13 +5,14 @@
 .alignwide {
   @include missiledefense-full-width-wrapper;
   /* stylelint-disable-next-line */
-  > *:not(figcaption):not(.addtoany_list) {
+  > *:not(.addtoany_list) {
     @include missiledefense-full-width-content;
   }
 }
 
 .alignleft,
-.alignright {
+.alignright,
+.wp-block-quote {
   --margin-text-side: #{auto};
   --margin-gutter-side: #{auto};
 
@@ -47,7 +48,8 @@
   }
 }
 
-.alignleft {
+.alignleft,
+.wp-block-quote {
   float: none !important;
   margin-right: var(--margin-text-side, 0) !important;
   margin-left: var(--margin-gutter-side, 0) !important;
@@ -57,7 +59,8 @@
   }
 }
 
-.alignright {
+.alignright,
+.has-text-align-right {
   float: none !important;
   margin-right: var(--margin-gutter-side, 0) !important;
   margin-left: var(--margin-text-side, 0) !important;
