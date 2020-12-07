@@ -6,14 +6,18 @@
   @include missiledefense-full-width-wrapper;
 }
 
-/* stylelint-disable-next-line */
-.alignwide > *:not(figcaption):not(.addtoany_list) {
-  @include missiledefense-wide-content;
+.alignwide {
+  /* stylelint-disable-next-line */
+  > *:not(figcaption):not(.addtoany_list) {
+    @include missiledefense-wide-content;
+  }
 }
 
-/* stylelint-disable-next-line */
-.alignfull > *:not(figcaption):not(.addtoany_list) {
-  @include missiledefense-full-width-content($size__container-max-width);
+.alignfull {
+  /* stylelint-disable-next-line */
+  > *:not(figcaption):not(.addtoany_list) {
+    @include missiledefense-full-width-content($size__container-max-width);
+  }
 }
 
 .alignleft,

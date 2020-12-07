@@ -70,7 +70,7 @@
     .at-a-glance__wrapper & {
       position: absolute;
       top: 0;
-      left: 6%;
+      left: 0;
       flex-direction: column;
 
       /* stylelint-disable-next-line */
@@ -89,6 +89,13 @@
           border-bottom: 1px solid $color-primary-light-blue;
         }
       }
+    }
+  }
+
+  @include breakpoint('xxlarge') {
+    .single__header &,
+    .at-a-glance__wrapper & {
+      left: -6%;
     }
   }
 
