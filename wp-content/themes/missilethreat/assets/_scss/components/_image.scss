@@ -7,7 +7,7 @@
 img + figcaption {
   @extend %font-body-short-md;
   max-width: $size__content-max-width;
-  margin: rem(12px) auto 0 auto !important;
+  margin: rem(12px) 0 0 0 !important;
   color: $color-text-dark-170;
 }
 

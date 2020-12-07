@@ -136,17 +136,18 @@
     }
 
     .blocks-gallery-item {
+      width: 100%;
       margin-right: 0;
       margin-bottom: 0;
-      width: 100%;
 
       @include breakpoint('medium') {
         width: calc(33.33333% - 10.66667px);
       }
 
+      /* stylelint-disable-next-line */
       figure {
-        margin-bottom: 0 !important;
         max-height: rem(230px);
+        margin-bottom: 0 !important;
       }
     }
     
@@ -154,7 +155,7 @@
       @extend %font-ui-text-md;
       padding-bottom: rem(12px);
       color: $color-text-light-190;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
     }
   }
 }

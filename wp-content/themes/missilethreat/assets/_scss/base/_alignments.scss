@@ -4,18 +4,27 @@
 .alignfull,
 .alignwide {
   @include missiledefense-full-width-wrapper;
+
+  @include breakpoint('large') {
+    figcaption {
+      max-width: $size__content-max-width;
+      margin: rem(12px) auto 0 auto !important;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+  }
 }
 
 .alignwide {
   /* stylelint-disable-next-line */
-  > *:not(figcaption):not(.addtoany_list) {
+  > *:not(.addtoany_list) {
     @include missiledefense-wide-content;
   }
 }
 
 .alignfull {
   /* stylelint-disable-next-line */
-  > *:not(figcaption):not(.addtoany_list) {
+  > *:not(.addtoany_list) {
     @include missiledefense-full-width-content($size__container-max-width);
   }
 }
