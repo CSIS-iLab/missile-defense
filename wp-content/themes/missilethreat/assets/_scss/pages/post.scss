@@ -14,7 +14,39 @@
     &:not(:last-child) {
       margin-bottom: rem(40px);
     }
+
+    a {
+      color: $color-primary-blue-200;
+      text-decoration: underline;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: $color-primary-blue-500;
+      }
+    }
   }
+
+  /* stylelint-disable */
+  a[href*="//"]:not([href*="missile-threat.local"]):not([href*="localhost"]):not([href*="missilethreat"])
+  {
+    /* stylelint-enable */
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 0.67em;
+      height: 0.67em;
+      margin-left: rem(2px);
+      background-image: url('/wp-content/themes/missilethreat/assets/static/external-link.svg');
+      background-size: 100% 100%;
+      filter: invert(49%) sepia(7%) saturate(1276%) hue-rotate(148deg) brightness(91%) contrast(85%);
+      transition: filter 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      filter: invert(35%) sepia(52%) saturate(295%) hue-rotate(148deg) brightness(93%) contrast(90%);
+    }
+  }
+
 
   > h2,
   > h3,
