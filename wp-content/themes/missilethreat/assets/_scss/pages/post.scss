@@ -51,7 +51,7 @@
     }
   }
 
-/*----------  Headings  ----------*/
+  /*----------  Headings  ----------*/
 
   > h2,
   > h3,
@@ -216,6 +216,7 @@
     @extend %font-body-short-md-serif;
     color: $color-text-dark-100;
   }
+
   .post__authors-author {
     margin-bottom: rem(16px);
   }
@@ -228,25 +229,26 @@
   /*----------  Citation  ----------*/
 
   .cite {
-    &__heading{
+    &__heading {
       @extend %font-ui-heading-xs;
       color: $color-primary-blue-200;
       text-transform: uppercase;
     }
 
     &__container {
+      margin-top: rem(16px);
       margin-bottom: rem(56px);
 
       @include breakpoint('medium') {
         display: flex;
         gap: rem(8px);
+        align-items: flex-start;
       }
     }
 
     &__citation {
       @extend %font-body-short-sm;
       display: block;
-      margin-top: rem(16px);
       margin-bottom: rem(16px);
       padding: rem(8px);
       color: $color-text-dark-100;
