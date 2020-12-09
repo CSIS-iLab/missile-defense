@@ -164,7 +164,6 @@ function missilethreat_authors() {
 	if ( function_exists( 'coauthors_posts_links' ) ) {
     $authors = coauthors_posts_links( ', ', ' and ', null, null, false );
 	} else {
-		// $authors = get_the_author();
 		$authors = the_author_posts_link();
 	}
 
@@ -184,16 +183,15 @@ if (! function_exists('missilethreat_authors_list_extended')) :
 		global $post;
 
 		if (function_exists('coauthors_posts_links')) {
-			$authors = '<h2 class="heading">Authors</h2>';
 
 			foreach (get_coauthors() as $coauthor) {
 				$name = $coauthor->display_name;
 
-				if ( $coauthor->website ) {
-					$name = '<a href="' . $coauthor->website . '">' . $coauthor->display_name . '</a>';
+				if ( $coauthor->user_url ) {
+					$name = '<a href="' . $coauthor->user_url . '">' . $coauthor->display_name . '</a>';
 				}
 
-				$authors .= '<p class="post__authors-author">' . $name . ' ' . $coauthor->description . '</p>';
+				$authors .= '<p class="post__authors-author"><span class="text--bold">' . $name . '</span> ' . $coauthor->description . '</p>';
 			}
 		} else {
 			$authors = the_author_posts_link();
