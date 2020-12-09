@@ -203,6 +203,11 @@
       background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
     }
   }
+
+  iframe[src*='youtube'] {
+    margin-top: rem(32px);
+    margin-bottom: rem(32px);
+  }
 }
 
 /*----------  Post footer  ----------*/
