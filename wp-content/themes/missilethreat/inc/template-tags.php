@@ -273,7 +273,7 @@ if ( ! function_exists( 'missiledefense_citation' ) ) :
 			$title = get_the_archive_title();
 		}
 
-		printf( '<h4 class="cite__heading text--bold">Cite this Page</h4><p class="cite__container"><span class="cite__citation citation">' . esc_html( '%1$s, "%2$s,"', 'missiledefense' ) . ' <em>%3$s</em>' . esc_html( ', Center for Strategic and International Studies, %4$s, %5$s%6$s.', 'missiledefense') . '</span><button id="btn-copy" class="btn btn--dark btn--icon btn--short" data-clipboard-target=".citation" aria-label="Copied!">Copy' . missilethreat_get_svg( 'copy' ) . '</button></p>', $authors, $title, get_bloginfo( 'name' ), get_the_date(), $modified_date, get_the_permalink() ); // WPCS: XSS OK.
+		printf( '<h4 class="cite__heading text--bold">Cite this Page</h4><p class="cite__container"><span class="cite__citation">' . esc_html( '%1$s, "%2$s,"', 'missiledefense' ) . ' <em>%3$s</em>' . esc_html( ', Center for Strategic and International Studies, %4$s, %5$s%6$s.', 'missiledefense') . '</span><button id="btn-copy" class="btn btn--dark btn--icon btn--short" data-clipboard-target=".cite__citation" aria-label="Copied!">Copy' . missilethreat_get_svg( 'copy' ) . '</button></p>', $authors, $title, get_bloginfo( 'name' ), get_the_date(), $modified_date, get_the_permalink() ); // WPCS: XSS OK.
 	}
 endif;
 
