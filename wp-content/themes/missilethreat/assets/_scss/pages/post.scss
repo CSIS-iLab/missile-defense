@@ -7,6 +7,8 @@
   margin-left: auto;
   color: $color-text-dark-100;
 
+  /*----------  Paragraphs and In-line links  ----------*/
+
   > p {
     @extend %font-body-long-lg;
     color: $color-text-dark-190;
@@ -25,6 +27,8 @@
       }
     }
   }
+
+  /*----------  External Link  ----------*/
 
   /* stylelint-disable */
   a[href*="//"]:not([href*="missile-threat.local"]):not([href*="localhost"]):not([href*="missilethreat"])
@@ -47,6 +51,7 @@
     }
   }
 
+/*----------  Headings  ----------*/
 
   > h2,
   > h3,
@@ -94,6 +99,8 @@
     @extend %font-copy-heading-6;
   }
 
+  /*----------  Lists  ----------*/
+
   > ul,
   > ol {
     @extend %font-body-list-lg;
@@ -108,9 +115,13 @@
     }
   }
 
+  /*----------  Figure  ----------*/
+
   figure {
     margin-bottom: rem(32px) !important;
   }
+
+  /*----------  Blockquotes  ----------*/
 
   blockquote {
     @extend %font-copy-quote-sm;
@@ -139,6 +150,8 @@
       font-style: normal;
     }
   }
+
+  /*----------  Gallery  ----------*/
 
   .wp-block-gallery {
     @include missiledefense-full-width-wrapper;
@@ -191,3 +204,55 @@
     }
   }
 }
+
+/*----------  Post footer  ----------*/
+
+.single__footer {
+
+  /*----------  Author and Attribution  ----------*/
+
+  .post__authors-author,
+  &-attribution {
+    @extend %font-body-short-md-serif;
+    color: $color-text-dark-100;
+  }
+  .post__authors-author {
+    margin-bottom: rem(16px);
+  }
+
+  &-attribution {
+    margin-bottom: rem(48px);
+    font-style: italic;
+  }
+
+  /*----------  Citation  ----------*/
+
+  .cite {
+    &__heading{
+      @extend %font-ui-heading-xs;
+      color: $color-primary-blue-200;
+      text-transform: uppercase;
+    }
+
+    &__container {
+      margin-bottom: rem(56px);
+
+      @include breakpoint('medium') {
+        display: flex;
+        gap: rem(8px);
+      }
+    }
+
+    &__citation {
+      @extend %font-body-short-sm;
+      display: block;
+      margin-top: rem(16px);
+      margin-bottom: rem(16px);
+      padding: rem(8px);
+      color: $color-text-dark-100;
+      border: 1px solid $color-primary-light-blue;
+    }
+  }
+}
+
+
