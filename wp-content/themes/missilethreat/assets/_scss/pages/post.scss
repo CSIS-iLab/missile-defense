@@ -4,6 +4,7 @@
 .single__content {
   max-width: $size__content-max-width;
   margin-right: auto;
+  margin-bottom: rem(56px);
   margin-left: auto;
   color: $color-text-dark-100;
 
@@ -13,7 +14,7 @@
     @extend %font-body-long-lg;
     color: $color-text-dark-190;
     
-    &:not(:last-child) {
+    &:not(:last-of-type) {
       margin-bottom: rem(40px);
     }
 
@@ -207,7 +208,6 @@
 
   /* stylelint-disable-next-line */
   iframe[src*='youtube'] {
-    margin-top: rem(32px);
     margin-bottom: rem(32px);
   }
 }
