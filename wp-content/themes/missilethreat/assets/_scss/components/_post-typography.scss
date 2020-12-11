@@ -1,0 +1,111 @@
+@use '../abstracts' as *;
+
+.single__content {
+
+  /*----------  Paragraphs and In-line links  ----------*/
+
+  > p {
+    @extend %font-body-long-lg;
+    color: $color-text-dark-190;
+    
+    &:not(:last-of-type) {
+      margin-bottom: rem(40px);
+    }
+
+    a {
+      color: $color-primary-blue-200;
+      text-decoration: underline;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: $color-primary-blue-500;
+      }
+    }
+  }
+
+  /*----------  External Link  ----------*/
+
+  /* stylelint-disable */
+  a[href*="//"]:not([href*="missile-threat.local"]):not([href*="localhost"]):not([href*="missilethreat"])
+  {
+    /* stylelint-enable */
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 0.67em;
+      height: 0.67em;
+      margin-left: rem(2px);
+      background-image: url('/wp-content/themes/missilethreat/assets/static/external-link.svg');
+      background-size: 100% 100%;
+      filter: invert(49%) sepia(7%) saturate(1276%) hue-rotate(148deg) brightness(91%) contrast(85%);
+      transition: filter 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+      filter: invert(35%) sepia(52%) saturate(295%) hue-rotate(148deg) brightness(93%) contrast(90%);
+    }
+  }
+
+  /*----------  Headings  ----------*/
+
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    margin-bottom: rem(12px);
+  }
+
+  > h3,
+  > h4 {
+    margin-top: rem(40px);
+    font-weight: normal;
+  }
+
+  > h5,
+  > h6 {
+    margin-top: rem(32px);
+  }
+
+  > h2,
+  > h5,
+  > h6 {
+    font-weight: 600;
+  }
+
+  > h2 {
+    @extend %font-copy-heading-2;
+    margin-top: rem(56px);
+  }
+
+  > h3 {
+    @extend %font-copy-heading-3;
+  }
+
+  > h4 {
+    @extend %font-ui-heading-md;
+  }
+
+  > h5 {
+    @extend %font-copy-heading-5;
+  }
+
+  > h6 {
+    @extend %font-copy-heading-6;
+  }
+
+  /*----------  Lists  ----------*/
+
+  > ul,
+  > ol {
+    @extend %font-body-list-lg;
+    margin-bottom: 0;
+    padding-bottom: rem(24px);
+    padding-left: rem(32px);
+    color: $color-text-dark-190;
+
+    li:not(:last-child) {
+      margin-bottom: rem(8px);
+    }
+  }  
+}
