@@ -65,22 +65,6 @@
     text-shadow: none;
   }
 
-  &-divider {
-    height: rem(4px);
-    margin: rem(16px) 0;
-    background-color: $color-primary-light-blue;
-    border: 0;
-    opacity: 0.5;
-
-    &--thicc {
-      height: rem(8px);
-    }
-
-    &--short {
-      display: none;
-    }
-  }
-
   &-desc {
     @extend %font-body-list-lg;
 

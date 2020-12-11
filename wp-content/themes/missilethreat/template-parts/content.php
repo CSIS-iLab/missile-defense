@@ -33,6 +33,7 @@ $post_attribution = get_field( 'post_attribution', $object->name );
 
 	<footer class="single__footer">
 		<?php missiledefense_share(); ?>
+		<hr class="block-divider"></hr>
 		<?php echo missilethreat_authors_list_extended(); ?>
 		<p class="single__footer-attribution">
 			<?php echo $post_attribution; ?>

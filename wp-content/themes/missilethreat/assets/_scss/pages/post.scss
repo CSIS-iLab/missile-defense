@@ -218,6 +218,10 @@
 
   /*----------  Author and Attribution  ----------*/
 
+  .post__authors {
+    margin-top: rem(48px);
+  }
+
   .post__authors-author,
   &-attribution {
     @extend %font-body-short-md-serif;
@@ -238,6 +242,7 @@
   .cite {
     &__heading {
       @extend %font-ui-heading-xs;
+      margin-top: rem(48px);
       color: $color-primary-blue-200;
       text-transform: uppercase;
     }
