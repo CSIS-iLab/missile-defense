@@ -16,7 +16,7 @@ $cover = get_lzb_meta('report-cover');
 <div class="download-pdf">
 <?php
 if ( isset( $cover['link'] ) && !empty( $cover['link'] ) ) { ?>
-  <img src="<?php echo esc_url($cover['link']); ?>" alt="<?php echo $cover['alt']; ?>" class="download-pdf__cover">
+  <a href="<?php echo esc_url($pdf_url); ?>" target="_blank" rel="nofollow" class="download-pdf__cover"><img src="<?php echo esc_url($cover['link']); ?>" alt="<?php echo $cover['alt']; ?>"></a>
 <?php }
 
 if( isset( $pdf_url ) && !empty( $pdf_url ) ) { ?>
