@@ -200,10 +200,10 @@
     display: flex;
   }
 
-  .post-meta__authors::before {
-    content: '|';
-    margin: 0 rem(8px);
-    color: $color-primary-blue-900;
+  .post-meta__authors {
+    margin-left: rem(8px);
+    padding: 0 rem(8px);
+    border-left: 1px solid $color-primary-blue-900;
   }
 
   .parent-system__label {
