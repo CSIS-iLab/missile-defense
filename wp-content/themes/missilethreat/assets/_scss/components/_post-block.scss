@@ -3,11 +3,13 @@
 .post-block {
   display: grid;
   grid-template-columns: 1fr;
-  margin: rem(40px) 0;
+  padding: rem(40px) 0;
   color: $color-text-dark-170;
-
+  border-bottom: 1px solid $color-line-mid-gray;
+  
   &:first-of-type {
-    margin: rem(24px) 0 rem(40px) 0;
+    padding: rem(24px) 0 rem(40px) 0;
+    border-top: 1px solid $color-line-mid-gray;
   }
 
   &__category {
