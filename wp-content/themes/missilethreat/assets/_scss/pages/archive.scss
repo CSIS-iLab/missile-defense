@@ -182,5 +182,12 @@
         grid-row: 1;
       }
     }
+
+    &__results {
+      @extend %font-ui-text-lg;
+      margin-bottom: rem(8px);
+      color: $color-text-dark-155;
+      font-weight: normal;
+    }
   }
 }
