@@ -423,3 +423,21 @@ if (! function_exists('missiledefense_share')) :
 		}
 	}
 endif;
+
+/**
+ * Displays the post attribution.
+ *
+ *
+ * @return string $html The share links.
+ */
+if (! function_exists('missiledefense_post_attribution')) :
+	function missilethreat_post_attribution() {
+		$object = get_queried_object();
+
+		$post_attribution = get_field( 'post_attribution', $object->name );
+
+		if ( !empty ( $post_attribution ) ) {
+			echo '<p class="single__footer-attribution">' .  $post_attribution . '</p>';
+		}
+	}
+endif;

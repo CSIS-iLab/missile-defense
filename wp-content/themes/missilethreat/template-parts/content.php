@@ -11,9 +11,7 @@
  * @since 1.0.0
  */
 
-$object = get_queried_object();
 
-$post_attribution = get_field( 'post_attribution', $object->name );
 
 ?>
 
@@ -35,9 +33,8 @@ $post_attribution = get_field( 'post_attribution', $object->name );
 		<?php missiledefense_share(); ?>
 		<hr class="block-divider"></hr>
 		<?php echo missilethreat_authors_list_extended(); ?>
-		<p class="single__footer-attribution">
-			<?php echo $post_attribution; ?>
-		</p>
+		<?php echo missilethreat_post_attribution(); ?>
+
 		<?php echo missiledefense_citation(); ?>
 
 	</footer>
