@@ -11,17 +11,8 @@ img + figcaption {
   color: $color-text-dark-170;
 }
 
-.aligncenter.size-large,
-.alignwide.size-large,
-.alignfull.size-large {
+.wp-block-image.aligncenter ,
+.wp-block-image.alignwide,
+.wp-block-image.alignfull {
   margin-top: rem(32px);
-}
-
-.aligncenter.size-large {
-  width: 100%;
-  max-width: $size__content-max-width;
-
-  img {
-    width: 100%;
-  }
 }
