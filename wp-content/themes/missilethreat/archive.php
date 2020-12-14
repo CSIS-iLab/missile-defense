@@ -118,6 +118,11 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
         
       <?php
 
+      $total_posts = $wp_the_query->found_posts;
+      $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+      $pages = $wp_the_query->max_num_pages;
+      echo '<h3 class="archive__results">' . $total_posts . ' items, Page ' . $page . ' of ' . $pages . '</h3>';
+
       if ( have_posts() ) {
 
         $i = 0;
@@ -130,6 +135,8 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
 
         }
       } 
+
+      get_template_part( 'template-parts/pagination' );
       ?>
     </section>
 
