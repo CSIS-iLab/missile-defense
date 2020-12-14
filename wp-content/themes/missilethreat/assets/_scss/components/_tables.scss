@@ -12,7 +12,7 @@
     @extend %font-ui-heading-sm;
     color: $color-text-dark-100;
     text-align: left;
-    border-bottom: rem(2px) solid #5f7981;
+    border-bottom: rem(2px) solid $color-table-row-header;
   }
   
   th {
@@ -21,8 +21,8 @@
 
   tbody {
     tr {
-      border-top: rem(1px) solid #cdd5da;
-      border-bottom: rem(1px) solid #cdd5da;
+      border-top: rem(1px) solid $color-table-row-base;
+      border-bottom: rem(1px) solid $color-table-row-base;
     }
   }
 
@@ -62,7 +62,7 @@
     /* stylelint-disable */
     tbody {
       tr:first-child {
-        border-top: rem(1px) solid #cdd5da;
+        border-top: rem(1px) solid $color-table-row-base;
       }
 
       td:first-child {
