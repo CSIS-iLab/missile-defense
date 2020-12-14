@@ -7,13 +7,11 @@
   color: $color-text-dark-190;
   background: $color-primary-light-gray;
 
-  &__details {
-    .tableOfContents__heading {
-      @extend %font-ui-heading-md;
-      margin-top: 0 !important;
-      margin-bottom: rem(16px) !important;
-      color: $color-text-dark-100;
-    }
+  .tableOfContents__heading {
+    @extend %font-ui-heading-md;
+    margin-top: 0;
+    margin-bottom: rem(16px);
+    color: $color-text-dark-100;
   }
 
   &__excerpt {
