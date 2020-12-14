@@ -1,6 +1,6 @@
 <?php
 /**
- * A template partial to output pagination for the CSIS Mag default theme.
+ * A template partial to output pagination for the Missile Threat default theme.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
