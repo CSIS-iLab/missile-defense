@@ -129,37 +129,6 @@
     margin-bottom: rem(48px);
     font-style: italic;
   }
-
-  /*----------  Citation  ----------*/
-
-  .cite {
-    &__heading {
-      @extend %font-ui-heading-xs;
-      margin-top: rem(48px);
-      color: $color-primary-blue-200;
-      text-transform: uppercase;
-    }
-
-    &__container {
-      margin-top: rem(16px);
-      margin-bottom: rem(56px);
-
-      @include breakpoint('medium') {
-        display: flex;
-        gap: rem(8px);
-        align-items: flex-start;
-      }
-    }
-
-    &__citation {
-      @extend %font-body-short-sm;
-      display: block;
-      margin-bottom: rem(16px);
-      padding: rem(8px);
-      color: $color-text-dark-100;
-      border: 1px solid $color-primary-light-blue;
-    }
-  }
 }
 
 

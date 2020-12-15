@@ -32,8 +32,11 @@
 	<footer class="single__footer">
 		<?php missiledefense_share(); ?>
 		<hr class="block-divider"></hr>
-		<?php echo missilethreat_authors_list_extended(); ?>
-		<?php echo missilethreat_post_attribution(); ?>
+		<?php 
+		if ( 'post' == get_post_type() ) {
+		echo missilethreat_authors_list_extended();
+		echo missilethreat_post_attribution(); 
+		}?>
 
 		<?php echo missiledefense_citation(); ?>
 
