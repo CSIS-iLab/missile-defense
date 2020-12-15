@@ -23,7 +23,7 @@ if ( $replacement_archive_name ) {
 ?>
 
 <li class="actors__container">
-  <a href="<?php echo esc_url( get_permalink() ); ?>" class="actors__link">
+  <a href="<?php echo esc_url( get_permalink($post->ID) ); ?>" class="actors__link">
     <img src="<?php echo esc_url($actor_icon['url']); ?>" alt="<?php echo esc_attr($actor_icon['alt']); ?>" class="actors__icon">
     <?php echo $archive_name; ?>
   </a>
