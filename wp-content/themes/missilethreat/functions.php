@@ -178,7 +178,7 @@ require get_template_directory() . '/inc/shortcodes.php';
 // Custom Post Types
 require get_template_directory() . '/inc/custom-posttypes.php';
 
-/**
+/*
  * Register and Enqueue Styles.
  */
 function missilethreat_register_styles() {
