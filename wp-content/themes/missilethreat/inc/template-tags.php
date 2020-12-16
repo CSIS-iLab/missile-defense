@@ -410,6 +410,60 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'missiledefense_actors' ) ) :
+	/**
+	 * Returns group of links to Actors and their icons by category.
+	 *
+	 */
+	function missiledefense_actors( $group ) {
+		$object = get_queried_object();
+		$actors_group = get_field( $group, $object->name );
+
+		$args = array(
+			'post_type' => 'actors',
+			'numberposts' => -1,
+			'orderby' => 'meta_value',
+			'order' => 'ASC',
+			'meta_key' => '_actors_archive_name',
+			'include' => $actors_group
+		);
+
+		$actors = get_posts( $args ); ?>
+
+		<?php
+		foreach ( $actors as $post) {
+			setup_postdata( $post );
+			include( locate_template( 'template-parts/actor-block.php' ) );
+		}
+	}
+endif;
+
+if ( ! function_exists( 'missiledefense_defsys' ) ) :
+	/**
+	 * Returns group of links to Defense Systems and their icons by category.
+	 *
+	 */
+	function missiledefense_defsys($group) {
+		$object = get_queried_object();
+		$systems_group = get_field( $group, $object->name );
+
+		$args = array(
+			'post_type' => 'systems',
+			'numberposts' => -1,
+			'orderby' => 'post_title',
+			'order' => 'ASC',
+			'include' => $systems_group
+		);
+
+		$systems = get_posts( $args );
+
+		foreach ( $systems as $post) {
+		setup_postdata( $post );
+		include( locate_template( 'template-parts/system-block.php' ) );
+	}
+	}
+endif;
+
 /**
  * Displays the AddToAny Share Links.
  *
@@ -441,3 +495,4 @@ if (! function_exists('missiledefense_post_attribution')) :
 		}
 	}
 endif;
+

@@ -369,7 +369,10 @@
       0 3px 10px rgba(0, 0, 0, 0.11);
 
     &-icon {
+      width: rem(64px);
+      height: rem(64px);
       margin-bottom: rem(24px);
+      filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg) brightness(92%) contrast(86%);
     }
 
     &-title {

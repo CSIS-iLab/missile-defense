@@ -43,6 +43,7 @@
 			<div class="footer__news-nav">
 				<div class="footer__news-letter">
 					<?php dynamic_sidebar( 'newsletter' ); ?>
+
 				</div>
 
 				<div class="footer__nav-side">
