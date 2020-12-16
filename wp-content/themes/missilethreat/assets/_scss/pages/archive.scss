@@ -5,17 +5,13 @@
   &__content {
     margin-top: rem(32px);
     margin-bottom: rem(56px);
-    
-    @include breakpoint('small') {
-      margin-top: rem(56px);
-    }
 
     @include breakpoint('large') {
       display: grid;
       grid-gap: 6vw;
       grid-template-columns: auto 300px;
       justify-content: center;
-      margin-top: rem(148px);
+      margin-top: rem(48px);
     }
   }
 
