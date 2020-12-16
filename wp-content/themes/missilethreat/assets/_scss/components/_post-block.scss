@@ -47,6 +47,10 @@
   .thumbnail-link {
     grid-row: 6;
     margin-bottom: rem(24px);
+
+    img {
+      width: 100%;
+    }
   }
 
   &__excerpt {
