@@ -32,8 +32,8 @@
 
 	<footer class="single__footer">
 		<?php missiledefense_share(); ?>
-		<hr class="divider divider--gray single__footer-divider"/>
-		<?php echo missilethreat_authors_list_extended(); ?>
+		<hr class="divider divider--gray"/>
+		<?php echo missiledefense_citation(); ?>
 	</footer>
 
 </article><!-- .post -->
