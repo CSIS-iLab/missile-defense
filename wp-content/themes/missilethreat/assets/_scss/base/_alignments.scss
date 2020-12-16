@@ -17,14 +17,14 @@
 
 .alignwide {
   /* stylelint-disable-next-line */
-  > *:not(.addtoany_list) {
+  > *:not(figcaption):not(.addtoany_list) {
     @include missiledefense-wide-content;
   }
 }
 
 .alignfull {
   /* stylelint-disable-next-line */
-  > *:not(.addtoany_list) {
+  > *:not(figcaption):not(.addtoany_list) {
     @include missiledefense-full-width-content($size__container-max-width);
   }
 }
