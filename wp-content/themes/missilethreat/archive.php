@@ -32,33 +32,9 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
 
 <main id="site-content" role="main">
 
-<header class="archive__header entry-header">
-<?php
 
+<?php get_template_part( 'template-parts/entry-header', get_post_type() ); ?>
 
-    if ( $posts_page ) { // Only target the blog page
-      $post = get_queried_object();
-      setup_postdata( $post ); 
-          // Display the post title
-          // the_title();
-  
-          // Display the post thumbnail
-          if ( has_post_thumbnail() ) {
-              // featured image URL
-              $size = 'my_custom_size';
-              $thumbnail_id =  get_post_meta( get_the_ID(), '_thumbnail_id', true );
-              $image_src = wp_get_attachment_image_src( $thumbnail_id, $size );
-
-              $url = $image_scr[0]; 
-  
-              // Display post thumbnail
-              the_post_thumbnail( $size );
-          }
-      wp_reset_postdata(); // Restore the $post global
-  }
-  ?>
-
-</header>
 
 <div class='archive__content'>
 
@@ -118,6 +94,11 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
         
       <?php
 
+      $total_posts = $wp_the_query->found_posts;
+      $page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+      $pages = $wp_the_query->max_num_pages;
+      echo '<h2 class="archive__results">' . $total_posts . ' items, Page ' . $page . ' of ' . $pages . '</h2>';
+
       if ( have_posts() ) {
 
         $i = 0;
@@ -130,6 +111,8 @@ $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
 
         }
       } 
+
+      get_template_part( 'template-parts/pagination' );
       ?>
     </section>
 

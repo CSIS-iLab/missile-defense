@@ -1,9 +1,15 @@
 @use 'abstracts' as *;
 
 .searchandfilter {
+  margin-bottom: rem(48px);
+  
   h4 {
     @extend %font-ui-text-md;
     color: $color-text-dark-170;
+  }
+
+  ul {
+    padding-left: 0;
   }
 
   .sf-input-checkbox {

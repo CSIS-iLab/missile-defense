@@ -1,6 +1,6 @@
 <?php
 /**
- * A template partial to output pagination for the CSIS Mag default theme.
+ * A template partial to output pagination for the Missile Threat default theme.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -15,16 +15,8 @@
  * The text inside the span with the class nav-short will be hidden on small screens.
  */
 
-$prev_text = sprintf(
-	'%s <span class="nav-prev-text">%s</span>',
-	'<span aria-hidden="true">&larr;</span>',
-	__( 'Newer <span class="nav-short">Posts</span>', 'missilethreat' )
-);
-$next_text = sprintf(
-	'<span class="nav-next-text">%s</span> %s',
-	__( 'Older <span class="nav-short">Posts</span>', 'missilethreat' ),
-	'<span aria-hidden="true">&rarr;</span>'
-);
+$prev_text = missilethreat_get_svg('chevron-left');
+$next_text = missilethreat_get_svg('chevron-right');
 
 $posts_pagination = get_the_posts_pagination(
 	array(
@@ -47,8 +39,6 @@ if ( strpos( $posts_pagination, 'next page-numbers' ) === false ) {
 if ( $posts_pagination ) { ?>
 
 	<div class="pagination-wrapper section-inner">
-
-		<hr class="styled-separator pagination-separator is-style-wide" aria-hidden="true" />
 
 		<?php echo $posts_pagination; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped during generation. ?>
 

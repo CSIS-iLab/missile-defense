@@ -1,20 +1,17 @@
 @use '../abstracts' as *;
+@use '../components/pagination';
 
 .archive {
   &__content {
     margin-top: rem(32px);
     margin-bottom: rem(56px);
-    
-    @include breakpoint('small') {
-      margin-top: rem(56px);
-    }
 
     @include breakpoint('large') {
       display: grid;
       grid-gap: 6vw;
       grid-template-columns: auto 300px;
       justify-content: center;
-      margin-top: rem(148px);
+      margin-top: rem(48px);
     }
   }
 
@@ -149,6 +146,45 @@
       p:not(:last-child) {
         margin-bottom: rem(8px);
       }
+    }
+  }
+}
+
+.blog {
+  .archive {
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      @include breakpoint('large') {
+        display: grid;
+        column-gap: 6vw;
+      }
+    }
+
+    &__posts {
+      order: 2;
+
+      @include breakpoint('large') {
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+
+    &__sidebar {
+      order: 1;
+
+      @include breakpoint('large') {
+        grid-column: 2;
+        grid-row: 1;
+      }
+    }
+
+    &__results {
+      @extend %font-ui-text-lg;
+      margin-bottom: rem(8px);
+      color: $color-text-dark-155;
+      font-weight: normal;
     }
   }
 }
