@@ -1,4 +1,4 @@
-@use 'abstracts' as *;
+@use '../abstracts' as *;
 
 .tableOfContents {
   @extend %font-ui-text-lg;
@@ -7,8 +7,9 @@
   color: $color-text-dark-190;
   background: $color-primary-light-gray;
 
-  h2 {
+  .tableOfContents__heading {
     @extend %font-ui-heading-md;
+    margin-top: 0;
     margin-bottom: rem(16px);
     color: $color-text-dark-100;
   }
@@ -18,13 +19,24 @@
   }
 
   &__chapters {
+    li {
+      transition: all 0.3s ease-in-out;
+    }
+    
     li:not(:last-child) {
       margin-bottom: rem(12px);
     }
 
     li:last-child {
-      padding-bottom: rem(24px);
-      border-bottom: solid rem(1px) $color-primary-blue-900;
+      margin-bottom: rem(24px);
+    }
+
+    li:hover {
+      color: $color-primary-blue-500;
+
+      .icon {
+        color: $color-primary-blue-500;
+      }
     }
   }
 

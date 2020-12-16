@@ -164,7 +164,6 @@ function missilethreat_authors() {
 	if ( function_exists( 'coauthors_posts_links' ) ) {
     $authors = coauthors_posts_links( ', ', ' and ', null, null, false );
 	} else {
-		// $authors = get_the_author();
 		$authors = the_author_posts_link();
 	}
 
@@ -184,7 +183,6 @@ if (! function_exists('missilethreat_authors_list_extended')) :
 		global $post;
 
 		if (function_exists('coauthors_posts_links')) {
-			$authors = '<h2 class="heading">Authors</h2>';
 
 			foreach (get_coauthors() as $coauthor) {
 				$name = $coauthor->display_name;
@@ -193,7 +191,7 @@ if (! function_exists('missilethreat_authors_list_extended')) :
 					$name = '<a href="' . $coauthor->website . '">' . $coauthor->display_name . '</a>';
 				}
 
-				$authors .= '<p class="post__authors-author">' . $name . ' ' . $coauthor->description . '</p>';
+				$authors .= '<p class="post__authors-author"><span class="text--bold">' . $name . '</span> ' . $coauthor->description . '</p>';
 			}
 		} else {
 			$authors = the_author_posts_link();
@@ -275,7 +273,7 @@ if ( ! function_exists( 'missiledefense_citation' ) ) :
 			$title = get_the_archive_title();
 		}
 
-		printf( '<h4 class="post-footer-heading">Cite this Page</h4><p class="citation-container"><span class="citation">' . esc_html( '%1$s, "%2$s,"', 'missiledefense' ) . ' <em>%3$s</em>' . esc_html( ', Center for Strategic and International Studies, %4$s, %5$s%6$s.', 'missiledefense') . '</span><button id="btn-copy" class="btn btn-square btn-small btn-gray" data-clipboard-target=".citation" aria-label="Copied!">Copy</button></p>', $authors, $title, get_bloginfo( 'name' ), get_the_date(), $modified_date, get_the_permalink() ); // WPCS: XSS OK.
+		printf( '<h2 class="cite__heading text--bold">Cite this Page</h2><p class="cite__container"><span class="cite__citation">' . esc_html( '%1$s, "%2$s,"', 'missiledefense' ) . ' <em>%3$s</em>' . esc_html( ', Center for Strategic and International Studies, %4$s, %5$s%6$s.', 'missiledefense') . '</span><button id="btn-copy" class="btn btn--dark btn--icon btn--short" data-clipboard-target=".cite__citation" aria-label="Copied!">Copy' . missilethreat_get_svg( 'copy' ) . '</button></p>', $authors, $title, get_bloginfo( 'name' ), get_the_date(), $modified_date, get_the_permalink() ); // WPCS: XSS OK.
 	}
 endif;
 
@@ -476,6 +474,24 @@ if (! function_exists('missiledefense_share')) :
 	function missiledefense_share() {
 		if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
 			ADDTOANY_SHARE_SAVE_KIT();
+		}
+	}
+endif;
+
+/**
+ * Displays the post attribution.
+ *
+ *
+ * @return string $html The share links.
+ */
+if (! function_exists('missiledefense_post_attribution')) :
+	function missilethreat_post_attribution() {
+		$object = get_queried_object();
+
+		$post_attribution = get_field( 'post_attribution', $object->name );
+
+		if ( !empty ( $post_attribution ) ) {
+			echo '<p class="single__footer-attribution">' .  $post_attribution . '</p>';
 		}
 	}
 endif;

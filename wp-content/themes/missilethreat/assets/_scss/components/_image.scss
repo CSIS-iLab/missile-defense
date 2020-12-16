@@ -1,9 +1,37 @@
 @use '../abstracts' as *;
 
-.image-caption {
+.featured-media {
+  margin-bottom: rem(32px);
+}
+
+img + figcaption {
   @extend %font-body-short-md;
-  display: block;
   max-width: $size__content-max-width;
-  margin: rem(12px) auto rem(32px) auto;
+  margin: rem(12px) 0 0 0;
   color: $color-text-dark-170;
+}
+
+.wp-block-image.aligncenter ,
+.wp-block-image.alignwide,
+.wp-block-image.alignfull {
+  margin-top: rem(32px);
+}
+
+// This is to align the figcaption as alignwide/full would otherwise force it to be full width. Margin/paddings address tweaks at different breakpoints
+.wp-block-image.alignfull figcaption,
+.wp-block-image.alignwide figcaption {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--container-padding);
+  padding-left: var(--container-padding);
+
+  @include breakpoint('680px') {
+    margin-left: 0;
+  }
+
+  @include breakpoint('770px') {
+    margin-left: auto;
+    padding-right: 0;
+    padding-left: 0;
+  }
 }

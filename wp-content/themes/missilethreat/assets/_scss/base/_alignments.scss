@@ -4,38 +4,60 @@
 .alignfull,
 .alignwide {
   @include missiledefense-full-width-wrapper;
+
+  @include breakpoint('large') {
+    figcaption {
+      max-width: $size__content-max-width;
+      margin: rem(12px) auto 0 auto !important;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+  }
 }
 
 .alignwide {
   /* stylelint-disable-next-line */
   > *:not(figcaption):not(.addtoany_list) {
-    @include missiledefense-full-width-content;
+    @include missiledefense-wide-content;
+  }
+}
+
+.alignfull {
+  /* stylelint-disable-next-line */
+  > *:not(figcaption):not(.addtoany_list) {
+    @include missiledefense-full-width-content($size__container-max-width);
   }
 }
 
 .alignleft,
-.alignright {
-  float: none;
+.alignright,
+.has-text-align-right {
+  --margin-text-side: #{auto};
+  --margin-gutter-side: #{auto};
 
   @include breakpoint('small') {
-    --padding-sides: var(--container-padding);
-    padding: 0 var(--padding-sides);
+    --sm-max-width: #{rem(250px)};
+    --lg-max-width: #{rem(250px)};
+    max-width: var(--lg-max-width);
   }
 
   @include breakpoint('medium') {
-    --margin-text-side: #{rem(32)};
-    --padding-sides: 0;
-    max-width: 50%;
+    --lg-max-width: #{rem(400px)};
+    --margin-text-side: #{rem(24px)};
     margin-top: 0;
   }
-
+  
   @include breakpoint('large') {
-    --margin-text-side: #{rem(40)};
-    --margin-gutter-side: #{rem(-128)};
+    --margin-text-side: #{3vw};
+    --margin-gutter-side: #{-6vw};
   }
 
   @include breakpoint('xlarge') {
-    --margin-text-side: #{rem(48)};
+    --margin-text-side: #{rem(36px)};
+  }
+
+  &.size-medium {
+    max-width: var(--sm-max-width);
   }
 
   figcaption {
@@ -46,21 +68,22 @@
 }
 
 .alignleft {
-  float: none;
-  margin-right: var(--margin-text-side);
-  margin-left: var(--margin-gutter-side, 0);
+  float: none !important;
+  margin-right: var(--margin-text-side, 0) !important;
+  margin-left: var(--margin-gutter-side, 0) !important;
 
   @include breakpoint('medium') {
-    float: left;
+    float: left !important;
   }
 }
 
-.alignright {
-  float: none;
-  margin-right: var(--margin-gutter-side, 0);
-  margin-left: var(--margin-text-side);
+.alignright,
+.has-text-align-right {
+  float: none !important;
+  margin-right: var(--margin-gutter-side, 0) !important;
+  margin-left: var(--margin-text-side, 0) !important;
 
   @include breakpoint('medium') {
-    float: right;
+    float: right !important;
   }
 }

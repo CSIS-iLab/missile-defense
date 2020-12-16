@@ -12,7 +12,7 @@
 
 <div class="tableOfContents">
   <div class="tableOfContents__details">
-  <h2>In this publication</h2>
+  <h2 class="tableOfContents__heading">In this publication</h2>
   <ul class="tableOfContents__resources" role="list">
 
 
@@ -71,7 +71,11 @@
       </ul>
       
       <?php
-    }
+    } ?>
+
+    <hr class="divider divider--blue">
+
+    <?php
     if( isset( $download_pdf['url'] ) && !empty( $download_pdf['url'] ) ) { ?>
     <a href="<?php echo esc_url($download_pdf['url']); ?>" target="_blank" rel="nofollow"><button type="button" class="btn btn--short btn--dark">Download full report</button></a>
     <?php 

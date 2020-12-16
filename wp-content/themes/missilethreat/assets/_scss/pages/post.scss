@@ -1,8 +1,139 @@
 @use '../abstracts' as *;
+@use '../components/at-a-glance';
+@use '../components/download-pdf';
 @use '../components/footnotes';
+@use '../components/key-takeaways';
+@use '../components/related-links-block';
+@use '../components/table-of-contents';
 
 .single__content {
   max-width: $size__content-max-width;
   margin-right: auto;
+  margin-bottom: rem(56px);
   margin-left: auto;
+  color: $color-text-dark-100;
+
+  /*----------  Figure  ----------*/
+
+  figure {
+    margin-bottom: rem(32px) !important;
+  }
+
+  /*----------  Blockquotes  ----------*/
+
+  blockquote {
+    @extend %font-copy-quote-sm;
+    margin-top: rem(32px);
+    margin-bottom: rem(32px);
+    margin-left: rem(32px);
+    padding-left: rem(24px);
+    color: $color-primary-blue-200;
+    text-align: left;
+    border-left: 3px solid $color-primary-light-blue;
+    
+    /* stylelint-disable-next-line */
+    &.has-text-align-right {
+      @extend %font-copy-quote-lg;
+      margin-top: rem(12px);
+      margin-bottom: rem(24px);
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    cite {
+      @extend %font-body-short-md;
+      display: block;
+      margin: rem(12px) auto 0 auto;
+      color: $color-text-dark-170;
+      font-style: normal;
+    }
+  }
+
+  /*----------  Gallery  ----------*/
+
+  .wp-block-gallery {
+    @include missiledefense-full-width-wrapper;
+
+    > * {
+      @include missiledefense-full-width-content($size__container-max-width);
+    }
+
+    > figcaption {
+      @extend %font-body-short-md;
+      margin: rem(12px) auto 0 auto !important;
+      color: $color-text-dark-170;
+
+      @include breakpoint('medium') {
+        width: $size__content-max-width;
+        padding: 0;
+      }
+    }
+
+    .blocks-gallery-grid {
+      flex-direction: column;
+      gap: rem(10px);
+
+      @include breakpoint('medium') {
+        flex-direction: row;
+      }
+    }
+
+    .blocks-gallery-item {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 0;
+
+      @include breakpoint('medium') {
+        width: calc(33.33333% - 10.66667px);
+      }
+
+      /* stylelint-disable-next-line */
+      figure {
+        max-height: rem(230px);
+        margin-bottom: 0 !important;
+      }
+    }
+    
+    .blocks-gallery-item__caption {
+      @extend %font-ui-text-md;
+      padding-bottom: rem(12px);
+      color: $color-text-light-190;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+    }
+  }
+
+  /*----------  Videos  ----------*/
+
+  /* stylelint-disable-next-line */
+  iframe[src*='youtube'] {
+    margin-bottom: rem(32px);
+  }
 }
+
+/*----------  Post footer  ----------*/
+
+.single__footer {
+
+  /*----------  Author and Attribution  ----------*/
+
+  .post__authors {
+    margin-top: rem(48px);
+  }
+
+  .post__authors-author,
+  &-attribution {
+    @extend %font-body-short-md-serif;
+    color: $color-text-dark-100;
+  }
+
+  .post__authors-author {
+    margin-bottom: rem(16px);
+  }
+
+  &-attribution {
+    margin-bottom: rem(48px);
+    font-style: italic;
+  }
+}
+
+

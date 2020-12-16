@@ -7,7 +7,7 @@
     margin-bottom: rem(4px);
     color: $color-text-dark-170;
   }
-
+  
   &__authors {
     color: $color-primary-blue-200;
   }
@@ -20,6 +20,5 @@
 
   .post-meta {
     @extend %font-ui-text-lg;
-    margin-left: rem(4px);
   }
 }

@@ -5,13 +5,11 @@
 @use 'base/base';
 @use 'base/typography';
 @use 'base/utilities';
-@use 'components/at-a-glance';
 @use 'components/breadcrumbs';
 @use 'components/buttons';
+@use 'components/divider';
 @use 'components/filter';
-@use 'components/footnotes';
 @use 'components/image';
-@use 'components/key-takeaways';
 @use 'components/legacy';
 @use 'components/media';
 @use 'components/navigation';
@@ -23,7 +21,6 @@
 @use 'components/search';
 @use 'components/select';
 @use 'components/share';
-@use 'components/table-of-contents';
 @use 'components/tables';
 @use 'layout/header';
 @use 'layout/footer';

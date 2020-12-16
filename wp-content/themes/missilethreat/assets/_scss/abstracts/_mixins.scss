@@ -146,7 +146,20 @@
   margin-left: calc(50% - 50vw);
 }
 
-@mixin missiledefense-full-width-content {
+@mixin missiledefense-full-width-content( $width: $size__content-wide-max-width ) {
+  width: 100%;
+  max-width: $width;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--container-padding);
+  padding-left: var(--container-padding);
+
+  @include breakpoint('1400px') {
+    --container-padding: 0;
+  }
+}
+
+@mixin missiledefense-wide-content {
   width: 100%;
   max-width: $size__content-wide-max-width;
   margin-right: auto;
@@ -155,7 +168,14 @@
   padding-left: var(--container-padding);
 
   @include breakpoint('large') {
-    padding-right: calc(var(--container-padding) + 64px);
-    padding-left: calc(var(--container-padding) + 64px);
+    width: 90%;
+  }
+
+  @include breakpoint('xlarge') {
+    width: 80%;
+  }
+
+  @include breakpoint('1400px') {
+    --container-padding: 0;
   }
 }

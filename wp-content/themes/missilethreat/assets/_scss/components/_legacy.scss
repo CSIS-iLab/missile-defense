@@ -30,3 +30,55 @@
     }
   }
 }
+
+// These styles control the legacy "Related Links" box that were added directly to the posts instead of using the specialized block. If old content is converted to using the block, this CSS can be safely removed.
+.relatedLinks {
+  margin-top: rem(40px);
+  margin-bottom: rem(40px);
+  padding: rem(24px) rem(32px);
+  background: $color-primary-light-gray;
+
+  h1 {
+    @extend %font-copy-heading-5;
+    margin-bottom: rem(12px);
+    color: $color-text-dark-100;
+    font-weight: 600 !important;
+  }
+
+  p {
+    @extend %font-body-short-lg;
+    color: $color-text-dark-170;
+    font-style: italic;
+    columns: 1 !important;
+
+    &:last-child {
+      margin-bottom: rem(24px);
+    }
+  }
+
+  a {
+    @extend %font-body-short-lg-serif;
+    display: inline-block;
+    margin-bottom: rem(12px);
+    color: $color-primary-blue-200;
+    font-style: normal;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    .icon {
+      width: 0.67em;
+      height: 0.67em;
+      margin-left: rem(2px);
+      fill: $color-primary-blue-600;
+    }
+
+    &:hover {
+      color: $color-primary-blue-500;
+
+      .icon {
+        fill: $color-primary-blue-500;
+      }
+    }
+  }
+}
