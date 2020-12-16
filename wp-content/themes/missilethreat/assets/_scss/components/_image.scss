@@ -17,6 +17,7 @@ img + figcaption {
   margin-top: rem(32px);
 }
 
+// This is to align the figcaption as alignwide/full would otherwise force it to be full width. Margin/paddings address tweaks at different breakpoints
 .wp-block-image.alignfull figcaption,
 .wp-block-image.alignwide figcaption {
   margin-right: auto;
