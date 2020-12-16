@@ -187,8 +187,8 @@ if (! function_exists('missilethreat_authors_list_extended')) :
 			foreach (get_coauthors() as $coauthor) {
 				$name = $coauthor->display_name;
 
-				if ( $coauthor->user_url ) {
-					$name = '<a href="' . $coauthor->user_url . '">' . $coauthor->display_name . '</a>';
+				if ( $coauthor->website ) {
+					$name = '<a href="' . $coauthor->website . '">' . $coauthor->display_name . '</a>';
 				}
 
 				$authors .= '<p class="post__authors-author"><span class="text--bold">' . $name . '</span> ' . $coauthor->description . '</p>';
