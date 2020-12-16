@@ -180,6 +180,8 @@
     }
     
     .post-block {
+      border: 0;
+      
       @include breakpoint('small') {
         grid-template-columns: 1fr 2fr;
         grid-template-rows: repeat(3, max-content) auto;
@@ -246,12 +248,13 @@
   &__recent-col2 {
     .post-block {
       margin-top: 0;
+      border: 0;
 
       &:last-of-type {
         margin-bottom: 0;
       }
 
-      @include breakpoint('medium') {
+      @include breakpoint('small') {
         grid-template-columns: 1fr;
         
         .thumbnail-link {
