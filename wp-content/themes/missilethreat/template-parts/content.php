@@ -31,7 +31,7 @@
 
 	<footer class="single__footer">
 		<?php missiledefense_share(); ?>
-		<hr class="block-divider"></hr>
+		<hr class="divider divider--gray"></hr>
 		<?php 
 		if ( 'post' == get_post_type() ) {
 		echo missilethreat_authors_list_extended();

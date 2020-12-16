@@ -65,6 +65,10 @@
     text-shadow: none;
   }
 
+  &-divider {
+    margin: rem(16px) 0;
+  }
+
   &-desc {
     @extend %font-body-list-lg;
 

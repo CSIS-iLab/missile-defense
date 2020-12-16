@@ -28,8 +28,7 @@
     }
 
     li:last-child {
-      padding-bottom: rem(24px);
-      border-bottom: solid rem(1px) $color-primary-blue-900;
+      margin-bottom: rem(24px);
     }
 
     li:hover {

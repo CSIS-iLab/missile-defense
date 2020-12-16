@@ -1,20 +1,17 @@
 @use '../abstracts' as *;
 
-.block-divider,
-.page__header-divider {
-  border: 0;
-  opacity: 0.5;
-}
-
-.block-divider {
+.divider {
   height: rem(1px);
-  background-color: $color-line-light-gray;
-}
-
-.page__header-divider {
-  height: rem(4px);
-  margin: rem(16px) 0;
   background-color: $color-primary-light-blue;
+  border: 0;
+
+  &--blue {
+    background-color: $color-primary-blue-900;
+  }
+
+  &--md {
+    height: rem(4px);
+  }
 
   &--thicc {
     height: rem(8px);
@@ -22,5 +19,9 @@
 
   &--short {
     display: none;
+  }
+
+  &--gray {
+    background: $color-line-light-gray;
   }
 }

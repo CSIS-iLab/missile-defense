@@ -33,7 +33,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 			the_title( '<h1 class="single__header-title">', '</h1>' );
 		} ?>
 
-		<hr class="page__header-divider page__header-divider--thicc"></hr>
+		<hr class="divider divider--thicc page__header-divider"></hr>
 		
 		<div class="single__header-meta">
 			Last Updated <?php missilethreat_last_updated(); ?>
@@ -55,7 +55,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 			<div class="page__header-inner--narrow">
 				<?php get_template_part( 'template-parts/breadcrumbs' ); ?>
 				<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
-				<hr class="page__header-divider"></hr>
+				<hr class="divider divider--md page__header-divider"></hr>
 				<div class="page__header-meta">
 					Last Updated <?php missilethreat_last_updated(); ?>
 				</div>
@@ -68,7 +68,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 		<header class="page__header entry-header" <?php echo $feat_image; ?>>
 			<div class="page__header-inner">
 				<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
-				<div class="page__header-divider"></div>
+				<div class="divider divider--md page__header-divider"></div>
 				<div class="page__header-desc"><?php the_archive_top_content(); ?> </div>
 			</div><!-- .page__header-inner -->
   
@@ -78,7 +78,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
     <header class="page__header page__header--short entry-header">
 			<div class="page__header-inner">
 				<h1 class="page__header-title text--semibold"><?php the_archive_title(); ?></h1>
-				<hr class="page__header-divider page__header-divider--short"></hr>
+				<!-- <hr class="divider divider--short"></hr> -->
 				<div class="page__header-desc page__header-desc--short"><?php the_archive_top_content(); ?> </div>
 			</div><!-- .page__header-inner -->
     
@@ -88,7 +88,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 		$feat_image = get_the_post_thumbnail_url( $post->ID ); ?>
 		<header class="page__header entry-header"  style="background-image: url('<?php echo $feat_image; ?>')">
 			<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
-			<hr class="page__header-divider"></hr>
+			<hr class="divider divider--md page__header-divider"></hr>
 
 	<?php } 
 	
@@ -104,7 +104,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 					if ( has_excerpt() ) { ?>
 						<div class="single__header-excerpt"><?php the_excerpt(); ?></div>
 					<?php } ?>
-					<hr class="page__header-divider page__header-divider--thicc"></hr>
+					<hr class="divider divider--thicc page__header-divider"></hr>
 					<div class="single__header-meta">
 					<?php
 					missilethreat_posted_on();
@@ -133,7 +133,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 			setup_postdata($post); ?>
 			<div class="page__header-inner">
 				<h1 class="page__header-title text--semibold"><?php the_title(); ?></h1>
-				<hr class="page__header-divider"></hr>
+				<hr class="divider divider--md page__header-divider"></hr>
 				<div class="page__header-desc"><?php the_content(); ?> </div>
 			</div><!-- .page__header-inner -->
 			

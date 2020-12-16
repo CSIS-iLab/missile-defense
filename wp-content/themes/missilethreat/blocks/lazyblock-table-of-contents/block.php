@@ -71,7 +71,11 @@
       </ul>
       
       <?php
-    }
+    } ?>
+
+    <hr class="divider divider--blue">
+
+    <?php
     if( isset( $download_pdf['url'] ) && !empty( $download_pdf['url'] ) ) { ?>
     <a href="<?php echo esc_url($download_pdf['url']); ?>" target="_blank" rel="nofollow"><button type="button" class="btn btn--short btn--dark">Download full report</button></a>
     <?php 
