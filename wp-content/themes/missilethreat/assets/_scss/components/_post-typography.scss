@@ -7,10 +7,7 @@
   > p {
     @extend %font-body-long-lg;
     color: $color-text-dark-190;
-    
-    &:not(:last-of-type) {
-      margin-bottom: rem(40px);
-    }
+    margin-bottom: rem(40px);
 
     a {
       color: $color-primary-blue-200;
