@@ -6,8 +6,8 @@
 
   > p {
     @extend %font-body-long-lg;
-    color: $color-text-dark-190;
     margin-bottom: rem(40px);
+    color: $color-text-dark-190;
 
     a {
       color: $color-primary-blue-200;

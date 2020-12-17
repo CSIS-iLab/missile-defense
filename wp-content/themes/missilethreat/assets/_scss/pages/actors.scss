@@ -4,11 +4,15 @@
   margin: rem(32px) 0;
 
   h2 {
+    @extend %font-ui-heading-md;
+    margin-bottom: rem(16px);
+    color: $color-text-dark-100;
     text-align: center;
   }
 
   tbody {
     @extend %font-body-short-lg;
+    color: $color-text-dark-190;
 
     tr:nth-child(odd) {
       background: $color-primary-light-gray;
@@ -18,47 +22,59 @@
   a {
     color: $color-primary-blue-200;
     text-decoration: underline;
-  }
-}
 
-.dataTable thead {
-  th {
-    position: relative;
-    background-image: none !important;
+    &:hover {
+      color: $color-primary-blue-500;
+    }
   }
-
-  /* stylelint-disable */
-  th.sorting::after,
-  th.sorting_asc::after,
-  th.sorting_desc::after {
-    position: absolute;
-    top: rem(6px);
-    right: rem(15px);
-    display: block;
-    color: $color-text-dark-100;
-    font-family: FontAwesome;
-    opacity: 0.5;
-  }
-
-  th.sorting::after {
-    content: '\f0dc';
-    padding-top: 0.12em;
-    font-size: rem(16px);
-  }
-
-  th.sorting_asc::after {
-    content: '\f0de';
-    opacity: 1;
-  }
-
-  th.sorting_desc::after {
-    content: '\f0dd';
-    opacity: 1;
-  }
-  /* stylelint-enable */
 }
 
 /* stylelint-disable-next-line */
-table.dataTable.no-footer {
-  border-bottom: 0;
+table.dataTable {
+  border-collapse: collapse;
+
+  thead {
+    th {
+      @extend %font-ui-heading-sm;
+      position: relative;
+      color: $color-text-dark-100;
+      font-weight: 600;
+      background-image: none !important;
+    }
+
+    /* stylelint-disable */
+    th.sorting::after,
+    th.sorting_asc::after,
+    th.sorting_desc::after {
+      position: absolute;
+      top: rem(6px);
+      right: rem(15px);
+      display: block;
+      color: $color-text-dark-100;
+      font-family: FontAwesome;
+      opacity: 0.5;
+    }
+
+    th.sorting::after {
+      content: '\f0dc';
+      padding-top: 0.12em;
+      font-size: rem(16px);
+    }
+
+    th.sorting_asc::after {
+      content: '\f0de';
+      opacity: 1;
+    }
+
+    th.sorting_desc::after {
+      content: '\f0dd';
+      opacity: 1;
+    }
+    /* stylelint-enable */
+  }
+
+  /* stylelint-disable-next-line */
+  &.no-footer {
+    border-bottom: 0;
+  }
 }

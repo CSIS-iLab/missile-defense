@@ -80,7 +80,7 @@ if ( $missiles ) : ?>
           ?>
           
           <tr id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <td>
+            <td class="text--semibold">
               <?php
                 if(isset($custom['missile_name']) && $custom['missile_name'][0] != '') {
                   if(get_post_status() != 'publish' && !isset($custom['missile_url'])) {
@@ -134,7 +134,7 @@ if ( $missiles ) : ?>
 	endif;
 	wp_reset_postdata();
 ?>
-  
+
   </div><!-- .single__content -->
 
 	<footer class="single__footer">
