@@ -231,7 +231,7 @@ if (! function_exists('missilethreat_display_tags')) :
 					
 		if ( $tags_list ) {
 			/* translators: 1: list of tags. */
-			printf( '<div class="entry__tags">' . esc_html__( '%1$s', 'missilethreat' ) . '</div>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			printf( '<div class="related__tags"><h2 class="related__tags-header">More on</h2>' . esc_html__( '%1$s', 'missilethreat' ) . '</div>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 endif;
