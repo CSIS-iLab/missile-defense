@@ -1,7 +1,8 @@
 @use '../abstracts' as *;
 
 .missile-table {
-  margin: rem(32px) 0;
+  margin-top: rem(32px);
+  margin-bottom: rem(32px);
 
   h2 {
     @extend %font-ui-heading-md;

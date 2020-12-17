@@ -39,7 +39,8 @@ if ( !empty( $terms ) ) {
 
 if ( $missiles ) : ?>
 
-	  <div class="missile-table banded">
+
+	  <div class="missile-table banded alignfull">
       <h2><?php esc_html_e( 'Missiles', 'missiledefense' ); ?></h2>
       <table id="missileTable">
         <thead>
@@ -128,7 +129,6 @@ if ( $missiles ) : ?>
         </tbody>
       </table>
     </div><!-- .missile-table banded -->
-  
     
     <?php
 	endif;
