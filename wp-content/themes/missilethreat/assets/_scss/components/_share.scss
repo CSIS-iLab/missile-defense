@@ -27,7 +27,7 @@
   /* stylelint-disable */
   .a2a_button_print img,
   .a2a_button_linkedin img,
-  .a2a_button_link img {
+  .a2a_button_copy_link img {
     width: rem(24px);
     height: rem(24px);
   }
@@ -100,6 +100,7 @@
   }
 
   .single__footer & {
+    justify-content: left;
     margin: rem(32px) auto rem(32px) 0;
 
     /* stylelint-disable */
@@ -123,6 +124,7 @@
     }
 
     @include breakpoint('medium') {
+      justify-content: right;
       width: fit-content;
       margin-right: 0;
       margin-left: auto;
@@ -140,37 +142,7 @@
         border-right: 1px solid $color-primary-light-blue;
       }
     }
-
-    // &::before {
-    //   content: 'Share';
-    //   margin-right: rem(12);
-    //   color: $color-text-gray-50;
-    //   @extend %font-label-lg;
-    //   font-weight: 600;
-    //   text-transform: uppercase;
-    // }
   }
-
-  // .footer & {
-  //   @include breakpoint($break: 'medium', $dir: 'max-width') {
-  //     justify-content: center;
-  //   }
-
-  //   a {
-  //     flex: 1 1 auto;
-  //     max-width: fit-content;
-
-  //     /* stylelint-disable-next-line */
-  //     path {
-  //       // fill: $color-text-gray-10;
-  //     }
-
-  //     /* stylelint-disable-next-line */
-  //     &:hover path {
-  //       // fill: $color-white-100;
-  //     }
-  //   }
-  // }
 }
 
 .share-wrapper {
