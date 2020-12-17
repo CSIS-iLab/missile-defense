@@ -57,3 +57,8 @@
   }
   /* stylelint-enable */
 }
+
+/* stylelint-disable-next-line */
+table.dataTable.no-footer {
+  border-bottom: 0;
+}
