@@ -45,6 +45,7 @@
 			<p class="related__tags"><span>More on</span><?php echo missilethreat_display_tags(); ?></p>
 			
 			<?php echo missiledefense_related_posts(); ?>
+			
 		</div>
 
 	</footer>

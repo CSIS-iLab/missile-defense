@@ -292,13 +292,35 @@ if ( ! function_exists( 'missiledefense_related_posts' ) ) :
 			$current_related_tags = get_term_meta( $term, 'archive_related_tags', true );
 		}
 
-		echo '<div class="relatedposts"><h4 class="post-footer-heading">Related Posts</h4>';
-		echo do_shortcode( '[catlist pagination=no tags="' . $current_related_tags . '" numberposts=3 date=yes date_class="relatedDates"]' );
+		$args = array(
+			'tag' => $current_related_tags, // Here is where is being filtered by the tag you want
+			'orderby' => 'date',
+			'order' => 'DSC',
+			'posts_per_page' => '2'
+
+		);
+		
+		$the_query = new WP_Query( $args );
+		
+		if ( $the_query->have_posts() ) {
+			
+			$i = 0;
+			
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				
+				get_template_part( 'template-parts/block-post' );
+				
+				
+			}
+		}
 
 		if ( $current_related_tags ) {
-			echo '<a class="moreposts" href="' . esc_url( '/tag/' . $current_related_tags) . '">Read all related posts</a></div>';
+			echo '<a class="moreposts" href="' . esc_url( '/tag/' . $current_related_tags) . '">All related posts</a></div>';
 		}
-	}
+
+		wp_reset_query();
+	} 
 endif;
 
 if ( ! function_exists( 'missiledefense_display_system_elements' ) ) :
