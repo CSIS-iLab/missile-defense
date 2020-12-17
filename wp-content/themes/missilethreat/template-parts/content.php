@@ -17,14 +17,12 @@
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-	<?php
-
-	// get_template_part( 'template-parts/entry-header' );
-	?>
-
 	<div class="single__content">
 
 		<?php
+
+			echo missiledefense_display_system_elements();
+
 			the_content( __( 'Continue reading', 'missilethreat' ) );
 		?>
 	</div><!-- .post-inner -->
