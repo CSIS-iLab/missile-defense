@@ -3,6 +3,8 @@
 
 .archive {
   &__content {
+    display: flex;
+    flex-direction: column;
     margin-top: rem(32px);
     margin-bottom: rem(56px);
 
@@ -27,6 +29,78 @@
   &__desc {
     @extend %font-copy-quote-sm;
     color: $color-text-dark-190;
+  }
+
+  &__posts {
+    order: 2;
+
+    @include breakpoint('large') {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+  &__results {
+    @extend %font-ui-text-lg;
+    margin-bottom: rem(8px);
+    color: $color-text-dark-155;
+    font-weight: normal;
+  }
+
+  &__sidebar {
+    order: 1;
+    max-width: rem(300px);
+    padding-top: rem(16px);
+    color: $color-text-dark-100;
+
+    @include breakpoint('large') {
+      grid-column: 2;
+      grid-row: 1;
+      padding-top: 0;
+    }
+
+    &-header {
+      @extend %font-ui-heading-md;
+    }
+
+    &-desc {
+      @extend %font-body-short-md-serif;
+      margin: rem(12px) 0;
+    }
+
+    &-news {
+      @extend %font-ui-heading-xs;
+      margin-top: rem(32px);
+      padding-bottom: rem(8px);
+      color: $color-text-dark-170;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .page__header-divider {
+      margin-top: 0;
+    }
+
+    &-widget {
+      @extend %font-body-list-md;
+      margin-top: rem(12px);
+      color: $color-primary-blue-300;
+      text-transform: capitalize;
+      
+      a {
+        display: inline;
+        transition: all 0.3s ease-in-out;
+      }
+      
+      a:hover {
+        color: $color-primary-blue-100;
+        text-decoration: underline;
+      }
+
+      p:not(:last-child) {
+        margin-bottom: rem(8px);
+      }
+    }
   }
 
   .actors {
@@ -92,99 +166,6 @@
       margin-right: rem(16px);
       filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg) brightness(92%) contrast(86%);
       transition: all 0.3s ease-in-out;
-    }
-  }
-
-  &__sidebar {
-    grid-column: 2;
-    max-width: rem(300px);
-    padding-top: rem(16px);
-    color: $color-text-dark-100;
-
-    @include breakpoint('large') {
-      padding-top: 0;
-    }
-
-    &-header {
-      @extend %font-ui-heading-md;
-    }
-
-    &-desc {
-      @extend %font-body-short-md-serif;
-      margin: rem(12px) 0;
-    }
-
-    &-news {
-      @extend %font-ui-heading-xs;
-      margin-top: rem(32px);
-      padding-bottom: rem(8px);
-      color: $color-text-dark-170;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
-
-    .page__header-divider {
-      margin-top: 0;
-    }
-
-    &-widget {
-      @extend %font-body-list-md;
-      margin-top: rem(12px);
-      color: $color-primary-blue-300;
-      text-transform: capitalize;
-      
-      a {
-        display: inline;
-        transition: all 0.3s ease-in-out;
-      }
-      
-      a:hover {
-        color: $color-primary-blue-100;
-        text-decoration: underline;
-      }
-
-      p:not(:last-child) {
-        margin-bottom: rem(8px);
-      }
-    }
-  }
-}
-
-.blog {
-  .archive {
-    &__content {
-      display: flex;
-      flex-direction: column;
-
-      @include breakpoint('large') {
-        display: grid;
-        column-gap: 6vw;
-      }
-    }
-
-    &__posts {
-      order: 2;
-
-      @include breakpoint('large') {
-        grid-column: 1;
-        grid-row: 1;
-      }
-    }
-
-    &__sidebar {
-      order: 1;
-
-      @include breakpoint('large') {
-        grid-column: 2;
-        grid-row: 1;
-      }
-    }
-
-    &__results {
-      @extend %font-ui-text-lg;
-      margin-bottom: rem(8px);
-      color: $color-text-dark-155;
-      font-weight: normal;
     }
   }
 }

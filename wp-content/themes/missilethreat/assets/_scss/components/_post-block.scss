@@ -47,6 +47,10 @@
   .thumbnail-link {
     grid-row: 6;
     margin-bottom: rem(24px);
+
+    img {
+      width: 100%;
+    }
   }
 
   &__excerpt {
@@ -55,7 +59,7 @@
     color: $color-text-dark-190;
   }
 
-  @include breakpoint('medium') {
+  @include breakpoint('small') {
     position: relative;
     grid-template-columns: 2fr 1fr;
     column-gap: rem(40px);
