@@ -40,6 +40,13 @@
 
 		<?php echo missiledefense_citation(); ?>
 
+		<div class="related">
+			<h2 class="related__heading">Related</h2>
+			<p class="related__tags"><span>More on</span><?php echo missilethreat_display_tags(); ?></p>
+			
+			<?php echo missiledefense_related_posts(); ?>
+		</div>
+
 	</footer>
 
 </article><!-- .post -->
