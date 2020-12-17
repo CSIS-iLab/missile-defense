@@ -334,12 +334,13 @@ if ( ! function_exists( 'missiledefense_display_system_elements' ) ) :
 				$archiveTitle = esc_html__( 'System Elements', 'missiledefense' );
 			}
 
-			$html = '<div class="system-elements">
-					<h1>' . $archiveTitle . '</h1>
-					<ul role="list">';
+			$html = '<div class="system-elements alignright">
+			<h2 class="system-elements__header text--semibold">' . $archiveTitle . '</h2>
+			<hr class="system-elements__divider">
+			<ul role="list" class="system-elements__list">';
 
 			foreach ( $elements as $element ) {
-				$html .= '<li id="post-' . $element->ID . '"><a href="' . esc_url( get_permalink( $element->ID )) . '" rel="bookmark">' . $element->post_title . '</a></li>';
+				$html .= '<li id="post-' . $element->ID . '" class="system-elements__item"><a href="' . esc_url( get_permalink( $element->ID )) . '" rel="bookmark">' . $element->post_title . '</a></li>';
 			}
 			wp_reset_postdata();
 			$html .= '</ul></div>';
