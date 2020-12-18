@@ -362,7 +362,7 @@ if ( ! function_exists( 'missiledefense_display_footnotes' ) ) :
 			$footnotes = $easyFootnotes->easy_footnote_after_content('');
 
 			if ( $footnotes != '' ) {
-				printf( '<div class="entry-footnotes col-xs-12 collapsible-content-container"><h4 class="post-footer-heading collapsible-title">' . esc_html( 'Footnotes', 'missiledefense') . '</h4><ol class="easy-footnotes-wrapper collapsible-content">%1$s</ol></div>', $footnotes ); // WPCS: XSS OK.
+				printf( '<div class="entry-footnotes col-xs-12 collapsible-content-container"><h2 class="post-footer-heading collapsible-title">' . esc_html( 'Footnotes', 'missiledefense') . '</h2><ol class="easy-footnotes-wrapper collapsible-content">%1$s</ol></div>', $footnotes ); // WPCS: XSS OK.
 				}
 		}
 	}

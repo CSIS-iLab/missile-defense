@@ -31,6 +31,7 @@
 	</div><!-- .post-inner -->
 
 	<footer class="single__footer">
+	<?php missiledefense_display_footnotes(); ?>
 		<?php missiledefense_share(); ?>
 		<hr class="divider divider--gray"/>
 		<?php echo missiledefense_citation(); ?>
