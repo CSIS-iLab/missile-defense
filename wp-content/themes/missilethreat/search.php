@@ -8,6 +8,8 @@ get_header();
 
 <main id="site-content" role="main">
 
+
+
 <?php
 
 global $wp_query;
@@ -27,34 +29,47 @@ if ( $wp_query->found_posts ) {
 
 		?>
 
-	<header class="page__header page__header--short">
+	<header class="page__header page__header--short entry-header">
 		<div class="page__header-inner">
     	<h1 class="page__header-label">Search results:<br/></h1>
     	<?php get_search_form(); ?>
 		</div>
-  </header><!-- .archive-header -->
+	</header><!-- .archive-header -->
+	
+	<div class='archive__content'>
+
+		<section class="search-page">
   
-  <div class="search-total"><?php echo $archive_subtitle; ?></div>
+			<div class="search-total"><?php echo $archive_subtitle; ?></div>
 
-		<?php
+				<?php
 
-	if ( have_posts() ) {
+			if ( have_posts() ) {
 
-		$i = 0;
+				$i = 0;
 
-		while ( have_posts() ) {
-			$i++;
-			if ( $i > 1 ) {
+				while ( have_posts() ) {
+					$i++;
+					if ( $i > 1 ) {
+					}
+					the_post();
+
+					get_template_part( 'template-parts/block-post', get_post_type() );
+
+				}
 			}
-			the_post();
+			?>
 
-			get_template_part( 'template-parts/block-post', get_post_type() );
+			<?php get_template_part( 'template-parts/pagination' ); ?>
+		</section>
 
-		}
-	}
-	?>
+		<aside class="archive__sidebar">
+			<?php
+			get_template_part( 'template-parts/sidebar' )
 
-	<?php get_template_part( 'template-parts/pagination' ); ?>
+			?>
+		</aside>
+	</div><!-- .archive__content -->
 
 </main><!-- #site-content -->
 

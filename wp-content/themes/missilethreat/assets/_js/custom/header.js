@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   const entryHeaderOptions = {
-    rootMargin: '-250px 0px 0px 0px'
+    rootMargin: '-230px 0px 0px 0px'
   }
 
   const entryHeaderObserver = new IntersectionObserver(function (entries, entryHeaderObserver) {
