@@ -52,7 +52,7 @@
     --margin-gutter-side: #{-6vw};
   }
 
-  @include breakpoint('xlarge') {
+  @include breakpoint('xxlarge') {
     --margin-text-side: #{rem(36px)};
   }
 

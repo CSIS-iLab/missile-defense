@@ -18,17 +18,11 @@
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 
-	<?php
-
-	// get_template_part( 'template-parts/entry-header' );
-	// missiledefense_system_terms()
-	?>
-
 	<div class="single__content">
 		<?php
 			the_content( __( 'Continue reading', 'missilethreat' ) );
 		?>
-	</div><!-- .post-inner -->
+	</div><!-- .single__content -->
 
 	<footer class="single__footer">
 	<?php missiledefense_display_footnotes(); ?>

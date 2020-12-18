@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const navClose = document.querySelector('.nav-close')
   const logo = document.querySelector('.header__logo')
   const searchIcon = document.querySelector('.header__search-icon')
+  const searchField = document.querySelector('.header__search-field')
   const searchClose = document.querySelector('.header__search-close')
   const searchForm = document.querySelector('.header__search')
   const content = document.querySelector('#site-content')
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
     searchIcon.setAttribute('aria-expanded', true)
     nav.setAttribute('aria-expanded', false)
     navClose.classList.remove('is-visible')
+    searchField.focus()
   })
 
 
@@ -57,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   const entryHeaderOptions = {
-    rootMargin: '-250px 0px 0px 0px'
+    rootMargin: '-230px 0px 0px 0px'
   }
 
   const entryHeaderObserver = new IntersectionObserver(function (entries, entryHeaderObserver) {

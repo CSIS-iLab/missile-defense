@@ -330,45 +330,48 @@ if ( ! function_exists( 'missiledefense_display_system_elements' ) ) :
 	 * @param int $id Post ID.
 	 */
 	function missiledefense_display_system_elements() {
-		global $post;
-		$terms = wp_get_post_terms( $post->ID, 'system', array('fields' => 'ids')  );
-		$elements = null;
-		if ( !empty( $terms ) ) {
-			$args = array(
-				'posts_per_page' => -1,
-				'post_type' => 'defsys',
-				'orderby' => 'post_title',
-				'order' => 'ASC',
-			    'tax_query' => array(
-		            array(
-		                'taxonomy' => 'system',
-		                'field' => 'term_id',
-		                'terms' => $terms[0],
-		            )
-		        )
-			);
-			$elements = get_posts( $args );
-		}
-
-		if ( $elements ) {
-			$archiveTitle = get_post_meta( $post->ID, '_systems_elements_list_title', true );
-			if(!$archiveTitle) {
-				$archiveTitle = esc_html__( 'System Elements', 'missiledefense' );
+		if ( 'systems' == get_post_type() ) {
+			global $post;
+			$terms = wp_get_post_terms( $post->ID, 'system', array('fields' => 'ids')  );
+			$elements = null;
+			if ( !empty( $terms ) ) {
+				$args = array(
+					'posts_per_page' => -1,
+					'post_type' => 'defsys',
+					'orderby' => 'post_title',
+					'order' => 'ASC',
+						'tax_query' => array(
+									array(
+											'taxonomy' => 'system',
+											'field' => 'term_id',
+											'terms' => $terms[0],
+									)
+							)
+				);
+				$elements = get_posts( $args );
 			}
 
-			$html = '<div class="system-elements">
-					<h1>' . $archiveTitle . '</h1>
-					<ul role="list">';
+			if ( $elements ) {
+				$archiveTitle = get_post_meta( $post->ID, '_systems_elements_list_title', true );
+				if(!$archiveTitle) {
+					$archiveTitle = esc_html__( 'System Elements', 'missiledefense' );
+				}
 
-			foreach ( $elements as $element ) {
-				$html .= '<li id="post-' . $element->ID . '"><a href="' . esc_url( get_permalink( $element->ID )) . '" rel="bookmark">' . $element->post_title . '</a></li>';
+				$html = '<div class="system-elements alignright">
+				<h2 class="system-elements__header text--semibold">' . $archiveTitle . '</h2>
+				<hr class="system-elements__divider">
+				<ul role="list" class="system-elements__list">';
+
+				foreach ( $elements as $element ) {
+					$html .= '<li id="post-' . $element->ID . '" class="system-elements__item"><a href="' . esc_url( get_permalink( $element->ID )) . '" rel="bookmark">' . $element->post_title . '</a></li>';
+				}
+				wp_reset_postdata();
+				$html .= '</ul></div>';
+
+				return $html;
 			}
-			wp_reset_postdata();
-			$html .= '</ul></div>';
-
-			return $html;
+			return;
 		}
-		return;
 	}
 endif;
 
@@ -506,7 +509,7 @@ endif;
  *
  * @return string $html The share links.
  */
-if (! function_exists('missiledefense_post_attribution')) :
+if (! function_exists('missilethreat_post_attribution')) :
 	function missilethreat_post_attribution() {
 		$object = get_queried_object();
 
@@ -518,3 +521,20 @@ if (! function_exists('missiledefense_post_attribution')) :
 	}
 endif;
 
+
+
+/**
+ * Displays the number of items and pages on archive & search pages.
+ *
+ *
+ * @return string $html The share links.
+ */
+if (! function_exists('missilethreat_number_of_posts')) :
+	function missilethreat_number_of_posts() {
+		global $wp_query;
+		$total_posts = $wp_query->found_posts;
+		$page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		$pages = $wp_query->max_num_pages;
+		echo '<h2 class="archive__results">' . $total_posts . ' items, Page ' . $page . ' of ' . $pages . '</h2>';
+	}
+endif;
