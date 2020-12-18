@@ -227,11 +227,11 @@ if (! function_exists('missilethreat_display_tags')) :
 	function missilethreat_display_tags() {
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list('<ul class="post-meta__tags" role="list"><li>', '</li><li>', '</li></ul>');
+		$tags_list = get_the_tag_list('<ul class="related__tags-list" role="list"><li class="text--semibold">', '</li><li class="text--semibold">', '</li></ul>');
 					
 		if ( $tags_list ) {
 			/* translators: 1: list of tags. */
-			printf( '<div class="related__tags"><h2 class="related__tags-header">More on</h2>' . esc_html__( '%1$s', 'missilethreat' ) . '</div>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			printf( '<div class="related__tags"><h2 class="related__tags-heading">More on</h2>' . esc_html__( '%1$s', 'missilethreat' ) . '</div>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 endif;
@@ -315,8 +315,8 @@ if ( ! function_exists( 'missiledefense_related_posts' ) ) :
 			}
 		}
 
-		if ( $current_related_tags ) {
-			echo '<a class="moreposts" href="' . esc_url( '/tag/' . $current_related_tags) . '">All related posts</a></div>';
+		if ( $current_related_tags && $the_query->found_posts > 2 ) {
+			echo '<div class="related__more"><a href="' . esc_url( '/tag/' . $current_related_tags) . '">All related posts' . missilethreat_get_svg( 'chevron-right' ) . '</a></div>';
 		}
 
 		wp_reset_query();

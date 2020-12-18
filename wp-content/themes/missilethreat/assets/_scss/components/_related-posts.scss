@@ -1,0 +1,67 @@
+@use '../abstracts' as *;
+
+.related {
+  padding-top: rem(48px);
+  padding-bottom: rem(48px);
+  background-color: $color-primary-light-gray;
+  @include full-width-background($color-primary-light-gray);
+
+  &__heading {
+    @extend %font-ui-heading-md;
+    margin-bottom: rem(16px);
+    color: $color-text-dark-100;
+  }
+
+  &__tags {
+    display: flex;
+    gap: rem(16px);
+    margin-bottom: rem(12px);
+    text-transform: uppercase;
+    
+    &-heading {
+      @extend %font-ui-heading-xs;
+      color: $color-primary-blue-200;
+    }
+    
+    &-list {
+      @extend %font-ui-text-md;
+      display: flex;
+      gap: rem(10px);
+      color: $color-primary-blue-600;
+
+      a {
+        padding: rem(4px);
+        
+        &:hover {
+          color: $color-primary-blue-200;
+          background-color: $color-primary-light-blue;
+        }
+      }
+    }
+  }
+
+  .post-block:first-of-type {
+    padding-top: rem(40px);
+    border-top: 0;
+  }
+
+  &__more {
+    @extend %font-ui-text-lg;
+    margin-top: rem(16px);
+    color: $color-text-dark-190;
+    text-align: right;
+
+    .icon {
+      height: rem(13px);
+      color: $color-primary-blue-600;
+    }
+
+    a:hover {
+      color: $color-primary-blue-500;
+      
+      .icon {
+        color: $color-primary-blue-500;
+      }
+    }
+  }
+}
