@@ -40,7 +40,7 @@ if ( $wp_query->found_posts ) {
 
 		<section class="search-page">
   
-			<div class="search-total"><?php echo $archive_subtitle; ?></div>
+			<?php echo missilethreat_number_of_posts(); ?>
 
 				<?php
 

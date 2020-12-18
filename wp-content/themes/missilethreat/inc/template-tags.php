@@ -509,7 +509,7 @@ endif;
  *
  * @return string $html The share links.
  */
-if (! function_exists('missiledefense_post_attribution')) :
+if (! function_exists('missilethreat_post_attribution')) :
 	function missilethreat_post_attribution() {
 		$object = get_queried_object();
 
@@ -521,3 +521,20 @@ if (! function_exists('missiledefense_post_attribution')) :
 	}
 endif;
 
+
+
+/**
+ * Displays the number of items and pages on archive & search pages.
+ *
+ *
+ * @return string $html The share links.
+ */
+if (! function_exists('missilethreat_number_of_posts')) :
+	function missilethreat_number_of_posts() {
+		global $wp_query;
+		$total_posts = $wp_query->found_posts;
+		$page = (get_query_var('paged')) ? get_query_var('paged') : 1;
+		$pages = $wp_query->max_num_pages;
+		echo '<h2 class="archive__results">' . $total_posts . ' items, Page ' . $page . ' of ' . $pages . '</h2>';
+	}
+endif;
