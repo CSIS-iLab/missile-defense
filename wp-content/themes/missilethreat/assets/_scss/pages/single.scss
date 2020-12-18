@@ -1,5 +1,8 @@
 @use '../abstracts' as *;
+@use '../components/accordion';
+@use '../components/footnotes';
 @use '../components/post-typography';
+@use '../components/related-posts';
 @use '../components/system-elements';
 
 .single__content,

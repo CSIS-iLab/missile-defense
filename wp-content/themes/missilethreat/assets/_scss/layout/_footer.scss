@@ -112,7 +112,7 @@
   }
 
   @include breakpoint('large') {
-    margin-top: rem(56px);
+    padding-top: rem(56px);
 
     &__container--large {
       display: grid;
