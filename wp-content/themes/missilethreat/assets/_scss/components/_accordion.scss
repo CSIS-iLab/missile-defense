@@ -42,12 +42,12 @@
     }
 
     /*----------  Image Alignments  ----------*/
-    .alignright.wp-caption {
-      margin-right: 0;
+    .alignright {
+      --margin-gutter-side: 0;
     }
 
-    .alignleft.wp-caption {
-      margin-left: 0;
+    .alignleft {
+      --margin-gutter-side: 0;
     }
   }
 }
