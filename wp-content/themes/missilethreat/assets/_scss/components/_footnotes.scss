@@ -4,95 +4,109 @@
 =            Footnotes            =
 =================================*/
 
-.entry-content {
-  .easy-footnotes-wrapper {
-    display: none;
-  }
-
+.single__content {
   .easy-footnote {
-    text-transform: uppercase;
-    font-size: 12px;
+    font-size: rem(15px);
     vertical-align: super;
 
-    a {
-      box-shadow: none;
+    > a {
       text-decoration: none;
-      font-weight: bold;
+    }
+
+    sup {
+      transition: all 0.3s ease-in-out;
+      
+      &:hover {
+        color: $color-primary-blue-500;
+      }
     }
   }
 }
 
-.entry-footnotes {
-  margin: 2rem 15px;
-  padding: 2rem 0;
-  // border-top: 2px solid $light-blue;
-  // border-bottom: 2px solid $light-blue;
+.footnotes {
+  padding: rem(32px) 0 rem(56px);
 
-  .post-footer-heading {
+  &__heading {
+    @extend %font-ui-heading-sm;
     position: relative;
-    margin: 0;
+    margin-top: rem(32px);
+    padding: rem(12px) rem(16px);
+    color: $color-text-dark-170;
+    background-color: $color-primary-light-gray;
     cursor: pointer;
 
-    &:after {
-      display: block;
-      content: "+";
+    &::after {
+      content: '\002B';
       position: absolute;
-      top: 0;
-      right: 0;
-      font-weight: bold;
+      right: rem(16px);
+      display: inline-block;
+      vertical-align: middle;
     }
 
-    &.expanded:after {
-      content: "\02014";
+    &:hover {
+      background-color: $color-primary-light-blue;
+    }
+
+    &.expanded::after {
+      content: '\02014';
     }
   }
 
   .collapsible-content {
     display: none;
-    margin-top: 1.5rem;
+  }
+  
+  &__list {
+    display: none;
   }
 }
 
 .easy-footnotes-wrapper {
+  list-style: none;
+  border: 1px solid $color-table-row-base;
+  border-radius: 0 0 3px 3px;
   counter-reset: item;
-  margin: 0;
-  padding: 0;
-  list-style:none;
-
+  
   li {
+    @extend %font-body-short-md;
     position: relative;
-    font-size: 16px;
-    line-height: 1.5;
+    display: block;
+    margin: rem(12px) rem(32px);
+    padding-left: rem(32px);
+    color: $color-text-dark-170;
+    overflow-wrap: break-word;
 
+    &:first-child {
+      margin-top: rem(24px);
+    }
+
+    &:last-child {
+      margin-bottom: rem(24px);
+    }
+    
     .easy-footnote-margin-adjust {
-      position: static;
-      margin-top: unset;
-      width: 8px;
-      display: inline-block;
-    }
+      display: hidden;
 
-    &:nth-of-type(n+10) .easy-footnote-margin-adjust {
-      width: 13px;
     }
-
-    &:nth-of-type(n+100) .easy-footnote-margin-adjust {
-      width: 17px;
-    }
-
-    a {
-      float: left;
+    
+    .easy-footnote-to-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
       margin-left: 0;
+      color: $color-primary-blue-600;
+      font-family: $font-source-serif;
+      font-weight: bold;
+          
+      &:hover {
+        color: $color-primary-blue-500;
+      }
     }
-
-    a::after {
-      font-family: inherit;
+    
+    .easy-footnote-to-top::after {
       content: counter(item);
       counter-increment: item;
-      font-size: 10px;
-      line-height: 2.49;
-      content: counter(item);
-      position: absolute;
-      top: -2px;
     }
   }
 }
