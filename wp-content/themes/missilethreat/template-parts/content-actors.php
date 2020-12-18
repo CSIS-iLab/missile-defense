@@ -120,7 +120,10 @@ if ( $missiles ) : ?>
 		?>
 		</tbody>
 	</table>
-	</div>
+</div>
+<footer>
+  <?php missiledefense_display_footnotes(); ?>
+  </footer>
 
 	<?php
 	endif;
