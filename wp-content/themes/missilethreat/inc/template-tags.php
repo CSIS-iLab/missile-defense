@@ -227,11 +227,11 @@ if (! function_exists('missilethreat_display_tags')) :
 	function missilethreat_display_tags() {
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list('<ul class="post-meta__tags" role="list"><li>', '</li><li>', '</li></ul>');
+		$tags_list = get_the_tag_list('<ul class="related__tags-list" role="list"><li class="text--semibold">', '</li><li class="text--semibold">', '</li></ul>');
 					
 		if ( $tags_list ) {
 			/* translators: 1: list of tags. */
-			printf( '<div class="entry__tags">' . esc_html__( '%1$s', 'missilethreat' ) . '</div>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			printf( '<div class="related__tags"><h2 class="related__tags-heading">More on</h2>' . esc_html__( '%1$s', 'missilethreat' ) . '</div>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 	}
 endif;
@@ -292,13 +292,35 @@ if ( ! function_exists( 'missiledefense_related_posts' ) ) :
 			$current_related_tags = get_term_meta( $term, 'archive_related_tags', true );
 		}
 
-		echo '<div class="relatedposts"><h4 class="post-footer-heading">Related Posts</h4>';
-		echo do_shortcode( '[catlist pagination=no tags="' . $current_related_tags . '" numberposts=3 date=yes date_class="relatedDates"]' );
+		$args = array(
+			'tag' => $current_related_tags, // Here is where is being filtered by the tag you want
+			'orderby' => 'date',
+			'order' => 'DSC',
+			'posts_per_page' => '2'
 
-		if ( $current_related_tags ) {
-			echo '<a class="moreposts" href="' . esc_url( '/tag/' . $current_related_tags) . '">Read all related posts</a></div>';
+		);
+		
+		$the_query = new WP_Query( $args );
+		
+		if ( $the_query->have_posts() ) {
+			
+			$i = 0;
+			
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				
+				get_template_part( 'template-parts/block-post' );
+				
+				
+			}
 		}
-	}
+
+		if ( $current_related_tags && $the_query->found_posts > 2 ) {
+			echo '<div class="related__more"><a href="' . esc_url( '/tag/' . $current_related_tags) . '">All related posts' . missilethreat_get_svg( 'chevron-right' ) . '</a></div>';
+		}
+
+		wp_reset_query();
+	} 
 endif;
 
 if ( ! function_exists( 'missiledefense_display_system_elements' ) ) :
