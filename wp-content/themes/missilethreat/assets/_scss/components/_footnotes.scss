@@ -7,13 +7,15 @@
 .single__content {
   .easy-footnote {
     font-size: rem(15px);
-    vertical-align: super;
 
     > a {
       text-decoration: none;
     }
 
     sup {
+      position: relative;
+      top: -0.4em;
+      vertical-align: baseline;
       transition: all 0.3s ease-in-out;
       
       &:hover {
