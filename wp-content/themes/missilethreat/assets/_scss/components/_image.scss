@@ -2,6 +2,10 @@
 
 .featured-media {
   margin-bottom: rem(32px);
+
+  img {
+    width: 100%;
+  }
 }
 
 img + figcaption {
@@ -34,4 +38,8 @@ img + figcaption {
     padding-right: 0;
     padding-left: 0;
   }
+}
+
+.aligncenter img {
+  max-width: $size__content-max-width;
 }
