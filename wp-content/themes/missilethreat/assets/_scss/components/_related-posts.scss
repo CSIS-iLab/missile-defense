@@ -51,6 +51,10 @@
     &:last-of-type {
       border-bottom: 0;
     }
+
+    &::after {
+      background-color: $color-primary-light-gray;
+    }
   }
 
   &__more {
