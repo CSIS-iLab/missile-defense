@@ -7,18 +7,24 @@
   color: $color-text-dark-190;
   background: $color-primary-light-gray;
 
-  .tableOfContents__heading {
+  &__heading,
+  h2 {
     @extend %font-ui-heading-md;
     margin-top: 0;
     margin-bottom: rem(16px);
     color: $color-text-dark-100;
   }
 
+  h2:not([class]) {
+    margin-right: rem(32px);
+  }
+
   &__excerpt {
     @extend %font-body-list-lg;
   }
 
-  &__chapters {
+  &__chapters,
+  .resources {
     li {
       transition: all 0.3s ease-in-out;
     }
@@ -34,9 +40,11 @@
     li:hover {
       color: $color-primary-blue-500;
 
+      /* stylelint-disable */
       .icon {
         color: $color-primary-blue-500;
       }
+      /* stylelint-enable */
     }
   }
 

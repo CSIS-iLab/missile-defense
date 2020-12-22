@@ -22,7 +22,7 @@
   /*----------  External Link  ----------*/
 
   /* stylelint-disable */
-  a[href*="//"]:not([href*="missile-threat.local"]):not([href*="localhost"]):not([href*="missilethreat"])
+  a[href*="//"]:not([href*="missile-threat.local"]):not([href*="localhost"]):not([href*="missilethreat"]):not([href*="csis-website-prod"])
   {
     /* stylelint-enable */
     &::after {
