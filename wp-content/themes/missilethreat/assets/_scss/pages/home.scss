@@ -183,6 +183,10 @@
       padding: 0;
       border: 0;
 
+      &::after {
+        height: 0;
+      }
+
       &:last-child {
         padding-bottom: rem(40px);
       }
@@ -255,6 +259,10 @@
       margin-top: 0;
       padding: 0;
       border: 0;
+
+      &::after {
+        height: 0;
+      }
 
       &:last-of-type {
         margin-bottom: 0;
