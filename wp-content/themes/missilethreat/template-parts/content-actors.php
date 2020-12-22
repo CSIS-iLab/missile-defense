@@ -133,7 +133,9 @@ if ( $missiles ) : ?>
     <?php
 
 	endif;
-	wp_reset_postdata();
+  wp_reset_postdata();
+  
+  missiledefense_actors_secondary_content($post->ID);
 ?>
 
   </div><!-- .single__content -->
