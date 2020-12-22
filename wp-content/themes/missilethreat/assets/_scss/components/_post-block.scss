@@ -6,10 +6,21 @@
   padding: rem(40px) 0;
   color: $color-text-dark-170;
   border-bottom: 1px solid $color-line-mid-gray;
+  overflow: hidden;
   
   &:first-of-type {
     padding: rem(24px) 0 rem(40px) 0;
     border-top: 1px solid $color-line-mid-gray;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    display: block;
+    height: rem(40px);
+    width: 100%;
+    background-color: $color-text-light-100;
   }
 
   &__category {
