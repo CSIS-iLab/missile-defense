@@ -90,13 +90,15 @@
       figure {
         margin-bottom: 0 !important;
       }
-    }
-    
-    .blocks-gallery-item__caption {
-      @extend %font-ui-text-md;
-      padding-bottom: rem(12px);
-      color: $color-text-light-190;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+      
+      /* stylelint-disable */
+      figcaption {
+        @extend %font-ui-text-md;
+        padding-bottom: rem(12px);
+        color: $color-text-light-190;
+        background: $gradient-caption;
+      }
+      /* stylelint-enable */
     }
   }
 
