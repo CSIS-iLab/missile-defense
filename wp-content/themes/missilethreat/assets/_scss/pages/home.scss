@@ -180,7 +180,12 @@
     }
     
     .post-block {
+      padding: 0;
       border: 0;
+
+      &:last-child {
+        padding-bottom: rem(40px);
+      }
       
       @include breakpoint('small') {
         grid-template-columns: 1fr 2fr;
@@ -248,10 +253,12 @@
   &__recent-col2 {
     .post-block {
       margin-top: 0;
+      padding: 0;
       border: 0;
 
       &:last-of-type {
         margin-bottom: 0;
+        padding-top: rem(40px);
       }
 
       @include breakpoint('small') {
