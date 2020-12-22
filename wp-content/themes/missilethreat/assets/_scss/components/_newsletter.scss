@@ -44,6 +44,10 @@
       margin-bottom: rem(16px);
     }
 
+    &__button {
+      height: fit-content;
+    }
+
     &__button--footer {
       display: none;
     }
