@@ -4,9 +4,9 @@
   display: grid;
   grid-template-columns: 1fr;
   padding: rem(40px) 0;
+  overflow: hidden;
   color: $color-text-dark-170;
   border-bottom: 1px solid $color-line-mid-gray;
-  overflow: hidden;
   
   &:first-of-type {
     padding: rem(24px) 0 rem(40px) 0;
@@ -18,8 +18,8 @@
     position: absolute;
     bottom: 0;
     display: block;
-    height: rem(40px);
     width: 100%;
+    height: rem(40px);
     background-color: $color-text-light-100;
   }
 
