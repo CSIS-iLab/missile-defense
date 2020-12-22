@@ -26,7 +26,8 @@
 }
 
 .footnotes {
-  padding: rem(32px) 0 rem(56px);
+  margin: rem(32px) 0 rem(56px);
+  clear: both;
 
   &__heading {
     @extend %font-ui-heading-sm;
