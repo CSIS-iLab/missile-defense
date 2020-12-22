@@ -51,6 +51,7 @@
 
   .wp-block-gallery {
     @include missiledefense-full-width-wrapper;
+    padding-left: 0;
 
     > * {
       @include missiledefense-full-width-content($size__container-max-width);
@@ -87,7 +88,6 @@
 
       /* stylelint-disable-next-line */
       figure {
-        max-height: rem(230px);
         margin-bottom: 0 !important;
       }
     }
