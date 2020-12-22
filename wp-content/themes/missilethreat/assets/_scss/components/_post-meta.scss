@@ -20,5 +20,9 @@
 
   .post-meta {
     @extend %font-ui-text-lg;
+    
+    &__date {
+      margin-bottom: 0;
+    }
   }
 }
