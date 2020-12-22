@@ -21,7 +21,7 @@ $actor_cat_2_title = get_field( 'category_2_actors_title', $object->name );
 
 $defsys_cat_1_title = get_field( 'category_1_title', $object->name );
 $defsys_cat_2_title = get_field( 'category_2_title', $object->name );
-$cat_3_title = get_field( 'category_3_title', $object->name );
+$defsys_cat_3_title = get_field( 'category_3_title', $object->name );
 
 $defsys_cat_1_desc = get_field( 'category_1_description', $object->name );
 $defsys_cat_2_desc = get_field( 'category_2_description', $object->name );
