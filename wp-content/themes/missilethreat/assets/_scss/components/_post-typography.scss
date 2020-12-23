@@ -2,27 +2,16 @@
 
 .single__content {
 
-  /*----------  Paragraphs and In-line links  ----------*/
+  /*----------  Paragraphs ----------*/
 
   > p,
   .wp-block-columns p {
     @extend %font-body-long-lg;
     margin-bottom: rem(32px);
     color: $color-text-dark-190;
-
-    /* stylelint-disable */
-    a {
-      color: $color-primary-blue-200;
-      text-decoration: underline;
-
-      &:hover {
-        color: $color-primary-blue-500;
-      }
-    }
-    /* stylelint-enable */
   }
 
-  /*----------  External Link  ----------*/
+  /*----------  Links  ----------*/
 
   /* stylelint-disable */
   a[href*="//"]:not([href*="missile-threat.local"]):not([href*="localhost"]):not([href*="missilethreat"]):not([href*="csis-website-prod"])
@@ -43,6 +32,22 @@
     &:hover::after {
       filter: invert(35%) sepia(52%) saturate(295%) hue-rotate(148deg) brightness(93%) contrast(90%);
     }
+  }
+
+  > p,
+  .wp-block-columns p,
+  > ul,
+  > ol {
+    /* stylelint-disable */
+    a {
+      color: $color-primary-blue-200;
+      text-decoration: underline;
+
+      &:hover {
+        color: $color-primary-blue-500;
+      }
+    }
+    /* stylelint-enable */
   }
 
   /*----------  Headings  ----------*/
