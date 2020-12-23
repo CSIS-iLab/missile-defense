@@ -4,11 +4,13 @@
 
   /*----------  Paragraphs and In-line links  ----------*/
 
-  > p {
+  > p,
+  .wp-block-columns p {
     @extend %font-body-long-lg;
     margin-bottom: rem(32px);
     color: $color-text-dark-190;
 
+    /* stylelint-disable */
     a {
       color: $color-primary-blue-200;
       text-decoration: underline;
@@ -17,6 +19,7 @@
         color: $color-primary-blue-500;
       }
     }
+    /* stylelint-enable */
   }
 
   /*----------  External Link  ----------*/
@@ -96,7 +99,7 @@
   > ol {
     @extend %font-body-list-lg;
     margin-bottom: 0;
-    padding-bottom: rem(24px);
+    margin-bottom: rem(24px);
     padding-left: rem(32px);
     color: $color-text-dark-190;
 
