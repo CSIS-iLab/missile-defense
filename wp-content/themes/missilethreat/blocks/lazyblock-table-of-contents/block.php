@@ -8,22 +8,25 @@
  * @var  string $context Preview context [editor,frontend].
  */
 
+
+
+$toc_title = get_lzb_meta('toc_title');
+$chapters = get_lzb_meta('table-of-contents');
+$appendix = get_lzb_meta('appendix');
+$download_pdf = get_lzb_meta('download-pdf');
+$report_cover = get_lzb_meta('report-cover-image');
+$graphics_link = get_lzb_meta('link-to-graphics');
+$video_link = get_lzb_meta('video');
+
 ?>
 
 <div class="tableOfContents">
   <div class="tableOfContents__details">
-  <h2 class="tableOfContents__heading">In this publication</h2>
+  <h2 class="tableOfContents__heading"><?php echo $toc_title ?></h2>
   <ul class="tableOfContents__resources" role="list">
 
 
   <?php 
-
-    $chapters = get_lzb_meta('table-of-contents');
-    $appendix = get_lzb_meta('appendix');
-    $download_pdf = get_lzb_meta('download-pdf');
-    $report_cover = get_lzb_meta('report-cover-image');
-    $graphics_link = get_lzb_meta('link-to-graphics');
-    $video_link = get_lzb_meta('video');
 
     $i = 1;
 
@@ -73,11 +76,11 @@
       <?php
     } ?>
 
-    <hr class="divider divider--blue">
 
-    <?php
+<?php
     if( isset( $download_pdf['url'] ) && !empty( $download_pdf['url'] ) ) { ?>
-    <a href="<?php echo esc_url($download_pdf['url']); ?>" target="_blank" rel="nofollow"><button type="button" class="btn btn--short btn--dark">Download full report</button></a>
+      <hr class="divider divider--blue">
+      <a href="<?php echo esc_url($download_pdf['url']); ?>" target="_blank" rel="nofollow"><button type="button" class="btn btn--short btn--dark">Download full report</button></a>
     <?php 
     } 
 

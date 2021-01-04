@@ -21,6 +21,10 @@
 
   &__excerpt {
     @extend %font-body-list-lg;
+
+    p:last-child {
+      margin-bottom: rem(24px);
+    }
   }
 
   &__chapters,

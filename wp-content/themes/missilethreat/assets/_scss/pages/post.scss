@@ -2,7 +2,6 @@
 @use '../components/download-pdf';
 @use '../components/key-takeaways';
 @use '../components/related-links-block';
-@use '../components/table-of-contents';
 
 .single__content {
   max-width: $size__content-max-width;
