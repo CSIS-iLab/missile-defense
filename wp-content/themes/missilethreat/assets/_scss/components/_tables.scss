@@ -8,6 +8,10 @@
     border-collapse: collapse;
   }
 
+  .wp-block-table {
+    overflow-x: hidden;
+  }
+
   thead {
     @extend %font-ui-heading-sm;
     color: $color-text-dark-100;
@@ -38,6 +42,12 @@
     width: $size__content-max-width;
     margin: rem(16px) auto rem(32px) auto;
     color: $color-text-dark-155;
+  }
+
+  .aligncenter.wp-block-table,
+  .alignleft.wp-block-table,
+  .alignright.wp-block-table {
+    display: block;
   }
 
   .alignfull.wp-block-table,
