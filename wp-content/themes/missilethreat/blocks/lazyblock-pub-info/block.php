@@ -90,7 +90,7 @@ $video_link = get_lzb_meta('video');
     } 
 
     if( isset( $video_link ) && !empty( $video_link ) ) { ?>
-    <li class="tableOfContents__video-link"><a href="<?php echo esc_url($video_link); ?>" target="_blank" rel="nofollow">Watch the video<?php  echo missilethreat_get_svg( 'external-link' ); ?></a></li>
+    <li class="tableOfContents__video-link"><a href="<?php echo esc_url($video_link); ?>" target="_blank" rel="nofollow">Watch the video</a></li>
     <?php } ?>
 
   </ul>
