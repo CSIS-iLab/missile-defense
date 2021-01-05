@@ -9,6 +9,7 @@
 }
 
 .wp-block-image figcaption,
+.image-caption,
 .wp-caption-text {
   @extend %font-body-short-md;
   max-width: $size__content-max-width;
@@ -42,5 +43,6 @@
 }
 
 .aligncenter img {
+  width: 100%;
   max-width: $size__content-max-width;
 }
