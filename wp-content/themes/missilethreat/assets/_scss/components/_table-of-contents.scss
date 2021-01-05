@@ -29,10 +29,6 @@
 
   &__chapters,
   .resources {
-    li {
-      transition: all 0.3s ease-in-out;
-    }
-    
     li:not(:last-child) {
       margin-bottom: rem(12px);
     }
@@ -40,8 +36,17 @@
     li:last-child {
       margin-bottom: rem(24px);
     }
+  }
 
-    li:hover {
+  &__chapters,
+  &__graphics,
+  &__video-link,
+  .resources {
+    a {
+      transition: all 0.3s ease-in-out;
+    }
+    
+    a:hover {
       color: $color-primary-blue-500;
 
       /* stylelint-disable */
