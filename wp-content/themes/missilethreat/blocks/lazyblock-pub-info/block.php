@@ -10,8 +10,8 @@
 
 
 
-$toc_title = get_lzb_meta('toc_title');
-$chapters = get_lzb_meta('table-of-contents');
+$toc_title = get_lzb_meta('pub_toc_title');
+$chapters = get_lzb_meta('pub-table-of-contents');
 $appendix = get_lzb_meta('appendix');
 $download_pdf = get_lzb_meta('download-pdf');
 $report_cover = get_lzb_meta('report-cover-image');
@@ -39,8 +39,8 @@ $video_link = get_lzb_meta('video');
       <ul class="tableOfContents__chapters" role="list">
         <?php
       foreach( $chapters as $chapter ) {
-        $chapter_url = esc_url($chapter['link-to-post']);
-        $chapter_title = $chapter['chapter-title'];
+        $chapter_url = esc_url($chapter['pub-link-to-post']);
+        $chapter_title = $chapter['pub-chapter-title'];
         $chapter_id = url_to_postid($chapter_url);
 
         if( isset( $chapter_title ) && !empty( $chapter_title ) ) {
