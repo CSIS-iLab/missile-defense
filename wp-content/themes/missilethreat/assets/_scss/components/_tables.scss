@@ -8,10 +8,6 @@
     border-collapse: collapse;
   }
 
-  .wp-block-table {
-    overflow-x: hidden;
-  }
-
   thead {
     @extend %font-ui-heading-sm;
     color: $color-text-dark-100;
