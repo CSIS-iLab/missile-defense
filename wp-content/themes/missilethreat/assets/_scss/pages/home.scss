@@ -180,15 +180,16 @@
     }
     
     .post-block {
-      padding: 0;
+      padding-top: 0;
+      padding-bottom: rem(40px);
       border: 0;
 
       &::after {
         height: 0;
       }
 
-      &:last-child {
-        padding-bottom: rem(40px);
+      .thumbnail-link {
+        margin-bottom: rem(24px);
       }
       
       @include breakpoint('small') {
@@ -197,12 +198,13 @@
         column-gap: rem(32px);
         
         &:not(:last-of-type) {
-          margin-bottom: rem(16px);
+          padding-bottom: rem(16px);
         }
         
         .thumbnail-link {
           grid-column: 1 / span 1;
           grid-row: 1 / span 4;
+          margin-bottom: 0;
         }
 
         &__category,
@@ -267,6 +269,10 @@
       &:last-of-type {
         margin-bottom: 0;
         padding-top: rem(40px);
+      }
+
+      .thumbnail-link {
+        margin-bottom: rem(24px);
       }
 
       @include breakpoint('small') {
