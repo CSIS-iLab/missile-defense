@@ -133,16 +133,27 @@ if ( $missiles ) : ?>
     <?php
 
 	endif;
-	wp_reset_postdata();
+  wp_reset_postdata();
+  
+  missiledefense_actors_secondary_content($post->ID);
 ?>
 
+<?php missiledefense_display_footnotes(); ?>
   </div><!-- .single__content -->
 
 	<footer class="single__footer">
-    <?php missiledefense_display_footnotes(); ?>
 		<?php missiledefense_share(); ?>
 		<hr class="divider divider--gray"/>
-		<?php echo missiledefense_citation(); ?>
+    <?php echo missiledefense_citation(); ?>
+    <div class="related__wrapper alignwide">
+			<div class="related">
+				<h2 class="related__heading">Related</h2>
+				<?php echo missilethreat_display_tags(); ?>
+				
+				<?php echo missiledefense_related_posts(); ?>
+				
+			</div>
+		</div>
   </footer>
 
 </article><!-- .post -->

@@ -86,8 +86,8 @@ get_header();
 	<div class="home__see-all home__all-analysis"><a href="<?php echo site_url('/analysis') ?>">All Analysis <?php echo missilethreat_get_svg('chevron-right') ?></a></div>
 <?php
 
-$missile_card_icon = get_field( 'missiles_of_the_world_icon', $object->name );
-$missile_card_text = get_field( 'missiles_of_the_world_text', $object->name );
+$missile_card_icon = get_field( 'missiles_of_the_world_icon' );
+$missile_card_text = get_field( 'missiles_of_the_world_text' );
 $defense_card_icon = get_field( 'defense_systems_icon');
 $defense_card_text = get_field( 'defense_systems_text');
 ?>

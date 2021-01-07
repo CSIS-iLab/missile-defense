@@ -7,13 +7,15 @@
 .single__content {
   .easy-footnote {
     font-size: rem(15px);
-    vertical-align: super;
 
     > a {
       text-decoration: none;
     }
 
     sup {
+      position: relative;
+      top: -0.4em;
+      vertical-align: baseline;
       transition: all 0.3s ease-in-out;
       
       &:hover {
@@ -24,7 +26,8 @@
 }
 
 .footnotes {
-  padding: rem(32px) 0 rem(56px);
+  clear: both;
+  margin: rem(32px) 0 rem(56px);
 
   &__heading {
     @extend %font-ui-heading-sm;
@@ -96,9 +99,7 @@
       display: block;
       margin-left: 0;
       color: $color-primary-blue-600;
-      font-family: $font-source-serif;
-      font-weight: bold;
-          
+      
       &:hover {
         color: $color-primary-blue-500;
       }
@@ -106,6 +107,8 @@
     
     .easy-footnote-to-top::after {
       content: counter(item);
+      font-family: $font-source-serif;
+      font-weight: bold;
       counter-increment: item;
     }
   }

@@ -7,22 +7,28 @@
   color: $color-text-dark-190;
   background: $color-primary-light-gray;
 
-  .tableOfContents__heading {
+  &__heading,
+  h2 {
     @extend %font-ui-heading-md;
     margin-top: 0;
     margin-bottom: rem(16px);
     color: $color-text-dark-100;
   }
 
-  &__excerpt {
-    @extend %font-body-list-lg;
+  h2:not([class]) {
+    margin-right: rem(32px);
   }
 
-  &__chapters {
-    li {
-      transition: all 0.3s ease-in-out;
+  &__excerpt {
+    @extend %font-body-list-lg;
+
+    p:last-child {
+      margin-bottom: rem(24px);
     }
-    
+  }
+
+  &__chapters,
+  .resources {
     li:not(:last-child) {
       margin-bottom: rem(12px);
     }
@@ -30,13 +36,24 @@
     li:last-child {
       margin-bottom: rem(24px);
     }
+  }
 
-    li:hover {
+  &__chapters,
+  &__graphics,
+  &__video-link,
+  .resources {
+    a {
+      transition: all 0.3s ease-in-out;
+    }
+    
+    a:hover {
       color: $color-primary-blue-500;
 
+      /* stylelint-disable */
       .icon {
         color: $color-primary-blue-500;
       }
+      /* stylelint-enable */
     }
   }
 

@@ -1,9 +1,7 @@
 @use '../abstracts' as *;
-@use '../components/at-a-glance';
 @use '../components/download-pdf';
 @use '../components/key-takeaways';
 @use '../components/related-links-block';
-@use '../components/table-of-contents';
 
 .single__content {
   max-width: $size__content-max-width;
@@ -52,6 +50,7 @@
 
   .wp-block-gallery {
     @include missiledefense-full-width-wrapper;
+    padding-left: 0;
 
     > * {
       @include missiledefense-full-width-content($size__container-max-width);
@@ -88,16 +87,17 @@
 
       /* stylelint-disable-next-line */
       figure {
-        max-height: rem(230px);
         margin-bottom: 0 !important;
       }
-    }
-    
-    .blocks-gallery-item__caption {
-      @extend %font-ui-text-md;
-      padding-bottom: rem(12px);
-      color: $color-text-light-190;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%);
+      
+      /* stylelint-disable */
+      figcaption {
+        @extend %font-ui-text-md;
+        padding-bottom: rem(12px);
+        color: $color-text-light-190;
+        background: $gradient-caption;
+      }
+      /* stylelint-enable */
     }
   }
 

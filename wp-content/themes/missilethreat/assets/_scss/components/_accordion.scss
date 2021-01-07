@@ -34,14 +34,33 @@
   }
 
   .accordion-content {
+    @extend %font-body-long-lg;
     display: none;
+    margin-bottom: rem(32px);
     padding: 1.5rem;
+    color: $color-text-dark-190;
 
-    p:last-of-type {
-      margin-bottom: 0;
+    a {
+      color: $color-primary-blue-200;
+      text-decoration: underline;
+
+      &:hover {
+        color: $color-primary-blue-500;
+      }
     }
 
-    /*----------  Image Alignments  ----------*/
+    p {
+      margin-bottom: rem(32px);
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    figure {
+      margin-bottom: rem(32px);
+    }
+
     .alignright {
       --margin-gutter-side: 0;
     }
@@ -50,4 +69,17 @@
       --margin-gutter-side: 0;
     }
   }
+
+  ul,
+  ol {
+    @extend %font-body-list-lg;
+    margin-bottom: 0;
+    padding-bottom: rem(24px);
+    padding-left: rem(32px);
+    color: $color-text-dark-190;
+
+    li:not(:last-child) {
+      margin-bottom: rem(8px);
+    }
+  }  
 }

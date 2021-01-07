@@ -32,10 +32,12 @@
       a {
         padding: rem(4px);
         
+        /* stylelint-disable */
         &:hover {
           color: $color-primary-blue-200;
           background-color: $color-primary-light-blue;
         }
+        /* stylelint-enable */
       }
     }
   }
@@ -49,7 +51,11 @@
     &:last-of-type {
       border-bottom: 0;
     }
-}
+
+    &::after {
+      background-color: $color-primary-light-gray;
+    }
+  }
 
   &__more {
     @extend %font-ui-text-lg;

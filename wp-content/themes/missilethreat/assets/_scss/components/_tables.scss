@@ -40,6 +40,12 @@
     color: $color-text-dark-155;
   }
 
+  .aligncenter.wp-block-table,
+  .alignleft.wp-block-table,
+  .alignright.wp-block-table {
+    display: block;
+  }
+
   .alignfull.wp-block-table,
   .alignwide.wp-block-table {
     padding-right: var(--container-padding);

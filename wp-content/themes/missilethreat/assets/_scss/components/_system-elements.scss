@@ -3,7 +3,7 @@
 .system-elements {
   margin-bottom: rem(32px);
 
-  &__heading {
+  &__header {
     @extend %font-copy-heading-5;
     color: $color-text-dark-100;
   }

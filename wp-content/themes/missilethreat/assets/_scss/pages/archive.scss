@@ -116,22 +116,15 @@
     }
 
     &__group {
+      margin-top: rem(32px);
+      margin-bottom: rem(56px);
+
       @include breakpoint('large') {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        margin-top: rem(32px);
-        margin-bottom: rem(56px);
         column-gap: rem(32px);
-      }
 
-      &-1 {
-        padding-top: rem(32px);
-      }
-
-      &-2 {
-        margin-bottom: rem(48px);
-
-        @include breakpoint('large') {
+        &:last-child {
           margin-bottom: 0;
         }
       }
