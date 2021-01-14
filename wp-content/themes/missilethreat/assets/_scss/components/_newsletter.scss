@@ -3,8 +3,9 @@
 .newsletter {
   &__title {
     color: $color-text-light-100;
+    font-weight: 600;
   }
-  
+
   &__desc {
     color: $color-text-light-170;
   }
@@ -16,10 +17,11 @@
 
   @include breakpoint('large') {
     padding: rem(32px) 0;
-    
+
     .custom-html-widget {
       display: flex;
       gap: rem(64px);
+      max-width: 950px;
     }
 
     .newsletter__title,
@@ -32,13 +34,13 @@
   .newsletter {
     &__title {
       @extend %font-ui-heading-md;
-      margin-bottom: rem(16px);
-      
+      margin-bottom: rem(12px);
+
       &--footer {
         display: none;
       }
     }
-    
+
     &__desc {
       @extend %font-body-short-sm;
       margin-bottom: rem(16px);
@@ -58,7 +60,7 @@
   .newsletter {
     &__title {
       @extend %font-ui-heading-sm;
-      margin-bottom: rem(12px);
+      margin-bottom: rem(8px);
 
       &--homepage {
         display: none;

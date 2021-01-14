@@ -41,6 +41,8 @@
     visibility: visible;
     cursor: pointer;
     transition: color 0.3s ease-in-out;
+    width: 48px;
+    height: 48px;
 
     &.is-invisible {
       visibility: hidden;
@@ -68,7 +70,7 @@
       color: $color-text-light-155;
 
       &:focus {
-        color: $color-text-light-155; 
+        color: $color-text-light-155;
       }
     }
 
@@ -119,12 +121,12 @@
     &__search-icon {
       justify-self: start;
     }
-    
+
     &__search {
       order: 3;
       width: calc((100% - 6vw) - (6vw + 248px));
       transition: opacity 0.3s linear;
-      
+
       &.is-visible {
         right: 6vw;
         left: initial;

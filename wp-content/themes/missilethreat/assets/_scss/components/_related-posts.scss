@@ -17,12 +17,13 @@
     gap: rem(16px);
     margin-bottom: rem(12px);
     text-transform: uppercase;
-    
+    align-items: center;
+
     &-heading {
       @extend %font-ui-heading-xs;
       color: $color-primary-blue-200;
     }
-    
+
     &-list {
       @extend %font-ui-text-md;
       display: flex;
@@ -31,7 +32,7 @@
 
       a {
         padding: rem(4px);
-        
+
         /* stylelint-disable */
         &:hover {
           color: $color-primary-blue-200;
@@ -44,7 +45,7 @@
 
   .post-block {
     &:first-of-type {
-      padding-top: rem(40px);
+      padding-top: rem(16px);
       border-top: 0;
     }
 
@@ -71,7 +72,7 @@
 
     a:hover {
       color: $color-primary-blue-500;
-      
+
       .icon {
         color: $color-primary-blue-500;
       }

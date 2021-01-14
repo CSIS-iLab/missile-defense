@@ -6,18 +6,18 @@
   grid-template-rows: max-content max-content max-content max-content auto;
   padding: rem(40px) 0;
   color: $color-text-dark-170;
-  border-bottom: 1px solid $color-line-mid-gray;
-  
+  border-bottom: 1px solid $color-line-light-gray;
+
   &:first-of-type {
     padding: rem(24px) 0 rem(40px) 0;
-    border-top: 1px solid $color-line-mid-gray;
+    border-top: 1px solid $color-primary-blue-600;
   }
 
   &__category {
     @extend %font-ui-text-sm;
     display: inline-block;
     grid-row: 1;
-    margin-bottom: rem(16px);
+    margin-bottom: rem(8px);
     text-transform: uppercase;
 
     a:not(:first-child) {

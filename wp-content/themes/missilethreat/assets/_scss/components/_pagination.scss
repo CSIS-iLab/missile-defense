@@ -16,34 +16,49 @@
   .page-numbers {
     display: inline-block;
     padding: rem(8px);
+    &:before {
+      content: '';
+      display: block;
+      position: relative;
+      width: 0;
+      height: 4px;
+      top: -12px;
+      right: 0.5rem;
+      background-color: $color-line-mid-gray;
+      transition: width 0.15s linear;
+    }
+    &:hover:before {
+      width: calc(100% + 1rem);
+      transition: width 0.15s linear;
+    }
 
     @include breakpoint('medium') {
       margin: 0 rem(16px);
-    }
-
-    &:hover {
-      color: $color-text-dark-190;
-      border-top: 4px solid $color-primary-blue-900;
     }
 
     &.current {
       color: $color-primary-blue-200;
       font-weight: 600;
       border-top: 4px solid $color-primary-blue-200;
+
+      &:before {
+        background-color: $color-primary-blue-200;
+        width: calc(100% + 1rem);
+      }
     }
-  }
 
-  .dots:hover {
-    color: $color-text-dark-155;
-    border-top: 0;
-  }
-
-  .placeholder {
-    color: $color-line-mid-gray;
-    
-    &:hover {
-      color: $color-line-mid-gray;
+    .dots:hover {
+      color: $color-text-dark-155;
       border-top: 0;
+    }
+
+    &.placeholder {
+      color: $color-line-light-gray;
+
+      &:hover:before {
+        display: none;
+        background-color: transparent;
+      }
     }
   }
 }
