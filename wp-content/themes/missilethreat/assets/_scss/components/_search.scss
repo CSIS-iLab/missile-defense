@@ -132,3 +132,9 @@
     }
   }
 }
+
+.search__no-results {
+  @extend %font-body-short-md-serif;
+  margin-top: rem(24px);
+  color: $color-text-dark-190;
+}
