@@ -8,10 +8,10 @@
   }
 
   @include breakpoint('medium') {
+    float: unset !important;
+    max-width: rem(400px);
     margin-right: auto !important;
     margin-left: auto !important;
-    max-width: rem(400px);
-    float: unset !important;
   }
 
   @include breakpoint('large') {
