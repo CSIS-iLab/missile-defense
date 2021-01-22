@@ -354,7 +354,6 @@
 
     @include breakpoint('large') {
       grid-column: 3;
-      margin-left: rem(32px);
     }
   }
 
