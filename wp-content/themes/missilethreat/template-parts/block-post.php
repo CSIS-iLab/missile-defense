@@ -14,6 +14,12 @@
 ?>
 
 <article <?php post_class('post-block post-block--post'); ?> id="post-<?php the_ID(); ?>">
+<?php
+	if ( has_post_thumbnail()) : ?>
+    <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>" class="thumbnail-link">
+        <?php the_post_thumbnail(array(400, 304)); ?>
+    </a>
+	<?php endif; ?>
 
 	<div class="post-block__category">
 <?php
@@ -35,11 +41,6 @@
 	<p class="post-block__excerpt"> <?php echo get_the_excerpt(); ?></p>	
 
 	<?php
-	}
-	if ( has_post_thumbnail()) : ?>
-    <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>" class="thumbnail-link">
-        <?php the_post_thumbnail(array(400, 304)); ?>
-    </a>
-	<?php endif; ?>
+	} ?>
 
 </article><!-- .post -->

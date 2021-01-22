@@ -82,10 +82,10 @@
   }
 
   img {
+    max-width: rem(250px);
     margin-right: auto;
     margin-left: auto;
     object-fit: contain;
-    max-width: rem(250px);
   }
 
   .icon {
