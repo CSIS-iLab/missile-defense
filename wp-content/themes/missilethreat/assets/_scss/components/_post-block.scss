@@ -61,7 +61,7 @@
 
   @include breakpoint('small') {
     position: relative;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr auto;
     column-gap: rem(40px);
 
     &__category,
