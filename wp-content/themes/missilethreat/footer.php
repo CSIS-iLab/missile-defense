@@ -12,9 +12,7 @@
  */
 
 ?>
-	<style>
-	@import 'assets/_scss/layout/_footer';
-	</style>
+
 	<footer id="site-footer" class="footer" role="contentinfo">
 		<div class="footer__logo">	
 			<a href="https://www.csis.org"><?php include( get_template_directory() . '/assets/static/csis-mt-logo-white-long.svg'); ?></a>

@@ -317,15 +317,15 @@ if ( ! function_exists( 'missiledefense_related_posts' ) ) :
 				
 				
 			}
-
-		}
+			wp_reset_query();
 
 		if ( $current_related_tags && $the_query->found_posts > 2 ) {
 			echo '<div class="related__more"><a href="' . esc_url( '/tag/' . $current_related_tags) . '">All related posts' . missilethreat_get_svg( 'chevron-right' ) . '</a></div>';
 		} ?>
 				</div>
 			</div>
-		<?php wp_reset_query();
+			<?php
+		}
 	} 
 endif;
 
