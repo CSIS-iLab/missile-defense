@@ -14,7 +14,7 @@
   /*----------  Links  ----------*/
 
   /* stylelint-disable */
-  a[href*="//"]:not([href*="missile-threat.local"]):not([href*="localhost"]):not([href*="missilethreat"]):not([href*="csis-website-prod"]):not([href*="csis-prod"])
+  a[href*="//"]:not([href*="missile-threat.local"]):not([href*="localhost"]):not([href*="missilethreat"]):not([href*="csis-website-prod"]):not([href*="wpengine"])
   {
     /* stylelint-enable */
     &::after {
