@@ -49,7 +49,12 @@
   
   @include breakpoint('large') {
     --margin-text-side: #{3vw};
-    --margin-gutter-side: #{-6vw};
+    --margin-gutter-side: #{rem(-128px)};
+  }
+  
+  @include breakpoint('xlarge') {
+    --margin-gutter-side: calc(#{rem(-128px)} + -6vw);
+
   }
 
   @include breakpoint('xxlarge') {
@@ -82,7 +87,7 @@
   float: none !important;
   margin-right: var(--margin-gutter-side, 0) !important;
   margin-left: var(--margin-text-side, 0) !important;
-
+  
   @include breakpoint('medium') {
     float: right !important;
   }
