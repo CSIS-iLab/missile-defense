@@ -16,7 +16,7 @@
 <article <?php post_class('post-block post-block--post'); ?> id="post-<?php the_ID(); ?>">
 <?php
 	if ( has_post_thumbnail()) : ?>
-    <a href="<?php the_permalink(); ?>" alt="<?php the_title_attribute(); ?>" class="thumbnail-link">
+    <a href="<?php the_permalink(); ?>" aria-hidden="true" class="thumbnail-link">
         <?php the_post_thumbnail(array(400, 304)); ?>
     </a>
 	<?php endif; ?>
