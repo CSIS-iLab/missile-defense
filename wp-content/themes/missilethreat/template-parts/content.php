@@ -11,7 +11,12 @@
  * @since 1.0.0
  */
 
+$related_posts = get_post_meta( $post->ID, '_post_related_tags', true );
 
+if ( is_tax() ) {
+	$term = get_queried_object_id();
+	$related_posts = get_term_meta( $term, 'archive_related_tags', true );
+}
 
 ?>
 
@@ -39,15 +44,9 @@
 
 		<?php echo missiledefense_citation(); ?>
 
-		<div class="related__wrapper alignwide">
-			<div class="related">
-				<h2 class="related__heading">Related</h2>
-				<?php echo missilethreat_display_tags(); ?>
-				
-				<?php echo missiledefense_related_posts(); ?>
-				
-			</div>
-		</div>
+		<?php echo missiledefense_related_posts(); ?>
+
+
 
 	</footer>
 

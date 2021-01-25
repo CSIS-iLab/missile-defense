@@ -302,9 +302,13 @@ if ( ! function_exists( 'missiledefense_related_posts' ) ) :
 		
 		$the_query = new WP_Query( $args );
 		
-		if ( $the_query->have_posts() ) {
-			
-			$i = 0;
+		if ( $the_query->have_posts() ) { ?>
+			<div class="related__wrapper alignwide">
+			<div class="related">
+				<h2 class="related__heading">Related</h2>
+				<?php echo missilethreat_display_tags(); ?>
+
+			<?php	$i = 0;
 			
 			while ( $the_query->have_posts() ) {
 				$the_query->the_post();
@@ -313,13 +317,15 @@ if ( ! function_exists( 'missiledefense_related_posts' ) ) :
 				
 				
 			}
+
 		}
 
 		if ( $current_related_tags && $the_query->found_posts > 2 ) {
 			echo '<div class="related__more"><a href="' . esc_url( '/tag/' . $current_related_tags) . '">All related posts' . missilethreat_get_svg( 'chevron-right' ) . '</a></div>';
-		}
-
-		wp_reset_query();
+		} ?>
+		</div>
+		</div>
+		<?php wp_reset_query();
 	} 
 endif;
 
