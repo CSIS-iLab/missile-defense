@@ -82,8 +82,10 @@
   }
 
   img {
-    object-fit: contain;
     max-width: rem(250px);
+    margin-right: auto;
+    margin-left: auto;
+    object-fit: contain;
   }
 
   .icon {
@@ -93,10 +95,10 @@
   }
 
   @include breakpoint('medium') {
-    display: flex;
-
-    img {
-      margin-left: rem(32px);
-    }
+    display: grid;
+    grid-template-columns: 2fr auto;
+    gap: rem(32px);
+    margin-right: 6vw;
+    margin-left: 6vw;
   }
 }

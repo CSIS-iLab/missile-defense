@@ -47,6 +47,12 @@
 
   .thumbnail-link {
     grid-row: 6;
+    transition: all 0.3s ease-in-out;
+
+    &:hover ~ .post-block__title {
+      color: $color-primary-blue-300;
+      text-decoration: underline;
+    }
 
     img {
       width: 100%;
@@ -61,7 +67,7 @@
 
   @include breakpoint('small') {
     position: relative;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2fr auto;
     column-gap: rem(40px);
 
     &__category,

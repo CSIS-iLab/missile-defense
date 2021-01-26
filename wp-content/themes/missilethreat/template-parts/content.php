@@ -12,7 +12,6 @@
  */
 
 
-
 ?>
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
@@ -39,15 +38,9 @@
 
 		<?php echo missiledefense_citation(); ?>
 
-		<div class="related__wrapper alignwide">
-			<div class="related">
-				<h2 class="related__heading">Related</h2>
-				<?php echo missilethreat_display_tags(); ?>
-				
-				<?php echo missiledefense_related_posts(); ?>
-				
-			</div>
-		</div>
+		<?php echo missiledefense_related_posts(); ?>
+
+
 
 	</footer>
 

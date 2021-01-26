@@ -57,7 +57,9 @@ if ( $wp_query->found_posts ) {
 					get_template_part( 'template-parts/block-post', get_post_type() );
 
 				}
-			}
+			} else { ?>
+				<p class="search__no-results">Sorry, but nothing matched your search terms. Please try again with some different keywords.</p>
+			<?php }
 			?>
 
 			<?php get_template_part( 'template-parts/pagination' ); ?>

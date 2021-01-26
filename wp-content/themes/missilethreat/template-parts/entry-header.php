@@ -36,7 +36,7 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 		<hr class="divider divider--thicc page__header-divider"></hr>
 		
 		<div class="single__header-meta">
-			Last Updated <?php missilethreat_last_updated(); ?>
+			Last Updated&nbsp<?php missilethreat_last_updated(); ?>
 		</div>
 
 		<?php  if( 'defsys' === $post_type ) { ?>
