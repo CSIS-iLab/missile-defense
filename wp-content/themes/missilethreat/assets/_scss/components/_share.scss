@@ -92,13 +92,6 @@
     }
   }
 
-  @include breakpoint('xxlarge') {
-    .single__header &,
-    .at-a-glance__wrapper & {
-      // left: -6%;
-    }
-  }
-
   .single__footer & {
     justify-content: right;
     width: fit-content;
