@@ -1,7 +1,9 @@
 @use '../abstracts' as *;
 
 .at-a-glance {
+  margin-right: 6vw;
   margin-bottom: rem(56px);
+  margin-left: 6vw;
   padding: rem(24px) rem(32px) rem(48px) rem(32px);
   color: $color-text-dark-190;
   background: $color-primary-light-gray;

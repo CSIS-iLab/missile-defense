@@ -1,7 +1,9 @@
 @use '../abstracts' as *;
 
 .featured-media {
+  margin-right: 6vw;
   margin-bottom: rem(32px);
+  margin-left: 6vw;
 
   img {
     width: 100%;
