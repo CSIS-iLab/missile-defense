@@ -31,6 +31,5 @@ $block_title = get_lzb_meta('title')
         </dl>
         <?php } ?>
       </div>
-      <?php dynamic_sidebar( 'social-share' ); ?>
   </div>
 </div>
