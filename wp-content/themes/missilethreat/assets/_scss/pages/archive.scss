@@ -28,7 +28,7 @@
 
   &__desc {
     @extend %font-copy-quote-sm;
-    max-width: 700px;
+    max-width: rem(700px);
     color: $color-text-dark-190;
   }
 
@@ -135,7 +135,6 @@
       display: flex;
       align-items: center;
       margin-bottom: rem(16px);
-      //margin-left: rem(16px);
       color: $color-primary-blue-300;
       font-weight: normal;
       font-size: rem(20px);

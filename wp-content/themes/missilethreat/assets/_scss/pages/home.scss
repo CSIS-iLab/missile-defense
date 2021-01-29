@@ -30,12 +30,10 @@
       margin-left: 0;
       color: $color-primary-blue-600;
       font-size: rem(12px);
-      transition: margin-left 0.15s linear;
     }
 
     &:hover .icon {
       margin-left: 4px;
-      transition: margin-left 0.15s linear;
     }
   }
 
@@ -438,8 +436,7 @@
       }
 
       &:hover .icon {
-        margin-left: 4px;
-        transition: margin-left 0.15s linear;
+        margin-left: rem(4px);
       }
     }
 

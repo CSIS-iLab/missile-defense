@@ -15,7 +15,7 @@ if( $post_type === 'defsys') {
 ?>
 <ul class="breadcrumbs" role="list">
   <li><a href="/defsys">Defense Systems</a></li>
-  <li>System Component: <span class="text--bold"><?php the_title(); ?></span></li>
+  <li>System Component: <span class="text--semibold"><?php the_title(); ?></span></li>
 </ul><br style="clear:left;" />
 
 <?php 

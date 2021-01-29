@@ -19,7 +19,7 @@
 
     &::before {
       position: relative;
-      top: -12px;
+      top: -8px;
       right: 0.5rem;
       display: block;
       width: 0;
@@ -29,20 +29,11 @@
       content: '';
     }
 
-    &:hover::before {
-      width: calc(100% + 1rem);
-      transition: width 0.15s linear;
-    }
-
     @include breakpoint('medium') {
       margin: 0 rem(16px);
     }
 
     &.current {
-      color: $color-primary-blue-200;
-      font-weight: 600;
-      border-top: 4px solid $color-primary-blue-200;
-
       &::before {
         width: calc(100% + 1rem);
         background-color: $color-primary-blue-200;
