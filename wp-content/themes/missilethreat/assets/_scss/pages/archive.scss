@@ -28,8 +28,8 @@
 
   &__desc {
     @extend %font-copy-quote-sm;
-    color: $color-text-dark-190;
     max-width: 700px;
+    color: $color-text-dark-190;
   }
 
   &__posts {

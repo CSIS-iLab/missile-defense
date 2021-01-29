@@ -41,9 +41,10 @@
     #menu-footer-menu {
       list-style: none;
     }
-
+    
     li {
       margin-bottom: 4px;
+
       &:hover {
         text-decoration-line: underline;
         color: $color-text-light-100;

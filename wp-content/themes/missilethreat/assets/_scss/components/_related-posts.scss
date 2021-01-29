@@ -15,9 +15,9 @@
   &__tags {
     display: flex;
     gap: rem(16px);
+    align-items: center;
     margin-bottom: rem(12px);
     text-transform: uppercase;
-    align-items: center;
 
     &-heading {
       @extend %font-ui-heading-xs;

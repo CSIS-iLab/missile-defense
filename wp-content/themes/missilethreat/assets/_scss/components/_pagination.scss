@@ -16,18 +16,20 @@
   .page-numbers {
     display: inline-block;
     padding: rem(8px);
-    &:before {
-      content: '';
-      display: block;
+
+    &::before {
       position: relative;
-      width: 0;
-      height: 4px;
       top: -12px;
       right: 0.5rem;
+      display: block;
+      width: 0;
+      height: 4px;
       background-color: $color-line-mid-gray;
       transition: width 0.15s linear;
+      content: '';
     }
-    &:hover:before {
+
+    &:hover::before {
       width: calc(100% + 1rem);
       transition: width 0.15s linear;
     }
@@ -41,9 +43,9 @@
       font-weight: 600;
       border-top: 4px solid $color-primary-blue-200;
 
-      &:before {
-        background-color: $color-primary-blue-200;
+      &::before {
         width: calc(100% + 1rem);
+        background-color: $color-primary-blue-200;
       }
     }
 
@@ -55,7 +57,7 @@
     &.placeholder {
       color: $color-line-light-gray;
 
-      &:hover:before {
+      &:hover::before {
         display: none;
         background-color: transparent;
       }
