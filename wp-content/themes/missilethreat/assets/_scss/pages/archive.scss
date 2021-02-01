@@ -28,6 +28,7 @@
 
   &__desc {
     @extend %font-copy-quote-sm;
+    max-width: rem(700px);
     color: $color-text-dark-190;
   }
 
@@ -86,12 +87,12 @@
       margin-top: rem(12px);
       color: $color-primary-blue-300;
       text-transform: capitalize;
-      
+
       a {
         display: inline;
         transition: all 0.3s ease-in-out;
       }
-      
+
       a:hover {
         color: $color-primary-blue-100;
         text-decoration: underline;
@@ -106,7 +107,7 @@
   .actors {
     &__header {
       @extend %font-copy-heading-2;
-      margin-bottom: rem(12px);
+      margin-bottom: rem(6px);
       color: $color-text-dark-100;
       font-weight: 600;
 
@@ -116,7 +117,7 @@
     }
 
     &__group {
-      margin-top: rem(32px);
+      margin-top: rem(16px);
       margin-bottom: rem(56px);
 
       @include breakpoint('large') {
@@ -134,20 +135,20 @@
       display: flex;
       align-items: center;
       margin-bottom: rem(16px);
-      margin-left: rem(16px);
       color: $color-primary-blue-300;
       font-weight: normal;
       font-size: rem(20px);
-      line-height: 1.5;
+      line-height: 1.2;
       transition: all 0.3s ease-in-out;
-      
+
       &:hover {
         color: $color-primary-blue-100;
+        text-decoration: underline;
 
-        
         /* stylelint-disable */
         .actors__icon {
-          filter: invert(13%) sepia(33%) saturate(1061%) hue-rotate(155deg) brightness(102%) contrast(101%);
+          filter: invert(13%) sepia(33%) saturate(1061%) hue-rotate(155deg)
+            brightness(102%) contrast(101%);
         }
         /* stylelint-enable */
       }
@@ -157,7 +158,8 @@
       width: rem(42px);
       height: rem(48px);
       margin-right: rem(16px);
-      filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg) brightness(92%) contrast(86%);
+      filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg)
+        brightness(92%) contrast(86%);
       transition: all 0.3s ease-in-out;
     }
   }

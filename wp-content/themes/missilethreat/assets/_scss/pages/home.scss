@@ -27,8 +27,14 @@
     font-style: italic;
 
     .icon {
+      margin-left: 0;
       color: $color-primary-blue-600;
       font-size: rem(12px);
+      transition: margin-left 0.15s linear;
+    }
+
+    &:hover .icon {
+      margin-left: 4px;
     }
   }
 
@@ -37,17 +43,21 @@
     z-index: 2;
     width: 100%;
     margin-bottom: rem(40px);
-    
+
     .wp-post-image {
       width: 100%;
-      margin-bottom: rem(40px);
+      margin-bottom: rem(24px);
     }
 
     &__category {
       @extend %font-ui-text-sm;
-      margin-bottom: rem(16px);
+      margin-bottom: rem(8px);
       color: $color-text-dark-170;
       text-transform: uppercase;
+
+      &:hover {
+        color: $color-primary-blue-100;
+      }
 
       &:not(:first-child) {
         font-weight: 600;
@@ -79,7 +89,6 @@
 
     @include breakpoint('large') {
       grid-column: 1 / span 1;
-      margin-top: rem(32px);
     }
   }
 
@@ -90,15 +99,23 @@
     padding-top: rem(124px);
     padding-bottom: rem(88px);
     background-color: $color-primary-blue-300;
-    background-image: linear-gradient(180deg, rgba(7, 52, 74, 0) rem(92px), rgba(6, 43, 61, 0.9) 75.52%);
-    @include full-width-background(linear-gradient(180deg, rgba(7, 52, 74, 0) rem(92px), rgba(6, 43, 61, 0.9) 75.52%));
+    background-image: linear-gradient(180deg,
+    rgba(7, 52, 74, 0) rem(92px),
+    rgba(6, 43, 61, 0.9) 75.52%);
+    @include full-width-background(
+      linear-gradient(
+        180deg,
+        rgba(7, 52, 74, 0) rem(92px),
+        rgba(6, 43, 61, 0.9) 75.52%
+      )
+    );
 
     &::before,
     &::after {
       content: '';
       background-color: $color-primary-blue-300;
     }
-    
+
     @include breakpoint('small') {
       display: flex;
       grid-column: 1 / span 2;
@@ -133,13 +150,13 @@
       margin-left: rem(32px);
     }
   }
-  
+
   &__initiative {
     color: $color-text-light-155;
     font-size: rem(12px);
     font-style: italic;
     line-height: 1.35;
-    
+
     a {
       color: $color-text-light-190;
       font-size: rem(14px);
@@ -154,7 +171,7 @@
 
   &__logo {
     display: block;
-    
+
     svg {
       display: block;
       max-width: rem(144px);
@@ -178,7 +195,7 @@
       margin-right: rem(32px);
       padding-top: rem(92px);
     }
-    
+
     .post-block {
       padding-top: 0;
       padding-bottom: rem(40px);
@@ -189,18 +206,18 @@
       }
 
       .thumbnail-link {
-        margin-bottom: rem(24px);
+        margin-bottom: rem(16px);
       }
-      
+
       @include breakpoint('small') {
         grid-template-columns: 1fr 2fr;
         grid-template-rows: repeat(3, max-content) auto;
         column-gap: rem(32px);
-        
+
         &:not(:last-of-type) {
-          padding-bottom: rem(16px);
+          padding-bottom: rem(40px);
         }
-        
+
         .thumbnail-link {
           grid-column: 1 / span 1;
           grid-row: 1 / span 4;
@@ -272,12 +289,12 @@
       }
 
       .thumbnail-link {
-        margin-bottom: rem(24px);
+        margin-bottom: rem(16px);
       }
 
       @include breakpoint('small') {
         grid-template-columns: 1fr;
-        
+
         .thumbnail-link {
           position: initial;
           grid-column: 1;
@@ -292,7 +309,7 @@
       padding-right: rem(32px);
       border-right: rem(1px) solid $color-line-light-gray;
     }
-    
+
     @include breakpoint('large') {
       grid-column: 2;
       padding: 0 rem(32px);
@@ -342,7 +359,7 @@
     .post-meta__date:not(:last-child) {
       margin-bottom: rem(32px);
     }
-    
+
     @include breakpoint('small') {
       grid-column: 2;
       margin-top: 0;
@@ -388,14 +405,20 @@
     margin: 0 auto rem(32px) auto;
     padding: rem(24px);
     background: $color-text-light-100;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2), 0 1px 18px rgba(0, 0, 0, 0.12),
-      0 3px 10px rgba(0, 0, 0, 0.11);
+    box-shadow: 0 1px 9px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.15s linear;
+
+    &:hover {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1),
+        0 0 7px rgba(0, 0, 0, 0.1);
+    }
 
     &-icon {
       width: rem(64px);
       height: rem(64px);
       margin-bottom: rem(24px);
-      filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg) brightness(92%) contrast(86%);
+      filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg)
+        brightness(92%) contrast(86%);
     }
 
     &-title {
@@ -405,8 +428,14 @@
 
       .icon {
         margin-bottom: rem(2px);
+        margin-left: 0;
         color: $color-primary-blue-600;
-        font-size: rem(10px);
+        font-size: rem(12px);
+        transition: margin-left 0.15s linear;
+      }
+
+      &:hover .icon {
+        margin-left: rem(4px);
       }
     }
 
@@ -514,7 +543,7 @@
 
   &__events {
     margin-bottom: rem(24px);
-    
+
     @include breakpoint('small') {
       margin-bottom: rem(56px);
       padding-right: rem(32px);
@@ -532,14 +561,14 @@
 
     .event {
       margin-bottom: rem(40px);
-      
+
       &__date {
         @extend %font-ui-heading-md;
         margin-bottom: rem(8px);
         color: $color-primary-blue-600;
         text-transform: uppercase;
       }
-      
+
       &__link {
         @extend %font-ui-headline-md;
         color: $color-text-dark-100;
@@ -553,7 +582,7 @@
     @include breakpoint('small') {
       padding-left: rem(32px);
     }
-    
+
     @include breakpoint('large') {
       grid-column: 2 / span 2;
     }

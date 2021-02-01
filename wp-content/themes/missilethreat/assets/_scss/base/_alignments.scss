@@ -46,7 +46,7 @@
     --margin-text-side: #{rem(24px)};
     margin-top: 0;
   }
-  
+
   @include breakpoint('large') {
     --margin-text-side: #{3vw};
     --margin-gutter-side: #{rem(-128px)};

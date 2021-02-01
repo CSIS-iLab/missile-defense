@@ -3,7 +3,7 @@
 .footer {
   @extend %font-body-short-md;
   @include full-width-background($color-primary-blue-200);
-  padding-top: rem(40px);
+  padding-top: rem(24px);
   padding-bottom: rem(16px);
   color: $color-text-light-170;
   background-color: $color-primary-blue-200;
@@ -37,12 +37,14 @@
     white-space: nowrap;
     @extend %font-body-short-sm;
     transition: all 0.3s ease-in-out;
-    
+
     #menu-footer-menu {
       list-style: none;
     }
     
     li {
+      margin-bottom: rem(4px);
+
       &:hover {
         text-decoration-line: underline;
         color: $color-text-light-100;
@@ -57,8 +59,8 @@
   }
 
   &__logo {
-    margin-bottom: rem(24px);
-    
+    margin-bottom: rem(8px);
+
     svg {
       max-width: rem(281px);
     }
@@ -112,7 +114,7 @@
   }
 
   @include breakpoint('large') {
-    padding-top: rem(56px);
+    padding-top: rem(32px);
 
     &__container--large {
       display: grid;
@@ -140,5 +142,3 @@
     }
   }
 }
-
-

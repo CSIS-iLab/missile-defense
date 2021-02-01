@@ -17,7 +17,10 @@
   &--short {
     min-height: 0;
     max-height: rem(272px);
-    background: linear-gradient(180deg, rgba(7, 52, 74, 0) 0%, rgba(6, 43, 61, 0.9) 75.52%), linear-gradient(90deg, #2a5565 0%, #5f7981 100%);
+    background: linear-gradient(180deg,
+    rgba(7, 52, 74, 0) 0%,
+    rgba(6, 43, 61, 0.9) 75.52%),
+      linear-gradient(90deg, #2a5565 0%, #5f7981 100%);
   }
 
   &::after {
@@ -71,6 +74,7 @@
 
   &-desc {
     @extend %font-body-list-lg;
+    color: $color-text-light-170;
 
     &--short {
       display: none;
@@ -81,7 +85,7 @@
     @extend %font-ui-text-lg;
     display: flex;
     color: $color-text-light-170;
-    
+
     .post-meta__date {
       @extend %font-ui-text-lg;
       color: $color-text-light-170;
@@ -92,7 +96,7 @@
       }
     }
   }
-  
+
   &-inner--narrow {
     margin: 0 auto;
 
@@ -110,7 +114,7 @@
     display: flex;
     align-items: flex-end;
   }
-  
+
   .search-field {
     @extend %font-ui-page-title-md;
     width: 100%;
@@ -152,12 +156,11 @@
 
   @include breakpoint('xlarge') {
     min-height: rem(484px);
-    
+
     &--short {
       min-height: 0;
     }
   }
-
 
   @include breakpoint('xxlarge') {
     padding: rem(128px) rem(80px) rem(56px) rem(80px);
@@ -168,7 +171,7 @@
   max-width: $size__content-max-width;
   margin-right: auto;
   margin-left: auto;
-  
+
   &-inner {
     margin: rem(48px) auto rem(32px) auto;
   }

@@ -13,7 +13,7 @@
   color: $color-primary-light-blue;
   font-size: rem(20px);
   background-image: $gradient-header;
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -27,11 +27,15 @@
     transition: all 0.3s ease-in-out;
     pointer-events: none;
   }
-  
+
+  &.full-color {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1), 0 0 7px rgba(0, 0, 0, 0.1);
+  }
+
   &.full-color::after {
     opacity: 1;
   }
-  
+
   body .logged-in & {
     top: 32px;
   }
@@ -42,7 +46,7 @@
 
   &--solid-bg {
     background-color: $color-primary-blue-300;
-    
+
     &::after {
       content: none;
     }
@@ -59,7 +63,7 @@
     z-index: 15;
     order: 2;
     margin: 0;
-    
+
     &.is-invisible {
       display: none;
     }
@@ -74,7 +78,7 @@
       justify-content: initial;
       column-gap: unset;
     }
-    
+
     &__logo {
       order: 1;
       justify-self: start;

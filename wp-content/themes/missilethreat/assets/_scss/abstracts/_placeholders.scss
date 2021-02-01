@@ -5,7 +5,7 @@
 =          Placeholders        =
 ==============================*/
 %font-ui-text-sm {
-  @include font-size(12px);
+  @include font-size(13px);
   line-height: 1.14;
 }
 
@@ -41,7 +41,7 @@
 }
 
 %font-ui-heading-xs {
-  @include font-clamp(13px, 14px);
+  @include font-clamp(14px, 15px);
   line-height: 1.14;
 }
 
@@ -106,7 +106,7 @@
 }
 
 %font-body-short-sm {
-  @include font-size(14px);
+  @include font-size(15px);
   line-height: 1.35;
 }
 
