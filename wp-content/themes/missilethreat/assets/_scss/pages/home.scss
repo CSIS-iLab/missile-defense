@@ -30,6 +30,7 @@
       margin-left: 0;
       color: $color-primary-blue-600;
       font-size: rem(12px);
+      transition: margin-left 0.15s linear;
     }
 
     &:hover .icon {
