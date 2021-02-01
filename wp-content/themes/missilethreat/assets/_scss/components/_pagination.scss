@@ -29,6 +29,10 @@
       content: '';
     }
 
+    &:hover::before {
+      width: calc(100% + 1rem);
+    }
+
     @include breakpoint('medium') {
       margin: 0 rem(16px);
     }
@@ -39,19 +43,15 @@
         background-color: $color-primary-blue-200;
       }
     }
-
-    .dots:hover {
-      color: $color-text-dark-155;
-      border-top: 0;
+    
+    &.dots:hover::before,
+    &.placeholder:hover::before {
+      display: none;
+      background-color: transparent;
     }
-
+    
     &.placeholder {
       color: $color-line-light-gray;
-
-      &:hover::before {
-        display: none;
-        background-color: transparent;
-      }
     }
   }
 }
