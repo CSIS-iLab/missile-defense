@@ -38,8 +38,15 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 		<div class="single__header-meta">
 			Last Updated&nbsp<?php missilethreat_last_updated(); ?>
 		</div>
+		<?php  if( 'missile' === $post_type ) { ?>
+		<div class="alignwide">
+			<div class="single__header-image-wrapper">
+				<?php missiledefense_share(); ?>
+			</div><!-- single__header-image-wrapper -->
+		</div><!-- alignwide -->
+		<?php }
 
-		<?php  if( 'defsys' === $post_type ) { ?>
+		if( 'defsys' === $post_type ) { ?>
 			<div class="share-wrapper">
 				<?php missiledefense_system_terms(); ?>
 				<?php missiledefense_share(); ?>
@@ -99,11 +106,8 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 				<div class="single__header-inner">
 					<?php
 					missilethreat_display_categories();
-					the_title( '<h1 class="single__header-title">', '</h1>' );
+					the_title( '<h1 class="single__header-title">', '</h1>' );?>
 					
-					if ( has_excerpt() ) { ?>
-						<div class="single__header-excerpt"><?php the_excerpt(); ?></div>
-					<?php } ?>
 					<hr class="divider divider--thicc page__header-divider"></hr>
 					<div class="single__header-meta">
 					<?php
