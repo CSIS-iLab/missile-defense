@@ -191,7 +191,7 @@ if (! function_exists('missilethreat_authors_list_extended')) :
 					$name = '<a href="' . $coauthor->website . '">' . $coauthor->display_name . '</a>';
 				}
 
-				$authors .= '<p class="post__authors-author"><span class="text--bold">' . $name . '</span> ' . $coauthor->description . '</p>';
+				$authors = '<p class="post__authors-author"><span class="text--bold">' . $name . '</span> ' . $coauthor->description . '</p>';
 			}
 		} else {
 			$authors = the_author_posts_link();
