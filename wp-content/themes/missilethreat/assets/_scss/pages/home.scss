@@ -2,9 +2,15 @@
 
 .home {
   #site-content {
+    display: flex;
+    flex-direction: column;
     @include breakpoint('small') {
       display: grid;
       grid-template-columns: 1fr 1fr;
+
+      * {
+        order: unset;
+      }
     }
 
     @include breakpoint('large') {
@@ -94,6 +100,7 @@
 
   &__hero {
     position: relative;
+    order: 1;
     margin-top: rem(-80px);
     margin-bottom: rem(-48px);
     padding-top: rem(124px);
@@ -185,6 +192,8 @@
   }
 
   &__recent-col1 {
+    order: 2;
+
     @include breakpoint('small') {
       grid-column: 1 / span 2;
     }
@@ -274,6 +283,8 @@
   }
 
   &__recent-col2 {
+    order: 3;
+
     .post-block {
       margin-top: 0;
       padding: 0;
@@ -343,6 +354,7 @@
   }
 
   &__news {
+    order: 5;
     margin-top: rem(56px);
 
     &-heading {
@@ -374,10 +386,15 @@
     }
   }
 
+  &__all-news,
   &__all-analysis {
-    grid-column: 1 / -1;
     margin-top: rem(24px);
     text-align: center;
+  }
+
+  &__all-analysis {
+    grid-column: 1 / -1;
+    order: 4;
   }
 
   &__cards {
@@ -385,6 +402,7 @@
     z-index: 2;
     display: flex;
     flex-wrap: wrap;
+    order: 6;
     margin-top: rem(64px);
 
     @include breakpoint('small') {
@@ -470,6 +488,7 @@
 
   &__projects {
     @include full-width-background($color-primary-light-gray);
+    order: 7;
     margin-top: rem(-88px);
     padding: rem(112px) 0 rem(56px) 0;
     background: $color-primary-light-gray;
@@ -535,6 +554,7 @@
 
   &__newsletter {
     grid-column: 1 / -1;
+    order: 8;
     margin-bottom: rem(56px);
     color: $color-text-light-100;
     @include full-width-background($color-primary-blue-200);
@@ -542,6 +562,7 @@
   }
 
   &__events {
+    order: 9;
     margin-bottom: rem(24px);
 
     @include breakpoint('small') {
@@ -577,6 +598,7 @@
   }
 
   &__twitter {
+    order: 10;
     max-height: rem(450px);
     margin-bottom: rem(56px);
     padding-right: rem(12px);
