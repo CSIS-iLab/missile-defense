@@ -80,6 +80,7 @@ get_header();
 			wp_reset_postdata();
 		}
 		?>
+	<div class="home__see-all home__all-news"><a href="<?php echo site_url('/category/news') ?>">All News <?php echo missilethreat_get_svg('chevron-right') ?></a></div>
 
 	</section>
 	
