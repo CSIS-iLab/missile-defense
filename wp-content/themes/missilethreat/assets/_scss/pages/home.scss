@@ -577,7 +577,10 @@
   }
 
   &__twitter {
+    max-height: rem(450px);
     margin-bottom: rem(56px);
+    padding-right: rem(12px);
+    overflow: scroll;
 
     @include breakpoint('small') {
       padding-left: rem(32px);
