@@ -410,8 +410,10 @@
     }
 
     @include breakpoint('large') {
-      flex-wrap: nowrap;
+      display: grid;
       grid-column: 1 / span 3;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(64px);
       justify-content: space-between;
       margin-bottom: rem(56px);
     }
@@ -479,10 +481,6 @@
     @include breakpoint('large') {
       max-width: 100%;
       margin-bottom: 0;
-
-      &:last-child {
-        margin-left: rem(64px);
-      }
     }
   }
 
