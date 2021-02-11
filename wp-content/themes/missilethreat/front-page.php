@@ -107,7 +107,7 @@ $defense_card_text = get_field( 'defense_systems_text');
 				<h2 class="home__card-title">
 					<a href="<?php echo site_url('/missile') ?>" class="home__card-link post-title--hover">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></a>
 				</h2>
-			<p class="home__card-desc home__desc"><?php echo $defense_card_text ?></p>
+			<p class="home__card-desc home__desc"><?php echo $missile_card_text ?></p>
 		</div>
 
 	</section>
