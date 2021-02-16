@@ -124,21 +124,28 @@
     }
 
     @include breakpoint('small') {
-      display: flex;
       grid-column: 1 / span 2;
     }
 
     @include breakpoint('large') {
       grid-column: 1 / -1;
       grid-row: 1;
-      align-items: flex-end;
       margin-bottom: rem(48px);
-      padding: rem(170px) 0 rem(48px) 50%;
+      padding: rem(212px) 0 rem(48px) 50%;
     }
 
     @include breakpoint('xlarge') {
       margin-top: 0;
-      padding-top: rem(88);
+      padding-top: rem(170px);
+    }
+  }
+
+  &__about {
+    @include breakpoint('small') {
+      position: relative;
+      top: 100%;
+      display: block;
+      transform: translateY(-100%);
     }
   }
 
@@ -146,23 +153,26 @@
     @extend %font-body-short-md-serif;
     margin-bottom: rem(16px);
     color: $color-primary-light-gray;
-
-    @include breakpoint('small') {
-      margin-bottom: 0;
-    }
   }
 
   &__credits {
     @include breakpoint('small') {
-      margin-left: rem(32px);
+      display: flex;
+      justify-content: space-between;
     }
   }
 
   &__initiative {
+    margin-right: rem(16px);
+    margin-bottom: rem(16px);
     color: $color-text-light-155;
     font-size: rem(12px);
     font-style: italic;
     line-height: 1.35;
+
+    @include breakpoint('small') {
+      margin-bottom: 0;
+    }
 
     a {
       color: $color-text-light-190;
@@ -181,7 +191,7 @@
 
     svg {
       display: block;
-      max-width: rem(144px);
+      max-width: rem(248px);
       transition: fill 0.3s ease-in-out;
       fill: $color-text-light-190;
 

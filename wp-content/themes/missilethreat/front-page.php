@@ -17,10 +17,10 @@ get_header();
 	<div class="home__hero entry-header">
 		<div class="home__about">
 			<?php the_content(); ?>
-		</div>
-		<div class="home__credits">
-			<p class="home__initiative">an initiative of the CSIS<br/><a href="https://www.csis.org/programs/international-security-program/missile-defense-project" class="text--semibold">Missile Defense Project</a></p>
-			<a href="https://www.csis.org" class="home__logo"><?php include( get_template_directory() . '/assets/static/csis-logo.svg'); ?></a>
+			<div class="home__credits">
+				<p class="home__initiative">an initiative of the CSIS<br/><a href="https://www.csis.org/programs/international-security-program/missile-defense-project" class="text--semibold">Missile Defense Project</a></p>
+				<a href="https://www.csis.org" class="home__logo"><?php include( get_template_directory() . '/assets/static/csis-logo.svg'); ?></a>
+			</div>
 		</div>
 	</div>
 	

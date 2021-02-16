@@ -67,6 +67,10 @@
     &.is-invisible {
       display: none;
     }
+
+    &:hover svg {
+      color: $color-text-light-170;
+    }
   }
 
   @include breakpoint('large') {
