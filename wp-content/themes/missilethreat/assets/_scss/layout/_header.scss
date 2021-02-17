@@ -63,13 +63,21 @@
     z-index: 15;
     order: 2;
     margin: 0;
+    
+    &:hover svg {
+      color: $color-text-light-170;
+    }
 
     &.is-invisible {
       display: none;
     }
 
-    &:hover svg {
-      color: $color-text-light-170;
+    &-static {
+      height: rem(45px) !important;
+    }
+
+    svg {
+      height: 100% !important;
     }
   }
 

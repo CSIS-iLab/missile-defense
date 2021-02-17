@@ -66,8 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
     entries.forEach(entry => {
       if (!entry.isIntersecting) {
         header.classList.add('full-color')
+        logo.setAttribute('style', 'height:45px;')
       } else {
         header.classList.remove('full-color')
+        logo.setAttribute('style', 'height:60px;')
       }
     })
   }, entryHeaderOptions)

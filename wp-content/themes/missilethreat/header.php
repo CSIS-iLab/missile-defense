@@ -31,6 +31,7 @@
 
 		if( is_singular( array( 'post', 'defsys', 'missile' ) ) ) {
 			$solidBg = 'header--solid-bg';
+			$staticLogo = 'header__logo-static';
 		}
 		?>
 
@@ -42,7 +43,7 @@
 
 				<div class="header__inner">
 					
-					<a href="<?php echo get_home_url(); ?>" class="header__logo" title="Go home">
+					<a href="<?php echo get_home_url(); ?>" class="header__logo <?php echo $staticLogo; ?>" title="Go home">
 					<?php 
 
 						include( get_template_directory() . '/assets/static/missilethreat-logo.svg'); 
