@@ -75,10 +75,6 @@
     &-static {
       height: rem(45px) !important;
     }
-
-    svg {
-      height: 100% !important;
-    }
   }
 
   @include breakpoint('large') {
@@ -98,6 +94,11 @@
 
       &.is-invisible {
         display: block;
+      }
+
+      svg {
+        width: rem(250px);
+        height: rem(50px);
       }
     }
   }
