@@ -11,10 +11,11 @@
  * @since 1.0.0
  */
 
+$post_ID = get_the_ID();
 
 ?>
 
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class(); ?> id="post-<?php echo $post_ID; ?>">
 
 	<div class="single__content">
 
@@ -38,7 +39,12 @@
 
 		<?php echo missiledefense_citation(); ?>
 
-		<?php echo missiledefense_related_posts(); ?>
+		<?php
+		if ($post_ID != 228) {
+			echo missiledefense_related_posts();
+		}
+		?>
+
 
 
 
