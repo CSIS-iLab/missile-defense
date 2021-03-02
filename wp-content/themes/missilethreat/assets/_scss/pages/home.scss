@@ -430,11 +430,14 @@
   }
 
   &__card {
-    display: grid;
+    // display: grid;
+    z-index: 1;
+    position: relative;
     max-width: rem(416px);
     margin: 0 auto rem(32px) auto;
     padding: rem(24px);
-    background: $color-text-light-100;
+    overflow: hidden;
+    background: $color-primary-blue-200;
     box-shadow: 0 1px 9px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.15s linear;
 
@@ -444,22 +447,42 @@
     }
 
     &-icon {
-      width: rem(64px);
-      height: rem(64px);
-      margin-bottom: rem(24px);
-      filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg)
-        brightness(92%) contrast(86%);
+      z-index: -1;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0.5;
+
+      @include breakpoint('large') {
+        top: rem(50px);
+      }
     }
 
     &-title {
-      @extend %font-ui-heading-md;
+      @extend %font-ui-page-title-md;
       margin-bottom: rem(8px);
-      color: $color-text-dark-100;
+      color: $color-text-light-100;
+    }
+
+    &-desc {
+      color: $color-text-light-190;
+    }
+    
+    &-cta {
+      @extend %font-ui-heading-sm;
+      margin-top: rem(18px);
+      color: $color-text-light-190;
+      font-style: italic;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        text-decoration: underline;
+      }
 
       .icon {
         margin-bottom: rem(2px);
         margin-left: 0;
-        color: $color-primary-blue-600;
         font-size: rem(12px);
         transition: margin-left 0.15s linear;
       }
@@ -467,10 +490,6 @@
       &:hover .icon {
         margin-left: rem(4px);
       }
-    }
-
-    &-desc {
-      color: $color-text-dark-190;
     }
 
     @include breakpoint('small') {
