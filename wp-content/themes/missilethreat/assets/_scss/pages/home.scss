@@ -155,43 +155,14 @@
     color: $color-primary-light-gray;
   }
 
-  &__credits {
-    @include breakpoint('small') {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  &__initiative {
-    margin-right: rem(16px);
-    margin-bottom: rem(16px);
-    color: $color-text-light-155;
-    font-size: rem(12px);
-    font-style: italic;
-    line-height: 1.35;
-
-    @include breakpoint('small') {
-      margin-bottom: 0;
-    }
-
-    a {
-      color: $color-text-light-190;
-      font-size: rem(14px);
-      font-style: normal;
-
-      &:hover {
-        color: $color-text-light-100;
-        text-decoration: underline;
-      }
-    }
-  }
-
   &__logo {
     display: block;
+    margin-bottom: rem(16px);
 
     svg {
       display: block;
-      max-width: rem(248px);
+      width: 100%;
+      max-width: rem(386px);
       transition: fill 0.3s ease-in-out;
       fill: $color-text-light-190;
 
@@ -430,9 +401,8 @@
   }
 
   &__card {
-    // display: grid;
-    z-index: 1;
     position: relative;
+    z-index: 1;
     max-width: rem(416px);
     margin: 0 auto rem(32px) auto;
     padding: rem(24px);
@@ -447,12 +417,12 @@
     }
 
     &-icon {
-      z-index: -1;
       position: absolute;
       bottom: 0;
       left: 0;
+      z-index: -1;
       width: 100%;
-      opacity: 0.5;
+      opacity: 0.3;
 
       @include breakpoint('large') {
         top: rem(50px);
