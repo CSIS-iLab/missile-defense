@@ -59,7 +59,7 @@ if ( $missiles ) : ?>
           $missileURL = get_field('missile_url');
 
           if(isset($custom['missile_url'])) {
-            $url = esc_url(get_permalink($missileURL[0]));
+            $url = esc_url(get_permalink($missileURL));
           }
           else {
             $url = esc_url( get_permalink());

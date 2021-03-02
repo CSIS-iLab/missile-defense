@@ -58,7 +58,7 @@
 
   a {
     @extend %font-body-short-lg-serif;
-    display: inline-block;
+    display: inline;
     margin-bottom: rem(12px);
     color: $color-primary-blue-200;
     font-style: normal;

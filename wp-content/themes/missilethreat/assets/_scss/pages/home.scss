@@ -2,9 +2,15 @@
 
 .home {
   #site-content {
+    display: flex;
+    flex-direction: column;
     @include breakpoint('small') {
       display: grid;
       grid-template-columns: 1fr 1fr;
+
+      * {
+        order: unset;
+      }
     }
 
     @include breakpoint('large') {
@@ -94,6 +100,7 @@
 
   &__hero {
     position: relative;
+    order: 1;
     margin-top: rem(-80px);
     margin-bottom: rem(-48px);
     padding-top: rem(124px);
@@ -117,21 +124,28 @@
     }
 
     @include breakpoint('small') {
-      display: flex;
       grid-column: 1 / span 2;
     }
 
     @include breakpoint('large') {
       grid-column: 1 / -1;
       grid-row: 1;
-      align-items: flex-end;
       margin-bottom: rem(48px);
-      padding: rem(170px) 0 rem(48px) 50%;
+      padding: rem(212px) 0 rem(48px) 50%;
     }
 
     @include breakpoint('xlarge') {
       margin-top: 0;
-      padding-top: rem(88);
+      padding-top: rem(170px);
+    }
+  }
+
+  &__about {
+    @include breakpoint('small') {
+      position: relative;
+      top: 100%;
+      display: block;
+      transform: translateY(-100%);
     }
   }
 
@@ -139,42 +153,20 @@
     @extend %font-body-short-md-serif;
     margin-bottom: rem(16px);
     color: $color-primary-light-gray;
-
-    @include breakpoint('small') {
-      margin-bottom: 0;
-    }
-  }
-
-  &__credits {
-    @include breakpoint('small') {
-      margin-left: rem(32px);
-    }
-  }
-
-  &__initiative {
-    color: $color-text-light-155;
-    font-size: rem(12px);
-    font-style: italic;
-    line-height: 1.35;
-
-    a {
-      color: $color-text-light-190;
-      font-size: rem(14px);
-      font-style: normal;
-
-      &:hover {
-        color: $color-text-light-100;
-        text-decoration: underline;
-      }
-    }
   }
 
   &__logo {
-    display: block;
+    display: none;
+    margin-bottom: rem(16px);
+
+    @include breakpoint('large') {
+      display: block;
+    }
 
     svg {
       display: block;
-      max-width: rem(144px);
+      width: 100%;
+      max-width: rem(386px);
       transition: fill 0.3s ease-in-out;
       fill: $color-text-light-190;
 
@@ -185,6 +177,8 @@
   }
 
   &__recent-col1 {
+    order: 2;
+
     @include breakpoint('small') {
       grid-column: 1 / span 2;
     }
@@ -274,6 +268,8 @@
   }
 
   &__recent-col2 {
+    order: 3;
+
     .post-block {
       margin-top: 0;
       padding: 0;
@@ -343,6 +339,7 @@
   }
 
   &__news {
+    order: 5;
     margin-top: rem(56px);
 
     &-heading {
@@ -374,10 +371,15 @@
     }
   }
 
+  &__all-news,
   &__all-analysis {
-    grid-column: 1 / -1;
     margin-top: rem(24px);
     text-align: center;
+  }
+
+  &__all-analysis {
+    grid-column: 1 / -1;
+    order: 4;
   }
 
   &__cards {
@@ -385,6 +387,7 @@
     z-index: 2;
     display: flex;
     flex-wrap: wrap;
+    order: 6;
     margin-top: rem(64px);
 
     @include breakpoint('small') {
@@ -392,19 +395,23 @@
     }
 
     @include breakpoint('large') {
-      flex-wrap: nowrap;
+      display: grid;
       grid-column: 1 / span 3;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(64px);
       justify-content: space-between;
       margin-bottom: rem(56px);
     }
   }
 
   &__card {
-    display: grid;
+    position: relative;
+    z-index: 1;
     max-width: rem(416px);
     margin: 0 auto rem(32px) auto;
     padding: rem(24px);
-    background: $color-text-light-100;
+    overflow: hidden;
+    background: $color-primary-blue-200;
     box-shadow: 0 1px 9px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.15s linear;
 
@@ -414,22 +421,42 @@
     }
 
     &-icon {
-      width: rem(64px);
-      height: rem(64px);
-      margin-bottom: rem(24px);
-      filter: invert(48%) sepia(5%) saturate(1691%) hue-rotate(148deg)
-        brightness(92%) contrast(86%);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      opacity: 0.3;
+
+      @include breakpoint('large') {
+        top: rem(50px);
+      }
     }
 
     &-title {
-      @extend %font-ui-heading-md;
+      @extend %font-ui-page-title-md;
       margin-bottom: rem(8px);
-      color: $color-text-dark-100;
+      color: $color-text-light-100;
+    }
+
+    &-desc {
+      color: $color-text-light-190;
+    }
+    
+    &-cta {
+      @extend %font-ui-heading-sm;
+      margin-top: rem(18px);
+      color: $color-text-light-190;
+      font-style: italic;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        text-decoration: underline;
+      }
 
       .icon {
         margin-bottom: rem(2px);
         margin-left: 0;
-        color: $color-primary-blue-600;
         font-size: rem(12px);
         transition: margin-left 0.15s linear;
       }
@@ -437,10 +464,6 @@
       &:hover .icon {
         margin-left: rem(4px);
       }
-    }
-
-    &-desc {
-      color: $color-text-dark-190;
     }
 
     @include breakpoint('small') {
@@ -461,15 +484,12 @@
     @include breakpoint('large') {
       max-width: 100%;
       margin-bottom: 0;
-
-      &:last-child {
-        margin-left: rem(64px);
-      }
     }
   }
 
   &__projects {
     @include full-width-background($color-primary-light-gray);
+    order: 7;
     margin-top: rem(-88px);
     padding: rem(112px) 0 rem(56px) 0;
     background: $color-primary-light-gray;
@@ -535,6 +555,7 @@
 
   &__newsletter {
     grid-column: 1 / -1;
+    order: 8;
     margin-bottom: rem(56px);
     color: $color-text-light-100;
     @include full-width-background($color-primary-blue-200);
@@ -542,6 +563,7 @@
   }
 
   &__events {
+    order: 9;
     margin-bottom: rem(24px);
 
     @include breakpoint('small') {
@@ -577,7 +599,11 @@
   }
 
   &__twitter {
+    order: 10;
+    max-height: rem(450px);
     margin-bottom: rem(56px);
+    padding-right: rem(12px);
+    overflow: scroll;
 
     @include breakpoint('small') {
       padding-left: rem(32px);

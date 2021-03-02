@@ -191,7 +191,7 @@ if (! function_exists('missilethreat_authors_list_extended')) :
 					$name = '<a href="' . $coauthor->website . '">' . $coauthor->display_name . '</a>';
 				}
 
-				$authors .= '<p class="post__authors-author"><span class="text--bold">' . $name . '</span> ' . $coauthor->description . '</p>';
+				$authors = '<p class="post__authors-author"><span class="text--bold">' . $name . '</span> ' . $coauthor->description . '</p>';
 			}
 		} else {
 			$authors = the_author_posts_link();
@@ -428,11 +428,13 @@ if ( ! function_exists( 'missiledefense_system_terms' ) ) :
 		if ( $systems ) {
 			$html = '<h3 class="parent-system__label">Associated Systems: </h3>';
 			foreach ( $systems as $system ) {
+				$i = 0;
 				$prefix = '<br/>';
 				if ( $i == 0 ) {
 					$prefix = '';
 				}
 				$html .= $prefix . '<a class="parent-system__link" href="' . esc_url( get_permalink( $system->ID )) . '" rel="tag">' . $system->post_title . missilethreat_get_svg('chevron-right') . '</a>';
+				$i++;
 			}
 			wp_reset_postdata();
 

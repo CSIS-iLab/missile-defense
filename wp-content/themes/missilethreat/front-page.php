@@ -16,11 +16,8 @@ get_header();
 
 	<div class="home__hero entry-header">
 		<div class="home__about">
+			<a href="https://www.csis.org" class="home__logo"><?php include( get_template_directory() . '/assets/static/csis-mt-logo-white-long.svg'); ?></a>
 			<?php the_content(); ?>
-		</div>
-		<div class="home__credits">
-			<p class="home__initiative">an initiative from<br/><a href="https://www.csis.org/programs/international-security-program/missile-defense-project" class="text--semibold">Missile Defense Project</a></p>
-			<a href="https://www.csis.org" class="home__logo"><?php include( get_template_directory() . '/assets/static/csis-logo.svg'); ?></a>
 		</div>
 	</div>
 	
@@ -80,6 +77,7 @@ get_header();
 			wp_reset_postdata();
 		}
 		?>
+	<div class="home__see-all home__all-news"><a href="<?php echo site_url('/category/news') ?>">All News <?php echo missilethreat_get_svg('chevron-right') ?></a></div>
 
 	</section>
 	
@@ -88,25 +86,25 @@ get_header();
 
 $missile_card_icon = get_field( 'missiles_of_the_world_icon' );
 $missile_card_text = get_field( 'missiles_of_the_world_text' );
+$missile_card_cta = get_field( 'missiles_of_the_world_cta' );
 $defense_card_icon = get_field( 'defense_systems_icon');
 $defense_card_text = get_field( 'defense_systems_text');
+$defense_card_cta = get_field( 'defense_systems_cta');
 ?>
 	<section class="home__cards">
 		<div class="home__card">
 			<img src="<?php echo esc_url($defense_card_icon['url']); ?>" alt="<?php echo esc_attr($defense_card_icon['alt']); ?>" class="home__card-icon">
-				<h2 class="home__card-title">
-					<a href="<?php echo site_url('/defsys') ?>" class="home__card-link post-title--hover">Defense Systems <?php echo missilethreat_get_svg('chevron-right') ?></a>
-				</h2>
+				<h2 class="home__card-title text--semibold">Defense Systems</h2>
 			<p class="home__card-desc home__desc"><?php echo $defense_card_text ?></p>
+			<p class="home__card-cta"><a href="<?php echo site_url('/defsys') ?>" class="home__card-link"><?php echo $defense_card_cta; ?> <?php echo missilethreat_get_svg('chevron-right') ?></a></p>
 		</div>
-
+		
 		<div class="home__card">
 			<img src="<?php echo esc_url($missile_card_icon['url']); ?>" alt="<?php echo esc_attr($missile_card_icon['alt']); ?>" class="home__card-icon">
 			
-				<h2 class="home__card-title">
-					<a href="<?php echo site_url('/missile') ?>" class="home__card-link post-title--hover">Missiles of the World <?php echo missilethreat_get_svg('chevron-right') ?></a>
-				</h2>
-			<p class="home__card-desc home__desc"><?php echo $defense_card_text ?></p>
+			<h2 class="home__card-title text--semibold">Missiles of the World</h2>
+			<p class="home__card-desc home__desc"><?php echo $missile_card_text ?></p>
+			<p class="home__card-cta"><a href="<?php echo site_url('/missile') ?>" class="home__card-link"><?php echo $missile_card_cta; ?> <?php echo missilethreat_get_svg('chevron-right') ?></a></p>
 		</div>
 
 	</section>

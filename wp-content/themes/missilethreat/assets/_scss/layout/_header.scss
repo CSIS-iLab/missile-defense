@@ -63,9 +63,17 @@
     z-index: 15;
     order: 2;
     margin: 0;
+    
+    &:hover svg {
+      color: $color-text-light-170;
+    }
 
     &.is-invisible {
       display: none;
+    }
+
+    &-static {
+      height: rem(45px) !important;
     }
   }
 
@@ -86,6 +94,11 @@
 
       &.is-invisible {
         display: block;
+      }
+
+      svg {
+        width: rem(250px);
+        height: rem(50px);
       }
     }
   }

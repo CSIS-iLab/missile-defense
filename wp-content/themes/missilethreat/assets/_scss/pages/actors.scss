@@ -1,8 +1,22 @@
 @use '../abstracts' as *;
 
+.single-actors {
+  img {
+    @include vw100();
+    max-width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
 .missile-table {
   margin-top: rem(32px);
   margin-bottom: rem(32px);
+
+  /* stylelint-disable-next-line */
+  .dataTables_wrapper {
+    width: 80% !important;
+  }
 
   h2 {
     @extend %font-ui-heading-md;
