@@ -156,8 +156,12 @@
   }
 
   &__logo {
-    display: block;
+    display: none;
     margin-bottom: rem(16px);
+
+    @include breakpoint('large') {
+      display: block;
+    }
 
     svg {
       display: block;
