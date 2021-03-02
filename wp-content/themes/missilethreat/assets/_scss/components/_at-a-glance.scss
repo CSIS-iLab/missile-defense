@@ -15,7 +15,7 @@
   &__title {
     @extend %font-copy-heading-5;
     grid-column: 1 / span 2;
-    color: $color-text-dark-100;
+    color: $color-primary-blue-500;
   }
 
   &__spec {
