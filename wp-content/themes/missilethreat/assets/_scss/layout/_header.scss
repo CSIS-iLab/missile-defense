@@ -1,0 +1,115 @@
+@use 'abstracts' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 15;
+  width: 100%;
+  height: rem(72px);
+  margin: 0;
+  padding: rem(12px);
+  color: $color-primary-light-blue;
+  font-size: rem(20px);
+  background-image: $gradient-header;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $color-primary-blue-300;
+    background-image: $gradient-header;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    pointer-events: none;
+  }
+
+  &.full-color {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1), 0 0 7px rgba(0, 0, 0, 0.1);
+  }
+
+  &.full-color::after {
+    opacity: 1;
+  }
+
+  body .logged-in & {
+    top: 32px;
+  }
+
+  * > {
+    flex: 1 1 auto;
+  }
+
+  &--solid-bg {
+    background-color: $color-primary-blue-300;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: $size__container-max-width;
+  }
+
+  &__logo {
+    z-index: 15;
+    order: 2;
+    margin: 0;
+    
+    &:hover svg {
+      color: $color-text-light-170;
+    }
+
+    &.is-invisible {
+      display: none;
+    }
+
+    &-static {
+      height: rem(45px) !important;
+    }
+  }
+
+  @include breakpoint('large') {
+    padding-right: 6vw;
+    padding-left: 6vw;
+
+    &__inner {
+      flex-wrap: nowrap;
+      justify-content: initial;
+      column-gap: unset;
+    }
+
+    &__logo {
+      order: 1;
+      justify-self: start;
+      padding-right: rem(48px);
+
+      &.is-invisible {
+        display: block;
+      }
+
+      svg {
+        width: rem(250px);
+        height: rem(50px);
+      }
+    }
+  }
+
+  @include breakpoint('xxlarge') {
+    letter-spacing: 0.01em;
+
+    &__inner {
+      width: 100%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}

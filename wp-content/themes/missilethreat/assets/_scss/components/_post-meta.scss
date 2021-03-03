@@ -1,0 +1,28 @@
+@use 'abstracts' as *;
+
+.post-meta {
+  @extend %font-ui-text-md;
+
+  &__date {
+    margin-bottom: rem(4px);
+    color: $color-text-dark-170;
+  }
+  
+  &__authors {
+    color: $color-primary-blue-200;
+  }
+}
+
+.single__header-meta {
+  @extend %font-ui-text-lg;
+  margin-bottom: rem(32px);
+  color: $color-text-dark-170;
+
+  .post-meta {
+    @extend %font-ui-text-lg;
+    
+    &__date {
+      margin-bottom: 0;
+    }
+  }
+}

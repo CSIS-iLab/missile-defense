@@ -1,0 +1,56 @@
+@use '../abstracts' as *;
+
+.btn {
+  @extend %font-ui-text-md;
+  display: inline-block;
+  padding: rem(13) rem(20);
+  text-align: center;
+  text-transform: uppercase;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &--icon {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+      margin-left: rem(2px);
+    }
+  }
+
+  &--short {
+    padding: rem(8px) rem(20px);
+  }
+
+  &--light {
+    color: $color-primary-blue-200;
+    background: $color-primary-light-blue;
+
+    &:hover {
+      color: $color-primary-blue-200;
+      background: $color-primary-light-gray;
+    }
+  }
+
+  &--dark {
+    color: $color-text-light-100;
+    background: $color-primary-blue-600;
+
+    &:hover {
+      color: $color-text-light-100;
+      background: $color-primary-blue-400;
+    }
+  }
+}

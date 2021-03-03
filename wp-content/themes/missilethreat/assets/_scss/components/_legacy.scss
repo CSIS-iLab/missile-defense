@@ -1,0 +1,168 @@
+@use '../abstracts' as *;
+
+
+// These styles control the legacy "At a Glance" box that were added directly to the posts instead of using the specialized block. If old content is converted to using the block, this CSS can be safely removed.
+.ataglance {
+  margin-bottom: rem(56px);
+  padding: rem(24px) rem(32px) rem(48px) rem(32px);
+  color: $color-text-dark-190;
+  background: $color-primary-light-gray;
+
+  > *:first-child {
+    @extend %font-copy-heading-5;
+    margin-bottom: rem(12px);
+    color: $color-text-dark-100;
+    font-weight: normal;
+  }
+
+  p {
+    @extend %font-body-short-lg;
+
+    strong {
+      @extend %font-ui-heading-xs;
+    }
+  }
+
+  @include breakpoint('small') {
+    p:not(:first-child) {
+      columns: 2;
+      column-gap: rem(32px);
+    }
+  }
+}
+
+// These styles control the legacy "Related Links" box that were added directly to the posts instead of using the specialized block. If old content is converted to using the block, this CSS can be safely removed.
+.relatedLinks {
+  margin-top: rem(40px);
+  margin-bottom: rem(40px);
+  padding: rem(24px) rem(32px);
+  background: $color-primary-light-gray;
+
+  h1 {
+    @extend %font-copy-heading-5;
+    margin-bottom: rem(12px);
+    color: $color-text-dark-100;
+    font-weight: 600 !important;
+  }
+
+  p {
+    @extend %font-body-short-lg;
+    color: $color-text-dark-170;
+    font-style: italic;
+    columns: 1 !important;
+
+    &:last-child {
+      margin-bottom: rem(24px);
+    }
+  }
+
+  a {
+    @extend %font-body-short-lg-serif;
+    display: inline;
+    margin-bottom: rem(12px);
+    color: $color-primary-blue-200;
+    font-style: normal;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    .icon {
+      width: 0.67em;
+      height: 0.67em;
+      margin-left: rem(2px);
+      fill: $color-primary-blue-600;
+    }
+
+    &:hover {
+      color: $color-primary-blue-500;
+
+      .icon {
+        fill: $color-primary-blue-500;
+      }
+    }
+  }
+}
+
+// These styles control the legacy "Table of Contents" shortcode. If old content is converted to using the block, this CSS can be safely removed.
+.tableOfContents-mainContent {
+
+  /*----------  Paragraphs and In-line links  ----------*/
+
+  p {
+    @extend %font-body-long-lg;
+    margin-bottom: rem(40px);
+    color: $color-text-dark-190;
+
+    a {
+      color: $color-primary-blue-200;
+      text-decoration: underline;
+
+      &:hover {
+        color: $color-primary-blue-500;
+      }
+    }
+  }
+
+  /*----------  Headings  ----------*/
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: rem(12px);
+  }
+
+  h3,
+  h4 {
+    margin-top: rem(40px);
+    font-weight: normal;
+  }
+
+  h5,
+  h6 {
+    margin-top: rem(32px);
+  }
+
+  h2,
+  h5,
+  h6 {
+    font-weight: 600;
+  }
+
+  h2 {
+    @extend %font-copy-heading-2;
+    margin-top: rem(56px);
+  }
+
+  h3 {
+    @extend %font-copy-heading-3;
+  }
+
+  h4 {
+    @extend %font-ui-heading-md;
+  }
+
+  h5 {
+    @extend %font-copy-heading-5;
+  }
+
+  h6 {
+    @extend %font-copy-heading-6;
+  }
+
+  /*----------  Lists  ----------*/
+
+  ul,
+  ol {
+    @extend %font-body-list-lg;
+    margin-bottom: 0;
+    padding-bottom: rem(24px);
+    padding-left: rem(32px);
+    color: $color-text-dark-190;
+
+    li:not(:last-child) {
+      margin-bottom: rem(8px);
+    }
+  }  
+}

@@ -1,0 +1,24 @@
+@use '../abstracts' as *;
+
+.download-pdf {
+  margin-bottom: rem(32px);
+
+  img {
+    max-width: rem(250px);
+  }
+  
+  &__cover {
+    display: block;
+    max-width: fit-content;
+    margin: 0 auto rem(12px) auto;
+
+    + .download-pdf__link {
+      margin: 0 auto;
+    }
+  }
+
+  &__link {
+    display: block;
+    width: fit-content;
+  }
+}

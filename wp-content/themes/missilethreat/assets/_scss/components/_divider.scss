@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+
+.divider {
+  height: rem(1px);
+  background-color: $color-primary-light-blue;
+  border: 0;
+  opacity: 0.4;
+
+  &--blue {
+    background-color: $color-primary-blue-900;
+  }
+
+  &--md {
+    height: rem(4px);
+  }
+
+  &--thicc {
+    height: rem(8px);
+  }
+
+  &--short {
+    display: none;
+  }
+
+  &--gray {
+    background: $color-line-light-gray;
+  }
+}

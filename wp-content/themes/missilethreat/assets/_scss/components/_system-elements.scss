@@ -1,0 +1,46 @@
+@use '../abstracts' as *;
+
+.system-elements {
+  margin-bottom: rem(32px);
+
+  @include breakpoint('small') {
+    max-width: 100vw;
+  }
+
+  @include breakpoint('medium') {
+    float: unset !important;
+    max-width: rem(400px);
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  @include breakpoint('large') {
+    float: right !important;
+    margin-right: var(--margin-gutter-side, 0) !important;
+    margin-left: var(--margin-text-side, 0) !important;
+  }
+
+  &__header {
+    @extend %font-copy-heading-5;
+    color: $color-text-dark-100;
+  }
+
+  &__divider {
+    width: rem(32px);
+    height: rem(4px);
+    margin: rem(12px) 0;
+    background-color: $color-primary-light-blue;
+    border: 0;
+  }
+
+  &__item {
+    @extend %font-body-list-md;
+    margin-bottom: rem(8px);
+    color: $color-primary-blue-300;
+
+    &:hover {
+      color: $color-primary-blue-100;
+      text-decoration: underline;
+    }
+  }
+}

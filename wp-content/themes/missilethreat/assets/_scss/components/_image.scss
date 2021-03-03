@@ -1,0 +1,54 @@
+@use '../abstracts' as *;
+
+.featured-media {
+  margin-right: 6vw;
+  margin-bottom: rem(32px);
+  margin-left: 6vw;
+
+  img {
+    width: 100%;
+  }
+}
+
+p img {
+  margin-bottom: rem(32px);
+}
+
+.wp-block-image figcaption,
+.image-caption,
+.wp-caption-text {
+  @extend %font-body-short-md;
+  max-width: $size__content-max-width;
+  margin: rem(12px) 0 0 0;
+  color: $color-text-dark-170;
+}
+
+.wp-block-image.aligncenter ,
+.wp-block-image.alignwide,
+.wp-block-image.alignfull {
+  margin-top: rem(32px);
+}
+
+// This is to align the figcaption as alignwide/full would otherwise force it to be full width. Margin/paddings address tweaks at different breakpoints
+.wp-block-image.alignfull figcaption,
+.wp-block-image.alignwide figcaption {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--container-padding);
+  padding-left: var(--container-padding);
+
+  @include breakpoint('680px') {
+    margin-left: 0;
+  }
+
+  @include breakpoint('770px') {
+    margin-left: auto;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.aligncenter img {
+  width: 100%;
+  max-width: $size__content-max-width;
+}

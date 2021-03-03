@@ -1,0 +1,142 @@
+@use 'abstracts' as *;
+
+.header {
+  &__search-group {
+    display: flex;
+    flex-wrap: nowrap;
+    order: 3;
+  }
+
+  &__search {
+    position: absolute;
+    right: rem(12px);
+    left: rem(12px);
+    display: flex;
+    height: rem(48px);
+    padding: rem(12px);
+    background: $color-primary-blue-400;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    pointer-events: none;
+
+    &.is-visible {
+      z-index: 15;
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &:focus-within {
+      color: $color-text-light-190;
+      background: $color-primary-blue-500;
+    }
+  }
+
+  &__search-icon {
+    z-index: 15;
+    order: 3;
+    width: rem(48px);
+    height: rem(48px);
+    color: $color-primary-light-blue;
+    visibility: visible;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    justify-self: right;
+
+    &.is-invisible {
+      visibility: hidden;
+    }
+
+    &:hover {
+      color: $color-text-light-100;
+    }
+  }
+
+  &__search-label {
+    display: none;
+  }
+
+  &__search-field {
+    @extend %font-ui-text-lg;
+    width: 100%;
+    color: $color-text-light-100;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid $color-primary-blue-900;
+
+    &::placeholder {
+      @extend %font-ui-text-lg;
+      color: $color-text-light-155;
+
+      &:focus {
+        color: $color-text-light-155;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__search-icon,
+  &__search-submit {
+    background: none;
+    border: 0;
+  }
+
+  &__search-submit {
+    margin-right: rem(48px);
+    margin-left: rem(8px);
+    color: $color-line-mid-gray;
+    line-height: 50%;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-text-light-100;
+    }
+  }
+
+  &__search-close {
+    position: absolute;
+    right: 0;
+    width: rem(48px);
+    height: rem(48px);
+    margin-top: rem(-12px);
+    margin-left: rem(20px);
+    padding: 0;
+    color: $color-primary-light-blue;
+    font-size: rem(18px);
+    line-height: 50%;
+    background: $color-primary-blue-200;
+    border: 0;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-text-light-100;
+    }
+  }
+
+  @include breakpoint('large') {
+    &__search-icon {
+      justify-self: start;
+    }
+
+    &__search {
+      order: 3;
+      width: calc((100% - 6vw) - (6vw + 248px));
+      transition: opacity 0.3s linear;
+
+      &.is-visible {
+        right: 6vw;
+        left: initial;
+      }
+    }
+  }
+}
+
+.search__no-results {
+  @extend %font-body-short-md-serif;
+  margin-top: rem(24px);
+  color: $color-text-dark-190;
+}

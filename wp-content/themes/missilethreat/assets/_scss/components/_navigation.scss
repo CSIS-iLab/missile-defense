@@ -1,0 +1,116 @@
+@use 'abstracts' as *;
+
+.site-nav {
+  z-index: 10;
+  order: 1;
+}
+
+.primary-menu {
+  @extend %font-ui-text-md-semibold-mobile-nav;
+  position: absolute;
+  top: rem(72px);
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  margin-left: -12px !important;
+  padding-bottom: rem(16px) !important;
+  color: $color-text-light-190;
+  text-transform: uppercase;
+  background: $color-primary-blue-200;
+  visibility: hidden;
+  transition: clip-path 0.2s linear, visibility 0.2s linear;
+  clip-path: inset(0 0 100% 0);
+
+  &.is-visible {
+    z-index: 15;
+    visibility: visible;
+    clip-path: inset(0);
+  }
+
+  a {
+    display: block;
+    padding: rem(16px) rem(28px);
+
+    &:hover {
+      color: $color-text-light-100;
+      text-decoration: underline;
+    }
+  }
+}
+
+.hamburger,
+.nav-close {
+  width: rem(48px);
+  height: rem(48px);
+  color: $color-primary-light-gray;
+  transition: color 0.15s linear;
+
+  &:hover {
+    color: $color-text-light-100;
+  }
+}
+
+.hamburger {
+  z-index: 15;
+  order: 1;
+  background: none;
+  border: 0;
+
+  &.is-invisible {
+    z-index: -1;
+    display: none;
+  }
+}
+
+.nav-close {
+  z-index: -1;
+  display: none;
+  order: 1;
+
+  &.is-visible {
+    z-index: 15;
+    display: initial;
+    background: none;
+    border: 0;
+  }
+}
+
+@include breakpoint('large') {
+  .site-nav {
+    z-index: 15;
+    order: 2;
+    width: 100%;
+    margin: 0;
+  }
+
+  .primary-menu {
+    @include font-size(14px);
+    position: relative;
+    top: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-left: unset !important;
+    padding-bottom: 0 !important;
+    font-weight: 600;
+    line-height: 1.14;
+    white-space: nowrap;
+    background: transparent;
+    visibility: visible;
+    opacity: 1;
+    clip-path: inset(0);
+
+    li:first-child a {
+      padding-left: rem(8px);
+    }
+
+    a {
+      padding: rem(16px);
+    }
+  }
+
+  .hamburger,
+  .nav-close {
+    display: none;
+  }
+}

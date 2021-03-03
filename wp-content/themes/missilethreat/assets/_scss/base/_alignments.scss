@@ -1,0 +1,94 @@
+@use 'abstracts' as *;
+
+/*----------  Alignments  ----------*/
+.alignfull,
+.alignwide {
+  @include missiledefense-full-width-wrapper;
+
+  @include breakpoint('large') {
+    figcaption {
+      max-width: $size__content-max-width;
+      margin: rem(12px) auto 0 auto !important;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+  }
+}
+
+.alignwide {
+  /* stylelint-disable-next-line */
+  > *:not(figcaption):not(.addtoany_list) {
+    @include missiledefense-wide-content;
+  }
+}
+
+.alignfull {
+  /* stylelint-disable-next-line */
+  > *:not(figcaption):not(.addtoany_list) {
+    @include missiledefense-full-width-content($size__container-max-width);
+  }
+}
+
+.alignleft,
+.alignright,
+.has-text-align-right {
+  --margin-text-side: #{auto};
+  --margin-gutter-side: #{auto};
+
+  @include breakpoint('small') {
+    --sm-max-width: #{rem(250px)};
+    --lg-max-width: #{rem(250px)};
+    max-width: var(--lg-max-width);
+  }
+
+  @include breakpoint('medium') {
+    --lg-max-width: #{rem(400px)};
+    --margin-text-side: #{rem(24px)};
+    margin-top: 0;
+  }
+
+  @include breakpoint('large') {
+    --margin-text-side: #{3vw};
+    --margin-gutter-side: #{rem(-128px)};
+  }
+  
+  @include breakpoint('xlarge') {
+    --margin-gutter-side: calc(#{rem(-128px)} + -6vw);
+
+  }
+
+  @include breakpoint('xxlarge') {
+    --margin-text-side: #{rem(36px)};
+  }
+
+  &.size-medium {
+    max-width: var(--sm-max-width);
+  }
+
+  figcaption {
+    @include breakpoint('medium') {
+      --padding-sides: 0;
+    }
+  }
+}
+
+.alignleft {
+  float: none !important;
+  margin-right: var(--margin-text-side, 0) !important;
+  margin-left: var(--margin-gutter-side, 0) !important;
+
+  @include breakpoint('medium') {
+    float: left !important;
+  }
+}
+
+.alignright,
+.has-text-align-right {
+  float: none !important;
+  margin-right: var(--margin-gutter-side, 0) !important;
+  margin-left: var(--margin-text-side, 0) !important;
+  
+  @include breakpoint('medium') {
+    float: right !important;
+  }
+}

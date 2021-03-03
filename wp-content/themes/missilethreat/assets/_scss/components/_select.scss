@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+.component-select {
+  position: relative;
+  display: flex;
+
+  &::after {
+    content: '\25BE';
+    position: absolute;
+    top: rem(5px);
+    left: rem(250px);
+    color: $color-primary-blue-200;
+    font-size: rem(20px);
+  }
+
+  &__label {
+    @extend %font-ui-text-md;
+    color: $color-text-dark-170;
+    text-transform: uppercase;
+  }
+
+  &__dropdown {
+    @extend %font-ui-text-lg;
+    max-width: rem(280px);
+    padding: 0 rem(40px) 0 rem(8px);
+    color: $color-text-dark-155;
+    text-overflow: ellipsis;
+    background: $color-primary-light-gray;
+    border-color: $color-primary-light-gray;
+    appearance: none;
+  }
+}

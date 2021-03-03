@@ -1,0 +1,115 @@
+@use '../abstracts' as *;
+
+/*=================================
+=            Footnotes            =
+=================================*/
+
+.single__content {
+  .easy-footnote {
+    font-size: rem(15px);
+
+    > a {
+      text-decoration: none;
+    }
+
+    sup {
+      position: relative;
+      top: -0.4em;
+      vertical-align: baseline;
+      transition: all 0.3s ease-in-out;
+      
+      &:hover {
+        color: $color-primary-blue-500;
+      }
+    }
+  }
+}
+
+.footnotes {
+  clear: both;
+  margin: rem(32px) 0 rem(56px);
+
+  &__heading {
+    @extend %font-ui-heading-sm;
+    position: relative;
+    margin-top: rem(32px);
+    padding: rem(12px) rem(16px);
+    color: $color-text-dark-170;
+    background-color: $color-primary-light-gray;
+    cursor: pointer;
+
+    &::after {
+      content: '\002B';
+      position: absolute;
+      right: rem(16px);
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    &:hover {
+      background-color: $color-primary-light-blue;
+    }
+
+    &.expanded::after {
+      content: '\02014';
+    }
+  }
+
+  .collapsible-content {
+    display: none;
+  }
+  
+  &__list {
+    display: none;
+  }
+}
+
+.easy-footnotes-wrapper {
+  list-style: none;
+  border: 1px solid $color-table-row-base;
+  border-radius: 0 0 3px 3px;
+  counter-reset: item;
+  
+  li {
+    @extend %font-body-short-md;
+    position: relative;
+    display: block;
+    margin: rem(12px) rem(32px);
+    padding-left: rem(32px);
+    color: $color-text-dark-170;
+    overflow-wrap: break-word;
+
+    &:first-child {
+      margin-top: rem(24px);
+    }
+
+    &:last-child {
+      margin-bottom: rem(24px);
+    }
+    
+    .easy-footnote-margin-adjust {
+      display: hidden;
+
+    }
+    
+    .easy-footnote-to-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      margin-left: 0;
+      color: $color-primary-blue-600;
+      
+      &:hover {
+        color: $color-primary-blue-500;
+      }
+    }
+    
+    .easy-footnote-to-top::after {
+      content: counter(item);
+      font-family: $font-source-serif;
+      font-weight: bold;
+      counter-increment: item;
+    }
+  }
+}

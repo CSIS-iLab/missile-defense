@@ -1,0 +1,47 @@
+@use 'abstracts' as *;
+
+:root {
+  /* stylelint-disable-next-line*/
+  --scrollbar: 0px;
+}
+
+*:focus {
+  outline: 3px solid $color-focus;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.container {
+  --container-padding: 6vw;
+
+  position: relative;
+  max-width: $size__container-max-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 6vw;
+  padding-right: var(--container-padding);
+  padding-left: 6vw;
+  padding-left: var(--container-padding);
+
+  @include breakpoint(xxlarge) {
+    --container-padding: #{rem(80)};
+  }
+}
+
+.home,
+.single-post,
+.single-defsys,
+.single-missile {
+  #site-content {
+    padding-top: rem(80px);
+  }
+}
+
+@include breakpoint('large') {
+  .home #site-content {
+    padding-top: 0;
+  }
+}

@@ -1,0 +1,104 @@
+@use '../abstracts' as *;
+
+.tableOfContents {
+  @extend %font-ui-text-lg;
+  margin-bottom: rem(56px);
+  padding: rem(24px) rem(32px);
+  color: $color-text-dark-190;
+  background: $color-primary-light-gray;
+
+  &__heading,
+  h2 {
+    @extend %font-ui-heading-md;
+    margin-top: 0;
+    margin-bottom: rem(16px);
+    color: $color-text-dark-100;
+  }
+
+  h2:not([class]) {
+    margin-right: rem(32px);
+  }
+
+  &__excerpt {
+    @extend %font-body-list-lg;
+
+    p:last-child {
+      margin-bottom: rem(24px);
+    }
+  }
+
+  &__chapters,
+  .resources {
+    li:not(:last-child) {
+      margin-bottom: rem(12px);
+    }
+
+    li:last-child {
+      margin-bottom: rem(24px);
+    }
+  }
+
+  &__chapters,
+  &__graphics,
+  &__video-link,
+  .resources {
+    a {
+      transition: all 0.3s ease-in-out;
+    }
+    
+    a:hover {
+      color: $color-primary-blue-500;
+
+      /* stylelint-disable */
+      .icon {
+        color: $color-primary-blue-500;
+      }
+      /* stylelint-enable */
+    }
+  }
+
+  .is-active {
+    font-weight: 600;
+
+    &::before {
+      content: 'You are reading';
+      @extend %font-ui-text-sm;
+      display: block;
+      color: $color-primary-blue-600;
+      text-transform: uppercase;
+    }
+  }
+
+  button {
+    margin: rem(16px) 0;
+  }
+
+  &__graphics {
+    margin-bottom: rem(8px);
+  }
+
+  &__video-link {
+    margin-bottom: rem(12px);
+  }
+
+  img {
+    max-width: rem(250px);
+    margin-right: auto;
+    margin-left: auto;
+    object-fit: contain;
+  }
+
+  .icon {
+    margin-left: rem(2px);
+    color: $color-primary-blue-600;
+    font-size: rem(12px);
+  }
+
+  @include breakpoint('medium') {
+    display: grid;
+    grid-template-columns: 2fr auto;
+    gap: rem(32px);
+    margin-right: 6vw;
+    margin-left: 6vw;
+  }
+}

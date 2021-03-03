@@ -1,0 +1,40 @@
+@use 'abstracts' as *;
+
+body {
+  font-family: $font-source-sans;
+}
+
+.post-title--hover:hover {
+  color: $color-primary-blue-300 !important;
+  text-decoration: underline;
+}
+
+.text--bold {
+  font-weight: bold;
+}
+
+.text--semibold {
+  font-weight: 600;
+}
+
+.text--italic {
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: inherit;
+    border: 0;
+  }
+
+  &:hover,
+  &:active {
+    outline: 0;
+  }
+}
