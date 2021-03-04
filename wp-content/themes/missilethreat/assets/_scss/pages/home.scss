@@ -395,7 +395,7 @@
     position: relative;
     z-index: 2;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     order: 6;
     margin-top: rem(64px);
 
@@ -407,7 +407,7 @@
       display: grid;
       grid-column: 1 / span 3;
       grid-template-columns: repeat(2, 1fr);
-      gap: rem(64px);
+      gap: rem(16px);
       justify-content: space-between;
       margin-bottom: rem(56px);
     }
@@ -417,8 +417,9 @@
     position: relative;
     z-index: 1;
     max-width: rem(416px);
+    min-height: rem(270px);
     margin: 0 auto rem(32px) auto;
-    padding: rem(24px);
+    padding: rem(40px);
     overflow: hidden;
     background: $color-primary-blue-200;
     box-shadow: 0 1px 9px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -438,7 +439,7 @@
       opacity: 0.3;
 
       @include breakpoint('large') {
-        top: rem(50px);
+        top: rem(116px);
       }
     }
 
@@ -472,21 +473,6 @@
 
       &:hover .icon {
         margin-left: rem(4px);
-      }
-    }
-
-    @include breakpoint('small') {
-      grid-template-columns: auto auto;
-      column-gap: rem(24px);
-
-      &-icon {
-        grid-column: 1;
-        grid-row: 1 / span 2;
-      }
-
-      &-title,
-      &-desc {
-        grid-column: 2;
       }
     }
 
