@@ -91,12 +91,12 @@
   }
 
   // Remove analysis checkbox from the analysis form
-  &[data-sf-form-id='7300'] .sf-item-17 {
+  &[data-sf-form-id='7629'] .sf-item-17 {
     display: none;
   }
 
   // Styles for archive filter
-  &[data-sf-form-id='7299'] {
+  &[data-sf-form-id='7630'] {
     .sf-field-category li:not(:first-child) {
       margin-left: rem(16px);
     }
