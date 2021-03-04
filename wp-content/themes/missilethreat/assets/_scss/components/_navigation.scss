@@ -105,12 +105,18 @@
     }
 
     a {
-      padding: rem(16px);
+      padding: rem(16px) rem(10px);
     }
   }
 
   .hamburger,
   .nav-close {
     display: none;
+  }
+}
+
+@include breakpoint('xlarge') {
+  .primary-menu a {
+    padding: rem(16px);
   }
 }
