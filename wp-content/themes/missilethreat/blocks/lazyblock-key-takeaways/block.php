@@ -10,7 +10,9 @@
 
 $bullet_points = get_lzb_meta('bullet-points');
 $pdf = get_lzb_meta('download-pdf');
-$pdf_url = $pdf['url'];
+if( isset( $pdf ) && !empty( $pdf ) ) {
+  $pdf_url = $pdf['url'];
+}
 $title = get_lzb_meta('list-title');
 ?>
 
