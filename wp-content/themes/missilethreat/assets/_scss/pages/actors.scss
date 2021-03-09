@@ -1,9 +1,11 @@
 @use '../abstracts' as *;
 
 .single-actors {
+  figure.alignwide img {
+    width: 80%;
+  }
+
   img {
-    @include vw100();
-    max-width: 80%;
     margin-right: auto;
     margin-left: auto;
   }
