@@ -53,7 +53,7 @@
     .wp-post-image {
       width: 100%;
       margin-bottom: rem(24px);
-      
+
       @include breakpoint('large') {
         position: absolute;
         bottom: 100%;
@@ -114,9 +114,11 @@
     padding-top: rem(104px);
     padding-bottom: rem(88px);
     background-color: $color-primary-blue-300;
-    background-image: linear-gradient(180deg,
-    rgba(7, 52, 74, 0) rem(92px),
-    rgba(6, 43, 61, 0.9) 75.52%);
+    background-image: linear-gradient(
+      180deg,
+      rgba(7, 52, 74, 0) rem(92px),
+      rgba(6, 43, 61, 0.9) 75.52%
+    );
     @include full-width-background(
       linear-gradient(
         180deg,
@@ -148,14 +150,8 @@
     display: flex;
     flex-direction: column;
 
-    @include breakpoint('small') {
-      position: relative;
-      top: 100%;
-      transform: translateY(-100%);
-    }
-
     @include breakpoint('large') {
-      display: block
+      display: block;
     }
   }
 
@@ -170,7 +166,7 @@
     display: block;
     margin-bottom: rem(16px);
     order: 2 !important;
-    
+
     svg {
       display: block;
       width: 100%;
@@ -426,8 +422,7 @@
     transition: box-shadow 0.15s linear;
 
     &:hover {
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1),
-        0 0 7px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1), 0 0 7px rgba(0, 0, 0, 0.1);
     }
 
     &-icon {
@@ -452,7 +447,7 @@
     &-desc {
       color: $color-text-light-190;
     }
-    
+
     &-cta {
       @extend %font-ui-heading-sm;
       margin-top: rem(18px);
