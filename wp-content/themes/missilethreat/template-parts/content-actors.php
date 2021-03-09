@@ -64,7 +64,6 @@ if ( $missiles ) : ?>
           else {
             $url = esc_url( get_permalink());
           }
-          var_dump($url);
           
           // Get the first part of the range
           $range = null;
