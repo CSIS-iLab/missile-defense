@@ -34,8 +34,16 @@ if( $post_type === 'defsys') {
 <ul class="breadcrumbs" role="list">
   <li><a href="/missile">Missiles of the World</a></li>
   <?php
+  
     $terms = get_the_terms($post->id, 'countries');
-    echo "<li><a href='/country/" . $terms[0]->slug . "'>" . $terms[0]->name . "</a></li>";
+
+    $term_to_display = $terms[0];
+    $primary_term_id = yoast_get_primary_term_id( 'countries', $post->id );
+    if ( $primary_term_id ) {
+      $term_to_display = get_term( $primary_term_id );
+    }
+
+    echo "<li><a href='/country/" . $term_to_display->slug . "'>" . $term_to_display->name . "</a></li>";
   ?>
   <li class="text--semibold"><?php the_title(); ?></li>
 </ul>
