@@ -53,6 +53,7 @@
     .wp-post-image {
       width: 100%;
       margin-bottom: rem(24px);
+      object-fit: contain;
 
       @include breakpoint('large') {
         position: absolute;
@@ -157,15 +158,15 @@
 
   .mission {
     @extend %font-body-short-md-serif;
+    order: 1 !important;
     margin-bottom: rem(16px);
     color: $color-primary-light-gray;
-    order: 1 !important;
   }
 
   &__logo {
     display: block;
-    margin-bottom: rem(16px);
     order: 2 !important;
+    margin-bottom: rem(16px);
 
     svg {
       display: block;
