@@ -13,11 +13,6 @@
   margin-top: rem(32px);
   margin-bottom: rem(32px);
 
-  /* stylelint-disable-next-line */
-  .dataTables_wrapper {
-    width: 80% !important;
-  }
-
   h2 {
     @extend %font-ui-heading-md;
     margin-bottom: rem(16px);
