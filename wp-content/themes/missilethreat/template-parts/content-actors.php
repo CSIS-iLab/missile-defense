@@ -58,8 +58,8 @@ if ( $missiles ) : ?>
 
           $missileURL = get_field('missile_url');
 
-          if(isset($custom['missile_url'])) {
-            $url = esc_url(get_permalink($missileURL));
+          if(isset($missileURL)) {
+            $url = esc_url(get_permalink($missileURL[0]));
           }
           else {
             $url = esc_url( get_permalink());
@@ -84,7 +84,7 @@ if ( $missiles ) : ?>
             <td class="text--semibold">
               <?php
                 if(isset($custom['missile_name']) && $custom['missile_name'][0] != '') {
-                  if(get_post_status() != 'publish' && !isset($custom['missile_url'])) {
+                  if(get_post_status() != 'publish' && !isset($missileURL)) {
                     echo $custom['missile_name'][0];
                   }
                   else {
@@ -92,7 +92,7 @@ if ( $missiles ) : ?>
                   }
                 }
                 else {
-                  if(get_post_status() != 'publish' && !isset($custom['missile_url'])) {
+                  if(get_post_status() != 'publish' && !isset($missileURL)) {
                     the_title();
                   }
                   else {
