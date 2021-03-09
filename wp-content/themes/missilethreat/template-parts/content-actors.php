@@ -57,13 +57,14 @@ if ( $missiles ) : ?>
           $custom = get_post_custom();
 
           $missileURL = get_field('missile_url');
-
-          if(isset($missileURL)) {
+          
+          if(isset($missileURL) && !empty($missileURL)) {
             $url = esc_url(get_permalink($missileURL[0]));
           }
           else {
             $url = esc_url( get_permalink());
           }
+          var_dump($url);
           
           // Get the first part of the range
           $range = null;
