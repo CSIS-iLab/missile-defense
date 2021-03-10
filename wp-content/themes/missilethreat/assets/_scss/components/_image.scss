@@ -23,7 +23,7 @@ p img {
   color: $color-text-dark-170;
 }
 
-.wp-block-image.aligncenter ,
+.wp-block-image.aligncenter,
 .wp-block-image.alignwide,
 .wp-block-image.alignfull {
   margin-top: rem(32px);
@@ -51,4 +51,12 @@ p img {
 .aligncenter img {
   width: 100%;
   max-width: $size__content-max-width;
+}
+
+.alignwide .single-image-gallery img {
+  @include missiledefense-wide-content;
+}
+
+.alignfull img {
+  @include missiledefense-full-width-content($size__container-max-width);
 }

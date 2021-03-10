@@ -17,7 +17,7 @@
 
 .alignwide {
   /* stylelint-disable-next-line */
-  > *:not(figcaption):not(.addtoany_list) {
+  > *:not(figcaption):not(.addtoany_list):not(.single-image-gallery) {
     @include missiledefense-wide-content;
   }
 }
@@ -51,10 +51,9 @@
     --margin-text-side: #{3vw};
     --margin-gutter-side: #{rem(-128px)};
   }
-  
+
   @include breakpoint('xlarge') {
     --margin-gutter-side: calc(#{rem(-128px)} + -6vw);
-
   }
 
   @include breakpoint('xxlarge') {
@@ -87,7 +86,7 @@
   float: none !important;
   margin-right: var(--margin-gutter-side, 0) !important;
   margin-left: var(--margin-text-side, 0) !important;
-  
+
   @include breakpoint('medium') {
     float: right !important;
   }
