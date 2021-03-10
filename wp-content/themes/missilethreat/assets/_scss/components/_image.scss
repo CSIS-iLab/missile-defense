@@ -53,7 +53,7 @@ p img {
   max-width: $size__content-max-width;
 }
 
-.alignwide .single-image-gallery img {
+.alignwide a img {
   @include missiledefense-wide-content;
 }
 
