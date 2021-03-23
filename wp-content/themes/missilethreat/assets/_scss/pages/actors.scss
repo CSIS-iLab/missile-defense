@@ -1,6 +1,7 @@
 @use '../abstracts' as *;
 
 .single-actors {
+  /* stylelint-disable-next-line */
   figure.alignwide img {
     width: 80%;
   }

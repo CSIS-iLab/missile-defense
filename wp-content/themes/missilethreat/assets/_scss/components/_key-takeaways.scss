@@ -14,8 +14,8 @@
 
   &__list {
     @extend %font-body-list-lg;
-    list-style: disc !important;
     color: $color-text-dark-190;
+    list-style: disc !important;
 
     &-item {
       margin: 0 rem(32px) rem(12px) rem(32px);

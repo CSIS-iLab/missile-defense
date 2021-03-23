@@ -14,9 +14,9 @@
 
   &__title {
     @extend %font-copy-heading-3;
-    font-weight: normal;
     grid-column: 1 / span 2;
     color: $color-text-dark-100;
+    font-weight: normal;
   }
 
   &__spec {
