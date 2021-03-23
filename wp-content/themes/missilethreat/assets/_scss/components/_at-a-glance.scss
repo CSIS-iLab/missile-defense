@@ -7,20 +7,21 @@
   padding: rem(24px) rem(32px) rem(48px) rem(32px);
   color: $color-text-dark-190;
   background: $color-primary-light-gray;
-  
+
   &__wrapper {
     position: relative;
   }
 
   &__title {
-    @extend %font-copy-heading-5;
+    @extend %font-copy-heading-3;
+    font-weight: normal;
     grid-column: 1 / span 2;
-    color: $color-primary-blue-500;
+    color: $color-text-dark-100;
   }
 
   &__spec {
     @extend %font-body-short-lg;
-    
+
     &-name {
       @extend %font-ui-heading-xs;
       text-transform: uppercase;
