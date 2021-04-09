@@ -25,8 +25,9 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 		get_template_part( 'template-parts/breadcrumbs' );
 
 		if ( $missile_short_name ) { ?>
-			<h1 class="single__header-title"><?php echo $missile_short_name; ?></h1>
-			<?php the_title( '<div class="single__header-excerpt">', '</div>' );
+			<?php the_title( '<h1 class="single__header-title">', '</h1>' ); ?>
+			<div class="single__header-excerpt"><?php echo $missile_short_name; ?></div>
+			<?php
 		} 
 		
 		else {
