@@ -15,8 +15,6 @@ $post_type = get_post_type();
 <?php 
 if( is_singular( array( 'defsys', 'missile' ) ) ) { 
 	
-	$missile_short_name = get_field('missile_name');
-
 	?>
 	<header <?php post_class('single__header'); ?>>
 
@@ -24,15 +22,8 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 		<?php
 		get_template_part( 'template-parts/breadcrumbs' );
 
-		if ( $missile_short_name ) { ?>
-			<?php the_title( '<h1 class="single__header-title">', '</h1>' ); ?>
-			<div class="single__header-excerpt"><?php echo $missile_short_name; ?></div>
-			<?php
-		} 
-		
-		else {
 			the_title( '<h1 class="single__header-title">', '</h1>' );
-		} ?>
+			?>
 
 		<hr class="divider divider--thicc page__header-divider"></hr>
 		
