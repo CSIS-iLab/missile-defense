@@ -47,7 +47,7 @@ if ( $missiles ) : ?>
           <th><?php esc_html_e( 'Missile Name', 'missiledefense' ); ?></th>
           <th class="hidden--m"><?php esc_html_e( 'Class', 'missiledefense' ); ?></th>
           <th class="hidden--m"><?php esc_html_e( 'Range', 'missiledefense' ); ?></th>
-          <th class="hidden--m"><?php esc_html_e( 'News', 'missiledefense' ); ?></th>
+          <th class="hidden--m"><?php esc_html_e( 'Status', 'missiledefense' ); ?></th>
         </thead>
         <tbody>
         <?php
