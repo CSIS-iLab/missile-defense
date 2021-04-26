@@ -9,7 +9,9 @@
 
 $button_text = get_lzb_meta('button-text');
 $pdf = get_lzb_meta('file');
-$pdf_url = $pdf['url'];
+if( isset( $pdf ) && !empty( $pdf ) ) {
+  $pdf_url = $pdf['url'];
+}
 $cover = get_lzb_meta('report-cover');
 ?>
 
