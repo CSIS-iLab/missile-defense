@@ -23,6 +23,8 @@ $terms = wp_get_post_terms( $post->ID, 'countries', array('fields' => 'ids')  );
 $missiles = null;
 if ( !empty( $terms ) ) {
   $args = array(
+    'orderby' => 'title',
+    'order' => 'ASC',
     'posts_per_page' => -1,
     'post_type' => 'missile',
     'post_status' => 'publish,private',
