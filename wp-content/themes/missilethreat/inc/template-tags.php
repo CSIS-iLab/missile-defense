@@ -182,6 +182,8 @@ if (! function_exists('missilethreat_authors_list_extended')) :
 	{
 		global $post;
 
+		$authors = '';
+
 		if (function_exists('coauthors_posts_links')) {
 
 			foreach (get_coauthors() as $coauthor) {
