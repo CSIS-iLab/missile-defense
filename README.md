@@ -51,7 +51,7 @@ $ npm start
 
 ### CI/CD
 
-TravisCI will automatically run when pull requests are submitted. If successful:
+GitHub Actions will automatically run when pull requests are submitted. If successful:
 
 - Pull requests into `development` will be deployed to the [WP Engine Development Environment](https://csismtdev.wpengine.com/). The Development environment should be used to demo new features to programs. Once approved, a pull request should be submitted to `main`.
 
