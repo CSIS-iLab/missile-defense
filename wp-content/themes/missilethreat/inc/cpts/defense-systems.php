@@ -19,6 +19,7 @@ function missiledefense_cpt_defsys() {
             'supports' => array( 'title', 'editor', 'excerpt', 'publicize', 'thumbnail', 'author' ),
 			'public' => true,
 			'has_archive' => true,
+            'show_in_rest' => true,
 	    )
   	);
 }
