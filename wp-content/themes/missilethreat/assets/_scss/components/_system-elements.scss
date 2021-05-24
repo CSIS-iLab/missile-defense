@@ -9,7 +9,7 @@
 
   @include breakpoint('medium') {
     float: unset !important;
-    max-width: rem(400px);
+    max-width: rem(300px);
     margin-right: auto !important;
     margin-left: auto !important;
   }
