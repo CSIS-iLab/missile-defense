@@ -29,6 +29,7 @@
 		<?php missiledefense_share(); ?>
 		<hr class="divider divider--gray"/>
 		<?php echo missiledefense_citation(); ?>
+		<?php echo missiledefense_related_posts(); ?>
 	</footer>
 
 </article><!-- .post -->

@@ -10,11 +10,16 @@
 
 
 $missile_short_name = get_field('missile_name');
+$block_name = get_lzb_meta('name');
 $block_title = get_lzb_meta('title');
 $missile_name = get_the_title();
 
 if ( isset( $missile_short_name ) && !empty( $missile_short_name ) ) {
   $missile_name = $missile_short_name;
+}
+
+if ( isset( $block_name ) && !empty( $block_name ) ) {
+  $missile_name = $block_name;
 }
 
 ?>
