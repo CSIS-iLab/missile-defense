@@ -10,6 +10,13 @@
 
 $page_for_posts = get_option( 'page_for_posts' );
 $post_type = get_post_type();
+
+$template = get_page_template_slug( get_the_ID() );
+$isNoImageTemplate = false;
+
+if ( $template === 'templates/template-no-image.php' ){
+	$isNoImageTemplate = true;
+}
 ?>
 
 <?php 
@@ -39,10 +46,12 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 		<?php }
 
 		if( 'defsys' === $post_type ) { ?>
-			<div class="share-wrapper">
 				<?php missiledefense_system_terms(); ?>
-				<?php missiledefense_share(); ?>
-			</div>
+				<div class="alignwide">
+					<div class="single__header-image-wrapper share-wrapper">
+						<?php missiledefense_share(); ?>
+					</div>
+				</div>
 		<?php } ?>
 
 		</div><!-- .entry-header-inner -->
@@ -111,7 +120,9 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 				if ( has_post_thumbnail() ) { ?>
 					<div class="alignwide">
 						<div class="single__header-image-wrapper">
-							<?php get_template_part( 'template-parts/featured-image' ); ?>
+						<?php if ( !$isNoImageTemplate ) {
+							get_template_part( 'template-parts/featured-image' ); 	
+						} ?>
 							<?php missiledefense_share(); ?>
 						</div><!-- single__header-image-wrapper -->
 					</div><!-- alignwide -->
