@@ -32,6 +32,10 @@
     text-align: left;
     border-left: 3px solid $color-primary-light-blue;
 
+    p:not(:last-child) {
+      margin-bottom: rem(12);
+    }
+
     /* stylelint-disable-next-line */
     &.has-text-align-right {
       @extend %font-copy-quote-lg;
