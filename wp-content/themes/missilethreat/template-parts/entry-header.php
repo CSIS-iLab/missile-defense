@@ -39,10 +39,12 @@ if( is_singular( array( 'defsys', 'missile' ) ) ) {
 		<?php }
 
 		if( 'defsys' === $post_type ) { ?>
-			<div class="share-wrapper">
 				<?php missiledefense_system_terms(); ?>
-				<?php missiledefense_share(); ?>
-			</div>
+				<div class="alignwide">
+					<div class="single__header-image-wrapper share-wrapper">
+						<?php missiledefense_share(); ?>
+					</div>
+				</div>
 		<?php } ?>
 
 		</div><!-- .entry-header-inner -->

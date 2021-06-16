@@ -15,11 +15,13 @@
     height: rem(40px);
 
     &:hover img {
-      filter: invert(46%) sepia(30%) saturate(283%) hue-rotate(148deg) brightness(91%) contrast(87%);
+      filter: invert(46%) sepia(30%) saturate(283%) hue-rotate(148deg)
+        brightness(91%) contrast(87%);
     }
 
     img {
-      filter: invert(82%) sepia(25%) saturate(131%) hue-rotate(149deg) brightness(81%) contrast(86%);
+      filter: invert(82%) sepia(25%) saturate(131%) hue-rotate(149deg)
+        brightness(81%) contrast(86%);
       transition: all 0.3s ease-in-out;
     }
   }
@@ -100,14 +102,11 @@
 }
 
 .share-wrapper {
-  position: relative;
-
   /* stylelint-disable-next-line */
   .addtoany_list {
     margin-top: rem(12px);
 
     @include breakpoint('large') {
-      left: -6vw;
       margin-top: 0;
     }
   }
