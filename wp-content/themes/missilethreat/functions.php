@@ -202,7 +202,7 @@ function missilethreat_register_styles() {
 		wp_enqueue_style( 'missilethreat-style-single', get_stylesheet_directory_uri() . '/assets/css/pages/single.min.css', array(), $theme_version );
 	}
 
-	if ( is_singular( array( 'post', 'defsys', 'missile', 'systems', 'actors' ) ) ) {
+	if ( is_singular( array( 'post', 'defsys', 'missile', 'systems' ) ) ) {
 		wp_enqueue_style( 'missilethreat-style-post', get_stylesheet_directory_uri() . '/assets/css/pages/post.min.css', array(), $theme_version );
 	}
 
