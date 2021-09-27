@@ -14,18 +14,20 @@ $posts_page = get_option( 'page_for_posts' );
 
 $object = get_queried_object();
 
-$missile_page_desc = get_field( 'description', $object->name );
-
-$actor_cat_1_title = get_field( 'category_1_actors_title', $object->name );
-$actor_cat_2_title = get_field( 'category_2_actors_title', $object->name );
-
-$defsys_cat_1_title = get_field( 'category_1_title', $object->name );
-$defsys_cat_2_title = get_field( 'category_2_title', $object->name );
-$defsys_cat_3_title = get_field( 'category_3_title', $object->name );
-
-$defsys_cat_1_desc = get_field( 'category_1_description', $object->name );
-$defsys_cat_2_desc = get_field( 'category_2_description', $object->name );
-$defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
+if ( !is_author() ) {
+  $missile_page_desc = get_field( 'description', $object->name );
+  
+  $actor_cat_1_title = get_field( 'category_1_actors_title', $object->name );
+  $actor_cat_2_title = get_field( 'category_2_actors_title', $object->name );
+  
+  $defsys_cat_1_title = get_field( 'category_1_title', $object->name );
+  $defsys_cat_2_title = get_field( 'category_2_title', $object->name );
+  $defsys_cat_3_title = get_field( 'category_3_title', $object->name );
+  
+  $defsys_cat_1_desc = get_field( 'category_1_description', $object->name );
+  $defsys_cat_2_desc = get_field( 'category_2_description', $object->name );
+  $defsys_cat_3_desc = get_field( 'category_3_description', $object->name );
+}
 
 
 ?>
