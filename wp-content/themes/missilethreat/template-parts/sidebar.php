@@ -8,10 +8,11 @@
  */
 
 function get_archive_post_type() {
-	return is_archive() ? get_queried_object()->name : false;
+	return ( is_archive() && !is_author() ) ? get_queried_object()->name : false;
 }
 
 $post_type = get_archive_post_type();
+
 
 if( is_post_type_archive( array( 'defsys', 'missile' ) ) ) {
 	$query = new WP_Query( array(
