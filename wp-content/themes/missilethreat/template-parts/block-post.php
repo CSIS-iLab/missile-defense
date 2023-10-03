@@ -17,7 +17,7 @@
 <?php
 	if ( has_post_thumbnail()) : ?>
     <a href="<?php the_permalink(); ?>" aria-hidden="true" class="thumbnail-link">
-        <?php the_post_thumbnail(array(400, 304)); ?>
+        <?php the_post_thumbnail(); ?>
     </a>
 	<?php endif; ?>
 

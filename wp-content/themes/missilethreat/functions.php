@@ -61,10 +61,13 @@ function missilethreat_theme_support() {
 	add_filter('jpeg_quality', function($arg){ return 100; });
 
 	// Set post thumbnail size.
-	set_post_thumbnail_size( 1200, 9999 );
+	set_post_thumbnail_size( 400, 304 );
 
 	// Add custom image size used in Cover Template.
 	add_image_size( 'missilethreat-fullscreen', 1980, 9999 );
+
+	// Add custom image size used in post featured images.
+	add_image_size( 'missilethreat-featured', 1100, 684 );
 
 	// Custom logo.
 	$logo_width  = 120;
