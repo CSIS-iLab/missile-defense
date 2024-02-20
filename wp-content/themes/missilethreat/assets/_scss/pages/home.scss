@@ -121,9 +121,7 @@
         rgba(7, 52, 74, 0) rem(92px),
         rgba(6, 43, 61, 0.9) 75.52%);
     /* stylelint-enable */
-    @include full-width-background(linear-gradient(180deg,
-        rgba(7, 52, 74, 0) rem(92px),
-        rgba(6, 43, 61, 0.9) 75.52%));
+    @include full-width-background(linear-gradient(180deg, rgba(7, 52, 74, 0) rem(92px), rgba(6, 43, 61, 0.9) 75.52%));
 
     &::before,
     &::after {
