@@ -4,6 +4,7 @@
   #site-content {
     display: flex;
     flex-direction: column;
+
     @include breakpoint('small') {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -116,19 +117,11 @@
     padding-bottom: rem(88px);
     background-color: $color-primary-blue-300;
     /* stylelint-disable */
-    background-image: linear-gradient(
-      180deg,
-      rgba(7, 52, 74, 0) rem(92px),
-      rgba(6, 43, 61, 0.9) 75.52%
-    );
-    /* stylelint-enable */
-    @include full-width-background(
-      linear-gradient(
-        180deg,
+    background-image: linear-gradient(180deg,
         rgba(7, 52, 74, 0) rem(92px),
-        rgba(6, 43, 61, 0.9) 75.52%
-      )
-    );
+        rgba(6, 43, 61, 0.9) 75.52%);
+    /* stylelint-enable */
+    @include full-width-background(linear-gradient(180deg, rgba(7, 52, 74, 0) rem(92px), rgba(6, 43, 61, 0.9) 75.52%));
 
     &::before,
     &::after {
@@ -275,9 +268,8 @@
     }
   }
 
-  &__recent-col2 {
-    order: 3;
-
+  &__recent-col2,
+  &__recent-col3 {
     .post-block {
       margin-top: 0;
       padding: 0;
@@ -307,6 +299,10 @@
         }
       }
     }
+  }
+
+  &__recent-col2 {
+    order: 3;
 
     @include breakpoint('small') {
       grid-column: 1;
@@ -318,6 +314,22 @@
       grid-column: 2;
       padding: 0 rem(32px);
       border-left: rem(1px) solid $color-line-light-gray;
+    }
+  }
+
+  &__recent-col3 {
+    order: 4;
+    margin-top: rem(56px);
+
+    @include breakpoint('small') {
+      grid-column: 2;
+      margin-top: 0;
+      padding-left: rem(32px);
+    }
+
+    @include breakpoint('large') {
+      grid-column: 3;
+      padding: 0 rem(32px);
     }
   }
 
@@ -346,39 +358,6 @@
     }
   }
 
-  &__news {
-    order: 5;
-    margin-top: rem(56px);
-
-    &-heading {
-      margin-bottom: rem(24px);
-      font-weight: 400;
-    }
-
-    &-title {
-      @extend %font-ui-headline-md;
-      margin-bottom: rem(8px);
-      color: $color-text-dark-100;
-    }
-
-    .post-meta__date:not(:last-child) {
-      margin-bottom: rem(32px);
-    }
-
-    @include breakpoint('small') {
-      grid-column: 2;
-      margin-top: 0;
-      padding-left: rem(32px);
-    }
-    @include breakpoint('medium') {
-      margin-top: 0;
-    }
-
-    @include breakpoint('large') {
-      grid-column: 3;
-    }
-  }
-
   &__all-news,
   &__all-analysis {
     margin-top: rem(24px);
@@ -387,7 +366,7 @@
 
   &__all-analysis {
     grid-column: 1 / -1;
-    order: 4;
+    order: 5;
   }
 
   &__cards {
