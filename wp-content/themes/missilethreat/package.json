@@ -33,7 +33,7 @@
     "gulp-remember": "^1.0.1",
     "gulp-rename": "^1.2.0",
     "gulp-rtlcss": "^1.2.0",
-    "gulp-sass": "^4.1.0",
+    "gulp-sass": "^6.0.0",
     "gulp-sort": "^2.0.0",
     "gulp-sourcemaps": "^2.6.2",
     "gulp-stylelint": "^13.0.0",
